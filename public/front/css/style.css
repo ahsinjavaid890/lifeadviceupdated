@@ -11621,3 +11621,11 @@ ul.tabs li.current{
 .hero-texts{
     padding: 40px 50px 40px 15px;
 }
+.login-btn{
+    background-color: #3a5371;
+    color: white;
+}
+.sign-up{
+    background-color: #1bbc9b;
+    color: white;
+}

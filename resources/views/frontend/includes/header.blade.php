@@ -95,8 +95,11 @@
                                 </li>
                             </ul>
                             <!-- Start Other Option -->
-                            <a href="tel:+18555008999">
-                                Login / SignUp
+                            <a href="login" class="btn btn-sm login-btn">
+                                Login 
+                            </a>
+                            <a href="sign-up" class="btn btn-sm mx-3 sign-up">
+                                Sign Up
                             </a>
                             <!-- End Other Option -->
                         </div>
