@@ -22,9 +22,9 @@
    </div>
                <section class="first-section-of-page">
       <div id="faq" class="container py-5">
-         <h2 class="text-center mt-5">
+         <h2 class="text-center mt-5 faq-heading">
             Frequently Asked Questions 
-            <span>FAQ about Disability Insucance</span>
+            FAQ about Disability Insucance
          </h2>
             <style type="text/css">
                .faqlinks li:after{

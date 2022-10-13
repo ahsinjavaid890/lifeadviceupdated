@@ -95,12 +95,14 @@
                                 </li>
                             </ul>
                             <!-- Start Other Option -->
-                            <a href="login" class="btn btn-lg login-btn">
+                            <div class="login-signup">
+                                <a href="{{ url('login')}}" class="btn btn-lg login-btn">
                                 Login 
                             </a>
-                            <a href="sign-up" class="btn btn-lg mx-3 sign-up">
+                            <a href="{{ url('signup')}}" class="btn btn-lg mx-3 sign-up">
                                 Sign Up
                             </a>
+                            </div>
                             <!-- End Other Option -->
                         </div>
                     </div>

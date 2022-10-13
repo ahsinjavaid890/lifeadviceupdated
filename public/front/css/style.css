@@ -11467,6 +11467,10 @@ ul.tabs li.current{
     right: 0px !important;
     height: 466px !important;
 }
+    .login-signup{
+        margin-top: 20px ;
+        text-align: center;
+    }
 
     .date-card{
         display: none!important;
@@ -11510,6 +11514,11 @@ ul.tabs li.current{
     .mobile-nav.mean-container .mean-nav {
     margin-top: 50px !important;
     }
+    .login-card {
+    border-radius: 20px;
+    max-width: 86% !important;
+    margin: auto;
+}
     .homepage-hero-banner-margin {
         margin-top: 46px !important;
     }
@@ -11535,6 +11544,11 @@ ul.tabs li.current{
     position: absolute;
     right: 0;
     height: 465px !important;
+    }
+
+    .login-signup{
+        margin-top: 20px ;
+        text-align: center;
     }
     .herrotext {
         margin-top: 470px !important;
@@ -11562,6 +11576,24 @@ ul.tabs li.current{
     font-size: 13px !important;
     color: white;
     cursor: pointer;
+    }
+    .login-card {
+    border-radius: 20px;
+    max-width: 90% !important;
+    margin: auto;
+    }
+    .faq-heading{
+        font-size: 22px;
+    }
+    .heading-our-mission-section h1 {
+    font-size: 33px;
+    }
+    .our-mission-section .col-md-4{
+        margin-top: 15px;
+    }
+    .login-signup{
+        margin-top: 20px ;
+        text-align: center;
     }
     .date-card{
         display: none!important;
@@ -11628,4 +11660,28 @@ ul.tabs li.current{
 .sign-up{
     background-color: #1bbc9b;
     color: white;
+}
+.login-card{
+    border-radius: 20px;
+    max-width: 35%;
+    margin: auto;
+}
+.main-div-login{
+    margin-top: 100px;
+    max-width: 100%;
+}
+.login-button{
+    color: white;
+    background: #3a5371;
+    border: none;
+    border-radius: 20px;
+}
+.signup-button{
+    color: white;
+    background: #1bbc9b;
+    border: none;
+    border-radius: 20px;
+}
+.heading-our-mission-section h1 {
+font-size: 35px;
 }

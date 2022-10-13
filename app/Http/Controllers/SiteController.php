@@ -31,6 +31,14 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.faq');
     }
+    public function login()
+    {
+        return view('frontend.companypages.login');
+    }
+    public function signup()
+    {
+        return view('frontend.companypages.signup');
+    }
     public function carrierprofile($id)
     {
         $data = companies::where('company_link' , $id)->get()->first();
