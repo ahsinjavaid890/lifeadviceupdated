@@ -28,7 +28,9 @@ Route::get('/', [SiteController::class, 'index']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);
 Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);
-Route::get('/privacypolicy', [SiteController::class, 'faq']);
+Route::get('/faq', [SiteController::class, 'faq']);
+Route::get('/login', [SiteController::class, 'login']);
+Route::get('/signup', [SiteController::class, 'signup']);
 
 
 
