@@ -96,7 +96,7 @@
                             </ul>
                             <!-- Start Other Option -->
                             <a href="tel:+18555008999">
-                                Login /SignUp
+                                Login / SignUp
                             </a>
                             <!-- End Other Option -->
                         </div>

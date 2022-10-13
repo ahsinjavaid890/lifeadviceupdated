@@ -25,6 +25,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [SiteController::class, 'index']);
 
+Route::get('/aboutus', [SiteController::class, 'aboutus']);
+Route::get('/contactus', [SiteController::class, 'contactus']);
+Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);
+Route::get('/privacypolicy', [SiteController::class, 'faq']);
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/carrier/{id}', [SiteController::class, 'carrierprofile']);
 Route::get('/job-detail/{id}', [SiteController::class, 'jobdetail']);
 

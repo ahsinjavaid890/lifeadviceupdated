@@ -61,7 +61,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="faq.php">
+                        <a href="{{ url('faq')}}">
                                 FAQ
                             </a>
                     </li>
@@ -71,12 +71,12 @@
                             </a>
                     </li>
                     <li>
-                        <a href="privacy-policy.php">
+                        <a href="{{ url('privacypolicy')}}">
                                 Privacy Policy
                             </a>
                     </li>
                     <li>
-                        <a href="contact-us.php">
+                        <a href="{{ url('contactus') }}">
                                 Contact Us
                             </a>
                     </li>

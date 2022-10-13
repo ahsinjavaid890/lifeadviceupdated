@@ -15,6 +15,22 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function aboutus()
+    {
+        return view('frontend.companypages.about');
+    }
+    public function contactus()
+    {
+        return view('frontend.companypages.contact');
+    }
+    public function privacypolicy()
+    {
+        return view('frontend.companypages.privacypolicy');
+    }
+    public function faq()
+    {
+        return view('frontend.companypages.faq');
+    }
     public function carrierprofile($id)
     {
         $data = companies::where('company_link' , $id)->get()->first();
