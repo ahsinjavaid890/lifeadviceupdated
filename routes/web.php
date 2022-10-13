@@ -197,17 +197,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::post('/carriers','AdminController@addnewcarrier')->name('addnewcarrier');
 
 
-    Route::name('subscriptions.')->prefix('subscriptions')->group(function(){
-        Route::get('/','AdminController@subscriptions');
-        Route::get('/{id}','AdminController@editrecuringtips');
-        Route::post('/createplan','AdminController@createplan');
-        Route::post('/updatesubscriptionplan','AdminController@updatesubscriptionplan');
-        Route::get('/delete/{id}','AdminController@deleterecuringtips');
-    });
-
-
-    Route::name('recuringtips.')->prefix('recuringtips')->group(function(){
-        Route::get('/','AdminController@recuringtips');
+    Route::name('pages.')->prefix('pages')->group(function(){
+        Route::get('/homepage','CmsController@homepageshow');
         Route::get('/{id}','AdminController@editrecuringtips');
         Route::post('/addrecuringtips','AdminController@addnewrecuringtips');
         Route::post('/updaterecuringtips','AdminController@updatenewrecuringtips');
@@ -215,51 +206,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
 
 
-    Route::name('carrier.')->prefix('carrier')->group(function(){
-        Route::get('/requests','AdminController@carrierrequests');
-        Route::get('/approve/{id}','AdminController@approvecarrier');
-        Route::post('/declinerequest','AdminController@declinerequest')->name('declinerequest');
-    });
 
-    Route::name('help.')->prefix('help')->group(function(){
-        Route::get('/categories','AdminController@helpcategories');
-        Route::get('/addnew','AdminController@addnewhelparticles');
-        Route::post('/updatehelpcategory','AdminController@updatehelpcategory');
-        Route::post('/addnewhelpcategory','AdminController@addnewhelpcategory');
-        Route::post('/addnewhelparticle','AdminController@addnewhelparticle');
-        Route::post('/updatehelparticle','AdminController@updatehelparticle');
-        Route::get('/deletehelpcategory/{id}','AdminController@deletehelpcategory');
-        Route::get('/deletehelparticle/{id}','AdminController@deletehelparticle');
-    });
-    Route::name('companyinfo.')->prefix('companyinfo')->group(function(){
-        Route::get('/all','AdminController@allcompanyinfopages');
-        Route::post('/addnewpage','AdminController@addnewpage');
-        Route::post('/updatepage','AdminController@updatepage');
-        Route::get('/deletepage/{id}','AdminController@deletepage');
-    });
-    Route::name('education.')->prefix('education')->group(function(){
-        Route::get('/categories','AdminController@educationcategories');
-        Route::get('/addnew','AdminController@addneweducationarticles');
-        Route::get('/allposts','AdminController@allpostseducationcenter');
-        Route::post('/updateeducationcategory','AdminController@updateeducationcategory');
-        Route::post('/addneweducationcategory','AdminController@addneweducationcategory');
-        Route::post('/addneweducationarticle','AdminController@addneweducationarticle');
-        Route::post('/updateeducationarticle','AdminController@updateeducationarticle');
-        Route::get('/editpost/{id}','AdminController@editpost');
-        Route::get('/deleteeducationcategory/{id}','AdminController@deleteeducationcategory');
-        Route::get('/deleteeducationarticle/{id}','AdminController@deleteeducationarticle');
-        Route::get('/changestatusofarticle/{id}','AdminController@changestatusofarticle');
-    });
-    Route::name('job.')->prefix('jobs')->group(function(){
-        Route::get('/','JobController@alljobs');
-        Route::get('/addnewjob','JobController@addnewjob');
-        Route::get('/bassic-attributes','JobController@basicattributes');
-        Route::get('/pending','JobController@pendingjobs');
-        Route::get('/editattribute/{id}','JobController@editattribute');
-        Route::get('/getattributenameandid/{id}','JobController@getattributenameandid');
-        Route::post('/updateattributes','JobController@updateattributes');
-
-    });
 
 });
 

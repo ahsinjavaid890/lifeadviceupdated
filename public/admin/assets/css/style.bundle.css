@@ -61901,3 +61901,6 @@ body {
 .mw-100 {
     max-width: 100%!important;
 }
+.tab-pane{
+  margin-top: 25px;
+}
