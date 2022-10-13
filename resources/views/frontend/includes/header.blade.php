@@ -95,10 +95,10 @@
                                 </li>
                             </ul>
                             <!-- Start Other Option -->
-                            <a href="login" class="btn btn-sm login-btn">
+                            <a href="login" class="btn btn-lg login-btn">
                                 Login 
                             </a>
-                            <a href="sign-up" class="btn btn-sm mx-3 sign-up">
+                            <a href="sign-up" class="btn btn-lg mx-3 sign-up">
                                 Sign Up
                             </a>
                             <!-- End Other Option -->
