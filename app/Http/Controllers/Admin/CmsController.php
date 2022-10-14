@@ -25,7 +25,7 @@ class CmsController extends Controller
     public function faqcategories()
     {
         $data = frequesntlyaskquest_categories::all();
-        return view('admin.faq.categories')->with(array('data'=>$data));;
+        return view('admin.faq.categories')->with(array('data'=>$data));
     }
     public function addnewfaqcategory(Request $request)
     {

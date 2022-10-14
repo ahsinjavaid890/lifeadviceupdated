@@ -208,6 +208,13 @@ Route::name('pages.')->prefix('pages')->group(function(){
 
     });
 
+
+    Route::name('sales.')->prefix('sales')->group(function(){
+        Route::get('/allsale','AdminController@allsale');
+        
+        Route::get('/viewsale/{id}','AdminController@viewsale');
+    });
+
     Route::name('faq.')->prefix('faq')->group(function(){
         Route::get('/faqcategories','CmsController@faqcategories');
         Route::post('/addnewfaqcategory','CmsController@addnewfaqcategory');

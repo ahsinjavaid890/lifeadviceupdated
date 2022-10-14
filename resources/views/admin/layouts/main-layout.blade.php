@@ -151,14 +151,16 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#example').DataTable();
+                $('#example').DataTable({
+                    order: [[1, 'desc']],
+                });
             });
         </script>
         <script>
-    $('.summernote').summernote({
-        tabsize: 4,
-        height: 400
-      });
-    </script>
-   
+
+        $('.summernote').summernote({
+            tabsize: 4,
+            height: 400
+          });
+        </script>
 </html>
