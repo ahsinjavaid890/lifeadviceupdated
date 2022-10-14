@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Hash;
 use App\Models\frequesntlyaskquestions;
+use App\Models\travelpages;
 use App\Models\frequesntlyaskquest_categories;
 use Mail;
 use Auth;
@@ -17,11 +18,11 @@ class CmsController extends Controller
     {
     	return view('admin.pages.homepage');
     }
-     public function supervisashow()
+    public function travelpages($id)
     {
-        return view('admin.pages.supervisa');
+        $data = travelpages::find($id);
+        return view('admin.pages.travelpages')->with(array('data'=>$data));
     }
-
     public function faqcategories()
     {
         $data = frequesntlyaskquest_categories::all();

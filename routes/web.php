@@ -202,9 +202,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/homepage','CmsController@supervisashow');     
 
     });
-Route::name('pages.')->prefix('pages')->group(function(){
+    Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/homepage','CmsController@homepageshow');
-        Route::get('/supervisa','CmsController@supervisashow');     
+        Route::get('/travelpages/{id}','CmsController@travelpages'); 
 
     });
 

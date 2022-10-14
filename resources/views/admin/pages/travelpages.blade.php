@@ -12,28 +12,33 @@
                    <div class="card  my-4">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                           <h2> Travel Insurance</h2>
-                         <ul class="nav nav-tabs card-header-tabs">
-                           <li class="nav-item">
-                             <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
-                           </li>
-                          <!--  <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab6">Section 6</a>
-                           </li> -->
-                         </ul>
+                           <h2> {{ $data->name }} Insurance</h2>
+                             <ul class="nav nav-tabs card-header-tabs">
+                               <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                              <!--  <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Section 6</a>
+                               </li> -->
+                             </ul>
                        </div>
+                       @if($data->url == 'super-visa')
+
+                       
+
+                       @endif
                        <!-- .card-body.tab-content  -->
                        <div class="card-body tab-content">
                          <div class="tab-pane fade show active" id="tab1">

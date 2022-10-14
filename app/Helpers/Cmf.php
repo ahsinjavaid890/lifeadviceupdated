@@ -79,38 +79,15 @@ class Cmf
         }
     }
 
-    public static function carriermodules()
+    public static function travelpages()
     {
 
-        $cars = array(
-          array("id"=>22,"name"=>'Jobs'),
-          array("id"=>1,"name"=>'All Jobs'),
-          array("id"=>2,"name"=>'Add New Job'),
-          array("id"=>23,"name"=>'Maps'),
-          array("id"=>3,"name"=>'All Maps'),
-          array("id"=>4,"name"=>'Add New Map'),
-          array("id"=>24,"name"=>'Team'),
-          array("id"=>5,"name"=>'All Members'),
-          array("id"=>6,"name"=>'Staff Permissions'),
-          array("id"=>25,"name"=>'Company Info'),
-          array("id"=>7,"name"=>'Best Practices'),
-          array("id"=>8,"name"=>'Ownership Policy'),
-          array("id"=>9,"name"=>'Referral Program'),
-          array("id"=>10,"name"=>'Orientation Schedule'),
-          array("id"=>11,"name"=>'Terminal Locations'),
-          array("id"=>12,"name"=>'Sales Funnel'),
-          array("id"=>13,"name"=>'Processiong and Safety Guide'),
-          array("id"=>14,"name"=>'Driver Benifits'),
-          array("id"=>15,"name"=>'Education Center'),
-          array("id"=>26,"name"=>'Carrier Profile'),
-          array("id"=>16,"name"=>'My Carrier Profile'),
-          array("id"=>17,"name"=>'Profile Reviews'),
-          array("id"=>18,"name"=>'Advertising'),
-          array("id"=>19,"name"=>'Integrations'),
-          array("id"=>20,"name"=>'Billing $ Invoices'),
-          array("id"=>21,"name"=>'Help')
+        $travel = array(
+          array("id"=>1,"modalname"=>'supervisainsurance',"name"=>'Super Visa'),
+          array("id"=>2,"modalname"=>'travelinsurance',"name"=>'Travel Insurance'),
+          array("id"=>3,"modalname"=>'visitorinsurance',"name"=>'Visitor Insurance'),
+          array("id"=>4,"modalname"=>'studentinsurance',"name"=>'Student Insurance')
         );
-
-        return $cars;
+        return $travel;
     }
 }
