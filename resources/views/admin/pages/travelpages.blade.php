@@ -10,6 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                    <div class="card  my-4">
+                    <form action="#" method="POST">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
                            <h2> {{ $data->name }} Insurance</h2>
@@ -29,16 +30,11 @@
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
                                </li>
-                              <!--  <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab6">Section 6</a>
-                               </li> -->
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
                              </ul>
                        </div>
-                       @if($data->url == 'super-visa')
-
-                       
-
-                       @endif
                        <!-- .card-body.tab-content  -->
                        <div class="card-body tab-content">
                          <div class="tab-pane fade show active" id="tab1">
@@ -46,36 +42,31 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Main Image</label>
-                                        <input type="file" style="height:45px;" class="form-control" name="">
+                                        <input type="file" style="height:45px;" class="form-control" name="main_image">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Main Heading</label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="main_heading">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Sub Heading <small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="sub_heading">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Text</label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="btn_text">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Link</label>
-                                        <input type="text" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
+                                        <input type="text" class="form-control" name="btn_link">
                                     </div>
                                 </div>
                             </div>
@@ -85,34 +76,25 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Vector Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-two-vector">
+                                            <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
                                         </div>
                                         <div class="form-group">
-                                            <label>Sec-Two-Heading</label>
-                                            <input type="text"  class="form-control" name="section-two-heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-Two-Description</label>
-                                             <textarea class="summernote" name="section-thee-description"></textarea>
+                                            <label>Sec Two Description</label>
+                                             <textarea class="summernote" name="section_two_description"></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Sec-Two-Collapse-Heading</label>
-                                                <input type="text"  class="form-control" name="section-two-colapse-heading">
+                                                <label>Sec Two Question</label>
+                                                <input type="text"  class="form-control" name="section_two_colapse_question">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Sec-Two-Collapse-desc</label>
-                                                <input type="text"  class="form-control" name="section-two-colapse-desc">
+                                                <label>Sec Two Ans</label>
+                                                <input type="text"  class="form-control" name="section_two_colapse_answer">
                                             </div>
                                         </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="submit" class="btn btn-primary" value="Update">
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -123,9 +105,9 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Card-Vector</th>
-                                                <th>Card-Heading</th>
-                                                <th>Card-Description</th>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -159,358 +141,194 @@
                                         
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
                          </div>
                          <div class="tab-pane fade" id="tab4">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Section-four-Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-four-vector">
+                                            <label>Section four Image</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
                                         </div>
                                         <div class="form-group">
-                                            <label>Sec-four-Heading</label>
-                                            <input type="text"  class="form-control" name="section-four-heading">
+                                            <label>Sec four Heading</label>
+                                            <input type="text"  class="form-control" name="section_four_heading">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Sec-three-Description</label>
-                                             <textarea class="summernote" name="section-four-description"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Section-Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                            <input type="text" class="form-control" name="section-four-lists">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div>
-                         
-                         <div class="tab-pane fade" id="tab5">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Card-Vector</th>
-                                                <th>Card-Heading</th>
-                                                <th>Card-Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div>
-                        <!--  <div class="tab-pane fade" id="tab6">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Section-three-Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-thee-Heading</label>
-                                            <input type="text"  class="form-control" name="section-thee-heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-three-Description</label>
-                                             <textarea class="summernote" name="section-thee-description"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div> -->
-                          </div><!--/.card-body -->
-                      </div><!--/.card-->
-                </div>
-                <div class="col-md-12">
-                   <div class="card  my-4">
-                       <!-- navigation in .card-header -->
-                       <div class="card-header">
-                           <h2> Super Visa</h2>
-                         <ul class="nav nav-tabs card-header-tabs">
-                           <li class="nav-item">
-                             <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
-                           </li>
-                          <!--  <li class="nav-item">
-                             <a class="nav-link" data-toggle="tab" href="#tab6">Section 6</a>
-                           </li> -->
-                         </ul>
-                       </div>
-                       <!-- .card-body.tab-content  -->
-                       <div class="card-body tab-content">
-                         <div class="tab-pane fade show active" id="tab1">
-                           <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Main Image</label>
-                                        <input type="file" style="height:45px;" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Main Heading</label>
-                                        <input type="text" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Sub Heading <small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                        <input type="text" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Button Text</label>
-                                        <input type="text" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Button Link</label>
-                                        <input type="text" class="form-control" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
-                         <div class="tab-pane fade" id="tab2">
-                           <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Vector Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-two-vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-Two-Heading</label>
-                                            <input type="text"  class="form-control" name="section-two-heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-Two-Description</label>
-                                             <textarea class="summernote" name="section-thee-description"></textarea>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Sec-Two-Collapse-Heading</label>
-                                                <input type="text"  class="form-control" name="section-two-colapse-heading">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Sec-Two-Collapse-desc</label>
-                                                <input type="text"  class="form-control" name="section-two-colapse-desc">
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="submit" class="btn btn-primary" value="Update">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                         </div>
-                         <div class="tab-pane fade" id="tab3">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Card-Vector</th>
-                                                <th>Card-Heading</th>
-                                                <th>Card-Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card1"><i class="fa fa-edit"></i>Edit 1</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card4"><i class="fa fa-edit"></i>Edit 4</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div>
-                         <div class="tab-pane fade" id="tab4">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Section-four-Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-four-vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-four-Heading</label>
-                                            <input type="text"  class="form-control" name="section-four-heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-three-Description</label>
-                                             <textarea class="summernote" name="section-four-description"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Section-Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                            <input type="text" class="form-control" name="section-four-lists">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div>
-                         
-                         <div class="tab-pane fade" id="tab5">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Card-Vector</th>
-                                                <th>Card-Heading</th>
-                                                <th>Card-Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div>
-                        <!--  <div class="tab-pane fade" id="tab6">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Section-three-Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-thee-Heading</label>
-                                            <input type="text"  class="form-control" name="section-thee-heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec-three-Description</label>
-                                             <textarea class="summernote" name="section-thee-description"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                         </div> -->
-                          </div><!--/.card-body -->
-                      </div><!--/.card-->
-                </div>
 
-                
+                                        @if($data->url == 'super-visa')
+                                        <div class="form-group">
+                                            <label>Sec four Description</label>
+                                             <textarea class="summernote" name="section_four_description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec four Notice</label>
+                                            <input type="text" class="form-control" name="section_four_notice">
+                                        </div>
+                                           @endif
+                                           @if($data->url == 'visitor-visa')
+                                        <div class="form-group">
+                                            <label>Sec four Description</label>
+                                             <textarea class="summernote" name="section_four_description"></textarea>
+                                        </div>
+                                           @endif
+                                        <div class="form-group">
+                                            <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
+                                            <input type="text" class="form-control" name="section_four_lists">
+                                        </div>
+                                    </div>
+                                </div>
+                         </div>
+                         
+                         <div class="tab-pane fade" id="tab5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    @if($data->url == 'super-visa')
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                        @endif
+                                        @if($data->url == 'visitor-visa')
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                        @endif
+                                         @if($data->url == 'student-visa')
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                        @endif
+                                        @if($data->url == 'travel-visa')
+                                            <div class="form-group">
+                                            <label>Section five Image</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec five Heading</label>
+                                            <input type="text"  class="form-control" name="section_five_heading">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec five Description</label>
+                                             <textarea class="summernote" name="section_five_description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
+                                            <input type="text" class="form-control" name="section_five_lists">
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="tab-pane fade" id="tab6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Meta Title</label>
+                                            <input type="text"  class="form-control" name="meta_title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Meta Description</label>
+                                             <textarea class="summernote" name="meta_description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Meta Tags</label>
+                                            <input type="text"  class="form-control" name="meta_tag">
+                                        </div>
+                                            <div class="form-group">
+                                            <label>Meta Image</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="meta_image">
+                                        </div>
+                                    </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="Update">
+                                    </div>
+                                </div>
+                                </div>
+                         </div>
+                          </div><!--/.card-body -->
+                      </form>
+                      </div><!--/.card-->
+                </div>                
             </div>
             <!--end::Card-->
         </div>
@@ -531,16 +349,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec trhee Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
         </div>
         <div class="form-group">
-            <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -563,16 +381,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
         </div>
         <div class="form-group">
-            <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -595,16 +413,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
         </div>
         <div class="form-group">
-            <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -627,16 +445,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
         </div>
         <div class="form-group">
-            <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -661,16 +479,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
         </div>
         <div class="form-group">
-            <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -693,16 +511,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec-three-Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
         </div>
         <div class="form-group">
             <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -725,16 +543,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label>Section-three-Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section-three-vector">
+            <label>Section three Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
         </div>
         <div class="form-group">
-            <label>Sec-thee-Heading</label>
-            <input type="text"  class="form-control" name="section-thee-heading">
+            <label>Sec-three-Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
         </div>
         <div class="form-group">
             <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section-thee-description"></textarea>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
