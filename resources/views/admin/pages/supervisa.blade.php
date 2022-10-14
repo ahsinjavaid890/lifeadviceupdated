@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Sec-Two-Description</label>
-                                             <textarea id="summernote" name="section-thee-description"></textarea>
+                                             <textarea class="summernote" name="section-thee-description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Sec-Two-Collapse-Text</label>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Sec-three-Description</label>
-                                             <textarea id="summernote" name="section-thee-description"></textarea>
+                                             <textarea class="summernote" name="section-thee-description"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -101,11 +101,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Sec-three-Description</label>
-                                             <textarea id="summernote" name="section-four-description"></textarea>
+                                             <textarea class="summernote" name="section-four-description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Sec-three-Lists</label>
-                                             <textarea id="summernote" name="section-four-lists"></textarea>
+                                             <textarea class="summernote" name="section-four-lists"></textarea>
                                         </div>
                                     </div>
                                 </div>
