@@ -82,20 +82,25 @@
                                             <label>Sec Two Description</label>
                                              <textarea class="summernote" name="section_two_description"></textarea>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Sec Two Question</label>
-                                                <input type="text"  class="form-control" name="section_two_colapse_question">
+                                        <div class="row mb-2">
+                                            <div class="col-md-12 text-right">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Questions</a>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Sec Two Ans</label>
-                                                <input type="text"  class="form-control" name="section_two_colapse_answer">
-                                            </div>
-                                        </div>
-                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Questions</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
+                                                    <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                          </div>
@@ -307,7 +312,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Meta Description</label>
-                                             <textarea class="summernote" name="meta_description"></textarea>
+                                             <textarea class="form-control" name="meta_description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Meta Tags</label>
@@ -318,14 +323,15 @@
                                             <input type="file" style="height:45px;" class="form-control" name="meta_image">
                                         </div>
                                     </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </div>
-                                </div>
-                                </div>
+                                        </div>
                          </div>
                           </div><!--/.card-body -->
+                          <div class="card-footer">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary"  value="Update">
+                                </div>
+                            </div>
+                          </div>
                       </form>
                       </div><!--/.card-->
                 </div>                
@@ -544,15 +550,15 @@
       <div class="modal-body">
         <div class="form-group">
             <label>Section three Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
         </div>
         <div class="form-group">
             <label>Sec-three-Heading</label>
-            <input type="text"  class="form-control" name="section_modal_-heading">
+            <input type="text"  class="form-control" name="section_modal_heading">
         </div>
         <div class="form-group">
             <label>Sec-three-Description</label>
-             <textarea class="summernote" name="section_modal_-description"></textarea>
+             <textarea class="summernote" name="section_modal_description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -564,4 +570,36 @@
 </div>
 <!-- end card 3 -->
 <!-- end section 5 -->
+
+<!-- Questions modal -->
+<div class="modal fade" id="questions" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add New Questions</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Question</label>
+            <input type="text"  class="form-control" name="question">
+        </div>
+        <div class="form-group">
+            <label>Answer</label>
+             <textarea class="summernote" name="answer"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end questions Modal -->
+
+
+
 @endsection

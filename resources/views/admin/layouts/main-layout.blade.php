@@ -160,7 +160,7 @@
 
         $('.summernote').summernote({
             tabsize: 4,
-            height: 400
+            height: 250
           });
         </script>
 </html>
