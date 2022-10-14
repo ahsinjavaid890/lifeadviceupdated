@@ -53,11 +53,7 @@
                                     {{ DB::table('frequesntlyaskquest_categories')->where('id' , $r->category_id)->first()->name }}
                                 </td>
                                 <td>
-                                    @if($r->status == 'Published')
-                                    <div class="badge badge-success">{{ $r->status }}</div>
-                                    @else
-                                    <div class="badge badge-danger">{{ $r->status }}</div>
-                                    @endif
+                                    {{ $r->order }}
                                 </td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>
@@ -89,7 +85,7 @@
                                         <div class="modal-header">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Update Category: {{ $r->name }}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update FAQ</h5>
                                                 </div>
                                             </div>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -125,7 +121,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="lable-control">Enter Answer</label>
-                                                            <textarea rows="10" class="form-control" name="answer">{{ $r->answer }}</textarea>
+                                                            <textarea rows="10" class="summernote" name="answer">{{ $r->answer }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,7 +194,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Enter Answer</label>
-                                <textarea rows="10" class="form-control" name="answer"></textarea>
+                                <textarea rows="10" class="summernote" name="answer"></textarea>
                             </div>
                         </div>
                     </div>
