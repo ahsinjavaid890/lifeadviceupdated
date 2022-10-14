@@ -29,10 +29,10 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="{{ url('travel-insurance') }}" class="nav-link">Travel Insurance</a>
+                                            <a href="{{ url('travel') }}" class="nav-link">Travel Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('super-visa-insurance') }}" class="nav-link">Super Visa Insurance</a>
+                                            <a href="{{ url('supervisa') }}" class="nav-link">Super Visa Insurance</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('visitor-insurance') }}" class="nav-link">Visitor Insurance</a>

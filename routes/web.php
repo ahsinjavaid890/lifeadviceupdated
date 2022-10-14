@@ -24,7 +24,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Site Routes
 
 Route::get('/', [SiteController::class, 'index']);
-
+Route::get('/supervisa', [SiteController::class, 'supervisa']);
+Route::get('/travel', [SiteController::class, 'travel']);
+Route::get('/lifeinsurance', [SiteController::class, 'lifeinsurance']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);
 Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);

@@ -15,6 +15,18 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function supervisa()
+    {
+        return view('frontend.companypages.supervisa');
+    }
+    public function travel()
+    {
+        return view('frontend.companypages.travel');
+    }
+    public function lifeinsurance()
+    {
+        return view('frontend.companypages.lifeinsurance');
+    }
     public function aboutus()
     {
         return view('frontend.companypages.about');
