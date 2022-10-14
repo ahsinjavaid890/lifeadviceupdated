@@ -26,6 +26,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ asset('public/admin/assets/media/logos/favicon.ico') }}" rel="shortcut icon" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
   
 </head>
   <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">    
@@ -160,5 +162,25 @@
         height: 400
       });
     </script>
-   
+   <script type="text/javascript">
+       $('textarea#summernote').summernote({
+        placeholder: 'Enter Description',
+        tabsize: 2,
+        height: 200,
+  toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        // ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+        //['fontname', ['fontname']],
+       // ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'hr']],
+        //['view', ['fullscreen', 'codeview']],
+        ['help', ['help']]
+      ],
+      });
+   </script>
 </html>

@@ -19,31 +19,31 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Main Image</label>
-                                        <input type="file" style="height:45px;" class="form-control" name="">
+                                        <input type="file" style="height:45px;" class="form-control" name="home-main-image">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Main Heading</label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="home-main-heading">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Sub Heading <small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="home-main-subheading">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Text</label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="home-btn-heading">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Link</label>
-                                        <input type="text" class="form-control" name="">
+                                        <input type="text" class="form-control" name="home-btn-link">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

@@ -17,6 +17,10 @@ class CmsController extends Controller
     {
     	return view('admin.pages.homepage');
     }
+     public function supervisashow()
+    {
+        return view('admin.pages.supervisa');
+    }
 
     public function faqcategories()
     {
