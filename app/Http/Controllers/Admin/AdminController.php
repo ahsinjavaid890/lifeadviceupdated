@@ -33,4 +33,9 @@ class AdminController extends Controller
         $data = DB::table('sales')->where('sales_id' , $id)->first();
         return view('admin.sales.viewsale')->with(array('data'=>$data));
     }
+    public function allcompanies()
+    {
+        $data = DB::table('wp_dh_companies')->get();
+        return view('admin.companies.all')->with(array('data'=>$data));
+    }
 }

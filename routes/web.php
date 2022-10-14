@@ -199,10 +199,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
 
 
-    Route::name('pages.')->prefix('pages')->group(function(){
-        Route::get('/homepage','CmsController@homepageshow');
-        Route::get('/homepage','CmsController@supervisashow');     
-
+    Route::name('companies.')->prefix('companies')->group(function(){
+        Route::get('/allcompanies','AdminController@allcompanies');
+        
     });
     Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/homepage','CmsController@homepageshow');
