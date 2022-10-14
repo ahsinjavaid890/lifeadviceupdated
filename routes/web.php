@@ -195,26 +195,26 @@ Route::name('admin.')->prefix('admin')->group(function(){
 
 Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('admin')->group(function(){
     Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
-    Route::get('/carriers','AdminController@allcarriers')->name('allcarriers');
-    Route::post('/carriers','AdminController@addnewcarrier')->name('addnewcarrier');
 
 
     Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/homepage','CmsController@homepageshow');
-        Route::get('/{id}','AdminController@editrecuringtips');
-        Route::post('/addrecuringtips','AdminController@addnewrecuringtips');
-        Route::post('/updaterecuringtips','AdminController@updatenewrecuringtips');
-        Route::get('/deleterecuringtips/{id}','AdminController@deleterecuringtips');
+        
+
+    });
+
+    Route::name('faq.')->prefix('faq')->group(function(){
+        Route::get('/faqcategories','CmsController@faqcategories');
+        Route::post('/addnewfaqcategory','CmsController@addnewfaqcategory');
+        Route::post('/updatfaqcategory','CmsController@updatfaqcategory');
+        Route::get('/deletefaqcategory/{id}','CmsController@deletefaqcategory');
+        Route::get('/allfaq','CmsController@allfaq');
+        Route::post('/addnewfaq','CmsController@addnewfaq');
+        Route::post('/updatfaq','CmsController@updatfaq');
+        Route::get('/deletefaq/{id}','CmsController@deletefaq');
     });
 
 
 
 
-});
-
-Route::get('/admin/staff', function () {
-    return view('admin/staff/index');
-});
-Route::get('/admin/staff/permissions', function () {
-    return view('admin/staff/permissions');
 });

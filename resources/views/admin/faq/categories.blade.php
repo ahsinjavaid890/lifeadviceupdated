@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','All Education Categories')
+@section('title','All FAQ Categories')
 @section('content')
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -13,8 +13,8 @@
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            All Education Categories
-                            <div class="text-muted pt-2 font-size-sm">Manage All Education Categories</div>
+                            All FAQ Categories
+                            <div class="text-muted pt-2 font-size-sm">Manage All FAQ Categories</div>
                         </h3>
                     </div>
                     <div class="card-toolbar">
@@ -34,9 +34,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-separate table-head-custom table-checkable" style="width:100%">
+                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Category Icon</th>
                                 <th>Category Name</th>
                                 <th>Category Order</th>
                                 <th>Status</th>
@@ -48,15 +49,22 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
+                                    <img style="width:100px;" src="{{ url('public/images') }}/{{ $r->icon }}">
+                                </td>
+                                <td>
                                     {{ $r->name }}
                                 </td>
                                 <td>
                                     {{ $r->order }}
                                 </td>
                                 <td>
-                                    {{ $r->status }}
+                                    @if($r->status == 'Published')
+                                    <div class="badge badge-success">{{ $r->status }}</div>
+                                    @else
+                                    <div class="badge badge-danger">{{ $r->status }}</div>
+                                    @endif
                                 </td>
-                                <td>{{ DB::table('education_articles')->where('category_id' , $r->id)->count() }}</td>
+                                <td>{{ DB::table('frequesntlyaskquestions')->where('category_id' , $r->id)->count() }}</td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>
                                     <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete"> <i class="la la-trash"></i> </a>
@@ -72,11 +80,11 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Are you Sure You want to delete this. If you Delete this Category then All Articles will be deleted Automaticaly against this Category
+                                            <p style="color:red;">Are you Sure You want to delete this. If you Delete this Category then All FAQ will be deleted Automaticaly against this Category</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/education/deleteeducationcategory') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            <a href="{{ url('admin/faq/deletefaqcategory') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>
                                 </div>
@@ -94,10 +102,18 @@
                                                 <i aria-hidden="true" class="ki ki-close"></i>
                                             </button>
                                         </div>
-                                        <form method="POST" action="{{ url('admin/education/updateeducationcategory') }}">
+                                        <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/updatfaqcategory') }}">
                                             @csrf
                                             <input type="hidden" value="{{ $r->id }}" name="id">
                                             <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="lable-control">Category Icon</label>
+                                                            <input name="icon" type="file" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -158,9 +174,17 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="{{ url('admin/education/addneweducationcategory') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/addnewfaqcategory') }}">
                 @csrf
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Category Icon</label>
+                                <input name="icon" required type="file" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
