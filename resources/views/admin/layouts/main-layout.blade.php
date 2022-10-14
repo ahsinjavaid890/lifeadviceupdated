@@ -153,10 +153,13 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#example').DataTable();
+                $('#example').DataTable({
+                    order: [[1, 'desc']],
+                });
             });
         </script>
         <script>
+<<<<<<< Updated upstream
     $('.summernote').summernote({
         tabsize: 4,
         height: 400
@@ -183,4 +186,12 @@
       ],
       });
    </script>
+=======
+        $('.summernote').summernote({
+            tabsize: 4,
+            height: 400
+          });
+        </script>
+   
+>>>>>>> Stashed changes
 </html>
