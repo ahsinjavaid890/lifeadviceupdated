@@ -204,7 +204,6 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         
     });
     Route::name('pages.')->prefix('pages')->group(function(){
-        Route::get('/homepage','CmsController@homepageshow');
         Route::get('/travelpages/{id}','CmsController@travelpages'); 
 
     });

@@ -258,12 +258,6 @@
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link"><span class="menu-text">Manage Pages</span></span>
                             </li>
-
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/pages/homepage') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Homepage</span>
-                                </a>
-                            </li>
                             @foreach(DB::table('travelpages')->get() as $r)
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/pages/travelpages') }}/{{ $r->id }}" class="menu-link">
@@ -271,7 +265,6 @@
                                 </a>
                             </li>
                             @endforeach
-
                         </ul>
                     </div>
                 </li>
