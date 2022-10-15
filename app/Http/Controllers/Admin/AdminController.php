@@ -23,6 +23,54 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin/dashboard/index');
     }
+    public function profile()
+    {
+        return view('admin/profile/index');
+    }
+    public function updateuserprofile(Request $request)
+    {
+        $update = User::find(Auth::user()->id);
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->phonenumber = $request->phonenumber;
+        $update->about_me = $request->about;
+        if($request->profileimage)
+        {
+            $update->profileimage = Cmf::sendimagetodirectory($request->profileimage);
+        }
+        $update->save();
+        return redirect()->back()->with('message', 'Your Profile Updated Successfully');
+    }
+    public function updateusersecurity(Request $request)
+    {
+        $this->validate($request, [
+        'oldpassword' => 'required',
+        'newpassword' => 'required',
+        ]);
+        if($request->newpassword == $request->password_confirmed){
+        $hashedPassword = Auth::user()->password;
+       if (\Hash::check($request->oldpassword , $hashedPassword )) {
+         if (!\Hash::check($request->newpassword , $hashedPassword)) {
+              $users =User::find(Auth::user()->id);
+              $users->password = bcrypt($request->newpassword);
+              User::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+              session()->flash('message','password updated successfully');
+              return redirect()->back();
+            }
+            else{
+                  session()->flash('errorsecurity','New password can not be the old password!');
+                  return redirect()->back();
+                }
+           }
+          else{
+               session()->flash('errorsecurity','Old password Doesnt matched ');
+               return redirect()->back();
+             }
+        }else{
+            session()->flash('errorsecurity','Repeat password Doesnt matched With New Password');
+            return redirect()->back();
+        }
+    }
     public function allsale()
     {
         $data = DB::table('sales')->orderby('purchase_date' , 'DESC')->get();
@@ -107,5 +155,8 @@ class AdminController extends Controller
         blogs::where('id' , $id)->delete();
         return redirect()->back()->with('message', 'Blog Deleted Successfully');
     }
-
+    public function websitesettings()
+    {
+        return view('admin.website.settings');
+    }
 }

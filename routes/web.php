@@ -198,6 +198,10 @@ Route::name('admin.')->prefix('admin')->group(function(){
 
 Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('admin')->group(function(){
     Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
+    Route::get('/profile','AdminController@profile')->name('profile');
+    Route::post('/updateuserprofile','AdminController@updateuserprofile');
+    Route::post('/updateusersecurity','AdminController@updateusersecurity');
+
     Route::name('blogs.')->prefix('blogs')->group(function(){
         Route::get('/blogcategories','AdminController@blogcategories');
         Route::post('/addnewblogcategory','AdminController@addnewblogcategory');
@@ -208,7 +212,11 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updateblog','AdminController@updateblog');
         Route::get('/deleteblog/{id}','AdminController@deleteblog');
     });
-
+    Route::name('website.')->prefix('website')->group(function(){
+        Route::get('/settings','SettingsController@appearance');
+        Route::post('/settingsupdate','SettingsController@appearance_update');
+        Route::post('/updatelogos','SettingsController@updatelogos');
+    });
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');
     });
