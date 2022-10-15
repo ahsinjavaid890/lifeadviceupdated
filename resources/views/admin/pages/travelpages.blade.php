@@ -27,6 +27,19 @@
                                </li>
                              </ul>
                            @endif
+                            @if($data->url == 'contactus')
+                            <ul class="nav nav-tabs card-header-tabs">
+                               <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                           @endif
                             @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa'|| $data->url == 'aboutus' )   
                              <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
@@ -49,6 +62,16 @@
                                </li>
                              </ul>
                              @endif
+                             @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa'|| $data->url == 'aboutus' || $data->url == 'blogs')  
+                             <ul class="nav nav-tabs card-header-tabs">
+                               <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                             @endif 
                        </div>
                        <!-- .card-body.tab-content  -->
                        <div class="card-body tab-content">
@@ -89,6 +112,40 @@
                          <div class="tab-pane fade" id="tab2">
                            <div class="row">
                                     <div class="col-md-12">
+                                       @if($data->url == 'contactus')
+                                        <div class="form-group">
+                                            <label>First Vector</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="first_two_vector">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Heading</label>
+                                            <input type="text" class="form-control" name="contact_heading">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Description</label>
+                                            <textarea class="summernote" name="contact_description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Address</label>
+                                            <input type="text" class="form-control" name="contact_address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Email</label>
+                                            <input type="email" class="form-control" name="contact_email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Email</label>
+                                            <input type="number" class="form-control" name="contact_number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Vector</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="last_two_vector">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contact Map</label>
+                                            <textarea class="form-control" name="contact_map"></textarea>
+                                        </div>
+                                       @endif
                                        @if($data->url == 'privacypolicy')
                                         <div class="row mb-2">
                                             <div class="col-md-12 text-right">

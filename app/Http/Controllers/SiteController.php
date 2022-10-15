@@ -27,6 +27,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.lifeinsurance');
     }
+    public function blogs()
+    {
+        return view('frontend.companypages.blogs');
+    }
     public function aboutus()
     {
         return view('frontend.companypages.about');
