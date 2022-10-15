@@ -197,11 +197,19 @@ Route::name('admin.')->prefix('admin')->group(function(){
 
 Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('admin')->group(function(){
     Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
-
+    Route::name('blogs.')->prefix('blogs')->group(function(){
+        Route::get('/blogcategories','AdminController@blogcategories');
+        Route::post('/addnewblogcategory','AdminController@addnewblogcategory');
+        Route::post('/updatblogcategory','AdminController@updatblogcategory');
+        Route::get('/deleteblogcategory/{id}','AdminController@deleteblogcategory');
+        Route::get('/allblogs','AdminController@allblogs');
+        Route::post('/addnewfaq','AdminController@addnewfaq');
+        Route::post('/updateblog','AdminController@updateblog');
+        Route::get('/deleteblog/{id}','AdminController@deleteblog');
+    });
 
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');
-        
     });
     Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/travelpages/{id}','CmsController@travelpages'); 

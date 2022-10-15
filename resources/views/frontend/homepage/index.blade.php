@@ -337,7 +337,170 @@
  </div>
 </section>
 <!-- Start Choose Us Area -->
+<section class="chooses-blogs choose-us-area-five pb-70">
+   <div class="container-homepage">
+      <ul class="tabs row">
+         @php
+            $srno = 0;
+            $blogcategories = DB::table('blogcategories')->limit(4)->get();
+            foreach($blogcategories as $r){
+               $srno++;
+               $id = $r->id;
+               $name = $r->name;
+               if($srno == 1)
+               {
+                  $category_id_one = $id;
+               }
+               if($srno == 2)
+               {
+                  $category_id_two = $id;
+               }
+               if($srno == 3)
+               {
+                  $category_id_three = $id;
+               }
+               if($srno == 4)
+               {
+                  $category_id_four = $id;
+               }
+         @endphp
+         <div class="col-md-3 blog-btn">
+            <li class="tab-link <?php if($srno == 1){echo "current";} ?> blogsproducts" data-tab="tab-<?php echo $srno ?>">
+               <?php echo $name; ?>
+            </li>
+         </div>
+         @php } @endphp
+      </ul>
+      <div id="tab-1" class="tab-content current">
+         <div class="row">
+            <?php 
+               $srno = 0;
+               $blogs = DB::table('blogs')->where('category_id' , $category_id_one)->limit(4)->get();
+               foreach($blogs as $r){
+                   $blog_id = $r->id;
+                   $blog_title = $r->title;
+                   $blog_text = strip_tags($r->content);
+                   $blog_img = $r->image;
+                   $blog_url = $r->url;
+             ?>
+            <div class="col-md-3">
+               <div class="card blank-card">
+                  <div class="card-body">
+                     <div class="blog-image-card">
+                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
+                     </div>
+                     <div class="card-content">
+                        <h3><?php echo $blog_title;?></h3>
+                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
+                     </div>
+                     <div class="blogbutton">
+                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
 
+         <?php } ?>
+         </div>
+      </div>
+      <div id="tab-2" class="tab-content">
+         <div class="row">
+            <?php 
+               $srno = 0;
+               $blogs = DB::table('blogs')->where('category_id' , $category_id_two)->limit(4)->get();
+               foreach($blogs as $r){
+                   $blog_id = $r->id;
+                   $blog_title = $r->title;
+                   $blog_text = strip_tags($r->content);
+                   $blog_img = $r->image;
+                   $blog_url = $r->url;
+             ?>
+            <div class="col-md-3">
+               <div class="card blank-card">
+                  <div class="card-body">
+                     <div class="blog-image-card">
+                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
+                     </div>
+                     <div class="card-content">
+                        <h3><?php echo $blog_title;?></h3>
+                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
+                     </div>
+                     <div class="blogbutton">
+                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         <?php } ?>
+         </div>
+      </div>
+      <div id="tab-3" class="tab-content">
+         <div class="row">
+            <?php 
+               $srno = 0;
+               $blogs = DB::table('blogs')->where('category_id' , $category_id_three)->limit(4)->get();
+               foreach($blogs as $r){
+                   $blog_id = $r->id;
+                   $blog_title = $r->title;
+                   $blog_text = strip_tags($r->content);
+                   $blog_img = $r->image;
+                   $blog_url = $r->url;
+             ?>
+            <div class="col-md-3">
+               <div class="card blank-card">
+                  <div class="card-body">
+                     <div class="blog-image-card">
+                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
+                     </div>
+                     <div class="card-content">
+                        <h3><?php echo $blog_title;?></h3>
+                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
+                     </div>
+                     <div class="blogbutton">
+                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         <?php } ?>
+         </div>
+      </div>
+      <div id="tab-4" class="tab-content">
+         <div class="row">
+            <?php 
+               $srno = 0;
+               $blogs = DB::table('blogs')->where('category_id' , $category_id_four)->limit(4)->get();
+               foreach($blogs as $r){
+                   $blog_id = $r->id;
+                   $blog_title = $r->title;
+                   $blog_text = strip_tags($r->content);
+                   $blog_img = $r->image;
+                   $blog_url = $r->url;
+             ?>
+            <div class="col-md-3">
+               <div class="card blank-card">
+                  <div class="card-body">
+                     <div class="blog-image-card">
+                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
+                     </div>
+                     <div class="card-content">
+                        <h3><?php echo $blog_title;?></h3>
+                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
+                     </div>
+                     <div class="blogbutton">
+                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         <?php } ?>
+         </div>
+      </div>
+   </div>
+</section>
 <script type="text/javascript">
  $(document).ready(function(){
  
