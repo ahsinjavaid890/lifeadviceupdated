@@ -78,10 +78,12 @@ class Cmf
             return 0;
         }
     }
-
+    public static function get_store_value($value)
+    {
+        return DB::table('site_settings')->where('id' , 1)->get()->first()->$value;
+    }
     public static function travelpages()
     {
-
         $travel = array(
           array("id"=>1,"modalname"=>'supervisainsurance',"name"=>'Super Visa'),
           array("id"=>2,"modalname"=>'travelinsurance',"name"=>'Travel Insurance'),
