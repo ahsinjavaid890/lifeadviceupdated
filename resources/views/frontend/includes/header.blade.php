@@ -6,7 +6,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="{{ url('') }}" class="logo">
-                    <img src="https://www.lifeadvice.ca/images/brand.png" alt="Logo">
+                    <img src="{{ url('public/images') }}/{{ Cmf::get_store_value('header_logo') }}" alt="Logo">
                 </a>
             </div>
 
@@ -15,7 +15,7 @@
                 <nav class="navbar navbar-expand-md navbar-light">
                     <div class="container">
                         <a class="navbar-brand" href="{{ url('') }}">
-                            <img src="https://www.lifeadvice.ca/images/brand.png" alt="Logo">
+                            <img src="{{ url('public/images') }}/{{ Cmf::get_store_value('header_logo') }}" alt="Logo">
                         </a>
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">

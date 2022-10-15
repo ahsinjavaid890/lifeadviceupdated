@@ -4,7 +4,7 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
         <a href="{{url('admin/dashboard')}}">
-            <img alt="Logo" src="{{ url('public/images') }}/{{ Cmf::get_store_value('header_logo') }}" />
+            <img alt="Logo" src="{{ url('public/images') }}/{{ Cmf::get_store_value('footer_logo') }}" />
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->

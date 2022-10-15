@@ -4,7 +4,7 @@
         <div class="col-lg-3 col-md-6">
             <div class="single-widget">
                 <a href="index.php">
-                        <img src="{{ asset('public/front/img/logos/brand-foot.png') }}" alt="Logo">
+                        <img src="{{ url('public/images') }}/{{ Cmf::get_store_value('footer_logo') }}" alt="Logo">
                     </a>
                     <p class="text-white">Life Insurance Insurance has been a trusted name in insurance for more than 10 years. Today, we proudly serve insurance provincewide.</p>
             </div>
@@ -91,13 +91,13 @@
 
                     <li>
                         <i class="flaticon-maps-and-flags"></i>
-                       <p><span>Address:</span> Life Advice Insurance Inc, 912 Isaiah Place, Kitchener, ON, N2E0B6</p> 
+                       <p><span>Address:</span> {{ Cmf::get_store_value('site_address') }}</p> 
                     </li>
                     <li class="pl-0">
                         <a href="tel:+18555008999">
                                 <i class="flaticon-call"></i>
                                 <p><span>Phone:</span> 
-                               +1-855-500-8999</p>
+                               {{ Cmf::get_store_value('site_phonenumber') }}</p>
                                 
                             </a>
                     </li>
@@ -105,7 +105,7 @@
                     <li class="pl-0">
                         <a href="/cdn-cgi/l/email-protection#98f0fdf4f4f7d8ebedeafdece1b6fbf7f5">
                                 <i class="flaticon-email"></i>
-                                <p><span>Email:</span><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3">contact@lifeadvice.ca</span></p>
+                                <p><span>Email:</span><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3"> {{ Cmf::get_store_value('site_email') }}</span></p>
                             </a>
                     </li>
                 </ul>

@@ -13,7 +13,14 @@
                     <form action="#" method="POST">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                           <h2> {{ $data->name }} Insurance</h2>
+                          @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')   
+                                   <h2> {{ $data->name }} Insurance</h2>
+
+                            @endif
+                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs')
+                                   <h2> {{ $data->name }} </h2>
+
+                            @endif
                            @if($data->url == 'privacypolicy')
                             <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
@@ -62,7 +69,7 @@
                                </li>
                              </ul>
                              @endif
-                             @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa'|| $data->url == 'blogs')  
+                             @if( $data->url == 'blogs')  
                              <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -286,6 +293,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         @if($data->url == 'aboutus')
+                                            <div class="form-group">
+                                                <label>About Vector Image </label>
+                                                <input type="file" style="height:45px;" class="form-control" name="about_four_vector">
+                                            </div>
                                             <div class="form-group">
                                                 <label>Center Image </label>
                                                 <input type="file" style="height:45px;" class="form-control" name="center_card_image">
