@@ -10,10 +10,12 @@
             <div class="row">
                 <div class="col-md-12">
                    <div class="card  my-4">
-                    <form action="#" method="POST">
+                    <form enctype="multipart/form-data" action="{{ url('admin/pages/updatedynamicpage') }}" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')   
                                    <h2> {{ $data->name }} Insurance</h2>
 
                             @endif
@@ -47,7 +49,7 @@
                                </li>
                              </ul>
                            @endif
-                            @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa'|| $data->url == 'aboutus' )   
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus' )   
                              <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -93,139 +95,139 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Main Heading</label>
-                                        <input type="text" class="form-control" name="main_heading">
+                                        <textarea class="summernote-heading" name="main_heading">{{ $data->main_heading }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Sub Heading <small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
-                                        <input type="text" class="form-control" name="sub_heading">
+                                        <input value="{{ $data->sub_heading }}" type="text" class="form-control" name="sub_heading">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Text</label>
-                                        <input type="text" class="form-control" name="btn_text">
+                                        <input value="{{ $data->main_button_text }}" type="text" class="form-control" name="btn_text">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Button Link</label>
-                                        <input type="text" class="form-control" name="btn_link">
+                                        <input value="{{ $data->main_button_link }}" type="text" class="form-control" name="btn_link">
                                     </div>
                                 </div>
                             </div>
                          </div>
                          <div class="tab-pane fade" id="tab2">
                            <div class="row">
-                                    <div class="col-md-12">
-                                       @if($data->url == 'contactus')
-                                        <div class="form-group">
-                                            <label>First Vector</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="first_two_vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Heading</label>
-                                            <input type="text" class="form-control" name="contact_heading">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Description</label>
-                                            <textarea class="summernote" name="contact_description"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Address</label>
-                                            <input type="text" class="form-control" name="contact_address">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Email</label>
-                                            <input type="email" class="form-control" name="contact_email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Email</label>
-                                            <input type="number" class="form-control" name="contact_number">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Last Vector</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="last_two_vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contact Map</label>
-                                            <textarea class="form-control" name="contact_map"></textarea>
-                                        </div>
-                                       @endif
-                                       @if($data->url == 'privacypolicy')
-                                        <div class="row mb-2">
-                                            <div class="col-md-12 text-right">
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#policy"><i class="fa fa-plus"></i>Add New Questions</a>
-                                            </div>
-                                        </div>
-                                       <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Privacy Heading</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
-                                                    <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                       @endif
-                                        @if($data->url == 'aboutus')
-                                        <div class="row mb-2">
-                                            <div class="col-md-12 text-right">
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#about2"><i class="fa fa-plus"></i>Add New Card</a>
-                                            </div>
-                                        </div>
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Heading</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</td>
-                                                        <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        @endif
-                                        @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')
-                                        <div class="form-group">
-                                            <label>Vector Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sec Two Description</label>
-                                             <textarea class="summernote" name="section_two_description"></textarea>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-12 text-right">
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Questions</a>
-                                            </div>
-                                        </div>
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Questions</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
-                                                    <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        @endif
+                                <div class="col-md-12">
+                                   @if($data->url == 'contactus')
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="first_two_vector">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Contact Heading</label>
+                                        <input type="text" class="form-control" name="contact_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Description</label>
+                                        <textarea class="summernote" name="contact_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Address</label>
+                                        <input type="text" class="form-control" name="contact_address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Email</label>
+                                        <input type="email" class="form-control" name="contact_email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Email</label>
+                                        <input type="number" class="form-control" name="contact_number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="last_two_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Map</label>
+                                        <textarea class="form-control" name="contact_map"></textarea>
+                                    </div>
+                                   @endif
+                                   @if($data->url == 'privacypolicy')
+                                    <div class="row mb-2">
+                                        <div class="col-md-12 text-right">
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#policy"><i class="fa fa-plus"></i>Add New Questions</a>
+                                        </div>
+                                    </div>
+                                   <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Privacy Heading</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
+                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @endif
+                                    @if($data->url == 'aboutus')
+                                    <div class="row mb-2">
+                                        <div class="col-md-12 text-right">
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#about2"><i class="fa fa-plus"></i>Add New Card</a>
+                                        </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Heading</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</td>
+                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @endif
+                                    @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')
+                                    <div class="form-group">
+                                        <label>Vector Image</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Two Description</label>
+                                         <textarea class="summernote" name="section_two_description"></textarea>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-12 text-right">
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Questions</a>
+                                        </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Questions</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
+                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @endif
                                 </div>
+                            </div>
                          </div>
                          <div class="tab-pane fade" id="tab3">
                                 <div class="row">
@@ -248,41 +250,25 @@
                                             <input type="file" style="height:45px;" class="form-control" name="about_three_vector">
                                         </div>
                                         @endif
-                                        @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')
-                                         <table class="table table-striped">
+                                        @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')
+                                         <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Vector</th>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#card4"><i class="fa fa-edit"></i>Edit 4</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                    @endif
@@ -321,7 +307,7 @@
                                                 </tbody>
                                             </table>
                                         @endif
-                                        @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')                                        
+                                        @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')                                        
                                         <div class="form-group">
                                             <label>Section four Image</label>
                                             <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
@@ -331,7 +317,7 @@
                                             <input type="text"  class="form-control" name="section_four_heading">
                                         </div>
                                         @endif
-                                        @if($data->url == 'super-visa')
+                                        @if($data->url == 'super-visa-insurance')
                                         <div class="form-group">
                                             <label>Sec four Description</label>
                                              <textarea class="summernote" name="section_four_description"></textarea>
@@ -341,13 +327,13 @@
                                             <input type="text" class="form-control" name="section_four_notice">
                                         </div>
                                            @endif
-                                           @if($data->url == 'visitor-visa')
+                                           @if($data->url == 'visitor-insurance')
                                         <div class="form-group">
                                             <label>Sec four Description</label>
                                              <textarea class="summernote" name="section_four_description"></textarea>
                                         </div>
                                            @endif
-                                        @if($data->url == 'super-visa' || $data->url == 'visitor-visa' || $data->url == 'travel-visa' || $data->url == 'student-visa')   
+                                        @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')   
                                         <div class="form-group">
                                             <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
                                             <input type="text" class="form-control" name="section_four_lists">
@@ -360,7 +346,7 @@
                          <div class="tab-pane fade" id="tab5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                    @if($data->url == 'super-visa')
+                                    @if($data->url == 'super-visa-insurance')
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -392,7 +378,7 @@
                                         </tbody>
                                     </table>
                                         @endif
-                                        @if($data->url == 'visitor-visa')
+                                        @if($data->url == 'visitor-insurance')
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -438,7 +424,7 @@
                                                 <input type="file" style="height:45px;" class="form-control" name="about_five_vector">
                                             </div>
                                          @endif
-                                        @if($data->url == 'travel-visa' || $data->url == 'student-visa')
+                                        @if($data->url == 'travel-insurance' || $data->url == 'student-insurance')
                                             <div class="form-group">
                                             <label>Section five Image</label>
                                             <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
@@ -487,8 +473,9 @@
                                     <input type="submit" class="btn btn-primary"  value="Update">
                                 </div>
                             </div>
-                          </div>
+                          
                       </form>
+                      </div>
                       </div><!--/.card-->
                 </div>                
             </div>
@@ -498,138 +485,49 @@
     </div>
     <!--end::Entry-->
 </div>
-    <!-- modal section 3 -->
-    <!-- card 1 -->
-<div class="modal fade" id="card1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<!-- modal section 3 -->
+<!-- card 1 -->
+@foreach(DB::table('section_three_elements')->where('page' , $data->url)->get() as $r)
+<div class="modal fade" id="section_three_elements{{ $r->id }}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Card 1</h4>
+        <h4 class="modal-title" id="myModalLabel">{!! $r->heading !!}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Section three Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
-        </div>
-        <div class="form-group">
-            <label>Sec trhee Heading</label>
-            <input type="text"  class="form-control" name="section_modal_heading">
-        </div>
-        <div class="form-group">
-            <label>Sec three Description</label>
-             <textarea class="summernote" name="section_modal_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form enctype="multipart/form-data" method="POST" action="{{ url('admin/pages/section_three_elements') }}">
+        @csrf
+          <input type="hidden" value="{{ $r->id }}" name="id">
+          <div class="modal-body">
+            <div class="form-group">
+                <label>Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="vector">
+            </div>
+            <div class="form-group">
+                <label>Heading</label>
+                <textarea class="summernote-heading" name="heading">{{ $r->heading }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="summernote" name="description">{{ $r->description }}</textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>
-<!-- end card 1 -->
- <!-- card 2 -->
-<div class="modal fade" id="card2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Card 2</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Section three Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
-        </div>
-        <div class="form-group">
-            <label>Sec three Heading</label>
-            <input type="text"  class="form-control" name="section_modal_heading">
-        </div>
-        <div class="form-group">
-            <label>Sec three Description</label>
-             <textarea class="summernote" name="section_modal_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end card 2 -->
- <!-- card 3 -->
-<div class="modal fade" id="card3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Card 3</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Section three Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
-        </div>
-        <div class="form-group">
-            <label>Sec three Heading</label>
-            <input type="text"  class="form-control" name="section_modal_heading">
-        </div>
-        <div class="form-group">
-            <label>Sec three Description</label>
-             <textarea class="summernote" name="section_modal_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end card 3 -->
- <!-- card 4 -->
-<div class="modal fade" id="card4" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Card 4</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Section three Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
-        </div>
-        <div class="form-group">
-            <label>Sec three Heading</label>
-            <input type="text"  class="form-control" name="section_modal_heading">
-        </div>
-        <div class="form-group">
-            <label>Sec three Description</label>
-             <textarea class="summernote" name="section_modal_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end card 4 -->
-    <!-- end modal section 3 -->
-     <!-- modal section 5 -->
-    <!-- card 1 -->
+@endforeach
+
+
+<!-- end modal section 3 -->
+<!-- modal section 5 -->
+<!-- card 1 -->
 <div class="modal fade" id="product1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

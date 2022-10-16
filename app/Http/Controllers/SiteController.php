@@ -23,6 +23,14 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.travel');
     }
+    public function visitorinsurance()
+    {
+        return view('frontend.companypages.visitorinsurance');
+    }
+    public function studentinsurance()
+    {
+        return view('frontend.companypages.studentinsurance');
+    }
     public function lifeinsurance()
     {
         return view('frontend.companypages.lifeinsurance');

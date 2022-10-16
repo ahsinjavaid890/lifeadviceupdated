@@ -19,6 +19,10 @@ class Cmf
         $file->move(public_path('images'), $filename);
         return $filename;
     }
+    public static function section_three_elements($page , $coloumn , $id)
+    {
+        return DB::table('section_three_elements')->where('id' , $id)->where('page' , $page)->first()->$coloumn;
+    }
     public static function shorten_url($text)
     {
         $words = explode('-', $text);

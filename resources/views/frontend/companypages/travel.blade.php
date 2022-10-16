@@ -4,31 +4,7 @@
 @endsection
 
 @section('content')
-	<div class="health-inssurance-hero-banners super-hero">          
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6 hero-texts">
-                <div class="herrotext  super-hero-text">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span class="text-white">Travel </span>Insurance</h2>
-                    <h5 class="wow fadeInUp text-white  text-justify super-text" data-wow-delay=".6s">It’s a smart way to help you recover eligible expenses when scheduled trips are derailed by covered unexpected issues. Having Trip Cancellation and Trip Interruption could help protect more than just transportation expenses. You could get coverage on other eligible expenses, like hotels, meals and more, that go unused due to a covered cause.</h5>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 hero-images">
-                <div class="hero-image super-images" style=" background-image: url('{{ asset('public/front/img/images/travel-insurance-main-vector.png') }}');
-                    background-position: 50% 70%;
-                    background-size: 100%;
-                    background-repeat: no-repeat;">
-<!--                     <img src="assets/img/images/visa1.gif"> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.companypages.includes.main')
 <section class="ptb-100 first-section-of-page">
     <div class="container-homepage">
         <div class="row">

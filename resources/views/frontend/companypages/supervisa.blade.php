@@ -4,91 +4,7 @@
 @endsection
 
 @section('content')
-<style type="text/css">
-    .step {
-    height: 100%;
-    background-color: #ffff;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
-    width: 47%;
-    margin-top: 36px !important;
-    padding: 20px 30px;
-    text-align: left;
-    /*background: #fff;*/
-}
-.health-inssurance-hero-banner {
-    background-color: #262566;
-}
-</style>
-	<div class="health-inssurance-hero-banners super-hero">          
-    <div class="container-homepage">
-        <div class="row mb-3">
-            <div class="col-md-6 hero-texts">
-                <div class="herrotext super-hero-text">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span class="text-white">Super Visa </span> Insurance</h2>
-                    <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</span></h5>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 hero-images">
-                <div class="hero-image super-images" style=" background-image: url('{{ asset('public/front/img/images/visa1.gif')}}');
-                    background-position: 50% 70%;
-                    background-size: 100%;
-                    background-repeat: no-repeat;">
-<!--                     <img src="assets/img/images/visa1.gif"> -->
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">    
-                    <div class="card date-card">
-                        <div class="card-body">
-                            <form method="post" action="#">
-                                <div class="container-homepage">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <select class="form-control">
-                                            <option>Desination</option>
-                                            <option>Pakistan</option>
-                                            <option>India </option>
-                                            <option>Afghanistan</option>
-                                            <option>America</option>
-                                            <option>Dubai</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Travel Information</option>
-                                            <option>Pakistan</option>
-                                            <option>India </option>
-                                            <option>Afghanistan</option>
-                                            <option>America</option>
-                                            <option>Dubai</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control nice-select"id="fromDate" placeholder="Start Date">
-                                            <input type="text" id="toDate" class="form-control nice-select" placeholder="End Date" aria-label="Server">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="btn btn-secondary btn-quote mt-2">Get Quotes</a>
-                                    </div>
-                                </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
+@include('frontend.companypages.includes.main')
 <section class="ptb-100 first-section-of-page">
     <div class="container-homepage">
         <div class="row">
@@ -197,52 +113,46 @@
             <div class="container">
                 <p>The easiest way to compare Super Visa travel insurance policies life advice Insurance let you compare quotes for travel insurance from several different companies at once. You type in a few details about your trip, and compare policy coverage and prices to help narrow down your choice.</p>
             </div>
-            
         </div>
         <div class="width_website center_div position_relative">
-   <div class="partner_block">
-      <div class="ta_center">
-         <div class="how_to_buy_steps">
-            <div class="how_to_buy_steps_connection"></div>
-            <div class="step step_1">
-               <div class="step_name"><span>Who needs</span> Super Visa Health Insurance?</div>
-               <div class="step_text">
-                    <p class="description">
-                    Anyone applying for the Canadian Super Visa must show they've purchased private medical insurance that meets the Super Visa requirements. The Super Visa Health Insurance policy.
-                    <br>Take  the  time  to  read  your policy  and know  what  your  are  covered  for.  Pay  special  attention  to  bold  words.    They  have  a  specific  meaning  which  is  explained in the Definitions section of this policy
-                    </p>
-               </div>
-            </div>
-            <div class="step step_2">
-               <div class="step_name"><span>Super Visa Insurance</span>  Requirements:</div>
-               <div class="step_text">
-                    <p> <span>- Be valid for at least 1 year when you send the application to IRCC</span><br>
-                    <span>- Cover emergency healthcare, hospitalization and repatriation</span><br>
-                    <span>- Provide a minimum coverage of $100,000 CAD per person</span><br>
-                    <span>- Be valid for each entry to Canada and available for review</span><br>
-                    <span>- Be issued by a private Canadian insurance company</span><br>
-                    <span>- $0 deductible standard but can increase deductible for up to 45% discounts</span><br>The applicant(s) is over the age of 14 days old and has not reached the age of 90 years at the time of application
-                    </p>
-               </div>
-            </div>
-            <div class="step step_4">
-               <div class="step_name"><span>For Pre-medical </span>Condition Coverage</div>
-               <div class="step_text">
-                  <p> For the purposes of buying travel insurance, a pre-existing condition is defined as any illness, disease, injury or other condition that happens prior to a plan’s effective date and for which you experienced symptoms or sought treatment. Insurance providers check to see if you were medically stable during the “look-back period,” which is typically a period of 60 to 180 days prior to a plan’s effective date. If it is determined that you were not medically stable during that time, you are considered to have a pre-existing condition. Any fallout due to that condition won’t be covered by a standard travel insurance policy..</p>
-               </div>
-            </div>
-            <div class="step step_3">
-               <div class="step_name"><span>Quote </span>& Apply</div>
-               <div class="step_text">
-                  <p>To see options avable please fill our online Quote Calculator above. Review available products to purchase or speak with our financial advisors if you have questions and once you’ve selected a coverage and plan you can begin the application process.<br>You will need enter basic personal information for each applicant before proceeding to payment. Once the payment is processed, your policy will be sent by email shortly<br></p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="clear"></div>
-   </div>
-</div>
-            </div>
+           <div class="partner_block">
+              <div class="ta_center">
+                 <div class="how_to_buy_steps">
+                    <div class="how_to_buy_steps_connection"></div>
+                    <div class="step step_1">
+                       <div  style="background-image: url({{ url('public/images') }}/{{ Cmf::section_three_elements('super-visa' , 'vector' , 1)  }});" class="step_name">{!! Cmf::section_three_elements('super-visa' , 'heading' , 1) !!}</div>
+                       <div class="step_text">
+                            <p class="description">
+                                {!! Cmf::section_three_elements('super-visa' , 'description' , 1) !!}
+                            </p>
+                       </div>
+                    </div>
+                    <div class="step step_2">
+                       <div class="step_name" style="background-image: url({{ url('public/images') }}/{{ Cmf::section_three_elements('super-visa' , 'vector' , 2)  }});">{!! Cmf::section_three_elements('super-visa' , 'heading' , 2) !!}</div>
+                       <div class="step_text">
+                            <p> 
+                                {!! Cmf::section_three_elements('super-visa' , 'description' , 2) !!}
+                            </p>
+                       </div>
+                    </div>
+                    <div class="step step_4">
+                       <div class="step_name" style="background-image: url({{ url('public/images') }}/{{ Cmf::section_three_elements('super-visa' , 'vector' , 3)  }});">{!! Cmf::section_three_elements('super-visa' , 'heading' , 3) !!}</div>
+                       <div class="step_text">
+                          <p> {!! Cmf::section_three_elements('super-visa' , 'description' , 3) !!}</p>
+                       </div>
+                    </div>
+                    <div class="step step_3">
+                       <div class="step_name" style="background-image: url({{ url('public/images') }}/{{ Cmf::section_three_elements('super-visa' , 'vector' , 4)  }});">{!! Cmf::section_three_elements('super-visa' , 'heading' , 4) !!}</div>
+                       <div class="step_text">
+                          <p>{!! Cmf::section_three_elements('super-visa' , 'description' , 4) !!}</p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="clear"></div>
+           </div>
+        </div>
+    </div>
 </section>
 <section class="third-section">
     <div class="container-homepage">
@@ -293,10 +203,9 @@
                     </div>
                 </div>
             </div>
-            
-                <div class="col-md-6">
-                    <img src="{{ asset('public/front/img/supervisa/visa2.png')}}">
-                </div>
+            <div class="col-md-6">
+                <img src="{{ asset('public/front/img/supervisa/visa2.png')}}">
+            </div>
         </div>
     </div>
 </section>

@@ -1439,25 +1439,21 @@ break {
   margin-top: 15px;
 }
 .step_1 .step_name {
-  background-image: url(../img/images/01.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .step_2 .step_name {
-  background-image: url(../img/images/02.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .step_3 .step_name {
-  background-image: url(../img/images/03.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .step_4 .step_name {
-  background-image: url(../img/images/04.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;

@@ -3925,9 +3925,10 @@ input[type="button"].btn-block {
       border-color: transparent; }
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-item.show .nav-link {
-    color: #5E6278;
-    background-color: #ffffff;
-    border-color: #E4E6EF #E4E6EF #ffffff; }
+    color: white !important;
+    background-color: #1e1e2d;
+    border-color: #E4E6EF #E4E6EF #ffffff;
+  }
   .nav-tabs .dropdown-menu {
     margin-top: -1px;
     border-top-left-radius: 0;
@@ -4414,8 +4415,9 @@ input[type="button"].btn-block {
 .card-header-tabs {
   margin-right: -1.125rem;
   margin-bottom: -2rem;
-  margin-left: -1.125rem;
-  border-bottom: 0; }
+  margin-left: -0.125rem;
+  border-bottom: 0; 
+}
 
 .card-header-pills {
   margin-right: -1.125rem;

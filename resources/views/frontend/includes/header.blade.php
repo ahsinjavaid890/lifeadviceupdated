@@ -9,7 +9,6 @@
                     <img src="{{ url('public/images') }}/{{ Cmf::get_store_value('header_logo') }}" alt="Logo">
                 </a>
             </div>
-
             <!-- Menu For Desktop Device -->
             <div class="main-nav">
                 <nav class="navbar navbar-expand-md navbar-light">
@@ -29,10 +28,10 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="{{ url('travel') }}" class="nav-link">Travel Insurance</a>
+                                            <a href="{{ url('travel-insurance') }}" class="nav-link">Travel Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('supervisa') }}" class="nav-link">Super Visa Insurance</a>
+                                            <a href="{{ url('super-visa-insurance') }}" class="nav-link">Super Visa Insurance</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('visitor-insurance') }}" class="nav-link">Visitor Insurance</a>

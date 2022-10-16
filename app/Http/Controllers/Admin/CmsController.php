@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Hash;
 use App\Models\frequesntlyaskquestions;
 use App\Models\travelpages;
+use App\Models\section_three_elements;
 use App\Models\frequesntlyaskquest_categories;
 use Mail;
 use Auth;
@@ -22,6 +23,32 @@ class CmsController extends Controller
     {
         $data = travelpages::find($id);
         return view('admin.pages.travelpages')->with(array('data'=>$data));
+    }
+    public function updatedynamicpage(Request $request)
+    {
+        $update = travelpages::find($request->id);
+        if($request->main_image)
+        {
+            $update->main_image = Cmf::sendimagetodirectory($request->main_image);
+        }
+        $update->main_heading = $request->main_heading;
+        $update->sub_heading = $request->sub_heading;
+        $update->main_button_text = $request->btn_text;
+        $update->main_button_link = $request->btn_link;
+        $update->save();
+        return redirect()->back()->with('message', 'Page Updated Successfully');
+    }
+    public function sectionthreeelements(Request $request)
+    {
+        $update = section_three_elements::find($request->id);
+        if($request->vector)
+        {
+            $update->vector = Cmf::sendimagetodirectory($request->vector);
+        }
+        $update->heading = $request->heading;
+        $update->description = $request->description;
+        $update->save();
+        return redirect()->back()->with('message', 'Page Updated Successfully');
     }
     public function faqcategories()
     {

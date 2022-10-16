@@ -24,8 +24,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Site Routes
 
 Route::get('/', [SiteController::class, 'index']);
-Route::get('/supervisa', [SiteController::class, 'supervisa']);
-Route::get('/travel', [SiteController::class, 'travel']);
+Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);
+Route::get('/travel-insurance', [SiteController::class, 'travel']);
+Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
+Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
+
+
 Route::get('/lifeinsurance', [SiteController::class, 'lifeinsurance']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);
@@ -221,7 +225,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/allcompanies','AdminController@allcompanies');
     });
     Route::name('pages.')->prefix('pages')->group(function(){
-        Route::get('/travelpages/{id}','CmsController@travelpages'); 
+        Route::get('/travelpages/{id}','CmsController@travelpages');
+        Route::post('/section_three_elements','CmsController@sectionthreeelements');
+        Route::post('/updatedynamicpage','CmsController@updatedynamicpage');
 
     });
 
