@@ -38,7 +38,7 @@
                            <p>{{ $r->content }}</p>
                         </div>
                         <div class="blogbutton">
-                           <a href="blog-detail.php">Read More..</a>
+                           <a href="{{ $r->url}}">Read More..</a>
                         </div>
                      </div>
                   </div>
