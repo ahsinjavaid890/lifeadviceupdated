@@ -46,13 +46,13 @@
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li class="nav-item">
-                                                    <a href="log-in.html" class="nav-link">Single Trip</a>
+                                                    <a href="#" class="nav-link">Single Trip</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="sign-in.html" class="nav-link">Multitrip</a>
+                                                    <a href="#" class="nav-link">Multitrip</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="recover-password.html" class="nav-link">All Inclusive</a>
+                                                    <a href="#" class="nav-link">All Inclusive</a>
                                                 </li>
                                             </ul>
                                         </li>
