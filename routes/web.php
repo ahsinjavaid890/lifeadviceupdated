@@ -30,7 +30,13 @@ Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
 Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
 
 
-Route::get('/lifeinsurance', [SiteController::class, 'lifeinsurance']);
+Route::get('/life-insurance', [SiteController::class, 'lifeinsurance']);
+Route::get('/desability', [SiteController::class, 'desability']);
+Route::get('/critical-illness', [SiteController::class, 'criticalillness']);
+Route::get('/health-insurance', [SiteController::class, 'health']);
+Route::get('/product', [SiteController::class, 'product']);
+Route::get('/claim', [SiteController::class, 'claim']);
+Route::get('/resp', [SiteController::class, 'resp']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);
 Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);

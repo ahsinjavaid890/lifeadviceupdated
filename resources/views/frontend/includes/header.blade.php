@@ -70,10 +70,10 @@
                                             <a href="{{ url('life-insurance') }}" class="nav-link">Whole Life Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('disability-insurance') }}" class="nav-link">Desability</a>
+                                            <a href="{{ url('desability') }}" class="nav-link">Desability</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('critical-insurance') }}" class="nav-link">Critical Illness Insurance</a>
+                                            <a href="{{ url('critical-illness') }}" class="nav-link">Critical Illness Insurance</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('health-insurance') }}" class="nav-link">Health-Insurance</a>
@@ -86,7 +86,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('products') }}" class="nav-link dropdown-toggle">
+                                    <a href="{{ url('product') }}" class="nav-link dropdown-toggle">
                                             Products
                                     </a>
                                 </li>

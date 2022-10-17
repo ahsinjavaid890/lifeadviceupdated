@@ -23,22 +23,22 @@
 
                 <ul>
                     <li>
-                        <a href="life-insurance.php">
+                        <a href="{{ url('life-insurance')}}">
                                 Insurance
                             </a>
                     </li>
                     <li>
-                        <a href="claim.php">
+                        <a href="{{ url('claim')}}">
                                 Claim Insurance
                             </a>
                     </li>
                     <li>
-                        <a href="resp.php">
+                        <a href="{{ url('resp')}}">
                                 RESP Insurance
                             </a>
                     </li>
                     <li>
-                        <a href="health-insurance.php">
+                        <a href="{{ url('health-insurance')}}.php">
                                 Health Insurance
                             </a>
                     </li>
@@ -51,7 +51,7 @@
 
                 <ul>
                     <li>
-                        <a href="index.php">
+                        <a href="{{ url('index')}}">
                                 Home
                             </a>
                     </li>

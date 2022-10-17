@@ -33,15 +33,31 @@ class SiteController extends Controller
     }
     public function lifeinsurance()
     {
-        return view('frontend.companypages.lifeinsurance');
+        return view('frontend.companypages.life-insurance');
     }
-    public function blogs()
+    public function desability()
     {
-        return view('frontend.companypages.blogs');
+        return view('frontend.companypages.desability');
+    }
+    public function criticalillness()
+    {
+        return view('frontend.companypages.critical-illness');
+    }
+    public function health()
+    {
+        return view('frontend.companypages.health-insurance');
+    }
+    public function product()
+    {
+        return view('frontend.companypages.product');
     }
     public function aboutus()
     {
         return view('frontend.companypages.about');
+    }
+    public function blogs()
+    {
+        return view('frontend.companypages.blogs');
     }
     public function contactus()
     {
@@ -54,6 +70,14 @@ class SiteController extends Controller
     public function faq()
     {
         return view('frontend.companypages.faq');
+    }
+    public function claim()
+    {
+        return view('frontend.companypages.claim');
+    }
+    public function resp()
+    {
+        return view('frontend.companypages.resp');
     }
     public function login()
     {
