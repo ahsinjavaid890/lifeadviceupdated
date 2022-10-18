@@ -93,15 +93,19 @@
                                 <li class="nav-item">
                                     <a href="{{ url('blogs') }}" class="nav-link">Blogs</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('login')}}" class="btn btn-lg login-btn">
+                                    Login 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('signup')}}" class="btn btn-lg sign-up">
+                                        Sign Up
+                                    </a>
+                                </li>
                             </ul>
                             <!-- Start Other Option -->
                             <div class="login-signup d-flex">
-                                <a href="{{ url('login')}}" class="btn btn-lg login-btn">
-                                Login 
-                            </a>
-                            <a href="{{ url('signup')}}" class="btn btn-lg mx-3 sign-up">
-                                Sign Up
-                            </a>
                             </div>
                             <!-- End Other Option -->
                         </div>

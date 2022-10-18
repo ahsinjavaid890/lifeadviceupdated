@@ -11346,6 +11346,20 @@ ul.tabs li.current{
     .text-section .herrotext h2{
         font-size: 28px !important;
     }
+    .home-image {
+    width: 778px !important;
+    position: absolute;
+    left: -250px;
+    top: 17px;
+    opacity: 0.5;
+    }
+    .client-card-paragraph p {
+    text-align: justify;
+    font-size: 16px !important;
+    max-width: 75% !important;
+    font-weight: 900;
+    color: black;
+    }
     .super-images {
     width: 867px !important;
     position: absolute;
@@ -11381,7 +11395,7 @@ ul.tabs li.current{
         margin-top: 46px !important;
     }
     .mean-container .mean-bar{
-        height: 50px !important;
+        height: 64px !important;
     }
     .super-images {
         width: 543px !important;
@@ -11512,6 +11526,16 @@ ul.tabs li.current{
 }
 .blogsproducts{
     font-size: 17px !important;
+}
+.home-image {
+    width: 664px !important;
+    position: absolute;
+    left: -198px !important;
+    top: 17px;
+    opacity: 0.5;
+    }
+.client-card-paragraph p{
+    font-size: 13px !important;
 }
 .login-btn{
     font-size: 12px;
@@ -11730,13 +11754,19 @@ ul.tabs li.current{
 .hero-texts{
     padding: 40px 50px 40px 15px;
 }
-.login-btn{
+.login-btn{    
+    width: 80px;
+    height: 35px;
+    padding: 3px !important;
     background-color: #3a5371;
-    color: white;
+    color: white !important;
 }
-.sign-up{
+.sign-up{    
+    width: 80px;
+    height: 35px;
+    padding: 3px !important;
     background-color: #1bbc9b;
-    color: white;
+    color: white !important;
 }
 .login-card{
     border-radius: 20px;
