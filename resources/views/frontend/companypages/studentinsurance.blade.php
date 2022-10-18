@@ -3,57 +3,7 @@
 @section('content')
 @include('frontend.companypages.includes.main')
 @include('frontend.companypages.includes.sectiontwo')
-<section class="benefits ptb-100">
-    <div class="container-homepage">
-        <div class="calculate-heading" style="text-align: center;">
-            <h2><span>How to Calculate </span>Cost and Apply?</h2>
-        </div> 
-<div class="width_website center_div position_relative">
-   <div class="partner_block">
-      <div class="ta_center">
-         <div class="how_to_buy_steps">
-            <div class="how_to_buy_steps_connection"></div>
-            <div class="step step_1">
-               <div class="step_name"><span>GET</span> QOUT</div>
-               <div class="step_text">
-                    <p class="description">
-                     In order to get your Canadian travel insurance coverage, all you need is to calculate your personal quote using our free online quote form , fill out a short application form and pay with a credit card. Once the payment is processed, you will receive your travel insurance by email in no time.
-                    </p>
-               </div>
-            </div>
-            <div class="step step_2">
-               <div class="step_name"><span>Complete your</span>  Application</div>
-               <div class="step_text">
-                    <p>                             
-                    make a look at the Travel health insurance rates available from the select provider for the type of coverage you’d like to get before you proceed with application.
-                    <br>The applicant(s) is over the age of 14 days old and has not reached the age of 90 years at the time of application
-                    </p>
-               </div>
-            </div>
-            <div class="step step_4">
-               <div class="step_name"><span>Select</span> a Plane</div>
-               <div class="step_text">
-                    <p>                              
-                    Choose a plan that t your needs of coverage from the list of options provided and click on purchase Now button you will be re-directed to the chosen insurance company’s web-portal, you can start filling out your application form.
-                    </p>
-               </div>
-            </div>
-            <div class="step step_3">
-               <div class="step_name"><span>Purchase</span>  Policy</div>
-               <div class="step_text">
-                    <p>                            
-                    The final step is online payment. All that is left is to complete the purchase at this stage is to use your credit card. Please note that applicable taxes and/or surcharges will be visible before your
-                    </p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="clear"></div>
-   </div>
-</div>
-            </div>
-    </div>
-</section>
+@include('frontend.companypages.includes.sectionthree')
 <section class="third-section">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">

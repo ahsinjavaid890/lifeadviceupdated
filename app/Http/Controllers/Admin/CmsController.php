@@ -40,6 +40,9 @@ class CmsController extends Controller
         $update->sub_heading = $request->sub_heading;
         $update->main_button_text = $request->btn_text;
         $update->main_button_link = $request->btn_link;
+        $update->sectionthreeheading = $request->sectionthreeheading;
+        $update->sectionthreedescription = $request->sectionthreedescription;
+
         $update->meta_title = $request->meta_title;
         $update->meta_description = $request->meta_description;
         $update->meta_tag = $request->meta_tag;

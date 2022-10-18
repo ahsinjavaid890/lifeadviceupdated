@@ -271,6 +271,17 @@
                                         </div>
                                         @endif
                                         @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')
+
+                                        <div class="form-group">
+                                            <label>Heading</label>
+                                            <textarea class="summernote-heading" name="sectionthreeheading">{{ $data->sectionthreeheading }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                             <textarea class="summernote" name="sectionthreedescription">{{ $data->sectionthreedescription }}</textarea>
+                                        </div>
+
+
                                          <table class="table table-bordered">
                                         <thead>
                                             <tr>

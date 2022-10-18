@@ -4,7 +4,7 @@
 @section('content')
 @include('frontend.companypages.includes.main')
 @include('frontend.companypages.includes.sectiontwo')
-
+@include('frontend.companypages.includes.sectionthree')
 <section class="third-section">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">

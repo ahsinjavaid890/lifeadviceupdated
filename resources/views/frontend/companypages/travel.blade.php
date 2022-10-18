@@ -3,54 +3,9 @@
 @section('content')
 @include('frontend.companypages.includes.main')
 @include('frontend.companypages.includes.sectiontwo')
+@include('frontend.companypages.includes.sectionthree')
 
-<section class="benefits ptb-100">
-    <div class="container-homepage">
-        <div class="calculate-heading" style="text-align: center;">
-            <h2><span>How to Calculate </span>Cost and Apply?</h2>
-        </div>
-        <div class="width_website center_div position_relative">
-   <div class="partner_block">
-      <div class="ta_center">
-         <div class="how_to_buy_steps">
-            <div class="how_to_buy_steps_connection"></div>
-            <div class="step step_1">
-               <div class="step_name"><span>Get a </span>Quote</div>
-               <div class="step_text">
-                    <p class="description">In order to get your Canadian travel insurance coverage, all you need is to calculate your personal quote using our free online quote form , fill out a short application form and pay with a credit card.</p>
-                    <p class="description">Once the payment is processed, you will receive your travel insurance by email in no time.</p>
-               </div>
-            </div>
-            <div class="step step_2">
-               <div class="step_name"><span>Select</span> a Plane</div>
-               <div class="step_text">
-                    <p class="description"> Choose a plan that fit your needs of coverage from the list of options provided and click on purchase  Now button  you will be re-directed to the chosen insurance company’s web-portal, you can start filling out your application form.</p>
-                    <p class="importantalert">
-                    Important Notice: Non-medical and all-inclusive travel insurance plans may be subject to provincial sales tax.
-                    </p>
-               </div>
-            </div>
-            <div class="step step_4">
-               <div class="step_name"><span>Review</span> Your Coverage</div>
-               <div class="step_text">
-                    <p> It is always a great idea to review coverage details as well as policy conditions before making a purchase. The best way to know about it by read through the official Policy Wording for the insurance plan of your choice that can be found on the same page. In addition, you can always reach to our Insurance Advisors if you have any questions or concerns!
-                    </p>
-               </div>
-            </div>
-            <div class="step step_3">
-               <div class="step_name"><span>Purchase </span>Policy</div>
-               <div class="step_text">
-                    <p>The final step is to fill out an application form and make the payment using a credit card. In order to proceed with purchasing your Visitors insurance, just click on “Buy now” or “purchase Online” button. If you wish to purchase your coverage online, in case you’d like our Insurance Advisors to assist you to complete the application and issue the policy don’t hesitate to contact us! Once your payment is processed by the insurance provider, your policy confirmation will be sent by email right away!
-                    </p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="clear"></div>
-   </div>
-</div>
-        </div>
-</section>
+
 <section class="third-section">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">
