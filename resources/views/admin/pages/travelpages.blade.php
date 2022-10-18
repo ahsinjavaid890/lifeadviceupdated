@@ -198,13 +198,42 @@
                                     </table>
                                     @endif
                                     @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')
-                                    <div class="form-group">
-                                        <label>Vector Image</label>
-                                        <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <label>Vector Image</label>
+                                                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Vector Image</label>
+                                                <button data-toggle="modal" data-target="#viewvectorsection_two_vector" type="button" class="btn btn-sm btn-primary form-control">View Vector</button>
+                                            </div>
+                                            <div class="modal fade" id="viewvectorsection_two_vector" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                              <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Section Two Vector</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                        <img style="width:100%;" src="{{ url('public/images') }}/{{ $data->section_two_vector }}">
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label>Sec Two Description</label>
-                                         <textarea class="summernote" name="section_two_description"></textarea>
+                                         <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-md-12 text-right">
@@ -219,10 +248,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
-                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                                <td>{{ $r->question }}</td>
+                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                     @endif
