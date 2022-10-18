@@ -40,6 +40,13 @@ class CmsController extends Controller
         $update->sub_heading = $request->sub_heading;
         $update->main_button_text = $request->btn_text;
         $update->main_button_link = $request->btn_link;
+        $update->meta_title = $request->meta_title;
+        $update->meta_description = $request->meta_description;
+        $update->meta_tag = $request->meta_tag;
+        if($request->section_two_vector)
+        {
+            $update->meta_image = Cmf::sendimagetodirectory($request->meta_image);
+        }
         $update->save();
         return redirect()->back()->with('message', 'Page Updated Successfully');
     }
@@ -55,6 +62,18 @@ class CmsController extends Controller
         $update->save();
         return redirect()->back()->with('message', 'Page Updated Successfully');
     }
+
+    public function addnewsectionthreeelement(Request $request)
+    {
+        $add = new section_three_elements();
+        $add->page = $request->page;
+        $add->heading = $request->heading;
+        $add->description = $request->description;
+        $add->type = $request->type;
+        $add->save();
+        return redirect()->back()->with('message', 'Inserted Successfully');
+    }
+
     public function faqcategories()
     {
         $data = frequesntlyaskquest_categories::all();

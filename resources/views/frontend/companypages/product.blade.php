@@ -1,7 +1,5 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Products</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
 @section('content')
 <div class="health-inssurance-hero-banner" style="background-color: #262566;">
    <div class="container">

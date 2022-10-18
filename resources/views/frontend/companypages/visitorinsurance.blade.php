@@ -1,71 +1,9 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Travel Insurance</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
 
 @section('content')
 @include('frontend.companypages.includes.main')
-<section class="ptb-100 first-section-of-page">
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6 image-center">
-                <div class="student-medical-image">
-                    <img src="assets/img/images/visotor2.png">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="travel-medical-heading">
-                    <h2><span>Travel Insurance For</span> Visitors To Canada?</h2>
-                </div>
-                <div class="travel-medical-paragraph">
-                    <p>If you are planning on visiting Canada for a long stay vacation or you are having friends or family members, come to visit you in Canada, it's important to remember that only Canadian residents are covered by the provincial health insurance plans. Visitors could end up paying an extensive amount of money if they fall ill in the country of Canada or if an accident happened to occur while they were in the country.</p>
-                    <p>While you’re away from your home country, Trave and Visitor insurance plans can help you and your loved ones stay safe. Visitors’ insurance is designed for visitors in Canada in mind with protection. visitor insurance can protect you from costly health expenses during your stay. If you experience any new injuries, illnesses, or have pre-existing conditions that require treatment during your trip, our visitor’s insurance includes plans to get the coverage you need.</p>
-                    <h5 style="margin-top:20px;" class="text-dark"><a data-toggle="collapse" data-target="#demo" style="color: #262566;"  href="#javascript::void(0)"><i class="fa fa-sign-in" style="color: #262566;"></i> What is covered in a visitors to Canada medical insurance policy?</a></h5>
-                    <div id="demo" class="collapse">
-                        <p>Policies vary from each insurance Company, but standard coverage for medical emergencies includes Visitors to Canada insurance plans available through our partners include:</p>               
-                        <ul class="list-checkmark text-secondary-color body-text-2">    
-                        <li>Emergency hospital accommodation and medical services</li>     
-                            <li>Emergency dental work</li>
-                            <li>Emergency transportation</li>
-                            <li>Diagnostic services such as X-rays</li>
-                            
-                            <li>Prescription drugs needed as a result of a covered emergency</li>
-                        
-                            <li>Coverage for trips outside of Canada</li>
-                            <li>Coverage for trips lasting up to 365 days</li>                            
-                            <li>Available as an individual, couple or family policy</li>
-                            <li>Dental Accidents Coverage, Emergency Hospital Services, Travel Accident Coverage, and more</li>
-                            <li>Extended Health Care Coverage for; Physician Fee's, X-rays, Physiotherapist, Chiropractor, Prescription Drugs, and more</li>
-                            
-                            <b>Up to $300,000 coverage of the eligible emergency medical expenses that you incur while visiting Canada</b>
-                        </ul>
-                            <p class="importantalert">Protection for Covid-related treatment is included in many travel insurance policies or can be purchased as additional coverage. However, before you leave your home country, we encourage you to review your policy and ensure that you understand the details, including what protection it offers if you require treatment for Covid-19 while visiting Canada.</p>
-                        
-                  </div>
-                  <h5 style="margin-top:20px;" class="text-dark"><a data-toggle="collapse" data-target="#demotwo" style="color: #262566;"  href="#javascript::void(0)"><i class="fa fa-sign-in" style="color: #262566;"></i> Who needs travel insurance when visiting Canada?</a></h5>
-                    <div id="demotwo" class="collapse">
-                    <p>
-                        Some travel visas require proof of medical insurance coverage.Without it, entry will be denied. The universal health care that’s available to Canadian residents is not extended to visitors.</p>
-                        <ul class="list-checkmark text-secondary-color body-text-2">
-                            <li>If you fall into any of the following categories, you’ll need travel medical insurance to enter Canada:</li>
-
-                            <li>Tourists planning to come to Canada for up to a year</li>
-                            <li>Foreign nationals coming to stay with their family or friends for up to a year</li>
-                            <li>Recent immigrants who have moved to Canada and are awaiting coverage under a provincial health insurance plan</li>
-                            <li>Foreign nationals who will be working in Canada on a temporary basis</li>
-                        </ul>
-
-                    </p>
-                    
-                  </div>
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@include('frontend.companypages.includes.sectiontwo')
 <section class="benefits ptb-100">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">

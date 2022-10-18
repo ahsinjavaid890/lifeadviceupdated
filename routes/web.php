@@ -234,7 +234,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/travelpages/{id}','CmsController@travelpages');
         Route::post('/section_three_elements','CmsController@sectionthreeelements');
         Route::post('/updatedynamicpage','CmsController@updatedynamicpage');
-
+        Route::post('/addnewsectionthreeelement','CmsController@addnewsectionthreeelement');
+        
     });
 
 

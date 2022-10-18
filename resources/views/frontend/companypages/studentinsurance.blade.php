@@ -1,39 +1,8 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Student Insurance</title>
-@endsection
-
+@include('frontend.companypages.includes.mettatittle')
 @section('content')
 @include('frontend.companypages.includes.main')
-<section class="ptb-100 first-section-of-page">
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6 image-center">
-                <div class="student-medical-image">
-                    <img src="assets/img/images/05.png">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="travel-medical-heading">
-                    <h2><span>Student</span> Medical Insurance</h2>
-                </div>
-                <div class="travel-medical-paragraph">
-                    <p>Medical emergency Visitors to Canada insurance is specifically designed to cover medical emergency treatments costs in case of unexpected sicknesses and accidental injuries that may happen during your trip.</p>
-                    <p>Emergency health coverage is essential for everyone planning to travel to Canada if you are not entitled to receive provincial insurance coverage upon landing.</p>
-                    <p>Studying abroad is an exciting way to experience the world. Not only do you receive college credits, but you also get an immersive education in a new culture and society. Student health insurance protects international learners as they have these amazing experiences. International student insurance plans from private insurance companies are usually less expensive than those provided by universities.</p>
-                    <p>Student health insurance plans offer comprehensive coverage for international students studying in the U.S., and for study abroad students all around the world. Usually, students have two options for insurance: from university-sponsored health plans or from a private insurance provider.</p>
-                    <p>International student insurance plans from private providers are usually more affordable than the ones provided by the universities in the U.S., and they provide similar coverage. Additionally, if you purchase a plan from a private provider, your college or university may also ask for proof of coverage at the time of your enrollment to deduct the health insurance premium from the cost of tuition.</p>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Get a Quote?</a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@include('frontend.companypages.includes.sectiontwo')
 <section class="benefits ptb-100">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">

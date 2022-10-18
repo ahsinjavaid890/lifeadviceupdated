@@ -9,6 +9,7 @@
             <!--begin::Card-->
             <div class="row">
                 <div class="col-md-12">
+                    @include('alerts.index')
                    <div class="card  my-4">
                     <form enctype="multipart/form-data" action="{{ url('admin/pages/updatedynamicpage') }}" method="POST">
                         @csrf
@@ -16,7 +17,7 @@
                        <!-- navigation in .card-header -->
                        <div class="card-header">
                           @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')   
-                                   <h2> {{ $data->name }} Insurance</h2>
+                                   <h2> {{ $data->name }}</h2>
 
                             @endif
                             @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs')
@@ -135,18 +136,6 @@
                                         <textarea class="summernote" name="contact_description"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact Address</label>
-                                        <input type="text" class="form-control" name="contact_address">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Contact Email</label>
-                                        <input type="email" class="form-control" name="contact_email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Contact Email</label>
-                                        <input type="number" class="form-control" name="contact_number">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Last Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="last_two_vector">
                                     </div>
@@ -250,7 +239,7 @@
                                         <tbody>
                                             @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td>{{ $r->question }}</td>
+                                                <td>{{ $r->heading }}</td>
                                                 <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
                                             </tr>
                                             @endforeach
@@ -291,7 +280,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach(DB::table('section_three_elements')->where('page' , $data->url)->get() as $r)
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
                                                 <td>
                                                     <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
@@ -477,26 +466,26 @@
                                 </div>
                          </div>
                          <div class="tab-pane fade" id="tab6">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Meta Title</label>
-                                            <input type="text"  class="form-control" name="meta_title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Meta Description</label>
-                                             <textarea class="form-control" name="meta_description"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Meta Tags</label>
-                                            <input type="text"  class="form-control" name="meta_tag">
-                                        </div>
-                                            <div class="form-group">
-                                            <label>Meta Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="meta_image">
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Meta Title</label>
+                                        <input type="text" value="{{ $data->meta_title }}" class="form-control" name="meta_title">
                                     </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label>Meta Description</label>
+                                         <textarea class="form-control" name="meta_description">{{ $data->meta_description }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Meta Tags</label>
+                                        <textarea class="form-control" name="meta_tag">{{ $data->meta_tag }}</textarea>
+                                    </div>
+                                        <div class="form-group">
+                                        <label>Meta Image</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="meta_image">
+                                    </div>
+                                </div>
+                            </div>
                          </div>
                           </div><!--/.card-body -->
                           <div class="card-footer">
@@ -666,20 +655,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form method="POST" action="{{ url('admin/pages/addnewsectionthreeelement') }}">
+        @csrf
+      <input type="hidden" name="type" value="sectiontwoquestion">
+      <input type="hidden" name="page" value="{{ $data->url }}">
       <div class="modal-body">
         <div class="form-group">
             <label>Question</label>
-            <input type="text"  class="form-control" name="question">
+            <input type="text"  class="form-control" name="heading">
         </div>
         <div class="form-group">
             <label>Answer</label>
-             <textarea class="summernote" name="answer"></textarea>
+             <textarea class="summernote" name="description"></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
