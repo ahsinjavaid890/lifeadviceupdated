@@ -4,7 +4,81 @@
 @include('frontend.companypages.includes.main')
 @include('frontend.companypages.includes.sectiontwo')
 @include('frontend.companypages.includes.sectionthree')
+<section class="ptb-100 first-section-of-page">
+    <div class="container-homepage">
+        <div class="row">
+            <div class="col-md-6 image-center">
+                <div class="student-medical-image">
+                    <img src="{{ asset('public/front/img/images/travel-bag.png')}}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="travel-medical-heading">
+                    <h2>Who Needs Travel Insurance?</h2>
+                </div>
+                <div class="travel-medical-paragraph">
+                    <p>If you're going overseas, travel insurance is as important as a passport. Without it, you or your family could suffer financially if things go wrong. travel insurance should be going with you. Even if you're travelling out of province but within Canada it's worth it because your provincial health insurance plan coverage may be limited. Things like ambulance services and prescription drugs may not be covered and you could end up paying out of pocket for some of the services you need.</p>
+                </div>
+                <div class="travel-medical-heading2">
+                    <h2>Why you should buy travel health insurance</h2>
+                </div>
+                <div class="travel-medical-paragraph">
+                      <ul style="margin-left: 18px;list-style: circle;">
+                      <li>The Government of Canada will not pay your medical bills</li>
+                      <li>Foreign hospitals can be very expensive and may require immediate cash payment</li>
+                      <li>Your Canadian health insurance may not pay your medical bills while you're outside Canada</li>
+                      <li>In some countries hospitals and clinics will not treat you if you do not have enough insurance or money to pay your bills</li>
+                      <li>Your provincial or territorial health plan may cover none, or only a small part, of the costs of your medical care abroad. It will never pay your bills up front</li>
+                    </ul>
+                      <h5 style="margin-top:20px;" class="text-dark"><a data-toggle="collapse" data-target="#demo" style="color: #262566;"  href="#javascript::void(0)"><i class="fa fa-sign-in" style="color: #262566;"></i> What are Travel Insurance Requirements?</a></h5>
+                        <div id="demo" class="collapse">
+                            <p>
+                               As you already know, Canadian Residents are insured under their Provincial Healthcare Plans. However, it only covers a small portion of medical expenses incurred outside Canada.
+                            </p>
+                            <p>Your government insurance coverage will also be severely limited while travelling to another province or territory within Canada, and even the slightest injury or illness can deal a significant blow to your budget.</p>
+                            <p>If you are planning on going out of your province or abroad, travel health insurance for Canadians will provide you with a simple and affordable way to protect yourself from the costs of medical emergencies that may happen during the trip.</p>
+                      </div>
 
+                      <h5 style="margin-top:20px;" class="text-dark"><a data-toggle="collapse" data-target="#demotwo" style="color: #262566;"  href="#javascript::void(0)"><i class="fa fa-sign-in" style="color: #262566;"></i> Type of Travel Insurance policy </a></h5>
+                        <div id="demotwo" class="collapse">
+                        <p>Travel insurance covers a number of travel-related risks, from flight cancellations to lost bags to medical emergencies. The dollar amount of your coverage depends on the policy you bought and where and when you bought it. Most travel insurance providers offer several different policies to choose from, with higher or lower levels of coverage.
+                            <ul style="margin-left: 18px;list-style: circle;">
+                                <li><p>Single Trip medical Insurance</p></li>
+                                <li><p>Multi Trip Insurance</p></li>
+                                <li><p>Trip interruption Insurance</p></li>
+                                <li><p>Trip cancellation Insurance</p></li>
+                                <li><p>All Inclusive Insurance </p></li>
+                            </ul>
+                        </p>
+                        <p>In order to be eligible for Travel Insurance, you MUST: 
+                            <ul style="margin-left: 18px;list-style: circle;">
+                                <li><p>Be a Canadian Resident</p></li>
+                                <li><p>Be currently enrolled in a provincial health insurance plan</p></li>
+                                <li><p>Meet other specific conditions set by a particular Canadian Insurance company</p></li>
+                            </ul>
+                        </p>
+                      </div>
+                      <h5 style="margin-top:20px;" class="text-dark"><a data-toggle="collapse" data-target="#demofour" style="color: #262566;"  href="#javascript::void(0)"><i class="fa fa-sign-in" style="color: #262566;"></i> Know what you're buying </a></h5>  
+                      <div id="demofour" class="collapse">
+                       <p> Carefully research your needs. Verify the terms, conditions, limitations, exclusions and requirements of your insurance policy before you leave Canada. When assessing a travel health insurance plan, you should ask a lot of questions.
+
+                        <ul style="margin-left: 18px;list-style: circle;">
+                            <li><p>Is there a deductible, and how much is it? Plans with 100% coverage are more expensive but may save money in the long run.</p></li>
+                            <li><p>Does the plan offer continuous coverage for the length of your stay outside Canada and after your return?</p></li>
+                            <li><p>Does the plan exclude or greatly limit coverage for certain regions or countries you may visit?</p></li>
+                            <li><p>Does it offer coverage that is renewable from abroad and for the maximum period of stay?</p></li>
+                            <li><p>Does the company have an in-house, worldwide, 24-hour/7-day emergency contact number in English and/or translation services for health care providers in your destination country?</p></li>
+                            <li><p>Does it pay for hospitalization for illness or injury and related medical costs at your destination?</p></li>
+                            <li><p> Does it pay your bills or cash advances up front, so you don’t have to pay them?</p></li>
+                        </ul>
+                       </p>
+                      </div>
+
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="third-section">
     <div class="container-homepage">

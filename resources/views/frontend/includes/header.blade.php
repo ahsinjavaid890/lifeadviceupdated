@@ -95,7 +95,7 @@
                                 </li>
                             </ul>
                             <!-- Start Other Option -->
-                            <div class="login-signup">
+                            <div class="login-signup d-flex">
                                 <a href="{{ url('login')}}" class="btn btn-lg login-btn">
                                 Login 
                             </a>
