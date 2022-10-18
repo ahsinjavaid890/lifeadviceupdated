@@ -4,9 +4,9 @@
 @endsection
 @section('content')
 <div class="container-homepage main-div-login p-5">
-   <div class="login-image m-5 text-center">
+   <!-- <div class="login-image m-5 text-center">
       <img src="https://www.lifeadvice.ca/images/brand.png">
-   </div>
+   </div> -->
    <div class="card shadow login-card">
       <div class="card-body">
             <div class="heading-login text-center">
