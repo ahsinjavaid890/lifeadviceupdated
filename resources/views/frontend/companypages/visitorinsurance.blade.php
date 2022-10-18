@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('tittle')
-<title>Travel Insurance</title>
+<title>Visitor Insurance</title>
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6 image-center">
                 <div class="student-medical-image">
-                    <img src="assets/img/images/visotor2.png">
+                    <img src="{{asset('public/front//img/images/visotor2.png')}}">
                 </div>
             </div>
             <div class="col-md-6">
@@ -157,7 +157,7 @@
             </div>
             
                 <div class="col-md-6">
-                    <img src="assets/img/images/visotor1.png">
+                    <img src="{{asset('public/front/img/images/visotor1.png')}}">
                 </div>
         </div>
     </div>
@@ -485,7 +485,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/family.png">
+                   <img src="{{asset('public/front/img/images/family.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Super Visa </span> Insurance</h2>
@@ -500,7 +500,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/bed.png">
+                   <img src="{{asset('public/front/img/images/bed.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Visitors</span> Insurance</h2>
@@ -515,7 +515,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/bed.png">
+                   <img src="{{asset('public/front/img/images/bed.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Travel</span> Insurance</h2>
