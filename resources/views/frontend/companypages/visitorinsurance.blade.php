@@ -1,6 +1,5 @@
 @extends('frontend.layouts.main')
 @include('frontend.companypages.includes.mettatittle')
-
 @section('content')
 @include('frontend.companypages.includes.main')
 @include('frontend.companypages.includes.sectiontwo')
@@ -95,7 +94,7 @@
             </div>
             
                 <div class="col-md-6">
-                    <img src="assets/img/images/visotor1.png">
+                    <img src="{{asset('public/front/img/images/visotor1.png')}}">
                 </div>
         </div>
     </div>
@@ -423,7 +422,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/family.png">
+                   <img src="{{asset('public/front/img/images/family.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Super Visa </span> Insurance</h2>
@@ -438,7 +437,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/bed.png">
+                   <img src="{{asset('public/front/img/images/bed.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Visitors</span> Insurance</h2>
@@ -453,7 +452,7 @@ Do I need to buy travel insurance if I’m covered under a health plan?
            <div class="card slider-card border-0">
              <div class="card-body text-center">
                 <div class="simple-online-transparent-slider">
-                   <img src="assets/img/images/bed.png">
+                   <img src="{{asset('public/front/img/images/bed.png')}}">
                 </div>
                 <div class="slider-heading">
                    <h2><span>Travel</span> Insurance</h2>
