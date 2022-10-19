@@ -16,7 +16,7 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical' || $data->url == 'health')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
@@ -37,7 +37,7 @@
                                </li>
                              </ul>
                            @endif
-                            @if($data->url == 'critical')
+                            @if($data->url == 'critical-illness')
                                 <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -106,7 +106,7 @@
                                </li>
                              </ul>
                            @endif
-                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health')   
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health-insurance')   
                              <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -253,7 +253,7 @@
                                         </tbody>
                                     </table>
                                    @endif
-                                    @if($data->url == 'health')
+                                    @if($data->url == 'health-insurance')
                                     <div class="form-group">
                                         <label>Sec Two Headong</label>
                                         <input type="text"  class="form-control" name="health_two_heading">
@@ -293,7 +293,7 @@
                                         <textarea class="summernote" name="life_description"></textarea>
                                     </div>
                                    @endif
-                                   @if($data->url == 'critical')
+                                   @if($data->url == 'critical-illness')
                                     <div class="form-group">
                                         <label>First Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="critical_two_vector">
@@ -430,7 +430,7 @@
                          <div class="tab-pane fade" id="tab3">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        @if($data->url == 'health')
+                                        @if($data->url == 'health-insurance')
                                     <div class="form-group">
                                         <label>First Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="health_two_vector">
@@ -456,7 +456,7 @@
                                         </tbody>
                                     </table>
                                    @endif
-                                 @if($data->url == 'critical')
+                                 @if($data->url == 'critical-illness')
                                     <div class="form-group">
                                         <label>Sec Three Heading</label>
                                          <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
@@ -569,7 +569,7 @@
                          <div class="tab-pane fade" id="tab4">
                                 <div class="row">
                                     <div class="col-md-12">
-                                         @if($data->url == 'health')
+                                         @if($data->url == 'health-insurance')
                                             <div class="form-group">
                                                 <label>Sec Four Heading</label>
                                                 <input class="form-control" name="health_four_heading">
@@ -583,7 +583,7 @@
                                                 <input type="file" style="height:45px;" class="form-control" name="health_four_vector">
                                             </div>
                                          @endif
-                                         @if($data->url == 'critical')
+                                         @if($data->url == 'critical-illness')
                                             <div class="form-group">
                                                 <label>Sec Four Heading</label>
                                                 <input class="form-control" name="desability_four_critical">
@@ -693,7 +693,7 @@
                          <div class="tab-pane fade" id="tab5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        @if($data->url == 'health') 
+                                        @if($data->url == 'health-insurance') 
                                         <div class="form-group">
                                             <label>Sec Five Heading</label>
                                             <input type="text"  class="form-control" name="section_five_heading">
@@ -719,7 +719,7 @@
                                         </tbody>
                                     </table>
                                        @endif
-                                        @if($data->url == 'critical')
+                                        @if($data->url == 'critical-illness')
                                         <div class="form-group">
                                             <label>Sec Five Heading</label>
                                             <input type="text"  class="form-control" name="desability_five_heading">
@@ -930,7 +930,7 @@
                             <div class="row">
                                 <div class="col-md-12">
 
-                                        @if($data->url == 'critical')
+                                        @if($data->url == 'critical-illness')
                                         <div class="form-group">
                                             <label>Sec Six Heading</label>
                                             <input type="text"  class="form-control" name="critical_six_heading">
@@ -1066,7 +1066,7 @@
                            <div class="tab-pane fade" id="tab11">
                            <div class="row">
                                 <div class="col-md-12">
-                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health' || $data->url == 'life-insurance' || $data->url == 'critical')   
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health-insurance' || $data->url == 'life-insurance' || $data->url == 'critical-illness')   
 
                                          <table class="table table-bordered">
                                              <thead>

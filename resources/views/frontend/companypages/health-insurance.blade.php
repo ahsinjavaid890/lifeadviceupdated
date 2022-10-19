@@ -1,30 +1,9 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Health Insurance</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
+
 @section('content')
-<div class="health-inssurance-hero-banner pt-5">          
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="herrotext">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span>Health</span> Insurance</h2>
-                    <h5 class="wow fadeInUp  text-justify" data-wow-delay=".6s"><span>Our health insurance plan helps you extend your personal health coverage beyond the coverage you receive through your provincial healthcare program our Private health insurance</span></h5>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="hero-image">
-                    <img src="{{asset('public/front/img/images/umbrellla-card.jpg')}}">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.companypages.includes.main')
+
    <section class="first-section-of-page" style="padding-bottom: 40px;">
             <div class="container-homepage">
                 <div class="benefits-heading text-center">

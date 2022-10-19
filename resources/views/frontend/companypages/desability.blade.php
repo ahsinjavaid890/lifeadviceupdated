@@ -1,30 +1,10 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Desability Insurance</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
+
+
 @section('content')
-<div class="health-inssurance-hero-banner pt-5">          
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="herrotext">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span>Disability </span>Insurance</h2>
-                   <!--  <h5 class="wow fadeInUp  text-justify" data-wow-delay=".6s"><span>Student Insurance is for students who are studying abroad or international students coming to study in Canada.</span></h5> -->
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="hero-image">
-                    <img src="{{ asset('public/front/img/images/capability.jpg')}}">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.companypages.includes.main')
+
 <section class="first-section-of-page">
     <div class="container-homepage">
         <div class="row">

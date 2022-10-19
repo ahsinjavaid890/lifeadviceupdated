@@ -1,8 +1,12 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>FAQ's</title>
+
+@php
+    $url = request()->segment(count(request()->segments()));
+    $page = DB::table('travelpages')->where('url' , $url)->get()->first();
+    $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get(); 
+@endphp 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/faq.css')}}">
-@endsection
+
 @section('content')
 <div class="health-inssurance-hero-banner pt-5" style="background-color: #262566;">          
        <div class="container">

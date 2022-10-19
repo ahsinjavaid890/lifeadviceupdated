@@ -1,34 +1,9 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Life Insurance</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
 
 @section('content')
-    <div class="health-inssurance-hero-banners super-hero">          
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6 hero-texts">
-                <div class="herrotext  super-hero-text">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span class="text-white">Life  </span>Insurance</h2>
-                    <h5 class="wow fadeInUp text-white  text-justify super-text" data-wow-delay=".6s">Life insurance products provides your spouse and family with peace of mind, by giving them the financial options to help make important and often difficult decisions during a very stressful time.</h5>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 hero-images">
-                <div class="hero-image super-images" style=" background-image: url('{{ asset('public/front/img/images/insurance-page.png') }}');
-                    background-position: 50% 70%;
-                    background-size: 100%;
-                    background-repeat: no-repeat;">
-<!--                     <img src="assets/img/images/visa1.gif"> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    @include('frontend.companypages.includes.main')
+
 <section class="first-section-of-page">
     <div class="container-homepage">
         <div class="row">

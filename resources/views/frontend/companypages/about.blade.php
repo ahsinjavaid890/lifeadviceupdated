@@ -6,9 +6,6 @@
     $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get();
 @endphp
 
-@section('tittle')
-<title>About Us</title>
-@endsection
 @section('content')
 @include('frontend.companypages.includes.main')
 <div class="our-mission-section">

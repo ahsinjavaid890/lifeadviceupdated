@@ -1,7 +1,8 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Contact Us</title>
-@endsection
+@extends('frontend.layouts.main')
+
+@include('frontend.companypages.includes.mettatittle')
+
 @section('content')
 
 <style type="text/css">
@@ -14,22 +15,8 @@
     padding-top: 100px;
 }
 </style>
-<div class="health-inssurance-hero-banner pt-5" style="background-color: #262566;">          
-    <div class="container">
-      <div class="row">
-         <div class="col-md-6" style="margin-top: 100px;">
-            <div class="herrotexts">
-               <h2 style="font-size:3rem;" class="wow fadeInUp text-white product-heading" data-wow-delay=".4s">Contact Us</h2>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="hero-image">
-               <img src="{{ asset('public/front/img/images/contact.png') }}">
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+@include('frontend.companypages.includes.main')
+
    <!--  <div class="finding-right">
         <div class="container-homepage">
                 <div class="card mobile-card">
