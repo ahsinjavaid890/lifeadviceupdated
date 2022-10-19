@@ -16,7 +16,7 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical' || $data->url == 'health')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
@@ -24,7 +24,7 @@
                                    <h2> {{ $data->name }} </h2>
 
                             @endif
-                           @if($data->url == 'privacypolicy')
+                           @if($data->url == 'privacypolicy' || $data->url == 'product')
                             <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -37,6 +37,59 @@
                                </li>
                              </ul>
                            @endif
+                            @if($data->url == 'critical')
+                                <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                            @endif
+                            @if($data->url == 'desability')
+                                <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab8">Section 7</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                            @endif
                             @if($data->url == 'contactus')
                             <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
@@ -50,7 +103,7 @@
                                </li>
                              </ul>
                            @endif
-                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus' )   
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health')   
                              <ul class="nav nav-tabs card-header-tabs">
                                <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
@@ -66,6 +119,40 @@
                                </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                             @endif
+                             @if( $data->url == 'life-insurance')
+                             <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab8">Section 7</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab9">Section 8</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab10">Section 9</a>
                                </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
@@ -122,6 +209,134 @@
                          <div class="tab-pane fade" id="tab2">
                            <div class="row">
                                 <div class="col-md-12">
+
+                                   @if($data->url == 'product')
+                                    <div class="form-group">
+                                        <label>Product Heading</label>
+                                        <input type="text" class="form-control" name="product_two_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Description</label>
+                                        <textarea class="summernote" name="product_two_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="product_two_vector">
+                                    </div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Vector</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                   @endif
+                                    @if($data->url == 'health')
+                                    <div class="form-group">
+                                        <label>Sec Two Headong</label>
+                                        <input type="text"  class="form-control" name="health_two_heading">
+                                    </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Vector</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                   @endif
+                                   @if($data->url == 'desability')
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="life_two_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>life Heading</label>
+                                        <input type="text" class="form-control" name="life_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Life Description</label>
+                                        <textarea class="summernote" name="life_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>life Heading</label>
+                                        <input type="text" class="form-control" name="life_heading_two">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Life Description</label>
+                                        <textarea class="summernote" name="life_description_two"></textarea>
+                                    </div>
+                                   @endif
+                                   @if($data->url == 'critical')
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="critical_two_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>life Heading</label>
+                                        <input type="text" class="form-control" name="critical_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Life Description</label>
+                                        <textarea class="summernote" name="critical_description"></textarea>
+                                    </div>
+                                   @endif
+                                   @if($data->url == 'life-insurance')
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="life_two_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>life Heading</label>
+                                        <input type="text" class="form-control" name="life_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Life Description</label>
+                                        <textarea class="summernote" name="life_description"></textarea>
+                                    </div>
+                                   @endif
                                    @if($data->url == 'contactus')
                                     <div class="form-group">
                                         <label>First Vector</label>
@@ -252,6 +467,86 @@
                          <div class="tab-pane fade" id="tab3">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        @if($data->url == 'health')
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="health_two_vector">
+                                    </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Vector</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                   @endif
+                                 @if($data->url == 'critical')
+                                    <div class="form-group">
+                                        <label>Sec Three Heading</label>
+                                         <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#illness"><i class="fa fa-plus"></i>Add New Questions</a>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Heading</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</td>
+                                            <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                        </tr>
+                                    </table>
+                                 @endif
+                                 @if($data->url == 'desability')
+                                    <div class="form-group">
+                                        <label>Sec Three Heading</label>
+                                        <input type="text" class="form-control" name="desability_three_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#aboutquestion"><i class="fa fa-plus"></i>Add New Questions</a>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Heading</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</td>
+                                            <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                        </tr>
+                                    </table>
+                                 @endif
+                                 @if($data->url == 'life-insurance')
+                                    <div class="form-group">
+                                        <label>Sec Three Heading</label>
+                                        <input type="text" class="form-control" name="life_three_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Three Description</label>
+                                        <textarea class="summernote" name="life_three_description"></textarea>
+                                    </div>
+                                   @endif
                                         @if($data->url == 'aboutus')
                                         <div class="form-group">
                                             <label>About Image 1</label>
@@ -309,6 +604,62 @@
                          <div class="tab-pane fade" id="tab4">
                                 <div class="row">
                                     <div class="col-md-12">
+                                         @if($data->url == 'health')
+                                            <div class="form-group">
+                                                <label>Sec Four Heading</label>
+                                                <input class="form-control" name="health_four_heading">
+                                            </div> 
+                                            <div class="form-group">
+                                                <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
+                                                <input type="text" class="form-control" name="health_four_lists">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Section Four Vector</label>
+                                                <input type="file" style="height:45px;" class="form-control" name="health_four_vector">
+                                            </div>
+                                         @endif
+                                         @if($data->url == 'critical')
+                                            <div class="form-group">
+                                                <label>Sec Four Heading</label>
+                                                <input class="form-control" name="desability_four_critical">
+                                            </div>   
+                                            <div class="form-group">
+                                                <label>Sec Four Description</label>
+                                                <textarea class="summernote" name="critical_four_description"></textarea>
+                                            </div>  
+                                            <div class="form-group">
+                                                <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
+                                                <input type="text" class="form-control" name="desability_four_lists">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Section Four Vector</label>
+                                                <input type="file" style="height:45px;" class="form-control" name="desability_four_vector">
+                                            </div>
+                                           @endif
+                                         @if($data->url == 'desability')
+                                            <div class="form-group">
+                                                <label>Sec Four Heading</label>
+                                                <input class="form-control" name="desability_four_heading">
+                                            </div>   
+                                            <div class="form-group">
+                                                <label>Section Lists<small class="text-danger">Add Comma <b>,</b> for Seprator</small></label>
+                                                <input type="text" class="form-control" name="desability_four_lists">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Section Four Vector</label>
+                                                <input type="file" style="height:45px;" class="form-control" name="desability_four_vector">
+                                            </div>
+                                           @endif
+                                         @if($data->url == 'life-insurance')
+                                            <div class="form-group">
+                                                <label>Sec Four Heading</label>
+                                                <textarea class="summernote" name="life_four_description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Section Four Vector</label>
+                                                <input type="file" style="height:45px;" class="form-control" name="life_four_vector">
+                                            </div>
+                                           @endif
                                         @if($data->url == 'aboutus')
                                             <div class="form-group">
                                                 <label>About Vector Image </label>
@@ -377,6 +728,154 @@
                          <div class="tab-pane fade" id="tab5">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        @if($data->url == 'health')
+                                        <div class="form-group">
+                                            <label>Sec Five Heading</label>
+                                            <input type="text"  class="form-control" name="section_five_heading">
+                                        </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                       @endif
+                                        @if($data->url == 'critical')
+                                        <div class="form-group">
+                                            <label>Sec Five Heading</label>
+                                            <input type="text"  class="form-control" name="desability_five_heading">
+                                        </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                       @endif
+                                        @if($data->url == 'desability')      
+                                        <div class="form-group">
+                                            <label>Section Five Image</label>
+                                            <input type="file" style="height:45px;" class="form-control" name="desability_five_vector">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec Five Heading</label>
+                                            <input type="text"  class="form-control" name="desability_five_heading">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec Five Description</label>
+                                            <textarea class="summernote" name="desability_five_description"></textarea>
+                                        </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                       @endif
+                                     @if($data->url == 'life-insurance')
+                                        <div class="form-group">
+                                            <label>Sec Five Heading</label>
+                                            <input type="text"  class="form-control" name="section_five_heading">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sec Five Description</label>
+                                            <textarea class="summernote" name="life_five_description"></textarea>
+                                        </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                       @endif
                                     @if($data->url == 'super-visa-insurance')
                                     <table class="table table-striped">
                                         <thead>
@@ -498,6 +997,183 @@
                                 </div>
                             </div>
                          </div>
+                         <div class="tab-pane fade" id="tab7">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                        @if($data->url == 'critical')
+                                        <div class="form-group">
+                                            <label>Sec Six Heading</label>
+                                            <input type="text"  class="form-control" name="critical_six_heading">
+                                            <label>Sec Six Description</label>
+                                             <textarea class="form-control" name="critical_six_description"></textarea>
+                                        </div>
+                                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                       @endif
+                                    @if($data->url == 'desability')
+                                    <div class="form-group">
+                                        <label>Sec Six Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="desability_six_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Heading</label>
+                                        <input type="text" class="form-control" name="desability_six_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Description</label>
+                                        <textarea class="summernote" name="desability_six_description"></textarea>
+                                    </div>
+                                    @endif
+                                    @if($data->url == 'life-insurance')
+                                    <div class="form-group">
+                                        <label>Sec Six Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="life_six_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Heading</label>
+                                        <input type="text" class="form-control" name="life_six_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Description</label>
+                                        <textarea class="summernote" name="life_six_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Heading</label>
+                                        <input type="text" class="form-control" name="life_six_heading_two">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Six Description</label>
+                                        <textarea class="summernote" name="life_six_description_two"></textarea>
+                                    </div>
+                                   @endif
+                                </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane fade" id="tab8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if($data->url == 'desability')
+                                    <div class="form-group">
+                                        <label>Sec Seven Description</label>
+                                        <textarea class="summernote" name="desability_seven_description"></textarea>
+                                    </div>
+                                   @endif
+                                    @if($data->url == 'life-insurance')
+                                    <div class="form-group">
+                                        <label>Sec Seven Heading</label>
+                                        <input type="text" class="form-control" name="life_seven_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Seven Description</label>
+                                        <textarea class="summernote" name="life_seven_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Seven Button Text</label>
+                                        <input type="text" class="form-control" name="life_seven_btn_text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Seven Link</label>
+                                        <input type="text" class="form-control" name="life_seven_btn_link">
+                                    </div>
+                                   @endif
+                                </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane fade" id="tab9">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if($data->url == 'life-insurance')
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Card Vector</th>
+                                                <th>Card Heading</th>
+                                                <th>Card Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="form-group">
+                                        <label>Sec Eight description</label>
+                                         <textarea class="summernote" name="life_seven_description"></textarea>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane fade" id="tab10">
+                           <div class="row">
+                                <div class="col-md-12">
+                                   @if($data->url == 'life-insurance')
+                                    <div class="form-group">
+                                        <label>Sec Nine Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="sec_nine_vector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Nine Heading</label>
+                                        <input type="text" class="form-control" name="sec_nine_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Nine Description</label>
+                                        <textarea class="summernote" name="sec_nine_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Nine Heading</label>
+                                        <input type="text" class="form-control" name="sec_nine_heading_two">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Nine Description</label>
+                                        <textarea class="summernote" name="sec_nine_description_two"></textarea>
+                                    </div>
+                                   @endif
+                                   </div>
+                               </div>
+                           </div>
                           </div><!--/.card-body -->
                           <div class="card-footer">
                                 <div class="form-group">
@@ -655,7 +1331,582 @@
 </div>
 <!-- end card 3 -->
 <!-- end section 5 -->
+<!-- modal section 5 -->
+<!-- card 1 -->
+<div class="modal fade" id="products1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Product 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Sec Btn Link</label>
+            <input type="text"  class="form-control" name="section_btn_link">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="products2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Product 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Sec Btn Link</label>
+            <input type="text"  class="form-control" name="section_btn_link">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="products3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Product 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Button Text</label>
+                    <input value="" type="text" class="form-control" name="btn_text">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                <label>Sec Btn Link</label>
+                <input type="text"  class="form-control" name="section_btn_link">
+            </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+<!-- end section 5 -->
+    <!-- desability section cards -->
+    <!-- card 1 -->
+<div class="modal fade" id="desability1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Desability 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="desability2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Desability 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="desability3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Desability 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Sec three Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec three Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+    <!-- end desability cards -->
 
+     <!-- Critical section cards -->
+    <!-- card 1 -->
+<div class="modal fade" id="policies1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Five Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Five Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Five Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="policies2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="form-group">
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Five Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+            <label>Sec Five Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Five Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="policies3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Five Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Five Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Five Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+    <!-- end critical cards -->
+
+     <!-- Critical section  6 cards -->
+    <!-- card 1 -->
+<div class="modal fade" id="advantages1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical Section Six 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Six Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="advantages2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical Section Six 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Six Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Heading</label>
+            <input type="text"  class="form-control" name="section_modal_-heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Description</label>
+             <textarea class="summernote" name="section_modal_-description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="advantages3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Critical Section Six 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Six Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+        <div class="form-group">
+            <label>Sec Six Description</label>
+             <textarea class="summernote" name="section_modal_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+    <!-- end critical section 6 cards -->
+     <!-- Health section  cards -->
+    <!-- card 1 -->
+<div class="modal fade" id="health1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="health2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="health3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+    <!-- end Health section 6 cards -->
+    <!-- Health section 3 cards -->
+    <!-- card 1 -->
+<div class="modal fade" id="boxes1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 1</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 1 -->
+ <!-- card 2 -->
+<div class="modal fade" id="boxes2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 2</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 2 -->
+ <!-- card 3 -->
+<div class="modal fade" id="boxes3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Health Section Two 3</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Section Two Image</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_modal_-vector">
+        </div>
+        <div class="form-group">
+            <label>Sec Two Heading</label>
+            <input type="text"  class="form-control" name="section_modal_heading">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card 3 -->
+    <!-- end Health section 3 cards -->
 <!-- Questions modal -->
 <div class="modal fade" id="questions" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -784,5 +2035,57 @@
   </div>
 </div>
 <!-- end About2 Modal -->
+<!-- Desability Card modal -->
+<div class="modal fade" id="aboutquestion" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Privacy</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>About Heading</label>
+            <input type="text" class="form-control" name="desability_two_headings">
+        </div>
+        <div class="form-group">
+            <label>About Two Description</label>
+             <textarea class="summernote" name="desability_two_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Desability Modal -->
+<!-- Critical Card modal -->
+<div class="modal fade" id="illness" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Privacy</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>About Heading</label>
+            <input type="text" class="form-control" name="desability_two_headings">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Critical Modal -->
 
 @endsection
