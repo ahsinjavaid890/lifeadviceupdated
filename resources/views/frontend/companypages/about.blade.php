@@ -1,65 +1,33 @@
 @extends('frontend.layouts.main')
+
+@php
+    $url = request()->segment(count(request()->segments()));
+    $page = DB::table('travelpages')->where('url' , $url)->get()->first();
+    $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get();
+@endphp
+
 @section('tittle')
 <title>About Us</title>
 @endsection
-
 @section('content')
-	<div class="health-inssurance-hero-banner pt-5" style="background-color: #262566;">          
+@include('frontend.companypages.includes.main')
+<div class="our-mission-section">
     <div class="container-homepage">
         <div class="row">
-            <div class="col-md-6">
-                <div class="herrotext">
-                    <h2 style="font-size: 3rem; color: white;" class="wow fadeInUp text-white" data-wow-delay=".4s">About Our Story</h2>
-                    <h5 class="wow fadeInUp  text-justify text-white" data-wow-delay=".6s">Life Advice Insurance Inc. has been providing superior insurance throughout Ontario for over a century. Our commitment to building long-term relationships and customer loyalty remains at the forefront of everything we do.</h5>
-                    <div class="hero-about-text text-white">What Makes Life Advice Extra Smart?</div>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
+            @foreach($secondsection as $r)
+            <div class="col-md-4">
+                <div class="our-mission">
+                    <div class="heading-our-mission-section">
+                        <img src="{{ url('public/images') }}/{{ $r->vector }}">
+                        <h1>{{ $r->heading }}</h1>
                     </div>
+                    <p>{!! $r->description !!}</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="hero-image">
-                    <img src="{{ asset('public/front/img/images/mainhero.gif') }}">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
-    <div class="our-mission-section">
-        <div class="container-homepage">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="our-mission">
-                        <div class="heading-our-mission-section">
-                            <img src="{{ asset('public/front/img/images/png-03.gif') }}">
-                            <h1>About Us</h1>
-                        </div>
-                        <p>Life Advice Insurance has born. With a fresh take on insurance sales and an approach that places customer experience front and center, our team has successfully understood the way Canadians get insurance. We're addressing today’s digital needs and making the insurance shopping experience more transparent and accessible, as well as less intrusive and time consuming.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="our-mission">
-                        <div class="heading-our-mission-section">
-                            <img src="{{ asset('public/front/img/images/png-03.gif') }}">
-                            <h1>Our Mission</h1>
-                        </div>
-                        <p>Our mission is to make insurance shopping for Canadians simple, easily accessible, and transparent, so our clients can get the coverage they really need. providing our customers most cost effective and best available insurance & investment products through search & development with an aim of not only saving them money but also to protect families for a better & secure future.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="our-mission">
-                        <div class="heading-our-mission-section">
-                            <img src="{{ asset('public/front/img/images/png-03.gif') }}">
-                            <h1>Our Goal</h1>
-                        </div>
-                        <p>Our goal is to empower you to make informed financial choices through education and then match you with the right financial solutions that can help you achieve your financial goals. Create best value for Customers, Shareholders and all Stake holders Achieve impeccable reputation and credentials through best business practice.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="finding-right">
         <div class="container-homepage">
             <div class="row aboutussecondrow">

@@ -344,7 +344,7 @@
                                     @if($data->url == 'aboutus')
                                     <div class="row mb-2">
                                         <div class="col-md-12 text-right">
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#about2"><i class="fa fa-plus"></i>Add New Card</a>
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Card</a>
                                         </div>
                                     </div>
                                     <table class="table table-bordered">
@@ -1826,16 +1826,22 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Add New Questions</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Something</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{{ url('admin/pages/addnewsectionthreeelement') }}">
+      <form enctype="multipart/form-data" method="POST" action="{{ url('admin/pages/addnewsectionthreeelement') }}">
         @csrf
       <input type="hidden" name="type" value="sectiontwoquestion">
       <input type="hidden" name="page" value="{{ $data->url }}">
       <div class="modal-body">
+        @if($data->url == 'aboutus')
+        <div class="form-group">
+            <label>Vector</label>
+            <input type="file"  class="form-control" name="vector">
+        </div>
+        @endif
         <div class="form-group">
             <label>Question</label>
             <input type="text"  class="form-control" name="heading">
@@ -1917,38 +1923,6 @@
   </div>
 </div>
 <!-- end Privacy Policy Modal -->
-<!-- About2 Card modal -->
-<div class="modal fade" id="about2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Add About</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>About Image</label>
-            <input type="file" style="height:45px;" class="form-control" name="about_two_vector">
-        </div>
-        <div class="form-group">
-            <label>About Heading</label>
-            <input type="text" class="form-control" name="about_two_headings">
-        </div>
-        <div class="form-group">
-            <label>About Two Description</label>
-             <textarea class="summernote" name="about_two_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end About2 Modal -->
 <!-- Desability Card modal -->
 <div class="modal fade" id="aboutquestion" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">

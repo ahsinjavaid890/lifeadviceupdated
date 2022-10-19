@@ -70,13 +70,22 @@ class CmsController extends Controller
     {
         $add = new section_three_elements();
         $add->page = $request->page;
+        if($request->vector)
+        {
+            $add->vector = Cmf::sendimagetodirectory($request->vector);
+        }
+        
         $add->heading = $request->heading;
         $add->description = $request->description;
         $add->type = $request->type;
         $add->save();
         return redirect()->back()->with('message', 'Inserted Successfully');
     }
-
+    public function dletesectiontwo($id)
+    {
+        section_three_elements::where('id' , $id)->delete();
+        return redirect()->back()->with('warning', 'Deleted Successfully');
+    }
     public function faqcategories()
     {
         $data = frequesntlyaskquest_categories::all();
