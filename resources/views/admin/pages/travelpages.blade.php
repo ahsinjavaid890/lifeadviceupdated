@@ -20,7 +20,7 @@
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
-                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs')
+                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product')
                                    <h2> {{ $data->name }} </h2>
 
                             @endif
@@ -59,6 +59,9 @@
                                </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
                              </ul>
                             @endif
@@ -123,6 +126,9 @@
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
                                </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                               </li>
                              </ul>
                              @endif
                              @if( $data->url == 'life-insurance')
@@ -156,6 +162,9 @@
                                </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
                              </ul>
                              @endif
@@ -223,35 +232,24 @@
                                         <label>Product Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="product_two_vector">
                                     </div>
-                                    <table class="table table-striped">
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Vector</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#products3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                    @endif
@@ -260,30 +258,24 @@
                                         <label>Sec Two Headong</label>
                                         <input type="text"  class="form-control" name="health_two_heading">
                                     </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Vector</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#health3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                    @endif
@@ -300,23 +292,11 @@
                                         <label>Life Description</label>
                                         <textarea class="summernote" name="life_description"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>life Heading</label>
-                                        <input type="text" class="form-control" name="life_heading_two">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Life Description</label>
-                                        <textarea class="summernote" name="life_description_two"></textarea>
-                                    </div>
                                    @endif
                                    @if($data->url == 'critical')
                                     <div class="form-group">
                                         <label>First Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="critical_two_vector">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>life Heading</label>
-                                        <input type="text" class="form-control" name="critical_heading">
                                     </div>
                                     <div class="form-group">
                                         <label>Life Description</label>
@@ -329,12 +309,8 @@
                                         <input type="file" style="height:45px;" class="form-control" name="life_two_vector">
                                     </div>
                                     <div class="form-group">
-                                        <label>life Heading</label>
-                                        <input type="text" class="form-control" name="life_heading">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Life Description</label>
-                                        <textarea class="summernote" name="life_description"></textarea>
+                                        <textarea class="summernote" name="life_two_description"></textarea>
                                     </div>
                                    @endif
                                    @if($data->url == 'contactus')
@@ -360,25 +336,10 @@
                                     </div>
                                    @endif
                                    @if($data->url == 'privacypolicy')
-                                    <div class="row mb-2">
-                                        <div class="col-md-12 text-right">
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#policy"><i class="fa fa-plus"></i>Add New Questions</a>
+                                        <div class="form-group">
+                                            <label>Privacy Headings</label>
+                                            <textarea class="summernote" name="privacy_two_heading"></textarea>
                                         </div>
-                                    </div>
-                                   <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Privacy Heading</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
-                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                     @endif
                                     @if($data->url == 'aboutus')
                                     <div class="row mb-2">
@@ -389,15 +350,17 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Heading</th>
+                                                <th>Questions</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</td>
-                                                <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                                <td>{{ $r->heading }}</td>
+                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                     @endif
@@ -472,30 +435,24 @@
                                         <label>First Vector</label>
                                         <input type="file" style="height:45px;" class="form-control" name="health_two_vector">
                                     </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Vector</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#boxes3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                    @endif
@@ -508,14 +465,20 @@
                                         <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#illness"><i class="fa fa-plus"></i>Add New Questions</a>
                                     </div>
                                     <table class="table table-bordered">
-                                        <tr>
-                                            <th>Heading</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</td>
-                                            <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th>Questions</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
+                                            <tr>
+                                                <td>{{ $r->heading }}</td>
+                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
                                     </table>
                                  @endif
                                  @if($data->url == 'desability')
@@ -526,22 +489,24 @@
                                     <div class="form-group">
                                         <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#aboutquestion"><i class="fa fa-plus"></i>Add New Questions</a>
                                     </div>
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <th>Heading</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</td>
-                                            <td><a href="javascript:void(0)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                                        </tr>
+                                   <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Questions</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
+                                            <tr>
+                                                <td>{{ $r->heading }}</td>
+                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
                                     </table>
                                  @endif
                                  @if($data->url == 'life-insurance')
-                                    <div class="form-group">
-                                        <label>Sec Three Heading</label>
-                                        <input type="text" class="form-control" name="life_three_heading">
-                                    </div>
                                     <div class="form-group">
                                         <label>Sec Three Description</label>
                                         <textarea class="summernote" name="life_three_description"></textarea>
@@ -728,39 +693,29 @@
                          <div class="tab-pane fade" id="tab5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        @if($data->url == 'health')
+                                        @if($data->url == 'health') 
                                         <div class="form-group">
                                             <label>Sec Five Heading</label>
                                             <input type="text"  class="form-control" name="section_five_heading">
                                         </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Vector</th>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                        @endif
@@ -769,70 +724,54 @@
                                             <label>Sec Five Heading</label>
                                             <input type="text"  class="form-control" name="desability_five_heading">
                                         </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#policies3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                        @endif
                                         @if($data->url == 'desability')      
                                         <div class="form-group">
                                             <label>Section Five Image</label>
-                                            <input type="file" style="height:45px;" class="form-control" name="desability_five_vector">
+                                            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
                                         </div>
                                         <div class="form-group">
                                             <label>Sec Five Heading</label>
-                                            <input type="text"  class="form-control" name="desability_five_heading">
+                                            <textarea class="summernote" name="section_five_description"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Sec Five Description</label>
-                                            <textarea class="summernote" name="desability_five_description"></textarea>
-                                        </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#desability3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                        @endif
@@ -845,34 +784,24 @@
                                             <label>Sec Five Description</label>
                                             <textarea class="summernote" name="life_five_description"></textarea>
                                         </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Vector</th>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                        @endif
@@ -1008,30 +937,24 @@
                                             <label>Sec Six Description</label>
                                              <textarea class="form-control" name="critical_six_description"></textarea>
                                         </div>
-                                        <table class="table table-striped">
+                                        <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#advantages3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                        @endif
@@ -1055,20 +978,8 @@
                                         <input type="file" style="height:45px;" class="form-control" name="life_six_vector">
                                     </div>
                                     <div class="form-group">
-                                        <label>Sec Six Heading</label>
-                                        <input type="text" class="form-control" name="life_six_heading">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Sec Six Description</label>
                                         <textarea class="summernote" name="life_six_description"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Sec Six Heading</label>
-                                        <input type="text" class="form-control" name="life_six_heading_two">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Sec Six Description</label>
-                                        <textarea class="summernote" name="life_six_description_two"></textarea>
                                     </div>
                                    @endif
                                 </div>
@@ -1108,34 +1019,24 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @if($data->url == 'life-insurance')
-                                    <table class="table table-striped">
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Card Vector</th>
-                                                <th>Card Heading</th>
-                                                <th>Card Description</th>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                     <div class="form-group">
@@ -1155,22 +1056,35 @@
                                         <input type="file" style="height:45px;" class="form-control" name="sec_nine_vector">
                                     </div>
                                     <div class="form-group">
-                                        <label>Sec Nine Heading</label>
-                                        <input type="text" class="form-control" name="sec_nine_heading">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Sec Nine Description</label>
                                         <textarea class="summernote" name="sec_nine_description"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Sec Nine Heading</label>
-                                        <input type="text" class="form-control" name="sec_nine_heading_two">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Sec Nine Description</label>
-                                        <textarea class="summernote" name="sec_nine_description_two"></textarea>
-                                    </div>
                                    @endif
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="tab-pane fade" id="tab11">
+                           <div class="row">
+                                <div class="col-md-12">
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health' || $data->url == 'life-insurance' || $data->url == 'critical')   
+
+                                         <table class="table table-bordered">
+                                             <thead>
+                                                 <tr>
+                                                     <th>vector</th>
+                                                     <th>Categories</th>
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                             @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
+                                                 <tr>
+                                                     <td><img style="width: 100px" src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}"></td>
+                                                     <td>{{ $r->name }}</td>
+                                                 </tr>
+                                         @endforeach
+                                             </tbody>
+                                         </table>
+                                       @endif
                                    </div>
                                </div>
                            </div>
@@ -2008,7 +1922,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Add Privacy</h4>
+        <h4 class="modal-title" id="myModalLabel">Add About</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -2029,7 +1943,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
