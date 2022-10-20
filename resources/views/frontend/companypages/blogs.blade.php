@@ -1,19 +1,13 @@
 @extends('frontend.layouts.main')
-@extends('frontend.layouts.main')
-
 @include('frontend.companypages.includes.mettatittle')
-
-
 @section('content')
 @include('frontend.companypages.includes.main')
-
 <section class="chooses-blogs choose-us-area-five pb-70">
    <div class="container-fluid">
       <div class="row">
          <div class="col-md-9">
             <div class="row">
-               
-               @foreach(DB::table('blogs')->get() as $r)
+               @foreach($data as $r)
                <div class="col-md-4">
                   <div class="card blank-card mt-3">
                      <div class="card-body">
@@ -22,7 +16,7 @@
                         </div>
                         <div class="card-content">
                            <h3>{{ $r->title }}</h3>
-                           <p>{{ $r->content }}</p>
+                           <p><?php $blog_text = strip_tags($r->content); echo substr($blog_text, 0, 400);?>... </p>
                         </div>
                         <div class="blogbutton">
                            <a href="{{ $r->url}}">Read More..</a>
@@ -30,7 +24,10 @@
                      </div>
                   </div>
                </div>
-                            @endforeach
+                @endforeach
+            </div>
+            <div style="margin-top:10px;" class="row">
+                {!! $data->links('frontend.pagination') !!}
             </div>
          </div>
          <div class="col-md-3">

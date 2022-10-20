@@ -1,8 +1,5 @@
 @extends('frontend.layouts.main')
-@extends('frontend.layouts.main')
-
 @include('frontend.companypages.includes.mettatittle')
-
 @section('content')
 
 <style type="text/css">
@@ -16,43 +13,6 @@
 }
 </style>
 @include('frontend.companypages.includes.main')
-
-   <!--  <div class="finding-right">
-        <div class="container-homepage">
-                <div class="card mobile-card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="assets/img/images/mobile.png">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="mobile-heading">
-                                    <h2>How can we help you?</h2>
-                                </div>
-                                <div class="mobile-pargraph mt-3">
-                                    <p c>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, seddiam nonummy nibh euismod tincidunt ut laoreet dolore magnaaliquam erat volutpat. Ut wisi </p>
-                                </div>
-                                <div class="mt-3 mobile-btn">
-                                    <button class="default-btn btn-lg">Sign in to your account</button>
-                                </div>
-                                <div class="mobile-heading">
-                                    <h2>Couldn’t find an answer to your question? </h2>
-                                </div>
-                                <div class="mobile-pargraph mt-3">
-                                    <p c>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, seddiam nonummy nibh euismod tincidunt ut laoreet dolore magnaaliquam erat volutpat. Ut wisi </p>
-                                </div>
-                                <div class="mt-3 mobile-btn">
-                                    <button class="default-btn btn-lg">Ask the Experts</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-       <!--  <div class="contact-backgorund" style="position: absolute;">
-            <img src="assets/img/images/contact-bg.png">
-        </div> -->
         <div class="container-fluid pt-5 pl-0 pr-0">
 
         <div class="row pb-2 d-none contactus align-items-center">

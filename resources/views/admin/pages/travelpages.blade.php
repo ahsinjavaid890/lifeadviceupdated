@@ -404,7 +404,7 @@
                                    @if($data->url == 'privacypolicy')
                                         <div class="form-group">
                                             <label>Privacy Headings</label>
-                                            <textarea class="summernote" name="privacy_two_heading"></textarea>
+                                            <textarea class="summernote" name="privacy_two_heading">{{ $data->privacy_two_heading }}</textarea>
                                         </div>
                                     @endif
                                     @if($data->url == 'aboutus')

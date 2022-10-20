@@ -9,6 +9,7 @@ use App\Models\jobsubmissionsrequests;
 use App\Models\linktemplatewithjobs;
 use App\Models\maplocations;
 use App\Models\hiring_map;
+use DB;
 class SiteController extends Controller
 {
     public function index()
@@ -57,7 +58,8 @@ class SiteController extends Controller
     }
     public function blogs()
     {
-        return view('frontend.companypages.blogs');
+        $data = DB::table('blogs')->paginate(9);
+        return view('frontend.companypages.blogs')->with(array('data'=>$data));
     }
     public function contactus()
     {
