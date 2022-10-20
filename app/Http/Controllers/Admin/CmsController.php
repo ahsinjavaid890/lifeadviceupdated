@@ -62,6 +62,11 @@ class CmsController extends Controller
         }
         $update->heading = $request->heading;
         $update->description = $request->description;
+        $update->button_text = $request->button_text;
+        $update->button_link = $request->button_link;
+        $update->contact_number = $request->contact_number;
+        $update->contact_number_two = $request->contact_number_two;
+        $update->with_in = $request->with_in;
         $update->save();
         return redirect()->back()->with('message', 'Page Updated Successfully');
     }
@@ -77,6 +82,11 @@ class CmsController extends Controller
         
         $add->heading = $request->heading;
         $add->description = $request->description;
+        $add->button_text = $request->button_text;
+        $add->button_link = $request->button_link;
+        $add->contact_number = $request->contact_number;
+        $add->contact_number_two = $request->contact_number_two;
+        $add->with_in = $request->with_in;
         $add->type = $request->type;
         $add->save();
         return redirect()->back()->with('message', 'Inserted Successfully');

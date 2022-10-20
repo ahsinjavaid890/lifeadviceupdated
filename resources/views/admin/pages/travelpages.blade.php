@@ -696,20 +696,24 @@
                                    @endif
                                         @if($data->url == 'claim')
                                         <div class="form-group">
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#claimcard"><i class="fa fa-plus"></i>Add New Questions</a>
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Questions</a>
                                         </div>
                                         <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Questions</th>
+                                                <th>Logo</th>
+                                                <th>Heading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'claimproducts')->where('page' , $data->url)->get() as $r)
                                             <tr>
-                                                <td>{{ $r->heading }}</td>
-                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                                <td>
+                                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                                </td>
+                                                <td>{!! $r->heading !!}</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -1276,10 +1280,33 @@
                 <label>Heading</label>
                 <textarea class="summernote-heading" name="heading">{{ $r->heading }}</textarea>
             </div>
+            @if($data->url == 'claim')
+            <div class="form-group">
+                <label>Button Text</label>
+                <input type="text"  class="form-control" value="{{ $r->button_text }}" name="button_text">
+            </div>
+            <div class="form-group">
+                <label>Button Link</label>
+                <input type="text"  class="form-control" value="{{ $r->button_link }}" name="button_link">
+            </div>
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text"  class="form-control" value="{{ $r->contact_number }}" name="contact_number">
+            </div>
+            <div class="form-group">
+                <label>Contact Number 2</label>
+                <input type="text"  class="form-control" value="{{ $r->contact_number_two }}" name="contact_number_two">
+            </div>
+            <div class="form-group">
+                <label>With In</label>
+                <input type="text"  class="form-control" value="{{ $r->with_in }}" name="with_in">
+            </div>
+            @else
             <div class="form-group">
                 <label>Description</label>
                 <textarea class="summernote" name="description">{{ $r->description }}</textarea>
             </div>
+            @endif
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1978,24 +2005,52 @@
         </button>
       </div>
       <form enctype="multipart/form-data" method="POST" action="{{ url('admin/pages/addnewsectionthreeelement') }}">
-        @csrf
+      @csrf
+      @if($data->url == 'claim')
+      <input type="hidden" name="type" value="claimproducts">
+      @else
       <input type="hidden" name="type" value="sectiontwoquestion">
+      @endif
+
       <input type="hidden" name="page" value="{{ $data->url }}">
       <div class="modal-body">
-        @if($data->url == 'aboutus')
+        @if($data->url == 'aboutus' || $data->url == 'claim')
         <div class="form-group">
             <label>Vector</label>
             <input type="file"  class="form-control" name="vector">
         </div>
         @endif
         <div class="form-group">
-            <label>Question</label>
+            @if($data->url == 'claim')<label>Heading</label>@else<label>Question</label>@endif
             <input type="text"  class="form-control" name="heading">
         </div>
+        @if($data->url == 'claim')
         <div class="form-group">
-            <label>Answer</label>
-             <textarea class="summernote" name="description"></textarea>
+            <label>Button Text</label>
+            <input type="text"  class="form-control" name="button_text">
         </div>
+        <div class="form-group">
+            <label>Button Link</label>
+            <input type="text"  class="form-control" name="button_link">
+        </div>
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="text"  class="form-control" name="contact_number">
+        </div>
+        <div class="form-group">
+            <label>Contact Number 2</label>
+            <input type="text"  class="form-control" name="contact_number_two">
+        </div>
+        <div class="form-group">
+            <label>With In</label>
+            <input type="text"  class="form-control" name="with_in">
+        </div>
+        @else
+        <div class="form-group">
+           @if($data->url == 'claim')<label>Description</label>@else<label>Answer</label>@endif
+           <textarea class="summernote" name="description"></textarea>
+        </div>
+        @endif
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -2177,45 +2232,4 @@
   </div>
 </div>
 <!-- end Claim Card 2 Modal -->
-<!-- Claim 4 Card modal -->
-<div class="modal fade" id="claimcard" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Add Privacy</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Claim Heading</label>
-            <input type="text" class="form-control" name="claim_four_headings">
-        </div>
-        <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="claim_four_vector">
-        </div>
-        <div class="form-group">
-            <label>Claim Button Link</label>
-            <input type="text" class="form-control" name="claim_four_btn_link">
-        </div>
-        <div class="form-group">
-            <label>Claim Button text</label>
-            <input type="text" class="form-control" name="claim_four_btn_text">
-        </div>
-        <div class="form-group">
-            <label>Claim  Description</label>
-             <textarea class="summernote" name="claim_four_description"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end Claim 4 Modal -->
 @endsection
