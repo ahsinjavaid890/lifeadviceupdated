@@ -2022,7 +2022,8 @@
         @endif
         <div class="form-group">
             @if($data->url == 'claim')<label>Heading</label>@else<label>Question</label>@endif
-            <input type="text"  class="form-control" name="heading">
+             @if($data->url == 'claim')<textarea class="summernote" name="heading"></textarea> @else<input type="text"  class="form-control" name="heading">@endif
+            
         </div>
         @if($data->url == 'claim')
         <div class="form-group">
