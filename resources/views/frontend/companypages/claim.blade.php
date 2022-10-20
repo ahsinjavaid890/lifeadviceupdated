@@ -1,30 +1,9 @@
 @extends('frontend.layouts.main')
-@section('tittle')
-<title>Claim Insurance</title>
-@endsection
+@include('frontend.companypages.includes.mettatittle')
+
 @section('content')
-<div class="health-inssurance-hero-banner pt-5">          
-    <div class="container-homepage">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="herrotext">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span>Claim</span> Form</h2>
-                    <h5 class="wow fadeInUp  text-justify" data-wow-delay=".6s"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span></h5>
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="" class=" btn-lg"><i class="fa fa-search mr-3"></i>Have any Question?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="hero-image">
-                    <img src="{{asset('public/front/img/images/claim-hero.gif')}}">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.companypages.includes.main')
+
    <section class="claim-process pb-5 pt-5">
        <div class="container-homepage">
            <div class="row">

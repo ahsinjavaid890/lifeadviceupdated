@@ -7682,8 +7682,8 @@ section {
 }
 .logo-image {
     position: absolute;
-    top: 148px;
-    left: 490px;
+    top: 111px;
+    left: 1075px;
 }
 .choice-card-paragraph{
     font-size: 13px;
@@ -10923,7 +10923,7 @@ time {
     .logo-image {
     position: absolute !important;
     top: 200px !important;
-    left: 300px !important;
+    left: 288px !important;
 }.phone-man {
     position: absolute;
     top: 287rem;
@@ -11242,6 +11242,11 @@ ul.tabs li.current{
    -webkit-appearance: none;
 }
 @media only screen and (min-width: 1800px) and (max-width: 1850px) {
+    .logo-image {
+    position: absolute;
+    top: 172px !important;
+    left: 420px !important;
+    }
     .super-images {
     width: 1215px !important;
     position: absolute;
@@ -11262,6 +11267,11 @@ ul.tabs li.current{
 }
 
 @media only screen and (min-width: 1650px) and (max-width: 1800px) {
+    .logo-image {
+    position: absolute;
+    top: 180px !important;
+    left: 386px !important; 
+}
     .super-images {
     width: 1163px !important;
     position: absolute;
@@ -11282,6 +11292,11 @@ ul.tabs li.current{
     }
 }
 @media only screen and (min-width: 1515px) and (max-width: 1650px) {
+    .logo-image {
+    position: absolute;
+    top: 170px!important;
+    left: 330px !important;
+}
 .super-images {
     width: 1031px !important;
     position: absolute;
@@ -11292,6 +11307,7 @@ ul.tabs li.current{
 
 }
 @media only screen and (min-width: 1350px) and (max-width: 1515px) {
+
  .super-images {
     width: 957px !important;
     position: absolute;
@@ -11345,6 +11361,11 @@ ul.tabs li.current{
 @media only screen and (min-width: 1100px) and (max-width: 1350px) {
     .text-section .herrotext h2{
         font-size: 28px !important;
+    }
+    .logo-image {
+    position: absolute !important;
+    top: 234px !important;
+    left: 251px !important;
     }
     .home-image {
     width: 778px !important;
@@ -11506,6 +11527,11 @@ ul.tabs li.current{
     right: -101px;
     height: 709px !important;
 }
+.logo-image {
+    position: absolute;
+    top: 148px !important;
+    left: 682px !important;
+}
 .super-hero {
     height: 710px !important;
 }
@@ -11518,6 +11544,11 @@ ul.tabs li.current{
 }
 }
 @media only screen and (min-width: 1000px) and (max-width: 1100px){
+      .logo-image {
+    position: absolute !important;
+    top: 260px !important;
+    left: 209px !important;
+}
 .super-images {
     width: 704px !important;
     position: absolute;

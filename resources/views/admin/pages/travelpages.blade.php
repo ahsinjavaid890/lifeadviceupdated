@@ -16,13 +16,60 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
                             @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product')
                                    <h2> {{ $data->name }} </h2>
 
+                            @endif
+                            @if($data->url == 'resp')
+                              <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                            @endif
+                            @if($data->url == 'claim')
+                                <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
                             @endif
                            @if($data->url == 'privacypolicy' || $data->url == 'product')
                             <ul class="nav nav-tabs card-header-tabs">
@@ -38,7 +85,7 @@
                              </ul>
                            @endif
                             @if($data->url == 'critical-illness')
-                                <ul class="nav nav-tabs card-header-tabs">
+                              <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
                                </li>
@@ -58,10 +105,10 @@
                                  <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
                                </li>
                              </ul>
                             @endif
@@ -124,10 +171,10 @@
                                  <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
                                </li>
                              </ul>
                              @endif
@@ -218,7 +265,26 @@
                          <div class="tab-pane fade" id="tab2">
                            <div class="row">
                                 <div class="col-md-12">
-
+                                   @if($data->url == 'resp')
+                                    <div class="form-group">
+                                        <label>Claim Description</label>
+                                        <textarea class="summernote" name="resp_two_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Claim Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="resp_two_vector">
+                                    </div>
+                                   @endif
+                                   @if($data->url == 'claim')
+                                    <div class="form-group">
+                                        <label>Claim Description</label>
+                                        <textarea class="summernote" name="claim_two_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Claim Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="claim_two_vector">
+                                    </div>
+                                   @endif
                                    @if($data->url == 'product')
                                     <div class="form-group">
                                         <label>Product Heading</label>
@@ -258,7 +324,7 @@
                                         <label>Sec Two Headong</label>
                                         <input type="text"  class="form-control" name="health_two_heading">
                                     </div>
-                                        <table class="table table-bordered">
+                                      <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Vector</th>
@@ -430,6 +496,55 @@
                          <div class="tab-pane fade" id="tab3">
                                 <div class="row">
                                     <div class="col-md-12">
+                                       @if($data->url == 'resp')
+                                    <div class="form-group">
+                                        <label>Claim Description</label>
+                                        <textarea class="summernote" name="resp_three_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Claim Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="resp_three_vector">
+                                    </div>
+                                   @endif
+                                      @if($data->url == 'claim')
+                                        <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Vector</th>
+                                                <th>Heading</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img width="120" src="">
+                                                </td>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#claim"><i class="fa fa-edit"></i>Edit 1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img width="120" src="">
+                                                </td>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#claim2"><i class="fa fa-edit"></i>Edit 2</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="form-group">
+                                        <label>First Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="clain_three_vector_one">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sec Three Heading</label>
+                                        <input type="text" class="form-control" name="claim_three_heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="clain_three_vector_two">
+                                    </div>
+                                      @endif
                                         @if($data->url == 'health-insurance')
                                     <div class="form-group">
                                         <label>First Vector</label>
@@ -569,6 +684,37 @@
                          <div class="tab-pane fade" id="tab4">
                                 <div class="row">
                                     <div class="col-md-12">
+                                       @if($data->url == 'resp')
+                                    <div class="form-group">
+                                        <label>Claim Description</label>
+                                        <textarea class="summernote" name="resp_four_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Claim Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="resp_four_vector">
+                                    </div>
+                                   @endif
+                                        @if($data->url == 'claim')
+                                        <div class="form-group">
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#claimcard"><i class="fa fa-plus"></i>Add New Questions</a>
+                                        </div>
+                                        <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Questions</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
+                                            <tr>
+                                                <td>{{ $r->heading }}</td>
+                                                <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                        @endif
                                          @if($data->url == 'health-insurance')
                                             <div class="form-group">
                                                 <label>Sec Four Heading</label>
@@ -693,6 +839,16 @@
                          <div class="tab-pane fade" id="tab5">
                                 <div class="row">
                                     <div class="col-md-12">
+                                       @if($data->url == 'resp')
+                                    <div class="form-group">
+                                        <label>Claim Description</label>
+                                        <textarea class="summernote" name="resp_five_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Claim Vector</label>
+                                        <input type="file" style="height:45px;" class="form-control" name="resp_five_vector">
+                                    </div>
+                                   @endif
                                         @if($data->url == 'health-insurance') 
                                         <div class="form-group">
                                             <label>Sec Five Heading</label>
@@ -1066,24 +1222,14 @@
                            <div class="tab-pane fade" id="tab11">
                            <div class="row">
                                 <div class="col-md-12">
-                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health-insurance' || $data->url == 'life-insurance' || $data->url == 'critical-illness')   
+                            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance'|| $data->url == 'aboutus'|| $data->url == 'health-insurance' || $data->url == 'life-insurance' || $data->url == 'critical-illness' || $data->url == 'claim' || $data->url =='resp')   
 
-                                         <table class="table table-bordered">
-                                             <thead>
-                                                 <tr>
-                                                     <th>vector</th>
-                                                     <th>Categories</th>
-                                                 </tr>
-                                             </thead>
-                                             <tbody>
-                                             @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
-                                                 <tr>
-                                                     <td><img style="width: 100px" src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}"></td>
-                                                     <td>{{ $r->name }}</td>
-                                                 </tr>
+                                        
+                                          <select class="form-control">
+                                            @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
+                                            <option>{{ $r->name }}</option>
                                          @endforeach
-                                             </tbody>
-                                         </table>
+                                          </select>
                                        @endif
                                    </div>
                                </div>
@@ -1975,5 +2121,101 @@
   </div>
 </div>
 <!-- end Critical Modal -->
-
+<!-- Claim Card modal -->
+<div class="modal fade" id="claim" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add New Card</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Card Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="claim_three_vector">
+        </div>
+        <div class="form-group">
+            <label>Card Description</label>
+            <textarea class="summernote" name="claim_three_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Claim Card Modal -->
+<!-- Claim Card 2 modal -->
+<div class="modal fade" id="claim2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add New Card</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Card Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="claim_three_vector">
+        </div>
+        <div class="form-group">
+            <label>Card Description</label>
+            <textarea class="summernote" name="claim_three_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Claim Card 2 Modal -->
+<!-- Claim 4 Card modal -->
+<div class="modal fade" id="claimcard" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Privacy</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Claim Heading</label>
+            <input type="text" class="form-control" name="claim_four_headings">
+        </div>
+        <div class="form-group">
+            <label>Claim Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="claim_four_vector">
+        </div>
+        <div class="form-group">
+            <label>Claim Button Link</label>
+            <input type="text" class="form-control" name="claim_four_btn_link">
+        </div>
+        <div class="form-group">
+            <label>Claim Button text</label>
+            <input type="text" class="form-control" name="claim_four_btn_text">
+        </div>
+        <div class="form-group">
+            <label>Claim  Description</label>
+             <textarea class="summernote" name="claim_four_description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Claim 4 Modal -->
 @endsection
