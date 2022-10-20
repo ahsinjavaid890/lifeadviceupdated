@@ -8,22 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/faq.css')}}">
 
 @section('content')
-<div class="health-inssurance-hero-banner pt-5" style="background-color: #262566;">          
-       <div class="container">
-           <div class="row">
-               <div class="col-md-6">
-                   <div class="herrotext">
-                  <h2 style="font-size: 3rem;" class="wow fadeInUp text-white" data-wow-delay=".4s">Frequently Asked Questions </h2>
-                   </div>
-               </div>
-               <div class="col-md-6">
-                   <div class="hero-image">
-                       <img src="{{ asset('public/front/img/images/travel2.png') }}">
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+@include('frontend.companypages.includes.main')
    <section class="first-section-of-page">
       <div id="faq" class="container py-5">
             <style type="text/css">

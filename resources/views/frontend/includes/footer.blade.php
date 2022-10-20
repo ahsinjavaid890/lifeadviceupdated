@@ -38,7 +38,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="{{ url('health-insurance')}}.php">
+                        <a href="{{ url('health-insurance')}}">
                                 Health Insurance
                             </a>
                     </li>

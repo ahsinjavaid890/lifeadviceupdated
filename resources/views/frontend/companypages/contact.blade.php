@@ -35,17 +35,16 @@
                         <p>Speak with our Advisors anytime</p>
 
                         <div class="col-md-12 add">
-                            <h5><i class="fa fa-map-marker"></i>  Address </h5>
-                            <p>912 Isaiah Place, Kitchener, ON, N2E0B6 </p>
+                            <h5><i class="fa fa-map-marker"></i>   Address </h5><p> {{ Cmf::get_store_value('site_address') }} </p>
                         </div>
             
                         <div class="col-md-12 add">
                             <h5><i class="fa fa-phone"></i> Phone  </h5>
-                            <p>+1-855-500-8999,</p></div> 
+                            <p>{{ Cmf::get_store_value('site_phonenumber') }}</p></div> 
 
                             <div class="col-md-12 add">
                                 <h5><i class="fa fa-envelope"></i> Email </h5>
-                                <p>contact@lifeadvice.ca,</p>
+                                <p><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3"> {{ Cmf::get_store_value('site_email') }}</span></p>
                             </div>
                         </div>
             
