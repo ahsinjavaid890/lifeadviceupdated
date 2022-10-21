@@ -7,13 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Models\companies;
-use App\Models\help_categories;
+use App\Models\wp_dh_life_plans_benefits;
 use App\Models\help_articles;
 use App\Models\blogs;
 use App\Models\blogcategories;
 use App\Models\company_info_pages;
-use App\Models\recuring_tips;
+use App\Models\wp_dh_insurance_plans_benefits;
 use App\Models\wp_dh_insurance_plans;
+use App\Models\wp_dh_life_plans;
+use App\Models\quotes;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
@@ -23,6 +25,25 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin/dashboard/index');
     }
+    public function addnewuser()
+    {
+        return view('admin.users.addnewuser');
+    }
+    public function allusers()
+    {
+        $data = User::all();
+        return view('admin.users.allusers')->with(array('data'=>$data));
+    }
+    public function viewuser($id)
+    {
+        $data = User::find($id);
+        return view('admin.users.viewuser')->with(array('data'=>$data));
+    }
+    public function allquotations()
+    {
+        $data = quotes::all();
+        return view('admin/quotations/index')->with(array('data'=>$data));
+    }
     public function allproducts()
     {
         $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
@@ -30,14 +51,46 @@ class AdminController extends Controller
     }
     public function allplans()
     {
-
         $data = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id as plan_id','wp_dh_insurance_plans.plan_name','wp_dh_products.pro_name','wp_dh_companies.comp_logo')
         ->leftJoin('wp_dh_products','wp_dh_insurance_plans.product','=','wp_dh_products.pro_id')
         ->leftJoin('wp_dh_companies','wp_dh_insurance_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
         return view('admin.plans.index')->with(array('data'=>$data));
     }
-
-
+    public function planbenifits()
+    {
+        $data = wp_dh_insurance_plans_benefits::select(
+            'wp_dh_insurance_plans_benefits.id as benifit_id',
+            'wp_dh_insurance_plans.plan_name',
+            'wp_dh_insurance_plans.product',
+            'wp_dh_products.pro_name')
+        ->leftJoin('wp_dh_insurance_plans','wp_dh_insurance_plans_benefits.plan_id','=','wp_dh_insurance_plans.id')
+        ->leftJoin('wp_dh_products','wp_dh_insurance_plans.product','=','wp_dh_products.pro_id')
+        ->groupby('wp_dh_insurance_plans_benefits.plan_id')
+        ->wherenotnull('wp_dh_insurance_plans.plan_name')
+        ->get();
+        return view('admin.plans.planbenifits')->with(array('data'=>$data));
+    }
+    public function lifeplans()
+    {
+        $data = wp_dh_life_plans::select('wp_dh_life_plans.id as plan_id','wp_dh_life_plans.plan_name','wp_dh_products.pro_name','wp_dh_companies.comp_logo')
+        ->leftJoin('wp_dh_products','wp_dh_life_plans.product','=','wp_dh_products.pro_id')
+        ->leftJoin('wp_dh_companies','wp_dh_life_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
+        return view('admin.plans.lifeplans')->with(array('data'=>$data));
+    }
+    public function lifeplanbenifits()
+    {
+        $data = wp_dh_life_plans_benefits::select(
+            'wp_dh_life_plans_benefits.id as benifit_id',
+            'wp_dh_life_plans.plan_name',
+            'wp_dh_life_plans.product',
+            'wp_dh_products.pro_name')
+        ->leftJoin('wp_dh_life_plans','wp_dh_life_plans_benefits.plan_id','=','wp_dh_life_plans.id')
+        ->leftJoin('wp_dh_products','wp_dh_life_plans.product','=','wp_dh_products.pro_id')
+        ->groupby('wp_dh_life_plans_benefits.plan_id')
+        ->wherenotnull('wp_dh_life_plans.plan_name')
+        ->get();
+        return view('admin.plans.lifeplanbenifits')->with(array('data'=>$data));
+    }
     public function profile()
     {
         return view('admin/profile/index');

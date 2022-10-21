@@ -235,6 +235,20 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');
+        Route::get('/planbenifits','AdminController@planbenifits');
+        Route::get('/lifeplans','AdminController@lifeplans');
+        Route::get('/lifeplanbenifits','AdminController@lifeplanbenifits');
+
+    });
+    Route::name('quotation.')->prefix('quotation')->group(function(){
+        Route::get('/allquotations','AdminController@allquotations');    
+    });
+
+    Route::name('users.')->prefix('users')->group(function(){
+        Route::get('/allusers','AdminController@allusers');
+        Route::get('/viewuser/{id}','AdminController@viewuser');
+        Route::get('/addnewuser','AdminController@addnewuser');
+
     });
     Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/travelpages/{id}','CmsController@travelpages');

@@ -152,7 +152,7 @@ var KTAppSettings = {
 <script type="text/javascript">
 $(document).ready(function () {
     $('#example').DataTable({
-        order: [[1, 'desc']],
+        order: [[1, 'DESC']],
     });
 });
 </script>
