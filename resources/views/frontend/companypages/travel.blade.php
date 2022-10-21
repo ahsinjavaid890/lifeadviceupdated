@@ -5,7 +5,6 @@
 @include('frontend.companypages.includes.sectiontwo')
 @include('frontend.companypages.includes.sectionthree') 
 @include('frontend.companypages.includes.sectionfour')
-
 <section class="fourth-section">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">
@@ -49,7 +48,5 @@
     </div>
 </div>
 @include('frontend.companypages.includes.faqsection')
-
 @include('frontend.companypages.includes.productsection')
-
 @endsection
