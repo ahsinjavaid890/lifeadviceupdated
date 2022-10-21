@@ -29,13 +29,6 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label>Select User type</label>
-                                <select class="form-control" name="user_type">
-                                    <option value="">Select User Type</option>
-                                </select>
-                                <input type="text" placeholder="Enter User Name" style="height:45px;" class="form-control" name="logo">
-                            </div>
-                            <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" placeholder="Enter User Name" style="height:45px;" class="form-control" name="logo">
                             </div>
