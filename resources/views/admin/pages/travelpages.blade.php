@@ -170,13 +170,24 @@
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
                                </li>
+                               @if($data->url == 'travel-insurance')
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab7">Section6</a>
+                               </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
                                </li>
-                             </ul>
+                               @else
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                               @endif
                              @endif
                              @if( $data->url == 'life-insurance')
                              <ul class="nav nav-tabs card-header-tabs">

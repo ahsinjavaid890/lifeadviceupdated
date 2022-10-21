@@ -1,7 +1,33 @@
 <div class="tab-pane fade" id="tab7">
     <div class="row">
         <div class="col-md-12">
-
+            @if($data->url == 'travel-insurance')
+        <div class="row mb-2">
+            <div class="col-md-12 text-right">
+                <a href="javascript:void(0)" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addnewproduct"><i class="fa fa-plus"></i>Add New Product</a>
+            </div>
+        </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Vector</th>
+                        <th>Heading</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(DB::table('section_three_elements')->where('type' , 'productcards')->where('page' , $data->url)->get() as $r)
+                    <tr>
+                        <td>
+                            <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                        </td>
+                        <td>{!! $r->heading !!}</td>
+                        <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
                 @if($data->url == 'critical-illness')
                 <div class="form-group">
                     <label>Sec Six Heading</label>

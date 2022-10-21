@@ -150,38 +150,33 @@
                 </tbody>
             </table>
         @endif
-        @if($data->url == 'visitor-insurance')
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Card Vector</th>
-                    <th>Card Heading</th>
-                    <th>Card Description</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product1"><i class="fa fa-edit"></i>Edit 1</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product2"><i class="fa fa-edit"></i>Edit 2</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#product3"><i class="fa fa-edit"></i>Edit 3</a></td>
-                </tr>
-            </tbody>
-        </table>
-            @endif
+        @if($data->url == 'visitor-insurance' || $data->url == 'student-insurance')
+        <div class="row mb-2">
+            <div class="col-md-12 text-right">
+                <a href="javascript:void(0)" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addnewproduct"><i class="fa fa-plus"></i>Add New Product</a>
+            </div>
+        </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Vector</th>
+                        <th>Heading</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(DB::table('section_three_elements')->where('type' , 'productcards')->where('page' , $data->url)->get() as $r)
+                    <tr>
+                        <td>
+                            <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                        </td>
+                        <td>{!! $r->heading !!}</td>
+                        <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
              @if($data->url == 'aboutus')
                 <div class="form-group">
                     <label>About Heading</label>
@@ -196,7 +191,7 @@
                     <input type="file" style="height:45px;" class="form-control" name="about_five_vector">
                 </div>
              @endif
-            @if($data->url == 'travel-insurance' || $data->url == 'student-insurance')
+            @if($data->url == 'travel-insurance')
                 <div class="form-group">
                 <label>Section five Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_five_vector">

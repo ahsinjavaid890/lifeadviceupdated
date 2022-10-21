@@ -121,8 +121,8 @@
                     </tbody>
                 </table>
             @endif
-            @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')                                   
-            <div class="form-group">
+            @if($data->url == 'travel-insurance' || $data->url == 'student-insurance' )
+                <div class="form-group">
                 <label>Vector Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
             </div>
@@ -130,7 +130,20 @@
                 <label>Heading</label>
                 <textarea class="summernote-heading" name="section_four_heading">{{ $data->section_four_heading }}</textarea>
             </div>
+            <div class="form-group">
+                <label>Sec four Notice</label>
+                <input type="text" class="form-control" value="{{ $data->section_four_notice }}" name="section_four_notice">
+            </div>
             @endif
+            @if($data->url == 'visitor-insurance')
+                <div class="form-group">
+                <label>Vector Image</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
+            </div>
+            <div class="form-group">
+                <label>Heading</label>
+                <textarea class="summernote-heading" name="section_four_heading">{{ $data->section_four_heading }}</textarea>
+            </div>
             <div class="form-group">
                 <label>Sec four Description</label>
                 <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
@@ -139,6 +152,26 @@
                 <label>Sec four Notice</label>
                 <input type="text" class="form-control" value="{{ $data->section_four_notice }}" name="section_four_notice">
             </div>
+            @endif
+            @if($data->url == 'super-visa-insurance')                                   
+            <div class="form-group">
+                <label>Vector Image</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
+            </div>
+            <div class="form-group">
+                <label>Heading</label>
+                <textarea class="summernote-heading" name="section_four_heading">{{ $data->section_four_heading }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Sec four Description</label>
+                <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Sec four Notice</label>
+                <input type="text" class="form-control" value="{{ $data->section_four_notice }}" name="section_four_notice">
+            </div>
+
+            @endif
             @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance')   
             <div class="form-group">
                 <label>Section Lists<small class="text-danger"> Add Comma <b>,</b> for Seprator</small></label>

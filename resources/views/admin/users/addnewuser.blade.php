@@ -19,7 +19,8 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
+                            <h2 class="text-warning">Personal Details</h2>
                             <div class="form-group">
                                 <label><strong>Management Capability</strong></label>
                                 <label> License and E&O Management capability ? </label>
@@ -29,12 +30,141 @@
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" placeholder="Enter User Name" style="height:45px;" class="form-control" name="logo">
+                                <label for="logo">Select Logo</label>
+                                <input type="file" name="logo" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Logo</label>
-                                <input type="file" style="height:45px;" class="form-control" name="logo">
+                                <label>Status</label>
+                                <select class="form-control" aria-label="Default select example">
+                                  <option selected>SELECT ACCOUNT STATUS</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>User Type</label>
+                                <select class="form-control" aria-label="Default select example">
+                                  <option selected>SELECT USER TYPE</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Partner User</label>
+                                <select class="form-control" aria-label="Default select example">
+                                  <option selected>SELECT USER TYPE</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Fiscal Year Starts From</label>
+                                <input type="date" name="start_year" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="fname" class="form-control" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" name="lname" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-envelope mx-2"></i> Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Email Address">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-phone mx-2"></i>Phone</label>
+                                <input type="number" name="phone" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-location  mx-2"></i>Location</label>
+                                        <input type="text" name="address" class="form-control" placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label></label>
+                                    <select class="form-control">
+                                        <option>City</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label></label>
+                                    <select class="form-control">
+                                        <option>Province</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                    </div>
+                                </div>  
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label></label>
+                                    <input type="number" name="passcode" class="form-control" placeholder="Passcode">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label></label>
+                                    <select class="form-control">
+                                        <option>Province</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date Of Birth</label>
+                                <input type="date" name="dob" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Little About Me</label>
+                                <textarea class="form-control" rows="3" placeholder="Write Something About You....."></textarea>
+                            </div>
+                            <h2 class="mt-3 text-danger">Account Security</h2>
+                            <div class="form-group">
+                                <label><i class="fa fa-user mx-2"></i>User Name</label>
+                                <input type="text" name="username" class="form-control" placeholder="Username">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-lock mx-2"></i>Password</label>
+                                        <input type="password" name="password" class="form-control">
+                                        <div id="pwd" class="well text-danger">
+                                          <p class="text-success"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label></label>
+                                         <input id="submit"class="btn btn-default btn-lg btn-block"onclick='password(16)' type='button', value='Generate Password')>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
