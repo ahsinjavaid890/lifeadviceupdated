@@ -18,7 +18,7 @@
                         </button>
                      </h5>
                   </div>
-                  <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample{{ $r->id }}" style="">
+                  <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample" style="">
                      <div class="card-body">
                        {!! $f->answer !!}
                      </div>
