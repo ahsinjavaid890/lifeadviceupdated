@@ -139,28 +139,39 @@
         <div class="summary-visitor text-center">
             <h2>Summary of Visitors Insurance Benefits:</h2>
         </div>
-        <div class="summary-visitor-list">
+        <div class="summary-visitor-list" style="padding-top:20px;">
              <div class="row">
             <div class="col-md-7">
-                <ul class="list-checkmark text-secondary-color body-text-2" >
-                    <li>Acupuncturist – </li>
-                    <li>Chiropractor – </li>
-                    <li>Naturopath –</li>
-                    <li>Physiotherapist –</li>
-                    <li>Psychologist/Psychotherapist/Clinical Counsellor</li>
-                    <li>Registered Massage Therapist –</li>
-                    <li>Speech Pathologist/Therapis</li>
-                    <li>Orthotics (custom-made) – $225</li>
-                    <li>Hearing aids (purchase or repair) – $400 every 4 years</li>
-                    <li>Homecare and nursing –</li>
-                    <li>Prosthetic appliances (e.g., artificial joints and limbs)</li>
-                    <li>Durable medical equipment (e.g., wheelchairs, ventilators and lifts)</li>
-                    <li>Ambulance (air or ground) –</li>
-                    <li>Accidental dental</li>
-                    <li>Hospital</li>
-                    <li>Vision -</li>
-                    <li>Travel</li>
-                </ul>
+                <div class="card transparent-card" style="padding: 30px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-checkmark text-secondary-color body-text-2" >
+                                <li>Acupuncturist – </li>
+                                <li>Chiropractor – </li>
+                                <li>Naturopath –</li>
+                                <li>Physiotherapist –</li>
+                                <li>Psychologist/Psychotherapist/Clinical Counsellor</li>
+                                <li>Registered Massage Therapist –</li>
+                                <li>Speech Pathologist/Therapis</li>
+                                <li>Orthotics (custom-made) – $225</li>
+                                <li>Hearing aids (purchase or repair) – $400 every 4 years</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-checkmark text-secondary-color body-text-2">
+                                <li>Homecare and nursing –</li>
+                                <li>Prosthetic appliances (e.g., artificial joints and limbs)</li>
+                                <li>Durable medical equipment (e.g., wheelchairs, ventilators and lifts)</li>
+                                <li>Ambulance (air or ground) –</li>
+                                <li>Accidental dental</li>
+                                <li>Hospital</li>
+                                <li>Vision -</li>
+                                <li>Travel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <div class="col-md-5">
                 <div class="benefit-image">
