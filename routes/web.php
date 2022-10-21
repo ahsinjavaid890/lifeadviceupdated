@@ -230,6 +230,12 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');
     });
+    Route::name('products.')->prefix('products')->group(function(){
+        Route::get('/allproducts','AdminController@allproducts');
+    });
+    Route::name('plans.')->prefix('plans')->group(function(){
+        Route::get('/allplans','AdminController@allplans');
+    });
     Route::name('pages.')->prefix('pages')->group(function(){
         Route::get('/travelpages/{id}','CmsController@travelpages');
         Route::post('/section_three_elements','CmsController@sectionthreeelements');

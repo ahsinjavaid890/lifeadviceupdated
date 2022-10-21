@@ -13,7 +13,7 @@ use App\Models\blogs;
 use App\Models\blogcategories;
 use App\Models\company_info_pages;
 use App\Models\recuring_tips;
-use App\Models\subscription_plans;
+use App\Models\wp_dh_insurance_plans;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
@@ -23,6 +23,21 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin/dashboard/index');
     }
+    public function allproducts()
+    {
+        $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        return view('admin.products.index')->with(array('data'=>$data));
+    }
+    public function allplans()
+    {
+
+        $data = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id as plan_id','wp_dh_insurance_plans.plan_name','wp_dh_products.pro_name','wp_dh_companies.comp_logo')
+        ->leftJoin('wp_dh_products','wp_dh_insurance_plans.product','=','wp_dh_products.pro_id')
+        ->leftJoin('wp_dh_companies','wp_dh_insurance_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
+        return view('admin.plans.index')->with(array('data'=>$data));
+    }
+
+
     public function profile()
     {
         return view('admin/profile/index');
