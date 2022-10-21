@@ -46,6 +46,16 @@ class CmsController extends Controller
         $update->meta_title = $request->meta_title;
         $update->meta_description = $request->meta_description;
         $update->meta_tag = $request->meta_tag;
+        $update->faq_id = $request->faq_id;
+        if($request->section_four_vector)
+        {
+            $update->section_four_vector = Cmf::sendimagetodirectory($request->section_four_vector);
+        }
+        $update->section_four_heading = $request->section_four_heading;
+        $update->section_four_description = $request->section_four_description;
+        $update->section_four_notice = $request->section_four_notice;
+        $update->section_four_lists = $request->section_four_lists;
+
         if($request->section_two_vector)
         {
             $update->meta_image = Cmf::sendimagetodirectory($request->meta_image);
