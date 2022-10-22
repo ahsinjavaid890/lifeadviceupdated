@@ -11298,11 +11298,11 @@ ul.tabs li.current{
 @media only screen and (min-width: 1800px) and (max-width: 1950px) {
 .logo-image {
     position: absolute;
-    top: 180px !important;
-    left: 386px !important; 
+    top: 150px !important;
+    left: 445px !important; 
 }
     .super-images {
-    width: 1163px !important;
+    width: 1260px !important;
     position: absolute;
     right: -101px !important;
     height: 465px !important;
