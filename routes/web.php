@@ -44,7 +44,8 @@ Route::get('/blogs', [SiteController::class, 'blogs']);
 Route::get('/faq', [SiteController::class, 'faq']);
 Route::get('/login', [SiteController::class, 'login']);
 Route::get('/signup', [SiteController::class, 'signup']);
-
+Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
+Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 
 
 
@@ -232,6 +233,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('products.')->prefix('products')->group(function(){
         Route::get('/allproducts','AdminController@allproducts');
+        Route::get('/addnewproduct','AdminController@addnewproduct');
     });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');

@@ -25,6 +25,10 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin/dashboard/index');
     }
+    public function addnewproduct()
+    {
+        return view('admin.products.addnewproduct');
+    }
     public function addnewuser()
     {
         return view('admin.users.addnewuser');

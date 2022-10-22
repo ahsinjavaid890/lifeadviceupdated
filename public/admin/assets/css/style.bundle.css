@@ -61906,3 +61906,51 @@ body {
 .tab-pane{
   margin-top: 25px;
 }
+.design-select {
+    float: left;
+    margin-right: 20px;
+    border: 2px solid #F9F9F9;
+    cursor: pointer;
+    width: 14.5%;
+}
+.selected {
+    border: 2px solid #245580;
+}
+#sortable { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0;
+}
+#sortable li {
+  margin: 0 5px 5px 5px; padding: 5px; 
+}
+.ui-state-highlight { 
+    height: 1.5em; 
+    line-height: 1.2em; 
+}
+.radio i, .checkbox i {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    display: block;
+    width: 19px;
+    height: 19px;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.3);
+}
+#sortable li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+}
+.radio input, .checkbox input {
+    position: absolute;
+    left: -9999px;
+}
+input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}

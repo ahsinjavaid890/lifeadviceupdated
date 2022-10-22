@@ -9,12 +9,25 @@ use App\Models\jobsubmissionsrequests;
 use App\Models\linktemplatewithjobs;
 use App\Models\maplocations;
 use App\Models\hiring_map;
+use App\Models\blogs;
+use App\Models\blogcategories;
 use DB;
 class SiteController extends Controller
 {
     public function index()
     {
         return view('frontend.homepage.index');
+    }
+    public function blogdetail($id)
+    {
+        $data = blogs::where('url' , $id)->first();
+        return view('frontend.companypages.blogdetails')->with(array('data'=>$data));
+    }
+    public function blogbycategory($id)
+    {
+        $category = blogcategories::where('url' , $id)->first();
+        $data = DB::table('blogs')->where('category_id' , $category->id)->paginate(9);
+        return view('frontend.companypages.blogsbycategory')->with(array('data'=>$data,'category'=>$category));
     }
     public function supervisa()
     {

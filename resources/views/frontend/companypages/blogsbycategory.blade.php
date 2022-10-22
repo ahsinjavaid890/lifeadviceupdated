@@ -1,7 +1,34 @@
 @extends('frontend.layouts.main')
-@include('frontend.companypages.includes.mettatittle')
 @section('content')
-@include('frontend.companypages.includes.main')
+@php
+    $firstsection = DB::table('travelpages')->where('url' , 'blogs')->first();
+@endphp
+<div class="health-inssurance-hero-banners super-hero">          
+    <div class="container-homepage">
+        <div class="row mb-3">
+            <div class="col-md-6 hero-texts">
+                <div class="herrotext super-hero-text">
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s" style="color:white;">{{ $category->name }} Blogs</h2>
+                    <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
+                    @if($firstsection->main_button_text)
+                    <div class="btns d-flex">
+                        <div class="details">
+                            <a href="{{ $firstsection->main_button_link }}" class=" btn-lg">{{ $firstsection->main_button_text }}</a>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6 hero-images">
+                <div class="hero-image super-images" style=" background-image: url('{{ url('') }}/public/images/{{ $firstsection->main_image  }}');
+                    background-position: 50% 70%;
+                    background-size: 100%;
+                    background-repeat: no-repeat;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="chooses-blogs choose-us-area-five pb-70">
    <div class="container-fluid">
       <div class="row">
@@ -40,18 +67,17 @@
                        </form>
                    </div>
                   <div style="background-color: #262566;"  class="single-widget p-3 mt-3 rounded">
-                    <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
-
-                    <ul>
-                        @foreach(DB::table('blogcategories')->get() as $r)
-                        <li>
-                            <a href="{{ url('category') }}/{{ $r->url }}">
-                                    {{ $r->name }}
-                                </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+                        <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
+                        <ul>
+                            @foreach(DB::table('blogcategories')->get() as $r)
+                            <li>
+                                <a href="{{ url('category') }}/{{ $r->url }}">
+                                        {{ $r->name }}
+                                    </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                </div>
             </div>
          </div>
