@@ -3533,7 +3533,7 @@ Footer Top Area Five Style
 ======================================================*/
 
 .footer-top-area.footer-top-area-five {
-    border-bottom: 1px solid;
+/*    border-bottom: 1px solid;*/
     background-color: #3d4b5d;
     background-image: none;
 }
@@ -11425,13 +11425,13 @@ ul.tabs li.current{
         width: 543px !important;
         position: absolute;
         right: 0px !important;
-        height: 262px !important;
+        height: 230px !important;
     }
     .mobile-nav .logo {
     width: 140px !important;
     }
     .super-hero{
-        height: 370px !important;
+        height: 295px !important;
     }
     .travel-medical-heading h2 {
     font-size: 22px !important;
@@ -11663,7 +11663,7 @@ ul.tabs li.current{
     width: 937px !important;
     position: absolute;
     right: 0px !important;
-    height: 465px !important;
+    height: 402px !important;
 }
 .super-hero {
     height: 525px !important;
@@ -11761,7 +11761,7 @@ ul.tabs li.current{
         margin-top: 10px;
     }
     .super-hero-text {
-        margin-top: 300px ;
+        margin-top: 249px;
     }
     .hero-texts{
         order: 2;

@@ -21,6 +21,29 @@
                 <input type="file" style="height:45px;" class="form-control" name="claim_two_vector">
             </div>
            @endif
+           @if($data->url == 'homepage')
+            <div class="row mb-2">
+                <div class="col-md-12 text-right">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Card</a>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Vector</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $data->url)->get() as $r)
+                    <tr>
+                        <td>{{ $r->heading }}</td>
+                        <td><a href="{{ url('admin/pages/dletesectiontwo') }}/{{ $r->id }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+           @endif
            @if($data->url == 'product')
             <div class="form-group">
                 <label>Product Heading</label>

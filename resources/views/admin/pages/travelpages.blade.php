@@ -20,7 +20,7 @@
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
-                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product' || $data->url == 'faq')
+                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product' || $data->url == 'faq' || $data->url == 'homepage')
                                    <h2> {{ $data->name }} </h2>
 
                             @endif
@@ -49,7 +49,7 @@
                                </li>
                              </ul>
                             @endif
-                            @if($data->url == 'claim')
+                            @if($data->url == 'claim' || $data->url == 'homepage')
                                 <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
