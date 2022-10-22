@@ -24,8 +24,8 @@ img{width:auto; max-width:100%; height:auto;}
 
 h1{font-weight:800; font-family:'Roboto'; position:relative;}
 
-h1:before{position:relative; content:'_______'; letter-spacing:-2px; width:100%; height:3px; display:block; color:#1BBC9B; left:0px; top:15px;}
-
+/*h1:before{position:relative; content:'_______'; letter-spacing:-2px; width:100%; height:3px; display:block; color:#1BBC9B; left:0px; top:15px;}
+*/
 h1 span{font-size:16px; font-weight:300; display:block; line-height:25px; padding:14px 0px;}
 
 

@@ -34,7 +34,7 @@
                     </li>
                     <li>
                         <a href="{{ url('resp')}}">
-                                RESP Insurance
+                                RSEP Insurance
                             </a>
                     </li>
                     <li>
