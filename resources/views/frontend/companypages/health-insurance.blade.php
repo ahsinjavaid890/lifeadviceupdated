@@ -142,7 +142,7 @@
         <div class="summary-visitor-list" style="padding-top:20px;">
              <div class="row">
             <div class="col-md-7">
-                <div class="card transparent-card" style="padding: 30px;">
+                <div class="card transparent-card transparents-card" style="padding: 30px;">
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-checkmark text-secondary-color body-text-2" >

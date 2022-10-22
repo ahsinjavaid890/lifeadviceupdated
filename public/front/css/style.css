@@ -7554,6 +7554,9 @@ section {
     width: 81px;
     border-radius: 30px;
 }
+.transparents-card{
+    height: 80% !important;
+}
 .card.transparent-card {
     height: 100%;
     background-color: #ffff;
@@ -7682,8 +7685,8 @@ section {
 }
 .logo-image {
     position: absolute;
-    top: 111px;
-    left: 1075px;
+    top: 140px;
+    left: 483px;
 }
 .choice-card-paragraph{
     font-size: 13px;
@@ -11550,10 +11553,10 @@ ul.tabs li.current{
     left: 209px !important;
 }
 .super-images {
-    width: 704px !important;
+    width: 765px !important;
     position: absolute;
     right: -102px;
-    height: 326px !important;
+    height: 319px !important;
 }
 .blogsproducts{
     font-size: 17px !important;
