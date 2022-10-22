@@ -11861,3 +11861,14 @@ font-size: 35px;
 .main-div-login{
     background-color:#eef0f8 ;
 }
+.user_list .nav-link.active{
+    color: white;
+ background-color: gray !important;
+}
+.user_list li a{
+    border: none    !important;
+}
+.profile_image img{
+    width: 100px; 
+    border-radius: 100%;
+}

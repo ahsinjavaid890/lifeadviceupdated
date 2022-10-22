@@ -18,6 +18,10 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+     public function profile()
+    {
+        return view('frontend.companypages.profile');
+    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();
