@@ -11294,6 +11294,34 @@ ul.tabs li.current{
     top: 77px !important;
     }
 }
+
+@media only screen and (min-width: 1800px) and (max-width: 1950px) {
+    .logo-image {
+    position: absolute;
+    top: 180px !important;
+    left: 386px !important; 
+}
+    .super-images {
+    width: 1163px !important;
+    position: absolute;
+    right: -101px !important;
+    height: 465px !important;
+    background-position: 50% 93% !important;
+    } 
+
+    .super-hero {
+    height: 465px !important;
+    }
+    .date-card {
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 0px 8px rgb(87 106 134 / 20%);
+    position: relative;
+    top: 77px !important;
+    }
+}
+
+
 @media only screen and (min-width: 1515px) and (max-width: 1650px) {
     .logo-image {
     position: absolute;
