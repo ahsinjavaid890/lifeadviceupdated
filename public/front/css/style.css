@@ -11296,7 +11296,7 @@ ul.tabs li.current{
 }
 
 @media only screen and (min-width: 1800px) and (max-width: 1950px) {
-    .logo-image {
+.logo-image {
     position: absolute;
     top: 180px !important;
     left: 386px !important; 
