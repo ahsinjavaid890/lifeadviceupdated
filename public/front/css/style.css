@@ -11801,9 +11801,12 @@ ul.tabs li.current{
         height: 450px !important;
     }*/
     }
+    .super-hero-text h5{
+        padding-right: 77px;
+    }
 .super-text{
     padding-right: 77px;
-    max-width: 80%;
+    /*max-width: 80%;*/
 }
 .super-images {
     width: 1378px;
