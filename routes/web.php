@@ -49,7 +49,7 @@ Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 
 
-
+Route::get('/product/{id}', [SiteController::class, 'productdetail']);
 
 
 

@@ -212,7 +212,7 @@
                                     <p>Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</p>
                                 </div>
                                 <div class="product-btn text-right mt-3">
-                                   <a href="quote/tab_info.php?product_id=23"> <button class="btn btn-sm">Learn More</button></a>
+                                   <a href="{{ url('product/super-visa-insurance') }}"> <button class="btn btn-sm">Learn More</button></a>
                                 </div>
                             </div>
                         </div>

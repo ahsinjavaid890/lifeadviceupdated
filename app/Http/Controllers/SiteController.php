@@ -8,7 +8,7 @@ use App\Models\jobs;
 use App\Models\jobsubmissionsrequests;
 use App\Models\linktemplatewithjobs;
 use App\Models\maplocations;
-use App\Models\hiring_map;
+use App\Models\wp_dh_products;
 use App\Models\blogs;
 use App\Models\blogcategories;
 use DB;
@@ -18,7 +18,12 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
-     public function profile()
+    public function productdetail($id)
+    {
+        $data = wp_dh_products::where('url' , $id)->first();
+        return view('frontend.formone.index')->with(array('data'=>$data));
+    }
+    public function profile()
     {
         return view('frontend.companypages.profile');
     }
