@@ -37,9 +37,13 @@ body {
 .tabscontent {
 	color:#222;
 }
-.tabscontent .row {
-	margin:0 !important;
+.ageandcitizen input{
+	border: 0 !important;
+	border-bottom: 1px solid #bbb !important;
 }
+/*.tabscontent .row {
+	margin:0 !important;
+}*/
 .tabscontent h1 {
 	color: #222;
 	font-weight: bold;
@@ -118,3 +122,29 @@ color: #FFF;
 	  background:#FFF;
   }
 }
+
+@media (min-width: 564px){
+.daterangepicker {
+    width: 22%;
+}
+.navbar-brand{
+	height: 75px !important;
+	padding-top: .3125rem !important;
+}
+.navbar-nav>li>a{
+	line-height: 30px !important;
+}
+.tabscontent{
+	padding-top: 0px !important;
+}
+select{
+	padding: 0!important;
+}
+.next{
+	top: 7% !important;
+}
+.prev{
+	top: 7% !important;
+}
+
+
