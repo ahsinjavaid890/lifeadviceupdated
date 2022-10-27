@@ -148,3 +148,9 @@ select{
 }
 
 
+.coverage input{
+	border: 0 !important;
+}
+   .date-wrapper input{
+   border: 0 !important;
+   }
