@@ -227,9 +227,6 @@
    z-index: 99999999 !important;
    }
 </style>
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/jquery-ui.css')}}">
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-1.12.4.js')}}"></script>
 <script>
    var SliderValues = [100000, 150000, 200000, 250000, 300000];
    
@@ -370,51 +367,49 @@
                         <option value="Yukon Territory">Yukon Territory</option>
                      </select>
                   </div>
-                  <!-- Destination ends -- >
-                     <!--  Phone Number -->
-                  <!-- end -->
-                  <!-- Start Date  and End date -->
-                  <!-- end  of starting date and ending date --> 
-                  <!-- Older traveller Gender -->
-                  <!-- Order Gender ends -->
-                  <!--   Gender of person -->
-                  <!-- Gender of person ends -->
-                  <!-- Sum insured -->
-                  <!-- Sum insured end -->
-                  <!-- First Name and lastname -->
-                  <!-- firstname and lastname end -->
-                  <!-- Number of travellers and their ages -->
-                  <!-- End of number of trvaellers and ages -->
-                  <!-- Email Address -->
-                  <!-- end of Email Address -->
-                  <!---Traveller Smoke-->
-                  <!---Destination country -->
-                  <!-- Destination ends -- >
-                     <!--  Phone Number -->
-                  <!-- end -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="datepicker"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
                   <!-- Start Date  and End date -->
                   <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                      <label class="input-label"> Start Date</label>
-                     <input id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" autocomplete="off" type="text" placeholder="Start Date" required="" onchange="supervisayes()" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
-                     <script>
-                        $('#departure_date').datepicker({
-                        format: 'yyyy-mm-dd',
-                        todayHighlight:'TRUE',
-                        autoclose: true,
-                        });
-                     </script>
+                        <input type="text" name='datepicker' class="form-control"  value="Start date" id="datepicker" ng-required="true" placeholder="MM/DD/YYYY" >
+                        <script type="text/javascript">
+                           $(document).ready(function() {
+                                 $("#datepicker").datepicker();
+                                 $('.fa-calendar').click(function() {
+                                 $("#datepicker").focus();
+                                 });
+                           });
+                        </script>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-12 control-input">
-                     <label class="input-label">End Date</label>
-                     <input id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" type="text" placeholder="End Date" required="" readonly="true" value="" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
-                  </div>
-                  <script type="text/javascript">
-                     jQuery(document).ready(function() {
-                         // jQuery("#primary_destination").msDropdown();
-                     });
-                     
-                     
-                  </script>
+                     <label class="input-label"> End Date</label>
+                        <input type="text" name='datepickers' class="form-control"  value="End date" id="datepickers" ng-required="true" placeholder="MM/DD/YYYY" >
+                        <script type="text/javascript">
+                           $(document).ready(function() {
+                                 $("#datepickers").datepicker();
+                                 $('.fa-calendar').click(function() {
+                                 $("#datepickers").focus();
+                                 });
+                           });
+                        </script>
+                     </div>
                   <!-- end  of starting date and ending date --> 
                   <!-- Older traveller Gender -->
                   <!-- Order Gender ends -->

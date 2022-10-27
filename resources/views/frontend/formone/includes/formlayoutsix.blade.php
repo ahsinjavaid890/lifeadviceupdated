@@ -235,10 +235,6 @@
      });
    </script>  
    -->
-<link rel="stylesheet" href="{{ asset('public/front/css/jquery-ui.js')}}">
-<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-1.12.4.js')}}"></script> 
 <!--<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
    <link id="bsdp-css" href="https://uxsolutions.github.io/bootstrap-datepicker/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
    <script src="https://uxsolutions.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>-->
@@ -627,6 +623,24 @@
             <span></span>
          </div>
       </div>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
       <div class="col-md-4 listing-item" id="group_8" style="display:none;" data-listing-price="3">
          <div class="col-md-12" style="padding-bottom: 7px;">
             <h2 class="inputheading"><i class="fa fa-calendar"></i> Duration of Coverage?</h2>

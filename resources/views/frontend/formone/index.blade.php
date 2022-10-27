@@ -34,6 +34,6 @@
 	</div>
 </section>
 <section class="tabscontent">
-@include('frontend.formone.includes.formlayoutsix')
+@include('frontend.formone.includes.formlayoutone')
 </section>
 @endsection
