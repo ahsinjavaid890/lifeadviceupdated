@@ -7,29 +7,35 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card shadow rounded">
+				<div class="card-header">
+					<h4>Profile Information</h4>
+				</div>
 				<div class="card-body">
-					<div class="d-flex">
+					<div class="text-center">
 						<div class="profile_image">
 						<img src="{{ asset('public/front/img/images/profile.jpg')}}">
 						</div>
 						<div class="profile_name mx-4">
 							<h5 class="text-dark">Abubakar</h5>
-							<span class="text-muted">User</span>
-							<a href="#" class="btn btn-block btn-primary">Active</a>
 						</div>
 					</div>
+						<div class="user_about">
+							<h5>About</h5>
+							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+						</div>
 					<ul class="user_detail pt-5">
 						<li class="text-dark">Email: <span class="pl-5 text-muted">mailto@gmail.com</span></li>
 						<li class="text-dark">Phone: <span class="pl-5 text-muted">031214451654</span></li>
 					</ul>
 					<ul class="nav nav-tabs card-header-tabs user_list d-block pt-5">
-                        <li class="nav-item">
-                         <a class="nav-link active" data-toggle="tab" href="#tab1">Personal Information</a>
-                       </li>
-                       <li class="nav-item">
-                         <a class="nav-link " data-toggle="tab" href="#tab1">Logout</a>
-                       </li>
-                    </ul>
+           <li class="nav-item">
+                   <a class="nav-link active" data-toggle="tab" href="#tab1">Personal Information</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link " data-toggle="tab" href="#tab1">Logout</a>
+                 </li>
+              </ul>
 				</div>
 			</div>
 		</div>
@@ -65,6 +71,18 @@
 										<label>Profile Image</label>
 										<input type="file" name="profile_image" class="form-control">
 									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>About </label>
+										<textarea class="form-control" rows="5"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-12 text-right">
+										<div class="form-group">
+											<input type="submit" name="submit" value="Submit" class=" btn btn-primary">
+										</div>
 								</div>
 							</div>
 						</form>

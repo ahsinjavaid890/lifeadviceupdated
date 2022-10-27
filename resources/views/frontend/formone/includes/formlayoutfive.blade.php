@@ -110,10 +110,6 @@
    display: block !important;
    }
 </style>
-<link rel="stylesheet" href="{{ asset('public/front/css/jquery-ui.js')}}">
-<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-1.12.4.js')}}"></script>
 <!--
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="/resources/demos/style.css">
@@ -292,11 +288,30 @@
       <!-- Phone -->
       <!-- end -->
       <!-- Starting Date -->
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">Start date of coverage </label>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" type="text" placeholder="Start Date" required="" onchange="supervisayes()" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
+         <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" type="text" placeholder="MM/DD/YYY" required="" onchange="supervisayes()" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
          <label for="departure_date" style="z-index: 1;padding: 8px 13px !important;position: absolute;top: 1px;right: 1px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
          <i class="fa fa-calendar" aria-hidden="true"></i>
          </label>

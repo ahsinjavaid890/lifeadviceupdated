@@ -241,10 +241,6 @@
    background-color: white;
    }
 </style>
-<link rel="stylesheet" href="{{ asset('public/front/css/jquery-ui.js')}}">
-<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/js/jquery-1.12.4.js')}}"></script>
 <script>
    /*
      $( function() {
@@ -404,16 +400,16 @@
                <!-- Gender of person ends -->
                <!-- Sum insured -->
                <div class="col-md-12 col-sm-12 col-xs-12 control-label " style="text-align: left;">
-                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#01a281; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$"></h4>
-               </div>
-               <div class="col-md-12 col-sm-12 col-xs-12 " style="margin-bottom: 20px;">
-                  <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                     <div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 100%;"></div>
-                     <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#1BBC9B;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0 !important; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$"></h4>
                   </div>
-                  <input type="hidden" id="sum_insured2" name="sum_insured2" value="300000">
-               </div>
-               <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
+                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+                     <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
+                     </div>
+                     <input type="hidden" id="sum_insured2" name="sum_insured2" value="100000">
+                     <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
+                  </div>
                <script>
                   /*
                                   jQuery(document).ready(function($){
@@ -476,38 +472,35 @@
                      <option value="Yukon Territory">Yukon Territory</option>
                   </select>
                </div>
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
                <!-- Start Date  and End date -->
                <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                   <label class="input-label"> Start Date</label>
                   <input id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control hasDatepicker" type="text" placeholder="Start Date" required="" onchange="supervisayes()">
-                  <script>
+                  <!-- <script>
                      $('#departure_date').datepicker({
                      format: 'yyyy-mm-dd',
                      todayHighlight:'TRUE',
                      autoclose: true,
                      });
-                  </script>
+                  </script> -->
                </div>
                <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                   <label class="input-label">End Date</label>
@@ -520,52 +513,6 @@
                   
                   
                </script>
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
                <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                   <label class="input-label">Number of travellers </label>
                   <select name="number_travelers" class="form-control form-select" id="number_travelers" autocomplete="off" placeholder="" required="" onchange="checknumtravellers()">

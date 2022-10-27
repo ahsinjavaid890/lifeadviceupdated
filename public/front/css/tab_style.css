@@ -154,3 +154,6 @@ select{
    .date-wrapper input{
    border: 0 !important;
    }
+   .row{
+   	margin-left: 0px !important;
+   }
