@@ -32,7 +32,6 @@
 		<script src="{{ asset('public/front/js/wow.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/owl.carousel.js') }}"></script>
 		<script src="{{ asset('public/front/js/jquery.magnific-popup.min.js') }}"></script>
-		<script src="{{ asset('public/front/js/jquery.nice-select.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/parallax.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/jquery.mixitup.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/jquery.appear.js') }}"></script>

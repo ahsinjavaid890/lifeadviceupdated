@@ -52,6 +52,7 @@ Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 Route::get('/product/{id}', [SiteController::class, 'productdetail']);
 
 
+Route::POST('/quotes', [SiteController::class, 'quotes'])->name('quotes');
 
 
 

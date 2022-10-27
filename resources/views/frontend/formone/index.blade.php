@@ -10,22 +10,17 @@
 <section class="tabshead">
 	<div class="container">
 		<div class="row tabs">
-			<div class="col-md-3 col-xs-3 text-center">
-				<button class="btn active" onclick="window.location='tab_info.php'">
+			<div class="col-md-4 col-xs-4 text-center">
+				<button class="btn active">
 					<i class="fa fa-user"></i> Information
 				</button>
 			</div>
-			<div class="col-md-3 col-xs-3 text-center">
-				<button class="btn " onclick="window.location='tab_coverage.php'">
-					<i class="fa fa-umbrella"></i> Coverage
-				</button>
-			</div>
-			<div class="col-md-3 col-xs-3 text-center">
-				<button class="btn " onclick="window.location='tab_quotes.php'">
+			<div class="col-md-4 col-xs-4 text-center">
+				<button class="btn">
 					<i class="fa fa-shopping-cart"></i> Quotes
 				</button>
 			</div>
-			<div class="col-md-3 col-xs-3 text-center">
+			<div class="col-md-4 col-xs-4 text-center">
 				<button class="btn ">
 					<i class="fa fa-edit"></i> Apply / Buy
 				</button>
@@ -34,6 +29,20 @@
 	</div>
 </section>
 <section class="tabscontent">
-@include('frontend.formone.includes.formlayoutsix')
+	@if($fields['form_layout'] == 'layout_1')
+		@include('frontend.formone.includes.formlayoutone')
+	@elseif($fields['form_layout'] == 'layout_2')
+		@include('frontend.formone.includes.formlayouttwo')
+	@elseif($fields['form_layout'] == 'layout_3')
+		@include('frontend.formone.includes.formlayoutthree')
+	@elseif($fields['form_layout'] == 'layout_4')
+		@include('frontend.formone.includes.formlayoutfour')
+	@elseif($fields['form_layout'] == 'layout_5')
+		@include('frontend.formone.includes.formlayoutfive')
+	@elseif($fields['form_layout'] == 'layout_6')
+		@include('frontend.formone.includes.formlayoutsix')
+	@elseif($fields['form_layout'] == 'layout_7')
+		@include('frontend.formone.includes.formlayoutseven')
+	@endif
 </section>
 @endsection

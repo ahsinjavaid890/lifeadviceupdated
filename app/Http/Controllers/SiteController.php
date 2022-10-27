@@ -9,6 +9,8 @@ use App\Models\jobsubmissionsrequests;
 use App\Models\linktemplatewithjobs;
 use App\Models\maplocations;
 use App\Models\wp_dh_products;
+use App\Models\wp_dh_insurance_plans;
+use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
 use DB;
@@ -21,7 +23,24 @@ class SiteController extends Controller
     public function productdetail($id)
     {
         $data = wp_dh_products::where('url' , $id)->first();
-        return view('frontend.formone.index')->with(array('data'=>$data));
+        if($data)
+        {
+            $fields = unserialize($data->pro_fields);
+            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
+            $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+            return view('frontend.formone.index')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+        }
+        else
+        {
+            return response()->view('frontend.errors.404', [], 404);
+        }
+    }
+    public function quotes(Request $request)
+    {
+        $data = wp_dh_products::where('pro_id' , $request->product_id)->first();
+        $fields = unserialize($data->pro_fields);
+        // print_r($fields);exit;
+        return view('frontend.formone.quote')->with(array('data'=>$data,'fields'=>$fields));
     }
     public function profile()
     {
