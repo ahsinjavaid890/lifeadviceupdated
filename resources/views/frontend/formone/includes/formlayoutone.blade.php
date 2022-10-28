@@ -476,58 +476,7 @@
                       // jQuery("#primary_destination").msDropdown();
                   
                   });
-                  
-                  
-                  
-                  
-                  
                </script>
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
                      <label class="input-label"> Number of travellers </label>
