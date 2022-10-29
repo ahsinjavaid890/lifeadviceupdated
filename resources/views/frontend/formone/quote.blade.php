@@ -1,5 +1,6 @@
 @extends('frontend.layouts.main')
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">
 	<div class="container">
 		<div class="row tabs">

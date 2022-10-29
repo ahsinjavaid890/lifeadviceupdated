@@ -110,120 +110,12 @@
    display: block !important;
    }
 </style>
-<!--
-   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-   <link rel="stylesheet" href="/resources/demos/style.css">
-   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   <script>
-   $( function() {
-     $( "#dob" ).datepicker({
-       changeMonth: true,
-       changeYear: true,
-    dateFormat: 'yy-mm-dd',
-    yearRange: "-100:+0",
-    endDate: "today",
-       maxDate: "today",
-     });
-   } );
-   
-   $( function() {
-     $( "#departure_date" ).datepicker({
-       changeMonth: true,
-       changeYear: true,
-    dateFormat: 'yy-mm-dd',
-    yearRange: "+0:+5",
-    minDate: "today",
-     });
-   } );
-   
-   </script> 
-   -->
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
    <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>Super Visa Insurance</strong></h1>
    <h2 style="margin-top: -10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
 <div class="container birthdate" style="padding: 20px;">
    <form action="sessions.php?action=info" method="post" id="dh-get-quote" class="form-horizontal form-layout2" role="form">
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label"> Sum Insured </label>
       </div>
