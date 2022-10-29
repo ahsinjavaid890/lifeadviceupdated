@@ -7,9 +7,6 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card shadow rounded">
-				<div class="card-header">
-					<h4>Profile Information</h4>
-				</div>
 				<div class="card-body">
 					<div class="text-center">
 						<div class="profile_image">
