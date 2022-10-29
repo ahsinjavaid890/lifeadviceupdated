@@ -114,7 +114,6 @@
                         @if($fields['dob'] == 'on')
                         <div class="col-md-12 no-padding">
                            <h3><i class="fa fa-user"></i> Primary Traveler</h3>
-                        </div>
                         <div class="row yearsdiv">
                            <div class="col-md-5">
                               <small style="font-size: 12px;color: #999;">Age</small>
@@ -127,6 +126,7 @@
                               <a style="cursor: pointer;" onclick="$('.dobdiv').show(); $('.yearsdiv').hide()">Enter Date of Birth</a>
                            </div>
                         </div>
+                        
                         <div class="row dobdiv" style="display:none;">
                            <div class="col-md-12">
                               <div class="col-md-6 no-padding">
@@ -160,6 +160,7 @@
                                  </div>
                               </div>
                            </div>
+                        </div>
                         </div>
                         @endif
 

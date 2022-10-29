@@ -24,8 +24,8 @@
                    </div>
                 </div>
                 @if($r->button_text)
-                <div>
-                   <a class="btn btn-primary" href="{{ $r->button_link }}">{{ $r->button_text }}</a>
+                <div class="text-center">
+                   <a class="btn btn-primary product-buttons" href="{{ $r->button_link }}">{{ $r->button_text }}</a>
                 </div>
                 @endif
              </div>

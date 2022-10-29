@@ -122,10 +122,32 @@ color: #FFF;
 	  background:#FFF;
   }
 }
-
-@media (min-width: 564px){
 .daterangepicker {
-    width: 22%;
+    width: 14%;
+}
+@media (max-width: 1800px){
+.daterangepicker {
+    width: 15%;
+}
+}
+@media (max-width: 1600px){
+.daterangepicker {
+    width: 17%;
+}
+}
+@media (max-width: 1400px){
+.daterangepicker {
+    width: 19%;
+}
+}
+
+@media (max-width: 1200px){
+.daterangepicker {
+    width: 21%;
+}
+}
+.daterangepicker td.active, .daterangepicker td.active:hover{
+	border: none !important;
 }
 .navbar-brand{
 	height: 75px !important;
@@ -157,3 +179,4 @@ select{
    .row{
    	margin-left: 0px !important;
    }
+   
