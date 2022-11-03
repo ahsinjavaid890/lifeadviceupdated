@@ -754,33 +754,6 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
-                     	<div class="row">
-                        <div class="col-md-6">
-                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                           <hr>
-                           <div style="font-size:12px;">
-                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
-                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
-                              <p style="margin:0;"><b>Travellers:</b> 1</p>
-                              <p style="margin:0;">
-                                 <br><b>Person:</b> 1<br>
-                                 <b>Age:</b> NaN<br>
-                                 <b>Coverage Amount:</b> 100000 <br>
-                                 <b>Premium:</b>  636.48																				
-                              </p>
-                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
-                              <p style="margin:0;"><b>Total Premium:</b> $636.48</p>
-                           </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                           <span style="display: none;"></span>
-                           <hr>
-                        </div>
-                    </div>
-                     </div>
                      </div>
                      
                      <div class="row buynow_1000216" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
@@ -801,6 +774,33 @@
                               <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                            </div>
                         </form>
+                     </div>
+                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                        <div class="row">
+                        <div class="col-md-6">
+                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                           <hr>
+                           <div style="font-size:12px;">
+                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
+                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
+                              <p style="margin:0;"><b>Travellers:</b> 1</p>
+                              <p style="margin:0;">
+                                 <br><b>Person:</b> 1<br>
+                                 <b>Age:</b> NaN<br>
+                                 <b>Coverage Amount:</b> 100000 <br>
+                                 <b>Premium:</b>  636.48                                                          
+                              </p>
+                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
+                              <p style="margin:0;"><b>Total Premium:</b> $636.48</p>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                           <span style="display: none;"></span>
+                           <hr>
+                        </div>
+                    </div>
                      </div>
                   </div>
                </div>
@@ -1426,33 +1426,6 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
-                     	<div class="row">
-                        <div class="col-md-6">
-                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                           <hr>
-                           <div style="font-size:12px;">
-                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
-                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
-                              <p style="margin:0;"><b>Travellers:</b> 1</p>
-                              <p style="margin:0;">
-                                 <br><b>Person:</b> 1<br>
-                                 <b>Age:</b> NaN<br>
-                                 <b>Coverage Amount:</b> 150000 <br>
-                                 <b>Premium:</b>  760.32																				
-                              </p>
-                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
-                              <p style="margin:0;"><b>Total Premium:</b> $760.32</p>
-                           </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                           <span style="display: none;"></span>
-                           <hr>
-                        </div>
-                    </div>
-                     </div>
                      </div>
                      
                      <div class="row buynow_1000216" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
@@ -1473,6 +1446,33 @@
                               <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                            </div>
                         </form>
+                     </div>
+                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                        <div class="row">
+                        <div class="col-md-6">
+                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                           <hr>
+                           <div style="font-size:12px;">
+                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
+                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
+                              <p style="margin:0;"><b>Travellers:</b> 1</p>
+                              <p style="margin:0;">
+                                 <br><b>Person:</b> 1<br>
+                                 <b>Age:</b> NaN<br>
+                                 <b>Coverage Amount:</b> 150000 <br>
+                                 <b>Premium:</b>  760.32                                                          
+                              </p>
+                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
+                              <p style="margin:0;"><b>Total Premium:</b> $760.32</p>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                           <span style="display: none;"></span>
+                           <hr>
+                        </div>
+                    </div>
                      </div>
                   </div>
                </div>
@@ -1810,33 +1810,6 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-217" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
-                     	<div class="row">
-                        <div class="col-md-6">
-                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                           <hr>
-                           <div style="font-size:12px;">
-                              <p style="margin:0;"><b>Plan:</b> Plan-B</p>
-                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
-                              <p style="margin:0;"><b>Travellers:</b> 1</p>
-                              <p style="margin:0;">
-                                 <br><b>Person:</b> 1<br>
-                                 <b>Age:</b> NaN<br>
-                                 <b>Coverage Amount:</b> 100000 <br>
-                                 <b>Premium:</b>  849.60																				
-                              </p>
-                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
-                              <p style="margin:0;"><b>Total Premium:</b> $849.60</p>
-                           </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                           <span style="display: none;"></span>
-                           <hr>
-                        </div>
-                    </div>
-                     </div>
                      </div>
                      
                      <div class="row buynow_1000217" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
@@ -1857,6 +1830,33 @@
                               <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                            </div>
                         </form>
+                     </div>
+                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-217" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                        <div class="row">
+                        <div class="col-md-6">
+                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                           <hr>
+                           <div style="font-size:12px;">
+                              <p style="margin:0;"><b>Plan:</b> Plan-B</p>
+                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
+                              <p style="margin:0;"><b>Travellers:</b> 1</p>
+                              <p style="margin:0;">
+                                 <br><b>Person:</b> 1<br>
+                                 <b>Age:</b> NaN<br>
+                                 <b>Coverage Amount:</b> 100000 <br>
+                                 <b>Premium:</b>  849.60                                                          
+                              </p>
+                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
+                              <p style="margin:0;"><b>Total Premium:</b> $849.60</p>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                           <span style="display: none;"></span>
+                           <hr>
+                        </div>
+                    </div>
                      </div>
                   </div>
                </div>
@@ -2674,33 +2674,6 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-217" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
-                     	<div class="row">
-                        <div class="col-md-6">
-                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                           <hr>
-                           <div style="font-size:12px;">
-                              <p style="margin:0;"><b>Plan:</b> Plan-B</p>
-                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
-                              <p style="margin:0;"><b>Travellers:</b> 1</p>
-                              <p style="margin:0;">
-                                 <br><b>Person:</b> 1<br>
-                                 <b>Age:</b> NaN<br>
-                                 <b>Coverage Amount:</b> 150000 <br>
-                                 <b>Premium:</b>  1,013.76																				
-                              </p>
-                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
-                              <p style="margin:0;"><b>Total Premium:</b> $1,013.76</p>
-                           </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                           <span style="display: none;"></span>
-                           <hr>
-                        </div>
-                    </div>
-                     </div>
                      </div>
                      
                      <div class="row buynow_1000217" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
@@ -2722,6 +2695,33 @@
                            </div>
                         </form>
                      </div>
+                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-217" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                        <div class="row">
+                        <div class="col-md-6">
+                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                           <hr>
+                           <div style="font-size:12px;">
+                              <p style="margin:0;"><b>Plan:</b> Plan-B</p>
+                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
+                              <p style="margin:0;"><b>Travellers:</b> 1</p>
+                              <p style="margin:0;">
+                                 <br><b>Person:</b> 1<br>
+                                 <b>Age:</b> NaN<br>
+                                 <b>Coverage Amount:</b> 150000 <br>
+                                 <b>Premium:</b>  1,013.76                                                           
+                              </p>
+                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
+                              <p style="margin:0;"><b>Total Premium:</b> $1,013.76</p>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                           <span style="display: none;"></span>
+                           <hr>
+                        </div>
+                    </div>
+                     </div>   
                   </div>
                </div>
             </div>
@@ -3154,33 +3154,6 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
-                     	<div class="row">
-                        <div class="col-md-6">
-                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                           <hr>
-                           <div style="font-size:12px;">
-                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
-                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
-                              <p style="margin:0;"><b>Travellers:</b> 1</p>
-                              <p style="margin:0;">
-                                 <br><b>Person:</b> 1<br>
-                                 <b>Age:</b> NaN<br>
-                                 <b>Coverage Amount:</b> 200000 <br>
-                                 <b>Premium:</b>  1,166.40																				
-                              </p>
-                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
-                              <p style="margin:0;"><b>Total Premium:</b> $1,166.40</p>
-                           </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                           <span style="display: none;"></span>
-                           <hr>
-                        </div>
-                    </div>
-                     </div>
                      </div>
                      
                      <div class="row buynow_1000216" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
@@ -3201,6 +3174,33 @@
                               <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                            </div>
                         </form>
+                     </div>
+                     <div class="col-md-12 col-xs-12 dh-toggle-show-hide-216" style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                        <div class="row">
+                        <div class="col-md-6">
+                           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                           <hr>
+                           <div style="font-size:12px;">
+                              <p style="margin:0;"><b>Plan:</b> Plan-A NO- Pre-Condition</p>
+                              <p style="margin:0;"><b>Plan Type:</b> Individual</p>
+                              <p style="margin:0;"><b>Travellers:</b> 1</p>
+                              <p style="margin:0;">
+                                 <br><b>Person:</b> 1<br>
+                                 <b>Age:</b> NaN<br>
+                                 <b>Coverage Amount:</b> 200000 <br>
+                                 <b>Premium:</b>  1,166.40                                                           
+                              </p>
+                              <p style="margin:0;"><b>Duration:</b> 365 days (2022-09-27 - 2023-09-26)</p>
+                              <p style="margin:0;"><b>Total Premium:</b> $1,166.40</p>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                           <span style="display: none;"></span>
+                           <hr>
+                        </div>
+                    </div>
                      </div>
                   </div>
                </div>
