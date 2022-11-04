@@ -15,6 +15,7 @@ use App\Models\company_info_pages;
 use App\Models\wp_dh_insurance_plans_benefits;
 use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_life_plans;
+use App\Models\wp_dh_products;
 use App\Models\quotes;
 use Illuminate\Support\Facades\Hash;
 use Mail;
@@ -24,6 +25,11 @@ class AdminController extends Controller
 {
     public function dashboard(){
         return view('admin/dashboard/index');
+    }
+    public function editproduct($id)
+    {
+        $data = wp_dh_products::where('pro_id' , $id)->first();
+        return view('admin.products.editproduct')->with(array('data'=>$data));
     }
     public function addnewproduct()
     {
