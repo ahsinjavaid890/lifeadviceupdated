@@ -132,3 +132,9 @@ input[type="text"], input[type="password"] {
 .tabshead{
     padding-top: 100px !important;
    }
+   .plan-details .eight-layout{
+    display: contents;
+   }
+   /*.row .plan-details{
+    display: flex !important;
+   }*/

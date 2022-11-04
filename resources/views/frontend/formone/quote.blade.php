@@ -24,7 +24,7 @@
 </section>
 <section class="tabscontent">
 	@if($fields['price_layout'] == 'layout_1')
-		
+		@include('frontend.formone.includes.pricelayoutone')
 	@elseif($fields['price_layout'] == 'layout_2')
 		
 	@elseif($fields['price_layout'] == 'layout_3')
@@ -36,7 +36,7 @@
 	@elseif($fields['price_layout'] == 'layout_6')
 		
 	@elseif($fields['price_layout'] == 'layout_7')
-		@include('frontend.formone.includes.pricelayoutseven')
+		@include('frontend.formone.includes.pricelayouttwo')
 	@endif
 </section>
 <script>
