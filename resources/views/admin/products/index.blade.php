@@ -52,8 +52,8 @@
                                         Administrator
                                     </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->pro_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->pro_id }}"><i class="fa fa-trash"></i>Delete</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/products/edit') }}/{{ $r->pro_id }}"><i class="fa fa-edit"></i>Edit</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/products/delete') }}/{{ $r->pro_id }}"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
 
