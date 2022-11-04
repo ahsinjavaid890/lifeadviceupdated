@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayouttwo.css') }}">
-<section class="tabscontent">
 <style>
     .main-content .container{
         width: 100%;
@@ -4729,4 +4728,3 @@ $(document).ready(function(){
     });
 });
 </script>
-</div>

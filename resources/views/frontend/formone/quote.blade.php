@@ -36,7 +36,7 @@
 	@elseif($fields['price_layout'] == 'layout_6')
 		
 	@elseif($fields['price_layout'] == 'layout_7')
-		@include('frontend.formone.includes.pricelayouttwo')
+		@include('frontend.formone.includes.pricelayoutsix')
 	@endif
 </section>
 <script>
