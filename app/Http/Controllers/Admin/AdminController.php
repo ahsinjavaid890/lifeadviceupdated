@@ -29,7 +29,9 @@ class AdminController extends Controller
     public function editproduct($id)
     {
         $data = wp_dh_products::where('pro_id' , $id)->first();
-        return view('admin.products.editproduct')->with(array('data'=>$data));
+        $pro_fields = unserialize($data->pro_fields);
+        $pro_sort  = unserialize($data->pro_sort);
+        return view('admin.products.editproduct')->with(array('pro_sort'=>$pro_sort,'data'=>$data,'pro_fields'=>$pro_fields));
     }
     public function addnewproduct()
     {
