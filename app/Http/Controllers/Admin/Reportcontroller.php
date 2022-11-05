@@ -28,4 +28,8 @@ class Reportcontroller extends Controller
     {
         return view('admin.reports.sales');
     }
+     public function brokercommission()
+    {
+        return view('admin.reports.broker');
+    }
 }

@@ -240,6 +240,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('reports.')->prefix('reports')->group(function(){
         Route::get('/salesreport','Reportcontroller@salesreport');
+        Route::get('/brokercommission','Reportcontroller@brokercommission');
     });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');
