@@ -643,12 +643,11 @@ document.getElementById('discountdiv').style.display = 'none';
             </div>
 
 
-        </div>
 
             <div class="clear"></div>
 
         <!-- Third Section -->
-
+<div class="col-md-6">
         <div class="row">
 
             
@@ -682,7 +681,7 @@ document.getElementById('discountdiv').style.display = 'none';
             <hr>
             <div class="clear"></div>
         </div>
-
+</div>
         <!-- Fourth Section -->
 
         <div class="" id="featureShow" style="display:block"> 
