@@ -240,10 +240,13 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');
+        Route::get('/addnewplan','AdminController@addnewplan');
         Route::get('/planbenifits','AdminController@planbenifits');
+        Route::get('/addnewplanbenifit','AdminController@addnewplanbenifit');
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/lifeplanbenifits','AdminController@lifeplanbenifits');
-
+        Route::post('/createnewplanbenifit','AdminController@createnewplanbenifit');
+        
     });
     Route::name('quotation.')->prefix('quotation')->group(function(){
         Route::get('/allquotations','AdminController@allquotations');    

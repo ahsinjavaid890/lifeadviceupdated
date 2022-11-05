@@ -33,6 +33,29 @@ class AdminController extends Controller
         $pro_sort  = unserialize($data->pro_sort);
         return view('admin.products.editproduct')->with(array('pro_sort'=>$pro_sort,'data'=>$data,'pro_fields'=>$pro_fields));
     }
+    public function updateproducts(Request $request)
+    {
+        $data = wp_dh_products::where('pro_id' , $request->id)->first();
+        $data->pro_name = $request->pro_name;
+        $data->pro_parent = $request->pro_parent;
+        $data->pro_supervisa = $request->pro_supervisa;
+        $data->pro_life = $request->pro_life;
+        $data->destinationtype = $request->destinationtype;
+        $data->pro_url = $request->pro_url;
+        $data->redirect_from_url = $request->redirect_from_url;
+        $data->prod_fields = serialize($request->prod);
+        $sort_orders = array();
+        $orderlist = explode(',' , $request->savesortlist);
+        $i = 1;
+        foreach($orderlist as  $order)
+        {
+            $sort_orders[$i] = $order ;
+            $i++;
+        }
+        $data->pro_sort =  serialize($sort_orders);
+        $data->save();
+        return redirect()->back()->with('message', 'Product Updated Successfully');
+    }
     public function addnewproduct()
     {
         return view('admin.products.addnewproduct');
@@ -68,6 +91,14 @@ class AdminController extends Controller
         ->leftJoin('wp_dh_companies','wp_dh_insurance_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
         return view('admin.plans.index')->with(array('data'=>$data));
     }
+    public function addnewplan()
+    {
+        return view('admin.plans.addnewplan');
+    }
+    public function addnewplanbenifit()
+    {
+        return view('admin.plans.addnewplanbenifit');
+    }
     public function planbenifits()
     {
         $data = wp_dh_insurance_plans_benefits::select(
@@ -81,6 +112,19 @@ class AdminController extends Controller
         ->wherenotnull('wp_dh_insurance_plans.plan_name')
         ->get();
         return view('admin.plans.planbenifits')->with(array('data'=>$data));
+    }
+    public function createnewplanbenifit(Request $request)
+    {
+
+        $planId = $request->plan_id;
+        for($i=0;$i<count($request->ibenefitHead);$i++){
+            $bene_head = $request->ibenefitHead[$i];
+            $bene_desc = $request->ibenefitDesc[$i];
+            $bene_time = date('Y-M-d');
+            $current_user = Auth::user()->id;
+            DB::statement("INSERT INTO wp_dh_insurance_plans_benefits(plan_id, benefits_head, benefits_desc,created_on , created_by ) VALUES('$planId','$bene_head', '$bene_desc', '$bene_time' , '$current_user' )");
+        }
+        return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
     }
     public function lifeplans()
     {
