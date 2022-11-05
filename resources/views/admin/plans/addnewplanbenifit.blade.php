@@ -88,7 +88,7 @@
 </div>
 @endsection
 @section('script')
-<script src="http://localhost/lifeadvice/quote/admin/assets/js/jquery-1.12.4.js"></script>
+<script src="{{ asset('public/admin/assets/js/admin.js') }}"></script>
 <script type="text/javascript">
     jQuery('.addBenefits').click(function(event) {
 
