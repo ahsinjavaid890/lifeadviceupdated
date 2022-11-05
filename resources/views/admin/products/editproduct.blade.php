@@ -223,9 +223,20 @@
                                             </label> 
                                         </li>
                                         <?php } if(array_search("id_16",$pro_sort) == $i){ ?>  
-                                        <li class="ui-state-default ui-sortable-handle" id="id_16"> <label class="checkbox"> <input name="sort[]" id="pre_existing_sort" value="16" type="hidden"> <input name="prod[pre_existing]" id="pre_existing" type="checkbox" checked=""> <i></i> Pre-existing Condition </label> </li>
-                                         <?php } if(array_search("id_15",$pro_sort) == $i){ ?>  
-                                         <li class="ui-state-default ui-sortable-handle" id="id_15"> <label class="checkbox"> <input name="sort[]" id="fplan_sort" value="15" type="hidden"> <input name="prod[fplan]" id="fplan" type="checkbox" checked=""> <i></i> Family Plan </label> </li>
+                                        <li class="ui-state-default ui-sortable-handle" id="id_16"> 
+                                            <label class="checkbox"> 
+                                                <input name="sort[]" id="pre_existing_sort" value="16" type="hidden"> 
+                                                <input name="prod[pre_existing]" id="pre_existing" type="checkbox" checked=""> Pre-existing Condition 
+                                            </label> 
+                                        </li>
+                                        <?php } if(array_search("id_15",$pro_sort) == $i){ ?>  
+                                        <li class="ui-state-default ui-sortable-handle" id="id_15"> 
+                                            <label class="checkbox"> 
+                                                <input name="sort[]" id="fplan_sort" value="15" type="hidden"> 
+                                                <input name="prod[fplan]" id="fplan" type="checkbox" checked=""> 
+                                                <i></i> Family Plan 
+                                            </label> 
+                                        </li>
                                         <?php } if(array_search("id_4",$pro_sort) == $i){ ?>
                                         <li class="ui-state-default ui-sortable-handle" id="id_4"> 
                                             <label class="checkbox"> 
@@ -242,11 +253,28 @@
                                             </label> 
                                         </li>
                                         <?php } if(array_search("id_11",$pro_sort) == $i){ ?>   
-                                         <li class="ui-state-default ui-sortable-handle" id="id_11" style=""> <label class="checkbox"> <input name="sort[]" id="smoked_sort" value="11" type="hidden"> <input name="prod[smoked]" id="smoked" type="checkbox"> <i></i> Traveller Smoked </label> </li>
+                                         <li class="ui-state-default ui-sortable-handle" id="id_11" style=""> 
+                                            <label class="checkbox"> 
+                                                <input name="sort[]" id="smoked_sort" value="11" type="hidden"> 
+                                                <input name="prod[smoked]" id="smoked" type="checkbox"> 
+                                                <i></i> Traveller Smoked 
+                                            </label> 
+                                        </li>
                                         <?php } if(array_search("id_12",$pro_sort) == $i){ ?>   
-                                         <li class="ui-state-default ui-sortable-handle" id="id_12"> <label class="checkbox"> <input name="sort[]" id="traveller_gender_sort" value="12" type="hidden"> <input name="prod[traveller_gender]" id="traveller_gender" type="checkbox"> <i></i> Oldest Traveller's Gender </label> </li>
+                                         <li class="ui-state-default ui-sortable-handle" id="id_12"> 
+                                            <label class="checkbox"> 
+                                                <input name="sort[]" id="traveller_gender_sort" value="12" type="hidden"> 
+                                                <input name="prod[traveller_gender]" id="traveller_gender" type="checkbox"> <i></i> Oldest Traveller's Gender 
+                                            </label> 
+                                        </li>
                                         <?php } if(array_search("id_13",$pro_sort) == $i){ ?>   
-                                         <li class="ui-state-default ui-sortable-handle" id="id_13"> <label class="checkbox" style="display: inline-block;"> <input name="sort[]" id="us_stop_sort" value="13" type="hidden"> <input name="prod[us_stop]" id="us_stop" type="checkbox"> <i></i> Stopover in US (Days) </label> <input type="number" name="prod[us_stop_days]" min="0" max="30" step="1" value="0" style="display:none3;"> </li>
+                                         <li class="ui-state-default ui-sortable-handle" id="id_13"> 
+                                            <label class="checkbox" style="display: inline-block;"> 
+                                                <input name="sort[]" id="us_stop_sort" value="13" type="hidden"> 
+                                                <input name="prod[us_stop]" id="us_stop" type="checkbox"> <i></i> Stopover in US (Days) 
+                                            </label> 
+                                            <input type="number" name="prod[us_stop_days]" min="0" max="30" step="1" value="0" style="display:none3;"> 
+                                        </li>
                                         <?php } if(array_search("id_14",$pro_sort) == $i){ ?>
                                         <li class="ui-state-default ui-sortable-handle" id="id_14"> 
                                             <label class="checkbox"> 
