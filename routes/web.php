@@ -238,6 +238,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/addnewproduct','AdminController@addnewproduct');
         Route::get('/edit/{id}','AdminController@editproduct');
     });
+    Route::name('reports.')->prefix('reports')->group(function(){
+        Route::get('/salesreport','Reportcontroller@salesreport');
+    });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');
         Route::get('/addnewplan','AdminController@addnewplan');

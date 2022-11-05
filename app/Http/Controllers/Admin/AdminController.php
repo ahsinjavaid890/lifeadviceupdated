@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Models\companies;
+use App\Models\wp_dh_companies;
 use App\Models\wp_dh_life_plans_benefits;
 use App\Models\help_articles;
 use App\Models\blogs;
@@ -268,7 +269,9 @@ class AdminController extends Controller
     public function viewsale($id)
     {
         $data = DB::table('sales')->where('sales_id' , $id)->first();
-        return view('admin.sales.viewsale')->with(array('data'=>$data));
+        $insurance_plan = wp_dh_insurance_plans::where('id'  ,$data->policy_id)->first();
+        $company = wp_dh_companies::where('comp_id' , $insurance_plan->insurance_company)->first();
+        return view('admin.sales.viewsale')->with(array('data'=>$data,'insurance_plan'=>$insurance_plan,'company'=>$company));
     }
     public function allcompanies()
     {
