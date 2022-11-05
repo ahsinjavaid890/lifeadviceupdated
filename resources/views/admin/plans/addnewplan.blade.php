@@ -13,6 +13,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
+            .switch.switch-success>input:checked+.switch-label {
+    border-color: #3a5371 !important;
+    background: #3a5371 !important;
+}
 #middle div.panel-heading {
 color: #1E252D !important;
 height: auto !important;
