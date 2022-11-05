@@ -194,4 +194,5 @@ function password(length, special) {
   document.getElementById('pwd').innerHTML=password;
 }
 </script>
+@yield('script')
 </html>
