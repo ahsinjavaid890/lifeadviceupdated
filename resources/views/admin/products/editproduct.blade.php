@@ -20,19 +20,29 @@
                                 <div class="col-md-6" style="padding:0;">
                                    <div class="col-md-12"> <label><strong>Supervisa Product ?</strong> <small>(Is this super visa product ?)</small></label> </div>
                                    <div class="col-md-12"> 
-                                        <label class="switch switch-success switch-round"> 
-                                            <input type="checkbox" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif> 
+                                    <label class="switch switch-green switch-success switch-round">
+                                       <input type="checkbox" class="switch-input" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif>
+                                       <span class="switch-label" data-on="On" data-off="Off"></span>
+                                       <span class="switch-handle"></span>
+                                     </label>
+                                       <!--  <label class="switch switch-success switch-round"> 
+                                            <input type="checkbox" name="pro_supervisa" id="pro_supervisa" value="1" > 
                                             <span class="switch-label" data-on="YES" data-off="NO"></span> 
-                                        </label> 
+                                        </label>  -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                    <div class="col-md-12"> <label><strong>Life Insurance Product ?</strong> <small>(Is this life insurance product ?)</small></label> </div>
-                                   <div class="col-md-12"> 
-                                        <label class="switch switch-success switch-round"> 
-                                            <input @if($data->pro_life == 1) checked="" @endif type="checkbox" name="pro_life" id="pro_life" value="1"> 
+                                  <div class="col-md-12"> 
+                                    <label class="switch switch-green switch-success switch-round">
+                                       <input type="checkbox" class="switch-input" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif>
+                                       <span class="switch-label" data-on="On" data-off="Off"></span>
+                                       <span class="switch-handle"></span>
+                                     </label>
+                                       <!--  <label class="switch switch-success switch-round"> 
+                                            <input type="checkbox" name="pro_supervisa" id="pro_supervisa" value="1" > 
                                             <span class="switch-label" data-on="YES" data-off="NO"></span> 
-                                        </label> 
+                                        </label>  -->
                                     </div>
                                 </div>
                              </div>
