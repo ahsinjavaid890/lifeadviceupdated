@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','Edit Plan Benifit')
+@section('title','Edit Life Plan Benifit')
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -8,13 +8,13 @@
         <div class=" container-fluid ">
             <!--begin::Card-->
             @include('alerts.index')
-            <form method="POST" action="{{ url('admin/plans/updateplanbenifit') }}">
+            <form method="POST" action="{{ url('admin/plans/updatelifeplanbenifit') }}">
                         @csrf
             <div class="card card-custom mt-5">
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            Edit Plan Benifit
+                            Edit Life Plan Benifit
                         </h3>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                             <label>Select Plan</label>
                             <select required name="plan_id" id="plan_id" class="form-control">
                                 <option value="">None</option>
-                                @foreach(DB::table('wp_dh_insurance_plans')->orderby('id' , 'ASC')->get() as $r)
+                                @foreach(DB::table('wp_dh_life_plans')->orderby('id' , 'ASC')->get() as $r)
                                 @php
                                     $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
                                 @endphp
@@ -45,7 +45,7 @@
                        <div class="col-md-12">
                           <div class="original">
                             <div id="appendBenefits">
-                            @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $plan_id)->get() as $r)
+                            @foreach(DB::table('wp_dh_life_plans_benefits')->where('plan_id' , $plan_id)->get() as $r)
                             <div class="appendBenefits">
                                 <div style="margin-top:20px;" class="row">
                                     <div class="col-md-12">

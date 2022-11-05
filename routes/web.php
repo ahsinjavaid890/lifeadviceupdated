@@ -244,9 +244,17 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/planbenifits','AdminController@planbenifits');
         Route::get('/addnewplanbenifit','AdminController@addnewplanbenifit');
         Route::get('/lifeplans','AdminController@lifeplans');
+        Route::get('/addlifeplanbenifit','AdminController@addlifeplanbenifit');
+        Route::get('/editlifeplan/{id}','AdminController@editlifeplan');
         Route::get('/lifeplanbenifits','AdminController@lifeplanbenifits');
         Route::post('/createnewplanbenifit','AdminController@createnewplanbenifit');
+        Route::post('/createlifeplanbenifit','AdminController@createlifeplanbenifit');
+        Route::post('/updatelifeplanbenifit','AdminController@updatelifeplanbenifit'); 
+        Route::post('/updateplanbenifit','AdminController@updateplanbenifit'); 
         Route::get('/editplanbenifit/{id}','AdminController@editplanbenifit');
+        Route::get('/editlifeplanbenifit/{id}','AdminController@editlifeplanbenifit');
+        Route::get('/deletelifeplanbenifit/{id}','AdminController@deletelifeplanbenifit');
+        Route::get('/deleteplanbenifit/{id}','AdminController@deleteplanbenifit');
     });
     Route::name('quotation.')->prefix('quotation')->group(function(){
         Route::get('/allquotations','AdminController@allquotations');    

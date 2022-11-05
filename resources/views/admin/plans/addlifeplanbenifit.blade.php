@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','Edit Plan Benifit')
+@section('title','Add Life Plan Benifit')
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -8,13 +8,13 @@
         <div class=" container-fluid ">
             <!--begin::Card-->
             @include('alerts.index')
-            <form method="POST" action="{{ url('admin/plans/updateplanbenifit') }}">
-                        @csrf
+            <form method="POST" action="{{ url('admin/plans/createlifeplanbenifit') }}">
+            @csrf
             <div class="card card-custom mt-5">
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            Edit Plan Benifit
+                            Add Life Plan Benifit
                         </h3>
                     </div>
                 </div>
@@ -24,11 +24,11 @@
                             <label>Select Plan</label>
                             <select required name="plan_id" id="plan_id" class="form-control">
                                 <option value="">None</option>
-                                @foreach(DB::table('wp_dh_insurance_plans')->orderby('id' , 'ASC')->get() as $r)
+                                @foreach(DB::table('wp_dh_life_plans')->orderby('id' , 'ASC')->get() as $r)
                                 @php
                                     $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
                                 @endphp
-                                <option @if($plan_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->id }} - {{ $r->plan_name }} @if($company) ({{$company->comp_name}}) @endif</option>
+                                <option value="{{ $r->id }}">{{ $r->id }} - {{ $r->plan_name }} @if($company) ({{$company->comp_name}}) @endif</option>
                                 @endforeach
                             </select>
                         </div>
@@ -40,26 +40,27 @@
                             border-radius: 10px;
                             margin-top: 10px;
                         }
+                        .original{
+                            padding: 10px;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            margin-top: 10px;
+                        }
                     </style>
-                    <div class="row">
+                    <div style="margin-top: 20px;" class="row">
                        <div class="col-md-12">
                           <div class="original">
-                            <div id="appendBenefits">
-                            @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $plan_id)->get() as $r)
-                            <div class="appendBenefits">
-                                <div style="margin-top:20px;" class="row">
-                                    <div class="col-md-12">
-                                       <input value="{{ $r->benefits_head }}" required id="ibenefitHead1" name="ibenefitHead[]" class="form-control" placeholder="Enter Heading of Benefit" type="text">
-                                    </div>
-                                </div>
-                                <div style="margin-top:20px;" class="row">
-                                    <div class="col-md-12">
-                                       <textarea  placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]">{{ $r->benefits_desc }}</textarea>
-                                    </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <input required id="ibenefitHead1" name="ibenefitHead[]" class="form-control" placeholder="Enter Heading of Benefit" type="text">
                                 </div>
                              </div>
-                             @endforeach 
-                             </div>            
+                             <br>
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <textarea  placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
+                                </div>
+                             </div>                 
                           </div>
                           <div id="appendBenefits"></div>
                           <div class="clear" style="height:20px;"></div>

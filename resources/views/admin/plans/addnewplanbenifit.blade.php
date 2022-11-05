@@ -33,6 +33,20 @@
                             </select>
                         </div>
                     </div>
+                    <style type="text/css">
+                        .appendBenefits{
+                            padding: 10px;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            margin-top: 10px;
+                        }
+                        .original{
+                            padding: 10px;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            margin-top: 10px;
+                        }
+                    </style>
                     <div style="margin-top: 20px;" class="row">
                        <div class="col-md-12">
                           <div class="original">
@@ -44,7 +58,7 @@
                              <br>
                              <div class="row">
                                 <div class="col-md-12">
-                                   <textarea required placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
+                                   <textarea  placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
                                 </div>
                              </div>                 
                           </div>

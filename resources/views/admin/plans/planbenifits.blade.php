@@ -62,11 +62,29 @@
                                         {{$r->pro_name}}
                                     </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->benifit_id }}"><i class="fa fa-trash"></i>Delete</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>
+                                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal{{ $r->plan_id }}" href="javascript:;"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
-
+                                <div class="modal fade" id="deleteModal{{ $r->plan_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Are you Sure?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p style="color:red;">Are you Sure You want to delete this. </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                                                <a  href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->plan_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>

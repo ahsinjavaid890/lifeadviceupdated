@@ -25,6 +25,7 @@
                                 <th>ID</th>
                                 <th>Plan Name</th>
                                 <th>Product Name</th>
+                                <th>Company</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -46,9 +47,12 @@
                                     <td>
                                         {{$r->pro_name}}
                                     </td>
+                                    <td>
+                                        <img width="120" src="{{ url('public/images') }}/{{ $r->comp_logo }}">
+                                    </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->benifit_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->benifit_id }}"><i class="fa fa-trash"></i>Delete</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editlifeplan') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->plan_id }}"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
 
