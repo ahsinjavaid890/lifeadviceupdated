@@ -65,6 +65,7 @@
                                    </div>
                                 </div>
                              </div>
+                             
                              <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/assets/css/sortable.css')}}">
                              <div class="row">
                                 <div class="col-md-12">
