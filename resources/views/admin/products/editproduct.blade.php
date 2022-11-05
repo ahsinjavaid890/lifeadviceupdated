@@ -300,7 +300,8 @@
                              </div>
                           </div>
                        </div>
-                       <input type="hidden" name="update_id" value="23"> <input name="savesortlist" id="savesortlist" type="hidden" value="">
+                       <input type="hidden" name="update_id" value="23"> 
+                       <input name="savesortlist" id="savesortlist" type="hidden" value="">
                     </div>
 
                 </form> <!-- /PANEL -->
