@@ -22,7 +22,7 @@
                                    <div class="col-md-12"> 
                                     <label class="switch switch-green switch-success switch-round">
                                        <input type="checkbox" class="switch-input" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif>
-                                       <span class="switch-label" data-on="On" data-off="Off"></span>
+                                       <span class="switch-label" data-on="YES" data-off="NO"></span>
                                        <span class="switch-handle"></span>
                                      </label>
                                        <!--  <label class="switch switch-success switch-round"> 
@@ -36,7 +36,7 @@
                                   <div class="col-md-12"> 
                                     <label class="switch switch-green switch-success switch-round">
                                        <input type="checkbox" class="switch-input" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif>
-                                       <span class="switch-label" data-on="On" data-off="Off"></span>
+                                       <span class="switch-label" data-on="Yes" data-off="NO"></span>
                                        <span class="switch-handle"></span>
                                      </label>
                                        <!--  <label class="switch switch-success switch-round"> 
