@@ -126,6 +126,10 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
     }
+    public function editplanbenifit($id)
+    {
+        return view('admin.plans.edit.editplanbenifit');
+    }
     public function lifeplans()
     {
         $data = wp_dh_life_plans::select('wp_dh_life_plans.id as plan_id','wp_dh_life_plans.plan_name','wp_dh_products.pro_name','wp_dh_companies.comp_logo')

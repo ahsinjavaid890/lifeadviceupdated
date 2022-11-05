@@ -246,7 +246,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/lifeplanbenifits','AdminController@lifeplanbenifits');
         Route::post('/createnewplanbenifit','AdminController@createnewplanbenifit');
-        
+        Route::get('/editplanbenifit/{id}','AdminController@editplanbenifit');
     });
     Route::name('quotation.')->prefix('quotation')->group(function(){
         Route::get('/allquotations','AdminController@allquotations');    
