@@ -387,7 +387,7 @@ document.getElementById('discountdiv').style.display = 'none';
 
                 </div>
                     <div id="appendRates">
-                
+              
                                     <div class="appendRates" id="row_06232042" style="margin-bottom: 10px;">
                     <div class="row">
                             <div class="col-md-1" style="width: auto;margin-right: 10px;">
@@ -448,6 +448,7 @@ document.getElementById('discountdiv').style.display = 'none';
                             </div>
                         </div>
                             </div>
+                            <div class="row"></div>
                      </div>         
                                     
 
@@ -515,14 +516,18 @@ document.getElementById('discountdiv').style.display = 'none';
 <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
                         </div>
 <div class="dayrange_1">
-                        <div class="col-md-1 rangegroup_1" style="padding:0;">
+    <div class="row">
+                        <div class="col-md-8 rangegroup_1" style="padding:0;">
+                            <div class="row">
                         <div class="col-md-12" style="padding:0;">
                         <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
                         </div>
                         <div class="col-md-12" style="padding:0;">
                         <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
                         </div>
+                    </div>
                         </div>
+                    </div>
 </div>
                     </div>
                 </div>  
@@ -729,7 +734,8 @@ document.getElementById('discountdiv').style.display = 'none';
 @endsection
 @section('script')
 
-
+  
+<script type="text/javascript" src="{{ asset('public/admin/assets/js/admin.js')}}"></script>
 <script>
 function submitfunc(){
     var a = $("#sortable").sortable("toArray", {
@@ -799,7 +805,7 @@ if(d == '1'){
 
 //alert('dayrange_'+d);
 jQuery('.dayrange_'+d).append(
-        '<div class="col-md-1 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
+        '<div class="col-md-8 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
         '<div class="col-md-12" style="padding:0;">'+
         '<input id="days_rate" placeholder="Price" class="form-control" name="days_rate'+d+'[]" class="form-control" value="" type="text">'+
         '</div></div>');        
@@ -837,6 +843,186 @@ function removemultirate() {
 
 
 }
-</script>   
-<script type="text/javascript" src="{{ asset('public/admin/assetstwo/js/admin.js')}}"></script>
+</script> 
+
+<script type="text/javascript">
+    jQuery('.addRates').click(function(event) {
+    var countRates = jQuery('#appendRates .appendRates').size() + 2;
+    var countRates1 = jQuery('#appendRates .appendRates').size() + 1;
+    var countRange = jQuery('#append_day_range .append_day_range').size()+1;
+    var range="";
+    //alert(countRange);
+    for(var i=0;i<countRange;i++)
+    {
+      range+=  '<div class="col-md-3">' +
+        '<div class="input">'+
+        '<input type="text" id="days_rate' + countRates + '" name="days_rate'+countRates1+'[]" class="form-control">' +
+        '</div>' +
+        '</div>';
+    }
+   // alert(countRates);
+
+    jQuery('#appendRates').append(
+        '<div class="appendRates row" id="row_'+ + new Date() +'">' +
+        '<div class="col-md-1" style="width: auto;margin-right: 10px;">' +
+        '<label class="checkbox"><input type="checkbox" value="'+ + new Date()+'" id="rt[]" name="rt[]"><i></i></label>' +
+        '</div>' +
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesMin' + countRates + '" name="iratesMin[]" class="min_'+ + new Date()+' form-control">' +
+        '</div>' +
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" class="max_'+ + new Date()+' form-control">' +
+        '</div>' +
+        '<div class="col-md-3">' +
+        '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" class="sum_'+ + new Date()+' form-control">' +
+        '</div>' +
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '</div>');
+   // alert(range);
+})
+
+//REMOVE PLAN RATES
+jQuery('.removeRates').click(function(event) {
+
+var rt_values = $("input:checkbox[name='rt[]']:checked").map(function(){return $(this).val();}).get();
+console.log(rt_values);
+var rt_checklength = rt_values.length;            
+if(rt_checklength == 0){
+alert('Please select an item first');   
+} else {
+for(r=0;r< rt_checklength;r++)
+{
+//alert(rt_values[r]);
+jQuery('#appendRates #row_'+rt_values[r]).remove();
+}
+}
+
+    //jQuery('#appendRates .appendRates:last-of-type').remove();
+
+});
+
+//Copy Rates
+jQuery('.copyRates').click(function(event) {
+    var countRates = jQuery('#appendRates .appendRates').size() + 2;
+    var countRates1 = jQuery('#appendRates .appendRates').size() + 1;
+    var countRange = jQuery('#append_day_range .append_day_range').size()+1;
+    var range="";
+    //alert(countRange);
+    var copy_values = $("input:checkbox[name='rt[]']:checked").map(function(){return $(this).val();}).get();
+    var copy_checklength = copy_values.length;            
+    if(copy_checklength == 0){
+    alert('Please select an item to copy'); 
+    } else {
+    for(var i=0;i<copy_checklength;i++)
+    {
+      iratesMin_value = $('.min_'+copy_values[i]).val();
+      iratesMax_value = $('.max_'+copy_values[i]).val();
+      iratesSum_value = $('.sum_'+copy_values[i]).val();
+      range+=  '<div class="col-md-3 margin5">' +
+        '<div class="input">'+
+        '<input type="text" id="days_rate' + countRates + '" name="days_rate'+countRates1+'[]" class="form-control">' +
+        '</div>' +
+        '</div>';
+        
+        jQuery('#appendRates').append(
+        '<div class="appendRates" id="row_'+ + new Date() +'"><div class="col-md-12 unit">' +
+         '<div class="row">' +'<div class="col-md-1 margin5" style="width: auto;margin-right: 10px;">' +
+        '<label class="checkbox"><input type="checkbox" value="'+ + new Date()+'" id="rt[]" name="rt[]"><i></i></label>' +
+        '</div>' +
+        '<div class="col-md-2 margin5">' +
+        '<input type="text" id="iratesMin' + countRates + '" name="iratesMin[]" value="'+iratesMin_value+'" class="form-control">' +
+        '</div>' +
+        '<div class="col-md-2 margin5">' +
+        '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" value="'+iratesMax_value+'" class="form-control">' +
+        '</div>' +
+        '<div class="col-md-3 margin5 nopad">' +
+        '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" value="'+iratesSum_value+'" class="form-control">' +
+        '</div>' +
+        '<div class="col-md-2 margin5">' +
+        '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '</div></div></div>');
+    }
+    }
+   // alert(countRates);
+
+
+   // alert(range);
+})
+
+
+jQuery('.addDeduct').click(function(event) {
+
+    /* Add child for deductibles */
+
+    var count = jQuery('#deductionAppend .appended').size() + 2;
+
+    jQuery('#deductionAppend').append(
+
+        '<div class="row appended" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;"><div class="col-md-6 unit">' +
+
+        '<div class="widget left-50">' +
+        '<input type="text" name="ideductHash[]" id="ideductHash' + count + '" placeholder="Deductible ' + count + '" class="form-control">' +
+
+        '</div>' +
+
+        '</div> ' +
+
+        '<div class="col-md-6 unit">' +
+
+        '<div class="widget left-50">' +
+        '<input type="text" name="ideductPer[]" id="ideductPer' + count + '" placeholder="Deductible ' + count + '" class="form-control">' +
+
+        '</div>' +
+
+        '</div></div>');
+
+});
+
+jQuery('.removeDeduct').click(function(event) {
+
+    /* Remove the last child for deductible */
+
+    jQuery('#deductionAppend .appended:last-of-type').remove();
+
+});
+    
+
+
+
+
+
+
+
+// Add Features Policy
+
+jQuery('.addFeatures').click(function(event) {
+
+    var countFeature = jQuery('#appendFeatures .appendFeatures').size() + 2;
+
+    jQuery('#appendFeatures').append('<div class="appendFeatures">'+
+
+                    '<div class="row unit" style="margin-bottom: 10px;">'+
+
+                            '<input type="text" id="ifeaturelist'+countFeature+'" name="ifeaturelist[]" placeholder="Enter Feature List # '+countFeature+'" class="form-control">'+
+
+                    '</div>'+
+
+                '</div>');
+
+})
+
+jQuery('.removeFeatures').click(function(event) {
+
+    /* Remove the last child for deductible */
+
+    jQuery('#appendFeatures .appendFeatures:last-of-type').remove();
+
+});
+
+
+
+</script>
 @endsection
