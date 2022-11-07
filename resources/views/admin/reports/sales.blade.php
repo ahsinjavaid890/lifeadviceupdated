@@ -45,8 +45,43 @@
                 </tr>
             </tbody>
         </table>
+
+
+        <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr bgcolor="#F1F1F1">
+                                                <th>Transaction Date</th>
+                                                <th>Policy Number</th>
+                                                <th>Client Name</th>
+                                                <th>Client Contact</th>
+                                                <th>Start Date</th>
+                                                <th>Expiry Date</th>
+                                                <th>Broker Code</th>
+                                                <th>Agent Code</th>
+                                                <th>Transaction Type</th>
+                                                <th>Medical Benefit</th>
+                                                <th>Deductible</th>
+                                                <th>Policy Premium</th>
+                                                <th>Commission</th>
+                                                <th>Sub Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         
+                                            <tr bgcolor="#F1F1F1">
+                                                <th colspan="11" style="font-size:15px; font-weight:bold; text-align:right;">Grand Total</th>
+                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$</th>
+                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$0.00</th>
+                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$</th>
+                                            </tr>                                       
+                                      </tbody>
+                                    </table>        
+                                </div>
     </div>
-</div>    
+</div>
+
     </div>
-</div>   
+</div>
+ 
 @endsection
