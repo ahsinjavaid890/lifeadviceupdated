@@ -28,8 +28,12 @@ class Reportcontroller extends Controller
     {
         return view('admin.reports.sales');
     }
-     public function broker()
+     public function brokercomission()
     {
         return view('admin.reports.broker');
+    }
+     public function agentreport()
+    {
+        return view('admin.reports.agent');
     }
 }
