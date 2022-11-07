@@ -7,20 +7,19 @@
           <div class="panel-heading">
               <div class="col-md-6">
               <span class="title elipsis">
-                <strong>Broker Commission Report</strong> <!-- panel title -->
+                <strong>Agent Commission Report</strong> <!-- panel title -->
               </span>
               </div>
             </div>
             <!-- panel content -->
             <div class="panel-body">
               
-
             <div class="row">
               <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
 
                 <h4 class="red">
-                  <span class="middle"><strong>Broker Commission Statement</strong></span>
+                  <span class="middle"><strong>Agent Commission Statement</strong></span>
                 </h4>
                     <div class="card">
                         
@@ -39,6 +38,8 @@
                                             <td><input type="date" name="end_date" style="height:39px;" class="form-control datepicker" id="end_date" value="" required=""></td>
                       <td><select class="chosen-select form-control" name="seller" id="seller" data-placeholder="Select Seller">
                                                                                         <option value="admin">Select All</option>
+                                                                                        <option value="1410">manish sharda - 1410</option>
+                                                                                        <option value="1388">Sonu Ahmad - 1388</option>
                                                                                                               </select>
                             </td>
                                             <td><input type="button" class="btn btn-success" value="Generate Report" onclick="generatereport()"> </td>
@@ -68,7 +69,8 @@ document.getElementById('form').submit();
                 <!-- PAGE CONTENT ENDS -->
               </div><!-- /.col -->
             </div><!-- /.row -->
-          
+
+
             </div>
             <!-- /panel content -->
             <!-- panel footer -->
