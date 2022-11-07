@@ -1,93 +1,63 @@
 @extends('admin.layouts.main-layout')
 @section('title','Agent Commission Reports')
 @section('content')
---!>
-<div class="d-flex flex-column-fluid">
-    <div class="container-fluid">
-        <div class="card card-custom mt-5">
-    <div class="card-header flex-wrap py-1">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container-fluid ">
+            <!--begin::Card-->
+            @include('alerts.index')
+            <div class="card card-custom mt-5">
+                <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            Agent Commission Report
-                            <div class="text-muted pt-2 font-size-sm">Manage Agent Reports</div>
+                            Agent Commission Reports
+                            <div class="text-muted pt-2 font-size-sm">Manage All Agent Commission Reports</div>
                         </h3>
                     </div>
                 </div>
-    <div class="card-body">
-        <table class="table table-stripped">
-            <thead>
-                <tr>
-                    <th><i class="fa fa-calendar"></i>Dates Between</th>
-                    <th></th>
-                    <th><i class="fa fa-user"></i>Select Seller</th>
-                    <th><i class="fa fa-table"></i>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <form method="POST" action="#">
-                <tr>
-                    <td>
-                        <input type="date" name="date_betweem" class="form-control" name="date_between">
-                    </td>
-                    <td>
-                        <input type="date" name="end_date" class="form-control" name="end_date">
-                    </td>
-                    <td>
-                        <select class="chosen-select form-control" name="seller" id="seller" data-placeholder="Select Seller" class="form-control">
-                            <option value="admin">Select All</option>
-                            <option value="1410">  manish sharda - 1410</option>
-                            <option value="1432">  Mubashar Ahmad - 1432</option>
-                            <option value="1388">  Sonu Ahmad - 1388</option>           
-                        </select>
-                    </td>
-                    <td>
-<<<<<<< Updated upstream
-                        <button name="save"  class="btn btn-block btn-success">Generate Report</button>
-=======
-                        <a href="javascript:void(0)" type="submit" name="save" class="btn btn-block btn-success">Generate Report</as>
->>>>>>> Stashed changes
-                    </td>
-                </tr>
-            </form>
-            </tbody>
-        </table>
-
-
-        <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr bgcolor="#F1F1F1">
-                                                <th>Transaction Date</th>
-                                                <th>Policy Number</th>
-                                                <th>Client Name</th>
-                                                <th>Client Contact</th>
-                                                <th>Start Date</th>
-                                                <th>Expiry Date</th>
-                                                <th>Broker Code</th>
-                                                <th>Agent Code</th>
-                                                <th>Transaction Type</th>
-                                                <th>Medical Benefit</th>
-                                                <th>Deductible</th>
-                                                <th>Policy Premium</th>
-                                                <th>Commission</th>
-                                                <th>Sub Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                         
-                                            <tr bgcolor="#F1F1F1">
-                                                <th colspan="11" style="font-size:15px; font-weight:bold; text-align:right;">Grand Total</th>
-                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$</th>
-                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$0.00</th>
-                                                <th style="font-size:15px; font-weight:bold; text-align:right;">$</th>
-                                            </tr>                                       
-                                      </tbody>
-                                    </table>        
-                                </div>
+                <div class="card-body">
+                    @if ($errors->any())
+                      <div class="alert alert-danger alert-dismissible">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                      </div><br />
+                    @endif
+                    <form method="POST" action="{{ url('admin/reports/getagentreport') }}">
+                        @csrf
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Start Date</label>
+                            <input type="date" name="date_betweem" class="form-control" name="date_between">
+                        </div>
+                        <div class="col-md-3">
+                            <label>End Date</label>
+                            <input type="date" name="date_betweem" class="form-control" name="date_between">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Seller</label>
+                            <select class="chosen-select form-control" name="seller" id="seller" data-placeholder="Select Seller" class="form-control">
+                                <option value="admin">Select All</option>
+                                <option value="1410">  manish sharda - 1410</option>
+                                <option value="1432">  Mubashar Ahmad - 1432</option>
+                                <option value="1388">  Sonu Ahmad - 1388</option>           
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary">Generate Report</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
     </div>
+    <!--end::Entry-->
 </div>
-
-    </div>
-</div>
- 
 @endsection

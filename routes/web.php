@@ -242,7 +242,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/salesreport','Reportcontroller@salesreport');
         Route::get('/broker','Reportcontroller@brokercomission');
         Route::get('/agent','Reportcontroller@agentreport');
-        Route::post('/agent','Reportcontroller@agentreports');
+        Route::post('/getagentreport','Reportcontroller@agentreports');
     });
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');

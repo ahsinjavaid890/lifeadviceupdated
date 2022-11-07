@@ -38,13 +38,10 @@ class Reportcontroller extends Controller
     }
     public function agentreports(Request $request)
     {
-        $request->validate(
-            [
-                'date_between' => 'required',
-                'end_date' => 'required',
-                'seller' => 'required',  
-            ]
-        );
+        $this->validate($request, [
+            'date_between' => 'required',
+            'end_date' => 'required',
+        ]);
         echo "<pre>";
         print_r($request->all());
        
