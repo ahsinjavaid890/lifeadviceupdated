@@ -41,7 +41,6 @@ class Reportcontroller extends Controller
         $request->validate(
             [
                 'date_between' => 'required',
-<<<<<<< Updated upstream
                 'end_date' => 'required',
                 'seller' => 'required',  
             ]
@@ -49,16 +48,5 @@ class Reportcontroller extends Controller
         echo "<pre>";
         print_r($request->all());
        
-=======
-                'end_date' => 'required|email',
-                'seller' => 'required',  
-            ]
-        );
-        $customer = new reports;
-        $customer->date_between= $request['date_between'];
-        $customer->end_date= $request['end_date'];
-        $customer->seller= $request['seller'];
-        $customer->save();
->>>>>>> Stashed changes
     }
 }
