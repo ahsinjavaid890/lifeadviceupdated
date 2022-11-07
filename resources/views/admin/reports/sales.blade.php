@@ -8,8 +8,8 @@
     <div class="card-header flex-wrap py-1">
                     <div class="card-title">
                         <h3 class="card-label">
-                            Agent Commission Report
-                            <div class="text-muted pt-2 font-size-sm">Manage Agent Reports</div>
+                            Sales Report
+                            <div class="text-muted pt-2 font-size-sm">Manage Sales Reports</div>
                         </h3>
                     </div>
                 </div>
