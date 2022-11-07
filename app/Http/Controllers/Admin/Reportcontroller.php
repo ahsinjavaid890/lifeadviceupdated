@@ -36,4 +36,17 @@ class Reportcontroller extends Controller
     {
         return view('admin.reports.agent');
     }
+    public function agentreports(Request $request)
+    {
+        $request->validate(
+            [
+                'date_between' => 'required',
+                'end_date' => 'required',
+                'seller' => 'required',  
+            ]
+        );
+        echo "<pre>";
+        print_r($request->all());
+       
+    }
 }

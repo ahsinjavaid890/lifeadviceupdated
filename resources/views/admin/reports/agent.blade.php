@@ -24,6 +24,7 @@
                 </tr>
             </thead>
             <tbody>
+                <form method="POST" action="#">
                 <tr>
                     <td>
                         <input type="date" name="date_betweem" class="form-control">
@@ -40,9 +41,10 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn btn-block btn-success">Generate Report</button>
+                        <button name="save"  class="btn btn-block btn-success">Generate Report</button>
                     </td>
                 </tr>
+            </form>
             </tbody>
         </table>
 
