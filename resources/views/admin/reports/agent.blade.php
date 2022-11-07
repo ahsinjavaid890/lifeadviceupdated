@@ -27,10 +27,10 @@
                 <form method="POST" action="#">
                 <tr>
                     <td>
-                        <input type="date" name="date_betweem" class="form-control">
+                        <input type="date" name="date_betweem" class="form-control" name="date_between">
                     </td>
                     <td>
-                        <input type="date" name="end_date" class="form-control">
+                        <input type="date" name="end_date" class="form-control" name="end_date">
                     </td>
                     <td>
                         <select class="chosen-select form-control" name="seller" id="seller" data-placeholder="Select Seller" class="form-control">
@@ -41,7 +41,11 @@
                         </select>
                     </td>
                     <td>
+<<<<<<< Updated upstream
                         <button name="save"  class="btn btn-block btn-success">Generate Report</button>
+=======
+                        <a href="javascript:void(0)" type="submit" name="save" class="btn btn-block btn-success">Generate Report</as>
+>>>>>>> Stashed changes
                     </td>
                 </tr>
             </form>
