@@ -3,7 +3,7 @@
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
         <!-- CORE CSS -->
-        <link href="{{ asset('public/admin/assetstwo/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+       <!--  <link href="{{ asset('public/admin/assetstwo/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" /> -->
         <!-- THEME CSS -->
 <link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('public/admin/assetstwo/css/layout.css')}}" rel="stylesheet" type="text/css" />
@@ -11,7 +11,12 @@
         <!-- PAGE LEVEL STYLES -->
 <link href="{{ asset('public/admin/assetstwo/css/layout-datatables.css')}}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<style type="text/css">
+	.form-control {
+  display: block;
+  width: 100% !important;
+}
+</style>
    <div id="content" class="padding-20">
 					<!-- 
 						PANEL CLASSES:

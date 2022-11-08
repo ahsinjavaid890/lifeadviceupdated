@@ -213,6 +213,10 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('message', 'Plan Updated Successfully');
     }
+    public function addlifeplane()
+    {
+        return view('admin.plans.addlifeplane');
+    }
     public function addnewplan()
     {
         return view('admin.plans.addnewplan');
