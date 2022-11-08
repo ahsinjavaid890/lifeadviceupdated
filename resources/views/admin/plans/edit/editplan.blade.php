@@ -627,21 +627,6 @@ form .row {
          <div class="clear"></div>
          <hr>
       </div>
-      <div class="col-md-6" style="display:none;">
-         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-heart"></i> Manage Benefits</h4>
-         <div class="original">
-         </div>
-         <div id="appendBenefits"></div>
-         <div class="clear" style="height:20px;"></div>
-         <div class="row">
-            <div class="col-md-12">
-               <a href="javascript:void(0)" class="btn btn-default btn-sm addBenefits  addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-               <a href="javascript:void(0)" class="btn btn-danger btn-sm removeBenefits addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-               <div class="clear">&nbsp;</div>
-            </div>
-         </div>
-         <hr>
-      </div>
       <div class="clear"></div>
       <!-- Third Section -->
       <div class="col-md-6">
@@ -650,12 +635,7 @@ form .row {
                <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-file"></i> PDF Policy</h4>
                <div class="">
                   <label>Upload PDF Policy</label>
-                  <div class="fancy-file-upload">
-                     <i class="fa fa-upload"></i>
-                     <input type="file" class="form-control" name="ipdfPolicy" id="ipdfPolicy1" onchange="jQuery(this).next('input').val(this.value);" />
-                     <input type="text" class="form-control" placeholder="no file selected" readonly="" />
-                     <span class="button">Choose File</span>
-                  </div>
+                  <input type="file" class="form-control" name="ipdfPolicy">
                </div>
                <div id="appendPDFpolicy"></div>
                <div class="clear"></div>
