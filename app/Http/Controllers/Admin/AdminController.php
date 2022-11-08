@@ -101,59 +101,34 @@ class AdminController extends Controller
     }
     public function planupdate(Request $request)
     {
+        
+        $cdiscountrate = $request->cdiscountrate;
+        $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
+        $flat =  $request->iflat;
+        $iflatrateprice = $flat == 1 ? $request->iflatrateprice : "0";
+        $flatrate_type = $flat == 1 ? $request->flatrate_type : "";
+
         $updateplan = wp_dh_insurance_plans::find($request->id);
         $updateplan->plan_name = $request->iplan;
         $updateplan->product = $request->ipname;
         $updateplan->insurance_company = $request->icname;
-        $updateplan->premedical = $request->name;
-        $updateplan->family_plan = $request->name;
-        $updateplan->flatrate_type = $request->name;
-        $updateplan->flatrate = $request->name;
-        $updateplan->rate_base = $request->name;
-        $updateplan->monthly_two = $request->name;
-        $updateplan->feature = $request->name;
-        $updateplan->sales_tax = $request->name;
+        $updateplan->premedical = $request->imedical;
+        $updateplan->family_plan = $request->ifamily;
+        $updateplan->flatrate_type = $flatrate_type;
+        $updateplan->flatrate = $iflatrateprice;
+        $updateplan->rate_base = $request->irateCalculation;
+        $updateplan->monthly_two = $request->monthlytwo;
+        $updateplan->feature = $request->ifeature;
+        $updateplan->sales_tax = $request->sales_tax;
         $updateplan->smoke_rate = $request->smokeprice;
-        $updateplan->smoke = $request->name;
-        $updateplan->cdiscountrate = $request->name;
-        $updateplan->directlink = $request->name;
-        $updateplan->discount = $request->name;
-        $updateplan->discount_rate = $request->name;
-        $updateplan->status = $request->name;
+        $updateplan->smoke = $request->smoke;
+        $updateplan->cdiscountrate = $cdiscountprice;
+        $updateplan->directlink = $request->directlink;
+        $updateplan->discount = $request->discount;
+        $updateplan->discount_rate = $request->discount_rate;
         $updateplan->created_by = Auth::user()->id;
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
-
-
-
-        $id = $request->update_id;
-        $preMedical = $request->imedical;
-        $familyPlan = $request->ifamily;
-        $usa_rate = $request->usa_rate;
-        $canada_rate=$request->canada_rate;
-        $nonusa_rate=$request->nonusa_rate;
-        $rateBase = $request->irateCalculation;
-        $monthlytwo = $request->monthlytwo;
-        $smoke = $request->smoke;
-        $smokeprice = $request->smokeprice;
-        $cdiscountrate = $request->cdiscountrate;
-        $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
-        $sales_tax = $request->sales_tax;
-        $flat =  $request->iflat;
-        $iflatrateprice = $flat == 1 ? $request->iflatrateprice : "0";
-        $flatrate_type = $flat == 1 ? $request->flatrate_type : "";
-        $feature = $request->ifeature;
-        $pname = $request->iplan;
-        $product = $request->ipname;
-        $comp = $request->icname;
-        $dlink = $request->directlink;
-        $discount = $request->discount;
-        $discount_rate = $request->discount_rate;
-        $current_user = Auth::user()->id;
-        $last_update = date("Y-m-d H:i:s");
-        
-        $insertPlan = "UPDATE wp_dh_insurance_plans SET plan_name='$pname', product='$product', insurance_company='$comp', sales_tax='$sales_tax', smoke_rate='$smokeprice',  smoke='$smoke', premedical='$preMedical', family_plan='$familyPlan',   flatrate_type='$flatrate_type',   flatrate='$iflatrateprice', rate_base='$rateBase',monthly_two='$monthlytwo', feature='$feature', directlink='$dlink', last_updation='$last_update', last_updated_by='$current_user', `discount`='$discount',`discount_rate`='$discount_rate',`cdiscountrate`='$cdiscountprice' WHERE id='$id'";
-        DB::statement($insertPlan);
         if($request->ipdfPolicy)
         {
             $pdf = wp_dh_insurance_plans_pdfpolicy::where('plan_id' , $request->id)->first();
@@ -184,10 +159,6 @@ class AdminController extends Controller
 
 
 
-    }
-    public function addlifeplane()
-    {
-        return view('admin.plans.addlifeplane');
     }
     public function addnewplan()
     {

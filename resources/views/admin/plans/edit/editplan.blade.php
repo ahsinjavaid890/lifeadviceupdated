@@ -278,7 +278,7 @@ form .row {
                 <?php
                 if($data->id){
                 $counter=0;
-                $rats_q = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $data->id)->orderby('sum_insured')->get();
+                $rats_q = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $data->id)->orderby('sum_insured' , 'DESC')->get();
                 $rats_num = $rats_q->count();
                 foreach ($rats_q as $r) {
                     $counter++;
@@ -401,23 +401,23 @@ form .row {
                </div>
                <div class="col-md-1">
                   <label style="margin-bottom:20px;"><strong>Min Age</strong></label>
-                  <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="<?php echo $ranges_f['minage'];?>" type="text">
+                  <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="" type="text">
                </div>
                <div class="col-md-1">
                   <label style="margin-bottom:20px;"><strong>Max Age</strong></label>
-                  <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="<?php echo $ranges_f['maxage'];?>" type="text">
+                  <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="" type="text">
                </div>
                <div class="col-md-2 margin5 nopad">
                   <label style="margin-bottom:20px;"><strong>Benefit</strong></label>
-                  <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="<?php echo $ranges_f['sum_insured'];?>" type="text">
+                  <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
                </div>
                <div class="dayrange_1">
                   <div class="col-md-1 rangegroup_1" style="padding:0;">
                      <div class="col-md-12" style="padding:0;">
-                        <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="<?php echo $sub_ranges_f['range_rate'];?>" type="text">
+                        <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
                      </div>
                      <div class="col-md-12" style="padding:0;">
-                        <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="<?php echo $sub_ranges_f['rate'];?>" type="text">
+                        <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
                      </div>
                   </div>
                </div>
@@ -482,7 +482,11 @@ form .row {
          </div>
          </div>
          <?php }
-            } ?>
+            } 
+            $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');
+                  $sub_ranges_num = $sub_ranges_q->count();
+
+            ?>
          <div id="appendRates1"></div>
          <input type="hidden" id="currentragerows" value="<?php if($data->id && $sub_ranges_num > 0){ echo $sub_ranges_num; } else { echo '1'; }?>" />
          <input type="hidden" id="pricerows" value="<?php if($data->id && $ranges_num > 0){ echo $ranges_num; } else { echo '1'; }?>" />
