@@ -600,7 +600,6 @@ form .row {
             </div>
          </div>
             <?php } else {?>
-                         <div id="deductionAppend">
 
             <div class="row appended" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;">
                <div class="col-md-6 unit"  >
@@ -613,11 +612,13 @@ form .row {
                      <input name="ideductPer[]" id="ideductPer1" class="form-control" value="{{$r->deductible2}}" placeholder="Deductible 1" type="text">
                   </div>
                </div>
-            </div>
-                     </div>
+            </div>                   
 
             <?php } ?>
-         <?php } ?>    
+         <?php } ?>   
+                  <div id="deductionAppend">
+
+                     </div> 
          <div class="col-md-6">
             <a href="javascript:void(0)" class="btn btn-default btn-sm addDeduct addnewItem"><i class="fa fa-plus"></i> Add Item</a>
             <a href="javascript:void(0)" class="btn btn-danger btn-sm removeDeduct addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
