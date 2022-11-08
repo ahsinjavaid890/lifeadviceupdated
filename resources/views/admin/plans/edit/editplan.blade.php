@@ -42,7 +42,7 @@ form .row {
 <form action="{{ url('admin/plans/updateplan') }}" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
     @csrf
         <!-- Add Plan Details -->
-
+        <input type="hidden" value="{{ $data->id }}" name="id">
         <div class="row">
             <div class="panel panel-default col-md-6">
              <div class="panel-body">

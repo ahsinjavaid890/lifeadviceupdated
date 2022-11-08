@@ -102,6 +102,7 @@ class AdminController extends Controller
     public function planupdate(Request $request)
     {
         $updateplan = wp_dh_insurance_plans::find($request->id);
+        print_r(expression)
         $updateplan->plan_name = $request->iplan;
         $updateplan->product = $request->ipname;
         $updateplan->insurance_company = $request->icname;
