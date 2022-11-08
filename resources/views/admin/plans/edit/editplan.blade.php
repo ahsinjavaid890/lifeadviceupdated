@@ -458,6 +458,7 @@ form .row {
                             <div class="row">
 
             <div class="dayrange_<?php echo $prow;?> d-flex">
+
                <?php
                   $s = 0;
                   $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');
