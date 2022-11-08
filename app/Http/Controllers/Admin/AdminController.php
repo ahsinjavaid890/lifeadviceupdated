@@ -185,6 +185,10 @@ class AdminController extends Controller
 
 
     }
+    public function addlifeplane()
+    {
+        return view('admin.plans.addlifeplane');
+    }
     public function addnewplan()
     {
         return view('admin.plans.addnewplan');
