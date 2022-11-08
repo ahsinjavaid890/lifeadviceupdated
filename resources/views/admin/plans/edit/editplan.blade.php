@@ -453,8 +453,10 @@ form .row {
                <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Benefit</strong></label><?php } ?>
                <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="{{ $r->sum_insured }}" type="text">
             </div>
-            <div class="dayrange_<?php echo $prow;?> ">
-                <div class="row">
+            <div class="col-md-6">
+                            <div class="row">
+
+            <div class="dayrange_<?php echo $prow;?> d-flex">
                <?php
                   $s = 0;
                   $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');
@@ -475,6 +477,7 @@ form .row {
                <?php } ?>
             </div>
         </div>
+         </div>
          </div>
          <?php }
             } ?>
@@ -745,8 +748,8 @@ if(d == '1'){
 
 //alert('dayrange_'+d);
 jQuery('.dayrange_'+d).append(
-        '<div class="col-md-4 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
-        '<div class="col-md-12" style="padding:0;">'+
+        '<div class="col-md-1 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
+        '<div class="col-md-4" style="padding:0;">'+
         '<input id="days_rate" placeholder="Price" class="form-control" name="days_rate'+d+'[]" class="form-control" value="" type="text">'+
         '</div></div>');        
 }
