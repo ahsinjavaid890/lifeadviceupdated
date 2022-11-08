@@ -453,7 +453,7 @@ form .row {
                <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Benefit</strong></label><?php } ?>
                <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="{{ $r->sum_insured }}" type="text">
             </div>
-            <div class="dayrange_<?php echo $prow;?>">
+            <div class="dayrange_<?php echo $prow;?> row">
                <?php
                   $s = 0;
                   $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');

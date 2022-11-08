@@ -2024,7 +2024,7 @@ pre {
   .table-responsive > .table-bordered {
     border: 0; }
 
-.form-control {
+/*.form-control {
   display: block;
   width: 100%;
   height: calc(1.5em + 1.3rem + 2px);
@@ -2042,7 +2042,7 @@ pre {
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }*/
   @media (prefers-reduced-motion: reduce) {
     .form-control {
       -webkit-transition: none;
