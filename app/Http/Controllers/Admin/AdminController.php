@@ -92,6 +92,11 @@ class AdminController extends Controller
         ->leftJoin('wp_dh_companies','wp_dh_insurance_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
         return view('admin.plans.index')->with(array('data'=>$data));
     }
+    public function editplan($id)
+    {
+        $data = wp_dh_insurance_plans::where('id' , $id)->first();
+        return view('admin.plans.edit.editplan')->with(array('data'=>$data));
+    }
     public function addnewplan()
     {
         return view('admin.plans.addnewplan');

@@ -5,12 +5,12 @@
         <!-- CORE CSS -->
         <!-- <link href="{{ asset('public/admin/assetstwo/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" /> -->
         <!-- THEME CSS -->
-        <link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('public/admin/assetstwo/css/layout.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('public/admin/assetstwo/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
+<link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('public/admin/assetstwo/css/layout.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('public/admin/assetstwo/css/color_scheme/green.css')}}" rel="stylesheet" type="text/css" id="color_scheme" />
         <!-- PAGE LEVEL STYLES -->
-        <link href="{{ asset('public/admin/assetstwo/css/layout-datatables.css')}}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{{ asset('public/admin/assetstwo/css/layout-datatables.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
             .switch.switch-success>input:checked+.switch-label {
@@ -39,16 +39,6 @@ form .row {
 
 <script src="{{ asset('public/admin/assetstwo/js/jquery-1.12.4.js')}}"></script>
 <div id="content" class="padding-20">
-                    <!-- 
-                        PANEL CLASSES:
-                            panel-default
-                            panel-danger
-                            panel-warning
-                            panel-info
-                            panel-success
-                        INFO:   panel collapse - stored on user localStorage (handled by app.js _panels() function).
-                                All pannels should have an unique ID or the panel collapse status will not be stored!
-                    -->
     <form action="?action=update" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
         <!-- Add Plan Details -->
 
@@ -62,69 +52,40 @@ form .row {
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-md-12">
-                    <label><i class="fa fa-leaf"></i> <strong class="text-danger">Select Product</strong></label>
-                        <select autocomplete="on" name="ipname" id="ipname" class="form-control">
-                                                                        <option value="2" >Visitors to Canada</option>
-                                                                        <option value="15" >Term Insurance</option>
-                                                                        <option value="3" >Student Insurance</option>
-                                                                        <option value="4" >Insurance For Canadians</option>
-                                                                        <option value="5" >Single Trip</option>
-                                                                        <option value="6" >Multi Trip Insurance</option>
-                                                                        <option value="7" >All Inclusive Trip</option>
-                                                                        <option value="8" >Trip Interruption Insurance</option>
-                                                                        <option value="9"  selected="" >Baggage Claim Insurance</option>
-                                                                        <option value="20" >Life Insurance</option>
-                                                                        <option value="23" >Super Visa Insurance</option>
-                                    
-                            </select>
-
+                    <div class="col-md-12">
+                        <label><i class="fa fa-leaf"></i> <strong class="text-danger">Select Product</strong></label>
+                        <select required name="ipname" id="ipname" class="form-control">
+                            <option value="">Select Product</option>
+                            @foreach(DB::table('wp_dh_products')->get() as $r)
+                                <option value="{{ $r->pro_id }}" >{{ $r->pro_name }}</option>
+                            @endforeach                                        
+                        </select>
+                    </div>
                 </div>
-                </div>
-                
                 <div class="row">
-                <div class="col-md-12">
-                    <label><strong>Name of the Plan</strong></label>
-                    <input id="iplan" name="iplan" placeholder="Enter Plan Name" class="form-control" value="Baggage one" type="text">
+                    <div class="col-md-12">
+                        <label><strong>Name of the Plan</strong></label>
+                        <input id="iplan" name="iplan" placeholder="Enter Plan Name" class="form-control" type="text">
+                    </div>
                 </div>
-                </div>
-                
                 <div class="row">
-                <div class="col-md-12">
-                    <label><i class="fa fa-building"></i> <strong>Select Company</strong></label>
-                        <select autocomplete="on" name="icname" id="icname" class="form-control">
-                            <option value="">None</option>
-                                                                        <option value="2"  selected="" >Travlance Insurance</option>
-                                                                        <option value="4" >21st Century Insurance</option>
-                                                                        <option value="6" >Allianz Travel Insurance</option>
-                                                                        <option value="7" >GMS Travel Insurance</option>
-                                                                        <option value="8" >TuGO Travel Insurance</option>
-                                                                        <option value="9" >Industrial Alliance Insurance</option>
-                                                                        <option value="10" >Travel Shield</option>
-                                                                        <option value="11" >Destination Canada</option>
-                                                                        <option value="12" >Blue Cross Travel Insurance</option>
-                                                                        <option value="16" >INGLE Insurance</option>
-                                                                        <option value="17" >Allianz Insurance</option>
-                                                                        <option value="18" >Ingle Assurance</option>
-                                                                        <option value="19" >Manulife Life Insurance</option>
-                                                                        <option value="26" >Manulife Insurance</option>
-                                    
-                            </select>
-
+                    <div class="col-md-12">
+                        <label><i class="fa fa-building"></i> <strong>Select Company</strong></label>
+                        <select required name="icname" id="icname" class="form-control">
+                            <option value="">Select Company</option>
+                            @foreach(DB::table('wp_dh_companies')->get() as $r)
+                                <option value="{{ $r->comp_id }}" >{{ $r->comp_name }}</option>
+                            @endforeach                                        
+                        </select>
+                    </div>
                 </div>
-                </div>
-
-
-
                 <div class="original row">
                     <div class="col-md-12" id="links">
                         <label><i class="fa fa-shopping-cart"></i> Buynow Link</label>
-                            <input id="directlink" name="directlink" class="form-control" placeholder="https://" value="" type="text">
-
+                        <input id="directlink" name="directlink" class="form-control" placeholder="https://" value="" type="text">
                     </div>
                 </div>
                 </div>
-
             </div>
 
 
