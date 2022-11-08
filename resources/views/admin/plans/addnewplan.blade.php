@@ -743,7 +743,7 @@ function addmultirate() {
     '</div>'+
     '<div class="col-md-2 margin5">'+
     '<input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">'+
-    '</div><div class="dayrange_'+ pricerows +'">'+ range +
+    '</div><div class="dayrange_'+ pricerows +'row">'+ range +
     '</div>'+
     '</div>');
 
