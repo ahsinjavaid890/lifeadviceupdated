@@ -748,8 +748,8 @@ if(d == '1'){
 
 //alert('dayrange_'+d);
 jQuery('.dayrange_'+d).append(
-        '<div class="col-md-1 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
-        '<div class="col-md-4" style="padding:0;">'+
+        '<div class="col-md-8 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
+        '<div class="col-md-12" style="padding:0;">'+
         '<input id="days_rate" placeholder="Price" class="form-control" name="days_rate'+d+'[]" class="form-control" value="" type="text">'+
         '</div></div>');        
 }
