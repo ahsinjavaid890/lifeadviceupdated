@@ -501,178 +501,128 @@ form .row {
       </div>
    </div>
 </div>
-   <div class="clear"></div>
-   <div class="day_basis" id="day_basis" style="display:none;">
-      <div class="row" id="ratesItem">
-         <div class="col-md-12">
-            <h4 class="item-sub"><i class="fa fa-plus"></i> Add Rates</h4>
-            <div class="original">
-               <div class="row pricerow_1">
-                  <div class="col-md-1" style="width: auto;margin-right: 10px;">
-                     <div class="col-md-12 text-center" style="padding:0;">
-                        <label><strong>Select</strong></label>
-                     </div>
-                     <div class="col-md-12 text-center" style="padding:0;">
-                        <label class="checkbox" style="margin:0;">
-                        <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
-                        <i></i>
-                        </label>
-                     </div>
-                  </div>
-                  <div class="col-md-1">
-                     <label style="margin-bottom:20px;"><strong>Min Age</strong></label>
-                     <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="" type="text">
-                  </div>
-                  <div class="col-md-1">
-                     <label style="margin-bottom:20px;"><strong>Max Age</strong></label>
-                     <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="" type="text">
-                  </div>
-                  <div class="col-md-2 margin5 nopad">
-                     <label style="margin-bottom:20px;"><strong>Benefit</strong></label>
-                     <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
-                  </div>
-                  <div class="dayrange_1">
-                     <div class="row">
-                        <div class="col-md-8 rangegroup_1" style="padding:0;">
-                           <div class="row">
-                              <div class="col-md-12" style="padding:0;">
-                                 <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
-                              </div>
-                              <div class="col-md-12" style="padding:0;">
-                                 <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div id="appendRates1"></div>
-            <input type="hidden" id="currentragerows" value="1" />
-            <input type="hidden" id="pricerows" value="1" />
-            <div class="clear" style="clear:both; height:10px;"></div>
-            <div class="row">
-               <div class="col-md-6">
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="addmultirate();"><i class="fa fa-plus"></i> Add Item</a>
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm copyRates1 addnewItem"><i class="fa fa-copy"></i> Copy Items</a>
-                  <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removemultirate();"><i class="fa fa-trash"></i> Remove Items</a>
-               </div>
-               <div class="col-md-6">
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="adddayrange();"><i class="fa fa-plus"></i> Add Day Range</a>
-                  <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removedayrange();"><i class="fa fa-trash"></i> Remove Day Range</a>
-               </div>
-               <div class="clear">&nbsp;</div>
-            </div>
-            <hr>
-         </div>
+
+<div class="row" id="ratesItem">
+   <div class="col-md-6">
+      <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-leaf"></i> Manage Deductables</h4>
+      <div class="row">
+         <div class="col-md-6"><label style="margin:0; padding:0;"><strong>Deductable Amount</strong></label></div>
+         <div class="col-md-6"><label style="margin:0; padding:0;"><strong>Deductable Rate (%)</strong></label></div>
       </div>
+      <div class="row">
+         <?php
+            $sr = 0;
+            $de_q = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $data->id)->get();
+            $de_num = $de_q->count();
+            foreach($de_q as $r){
+            $sr++;
+            if($sr == 1){
+            $class = 'appended';
+            
+         ?>
+         <div class="original" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;">
+            <div class="col-md-6 unit"  >
+               <div class="widget left-50">
+                  <input name="ideductHash[]" id="ideductHash1" class="form-control" value="{{ $r->deductible1 }}" placeholder="Deductible 1" type="text">
+               </div>
+            </div>
+            <div class="col-md-6 unit" >
+               <div class="widget left-50">
+                  <input name="ideductPer[]" id="ideductPer1" class="form-control" value="{{$r->deductible2}}" placeholder="Deductible 1" type="text">
+               </div>
+            </div>
+         </div>
+         <div id="deductionAppend">
+            <?php } else {?>
+            <div class="row appended" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;">
+               <div class="col-md-6 unit"  >
+                  <div class="widget left-50">
+                     <input name="ideductHash[]" id="ideductHash1" class="form-control" value="{{ $r->deductible1 }}" placeholder="Deductible 1" type="text">
+                  </div>
+               </div>
+               <div class="col-md-6 unit" >
+                  <div class="widget left-50">
+                     <input name="ideductPer[]" id="ideductPer1" class="form-control" value="{{$r->deductible2}}" placeholder="Deductible 1" type="text">
+                  </div>
+               </div>
+            </div>
+            <?php } ?>
+         </div>
+         <?php } ?>                 
+      </div>
+     <div class="col-md-6">
+        <a href="javascript:void(0)" class="btn btn-default btn-sm addDeduct addnewItem"><i class="fa fa-plus"></i> Add Item</a>
+        <a href="javascript:void(0)" class="btn btn-danger btn-sm removeDeduct addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
+     </div>
+     <div class="clear">&nbsp;</div>
+     <div class="clear"></div>
+     <hr>
    </div>
-   <!-- End Rate Section for all other products except single -->
    <div class="clear"></div>
-   <div class="row" id="ratesItem">
+   <!-- Third Section -->
+   <div class="row">
       <div class="col-md-6">
-         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-leaf"></i> Manage Deductables</h4>
-         <div class="row">
-            <div class="col-md-6"><label style="margin:0; padding:0;"><strong>Deductable Amount</strong></label></div>
-            <div class="col-md-6"><label style="margin:0; padding:0;"><strong>Deductable Rate (%)</strong></label></div>
-         </div>
-         <div class="row">
-            <div class="original" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;">
-               <div class="row">
-                  <div class="col-md-6 unit"  >
-                     <div class="widget left-50">
-                        <input name="ideductHash[]" id="ideductHash1" class="form-control" value="0" placeholder="Deductible 1" type="text">
-                     </div>
-                  </div>
-                  <div class="col-md-6 unit" >
-                     <div class="widget left-50">
-                        <input name="ideductPer[]" id="ideductPer1" class="form-control" value="0" placeholder="Deductible 1" type="text">
-                     </div>
-                  </div>
-               </div>
+         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-file"></i> PDF Policy</h4>
+         <div class="">
+            <label>Upload PDF Policy</label>
+            <div class="fancy-file-upload">
+               <i class="fa fa-upload"></i>
+               <input type="file" class="form-control" name="ipdfPolicy" id="ipdfPolicy1" onchange="jQuery(this).next('input').val(this.value);" />
+               <input type="text" class="form-control" placeholder="no file selected" readonly="" />
+               <span class="button">Choose File</span>
             </div>
-            <div id="deductionAppend">                  </div>
          </div>
-         <div class="col-md-6">
-            <a href="javascript:void(0)" class="btn btn-default btn-sm addDeduct addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-            <a href="javascript:void(0)" class="btn btn-danger btn-sm removeDeduct addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-         </div>
-         <div class="clear">&nbsp;</div>
+         <div id="appendPDFpolicy"></div>
          <div class="clear"></div>
-         <hr>
+         <div class="col-md-12" style="display:none;">
+            <a href="javascript:void(0)" class="btn btn-default btn-sm addPDF addnewItem"><i class="fa fa-plus"></i> Add Item</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-sm removePDF addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
+            <div class="clear">&nbsp;</div>
+         </div>
       </div>
-      <div class="col-md-6" style="display:none;">
-         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-heart"></i> Manage Benefits</h4>
-         <div class="original">
-         </div>
-         <div id="appendBenefits"></div>
-         <div class="clear" style="height:20px;"></div>
-         <div class="row">
-            <div class="col-md-12">
-               <a href="javascript:void(0)" class="btn btn-default btn-sm addBenefits  addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-               <a href="javascript:void(0)" class="btn btn-danger btn-sm removeBenefits addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-               <div class="clear">&nbsp;</div>
-            </div>
-         </div>
-         <hr>
+      <div class="col-md-6">
+         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px;"><i class="fa fa-file"></i> Current PDF Policy</h4>
+         <?php
+            $pdf = DB::table('wp_dh_insurance_plans_pdfpolicy')->where('plan_id' , $data->id)->first();
+         ?>
+         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#C00;"><i class="fa fa-file"></i> {{ $pdf->pdfpolicy }}</h4>
       </div>
       <div class="clear"></div>
-      <!-- Third Section -->
-      <div class="col-md-6">
-         <div class="row">
-            <div class="col-md-6">
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-file"></i> PDF Policy</h4>
-               <div class="">
-                  <label>Upload PDF Policy</label>
-                  <div class="fancy-file-upload">
-                     <i class="fa fa-upload"></i>
-                     <input type="file" class="form-control" name="ipdfPolicy" id="ipdfPolicy1" onchange="jQuery(this).next('input').val(this.value);" />
-                     <input type="text" class="form-control" placeholder="no file selected" readonly="" />
-                     <span class="button">Choose File</span>
-                  </div>
-               </div>
-               <div id="appendPDFpolicy"></div>
-               <div class="clear"></div>
-               <div class="col-md-12" style="display:none;">
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm addPDF addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-                  <a href="javascript:void(0)" class="btn btn-danger btn-sm removePDF addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-                  <div class="clear">&nbsp;</div>
-               </div>
+      <hr>
+      <div class="clear"></div>
+   </div>
+   <!-- Fourth Section -->
+   <div class="" id="featureShow" style="display:block">
+      <div class="col-md-12">
+         <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-database"></i> Manage Features</h4>
+         <div class="original">
+            <?php
+               $fe_q = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $data->id)->get();
+               foreach($fe_q as $r){
+               ?>   
+            <div class="" style="margin-bottom: 10px;">
+               <input id="ifeaturelist1" name="ifeaturelist[]" class="form-control" value="{{ $r->features }}" placeholder="Enter Feature List # 1" type="text">
             </div>
-            <div class="col-md-6">
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px;"><i class="fa fa-file"></i> Current PDF Policy</h4>
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#C00;"><i class="fa fa-file"></i> 05112022043437_</h4>
-            </div>
-            <div class="clear"></div>
-            <hr>
-            <div class="clear"></div>
+            <?php } ?>                  
          </div>
-      </div>
-      <!-- Fourth Section -->
-      <div class="" id="featureShow" style="display:block">
-         <div class="col-md-12">
-            <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-database"></i> Manage Features</h4>
-            <div class="original">
-            </div>
-            <div id="appendFeatures"></div>
-            <div class="clear" style="height:20px;"></div>
-            <div class="">
-               <a href="javascript:void(0)" class="btn btn-default btn-sm addFeatures addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-               <a href="javascript:void(0)" class="btn btn-danger btn-sm removeFeatures addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-               <div class="clear">&nbsp;</div>
-            </div>
-            <hr>
+         <div id="appendFeatures"></div>
+         <div class="clear" style="height:20px;"></div>
+         <div class="">
+            <a href="javascript:void(0)" class="btn btn-default btn-sm addFeatures addnewItem"><i class="fa fa-plus"></i> Add Item</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-sm removeFeatures addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
+            <div class="clear">&nbsp;</div>
          </div>
+         <hr>
       </div>
    </div>
-   <div class="clear"></div>
+</div>
+
+
    <div class="row">
       <div class="col-md-6"> <br/>
          <button type="submit" name="submit" class="btn btn-success submit-btn addnewItem" onclick="$('.sr').prop('checked', true);"><i class="fa fa-save"></i> Submit Changes</button>
       </div>
-      <div class="clear"></div>
    </div>
-   <div class="clear"></div>
 </div>
 @endsection
 @section('script')
