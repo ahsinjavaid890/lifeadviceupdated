@@ -18,7 +18,7 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_life_plans;
 use App\Models\wp_dh_products;
 use App\Models\quotes;
-use App\Models\wp_dh_insurance_plans_pdfpolic;
+use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use Illuminate\Support\Facades\Hash;
 use Mail;
@@ -101,6 +101,7 @@ class AdminController extends Controller
     }
     public function planupdate(Request $request)
     {
+        $input = $request->all();
         
         $cdiscountrate = $request->cdiscountrate;
         $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
@@ -157,8 +158,60 @@ class AdminController extends Controller
             $add_deductibles->save();
         }
 
+        // deleteing features
+        DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $request->id)->delete();
+        // Inserting features
+        if($request->ifeaturelist)
+        {
+            for($i=0;$i<count($request->ifeaturelist);$i++){
+                $features = $request->ifeaturelist[$i];
+                $userID = Auth::user()->id;
+                $time = time();
+                $insertRates="INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$request->id','$features','$time','$userID')";
+                DB::statement($insertRates);
+            }
+        }
+        
 
+        $rateBase = $request->irateCalculation;
 
+        if($rateBase == '3')
+        {
+            DB::table('wp_dh_plan_day_rate')->where('plan_id' , $request->id)->delete();
+            for($i=1;$i<=count($request->sr);$i++){
+                 $max = $request->iratesMax1[$i-1];
+                 $min = $request->iratesMin1[$i-1];
+                 $s = 0;
+                 foreach($request->days_rate_range1 as $dayrange){
+                  $range = $dayrange;
+                  $ranger = str_replace(' ', '', $range);
+                  $ranges = explode('-', $ranger);
+                  $min_range = $ranges[0];
+                  $max_range = $ranges[1];
+                  if($max_range == ''){
+                      $max_range = $min_range;
+                  }                 
+                  $price = $input['days_rate'.$i][$s];
+                  $s++;
+                  
+                   $insertRates1 =  "INSERT INTO wp_dh_plan_day_rate(plan_id,minage,maxage,sum_insured,min_range,max_range,range_rate,rate,created_on) VALUES('$request->id','$min','$max','".$_POST['iratesSum1'][$i-1]."','$min_range','$max_range','$range','$price',now())";
+                    DB::statement($insertRates1);
+              }
+             }
+        } else {
+            DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $request->id)->delete();
+            for($i=0;$i<count($request->iratesMin);$i++){
+                $irateMin = $request->iratesMin[$i];
+                $irateMax = $request->iratesMax[$i];
+                $irateSum = $request->iratesSum[$i];
+                $irateRate = $request->iratesRate[$i];
+                $cuser = Auth::user()->id;
+                $time = time();
+                $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate,created_on, created_by ) VALUES('$request->id','$irateMin','$irateMax','$irateSum','$irateRate', '$time', '$cuser')";
+                DB::statement($insertRates);
+            }
+        }
+        return redirect()->back()->with('message', 'Plan Updated Successfully');
     }
     public function addnewplan()
     {

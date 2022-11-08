@@ -39,6 +39,7 @@ form .row {
 
 <script src="{{ asset('public/admin/assetstwo/js/jquery-1.12.4.js')}}"></script>
 <div id="content" class="padding-20">
+    @include('alerts.index')
 <form action="{{ url('admin/plans/updateplan') }}" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
     @csrf
         <!-- Add Plan Details -->
@@ -378,201 +379,137 @@ form .row {
         </div>
 
     </div>
+
+
     <div class="day_basis" id="day_basis" style="display:<?php if($data->rate_base == '3'){ echo 'block'; } else { echo 'none'; } ?>;">
-   <div class="row" id="ratesItem">
-      <div class="col-md-12">
-         <h4 class="item-sub"><i class="fa fa-plus"></i> Add Rates</h4>
-         <?php
-            $ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->groupby('minage')->groupby('maxage')->orderby('id');
+       <div class="row" id="ratesItem">
+          <div class="col-md-12">
+             <h4 class="item-sub"><i class="fa fa-plus"></i> Add Rates</h4>
+            <?php
+            $ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->groupby('minage' , 'maxage')->orderby('id')->get();
             $ranges_num = $ranges_q->count();
             if($ranges_num == 0){?>
-         <div class="original">
-            <div class="row pricerow_1">
-               <div class="col-md-1" style="width: auto;margin-right: 10px;">
-                  <div class="col-md-12 text-center" style="padding:0;">
-                     <label><strong>Select</strong></label>
-                  </div>
-                  <div class="col-md-12 text-center" style="padding:0;">
-                     <label class="checkbox" style="margin:0;">
-                     <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
-                     <i></i>
-                     </label>
-                  </div>
-               </div>
-               <div class="col-md-1">
-                  <label style="margin-bottom:20px;"><strong>Min Age</strong></label>
-                  <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="" type="text">
-               </div>
-               <div class="col-md-1">
-                  <label style="margin-bottom:20px;"><strong>Max Age</strong></label>
-                  <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="" type="text">
-               </div>
-               <div class="col-md-2 margin5 nopad">
-                  <label style="margin-bottom:20px;"><strong>Benefit</strong></label>
-                  <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
-               </div>
-               <div class="dayrange_1">
-                  <div class="col-md-1 rangegroup_1" style="padding:0;">
-                     <div class="col-md-12" style="padding:0;">
-                        <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
-                     </div>
-                     <div class="col-md-12" style="padding:0;">
-                        <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
-                     </div>
-                  </div>
-               </div>
+            <div class="original">
+                <div class="row pricerow_1">
+                   <div class="col-md-1" style="width: auto;margin-right: 10px;">
+                      <div class="col-md-12 text-center" style="padding:0;">
+                         <label><strong>Select</strong></label>
+                      </div>
+                      <div class="col-md-12 text-center" style="padding:0;">
+                         <label class="checkbox" style="margin:0;">
+                         <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
+                         <i></i>
+                         </label>
+                      </div>
+                   </div>
+                   <div class="col-md-1">
+                      <label style="margin-bottom:20px;"><strong>Min Age</strong></label>
+                      <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="" type="text">
+                   </div>
+                   <div class="col-md-1">
+                      <label style="margin-bottom:20px;"><strong>Max Age</strong></label>
+                      <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="" type="text">
+                   </div>
+                   <div class="col-md-2 margin5 nopad">
+                      <label style="margin-bottom:20px;"><strong>Benefit</strong></label>
+                      <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
+                   </div>
+                   <div class="col-md-6">
+                       <div class="row dayrange_1">
+                          <div class="col-md-1 rangegroup_1" style="padding:0;">
+                             <div class="col-md-12" style="padding:0;">
+                                <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
+                             </div>
+                             <div class="col-md-12" style="padding:0;">
+                                <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
+                             </div>
+                          </div>
+                       </div>
+                   </div>
+                </div>
             </div>
-         </div>
-         <?php } else {
+            <?php } else {
             $prow = 0;  
-            foreach($ranges_q->get() as $r){
+            foreach($ranges_q as $range){
             $prow++;    
             ?>
-         <div class="row pricerow_<?php echo $prow;?>">
-            <div class="col-md-1" style="width: auto;margin-right: 10px;">
-               <?php if($prow == 1){?>
-               <div class="col-md-12 text-center" style="padding:0;">
-                  <label><strong>Select</strong></label>
-               </div>
-               <?php } ?>
-               <div class="col-md-12 text-center" style="padding: <?php if($prow == 1){ echo '0'; } else { echo '0 21px'; }?>;">
-                  <label class="checkbox" style="margin:0;">
-                  <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
-                  <i></i>
-                  </label>
-               </div>
-            </div>
-            <div class="col-md-1">
-               <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Min Age</strong></label><?php } ?>
-               <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="{{ $r->minage }}" type="text">
-            </div>
-            <div class="col-md-1">
-               <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Max Age</strong></label><?php } ?>
-               <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="{{ $r->maxage }}" type="text">
-            </div>
-            <div class="col-md-2 margin5 nopad">
-               <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Benefit</strong></label><?php } ?>
-               <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="{{ $r->sum_insured }}" type="text">
-            </div>
-            <div class="col-md-6">
-                            <div class="row">
-
-            <div class="dayrange_<?php echo $prow;?> d-flex">
-
-               <?php
-                  $s = 0;
-                  $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');
-                  $sub_ranges_num = $sub_ranges_q->count();
-                  foreach($sub_ranges_q->get() as $sub){
-                  $s++;
-                  ?>
-               <div class="col-md-1 rangegroup_<?php echo $s;?>" style="padding:0;">
-                  <?php if($prow == 1){?>
-                  <div class="col-md-12" style="padding:0;">
-                     <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="{{ $sub->range_rate }}" type="text">
-                  </div>
-                  <?php } ?>
-                  <div class="col-md-12" style="padding:0;">
-                     <input id="days_rate" placeholder="Price" class="form-control" name="days_rate<?php echo $prow;?>[]" class="form-control" value="{{ $sub->rate }}" type="text">
-                  </div>
-               </div>
-               <?php } ?>
-            </div>
-        </div>
-         </div>
-         </div>
-         <?php }
-            } 
-            $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id', $data->id)->where('minage' , $r->minage)->where('maxage' , $r->maxage)->orderby('id');
-                  $sub_ranges_num = $sub_ranges_q->count();
-
-            ?>
-         <div id="appendRates1"></div>
-         <input type="hidden" id="currentragerows" value="<?php if($data->id && $sub_ranges_num > 0){ echo $sub_ranges_num; } else { echo '1'; }?>" />
-         <input type="hidden" id="pricerows" value="<?php if($data->id && $ranges_num > 0){ echo $ranges_num; } else { echo '1'; }?>" />
-         <div class="clear" style="clear:both; height:10px;"></div>
-         <div class="row">
-            <div class="col-md-6">
-               <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="addmultirate();"><i class="fa fa-plus"></i> Add Item</a>
-               <a href="javascript:void(0)" class="btn btn-default btn-sm copyRates1 addnewItem"><i class="fa fa-copy"></i> Copy Items</a>
-               <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removemultirate();"><i class="fa fa-trash"></i> Remove Items</a>
-            </div>
-            <div class="col-md-6">
-               <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="adddayrange();"><i class="fa fa-plus"></i> Add Day Range</a>
-               <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removedayrange();"><i class="fa fa-trash"></i> Remove Day Range</a>
-            </div>
-            <div class="clear">&nbsp;</div>
-         </div>
-         <hr>
-      </div>
-   </div>
-</div>
-   <div class="clear"></div>
-   <div class="day_basis" id="day_basis" style="display:none;">
-      <div class="row" id="ratesItem">
-         <div class="col-md-12">
-            <h4 class="item-sub"><i class="fa fa-plus"></i> Add Rates</h4>
-            <div class="original">
-               <div class="row pricerow_1">
-                  <div class="col-md-1" style="width: auto;margin-right: 10px;">
-                     <div class="col-md-12 text-center" style="padding:0;">
-                        <label><strong>Select</strong></label>
-                     </div>
-                     <div class="col-md-12 text-center" style="padding:0;">
-                        <label class="checkbox" style="margin:0;">
-                        <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
-                        <i></i>
-                        </label>
-                     </div>
-                  </div>
-                  <div class="col-md-1">
-                     <label style="margin-bottom:20px;"><strong>Min Age</strong></label>
-                     <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="" type="text">
-                  </div>
-                  <div class="col-md-1">
-                     <label style="margin-bottom:20px;"><strong>Max Age</strong></label>
-                     <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="" type="text">
-                  </div>
-                  <div class="col-md-2 margin5 nopad">
-                     <label style="margin-bottom:20px;"><strong>Benefit</strong></label>
-                     <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">
-                  </div>
-                  <div class="dayrange_1">
-                     <div class="row">
-                        <div class="col-md-8 rangegroup_1" style="padding:0;">
-                           <div class="row">
-                              <div class="col-md-12" style="padding:0;">
-                                 <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="" type="text">
-                              </div>
-                              <div class="col-md-12" style="padding:0;">
-                                 <input id="days_rate" placeholder="Price" class="form-control" name="days_rate1[]" class="form-control" value="" type="text">
-                              </div>
-                           </div>
+            <div class="row pricerow_<?php echo $prow;?>">
+                <div class="col-md-1" style="width: auto;margin-right: 10px;">
+                   <?php if($prow == 1){?>
+                   <div class="col-md-12 text-center" style="padding:0;">
+                      <label><strong>Select</strong></label>
+                   </div>
+                   <?php } ?>
+                   <div class="col-md-12 text-center" style="padding: <?php if($prow == 1){ echo '0'; } else { echo '0 21px'; }?>;">
+                      <label class="checkbox" style="margin:0;">
+                      <input type="checkbox" value="1" id="sr[]" class="form-control sr" name="sr[]" style="margin: 0;">
+                      <i></i>
+                      </label>
+                   </div>
+                </div>
+                <div class="col-md-1">
+                   <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Min Age</strong></label><?php } ?>
+                   <input id="iratesMin1" class="form-control" class="form-control" name="iratesMin1[]" value="{{ $range->minage }}" type="text">
+                </div>
+                <div class="col-md-1">
+                   <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Max Age</strong></label><?php } ?>
+                   <input id="iratesMax1" class="form-control" name="iratesMax1[]" class="form-control" value="{{ $range->maxage }}" type="text">
+                </div>
+                <div class="col-md-2 margin5 nopad">
+                   <?php if($prow == 1){?><label style="margin-bottom:20px;"><strong>Benefit</strong></label><?php } ?>
+                   <input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="{{ $range->sum_insured }}" type="text">
+                </div>
+                <div class="col-md-6">
+                    <div class="row dayrange_<?php echo $prow;?>">
+                        <?php
+                        $r = 0;
+                        $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->where('minage' , $range->minage)->where('maxage' , $range->maxage)->orderby('id')->get();
+                        $sub_ranges_num = $sub_ranges_q->count();
+                        foreach($sub_ranges_q as $sub){
+                        $r++;
+                        ?>
+                        <div class="col-md-1 rangegroup_<?php echo $r;?>" style="padding:0;">
+                          <?php if($prow == 1){?>
+                          <div class="col-md-12" style="padding:0;">
+                             <input placeholder="Days Range" class="form-control" id="days_rate_range" name="days_rate_range1[]" class="form-control" value="{{ $sub->range_rate }}" type="text">
+                          </div>
+                          <?php } ?>
+                          <div class="col-md-12" style="padding:0;">
+                             <input id="days_rate" placeholder="Price" class="form-control" name="days_rate<?php echo $prow;?>[]" class="form-control" value="{{ $sub->rate }}" type="text">
+                          </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div id="appendRates1"></div>
-            <input type="hidden" id="currentragerows" value="1" />
-            <input type="hidden" id="pricerows" value="1" />
-            <div class="clear" style="clear:both; height:10px;"></div>
-            <div class="row">
-               <div class="col-md-6">
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="addmultirate();"><i class="fa fa-plus"></i> Add Item</a>
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm copyRates1 addnewItem"><i class="fa fa-copy"></i> Copy Items</a>
-                  <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removemultirate();"><i class="fa fa-trash"></i> Remove Items</a>
-               </div>
-               <div class="col-md-6">
-                  <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="adddayrange();"><i class="fa fa-plus"></i> Add Day Range</a>
-                  <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removedayrange();"><i class="fa fa-trash"></i> Remove Day Range</a>
-               </div>
-               <div class="clear">&nbsp;</div>
-            </div>
-            <hr>
-         </div>
-      </div>
-   </div>
+                        <?php } ?>
+                    </div>
+                </div>
+             </div>
+             <?php }
+                }
+            $sub_ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->orderby('id')->get();
+            $sub_ranges_num = $sub_ranges_q->count();
+             ?>
+             <div id="appendRates1"></div>
+             <input type="hidden" id="currentragerows" value="<?php if($data->id && $sub_ranges_num > 0){ echo $sub_ranges_num; } else { echo '1'; }?>" />
+             <input type="hidden" id="pricerows" value="<?php if($data->id && $ranges_num > 0){ echo $ranges_num; } else { echo '1'; }?>" />
+             <div class="clear" style="clear:both; height:10px;"></div>
+             <div class="row">
+                <div class="col-md-6">
+                   <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="addmultirate();"><i class="fa fa-plus"></i> Add Item</a>
+                   <a href="javascript:void(0)" class="btn btn-default btn-sm copyRates1 addnewItem"><i class="fa fa-copy"></i> Copy Items</a>
+                   <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removemultirate();"><i class="fa fa-trash"></i> Remove Items</a>
+                </div>
+                <div class="col-md-6">
+                   <a href="javascript:void(0)" class="btn btn-default btn-sm addnewItem" onclick="adddayrange();"><i class="fa fa-plus"></i> Add Day Range</a>
+                   <a href="javascript:void(0)" class="btn btn-danger btn-sm addnewItem" onclick="removedayrange();"><i class="fa fa-trash"></i> Remove Day Range</a>
+                </div>
+                <div class="clear">&nbsp;</div>
+             </div>
+             <hr>
+          </div>
+       </div>
+    </div>
+
+
+ 
    <!-- End Rate Section for all other products except single -->
    <div class="clear"></div>
    <div class="row" id="ratesItem">
@@ -652,7 +589,12 @@ form .row {
             </div>
             <div class="col-md-6">
                <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px;"><i class="fa fa-file"></i> Current PDF Policy</h4>
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#C00;"><i class="fa fa-file"></i> 05112022043437_</h4>
+
+               @if(DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $data->id)->first())
+               <a target="_blank" href="{{ url('public/images') }}/{{ DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $data->id)->first()->pdfpolicy }}" class="btn btn-primary btn-sm">View PDF</a>
+               @else
+               <b style="color:red;">No PDF</b>
+               @endif
             </div>
             <div class="clear"></div>
             <hr>
@@ -663,9 +605,13 @@ form .row {
       <div class="col-md-12" id="featureShow" style="display:block">
             <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-database"></i> Manage Features</h4>
             <div class="original">
+                @foreach(DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $data->id)->get() as $r)
+                <div class="" style="margin-bottom: 10px;">
+                <input id="ifeaturelist1" name="ifeaturelist[]" class="form-control" value="{{ $r->features }}" placeholder="Enter Feature List # 1" type="text">
+                </div>
+                @endforeach
             </div>
             <div id="appendFeatures"></div>
-            <div class="clear" style="height:20px;"></div>
             <div class="">
                <a href="javascript:void(0)" class="btn btn-default btn-sm addFeatures addnewItem"><i class="fa fa-plus"></i> Add Item</a>
                <a href="javascript:void(0)" class="btn btn-danger btn-sm removeFeatures addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
@@ -961,11 +907,11 @@ jQuery('.addFeatures').click(function(event) {
 
     jQuery('#appendFeatures').append('<div class="appendFeatures">'+
 
-                    '<div class="row unit" style="margin-bottom: 10px;">'+
+                    '<div class="row unit" style="margin-bottom: 10px;"><div class="col-md-12">'+
 
                             '<input type="text" id="ifeaturelist'+countFeature+'" name="ifeaturelist[]" placeholder="Enter Feature List # '+countFeature+'" class="form-control">'+
 
-                    '</div>'+
+                    '</div></div>'+
 
                 '</div>');
 
