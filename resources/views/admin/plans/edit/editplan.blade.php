@@ -722,7 +722,8 @@ function addmultirate() {
     '</div>'+
     '<div class="col-md-2 margin5">'+
     '<input id="iratesSum1" class="form-control" name="iratesSum1[]" class="form-control" value="" type="text">'+
-    '</div><div class="dayrange_'+ pricerows +' row">'+ range +
+    '</div><div class="col-md-6"><div class="dayrange_'+ pricerows +' row">'+ range +
+    '</div>'+
     '</div>'+
     '</div>');
 
@@ -748,7 +749,7 @@ if(d == '1'){
 
 //alert('dayrange_'+d);
 jQuery('.dayrange_'+d).append(
-        '<div class="col-md-8 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
+        '<div class="col-md-1 rangegroup_'+ countranges +'" style="padding:0;">'+ addlable +
         '<div class="col-md-12" style="padding:0;">'+
         '<input id="days_rate" placeholder="Price" class="form-control" name="days_rate'+d+'[]" class="form-control" value="" type="text">'+
         '</div></div>');        
