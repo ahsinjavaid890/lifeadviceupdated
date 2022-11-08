@@ -39,7 +39,7 @@ form .row {
 
 <script src="{{ asset('public/admin/assetstwo/js/jquery-1.12.4.js')}}"></script>
 <div id="content" class="padding-20">
-<form action="?action=update" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
+<form action="{{ url('admin/plans/updateplan') }}" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
         <!-- Add Plan Details -->
 
         <div class="row">
