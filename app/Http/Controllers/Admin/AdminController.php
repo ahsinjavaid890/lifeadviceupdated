@@ -102,7 +102,6 @@ class AdminController extends Controller
     public function planupdate(Request $request)
     {
         $updateplan = wp_dh_insurance_plans::find($request->id);
-        print_r(expression)
         $updateplan->plan_name = $request->iplan;
         $updateplan->product = $request->ipname;
         $updateplan->insurance_company = $request->icname;
@@ -114,7 +113,7 @@ class AdminController extends Controller
         $updateplan->monthly_two = $request->name;
         $updateplan->feature = $request->name;
         $updateplan->sales_tax = $request->name;
-        $updateplan->smoke_rate = $request->name;
+        $updateplan->smoke_rate = $request->smokeprice;
         $updateplan->smoke = $request->name;
         $updateplan->cdiscountrate = $request->name;
         $updateplan->directlink = $request->name;
@@ -152,6 +151,7 @@ class AdminController extends Controller
         $discount_rate = $request->discount_rate;
         $current_user = Auth::user()->id;
         $last_update = date("Y-m-d H:i:s");
+        
         $insertPlan = "UPDATE wp_dh_insurance_plans SET plan_name='$pname', product='$product', insurance_company='$comp', sales_tax='$sales_tax', smoke_rate='$smokeprice',  smoke='$smoke', premedical='$preMedical', family_plan='$familyPlan',   flatrate_type='$flatrate_type',   flatrate='$iflatrateprice', rate_base='$rateBase',monthly_two='$monthlytwo', feature='$feature', directlink='$dlink', last_updation='$last_update', last_updated_by='$current_user', `discount`='$discount',`discount_rate`='$discount_rate',`cdiscountrate`='$cdiscountprice' WHERE id='$id'";
         DB::statement($insertPlan);
         if($request->ipdfPolicy)
