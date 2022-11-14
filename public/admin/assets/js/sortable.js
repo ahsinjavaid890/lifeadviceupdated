@@ -907,7 +907,7 @@
           marginLeft: marginLeft,
           marginTop: marginTop
        };
-    
+     
        $.each( [ "left", "top" ], function( i, dir ) {
           if ( $.ui.position[ collision[ i ] ] ) {
              $.ui.position[ collision[ i ] ][ dir ]( position, {
@@ -10201,6 +10201,7 @@
     } );
     
     $.ui.plugin.add( "draggable", "connectToSortable", {
+
     start: function( event, ui, draggable ) {
        var uiSortable = $.extend( {}, ui, {
           item: draggable.element
@@ -18631,6 +18632,23 @@
     
     }));
     
-    $('.sortlist').sortable({
-      tolerance: 'pointer'
+   var $sortable = $('.sortlist').sortable({
+      update: function(event, ui) {
+         var counter = 1;
+         $('li', $sortable).each(function() {
+            $(this).attr('position', counter);
+             $(this).find("input[name='sort[]']").val(counter);
+            counter++;
+         });
+   }
+
     })
+
+
+
+
+var a = $('.sortlist').sortable("toArray", {
+   attribute: "id"
+});
+$('#savesortlist').val(a);
+// alert(a);

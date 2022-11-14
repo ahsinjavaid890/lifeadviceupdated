@@ -1,8 +1,8 @@
 <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="{{url('/dashboard')}}">
-            <img alt="Logo" src="{{asset('public/carrier/assets/media/custom/rtr-logo.png')}}" />
+        <a href="{{url('admin/dashboard')}}">
+            <img alt="Logo" src="{{ url('public/images') }}/{{ Cmf::get_store_value('footer_logo') }}" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->

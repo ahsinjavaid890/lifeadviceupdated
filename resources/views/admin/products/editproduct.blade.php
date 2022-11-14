@@ -6,8 +6,12 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
+            <form method="post" action="{{ url('admin/products/updateproducts') }}" id="productform" enctype="multipart/form-data" >
+                    @csrf
+
+                    <input type="hidden" value="{{ $data->pro_id }}" name="id">
             <div id="content" class="padding-20">
-                <form method="post" action="?action=update" id="productform" enctype="multipart/form-data" >
+                
                     <div class="row">
                        <div class="panel panel-default col-md-8" style="padding:0;">
                           <div class="panel-body">
@@ -300,7 +304,6 @@
                                 </div>
                                 <script type="text/javascript" src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
                                 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-                                <link rel="stylesheet" href="/resources/demos/style.css">
                                 <style>
                                    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
                                    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
