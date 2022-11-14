@@ -274,7 +274,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/allusers','AdminController@allusers');
         Route::get('/viewuser/{id}','AdminController@viewuser');
         Route::get('/addnewuser','AdminController@addnewuser');
-        Route::get('/edituser','AdminController@edituser');
+        Route::get('/edituser/{id}','AdminController@edituser');
 
     });
      Route::name('document.')->prefix('document')->group(function(){

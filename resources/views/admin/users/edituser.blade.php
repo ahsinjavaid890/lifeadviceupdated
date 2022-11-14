@@ -8,34 +8,35 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="card">
-				<div class="card-header">
-					<div class="panel-heading panel-heading-transparent">
-						<strong>User Details</strong>
-					</div>
-				</div>
-				<div class="card-body">
 					<form method="post" action="?action=update&amp;id=65" enctype="multipart/form-data">
 						<link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
 						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 								<style type="text/css">
-									
+									.card-header{
+										padding: 2rem 2.5rem 0px;
+									}
 									.switch.switch-success>input:checked+.switch-label {
 									    border-color: #3a5371 !important;
 									    background: #3a5371 !important;
 									}
 								</style>
+								
+					<div class="card">
+				<div class="card-header">
+					<div class="row">
+                    	<div class="col-md-12">
+                        <h3 class="text-danger"> Personal Details </h3>
+                    	</div>
+                    </div>
+				</div>
+				<div class="card-body">
+					
 								<div class="panel-body">
-		                        	<div class="row">
-		                            	<div class="col-md-12">
-		                                <h3 class="text-danger"> Personal Details </h3>
-		                            	</div>
-		                            </div>
 		                            <div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Management Capability</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 		                                	<label> License and E&amp;O Management capability ? </label>
 					                        <label class="switch switch-success switch-round">
 						                        <input type="checkbox" name="ifeature" id="ifeature" value="1">
@@ -44,10 +45,10 @@
 					                     </div>
 		                            </div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Select Logo</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 		                                <!-- fancy no style -->
 										<div class="fancy-file-upload">
 											<i class="fa fa-upload"></i>
@@ -58,10 +59,10 @@
 		                            	</div>
 		                            </div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Status</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 		                                <select name="status" id="status" class="form-control">
 											<option value="">SELECT ACCOUNT STATUS</option>
 											<option selected="selected" value="active">Active</option>
@@ -71,10 +72,10 @@
 		                            	</div>
 		                            </div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>User Type</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 		                                <select class="form-control" name="user_type" id="user_type" required="required" onchange="mustparent()">
 										<option value="">SELECT USER TYPE</option>
 																		<option selected="selected" value="admin">Admin</option>
@@ -115,10 +116,10 @@
 		                            	</div>
 		                            </div>
 																<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Parent User</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 										<select class="form-control" name="parent_id" id="parent_id" required="required" onchange="mustparent()">
 										<option value="0">N/A</option>
 																		</select>
@@ -126,48 +127,48 @@
 									</div>
 										
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Fiscal Year Starts From</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
-										<input type="text" class="form-control datepicker" name="fiscal_year" id="fiscal_year" value="0000-00-00" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
+		                                <div class="col-md-10">
+										<input type="date" class="form-control datepicker" name="fiscal_year" id="fiscal_year" value="0000-00-00" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Name</strong></label>
 		                            	</div>
-		                                <div class="col-md-4">
+		                                <div class="col-md-5">
 										<input type="text" class="form-control" placeholder="First Name" name="fname" id="fname" style="margin-right:5px;" value="Administrator" required="" onkeyup="suggestusername();">
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-5">
 										<input type="text" class="form-control" placeholder="Last Name" name="lname" id="lname" value="" required="" onkeyup="suggestusername();">
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong><i class="fa fa-envelope"></i> Email</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 										<input type="email" class="form-control" placeholder="Email Address" value="info@lifeadvice.ca" name="email" id="email" required="">
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong><i class="fa fa-phone"></i> Phone</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 										<input type="text" class="form-control" placeholder="Phone Number" value="" name="phone" id="phone" required="">
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong><i class="fa fa-map-marker"></i> Location</strong></label>
 		                            	</div>
-		                                <div class="col-md-4">
+		                                <div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Address" id="address" name="address" value="" required=""> 
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-2">
 										<input type="text" class="form-control" placeholder="City" id="city" name="city" value="" required=""> 
 										</div>
 										<div class="col-md-2">
@@ -175,10 +176,10 @@
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>&nbsp;</strong></label>
 		                            	</div>
-		                                <div class="col-md-4">
+		                                <div class="col-md-5">
 										<input type="text" class="form-control" placeholder="Postcode" id="postal" name="postal" value="" required="">
 										</div>
 										<div class="col-md-5">
@@ -451,40 +452,48 @@
 										</div>
 									</div>							
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Date of Birth</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
-										<input class="form-control datepicker" name="dob" id="dob" value="0000-00-00" type="text" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
+		                                <div class="col-md-10">
+										<input class="form-control datepicker" name="dob" id="dob" value="0000-00-00" type="date" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
 										</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong>Little About Me </strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 										<textarea class="form-control limited" name="about_me" id="about_me" maxlength="500" placeholder="Write something about you..."></textarea>
 										</div>
 									</div>
+									
+								</div>
+				</div>
+			</div>
+			<div class="card mt-3">
+				<div class="card-header">									
+					<div class="row">
+						<div class="col-md-12">
+                            <h4 class="red">
+								<span class="middle"><strong>Account Security</strong></span>
+							</h4>
+                        	</div>
+                        </div>
+				</div>
+				<div class="card-body">
 									<div class="row">
-		                            	<div class="col-md-12">
-		                                <h4 class="red">
-											<span class="middle"><strong>Account Security</strong></span>
-										</h4>
-		                            	</div>
-		                            </div>
-									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong><i class="fa fa-user"></i> Username</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 																		admin																</div>
 									</div>
 									<div class="row">
-		                            	<div class="col-md-3 text-right">
+		                            	<div class="col-md-2">
 		                                <label><strong><i class="fa fa-lock"></i> Change Password</strong></label>
 		                            	</div>
-		                                <div class="col-md-9">
+		                                <div class="col-md-10">
 										<div class="row">
 											<div class="col-md-5" style="padding:0;">
 										<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" onkeyup="validatePassword();">
@@ -498,16 +507,15 @@
 										</div>
 										</div>
 									</div>
-									
-								</div>
-								<div class="panel-footer">
-									<input type="submit" value="Submit Changes" class="btn btn-primary" id="submitbtn">
-								</div>
-		                        <input type="hidden" name="update_id" value="65">
-								<input type="hidden" name="current_logo" id="current_logo" value="">
-		                     </form>
 				</div>
 			</div>
+			<div class=" m-3">
+							<input type="submit" value="Submit Changes" class="btn btn-primary" id="submitbtn">
+						</div>
+                        <input type="hidden" name="update_id" value="65">
+						<input type="hidden" name="current_logo" id="current_logo" value="">
+				</form>
+				</div>
 				</div>
 			</div>
 		</div>

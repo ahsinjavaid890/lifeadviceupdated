@@ -19,6 +19,15 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                <style type="text/css">
+                                    
+                                    .switch.switch-success>input:checked+.switch-label {
+                                        border-color: #3a5371 !important;
+                                        background: #3a5371 !important;
+                                    }
+                                </style>
                         <div class="col-md-12">
                             <h2 class="text-warning">Personal Details</h2>
                             <div class="form-group">
@@ -31,7 +40,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="logo">Select Logo</label>
-                                <input type="file" name="logo" class="form-control">
+                                <div class="fancy-file-upload">
+                                    <i class="fa fa-upload"></i>
+                                    <input type="file" class="form-control" name="logo" onchange="jQuery(this).next('input').val(this.value);">
+                                    <input type="text" class="form-control" placeholder="no file selected" readonly="">
+                                    <span class="button">Choose File</span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
@@ -178,6 +192,15 @@
                     </div>
                 </div>
                     </div>
+                <div class="card-footer">
+                    <div class="panel-footer">
+                            <input type="submit" value="Submit" class="btn btn-primary" id="submitbtn">
+                        </div>
+                        <input type="hidden" name="update_id" value="65">
+                        <input type="hidden" name="current_logo" id="current_logo" value="">
+                     </form>
+                        </div>
+                </div>
                 </div>
         </div>
         <!--end::Container-->
