@@ -18632,23 +18632,14 @@
     
     }));
     
-   var $sortable = $('.sortlist').sortable({
-      update: function(event, ui) {
-         var counter = 1;
-         $('li', $sortable).each(function() {
-            $(this).attr('position', counter);
-             $(this).find("input[name='sort[]']").val(counter);
-            counter++;
-         });
+var $sortable = $('.sortlist').sortable({
+   update: function(event, ui) {
+      var counter = 1;
+      $('li', $sortable).each(function() {
+         $(this).attr('position', counter);
+         var value = 'id_'+counter;
+          $(this).find("input[name='sort[]']").val(value);
+         counter++;
+      });
    }
-
-    })
-
-
-
-
-var a = $('.sortlist').sortable("toArray", {
-   attribute: "id"
-});
-$('#savesortlist').val(a);
-// alert(a);
+})

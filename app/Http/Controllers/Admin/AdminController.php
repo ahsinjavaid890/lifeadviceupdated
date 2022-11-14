@@ -47,22 +47,14 @@ class AdminController extends Controller
         $redirect_from_url = $request->redirect_from_url;
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
-        $orderlist = explode(',' , $request->savesortlist);
-        print_r($orderlist);exit;
-
         $i = 1;
-        foreach($orderlist as  $order)
+        foreach($request->sort as  $order)
         {
             $sort_orders[$i] = $order ;
             $i++;
         }
-        $sort_orders =  serialize($sort_orders);
-        
-
+        $sort_orders =  serialize($sort_orders);    
         DB::statement("UPDATE `wp_dh_products` SET `pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
-
-
-
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
     public function addnewproduct()
