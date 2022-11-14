@@ -860,6 +860,10 @@
         $("#traveller_"+t).hide();
         document.getElementById('age_'+t).value = '';
     }
+    for(var t=1; t>=number_of_traveller; t++){
+        $("#number_travelers"+t).hide();
+        document.getElementById('traveller_'+t).value = '';
+    }
     for(var i=1; i<=number_of_traveller; i++){
         $("#traveller_"+i).show();
         document.getElementById('add_'+i).required = true;
