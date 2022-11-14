@@ -9,6 +9,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<form method="post" action="?action=update&amp;id=65" enctype="multipart/form-data">
+						@csrf
+						<input type="hidden" value="" name="">
 						<link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
 						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 								<style type="text/css">
@@ -20,7 +22,7 @@
 									    background: #3a5371 !important;
 									}
 								</style>
-								
+								DB::table('users')->where('$id' , $r->id)->get();
 					<div class="card">
 				<div class="card-header">
 					<div class="row">

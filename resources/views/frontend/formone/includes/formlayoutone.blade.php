@@ -2,6 +2,7 @@
 <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 <script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/js/jquery-1.12.4.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
 <script>
    $( function() {
      $( "#dob" ).datepicker({
@@ -24,238 +25,7 @@
      });
    } );
 </script>
-<style>
-   #ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
-   width:auto;
-   }
-   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
-   border: 1px solid #DDD;
-   background: #F1F1F1;
-   font-weight: normal;
-   color: #333;
-   font-weight: bold;
-   font-size: 14px;
-   padding: 0;
-   text-align: center;  
-   }
-   .ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
-   background: #c00 !important;
-   color: #FFF !important;
-   text-align: center;
-   border: none !important;
-   outline: none;
-   }
-   .ui-datepicker-calendar th span {
-   color:#333 !important;
-   }
-   .ui-datepicker-header select, table.ui-datepicker td a {
-   color: #333;
-   background: #FFF !important; 
-   }
-   .ui-datepicker .ui-state-highlight {
-   background: #FFFA90 !important;
-   color: #333 !important;  
-   }
-   /*
-   .form-control {
-   border: 1px solid rgb(173, 173, 173) !important;
-   height: 38px !important;
-   padding: 1px 10px !important;
-   font-size: 13px;
-   overflow: hidden;
-   color: rgba(0, 0, 0, .87) !important;
-   background: #FFF !important;
-   }*/
-   .fa, .fas {
-   color:#f5821f;
-   }
-   .submit-btn {
-   background: #f5821f;
-   font-size: 15px;
-   font-weight: normal;
-   text-transform: none;
-   border-radius: 0;
-   border: 0;
-   box-shadow: none;
-   padding: 10px 25px;
-   margin-top:10px;
-   }
-   }
-   .submit-btn:hover {
-   background: #FFF;
-   color:#f5821f;
-   }
-   .submit-btn i{
-   color:#FFF;
-   }
-   .radio-container {
-   position: relative;
-   padding-left: 25px;
-   margin-bottom: 12px;
-   cursor: pointer;
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-   }
-   /* Hide the browser's default radio button */
-   .radio-container input {
-   position: absolute;
-   opacity: 0;
-   cursor: pointer;
-   height: 0;
-   width: 0;
-   }
-   /* Create a custom radio button */
-   .checkmark {
-   position: absolute;
-   top: 0;
-   left: 0;
-   height: 18px;
-   width: 18px;
-   border-radius: 50%;
-   background-color: #FFF;
-   border: 4px solid #CCC !important;
-   }
-   /* On mouse-over, add a grey background color */
-   .radio-container:hover input ~ .checkmark {
-   background-color: #C00;
-   border: 4px solid #CCC !important;
-   }
-   /* When the radio button is checked, add a blue background */
-   .radio-container input:checked ~ .checkmark {
-   background-color: #FFF;
-   border: 4px solid #C00 !important;
-   }
-   /* Create the indicator (the dot/circle - hidden when not checked) */
-   .checkmark:after {
-   content: "";
-   position: absolute;
-   display: none;
-   }
-   /* Show the indicator (dot/circle) when checked */
-   .radio-container input:checked ~ .checkmark:after {
-   display: block;
-   }
-   /* Style the indicator (dot/circle) */
-   .radio-container .checkmark:after {
-   top: 5px;
-   left: 5px;
-   width: 7px;
-   height: 7px;
-   border-radius: 50%;
-   }
-   .form-group {
-   clear:both;
-   margin:10px 0px 5px 10px;
-   }
-   .clearfix {
-   clear:both;  
-   }
-   .no-padding {
-   padding:0;
-   }
-   label.input-label {
-   padding: 10px 0px 0 !important;
-   color: #333 !important;
-   font-size: 15px !important;
-   margin-bottom: 0;
-   font-weight: normal !important;  
-   }
-   .leftsection {
-   background: #F1F1F1; padding-bottom:20px;padding-top: 10px;padding-right: 0; 
-   }
-   .mainsection {
-   border:1px solid #ddd;padding: 10px;
-   }
-   @media screen and (max-width: 600px) {
-   .mainsection {
-   border:0;
-   }
-   .leftsection {
-   background: #FFF !important;
-   padding-right: 0px !important;
-   padding-left: 0px !important;
-   }    
-   .form-group {
-   margin: 0 !important;
-   }
-   .container {
-   padding:0;
-   }
-   }
-   .preinfo i {
-   padding: 5px 9px;
-   background: #0695BD;
-   border-radius: 54%;
-   font-size: 11px;
-   color: #fff;
-   cursor:pointer;
-   }
-   .preinfo i span {
-   width: 200px;
-   padding: 10px;
-   background: rgba(0, 0, 0, 0.8);
-   position: absolute;
-   z-index: 100;
-   top: 10px;
-   left: 10px;
-   font-family: arial;
-   font-size: 12px;
-   color: #fff;
-   line-height: 20px;
-   display: none;   
-   }
-   .preinfo > i:hover  span {
-   display:block;
-   }
-   .date-wrapper {
-   height: 40px;
-   border: 1px solid rgb(173, 173, 173) !important;
-   border-radius: 5px;
-   position: relative;
-   -webkit-transition: all 0.2s linear;
-   width: 100%;
-   overflow: hidden;
-   display: flex;
-   display: -webkit-flex;
-   align-items: center;
-   -webkit-align-items: center;
-   color: #566266;
-   background-color: white;
-   }
-   .date-wrapper input {
-   width: 32%;
-   border: 0 none;
-   text-align: center;
-   box-shadow: none;
-   border-radius: 4px;
-   padding: 15px 15px;
-   display: block;
-   max-height: 50px;
-   background-color: white;
-   }
-   .ui-widget.ui-widget-content {
-   z-index:9999999999 !important;
-   }
-   .ui-datepicker td span, .ui-datepicker td a {
-   padding: 7px 8px !important;
-   font-size: 16px !important;
-   margin: 2px;
-   }
-   .ui-datepicker .ui-datepicker-title select {
-   font-size: 18px !important;  
-   }
-   .date-wrapper input{
-   border: 0 !important;
-   }
-   .oldest-travel div .nice-select{
-   display: none !important;
-   }
-   .oldest-travel .question-answer select{
-   display: block !important;
-   }
-</style>
+
 <div class="container">
    <div class="text-center" style="margin-bottom: 30px !important;margin-top: 30px !important;">
       <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>Super Visa Insurance</strong></h1>
@@ -279,22 +49,24 @@
             });
             
          </script>
-         <form action="sessions.php?action=info" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
+         <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
             <div id="">
                <div class="form-group">
                   <div class="col-md-5">
                      <label class="input-label">Maximum Coverage Amount </label>
                   </div>
+                     @if($fields['sum_insured'] == 'on')
                   <div class="col-md-7 col-xs-12 oldest-travel">
                      <select name="sum_insured2" class="form-control form-control" id="sum_insured2" autocomplete="off" required="">
                         <option value=""> --- Please choose ---</option>
-                        <option value="100000" selected="">$100,000 </option>
-                        <option value="150000">$150,000 </option>
-                        <option value="200000">$200,000 </option>
-                        <option value="250000">$250,000 </option>
-                        <option value="300000">$300,000 </option>
+                        @foreach($sum_insured as $r)
+                        <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                        @endforeach
                      </select>
                   </div>
+                  @endif
                   <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                   <script>
                      jQuery(document).ready(function($){
@@ -362,79 +134,82 @@
                   </script>
                   <div class="clearfix"></div>
                </div>
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
                      <label class="input-label"> Primary destination in Canada </label> 
                   </div>
+                  @if(isset($fields['Country']))
+                        @if($fields['Country'] == "on" )
+                           @if($data->pro_travel_destination == 'worldwide')
+                            <script>
+                              function CountryState(evt) {
+                                  if(evt.value=="Canada")
+                                  {
+                                      jQuery("#primary_destination_State_div").show();
+                                      jQuery("#usa_stop_div").hide();
+                                  }else if(evt.value=="United States")
+                                  {
+                                      jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").hide();
+                                 }else
+                                 {
+                                     jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").show();
+                                 }
+                              }
+                           </script>
                   <div class="col-md-7 col-xs-12">
-                     <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
-                        <option value=""> --- Please choose ---</option>
-                        <option value="Alberta" selected="">Alberta</option>
-                        <option value="British Columbia">British Columbia</option>
-                        <option value="Manitoba">Manitoba</option>
-                        <option value="New Brunswick">New Brunswick</option>
-                        <option value="Newfoundland">Newfoundland</option>
-                        <option value="North West Territories">North West Territories</option>
-                        <option value="Nova Scotia">Nova Scotia</option>
-                        <option value="Nunavut">Nunavut</option>
-                        <option value="Ontario" selected="">Ontario</option>
-                        <option value="Prince Edward Island">Prince Edward Island</option>
-                        <option value="Quebec">Quebec</option>
-                        <option value="Saskatchewan">Saskatchewan</option>
-                        <option value="Yukon Territory">Yukon Territory</option>
+                     <select name="primary_destination" class="form-control" onchange="CountryState(this)" id="primary_destination" autocomplete="off" required="">
+                           @foreach(DB::table('countries')->get() as $r)
+                                 <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                                 @endforeach
                      </select>
                   </div>
+                  <div id="primary_destination_State_div">
+                     <div class="col-md-7" style="text-align: left; float:left;">
+                        <select name="primary_destination_State" class="form-control form-select" id="primary_destination_State" autocomplete="off" required>
+                           <option value=""> --- Primary destination in Canada ---</option>
+                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                           <option value="{{ $r->name }}">{{ $r->name }}</option>
+                           @endforeach
+                        </select>
+                     </div>
+                  </div>
+                  <div id="usa_stop_div" style="display:none;">
+                     <div class="col-md-7">
+                        <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
+                        <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
+                           if($allow_input_field['us_stop_days'] == 0 ):
+                            echo "<option selected='' value='0'>None</option>";
+                            else:
+                            echo  "<option value='$i'>$i days</option>";
+                            endif;  
+                           
+                           endfor; ?>
+                        </select>
+                     </div>
+                  </div>
+                  @else
+                  <div class="col-md-7">
+                     <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required>
+                        <option value=""> --- Primary destination in Canada ---</option>
+                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                           <option value="{{ $r->name }}">{{ $r->name }}</option>
+                        @endforeach
+                     </select>
+                  </div>
+                  @endif
+               @endif
+            @endif
                   <div class="clearfix"></div>
                </div>
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
                
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
+ @if($fields['sdate'] == "on" && $fields['edate'] == "on")
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
                      <label class="input-label preinfo">Start Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
@@ -452,6 +227,7 @@
                      </div>
                   </div>
                   <div class="clearfix"></div>
+
                </div>
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 " style="padding-right:0px;">
@@ -470,13 +246,7 @@
                   </div>
                   <div class="clearfix"></div>
                </div>
-               <script type="text/javascript">
-                  jQuery(document).ready(function() {
-                  
-                      // jQuery("#primary_destination").msDropdown();
-                  
-                  });
-               </script>
+               @endif
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
                      <label class="input-label"> Number of travellers </label>
@@ -489,6 +259,7 @@
                      display: block !important;
                      }
                   </style>
+                   @if($fields['traveller'] == 'on')
                   <div class="col-md-7 col-xs-12 number_travel">
                      <select name="number_travelers" class="form-control form-select" id="number_travelers" autocomplete="off" placeholder="" required="" onchange="checknumtravellers()">
                         <option value="">Number of travellers</option>
@@ -898,65 +669,12 @@
                         </select>
                      </div>
                   </div>
+                  @endif
                   <div class="clearfix"></div>
                </div>
-               <input type="hidden" name="ages[]" id="age_5" value="">           
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
+               <input type="hidden" name="ages[]" id="age_5" value="">  
+                @if(isset($fields['email']))
+                     @if($fields['email'] == "on" )      
                <div class="form-group">
                   <div class="col-md-5  email-main">
                      <label class="input-label"> Email Address (Required)</label>
@@ -971,109 +689,8 @@
                   </div>
                   <div class="clearfix"></div>
                </div>
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
+               @endif
+               @endif
                <div class="col-md-12 col-sm-12 col-xs-12 ">
                   <div class="col-md-4 col-xs-6" style="padding-top:20px;">
                      <img src="{{ asset('public/front/bgs/low_pr_icon.png')}}" class="img-responsive">
@@ -1424,7 +1041,7 @@
    };
    
 </script>
-<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 514px; left: 416.812px; z-index: 1; display: none;">
+<!-- <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 540px; left: 416.812px; z-index: 1; display: none;">
    <div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
       <a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a>
       <div class="ui-datepicker-title">
@@ -1512,7 +1129,7 @@
          </tr>
       </tbody>
    </table>
-</div>
+</div> -->
 <script type="text/javascript">
    $(document).ready(function(){
    $("#departure_date").click(function(){

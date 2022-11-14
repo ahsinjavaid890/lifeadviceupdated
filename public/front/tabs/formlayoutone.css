@@ -1,0 +1,233 @@
+ #ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
+   width:auto;
+   }
+   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+   border: 1px solid #DDD;
+   background: #F1F1F1;
+   font-weight: normal;
+   color: #333;
+   font-weight: bold;
+   font-size: 14px;
+   padding: 0;
+   text-align: center;  
+   }
+   .ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
+   background: #c00 !important;
+   color: #FFF !important;
+   text-align: center;
+   border: none !important;
+   outline: none;
+   }
+   .ui-datepicker-calendar th span {
+   color:#333 !important;
+   }
+   .ui-datepicker-header select, table.ui-datepicker td a {
+   color: #333;
+   background: #FFF !important; 
+   }
+   .ui-datepicker .ui-state-highlight {
+   background: #FFFA90 !important;
+   color: #333 !important;  
+   }
+   /*
+   .form-control {
+   border: 1px solid rgb(173, 173, 173) !important;
+   height: 38px !important;
+   padding: 1px 10px !important;
+   font-size: 13px;
+   overflow: hidden;
+   color: rgba(0, 0, 0, .87) !important;
+   background: #FFF !important;
+   }*/
+   .fa, .fas {
+   color:#f5821f;
+   }
+   .submit-btn {
+   background: #f5821f;
+   font-size: 15px;
+   font-weight: normal;
+   text-transform: none;
+   border-radius: 0;
+   border: 0;
+   box-shadow: none;
+   padding: 10px 25px;
+   margin-top:10px;
+   }
+   }
+   .submit-btn:hover {
+   background: #FFF;
+   color:#f5821f;
+   }
+   .submit-btn i{
+   color:#FFF;
+   }
+   .radio-container {
+   position: relative;
+   padding-left: 25px;
+   margin-bottom: 12px;
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   }
+   /* Hide the browser's default radio button */
+   .radio-container input {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+   height: 0;
+   width: 0;
+   }
+   /* Create a custom radio button */
+   .checkmark {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 18px;
+   width: 18px;
+   border-radius: 50%;
+   background-color: #FFF;
+   border: 4px solid #CCC !important;
+   }
+   /* On mouse-over, add a grey background color */
+   .radio-container:hover input ~ .checkmark {
+   background-color: #C00;
+   border: 4px solid #CCC !important;
+   }
+   /* When the radio button is checked, add a blue background */
+   .radio-container input:checked ~ .checkmark {
+   background-color: #FFF;
+   border: 4px solid #C00 !important;
+   }
+   /* Create the indicator (the dot/circle - hidden when not checked) */
+   .checkmark:after {
+   content: "";
+   position: absolute;
+   display: none;
+   }
+   /* Show the indicator (dot/circle) when checked */
+   .radio-container input:checked ~ .checkmark:after {
+   display: block;
+   }
+   /* Style the indicator (dot/circle) */
+   .radio-container .checkmark:after {
+   top: 5px;
+   left: 5px;
+   width: 7px;
+   height: 7px;
+   border-radius: 50%;
+   }
+   .form-group {
+   clear:both;
+   margin:10px 0px 5px 10px;
+   }
+   .clearfix {
+   clear:both;  
+   }
+   .no-padding {
+   padding:0;
+   }
+   label.input-label {
+   padding: 10px 0px 0 !important;
+   color: #333 !important;
+   font-size: 15px !important;
+   margin-bottom: 0;
+   font-weight: normal !important;  
+   }
+   .leftsection {
+   background: #F1F1F1; padding-bottom:20px;padding-top: 10px;padding-right: 0; 
+   }
+   .mainsection {
+   border:1px solid #ddd;padding: 10px;
+   }
+   @media screen and (max-width: 600px) {
+   .mainsection {
+   border:0;
+   }
+   .leftsection {
+   background: #FFF !important;
+   padding-right: 0px !important;
+   padding-left: 0px !important;
+   }    
+   .form-group {
+   margin: 0 !important;
+   }
+   .container {
+   padding:0;
+   }
+   }
+   .preinfo i {
+   padding: 5px 9px;
+   background: #0695BD;
+   border-radius: 54%;
+   font-size: 11px;
+   color: #fff;
+   cursor:pointer;
+   }
+   .preinfo i span {
+   width: 200px;
+   padding: 10px;
+   background: rgba(0, 0, 0, 0.8);
+   position: absolute;
+   z-index: 100;
+   top: 10px;
+   left: 10px;
+   font-family: arial;
+   font-size: 12px;
+   color: #fff;
+   line-height: 20px;
+   display: none;   
+   }
+   .preinfo > i:hover  span {
+   display:block;
+   }
+   .date-wrapper {
+   height: 40px;
+   border: 1px solid rgb(173, 173, 173) !important;
+   border-radius: 5px;
+   position: relative;
+   -webkit-transition: all 0.2s linear;
+   width: 100%;
+   overflow: hidden;
+   display: flex;
+   display: -webkit-flex;
+   align-items: center;
+   -webkit-align-items: center;
+   color: #566266;
+   background-color: white;
+   }
+   .date-wrapper input {
+   width: 32%;
+   border: 0 none;
+   text-align: center;
+   box-shadow: none;
+   border-radius: 4px;
+   padding: 15px 15px;
+   display: block;
+   max-height: 50px;
+   background-color: white;
+   }
+   .ui-widget.ui-widget-content {
+   z-index:9999999999 !important;
+   }
+   .ui-datepicker td span, .ui-datepicker td a {
+   padding: 7px 8px !important;
+   font-size: 16px !important;
+   margin: 2px;
+   }
+   .ui-datepicker .ui-datepicker-title select {
+   font-size: 18px !important;  
+   }
+   .date-wrapper input{
+   border: 0 !important;
+   }
+   .oldest-travel div .nice-select{
+   display: none !important;
+   }
+   .oldest-travel .question-answer select{
+   display: block !important;
+   }
+   .datepicker.dropdown-menu{
+    top: 535px !important;
+   }
