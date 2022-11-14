@@ -38,25 +38,31 @@ class AdminController extends Controller
     }
     public function updateproducts(Request $request)
     {
-        $data = wp_dh_products::where('pro_id' , $request->id)->first();
-        $data->pro_name = $request->pro_name;
-        $data->pro_parent = $request->pro_parent;
-        $data->pro_supervisa = $request->pro_supervisa;
-        $data->pro_life = $request->pro_life;
-        $data->destinationtype = $request->destinationtype;
-        $data->pro_url = $request->pro_url;
-        $data->redirect_from_url = $request->redirect_from_url;
-        $data->prod_fields = serialize($request->prod);
+        $pro_name = $request->pro_name;
+        $pro_parent = $request->pro_parent;
+        $pro_supervisa = $request->pro_supervisa;
+        $pro_life = $request->pro_life;
+        $pro_travel_destination = $request->destinationtype;
+        $pro_url = $request->pro_url;
+        $redirect_from_url = $request->redirect_from_url;
+        $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $orderlist = explode(',' , $request->savesortlist);
+        print_r($orderlist);exit;
+
         $i = 1;
         foreach($orderlist as  $order)
         {
             $sort_orders[$i] = $order ;
             $i++;
         }
-        $data->pro_sort =  serialize($sort_orders);
-        $data->save();
+        $sort_orders =  serialize($sort_orders);
+        
+
+        DB::statement("UPDATE `wp_dh_products` SET `pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+
+
+
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
     public function addnewproduct()
