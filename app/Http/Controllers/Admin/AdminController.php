@@ -67,6 +67,22 @@ class AdminController extends Controller
     {
         return view('admin.users.addnewuser');
     }
+    public function edituser()
+    {
+        return view('admin.users.edituser');
+    }
+    public function memberdocument()
+    {
+        return view('admin.document.member-document');
+    }
+    public function docreport()
+    {
+        return view('admin.document.docreport');
+    }
+    public function expiredocs()
+    {
+        return view('admin.document.expiredocs');
+    }
     public function allusers()
     {
         $data = User::all();

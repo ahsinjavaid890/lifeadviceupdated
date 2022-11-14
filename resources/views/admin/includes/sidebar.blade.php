@@ -138,17 +138,17 @@
                             </li>
 
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/users/allusers') }}" class="menu-link">
+                                <a href="{{ url('admin/document/member-document') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Member Documents</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/users/allusers') }}" class="menu-link">
+                                <a href="{{ url('admin/document/docreport') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Documents Report</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/users/allusers') }}" class="menu-link">
+                                <a href="{{ url('admin/document/expiredocs') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Expired Documents Report</span>
                                 </a>
                             </li>

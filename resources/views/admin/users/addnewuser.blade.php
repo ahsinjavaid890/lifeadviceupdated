@@ -144,32 +144,41 @@
                                 <label>Little About Me</label>
                                 <textarea class="form-control" rows="3" placeholder="Write Something About You....."></textarea>
                             </div>
-                            <h2 class="mt-3 text-danger">Account Security</h2>
-                            <div class="form-group">
-                                <label><i class="fa fa-user mx-2"></i>User Name</label>
-                                <input type="text" name="username" class="form-control" placeholder="Username">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label><i class="fa fa-lock mx-2"></i>Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        <div id="pwd" class="well text-danger">
-                                          <p class="text-success"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label></label>
-                                         <input id="submit"class="btn btn-default btn-lg btn-block"onclick='password(16)' type='button', value='Generate Password')>
-                                    </div>
-                                </div>
+
+            </div>
+
+                    </div>
+                            
+                        </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h2 class="mt-3 text-danger">Account Security</h2>
+                    </div>
+                    <div class="card-body"> 
+                <div class="form-group">
+                    <label><i class="fa fa-user mx-2"></i>User Name</label>
+                    <input type="text" name="username" class="form-control" placeholder="Username">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fa fa-lock mx-2"></i>Password</label>
+                            <input type="password" name="password" class="form-control">
+                            <div id="pwd" class="well text-danger">
+                              <p class="text-success"></p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label></label>
+                             <input id="submit"class="btn btn-default btn-lg btn-block"onclick='password(16)' type='button', value='Generate Password')>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                    </div>
+                </div>
         </div>
         <!--end::Container-->
     </div>

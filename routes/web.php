@@ -273,6 +273,13 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/allusers','AdminController@allusers');
         Route::get('/viewuser/{id}','AdminController@viewuser');
         Route::get('/addnewuser','AdminController@addnewuser');
+        Route::get('/edituser','AdminController@edituser');
+
+    });
+     Route::name('document.')->prefix('document')->group(function(){
+        Route::get('/member-document','AdminController@memberdocument');
+        Route::get('/docreport','AdminController@docreport');
+        Route::get('/expiredocs','AdminController@expiredocs');
 
     });
     Route::name('pages.')->prefix('pages')->group(function(){
