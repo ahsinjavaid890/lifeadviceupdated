@@ -29,24 +29,16 @@
                                        <span class="switch-label" data-on="YES" data-off="NO"></span>
                                        <span class="switch-handle"></span>
                                      </label>
-                                       <!--  <label class="switch switch-success switch-round"> 
-                                            <input type="checkbox" name="pro_supervisa" id="pro_supervisa" value="1" > 
-                                            <span class="switch-label" data-on="YES" data-off="NO"></span> 
-                                        </label>  -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                    <div class="col-md-12"> <label><strong>Life Insurance Product ?</strong> <small>(Is this life insurance product ?)</small></label> </div>
                                   <div class="col-md-12"> 
                                     <label class="switch switch-green switch-success switch-round">
-                                       <input type="checkbox" class="switch-input" name="pro_supervisa" id="pro_supervisa" value="1" @if($data->pro_supervisa == 1) checked="" @endif>
+                                       <input type="checkbox" class="switch-input" name="pro_life" id="pro_life" value="1" @if($data->pro_life == 1) checked="" @endif>
                                        <span class="switch-label" data-on="Yes" data-off="NO"></span>
                                        <span class="switch-handle"></span>
                                      </label>
-                                       <!--  <label class="switch switch-success switch-round"> 
-                                            <input type="checkbox" name="pro_supervisa" id="pro_supervisa" value="1" > 
-                                            <span class="switch-label" data-on="YES" data-off="NO"></span> 
-                                        </label>  -->
                                     </div>
                                 </div>
                              </div>
@@ -116,7 +108,7 @@
                                     <div class="design-select @if($form_layout == 'layout_7') selected @endif" onclick="formseven()" id="form7"> 
                                         <img src="{{ asset('public/front/layouts/form-seven.png')}}">
                                     </div>
-                                   <input type="hidden" name="prod[form_layout]" id="form_layout" value="layout_7">
+                                   <input type="hidden" name="prod[form_layout]" id="form_layout" value="{{ $form_layout }}">
                                 </div>
                              </div>
                              <div class="row">
@@ -151,7 +143,7 @@
                                     <div class="design-select @if($price_layout == 'layout_8') selected @endif" onclick="priceseight()" id="prices8">
                                         <img src="{{ asset('public/front/layouts/prices-eight.png')}}">
                                     </div>
-                                   <input type="hidden" name="prod[price_layout]" id="price_layout" value="layout_6">
+                                   <input type="hidden" name="prod[price_layout]" id="price_layout" value="{{$price_layout}}">
                                 </div>
                              </div>
                           </div>
