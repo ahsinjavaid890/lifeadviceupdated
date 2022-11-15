@@ -526,7 +526,7 @@
                   }
                </style>
                @if(isset($fields['email']))
-                     @if($fields['email'] == "on" ) 
+               @if($fields['email'] == "on" ) 
                <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
                   <label class="input-label">Email Address (Required)</label>
                   <input id="savers_email" name="savers_email" value="" class="form-control form-control" type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
