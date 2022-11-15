@@ -1,43 +1,5 @@
-<style>
-   .date-wrapper {
-   height: 40px;
-   border-radius: 4px;
-   position: relative;
-   -webkit-transition: all 0.2s linear;
-   width: 100%;
-   overflow: hidden;
-   display: flex;
-   display: -webkit-flex;
-   align-items: center;
-   -webkit-align-items: center;
-   color: #566266;
-   background-color: white;
-   border: #ddd 2px solid;
-   }
-   .date-wrapper input {
-   width: 32%;
-   border: 0 none;
-   text-align: center;
-   box-shadow: none;
-   border-radius: 4px;
-   padding: 15px 15px;
-   display: block;
-   max-height: 50px;
-   background-color: white;
-   }
-   .question-answer input{
-   border: 0px !important;
-   }
-   .numeric{
-   border: 0px !important;
-   }
-   .date_of_birth div .nice-select{
-   display: none !important;
-   }
-   .year-holder{
-   display: block !important;
-   }
-</style>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutseven.css')}}">
 <form action="" method="post">
    <div class="row">
       <div class="col-md-12 hidden-xs text-center">
@@ -99,40 +61,21 @@
     })
 </script>
          <!-- Destination ends -->
-         <div class="col-md-6" style="margin-bottom: 10px;">
-            <label>Start date of coverage</label>
-            <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control  datepicker " type="text" placeholder="Start Date" required="" onchange="supervisayes()">
-            <label for="departure_date" style="z-index: 999;padding: 8px 11px !important;position: absolute;top: 28px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            </label>
-            <script>
-               $('#departure_date').datepicker({
-               format: 'yyyy-mm-dd',
-               todayHighlight:'TRUE',
-               autoclose: true,
-               });
-            </script>
-         </div>
-         <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="return_date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
-         <div class="col-md-6" style="margin-bottom: 10px;">
-            <label>End date of coverage</label>
-            <input autocomplete="off" id="return_date" name="return_date" value="" class="form-control " type="text" placeholder="End Date" required="" readonly="true">
-            <label for="return_date" style="z-index: 999;padding: 8px 11px !important;position: absolute;top: 28px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            </label>
-         </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 control-input">
+                  <label class="input-label"> Start Date</label>
+                  <input id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control hasDatepicker" type="text" placeholder="Start Date" required="" onchange="supervisayes()">
+                  <!-- <script>
+                     $('#departure_date').datepicker({
+                     format: 'yyyy-mm-dd',
+                     todayHighlight:'TRUE',
+                     autoclose: true,
+                     });
+                  </script> -->
+               </div>
+               <div class="col-md-6 col-sm-6 col-xs-12 control-input">
+                  <label class="input-label">End Date</label>
+                  <input autocomplete="off" id="return_date" name="return_date" class="form-control" value="" type="text" required="" readonly="true">
+               </div>
          <div class="col-md-12" style="margin-bottom: 10px;">
             <label>Number of Travellers</label>
             <select name="number_travelers" class="form-control form-select" id="number_travelers" autocomplete="off" required="" onchange="checknumtravellers()">
@@ -546,6 +489,27 @@
    </div>
 </form>
 <script>
+
+   function supervisayes(){
+   window.setTimeout(function(){    
+    var tt = document.getElementById('departure_date').value;
+    var date = new Date(tt);
+    var newdate = new Date(date);
+    newdate.setDate(newdate.getDate() + 364);
+    var dd = newdate.getDate();
+    var mm = newdate.getMonth() + 1;
+    var y = newdate.getFullYear();
+    if(mm <= 9){
+    var mm = '0'+mm;    
+    }
+    if(dd <= 9){
+    var dd = '0'+dd;    
+    }
+    //var someFormattedDate = mm + '/' + dd + '/' + y;
+    var someFormattedDate = y + '/' + mm + '/' + dd;
+    document.getElementById('return_date').value = someFormattedDate;
+   }, 1000);
+   }
    function checknumtravellers(){
    	//Number OF Traveller
    	var number_of_traveller = document.getElementById('number_travelers').value;

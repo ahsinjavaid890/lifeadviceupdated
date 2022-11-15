@@ -1,186 +1,86 @@
-<style>
-   .borderRadius {
-   margin-bottom: 10px !important;
-   }
-   .dd {
-   border: 1px solid #dedede !important;
-   }
-   span.ddlabel {
-   color: #959595;
-   }
-   .toggle-button-icon-fade label:before, .toggle-button-icon-fade label:after {
-   transition: all 0s .1s ease-out;
-   }
-   .toggle-button-icon-fade {
-   width: 100%;
-   height: 40px;
-   } 
-   #savers_email {
-   padding-left: 40px !important;
-   }
-   .toggle-button-icon-fade label {
-   width: 100%;
-   box-shadow: none;
-   border: 1px solid #dedede;
-   padding: 6px 20px;
-   height: 38px;
-   background: none;
-   color: #959595;
-   font-size: 14px;
-   line-height: 26px;
-   border-radius: 0;
-   text-transform: capitalize;
-   }
-   #dh-get-quote select,.form-control {
-   height: 38px;
-   border: 1px solid #aaa !important;
-   padding: 6px 12px;
-   font-size: 14px;
-   line-height: 1.428571429;
-   color: #555;
-   background-color: #fff;
-   color: #959595;
-   }
-   .form-control {
-   margin-bottom: 10px !important;
-   height: 38px !important; 
-   }
-   .input-group {
-   width: 100%;
-   }
-   .input-group .form-control{
-   z-index: -1;
-   position: initial;
-   }
-   .ui-slider .ui-slider-handle {
-   border: 7px solid #00b191 !important;
-   background: #f6f6f6  !important;
-   font-weight: normal  !important;
-   color: #454545  !important;
-   height: 25px  !important;
-   width: 25px  !important;
-   margin-top: -4px  !important;
-   border-radius: 20px  !important;
-   cursor: pointer !important;
-   }
-   .ui-slider-vertical .ui-widget-header, .ui-slider-horizontal .ui-widget-header {
-   background-color: #00b191;
-   }
-   form.form.form-layout1 label.input-label {
-   padding-bottom:0 !important;
-   }
-   .no-padding {
-   padding-right:0;
-   }
-   .date-wrapper {
-   height: 36px;
-   border-radius: 5px;
-   position: relative;
-   -webkit-transition: all 0.2s linear;
-   width: 100%;
-   overflow: hidden;
-   display: flex;
-   display: -webkit-flex;
-   align-items: center;
-   -webkit-align-items: center;
-   color: #566266;
-   background-color: white;
-   margin-bottom: 10px;
-   border: 1px solid #999;
-   }
-   .date-wrapper input {
-   width: 32%;
-   border: 0 none;
-   text-align: center;
-   box-shadow: none;
-   border-radius: 4px;
-   padding: 15px 15px;
-   display: block;
-   max-height: 50px;
-   background-color: white;
-   }
-   .ui-datepicker td span, .ui-datepicker td a {
-   padding: 7px !important;
-   z-index: 99999999999 !important;
-   }
-   .oldest-travel div {
-   display: none !important;
-   }
-   .oldest-travel  select{
-   display: block !important;
-   }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutfive.css')}}">
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
-   <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>Super Visa Insurance</strong></h1>
+   <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>{{ $data->pro_name }}</strong></h1>
    <h2 style="margin-top: -10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
 <div class="container birthdate" style="padding: 20px;">
-   <form action="sessions.php?action=info" method="post" id="dh-get-quote" class="form-horizontal form-layout2" role="form">
+         <form action="{{ url('quotes') }}" method="post" class="form-horizontal form-layout2" role="form">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+                              @if($fields['sum_insured'] == 'on')
+
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label"> Sum Insured </label>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
          <select name="sum_insured2" class="form-control form-control" id="sum_insured2" autocomplete="off" required="">
             <option value="">Please choose</option>
-            <option value="100000" selected="">$100,000 </option>
-            <option value="150000">$150,000 </option>
-            <option value="200000">$200,000 </option>
-            <option value="250000">$250,000 </option>
-            <option value="300000">$300,000 </option>
+            @foreach($sum_insured as $r)
+            <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+            @endforeach
          </select>
       </div>
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
+      @endif
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">Primary destination in Canada </label> 
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off">
-            <option value="">Please choose</option>
-            <option value="Alberta" selected="">Alberta</option>
-            <option value="British Columbia">British Columbia</option>
-            <option value="Manitoba">Manitoba</option>
-            <option value="New Brunswick">New Brunswick</option>
-            <option value="Newfoundland">Newfoundland</option>
-            <option value="North West Territories">North West Territories</option>
-            <option value="Nova Scotia">Nova Scotia</option>
-            <option value="Nunavut">Nunavut</option>
-            <option value="Ontario">Ontario</option>
-            <option value="Prince Edward Island">Prince Edward Island</option>
-            <option value="Quebec">Quebec</option>
-            <option value="Saskatchewan">Saskatchewan</option>
-            <option value="Yukon Territory">Yukon Territory</option>
-         </select>
+          @if(isset($fields['Country']))
+                        @if($fields['Country'] == "on" )
+                           @if($data->pro_travel_destination == 'worldwide')
+                            <script>
+                              function CountryState(evt) {
+                                  if(evt.value=="Canada")
+                                  {
+                                      jQuery("#primary_destination_State_div").show();
+                                      jQuery("#usa_stop_div").hide();
+                                  }else if(evt.value=="United States")
+                                  {
+                                      jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").hide();
+                                 }else
+                                 {
+                                     jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").show();
+                                 }
+                              }
+                           </script>
+         <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                     @foreach(DB::table('countries')->get() as $r)
+                              <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                           @endforeach
+                  </select>
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                     <option value=""> --- Primary destination in Canada ---</option>
+                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                     <option value="{{ $r->name }}">{{ $r->name }}</option>
+                     @endforeach
+                  </select>
+                  <div id="usa_stop_div" style="display:none;">
+                     <div class="col-md-12">
+                        <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
+                        <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
+                           if($allow_input_field['us_stop_days'] == 0 ):
+                            echo "<option selected='' value='0'>None</option>";
+                            else:
+                            echo  "<option value='$i'>$i days</option>";
+                            endif;  
+                           
+                           endfor; ?>
+                        </select>
+                     </div>
+                  </div>
+                  @else
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                        <option value=""> --- Primary destination in Canada ---</option>
+                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                           <option value="{{ $r->name }}">{{ $r->name }}</option>
+                        @endforeach
+                     </select>
+                  @endif
+                  @endif
+                  @endif
       </div>
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -199,6 +99,7 @@
       date_input.datepicker(options);
     })
 </script>
+         @if($fields['sdate'] == "on" && $fields['edate'] == "on")
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">Start date of coverage </label>
       </div>
@@ -215,28 +116,6 @@
             });
          </script>
       </div>
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">End date of coverage </label>
       </div>
@@ -246,28 +125,8 @@
          <i class="fa fa-calendar" aria-hidden="true"></i>
          </label>
       </div>
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
+      @endif
+               @if($fields['traveller'] == 'on')
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">Number of travellers (up to  5)</label>
       </div>
@@ -280,17 +139,7 @@
             <option value="5">5</option>
          </select>
       </div>
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!--- Age Calculator --->
-      <div class="row" id="traveller_1" style="">
+      <div class="form-group" id="traveller_1" style="">
          <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
             <label class="input-label">Oldest Traveller's Date of Birth</label>
          </div>
@@ -369,7 +218,7 @@
          </div>
       </div>
       <input type="hidden" name="ages[]" id="age_1" value="">
-      <div class="row" id="traveller_2" style="display: none">
+      <div class="form-group" id="traveller_2" style="display: none">
          <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
             <label class="input-label">Second Traveller's Date of Birth</label>
          </div>
@@ -448,7 +297,7 @@
          </div>
       </div>
       <input type="hidden" name="ages[]" id="age_2" value="">
-      <div class="row" id="traveller_3" style="display: none">
+      <div class="form-group" id="traveller_3" style="display: none">
          <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
             <label class="input-label">Third Traveller's Date of Birth</label>
          </div>
@@ -527,7 +376,7 @@
          </div>
       </div>
       <input type="hidden" name="ages[]" id="age_3" value="">
-      <div class="row" id="traveller_4" style="display: none">
+      <div class="form-group" id="traveller_4" style="display: none">
          <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
             <label class="input-label">Fourth Traveller's Date of Birth</label>
          </div>
@@ -606,7 +455,7 @@
          </div>
       </div>
       <input type="hidden" name="ages[]" id="age_4" value="">
-      <div class="row" id="traveller_5" style="display: none">
+      <div class="form-group" id="traveller_5" style="display: none">
          <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
             <label class="input-label">Fifth Traveller's Date of Birth</label>
          </div>
@@ -685,196 +534,19 @@
          </div>
       </div>
       <input type="hidden" name="ages[]" id="age_5" value="">
-      <!-- Age calculator ends -->
       <div style="clear:both;"> </div>
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
+      @endif
+         @if(isset($fields['email']))
+               @if($fields['email'] == "on" )
       <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
          <label class="input-label">Email address (required) </label> 
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
          <input id="savers_email" name="savers_email" size="20" maxlength="100" value="" style="padding-left:10px !important" class="form-control form-control" type="text" required="" placeholder="Email">
-         <!--<label class="control-label-mail" style="color: #333 !important;padding: 3px 3px;">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-            </label> -->
       </div>
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
-      <!-- First name and last name -->
-      <!-- end -->
-      <!-- Email Plan -->
-      <!-- end --> 
-      <!-- Destination country -->
-      <!---Traveller Smoke--->
-      <!-- Phone -->
-      <!-- end -->
-      <!-- Starting Date -->
-      <!-- end -->
-      <!-- Ending Date -->
-      <!-- end -->
-      <!--  Traveller Number -->
-      <!-- end -->
-      <!-- Older traveller Gender -->
-      <!-- Order Gender ends -->
-      <!-- Gender -->
-      <!-- Gender ends -->
-      <!--  Sum insured -->
-      <!--  Sum insured end -->
       <div style="clear:both;"></div>
+         @endif
+         @endif
       <div class="col-md-12 no-padding" style="margin-top: 20px; clear:both;">
          <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
          <button type="submit" name="GET QUOTES" id="getquote" class="btn nextbtn  pull-right"><i class="fa fa-list"></i> Continue </button>

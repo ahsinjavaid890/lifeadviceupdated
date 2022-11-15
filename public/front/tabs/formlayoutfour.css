@@ -1,0 +1,245 @@
+
+   .error{
+   color: red;
+   }
+   #primary_destination_msdd.dd.ddcommon {
+   box-shadow: none;
+   border: 1px solid #dedede;
+   background: none;
+   color: #959595;
+   font-size: 14px;
+   }
+   input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="range"]:focus, input[type="date"]:focus, textarea:focus, input.text:focus, input[type="search"]:focus, select:focus, input[type="checkbox"]:focus, .form-control:focus {
+   border-color: #ccc !important;
+   box-shadow: none !important;
+   }
+   form.form.form-layout1 .form-control {
+   padding: 5px 12px;
+   border-radius: 0px !important;
+   }
+   form.form.form-layout1 .form-control, form.form.form-layout1 .select {
+   height: 42px;
+   }
+   .dd .ddTitle .ddTitleText {
+   padding: 8px 25px 7px 8px !important; 
+   }
+   #primary_destination_msdd {
+   border-radius: 0;
+   height: 42px !important;
+   }
+   .toggle-button-icon-fade label {
+   height: 42px !important;
+   }
+   .toggle-button-icon-fade .toggle-button__icon {
+   height: 36px !important;
+   width: 28px !important;
+   margin: 3px !important;
+   background: #eee;
+   }
+   .rangeslider--horizontal {
+   height: 15px !important;
+   }
+   .rangeslider--horizontal .rangeslider__handle {
+   top: -13px;
+   }
+   #dh-get-quote .control-label{
+   font-size: 16px;
+   font-weight: normal;
+   letter-spacing: 0.5px;
+   }
+   #primary_destination_msdd{
+   border-radius: 0;
+   height: 50px;
+   width: 100% !important;
+   }
+   .dd .ddTitle .ddTitleText {
+   padding: 13px 25px 11px 8px;
+   }
+   #dh-get-quote button{
+   padding: 8px 50px;
+   font-weight: bold;
+   /*border: 1px solid #01a281;*/
+   font-size: 16px;
+   }
+   #dh-get-quote .range-output{
+   position: absolute;
+   top: -30px;
+   right: 5px;
+   font-size: 125%;
+   }
+   .email-main {
+   position: relative;
+   }
+   .email-main input {
+   padding-left: 40px !important;
+   position: relative;
+   }    
+   label.control-label-mail {
+   position: absolute;
+   left: 2.5%;
+   color: #868585;
+   top: 49%;
+   padding: 6px 7px;
+   }
+   .phone-custom-input2 span.phone-icon {
+   position: absolute !important;
+   top: 8% !important;
+   left: 0.5% !important;
+   padding: 6px 8px !important;
+   }
+   .rangeslider__fill {
+   background: #1BBC9B !important;
+   position: absolute;
+   }    
+   .ui-slider-horizontal .ui-slider-range {
+   background: #1BBC9B !important;
+   }
+   .genderi {
+   color: #1BBC9B;
+   font-size: 16px;
+   background: #F1F1F1;
+   padding: 11px 9px 0px;
+   height: 100%;
+   vertical-align: middle;
+   margin-right:7px;
+   }
+   .ui-datepicker td span, .ui-datepicker td a {
+   padding: 7px !important;
+   z-index: 99999999999 !important;
+   }
+   .oldest-travel div {
+   display: none !important;
+   }
+   .oldest-travel  select{
+   display: block !important;
+   }
+</style>
+<style>
+   .toggle-button-icon-fade{
+   width: 100%;
+   height: 47px;
+   color: #444;
+   float:left;
+   }
+   .toggle-button-icon-fade label{
+   /*width: 147px;
+   height: 47px; */
+   width: 100%;
+   box-shadow: none;
+   border: 1px solid #dedede;
+   padding: 5px 20px;
+   height: 50px;
+   background;#FFF !important;
+   color: #959595;
+   font-size: 14px;
+   line-height: 36px;
+   border-radius: 0;
+   }
+   .toggle-button-icon-fade .toggle-button__icon{
+   height: 40px;
+   width: 36px;
+   margin:4px;
+   background:#eee;
+   }
+   .toggle-button-icon-fade label::before, .toggle-button-icon-fade label::after{
+   left: 48px;
+   font-weight: normal;
+   font-size: 80%;
+   color: #686868;
+   }
+   .selection-box::after{
+   height: 43px;
+   }
+   .toggle-button-icon-fade .toggle-button__icon::before, .toggle-button-icon-fade .toggle-button__icon::after {
+   background: #f00;
+   }
+   .toggle-button-icon-fade .toggle-button__icon::before, .toggle-button-icon-fade .toggle-button__icon::after {
+   top:45%;
+   }
+   .toggle-button__icon::before, .toggle-button__icon::after {
+   left: 42%;
+   }
+   #ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
+   width:auto;
+   }
+   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+   border: none;
+   background: #f5821f;
+   font-weight: normal;
+   color: #fff;
+   font-weight: bold;
+   font-size: 14px; 
+   }
+   .ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
+   background: #44bc9b !important;
+   color: #FFF !important;
+   text-align: center;
+   border: none !important;
+   outline: none;
+   }
+   .ui-datepicker-calendar th span {
+   color:#333 !important;
+   }
+   .ui-datepicker-header select, table.ui-datepicker td a {
+   color: #333;
+   background: #FFF !important; 
+   }
+   .ui-datepicker .ui-state-highlight {
+   background: #FFFA90 !important;
+   color: #333 !important;  
+   }
+   .ui-slider .ui-slider-handle {
+   border: 7px solid #44bc9b !important;
+   background: #f6f6f6  !important;
+   font-weight: normal  !important;
+   color: #454545  !important;
+   height: 25px  !important;
+   width: 25px  !important;
+   margin-top: -4px  !important;
+   border-radius: 20px  !important;
+   cursor: pointer !important;
+   }
+   .ui-slider-vertical .ui-widget-header, .ui-slider-horizontal .ui-widget-header {
+   background-color: #44bc9b;
+   }
+   .ui-slider .ui-slider-handle::before {
+   display:none;
+   }
+   form.form.form-layout1 label.input-label {
+   padding-bottom:0 !important;
+   color: #333;
+   font-size: 14px !important;
+   }
+   .form-control {
+   background: #FFF !important;
+   border: 1px solid #ccc !important;
+   }
+   .date-wrapper {
+   height: 42px;
+   box-shadow: 0 0 0 1px #cac2d5;
+   border-radius: 0px;
+   position: relative;
+   -webkit-transition: all 0.2s linear;
+   width: 100%;
+   overflow: hidden;
+   display: flex;
+   display: -webkit-flex;
+   align-items: center;
+   -webkit-align-items: center;
+   color: #566266;
+   background-color: white;
+   }
+   .date-wrapper input {
+   width: 32%;
+   border: 0 none;
+   text-align: center;
+   box-shadow: none;
+   border-radius: 4px;
+   padding: 15px 15px;
+   display: block;
+   max-height: 50px;
+   background-color: white;
+   }
+   .datepicker.dropdown-menu{
+      top: 445px !important;
+   }

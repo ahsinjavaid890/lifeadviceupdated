@@ -1,271 +1,5 @@
-<style>
-   .error{
-   color: red;
-   }
-   #primary_destination_msdd.dd.ddcommon {
-   box-shadow: none;
-   border: 1px solid #dedede;
-   background: none;
-   color: #959595;
-   font-size: 14px;
-   }
-   input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="range"]:focus, input[type="date"]:focus, textarea:focus, input.text:focus, input[type="search"]:focus, select:focus, input[type="checkbox"]:focus, .form-control:focus {
-   border-color: #ccc !important;
-   box-shadow: none !important;
-   }
-   form.form.form-layout1 .form-control {
-   padding: 5px 12px;
-   border-radius: 0px !important;
-   }
-   form.form.form-layout1 .form-control, form.form.form-layout1 .select {
-   height: 42px;
-   }
-   .dd .ddTitle .ddTitleText {
-   padding: 8px 25px 7px 8px !important; 
-   }
-   #primary_destination_msdd {
-   border-radius: 0;
-   height: 42px !important;
-   }
-   .toggle-button-icon-fade label {
-   height: 42px !important;
-   }
-   .toggle-button-icon-fade .toggle-button__icon {
-   height: 36px !important;
-   width: 28px !important;
-   margin: 3px !important;
-   background: #eee;
-   }
-   .rangeslider--horizontal {
-   height: 15px !important;
-   }
-   .rangeslider--horizontal .rangeslider__handle {
-   top: -13px;
-   }
-   #dh-get-quote .control-label{
-   font-size: 16px;
-   font-weight: normal;
-   letter-spacing: 0.5px;
-   }
-   #primary_destination_msdd{
-   border-radius: 0;
-   height: 50px;
-   width: 100% !important;
-   }
-   .dd .ddTitle .ddTitleText {
-   padding: 13px 25px 11px 8px;
-   }
-   #dh-get-quote button{
-   padding: 8px 50px;
-   font-weight: bold;
-   border: 1px solid #01a281;
-   font-size: 16px;
-   }
-   #dh-get-quote .range-output{
-   position: absolute;
-   top: -30px;
-   right: 5px;
-   font-size: 125%;
-   }
-   .email-main {
-   position: relative;
-   }
-   .email-main input {
-   padding-left: 40px !important;
-   position: relative;
-   }    
-   label.control-label-mail {
-   position: absolute;
-   left: 2.5%;
-   color: #868585;
-   top: 49%;
-   padding: 6px 7px;
-   }
-   .phone-custom-input2 span.phone-icon {
-   position: absolute !important;
-   top: 8% !important;
-   left: 0.5% !important;
-   padding: 6px 8px !important;
-   }
-   .rangeslider__fill {
-   background: #1BBC9B !important;
-   position: absolute;
-   }    
-   .ui-slider-horizontal .ui-slider-range {
-   background: #1BBC9B !important;
-   }
-   .genderi {
-   color: #1BBC9B;
-   font-size: 16px;
-   background: #F1F1F1;
-   padding: 11px 9px 0px;
-   height: 100%;
-   vertical-align: middle;
-   margin-right:7px;
-   }
-   .ui-datepicker td span, .ui-datepicker td a {
-   padding: 7px !important;
-   z-index: 99999999999 !important;
-   }
-   .oldest-travel div {
-   display: none !important;
-   }
-   .oldest-travel  select{
-   display: block !important;
-   }
-</style>
-<style>
-   .toggle-button-icon-fade{
-   width: 100%;
-   height: 47px;
-   color: #444;
-   float:left;
-   }
-   .toggle-button-icon-fade label{
-   /*width: 147px;
-   height: 47px; */
-   width: 100%;
-   box-shadow: none;
-   border: 1px solid #dedede;
-   padding: 5px 20px;
-   height: 50px;
-   background;#FFF !important;
-   color: #959595;
-   font-size: 14px;
-   line-height: 36px;
-   border-radius: 0;
-   }
-   .toggle-button-icon-fade .toggle-button__icon{
-   height: 40px;
-   width: 36px;
-   margin:4px;
-   background:#eee;
-   }
-   .toggle-button-icon-fade label::before, .toggle-button-icon-fade label::after{
-   left: 48px;
-   font-weight: normal;
-   font-size: 80%;
-   color: #686868;
-   }
-   .selection-box::after{
-   height: 43px;
-   }
-   .toggle-button-icon-fade .toggle-button__icon::before, .toggle-button-icon-fade .toggle-button__icon::after {
-   background: #f00;
-   }
-   .toggle-button-icon-fade .toggle-button__icon::before, .toggle-button-icon-fade .toggle-button__icon::after {
-   top:45%;
-   }
-   .toggle-button__icon::before, .toggle-button__icon::after {
-   left: 42%;
-   }
-   #ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
-   width:auto;
-   }
-   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
-   border: none;
-   background: #f5821f;
-   font-weight: normal;
-   color: #fff;
-   font-weight: bold;
-   font-size: 14px; 
-   }
-   .ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
-   background: #44bc9b !important;
-   color: #FFF !important;
-   text-align: center;
-   border: none !important;
-   outline: none;
-   }
-   .ui-datepicker-calendar th span {
-   color:#333 !important;
-   }
-   .ui-datepicker-header select, table.ui-datepicker td a {
-   color: #333;
-   background: #FFF !important; 
-   }
-   .ui-datepicker .ui-state-highlight {
-   background: #FFFA90 !important;
-   color: #333 !important;  
-   }
-   .ui-slider .ui-slider-handle {
-   border: 7px solid #44bc9b !important;
-   background: #f6f6f6  !important;
-   font-weight: normal  !important;
-   color: #454545  !important;
-   height: 25px  !important;
-   width: 25px  !important;
-   margin-top: -4px  !important;
-   border-radius: 20px  !important;
-   cursor: pointer !important;
-   }
-   .ui-slider-vertical .ui-widget-header, .ui-slider-horizontal .ui-widget-header {
-   background-color: #44bc9b;
-   }
-   .ui-slider .ui-slider-handle::before {
-   display:none;
-   }
-   form.form.form-layout1 label.input-label {
-   padding-bottom:0 !important;
-   color: #333;
-   font-size: 14px !important;
-   }
-   .form-control {
-   background: #FFF !important;
-   border: 1px solid #ccc !important;
-   }
-   .date-wrapper {
-   height: 42px;
-   box-shadow: 0 0 0 1px #cac2d5;
-   border-radius: 0px;
-   position: relative;
-   -webkit-transition: all 0.2s linear;
-   width: 100%;
-   overflow: hidden;
-   display: flex;
-   display: -webkit-flex;
-   align-items: center;
-   -webkit-align-items: center;
-   color: #566266;
-   background-color: white;
-   }
-   .date-wrapper input {
-   width: 32%;
-   border: 0 none;
-   text-align: center;
-   box-shadow: none;
-   border-radius: 4px;
-   padding: 15px 15px;
-   display: block;
-   max-height: 50px;
-   background-color: white;
-   }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutfour.css')}}">
 <script>
-   /*
-     $( function() {
-       $( "#dob" ).datepicker({
-         changeMonth: true,
-         changeYear: true,
-      dateFormat: 'yy-mm-dd',
-      yearRange: "-100:+0",
-      endDate: "today",
-         maxDate: "today",
-       });
-     } );
-     
-     $( function() {
-       $( "#departure_date" ).datepicker({
-         changeMonth: true,
-         changeYear: true,
-      dateFormat: 'yy-mm-dd',
-      yearRange: "+0:+5",
-      minDate: "today",
-       });
-     } );
-   
-   */
-   
     
    var SliderValues = [100000, 150000, 200000, 250000, 300000];
    
@@ -308,7 +42,9 @@
                 
             });
          </script>
-         <form action="sessions.php?action=info" method="post" class="form form-layout1" role="form">
+         <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $data->pro_id }}"> 
             <style>
                #primary_destination{
                overflow-y: scroll;
@@ -327,78 +63,8 @@
                position: initial;
                }
             </style>
-            <div id="">
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
+            @if($fields['sum_insured'] == 'on')
+            <div id="sum_insured2">
                <div class="col-md-12 col-sm-12 col-xs-12 control-label " style="text-align: left;">
                      <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#1BBC9B;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0 !important; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$"></h4>
                   </div>
@@ -410,67 +76,65 @@
                      <input type="hidden" id="sum_insured2" name="sum_insured2" value="100000">
                      <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                   </div>
-               <script>
-                  /*
-                                  jQuery(document).ready(function($){
-                                    jQuery(window).load(function(){
-                                        
-                                        var values = $('input[type="range"]').data("steps").split(',');
-                                        var default_value = $('input[type="range"]').data("default");
-                                          
-                                           $('input[type="range"]').rangeslider({
-                                            polyfill : false,
-                                            onInit : function() {
-                                                this.output = $( '<div class="range-output" />' ).insertAfter( this.$range).html( "$ "+default_value); //this.$element.val()
-                                                $('#hidden_sum_insured').val( default_value );
-                                            },
-                                            onSlide : function( position, value ) {
-                                                console.log(values);
-                                                this.output.html(  "$ "+values[this.value]  );
-                                                console.log("Values "+this.value);
-                                                $('#hidden_sum_insured').val( values[this.value] );
-                                            },
-                                            onSlideEnd: function(position, value ){
-                                                localStorage.sliderValue = values[this.value];
-                                                localStorage.sliderPosition = this.value;
-                                            }
-                                        });
-                                         if (typeof Storage !== 'undefined' && localStorage.getItem("sliderValue")!==null) {
-                                            jQuery('input[type="range"]').rangeslider('update', true);
-                                        }
-                                    })
-                  
-                                  });
-                                 
-                  */
-                            
-               </script>
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
+                  @endif
+            </div>
                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                   <label class="input-label">Primary destination in Canada </label> 
+                  @if(isset($fields['Country']))
+                        @if($fields['Country'] == "on" )
+                           @if($data->pro_travel_destination == 'worldwide')
+                            <script>
+                              function CountryState(evt) {
+                                  if(evt.value=="Canada")
+                                  {
+                                      jQuery("#primary_destination_State_div").show();
+                                      jQuery("#usa_stop_div").hide();
+                                  }else if(evt.value=="United States")
+                                  {
+                                      jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").hide();
+                                 }else
+                                 {
+                                     jQuery("#primary_destination_State_div").hide();
+                                      jQuery("#usa_stop_div").show();
+                                 }
+                              }
+                           </script>
                   <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
-                     <option value="">Please choose</option>
-                     <option value="Alberta" selected="">Alberta</option>
-                     <option value="British Columbia">British Columbia</option>
-                     <option value="Manitoba">Manitoba</option>
-                     <option value="New Brunswick">New Brunswick</option>
-                     <option value="Newfoundland">Newfoundland</option>
-                     <option value="North West Territories">North West Territories</option>
-                     <option value="Nova Scotia">Nova Scotia</option>
-                     <option value="Nunavut">Nunavut</option>
-                     <option value="Ontario" selected="">Ontario</option>
-                     <option value="Prince Edward Island">Prince Edward Island</option>
-                     <option value="Quebec">Quebec</option>
-                     <option value="Saskatchewan">Saskatchewan</option>
-                     <option value="Yukon Territory">Yukon Territory</option>
+                     @foreach(DB::table('countries')->get() as $r)
+                              <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                           @endforeach
                   </select>
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                     <option value=""> --- Primary destination in Canada ---</option>
+                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                     <option value="{{ $r->name }}">{{ $r->name }}</option>
+                     @endforeach
+                  </select>
+                  <div id="usa_stop_div" style="display:none;">
+                     <div class="col-md-12">
+                        <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
+                        <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
+                           if($allow_input_field['us_stop_days'] == 0 ):
+                            echo "<option selected='' value='0'>None</option>";
+                            else:
+                            echo  "<option value='$i'>$i days</option>";
+                            endif;  
+                           
+                           endfor; ?>
+                        </select>
+                     </div>
+                  </div>
+                  @else
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                        <option value=""> --- Primary destination in Canada ---</option>
+                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                           <option value="{{ $r->name }}">{{ $r->name }}</option>
+                        @endforeach
+                     </select>
+                  @endif
+                  @endif
+                  @endif
                </div>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -490,6 +154,7 @@
       date_input.datepicker(options);
     })
 </script>
+         @if($fields['sdate'] == "on" && $fields['edate'] == "on")
                <!-- Start Date  and End date -->
                <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                   <label class="input-label"> Start Date</label>
@@ -506,6 +171,7 @@
                   <label class="input-label">End Date</label>
                   <input autocomplete="off" id="return_date" name="return_date" class="form-control" value="" type="text" required="" readonly="true">
                </div>
+               @endif
                <script type="text/javascript">
                   jQuery(document).ready(function() {
                       // jQuery("#primary_destination").msDropdown();
@@ -513,6 +179,7 @@
                   
                   
                </script>
+               @if($fields['traveller'] == 'on')
                <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                   <label class="input-label">Number of travellers </label>
                   <select name="number_travelers" class="form-control form-select" id="number_travelers" autocomplete="off" placeholder="" required="" onchange="checknumtravellers()">
@@ -898,64 +565,9 @@
                      </select>
                   </div>
                </div>
+               @endif
                <input type="hidden" name="ages[]" id="age_5" value="">
                <div id="birthday_view"></div>
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
                <style>
                   .emailicon {
                   z-index: 1;
@@ -974,6 +586,8 @@
                   background: #F1F1F1;
                   }
                </style>
+               @if(isset($fields['email']))
+                     @if($fields['email'] == "on" ) 
                <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
                   <label class="input-label">Email Address (Required)</label>
                   <input id="savers_email" name="savers_email" value="" class="form-control form-control" type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
@@ -984,113 +598,12 @@
                   <i class="fa fa-envelope" aria-hidden="true"></i>
                   </span>
                </div>
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
-               <!-- First Name and lastname -->
-               <!-- firstname and lastname end -->
-               <!-- Number of travellers and their ages -->
-               <!-- End of number of trvaellers and ages -->
-               <!-- Email Address -->
-               <!-- end of Email Address -->
-               <!---Destination country -->
-               <!-- Destination ends -- >
-                  <!--  Phone Number -->
-               <!-- end -->
-               <!-- Start Date  and End date -->
-               <!-- end  of starting date and ending date --> 
-               <!-- Older traveller Gender -->
-               <!-- Order Gender ends -->
-               <!--   Gender of person -->
-               <!-- Gender of person ends -->
-               <!-- Sum insured -->
-               <!-- Sum insured end -->
+               @endif
+               @endif
                <div class="col-md-12" style="clear:both;">
                   <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
                   <div class="center m-t-30px">
-                     <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger bg-red show-loading-popup" style="border: 1px solid rgb(1, 162, 129); padding: 10px 30px; margin-top: 20px; display: block;"><i class="fa fa-list"></i> Get a Quote </button>
+                     <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger bg-red show-loading-popup" style="padding: 10px 30px; margin-top: 20px; display: block;"><i class="fa fa-list"></i> Get a Quote </button>
                   </div>
                </div>
             </div>

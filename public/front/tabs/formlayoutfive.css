@@ -1,0 +1,114 @@
+
+   .borderRadius {
+   margin-bottom: 10px !important;
+   }
+   .dd {
+   border: 1px solid #dedede !important;
+   }
+   span.ddlabel {
+   color: #959595;
+   }
+   .toggle-button-icon-fade label:before, .toggle-button-icon-fade label:after {
+   transition: all 0s .1s ease-out;
+   }
+   .toggle-button-icon-fade {
+   width: 100%;
+   height: 40px;
+   } 
+   #savers_email {
+   padding-left: 40px !important;
+   }
+   .toggle-button-icon-fade label {
+   width: 100%;
+   box-shadow: none;
+   border: 1px solid #dedede;
+   padding: 6px 20px;
+   height: 38px;
+   background: none;
+   color: #959595;
+   font-size: 14px;
+   line-height: 26px;
+   border-radius: 0;
+   text-transform: capitalize;
+   }
+   #dh-get-quote select,.form-control {
+   height: 38px;
+   border: 1px solid #aaa !important;
+   padding: 6px 12px;
+   font-size: 14px;
+   line-height: 1.428571429;
+   color: #555;
+   background-color: #fff;
+   color: #959595;
+   }
+   .form-control {
+   margin-bottom: 10px !important;
+   height: 38px !important; 
+   }
+   .input-group {
+   width: 100%;
+   }
+   .input-group .form-control{
+   z-index: -1;
+   position: initial;
+   }
+   .ui-slider .ui-slider-handle {
+   border: 7px solid #00b191 !important;
+   background: #f6f6f6  !important;
+   font-weight: normal  !important;
+   color: #454545  !important;
+   height: 25px  !important;
+   width: 25px  !important;
+   margin-top: -4px  !important;
+   border-radius: 20px  !important;
+   cursor: pointer !important;
+   }
+   .ui-slider-vertical .ui-widget-header, .ui-slider-horizontal .ui-widget-header {
+   background-color: #00b191;
+   }
+   form.form.form-layout1 label.input-label {
+   padding-bottom:0 !important;
+   }
+   .no-padding {
+   padding-right:0;
+   }
+   .date-wrapper {
+   height: 36px;
+   border-radius: 5px;
+   position: relative;
+   -webkit-transition: all 0.2s linear;
+   width: 97%;
+   overflow: hidden;
+   display: flex;
+   display: -webkit-flex;
+   align-items: center;
+   -webkit-align-items: center;
+   color: #566266;
+   background-color: white;
+   margin-bottom: 10px;
+   border: 1px solid #999;
+   }
+   .date-wrapper input {
+   width: 32%;
+   border: 0 none;
+   text-align: center;
+   box-shadow: none;
+   border-radius: 4px;
+   padding: 15px 15px;
+   display: block;
+   max-height: 50px;
+   background-color: white;
+   }
+   .ui-datepicker td span, .ui-datepicker td a {
+   padding: 7px !important;
+   z-index: 99999999999 !important;
+   }
+   .oldest-travel div {
+   display: none !important;
+   }
+   .oldest-travel  select{
+   display: block !important;
+   }
+   .datepicker.dropdown-menu{
+    top: 495px !important;
+   }

@@ -28,7 +28,7 @@
 
 <div class="container">
    <div class="text-center" style="margin-bottom: 30px !important;margin-top: 30px !important;">
-      <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>Super Visa Insurance</strong></h1>
+      <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>{{ $data->pro_name }}</strong></h1>
       <h2 style="text-align: center; margin: 0px;" class="hidden-xs">It's fast and easy using our secure online application.</h2>
    </div>
    <div class="row mainsection birthdate">
@@ -861,15 +861,11 @@
         document.getElementById('age_'+t).value = '';
     }
     for(var t=1; t>=number_of_traveller; t++){
-        $("#number_travelers"+t).show();
+        $("#number_travelers"+t).hide();
         document.getElementById('traveller_'+t).value = '';
     }
     for(var i=1; i<=number_of_traveller; i++){
         $("#traveller_"+i).show();
-        document.getElementById('add_'+i).required = true;
-    }
-    for(var i=1; i>=number_of_traveller; i++){
-        $("#traveller_"+i).hide();
         document.getElementById('add_'+i).required = true;
     }
        var startdate = document.getElementById('departure_date').value; 
