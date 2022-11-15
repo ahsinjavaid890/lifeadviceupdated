@@ -873,7 +873,7 @@
         document.getElementById('add_'+i).required = true;
     }
        var startdate = document.getElementById('departure_date').value; 
-       for(var i=1; i>=number_of_traveller; i++){
+       for(var i=1; i<=number_of_traveller; i++){
            var d = document.getElementById('days_'+i).value;
            var m = document.getElementById('months_'+i).value;
            var y = document.getElementById('add_'+i).value;
