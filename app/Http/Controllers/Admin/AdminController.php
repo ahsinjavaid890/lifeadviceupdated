@@ -83,7 +83,7 @@ class AdminController extends Controller
         $pro_travel_destination = $request->destinationtype;
         $pro_url = $request->pro_url;
         $redirect_from_url = $request->redirect_from_url;
-
+        $url = Cmf::shorten_url($request->pro_name);
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
