@@ -27,7 +27,7 @@
                                    <select name="category_id" class="form-control">
                                        <option>Select Category</option>
                                        @foreach(DB::table('product_categories')->get() as $r)
-                                       <option @if($data->category_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->name }}</option>
+                                       <option @if($data->category_id == $r->id) selected @endif value="{{ $r->id }}">{!! $r->name !!}</option>
                                        @endforeach
                                    </select> 
                                 </div>

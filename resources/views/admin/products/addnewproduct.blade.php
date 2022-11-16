@@ -6,10 +6,9 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
-            <form method="post" action="{{ url('admin/products/updateproducts') }}" id="productform" enctype="multipart/form-data" >
+            <form action="{{ url('admin/products/addnewproduct') }}"  method="POST" id="productform" enctype="multipart/form-data" >
                     @csrf
 
-                    <input type="hidden" value="" name="id">
             <div id="content" class="padding-20">
                 
                     <div class="row">
@@ -26,7 +25,7 @@
                                    <select name="category_id" class="form-control">
                                        <option>Select Category</option>
                                        @foreach(DB::table('product_categories')->get() as $r)
-                                       <option>{{ $r->name }}</option>
+                                       <option>{!! $r->name !!}</option>
                                        @endforeach
                                    </select> 
                                 </div>
@@ -201,13 +200,13 @@
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_17"> 
                                             <label class="checkbox"> 
-                                                <input name="sort[]" id="sum_insured_sort" value="id_17" type="hidden"><input name="prod[sum_insured]" id="sum_insured" type="checkbox" checked=""> Sum Insured Amount 
+                                                <input name="sort[]" id="sum_insured_sort" value="id_17" type="hidden"><input name="prod[sum_insured]" id="sum_insured" type="checkbox"> Sum Insured Amount 
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_6"> 
                                             <label class="checkbox" style="display: inline-block;"> 
                                                 <input name="sort[]" value="id_6" type="hidden"> 
-                                                <input name="prod[Country]" id="Country" type="checkbox" checked=""><i></i> Destination Country</label><br> 
+                                                <input name="prod[Country]" id="Country" type="checkbox"><i></i> Destination Country</label><br> 
                                                 <label>
                                                     <input type="radio" name="destinationtype" value="worldwide"> Worldwide
                                                 </label> 
@@ -218,45 +217,45 @@
                                         <li class="ui-state-default ui-sortable-handle" id="id_8"> 
                                             <label class="checkbox"> 
                                             <input name="sort[]" id="sdate_sort" value="id_8" type="hidden"> 
-                                            <input name="prod[sdate]" id="sdate" type="checkbox" checked=""> Start Date</label> 
+                                            <input name="prod[sdate]" id="sdate" type="checkbox"> Start Date</label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_9"> 
                                             <label class="checkbox"> 
                                                 <input name="sort[]" id="edate_sort" value="id_9" type="hidden"> 
-                                                <input name="prod[edate]" id="edate" type="checkbox" checked="">
+                                                <input name="prod[edate]" id="edate" type="checkbox">
                                                 End Date 
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_10"> 
                                             <label class="checkbox" style="display: inline-block;"> 
                                                 <input name="sort[]" id="traveller_sort" value="id_10" type="hidden"> 
-                                                <input name="prod[traveller]" id="traveller" type="checkbox" checked=""> Number of Traveller's 
+                                                <input name="prod[traveller]" id="traveller" type="checkbox"> Number of Traveller's 
                                             </label> 
                                             <input type="number" name="prod[traveller_number]" value="5" min="1" max="8" step="1"> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_3"> 
                                             <label class="checkbox"> 
                                                 <input name="sort[]" value="id_3" type="hidden"> 
-                                                <input name="prod[dob]" id="dob" type="checkbox" checked=""> Date of Birth
+                                                <input name="prod[dob]" id="dob" type="checkbox"> Date of Birth
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_16"> 
                                             <label class="checkbox"> 
                                                 <input name="sort[]" id="pre_existing_sort" value="id_16" type="hidden"> 
-                                                <input name="prod[pre_existing]" id="pre_existing" type="checkbox" checked=""> Pre-existing Condition 
+                                                <input name="prod[pre_existing]" id="pre_existing" type="checkbox"> Pre-existing Condition 
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_15"> 
                                             <label class="checkbox"> 
                                                 <input name="sort[]" id="fplan_sort" value="id_15" type="hidden"> 
-                                                <input name="prod[fplan]" id="fplan" type="checkbox" checked=""> 
+                                                <input name="prod[fplan]" id="fplan" type="checkbox"> 
                                                 <i></i> Family Plan 
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_4"> 
                                             <label class="checkbox"> 
                                                 <input name="sort[]" value="id_4" type="hidden"> 
-                                                <input name="prod[email]" id="email" type="checkbox" checked=""> Email Address
+                                                <input name="prod[email]" id="email" type="checkbox"> Email Address
                                             </label> 
                                         </li>
                                         <li class="ui-state-default ui-sortable-handle" id="id_7"> 

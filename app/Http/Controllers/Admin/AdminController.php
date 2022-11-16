@@ -62,7 +62,7 @@ class AdminController extends Controller
         if($request->vector)
         {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            echoDB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");exit;
         }else{
             DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }
@@ -71,6 +71,44 @@ class AdminController extends Controller
         
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
+
+
+    public function addnewproducts(Request $request)
+    {
+        $category_id = $request->category_id;
+        $pro_name = $request->pro_name;
+        $pro_parent = $request->pro_parent;
+        $pro_supervisa = $request->pro_supervisa;
+        $pro_life = $request->pro_life;
+        $pro_travel_destination = $request->destinationtype;
+        $pro_url = $request->pro_url;
+        $redirect_from_url = $request->redirect_from_url;
+
+        $prod_fields = serialize($request->prod);
+        $sort_orders = array();
+        $i = 1;
+        foreach($request->sort as  $order)
+        {
+            $sort_orders[$i] = $order ;
+            $i++;
+        }
+        $sort_orders =  serialize($sort_orders);
+
+
+        if($request->vector)
+        {
+            $vector = Cmf::sendimagetodirectory($request->vector);
+            DB::statement("INSERT INTO `wp_dh_products`(`vector`,`description`,`category_id`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$vector','$request->description','$category_id','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+        }else{
+            DB::statement("INSERT INTO `wp_dh_products`(`description`,`category_id`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$category_id','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+        }
+
+
+        
+        return redirect()->back()->with('message', 'Product Inserted Successfully');
+    }
+
+
     public function addnewproduct()
     {
         return view('admin.products.addnewproduct');

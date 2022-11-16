@@ -9,7 +9,7 @@
         @if($r->show_on == 'Left')
          <div class="col-md-4">
             <div class="life-heading">
-               <h2>{{ $r->name }}</h2>
+               <h2>{!! $r->name !!}</h2>
                <p>{{ $r->description }}</p>
             </div>
             <img src="{{ url('public/images') }}/{{ $r->vector }}">
@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-4">
             <div class="life-heading">
-               <h2>{{ $r->name }}</h2>
+               <h2>{!! $r->name !!}</h2>
                <p>{{ $r->description }}</p>
             </div>
             <img src="{{ url('public/images') }}/{{ $r->vector }}">
