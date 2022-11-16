@@ -20,6 +20,7 @@ use App\Models\wp_dh_products;
 use App\Models\quotes;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
+use App\Models\product_categories;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
@@ -38,6 +39,7 @@ class AdminController extends Controller
     }
     public function updateproducts(Request $request)
     {
+        $category_id = $request->category_id;
         $pro_name = $request->pro_name;
         $pro_parent = $request->pro_parent;
         $pro_supervisa = $request->pro_supervisa;
@@ -45,6 +47,7 @@ class AdminController extends Controller
         $pro_travel_destination = $request->destinationtype;
         $pro_url = $request->pro_url;
         $redirect_from_url = $request->redirect_from_url;
+
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
@@ -53,13 +56,52 @@ class AdminController extends Controller
             $sort_orders[$i] = $order ;
             $i++;
         }
-        $sort_orders =  serialize($sort_orders);    
-        DB::statement("UPDATE `wp_dh_products` SET `pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+        $sort_orders =  serialize($sort_orders);
+
+
+        if($request->vector)
+        {
+            $vector = Cmf::sendimagetodirectory($request->vector);
+            DB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+        }else{
+            DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+        }
+
+
+        
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
     public function addnewproduct()
     {
         return view('admin.products.addnewproduct');
+    }
+    public function productcategories()
+    {
+        $data = product_categories::all();
+        return view('admin.products.categories')->with(array('data'=>$data));
+    }
+    public function createproductcategory(Request $request)
+    {
+        $add = new product_categories();
+        $add->name = $request->name;
+        $add->description = $request->description;
+        $add->vector = Cmf::sendimagetodirectory($request->vector);
+        $add->show_on = $request->show_on;
+        $add->save();
+        return redirect()->back()->with('message', 'Category Added Successfully');
+    }
+    public function updatproductcategory(Request $request)
+    {
+        $add = product_categories::find($request->id);
+        $add->name = $request->name;
+        $add->description = $request->description;
+        if($request->vector)
+        {
+            $add->vector = Cmf::sendimagetodirectory($request->vector);
+        }
+        $add->show_on = $request->show_on;
+        $add->save();
+        return redirect()->back()->with('message', 'Category Added Successfully');
     }
     public function addnewuser()
     {

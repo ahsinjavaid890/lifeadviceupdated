@@ -6,6 +6,7 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
+            @include('alerts.index')
             <form method="post" action="{{ url('admin/products/updateproducts') }}" id="productform" enctype="multipart/form-data" >
                     @csrf
 
@@ -20,6 +21,30 @@
                                    <h4 class="text-primary" style="margin:0;"><strong><i class="fa fa-umbrella"></i> Enter Product Details</strong></h4>
                                 </div>
                              </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <label><strong>Select Product Category</strong></label>
+                                   <select name="category_id" class="form-control">
+                                       <option>Select Category</option>
+                                       @foreach(DB::table('product_categories')->get() as $r)
+                                       <option @if($data->category_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->name }}</option>
+                                       @endforeach
+                                   </select> 
+                                </div>
+                             </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <label><strong>Description</strong></label>
+                                   <textarea class="form-control" name="description">{{ $data->description }}</textarea>
+                                </div>
+                             </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <label><strong>Vector</strong></label>
+                                   <input class="form-control" name="vector" type="file">
+                                </div>
+                             </div>
+                             <br>
                              <div class="row">
                                 <div class="col-md-6" style="padding:0;">
                                    <div class="col-md-12"> <label><strong>Supervisa Product ?</strong> <small>(Is this super visa product ?)</small></label> </div>

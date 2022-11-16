@@ -305,6 +305,11 @@
                                 <span class="menu-link"><span class="menu-text">Manage Products</span></span>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/products/productcategories') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Product Categories</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/products/allproducts') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Products</span>
                                 </a>
