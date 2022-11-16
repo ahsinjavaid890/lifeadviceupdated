@@ -98,9 +98,9 @@ class AdminController extends Controller
         if($request->vector)
         {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("INSERT INTO `wp_dh_products`(`vector`,`description`,`category_id`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$vector','$request->description','$category_id','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`url`,`category_id`,`pro_name`,`vector`,`description` `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$url','$category_id','$pro_name','$vector','$request->description','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         }else{
-            DB::statement("INSERT INTO `wp_dh_products`(`description`,`category_id`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$category_id','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`url`,`category_id`,`pro_name`,`description` `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$url','$category_id','$pro_name','$vector','$request->description','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         }
 
 
