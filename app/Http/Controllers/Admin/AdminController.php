@@ -93,14 +93,12 @@ class AdminController extends Controller
             $i++;
         }
         $sort_orders =  serialize($sort_orders);
-
-
         if($request->vector)
         {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("INSERT INTO `wp_dh_products`(`url`,`category_id`,`pro_name`,`vector`,`description` `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$url','$category_id','$pro_name','$vector','$request->description','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`description`,`vector`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$vector','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         }else{
-            DB::statement("INSERT INTO `wp_dh_products`(`url`,`category_id`,`pro_name`,`description` `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$url','$category_id','$pro_name','$vector','$request->description','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`description`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         }
 
 
