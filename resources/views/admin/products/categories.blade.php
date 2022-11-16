@@ -78,7 +78,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="lable-control">Enter Name</label>
-                                                            <input value="{{ $r->name }}" name="name" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                                            <input value="{{ $r->name }}" name="name" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px summernote">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,7 +149,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Enter Name</label>
-                                <input name="name" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                <input name="name" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px summernote">
                             </div>
                         </div>
                     </div>
