@@ -95,7 +95,7 @@ else if($data->policy_status == 'pending'){
                            
                         </table>
                     </div>
-                    <h4><strong>Primary Insured Details:</strong> <button type="button" class="btn btn-xs btn-primary" onClick="window.location='sales_edit_traveller.php?id=<?php echo $data->sales_id;?>'"><i class="fa fa-pencil"></i> Edit Details</button></h4>
+                    <h4><strong>Primary Insured Details:</strong> <a type="button" class="btn btn-xs btn-primary" href="{{ url('admin/sales/editsale')}}/{{$data->sales_id}}"><i class="fa fa-pencil"></i> Edit Details</a></h4>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>

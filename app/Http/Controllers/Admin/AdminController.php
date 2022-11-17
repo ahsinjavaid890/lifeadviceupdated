@@ -543,6 +543,11 @@ class AdminController extends Controller
         $data = DB::table('sales')->orderby('purchase_date' , 'DESC')->get();
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
+    public function editsale($id)
+    {
+        $data = DB::table('sales')->where('id' , $id)->first();
+        return view('admin.sales.editsale')->with(array('data'=>$data));
+    }
     public function viewsale($id)
     {
         $data = DB::table('sales')->where('sales_id' , $id)->first();
