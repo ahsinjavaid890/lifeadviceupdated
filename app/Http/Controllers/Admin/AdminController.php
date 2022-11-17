@@ -439,37 +439,35 @@ class AdminController extends Controller
     public function updateusers(Request $request)
     {
         
-        $name = $request->name;
-        $email = $request->email;
-        $phone = $request->phone;
-        $dob = $request->dob;
-        $about_me = $request->about_me;
-        $username = $request->username;
-        $password = $request->password;
-        $address = $request->address;
-        $province =$request->province;
-        $city = $request->city;
-        $country = $request->country;
-        $postal = $request->postal;
-        $user_type = $request->user_type;
-        $parent_id = $request->parent_id;
-        $status = $request->status;
-        $mg_capability =$request->mg_capability;
-        $fiscal_year = $request->fiscal_year;
 
-
-       echo "UPDATE `users` SET ` `name`='$name',`email`='$email',`phone`='$phone',`dob`='$dob',`about_me`='$about_me',`username`='$username',`password`='$password',`address`='$address',`province`='$province',`city`='$city',`country`='$country',`postal`='$postal',`user_type`='$user_type',`parent_id`='$parent_id',`status`='$status',`mg_capability`='$mg_capability',`fiscal_year`='$fiscal_year' WHERE `id` = `$request->id`";exit;
-
+        $update = User::find($request->id);
+        $update->name = $request->fname.' '.$request->lname;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->dob = $request->dob; 
+        $update->about_me = $request->about_me;
+        $update->username = $request->username;
+        $update->password = Hash::make($request->password);
         if($request->logo)
         {
-            $logo = Cmf::sendimagetodirectory($request->logo);
-            DB::statement("UPDATE `users` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
-        }else{
-            DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            $update->logo = Cmf::sendimagetodirectory($request->logo);
         }
-
-
-        
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->email = $request->email;
+        $update->save();
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
     public function updateuserprofile(Request $request)
