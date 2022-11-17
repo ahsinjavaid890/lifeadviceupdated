@@ -11,7 +11,7 @@
 					@include('alerts.index')
 					<form method="post" action="{{ url('admin/users/edituser') }}" enctype="multipart/form-data">
 						@csrf
-						<input type="hidden" value="{{ $r->id}}" name="id">
+						<input type="hidden" value="{{ $data->id}}" name="id">
 						<link href="{{ asset('public/admin/assetstwo/css/essentials.css')}}" rel="stylesheet" type="text/css" />
 						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 								<style type="text/css">
@@ -41,7 +41,7 @@
 		                                <div class="col-md-10">
 		                                	<label> License and E&amp;O Management capability ? </label>
 					                        <label class="switch switch-success switch-round">
-						                        <input type="checkbox" name="ifeature" id="ifeature" value="1">
+						                        <input type="checkbox" name="mg_capability" value="1"   @if($data->mg_capability == 1) checked="" @endif>
 						                        <span class="switch-label" data-on="YES" data-off="NO"></span>
 					                        </label>
 					                     </div>
@@ -57,6 +57,7 @@
 											<input type="file" class="form-control" name="logo" onchange="jQuery(this).next('input').val(this.value);">
 											<input type="text" class="form-control" placeholder="no file selected" readonly="">
 											<span class="button">Choose File</span>
+											<img src="{{ url('public/images') }}/{{$data->logo}}">
 										</div>
 		                            	</div>
 		                            </div>
@@ -66,10 +67,10 @@
 		                            	</div>
 		                                <div class="col-md-10">
 		                                <select name="status" id="status" class="form-control">
-											<option value="">SELECT ACCOUNT STATUS</option>
-											<option selected="selected" value="active">Active</option>
-											<option value="pending">Pending</option>
-											<option value="suspended">Suspended</option>
+											<option value="" >SELECT ACCOUNT STATUS</option>
+											<option value="active" @if($data->status == "active") selected @endif>Active</option>
+											<option value="pending"  @if($data->status == "pending") selected @endif>pending</option>
+											<option value="suspended"  @if($data->status == "suspended") selected @endif>Suspended</option>
 										</select>
 		                            	</div>
 		                            </div>
@@ -80,11 +81,11 @@
 		                                <div class="col-md-10">
 		                                <select class="form-control" name="user_type" id="user_type" required="required" onchange="mustparent()">
 										<option value="">SELECT USER TYPE</option>
-																		<option selected="selected" value="admin">Admin</option>
-										<option value="broker">AB Broker</option>
-										<option value="agent">AB Agent</option>
-										<option value="db">AB Downline Broker</option>
-										<option value="da">AB Downline Agent</option>
+										<option selected="selected" value="admin"  @if($data->user_type == "admin") selected @endif>Admin</option>
+										<option value="broker"  @if($data->user_type == "broker") selected @endif>AB Broker</option>
+										<option value="agent"  @if($data->user_type == "agent") selected @endif>AB Agent</option>
+										<option value="db"  @if($data->user_type == "db") selected @endif>AB Downline Broker</option>
+										<option value="da"  @if($data->user_type == "da") selected @endif>AB Downline Agent</option>
 																		</select>
 
 		<script>
@@ -123,8 +124,9 @@
 		                            	</div>
 		                                <div class="col-md-10">
 										<select class="form-control" name="parent_id" id="parent_id" required="required" onchange="mustparent()">
-										<option value="0">N/A</option>
-																		</select>
+										<option value="0" @if($data->parent_id == 0) selected @endif>N/A</option>
+										<option value="1" @if($data->parent_id == 1) selected @endif>1</option>
+										</select>
 										</div>
 									</div>
 										
@@ -133,7 +135,7 @@
 		                                <label><strong>Fiscal Year Starts From</strong></label>
 		                            	</div>
 		                                <div class="col-md-10">
-										<input type="date" class="form-control datepicker" name="fiscal_year" id="fiscal_year" value="0000-00-00" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
+										<input type="date" class="form-control datepicker" name="fiscal_year" id="fiscal_year" value="{{$data->fiscal_year}}" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
 										</div>
 									</div>
 									<div class="row">
