@@ -465,6 +465,35 @@ class AdminController extends Controller
         $update->save();
         return redirect()->back()->with('message', 'User Updated Successfully');
     }
+    public function addnewusers(Request $request)
+    {
+        
+
+        $update = new User;
+        $update->name = $request->fname.' '.$request->lname;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->dob = $request->dob; 
+        $update->about_me = $request->about_me;
+        $update->username = $request->username;
+        $update->password = Hash::make($request->password);
+        if($request->logo)
+        {
+            $update->logo = Cmf::sendimagetodirectory($request->logo);
+        }
+        $update->address = $request->address;
+        $update->province = $request->province;
+        $update->city = $request->city;
+        $update->country = $request->country;
+        $update->postal = $request->postal;
+        $update->user_type = $request->user_type;
+        $update->parent_id = $request->parent_id;
+        $update->status = $request->status;
+        $update->mg_capability = $request->mg_capability;
+        $update->fiscal_year = $request->fiscal_year;
+        $update->save();
+        return redirect()->back()->with('message', 'User Updated Successfully');
+    }
     public function updateuserprofile(Request $request)
     {
         $update = User::find(Auth::user()->id);

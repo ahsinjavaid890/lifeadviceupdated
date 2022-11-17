@@ -279,6 +279,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/viewuser/{id}','AdminController@viewuser');
         Route::get('/addnewuser','AdminController@addnewuser');
         Route::get('/edituser/{id}','AdminController@edituser');
+        Route::post('/addnewuser','AdminController@addnewusers');
         Route::post('/edituser','AdminController@updateusers');
 
     });

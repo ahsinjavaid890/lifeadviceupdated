@@ -81,43 +81,42 @@
 	                        <label><strong>User Type</strong></label>
 	                    	</div>
 	                        <div class="col-md-10">
-	                        <select class="form-control" name="user_type" id="user_type"  onchange="mustparent()">
-								<option value="">SELECT USER TYPE</option>
-								<option selected="selected" value="admin"  @if($data->user_type == "admin") selected @endif>Admin</option>
-								<option value="broker"  @if($data->user_type == "broker") selected @endif>AB Broker</option>
-								<option value="agent"  @if($data->user_type == "agent") selected @endif>AB Agent</option>
-								<option value="db"  @if($data->user_type == "db") selected @endif>AB Downline Broker</option>
-								<option value="da"  @if($data->user_type == "da") selected @endif>AB Downline Agent</option>
-							</select>
+		                        <select class="form-control" name="user_type" id="user_type"  onchange="mustparent()">
+									<option value="">SELECT USER TYPE</option>
+									<option selected="selected" value="admin"  @if($data->user_type == "admin") selected @endif>Admin</option>
+									<option value="broker"  @if($data->user_type == "broker") selected @endif>AB Broker</option>
+									<option value="agent"  @if($data->user_type == "agent") selected @endif>AB Agent</option>
+									<option value="db"  @if($data->user_type == "db") selected @endif>AB Downline Broker</option>
+									<option value="da"  @if($data->user_type == "da") selected @endif>AB Downline Agent</option>
+								</select>
+								<script>
+								function mustparent(){
+								if(document.getElementById('user_type').value == 'db'){
+								if(document.getElementById('parent_id').value == 0){
+								document.getElementById('submitbtn').disabled = true;
+								document.getElementById('err').innerHTML = '<i class="fa fa-warning"></i> Please select a parent';
+								}
+								else {
+								document.getElementById('submitbtn').disabled = false;
+								document.getElementById('err').innerHTML = '';	
+								}		
+								}
+								else if(document.getElementById('user_type').value == 'da'){
+								if(document.getElementById('parent_id').value == 0){
+								document.getElementById('submitbtn').disabled = true;
+								document.getElementById('err').innerHTML = '<i class="fa fa-warning"></i> Please select a parent';
+								}
+								else {
+								document.getElementById('submitbtn').disabled = false;
+								document.getElementById('err').innerHTML = '';	
+								}
 
-	<script>
-	function mustparent(){
-	if(document.getElementById('user_type').value == 'db'){
-	if(document.getElementById('parent_id').value == 0){
-	document.getElementById('submitbtn').disabled = true;
-	document.getElementById('err').innerHTML = '<i class="fa fa-warning"></i> Please select a parent';
-	}
-	else {
-	document.getElementById('submitbtn').disabled = false;
-	document.getElementById('err').innerHTML = '';	
-	}		
-	}
-	else if(document.getElementById('user_type').value == 'da'){
-	if(document.getElementById('parent_id').value == 0){
-	document.getElementById('submitbtn').disabled = true;
-	document.getElementById('err').innerHTML = '<i class="fa fa-warning"></i> Please select a parent';
-	}
-	else {
-	document.getElementById('submitbtn').disabled = false;
-	document.getElementById('err').innerHTML = '';	
-	}
-
-	} else {
-	document.getElementById('submitbtn').disabled = false;
-	document.getElementById('err').innerHTML = '';	
-	}
-	}
-	</script>								
+								} else {
+								document.getElementById('submitbtn').disabled = false;
+								document.getElementById('err').innerHTML = '';	
+								}
+								}
+								</script>								
 	                    	</div>
 	                    </div>
 						<div class="row">
@@ -503,32 +502,32 @@
                         </div>
 				</div>
 				<div class="card-body">
-									<div class="row">
-		                            	<div class="col-md-2">
-		                                <label><strong><i class="fa fa-user"></i> Username</strong></label>
-		                            	</div>
-		                                <div class="col-md-10">
-		                                	<input type="text" name="username" class="form-control" placeholder="Username" value="{{ $data->username}}" style="margin-left: -12px;">
-		                                </div>
-									</div>
-									<div class="row">
-		                            	<div class="col-md-2">
-		                                <label><strong><i class="fa fa-lock"></i> Change Password</strong></label>
-		                            	</div>
-		                                <div class="col-md-10">
-										<div class="row">
-											<div class="col-md-5" style="padding:0;">
-										<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" onkeyup="validatePassword();">
-										</div>
-										<div class="col-md-6">
-										<input type="button" onclick="generatepassword();" value="Generate Password" class="btn btn-default">
-										</div>
-										<div class="col-md-12" style="padding:0;">
-										<span class="help-inline col-xs-12 col-sm-7" id="password_check" style="padding-top:5px; padding-left:0;"><span class="text-info"><i class="fa fa-warning"></i> Leave blank to use old password</span></span>
-										</div>
-										</div>
-										</div>
-									</div>
+					<div class="row">
+                    	<div class="col-md-2">
+                        <label><strong><i class="fa fa-user"></i> Username</strong></label>
+                    	</div>
+                        <div class="col-md-10">
+                        	<input type="text" name="username" class="form-control" placeholder="Username" value="{{ $data->username}}" style="margin-left: -12px;">
+                        </div>
+					</div>
+					<div class="row">
+                    	<div class="col-md-2">
+                        <label><strong><i class="fa fa-lock"></i> Change Password</strong></label>
+                    	</div>
+                        <div class="col-md-10">
+						<div class="row">
+							<div class="col-md-5" style="padding:0;">
+						<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="" onkeyup="validatePassword();">
+						</div>
+						<div class="col-md-6">
+						<input type="button" onclick="generatepassword();" value="Generate Password" class="btn btn-default">
+						</div>
+						<div class="col-md-12" style="padding:0;">
+						<span class="help-inline col-xs-12 col-sm-7" id="password_check" style="padding-top:5px; padding-left:0;"><span class="text-info"><i class="fa fa-warning"></i> Leave blank to use old password</span></span>
+						</div>
+						</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class=" m-3">

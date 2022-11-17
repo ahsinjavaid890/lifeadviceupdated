@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>
                                         @if($r->logo)
-                                        <img src="{{ url('public/images') }}/{{ $r->logo }}">
+                                        <img src="{{ url('public/images') }}/{{ $r->logo }}" width="100">
                                         @else
                                         <i class="fa fa-leaf"></i>
                                         @endif
