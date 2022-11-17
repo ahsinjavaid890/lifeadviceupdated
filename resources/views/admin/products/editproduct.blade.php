@@ -9,7 +9,6 @@
             @include('alerts.index')
             <form method="post" action="{{ url('admin/products/updateproducts') }}" id="productform" enctype="multipart/form-data" >
                     @csrf
-
                     <input type="hidden" value="{{ $data->pro_id }}" name="id">
             <div id="content" class="padding-20">
                 
@@ -210,7 +209,7 @@
                                         <?php } if(array_search("id_17",$pro_sort) == $i){ ?>
                                         <li class="ui-state-default ui-sortable-handle" id="id_17"> 
                                             <label class="checkbox"> 
-                                                <input<?php if(array_key_exists('sum_insured', $pro_fields)){?> checked="" <?php } ?>  name="sort[]" id="sum_insured_sort" value="id_17" type="hidden"><input name="prod[sum_insured]" id="sum_insured" type="checkbox"> Sum Insured Amount 
+                                                <input name="sort[]" id="sum_insured_sort" value="id_17" type="hidden"><input <?php if(array_key_exists('sum_insured', $pro_fields)){?> checked="" <?php } ?>   name="prod[sum_insured]" id="sum_insured" type="checkbox"> Sum Insured Amount 
                                             </label> 
                                         </li>
                                         <?php } if(array_search("id_6",$pro_sort) == $i){ ?>    

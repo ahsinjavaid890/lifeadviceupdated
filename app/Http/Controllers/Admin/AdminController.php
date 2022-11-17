@@ -143,7 +143,7 @@ class AdminController extends Controller
     {
         return view('admin.users.addnewuser');
     }
-    public function edituser()
+    public function edituser($id)
     {
         return view('admin.users.edituser');
     }
@@ -433,6 +433,12 @@ class AdminController extends Controller
     public function profile()
     {
         return view('admin/profile/index');
+    }
+
+    public function editusers($id)
+    {
+        
+        return redirect()->back()->with('message', 'Your Profile Updated Successfully');
     }
     public function updateuserprofile(Request $request)
     {
