@@ -26,17 +26,17 @@
 	@if($fields['price_layout'] == 'layout_1')
 		@include('frontend.formone.includes.pricelayoutone')
 	@elseif($fields['price_layout'] == 'layout_2')
-		
+		@include('frontend.formone.includes.pricelayouttwo')
 	@elseif($fields['price_layout'] == 'layout_3')
-		
+		@include('frontend.formone.includes.pricelayoutthree')
 	@elseif($fields['price_layout'] == 'layout_4')
-		
+		@include('frontend.formone.includes.pricelayoutfour')
 	@elseif($fields['price_layout'] == 'layout_5')
-		
+		@include('frontend.formone.includes.pricelayoutfive')
 	@elseif($fields['price_layout'] == 'layout_6')
-		
-	@elseif($fields['price_layout'] == 'layout_7')
 		@include('frontend.formone.includes.pricelayoutsix')
+	@elseif($fields['price_layout'] == 'layout_7')
+		@include('frontend.formone.includes.pricelayoutseven')
 	@endif
 </section>
 <script>
