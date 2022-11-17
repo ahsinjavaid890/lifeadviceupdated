@@ -8,39 +8,67 @@
         <div class=" container-fluid ">
             @include('alerts.index')
             <form method="post" action="{{ url('admin/products/updateproducts') }}" id="productform" enctype="multipart/form-data" >
-                    @csrf
-                    <input type="hidden" value="{{ $data->pro_id }}" name="id">
+            @csrf
+            <input type="hidden" value="{{ $data->pro_id }}" name="id">
             <div id="content" class="padding-20">
                 
                     <div class="row">
-                       <div class="panel panel-default col-md-8" style="padding:0;">
+                       <div class="col-md-8">
+                        <div class="card card-custom mt-5">
+                            <div class="card-header flex-wrap py-5">
+                                <div class="card-title">
+                                    <h3 class="card-label">
+                                        Product Details
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Select Product Category</label>
+                                            <select name="category_id" class="form-control">
+                                               <option>Select Category</option>
+                                               @foreach(DB::table('product_categories')->get() as $r)
+                                               <option @if($data->category_id == $r->id) selected @endif value="{{ $r->id }}">{!! $r->name !!}</option>
+                                               @endforeach
+                                           </select> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Parent Product</label>
+                                            <select class="form-control" name="pro_parent" id="pro_parent">
+                                             <option value="">--- None ---</option>
+                                             @foreach(DB::table('wp_dh_products')->get() as $r)
+                                             <option @if($data->pro_parent == $r->pro_id) selected @endif value="{{ $r->pro_id }}">{{ $r->pro_name }}</option>
+                                             @endforeach
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Name</label>
+                                    <input class="form-control" type="text" id="pro_name" name="pro_name" placeholder="Enter product name" value="{{ $data->pro_name }}"> 
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Description</label>
+                                    <textarea class="form-control" rows="6" name="description">{{ $data->description }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Vector</label>
+                                    <input class="form-control" name="vector" type="file">
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Buynow URL</label>
+                                    <input class="form-control" type="text" id="pro_url" name="pro_url" placeholder="https://" value="{{ $data->pro_url }}"> 
+                                </div>
+                            </div>
+                        </div>
                           <div class="panel-body">
                              <div class="row">
                                 <div class="col-md-12">
                                    <h4 class="text-primary" style="margin:0;"><strong><i class="fa fa-umbrella"></i> Enter Product Details</strong></h4>
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <label><strong>Select Product Category</strong></label>
-                                   <select name="category_id" class="form-control">
-                                       <option>Select Category</option>
-                                       @foreach(DB::table('product_categories')->get() as $r)
-                                       <option @if($data->category_id == $r->id) selected @endif value="{{ $r->id }}">{!! $r->name !!}</option>
-                                       @endforeach
-                                   </select> 
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <label><strong>Description</strong></label>
-                                   <textarea class="form-control" name="description">{{ $data->description }}</textarea>
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <label><strong>Vector</strong></label>
-                                   <input class="form-control" name="vector" type="file">
                                 </div>
                              </div>
                              <br>
@@ -66,37 +94,12 @@
                                     </div>
                                 </div>
                              </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <label><strong>Product Name <span class="text-danger">*</span></strong></label>
-                                   <input class="form-control" type="text" id="pro_name" name="pro_name" placeholder="Enter product name" value="{{ $data->pro_name }}"> 
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-12"> <label><strong>Parent Product <small>(optional)</small></strong></label> </div>
-                                <div class="col-md-12">
-                                   <div class="fancy-form fancy-form-select">
-                                      <select class="form-control" name="pro_parent" id="pro_parent">
-                                         <option value="">--- None ---</option>
-                                         @foreach(DB::table('wp_dh_products')->get() as $r)
-                                         <option @if($data->pro_parent == $r->pro_id) selected @endif value="{{ $r->pro_id }}">{{ $r->pro_name }}</option>
-                                         @endforeach
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
                              
                              <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/assets/css/sortable.css')}}">
                              <div class="row">
                                 <div class="col-md-12">
-                                   <label><strong>Product Buynow URL <span class="text-danger">*</span></strong></label>
-                                   <input class="form-control" type="text" id="pro_url" name="pro_url" placeholder="https://" value="{{ $data->pro_url }}"> 
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-12">
                                    <label><strong>Redirect from URL</strong></label>
-                                   <div> <span style="float: left;margin: 10px;">https://lifeadvice.ca/</span> <input class="form-control" type="text" id="redirect_from_url" name="redirect_from_url" value="{{ $data->redirect_from_url }}" style="float: left;width:50%;"> </div>
+                                   <div> <span style="float: left;margin: 10px;">{{ url('') }}</span> <input class="form-control" type="text" id="redirect_from_url" name="redirect_from_url" value="{{ $data->redirect_from_url }}" style="float: left;width:50%;"> </div>
                                 </div>
                              </div>
                              @php
