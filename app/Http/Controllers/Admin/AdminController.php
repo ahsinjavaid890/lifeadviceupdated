@@ -476,7 +476,10 @@ class AdminController extends Controller
         $update->dob = $request->dob; 
         $update->about_me = $request->about_me;
         $update->username = $request->username;
-        $update->password = Hash::make($request->password);
+        if($request->password){
+
+            $update->password = Hash::make($request->password);
+        }
         if($request->logo)
         {
             $update->logo = Cmf::sendimagetodirectory($request->logo);
@@ -545,8 +548,30 @@ class AdminController extends Controller
     }
     public function editsale($id)
     {
-        $data = DB::table('sales')->where('id' , $id)->first();
+        $data = DB::table('sales')->where('sales_id' , $id)->first();
         return view('admin.sales.editsale')->with(array('data'=>$data));
+    }
+    public function editsales(Request $request)
+    {
+        $updates = sales::find($request->sales_id);
+        $updates->fname = $request->fname;
+        $updates->lname = $request->lname;
+        $updates->email = $request->email;
+        $updates->phone = $request->phone;
+        $updates->dob = $request->dob;
+        $updates->address = $request->address;
+        $updates->address_2 = $request->address_2;
+        $updates->province = $request->province;
+        $updates->city = $request->city;
+        $updates->country = $request->country;
+        $updates->home_address = $request->home_address;
+        $updates->home_address_2 = $request->home_address_2;
+        $updates->home_province = $request->home_province;
+        $updates->home_city = $request->home_city;
+        $updates->home_zip = $request->home_zip;
+        $updates->home_country = $request->home_country;
+        $updates->save();
+        return redirect()->back()->with('message', 'Sales Updated Successfully');
     }
     public function viewsale($id)
     {
