@@ -87,7 +87,7 @@
                                     <input class="form-control" type="text" id="pro_url" name="pro_url" placeholder="https://" value="{{ $data->pro_url }}"> 
                                 </div>
                                 <div class="form-group">
-                                    <label>Redirect URL</label>
+                                    <label>Redirect URL <small style="color:red;">Use <b>(product/)</b> For Quote Form if want details then only add url</small></label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text">{{ url('') }}</span>
