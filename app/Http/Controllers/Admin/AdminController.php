@@ -554,8 +554,6 @@ class AdminController extends Controller
     }
     public function editsales(Request $request)
     {
-      
-
         $update = array('fname' => $request->fname, 'lname' => $request->lname, 'email' => $request->email, 'phone' => $request->phone, 'dob' => $request->dob, 'address' => $request->address, 'address_2' => $request->address_2, 'province' => $request->province, 'city' => $request->city, 'postcode' => $request->postcode, 'country' => $request->country, 'home_address' => $request->home_address, 'home_address_2' => $request->home_address_2, 'home_province' => $request->home_province, 'home_city' => $request->home_city, 'home_zip' => $request->home_zip, 'home_country' => $request->home_country);
 
         DB::table('sales')->where('sales_id' , $request->id)->update($update);
