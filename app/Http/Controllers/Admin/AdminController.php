@@ -145,7 +145,8 @@ class AdminController extends Controller
     }
     public function edituser($id)
     {
-        return view('admin.users.edituser');
+        $data = DB::table('users')->where('id' , $id)->first();
+        return view('admin.users.edituser')->with(array('data'=>$data));
     }
     public function memberdocument()
     {
