@@ -452,23 +452,18 @@ class AdminController extends Controller
         {
             $update->logo = Cmf::sendimagetodirectory($request->logo);
         }
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
-        $update->email = $request->email;
+        $update->address = $request->address;
+        $update->province = $request->province;
+        $update->city = $request->city;
+        $update->country = $request->country;
+        $update->postal = $request->postal;
+        $update->user_type = $request->user_type;
+        $update->parent_id = $request->parent_id;
+        $update->status = $request->status;
+        $update->mg_capability = $request->mg_capability;
+        $update->fiscal_year = $request->fiscal_year;
         $update->save();
-        return redirect()->back()->with('message', 'Product Updated Successfully');
+        return redirect()->back()->with('message', 'User Updated Successfully');
     }
     public function updateuserprofile(Request $request)
     {
