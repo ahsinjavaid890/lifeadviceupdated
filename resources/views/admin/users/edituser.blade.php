@@ -142,11 +142,26 @@
 		                            	<div class="col-md-2">
 		                                <label><strong>Name</strong></label>
 		                            	</div>
+		                            	@foreach(explode(' ' , $data->name) as $r)
+		                            	@php
+
+		                            		if($loop->first)
+		                            		{
+			                            		$fname = $r;
+			                            	}
+		                            	
+		                            		if($loop->last)
+		                            		{
+		                            			$lname = $r;
+		                            		}
+		                            	@endphp
+		                            	@endforeach
+
 		                                <div class="col-md-5">
-										<input type="text" class="form-control" placeholder="First Name" name="fname" id="fname" style="margin-right:5px;" value="Administrator" required="" onkeyup="suggestusername();">
+										<input type="text" class="form-control" placeholder="First Name" name="fname" id="fname" style="margin-right:5px;" value="{{ $fname }}" required="" onkeyup="suggestusername();">
 										</div>
 										<div class="col-md-5">
-										<input type="text" class="form-control" placeholder="Last Name" name="lname" id="lname" value="" required="" onkeyup="suggestusername();">
+										<input type="text" class="form-control" value="{{ $lname }}" placeholder="Last Name" name="lname" id="lname" value="" required="" onkeyup="suggestusername();">
 										</div>
 									</div>
 									<div class="row">
