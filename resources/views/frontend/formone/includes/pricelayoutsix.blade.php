@@ -3,13 +3,16 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+<?php
+$ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
+?>
 var Slider_Values = [<?php
                 $d = 0;
                 $havethousand = 'no';
                 foreach($ded as $r){
                 $d++;
                 echo $dedivalue = $r->deductible1;
-                if($d < $ded->count()){
+                if($d < count($ded)){
                 echo ', ';
                 }
                 if($dedivalue == 1000){ $havethousand = 'yes'; }
@@ -30,23 +33,26 @@ $(function () {
         slide: function (event, ui) {
             $('#coverage_deductible').text(Slider_Values[ui.value]);
             //alert(Slider_Values.length);
-for (i = 0; i < Slider_Values.length; i++) {
-var group = Slider_Values[i];
-$('.deductable-'+group).hide();
-}
+            for (i = 0; i < Slider_Values.length; i++) {
+                var group = Slider_Values[i];
+                $('.deductable-'+group).hide();
+            }
             $('.deductable-'+Slider_Values[ui.value]).show();
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
         }
     });
 });
 
+<?php
+$sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+?>
 //Sum Insured Slider
 var SliderValues = [<?php
                 $s = 0;
                 foreach($sum as $r){
                 $s++;
                 echo $sumamount = $r->sum_insured;
-                if($s < $sum->count()){
+                if($s < count($sum)){
                 echo ', ';
                 }
                 } ?>];
@@ -61,10 +67,10 @@ $(function () {
         slide: function (event, ui) {
             $('#coverage_amount').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
-for (i = 0; i < SliderValues.length; i++) {
-var group = SliderValues[i];
-$('.coverage-amt-'+group).hide();
-}
+            for (i = 0; i < SliderValues.length; i++) {
+                var group = SliderValues[i];
+                $('.coverage-amt-'+group).hide();
+            }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
             $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
         }
@@ -607,8 +613,6 @@ divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listin
 $("#listprices").html(divList);
 })
 </script>
-    <script src="js/jquery-1.12.4.js"></script>
-    <script src="js/jquery-ui.js"></script>
     <script>
         var buynow_selected = "";
         var info_box = "";

@@ -11,7 +11,7 @@
     });
 
     // Nice Select JS
-    $('select').niceSelect();
+    // $('select').niceSelect();
 
     // Header Sticky
     $(window).on('scroll', function() {
