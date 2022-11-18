@@ -124,12 +124,11 @@ $supervisa = 'no';
 
     $oldest_traveller = 0;
     $family_plan      = false;
-
+ 
     $years = array();
 
-if (is_array($request->years)){
-    $ages_array = array_filter($request->years);
-    //print_r($ages_ar$younger_ageray);
+if (is_array($request->ages)){
+    $ages_array = array_filter($request->ages);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -176,6 +175,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
 
 <div class="col-md-9" style="padding:0;" id="listprices">
+
             <?php
         $addinquery = '';
         $lessquery = '';
@@ -210,9 +210,13 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         $plan_discount_rate = $plan->discount_rate;
 
         $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
-        $salestaxeplode = explode('%', $sales_tax);
-        $salestax_rate = $salestaxeplode[0];
-        $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
+        if($sales_tax)
+        {
+            $salestaxeplode = explode('%', $sales_tax);
+            $salestax_rate = $salestaxeplode[0];
+            $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
+        }
+        
 
 
         //COMPANY Details
@@ -224,14 +228,24 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
         $deductsloop = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
         foreach($deductsloop as $deductsloop_f){
-            $deductible = $deductsloop_f->deductible1;
+            if($deductsloop_f)
+            {
+                $deductible = $deductsloop_f->deductible1;
+            }
+            
             $deduct = '';
             $deduct_rate = '';
             $deduct_plan_id = '';
-            $deductsq = DB::select("SELECT `deductible1`, `deductible2`, `plan_id` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id`='$plan_id' AND `deductible1`='$deductible'");
-            $deduct = $deductsq->deductible1;
-            $deduct_rate = str_replace('-', '', $deductsq->deductible2);
+            $deductsq = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $plan_id)->where('deductible1' , $deductible)->first();
+
+            if($deductsq)
+            {
+                $deduct = $deductsq->deductible1;
+                  $deduct_rate = str_replace('-', '', $deductsq->deductible2);
             $deduct_plan_id = $deductsq->plan_id;
+            }
+            
+          
             if($supervisa == 'yes'){
                 $addinbenefit = "AND CAST(`sum_insured` AS DECIMAL)>='100000'";
             }
@@ -239,12 +253,11 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 
         foreach($sumin as $suminsu){
-       echo $sum_insured = $suminsu->sum_insured;
-       exit;
+        $sum_insured = $suminsu->sum_insured;
         $sumamt = '';
-        $sumq = mysqli_query($db,  "SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$plan_id' AND `sum_insured`='$sum_insured'");
-        $sumqry = mysqli_fetch_assoc($sumq);
-        $sumamt = $sumqry['sum_insured'];
+
+        $sumqry = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $plan_id)->where('sum_insured' , $sum_insured)->first();
+        $sumamt = $sumqry->sum_insured;
 
 
         //getting prices for each ages
@@ -270,16 +283,18 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                 if(!$daily_rate){ $display = '0'; }
             } else {
                 foreach($ages_array as $person_age){
-                    $plan_rates = mysqli_query($db, "SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery" );
-                    $planrates = mysqli_fetch_assoc($plan_rates);
-                    $dailyrate = $planrates['rate'];
-
-                    $daily_rate += $dailyrate;
-                    if($dailyrate == ''){ $dailyrate = 0; }
-                    $display[] =  $dailyrate;
-                    $dailyrate = 0;
+                   $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                   if($plan_rates)
+                   {
+                        $dailyrate = $plan_rates[0]->rate;
+                        $daily_rate += $dailyrate;
+                        if($dailyrate == ''){ $dailyrate = 0; }
+                        $display[] =  $dailyrate;
+                        $dailyrate = 0;
+                   }
+                    
                 }
-                }
+            }
 
 
 //NUM OF MONTHS
@@ -318,7 +333,7 @@ $salestaxes = 0;
 }
 
 //SMOKE RATE
-if($_SESSION['Smoke12'] == 'yes' || $_SESSION['traveller_Smoke'] == 'yes'){
+if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
 if($smoke == '0'){
 $smoke_price = $smoke_rate;
 } else if($smoke == '1'){
@@ -334,7 +349,7 @@ $others = ($flat_price + $salestaxes) + $smoke_price;
 //Deductible
 $deduct_discount = ($total_price * $deduct_rate) / 100;
 $cdiscount = ($total_price * $cdiscountrate) / 100;
-if (strpos($deducti['deductible2'], '-') !== false) {
+if (strpos($deductsq->deductible2, '-') !== false) {
 //if deductible is in minus
 $discount = $deduct_discount + $cdiscount;
 $adddeductible = 0;
@@ -365,14 +380,14 @@ if($show == '1' && $total_price > 0){
 ?>
 
     <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-    <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>" style="<?php echo ( $_SESSION['sum_insured2'] == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
+    <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
                             <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'block'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'bock'; } else { echo 'none'; } ?>;">
 
 <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
 <a href="#" class="dh-toggle" data-value='<?php echo $plan_id; ?>' aria-hidden="true"><i class="fa fa-info-circle" data-value='<?php echo $plan_id; ?>' aria-hidden="true"></i></a>
 </div>
 <div class="col-md-3 col-xs-11 text-center">
-<img src="admin/uploads/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
+<img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
 </div>
 <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
 <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?></h1>
@@ -393,10 +408,10 @@ $<?php echo $deductible; ?> deductible
 </div>
 
 <?php
-$dob = $_SESSION['years'][0].'-'.$_SESSION['month'].''.$_SESSION['dob_day'];
-$agent = $_SESSION['agent'];
-$broker = $_SESSION['broker'];
-$buynow_url = "tab_buy.php?email=$email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$destination&cdestination=&product_name=$product_name&product_id=$product_id&country=$primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
+$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+$agent = $request->agent;
+$broker = $request->broker;
+$buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
 
 <div style="clear:both;"></div>
@@ -439,9 +454,10 @@ $buynow_url = "tab_buy.php?email=$email&coverage=".$sum_insured."&traveller=".$n
                                         Age: <?php echo $person_age; ?><br/>
                                         Coverage Amount: <?php echo $sum_insured; ?> <br/>
                                         Premium  <?php
-                    $p_plan_rates = mysqli_query($db,  "SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery" );
-                    $p_planrates = mysqli_fetch_assoc($p_plan_rates);
-                    $single_person_rate = $p_planrates['rate'];
+                    $p_plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+
+
+                    $single_person_rate = $p_plan_rates[0]->rate;
 
 if($family_plan == 'yes' && $elder_age != $person_age){
 $person_daily = 0;
@@ -481,7 +497,7 @@ $p_salestaxes = 0;
 }
 
 //SMOKE RATE
-if($_SESSION['Smoke12'] == 'yes' || $_SESSION['traveller_Smoke'] == 'yes'){
+if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
 if($smoke == '0'){
 $p_smoke_price = $smoke_rate;
 } else if($smoke == '1'){
@@ -497,7 +513,7 @@ $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 //Deductible
 $p_deduct_discount = ($person_price * $deduct_rate) / 100;
 $p_cdiscount = ($person_price * $cdiscountrate) / 100;
-if (strpos($deducti['deductible2'], '-') !== false) {
+if (strpos($deductsq->deductible2, '-') !== false) {
 //if deductible is in minus
 $p_discount = $p_deduct_discount + $p_cdiscount;
 $p_adddeductible = 0;
@@ -527,19 +543,18 @@ $person_price = $person_price - $p_discountonplan;
 
                                     <div class="col-md-3" style="display:none;">
                                         <?php
-                                        $features = mysqli_query($db, "SELECT * FROM wp_dh_insurance_plans_features WHERE plan_id = '$plan_id' " );
-                                        //
+                                        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
                                         ?>
                                         <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
                                         <hr/>
                                         <ul>
-                                            <li>$<?php echo $deductible1; ?> deductible</li>
+                                            <li>$<?php echo $request->deductible1; ?> deductible</li>
                                             <?php
-                                                if ( mysqli_num_rows($features) > 1 ) {
-                                                            while($feature = mysqli_fetch_assoc($features)) {
-                                                                echo "<li>".$feature['features']."</li>";
-                                                            }
-                                                        }
+                                                if ($features->count() > 1 ) {
+                                                    foreach($features as $feature) {
+                                                        echo "<li>".$feature->features."</li>";
+                                                    }
+                                                }
                                                 ?>
                                         </ul>
 
@@ -563,17 +578,17 @@ $person_price = $person_price - $p_discountonplan;
                          </div>
 
 <?php
-    if ($sum_insured == $_SESSION['sum_insured2']){
-        $mailitem[] = array(
-            "deductible"  => $deductible,
-            "sum_insured" => $sum_insured,
-            "planproduct" => $product_name,
-            "price"       => $total_price,
-            "quote"       => $quoteNumber,
-            "logo"        => $comp_logo,
-            "url"         => $_SERVER['REQUEST_URI'] . "?fromemail=yes&quote=" . $quoteNumber,
-            "buynow"      => $buynow_url
-        );
+    if ($sum_insured == $request->sum_insured2){
+        // $mailitem[] = array(
+        //     "deductible"  => $deductible,
+        //     "sum_insured" => $sum_insured,
+        //     "planproduct" => $product_name,
+        //     "price"       => $total_price,
+        //     "quote"       => $quoteNumber,
+        //     "logo"        => $comp_logo,
+        //     "url"         => $_SERVER['REQUEST_URI'] . "?fromemail=yes&quote=" . $quoteNumber,
+        //     "buynow"      => $buynow_url
+        // );
         $price[] = $total_price;
     }
     $display = ''; }}}} ?>
