@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+.tabshead {
+    padding-top: 36px !important;
+}
+</style>
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -180,7 +185,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 </div>
 
 
-<div class="col-md-9" style="padding:0;" id="listprices">
+<div class="col-md-9 mt-3" style="padding:0;" id="listprices">
 
             <?php
         $addinquery = '';
@@ -390,7 +395,7 @@ if($show == '1' && $total_price > 0){
                             <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'block'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'bock'; } else { echo 'none'; } ?>;">
 
 <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
-<a href="#" class="dh-toggle" data-value='<?php echo $plan_id; ?>' aria-hidden="true"><i class="fa fa-info-circle" data-value='<?php echo $plan_id; ?>' aria-hidden="true"></i></a>
+<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
 </div>
 <div class="col-md-3 col-xs-11 text-center">
 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
@@ -423,6 +428,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <div style="clear:both;"></div>
 <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none; margin-top:20px;">
 <form method="post" action="<?php echo $buynow_url;?>">
+<div class="row">
 <div class="col-md-6" style="background:#F9F9F9;">
 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
@@ -438,11 +444,13 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
 <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
 </div>
+</div>
 </form>
 </div>
 
-
+                                
                                 <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="display:none; margin-top: 20px;border-top: 1px solid #ddd;font-family: arial;">
+                                    <div class="row">
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr/>
@@ -576,6 +584,7 @@ $person_price = $person_price - $p_discountonplan;
                                         ?>
                                     </div>
                                 </div>
+                                </div>
 
 
                             </div>
@@ -614,30 +623,10 @@ $("#listprices").html(divList);
 })
 </script>
     <script>
-        var buynow_selected = "";
-        var info_box = "";
-
-        jQuery(".dh-toggle").click(function () {
-
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-            }
-
-            if (jQuery(this).data('value') == info_box) {
-                info_box = "";
-                return false;
-            }
-
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-                buynow_selected = "";
-            }
-
-            var id = jQuery(this).data('value');
-            info_box = id;
-            jQuery(".dh-toggle-show-hide-" + id).slideToggle();
-            console.log(".dh-toggle-show-hide-" + id);
-        });
+        function showdetails(id)
+        {
+            $('.dh-toggle-show-hide-'+id).slideToggle();
+        }
 
 
         jQuery(".buynow-btn").click(function () {
