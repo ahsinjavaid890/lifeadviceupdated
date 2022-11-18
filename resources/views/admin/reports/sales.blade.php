@@ -34,9 +34,9 @@
                     <td>
                         <select class="chosen-select form-control" name="seller" id="seller" data-placeholder="Select Seller" class="form-control">
                             <option value="admin">Select All</option>
-                            <option value="1410">  manish sharda - 1410</option>
-                            <option value="1432">  Mubashar Ahmad - 1432</option>
-                            <option value="1388">  Sonu Ahmad - 1388</option>           
+                            @foreach(DB::table('users')->get() as $r)
+                            <option value="{{$r->unique_code}}"> {{$r->username}}- {{$r->unique_code}}</option>
+                            @endforeach           
                         </select>
                     </td>
                     <td>
@@ -84,4 +84,93 @@
     </div>
 </div>
  
+@endsection
+@section('script')
+<script type="text/javascript" src="{{ asset('public/admin/assets/js/admin.js')}}"></script>
+<script>
+function downloadpdf(){
+document.getElementById('form').action = 'excel.php?start='+ document.getElementById('start_date').value + '&end=' + document.getElementById('end_date').value;
+$("#form").attr('target', '_blank');
+document.getElementById('form').submit();   
+}
+
+function generatereport(){
+document.getElementById('form').action = '?action=done';
+$("#form").attr('target', '');
+document.getElementById('form').submit();   
+}
+</script> 
+    <script type="text/javascript">
+            loadScript(plugin_path + "datatables/js/jquery.dataTables.min.js", function(){
+                loadScript(plugin_path + "datatables/dataTables.bootstrap.js", function(){
+                    if (jQuery().dataTable) {
+                        var table = jQuery('#datatable_sample');
+                        table.dataTable({
+                            "columns": [{
+                                "orderable": false
+                            }, {
+                                "orderable": true
+                            }, {
+                                "orderable": false
+                            }, {
+                                "orderable": false
+                            }, {
+                                "orderable": true
+                            }, {
+                                "orderable": false
+                            }, {
+                                "orderable": false
+                            }],
+                            "lengthMenu": [
+                                [5, 15, 20, -1],
+                                [5, 15, 20, "All"] // change per page values here
+                            ],
+                            // set the initial value
+                            "pageLength": 25,            
+                            "pagingType": "bootstrap_full_number",
+                            "language": {
+                                "lengthMenu": "  _MENU_ records",
+                                "paginate": {
+                                    "previous":"Prev",
+                                    "next": "Next",
+                                    "last": "Last",
+                                    "first": "First"
+                                }
+                            },
+                            "columnDefs": [{  // set default column settings
+                                'orderable': false,
+                                'targets': [0]
+                            }, {
+                                "searchable": false,
+                                "targets": [0]
+                            }],
+                            "order": [
+                                [1, "asc"]
+                            ] // set first column as a default sort by asc
+                        });
+
+                        var tableWrapper = jQuery('#datatable_sample_wrapper');
+                        table.find('.group-checkable').change(function () {
+                            var set = jQuery(this).attr("data-set");
+                            var checked = jQuery(this).is(":checked");
+                            jQuery(set).each(function () {
+                                if (checked) {
+                                    jQuery(this).attr("checked", true);
+                                    jQuery(this).parents('tr').addClass("active");
+                                } else {
+                                    jQuery(this).attr("checked", false);
+                                    jQuery(this).parents('tr').removeClass("active");
+                                }
+                            });
+                            jQuery.uniform.update(set);
+                        });
+
+                    table.on('change', 'tbody tr .checkboxes', function () {
+                            jQuery(this).parents('tr').toggleClass("active");
+                        });
+                        tableWrapper.find('.dataTables_length select').addClass("form-control input-xsmall input-inline"); // modify table per page dropdown
+                    }
+                });
+            });
+        </script>
 @endsection
