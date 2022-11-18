@@ -103,7 +103,7 @@
 	                				<select id="country" class="form-control" name="country">
                                             <option selected="selected" label="Select a country" value="">Select Country</option>
 		                					@foreach(DB::table('formcountries')->get() as $r)
-		                						<option  value="{{$r->id}}" @if($data->country == $r->code) selected @endif>{{$r->name}}</option>
+		                						<option  value="{{$r->code}}" @if($data->country == $r->code) selected @endif>{{$r->name}}</option>
 		                					@endforeach
                                     </select>  
 	                			</div>
@@ -159,7 +159,7 @@
 	                				<select id="country" class="form-control" name="home_country">
                                             <option selected="selected" label="Select a country" value="">Select Country</option>
                                             @foreach(DB::table('formcountries')->get() as $r)
-		                						<option  value="{{$r->id}}" @if($data->home_country == $r->code) selected @endif>{{$r->name}}</option>
+		                						<option  value="{{$r->code}}" @if($data->home_country == $r->code) selected @endif>{{$r->name}}</option>
 		                					@endforeach
                                     </select>  
 	                			</div>

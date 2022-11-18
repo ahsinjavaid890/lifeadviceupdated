@@ -179,4 +179,31 @@ select{
    .row{
    	margin-left: 0px !important;
    }
-   
+   .tabshead{
+   	padding-top: 15px !important;
+   	background-color: #262566 !important;
+   }
+   .tabs .active{
+   	background-color: #1bbc9b !important;
+   }
+   .tabs button:hover{
+   	background-color: #1bbc9b !important;
+   }
+   .price_qoutes{
+   	max-width: 300px;
+    margin: auto;
+   }
+   .information_qoutes{
+   	max-width: 300px;
+   	margin: auto;
+   }
+   .apply_qoutes{
+   	max-width: 300px;
+   	margin: auto;
+   }
+   .tabscontent{
+   	padding-bottom: 0px !important;
+   }
+   .nextbtn:hover{
+   	background-color: #262566 !important;
+   }

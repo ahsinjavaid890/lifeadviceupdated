@@ -21,6 +21,7 @@ use App\Models\quotes;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
+use App\Models\sales;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
@@ -553,24 +554,10 @@ class AdminController extends Controller
     }
     public function editsales(Request $request)
     {
-        $updates = sales::find($request->sales_id);
-        $updates->fname = $request->fname;
-        $updates->lname = $request->lname;
-        $updates->email = $request->email;
-        $updates->phone = $request->phone;
-        $updates->dob = $request->dob;
-        $updates->address = $request->address;
-        $updates->address_2 = $request->address_2;
-        $updates->province = $request->province;
-        $updates->city = $request->city;
-        $updates->country = $request->country;
-        $updates->home_address = $request->home_address;
-        $updates->home_address_2 = $request->home_address_2;
-        $updates->home_province = $request->home_province;
-        $updates->home_city = $request->home_city;
-        $updates->home_zip = $request->home_zip;
-        $updates->home_country = $request->home_country;
-        $updates->save();
+        $update = array('fname' => $request->fname, 'lname' => $request->lname, 'email' => $request->email, 'phone' => $request->phone, 'dob' => $request->dob, 'address' => $request->address, 'address_2' => $request->address_2, 'province' => $request->province, 'city' => $request->city, 'postcode' => $request->postcode, 'country' => $request->country, 'home_address' => $request->home_address, 'home_address_2' => $request->home_address_2, 'home_province' => $request->home_province, 'home_city' => $request->home_city, 'home_zip' => $request->home_zip, 'home_country' => $request->home_country);
+
+        DB::table('sales')->where('sales_id' , $request->id)->update($update);
+
         return redirect()->back()->with('message', 'Sales Updated Successfully');
     }
     public function viewsale($id)
