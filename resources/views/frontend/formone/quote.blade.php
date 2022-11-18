@@ -4,17 +4,17 @@
 <section class="tabshead">
 	<div class="container">
 		<div class="row tabs">
-			<div class="col-md-4 col-xs-4 text-center">
+			<div class="col-md-4 col-xs-4 text-center information_qoutes">
 				<button class="btn">
 					<i class="fa fa-user"></i> Information
 				</button>
 			</div>
-			<div class="col-md-4 col-xs-4 text-center">
+			<div class="col-md-4 col-xs-4 text-center price_qoutes">
 				<button class="btn active">
 					<i class="fa fa-shopping-cart"></i> Quotes
 				</button>
 			</div>
-			<div class="col-md-4 col-xs-4 text-center">
+			<div class="col-md-4 col-xs-4 text-center apply_qoutes">
 				<button class="btn ">
 					<i class="fa fa-edit"></i> Apply / Buy
 				</button>
