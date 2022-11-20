@@ -212,7 +212,7 @@ border-radius: 10px;
     .adjust-quoto span {
 font-size: 20px;
 border-radius: 50px !important;
-border: 5px solid #F46D00 !important;
+border: 5px solid #262566 !important;
 background: #FFF !important;
 cursor: pointer !important;
     }
@@ -493,8 +493,8 @@ button.buynow-btn {
     position: absolute;
 }
 .ui-slider-horizontal .ui-slider-range {
-    background:#F46D00 !important;
+    background:#262566 !important;
 }
-.row .plan-details{
-    display: flex !important;
+.plan-details{
+    display: flex;
 } 

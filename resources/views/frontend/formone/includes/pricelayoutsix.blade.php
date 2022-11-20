@@ -15,12 +15,15 @@ var Slider_Values = [<?php
                 $d = 0;
                 $havethousand = 'no';
                 foreach($ded as $r){
-                $d++;
-                echo $dedivalue = $r->deductible1;
-                if($d < count($ded)){
-                echo ', ';
-                }
-                if($dedivalue == 1000){ $havethousand = 'yes'; }
+                    $d++;
+                        echo $dedivalue = $r->deductible1;
+                    if($d < count($ded)){
+                        echo ', ';
+                    }
+                    if($dedivalue == 1000)
+                    { 
+                        $havethousand = 'yes'; 
+                    }
                 } ?>];
 <?php if($havethousand == 'yes'){?>
 var dValue = Slider_Values.indexOf(1000);
@@ -40,9 +43,9 @@ $(function () {
             //alert(Slider_Values.length);
             for (i = 0; i < Slider_Values.length; i++) {
                 var group = Slider_Values[i];
-                $('.deductable-'+group).hide();
+                $('.deductable-'+group).css('display' , 'none');
             }
-            $('.deductable-'+Slider_Values[ui.value]).show();
+            $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
         }
     });
@@ -173,7 +176,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 	<input type="hidden" id="change_display" name="change_display" value="0">
     
 
-<div class="col-md-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
+<div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
    <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
       <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
       <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
@@ -392,10 +395,10 @@ if($show == '1' && $total_price > 0){
 
     <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
     <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
-                            <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'block'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'bock'; } else { echo 'none'; } ?>;">
+                            <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
 
 <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
-<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i style="color: #262566;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
 </div>
 <div class="col-md-3 col-xs-11 text-center">
 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
@@ -415,7 +418,7 @@ $<?php echo $deductible; ?> deductible
 </div>
 
 <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-<button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733); border: 1px solid #B0362B; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+<button style="background-color: #262566" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
 </div>
 
 <?php
@@ -434,7 +437,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;font-weight: bold; display:block;background:#F46D00;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+<p><button type="submit" style="background-color: #262566" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
