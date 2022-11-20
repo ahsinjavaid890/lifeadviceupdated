@@ -80,7 +80,7 @@ $(function () {
     });
 
 });
-  </script>
+</script>
 
 <div class="clear"></div> 
 

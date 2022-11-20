@@ -2,11 +2,6 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style>
-.tabshead {
-    padding-top: 36px !important;
-}
-</style>
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -558,7 +553,7 @@ $person_price = $person_price - $p_discountonplan;
                                                 </div>
                                         </div>
 
-                                    <div class="col-md-3" style="display:none;">
+                                    <div class="col-md-3">
                                         <?php
                                         $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
                                         ?>
@@ -625,56 +620,31 @@ divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listin
 $("#listprices").html(divList);
 })
 </script>
-    <script>
-        function showdetails(id)
-        {
-            $('.dh-toggle-show-hide-'+id).slideToggle();
+<script>
+    function showdetails(id)
+    {
+        $('.dh-toggle-show-hide-'+id).slideToggle();
+    }
+    jQuery(".buynow-btn").click(function () {
+        if (buynow_selected != "") {
+            jQuery(".buynow-btn-" + buynow_selected).slideToggle();
         }
 
+        if (jQuery(this).data('value') == buynow_selected) {
+            buynow_selected = "";
+            return false;
+        }
 
-        jQuery(".buynow-btn").click(function () {
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-            }
+        if (info_box != "") {
+            jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+            info_box = "";
+        }
 
-            if (jQuery(this).data('value') == buynow_selected) {
-                buynow_selected = "";
-                return false;
-            }
-
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-                info_box = "";
-            }
-
-            var id = jQuery(this).data('value');
-            buynow_selected = id;
-            jQuery(".buynow-btn-" + id).slideToggle();
-        });
-
-
- /*       jQuery('#coverage_deductible').on('change', function () {
-            if (!this.value) {
-                jQuery(".plan-details").show();
-            } else {
-                jQuery(".plan-details").hide();
-                jQuery(".deductable-" + this.value).show();
-            }
-        });
-
-
-        jQuery('#coverage_amount').on('change', function () {
-            //alert( this.value );
-            if (!this.value) {
-                jQuery(".coverage-amt").show();
-            } else {
-                jQuery(".coverage-amt").hide();
-                jQuery(".coverage-amt-" + this.value).show();
-            }
-
-        });
-*/
-    </script>
+        var id = jQuery(this).data('value');
+        buynow_selected = id;
+        jQuery(".buynow-btn-" + id).slideToggle();
+    });
+</script>
 
     <script>
 
@@ -688,91 +658,6 @@ $("#listprices").html(divList);
             }else{
                 jQuery(".num-of-quotes").hide();
             }
-/*
-            var values = $('#my-range-converage-deductible').data("steps").split(',');
-            var default_value = $('#my-range-converage-deductible').data("default");
-
-               $('#my-range-converage-deductible').rangeslider({
-                polyfill : false,
-                onInit : function() {
-                    jQuery('.deductible span').text(default_value);
-                    localStorage.setItem("default_value", default_value);
-
-                },
-                onSlide : function( position, value ) {
-                    jQuery('.deductible span').text(values[this.value]);
-
-
-                    localStorage.setItem("default_value", values[this.value]);
-                    if(visiblePlans > 0){
-                        // jQuery(".num-of-quotes").show();
-
-                    }else{
-                        jQuery(".num-of-quotes").hide();
-                    }
-                    if(! value ){
-                        // jQuery(".plan-details").show();
-                    }else{
-                        jQuery(".plan-details").hide();
-                        jQuery(".deductable-"+values[this.value]).show();
-                    }
-
-
-                },
-                onSlideEnd: function( position, value ){
-                    visiblePlans = jQuery(".plan-details:visible").length;
-                    console.log("Deductible: "+visiblePlans);
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    if(visiblePlans > 0){
-                        jQuery(".num-of-quotes").text(textToShow);
-                    }
-                }
-            });
-
-            var values2 = $('#my-range-converage-amount').data("steps").split(',');
-            var default_value2 = $('#my-range-converage-amount').data("default");
-
-               $('#my-range-converage-amount').rangeslider({
-                polyfill : false,
-                onInit : function() {
-                    jQuery('.coverage span').text(default_value2);
-                    localStorage.setItem("price_value", default_value2);
-
-                },
-                onSlide : function( position, value ) {
-                    jQuery('.coverage span').text(values2[this.value]);
-
-
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    localStorage.setItem("price_value", values2[this.value]);
-                    if(visiblePlans > 0){
-                        // jQuery(".num-of-quotes").show();
-                        // jQuery(".num-of-quotes").text(textToShow);
-                    }else{
-                        jQuery(".num-of-quotes").hide();
-                    }
-                    if(! value ){
-                        jQuery(".coverage-amt").show();
-                    }else{
-                        jQuery(".coverage-amt").hide();
-                        jQuery(".coverage-amt-"+values2[this.value]).show();
-                    }
-
-
-                },
-                onSlideEnd: function( position, value ){
-                    visiblePlans = jQuery(".plan-details:visible").length;
-                    console.log("Coverage : "+visiblePlans);
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    if(visiblePlans > 0){
-                        jQuery(".num-of-quotes").text(textToShow);
-                    }
-                }
-            });
-			*/
         } );
 
         jQuery( function() {

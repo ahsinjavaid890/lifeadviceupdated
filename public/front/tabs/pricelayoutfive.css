@@ -130,5 +130,158 @@ input[type="text"], input[type="password"] {
     z-index: 2;
 }
 .tabshead{
-    padding-top: 100px !important;
+    padding-top: 37px !important;
    }
+       .main-content .container{
+        width: 100%;
+    }
+    .main-content {
+        background: #f3f5f9 !important;
+    }
+    .dh-listings{
+
+    }
+    .dh-listings b{
+        font-size:10px;
+    }
+    .dh-listings hr{
+        border: 1px solid #d0d0d0;
+        margin: 0px !important;
+    }
+    .dh-listings ul{
+        font-size:12px;
+    }
+    .dh-listings tr td , .dh-listings tr th{
+        border: 0px solid #eee;
+        border-top:0px !important;
+    }
+
+    .dh-listings{
+
+    }
+
+    .testshortcode{
+        display:none;
+    }
+
+
+    #dh-get-quote select , #dh-get-quote input{
+        height: 51px;
+    }
+    .form-control {
+
+        border-radius: 5px !important;
+    }
+    .plan-details, .side-bar {
+        position: relative;
+        background: #fff;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
+        box-shadow: 0 5px 5px 0 rgba(34, 36, 38, .22);
+        margin: 1rem 0;
+        padding: 1em;
+        border-radius: .25rem;
+        border: 1px solid rgba(34, 36, 38, .22);
+    }
+
+
+    .side-bar {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .adjust-quoto {
+        border-top: 2px solid #ddd;
+    }
+
+    .adjust-quoto h2 {
+        color: #464644;
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+    .adjust-quoto h4 {
+        color: #8e939c;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .adjust-quoto span {
+font-size: 20px;
+border-radius: 50px !important;
+border: 5px solid #2e6ac9 !important;
+background: #FFF !important;
+cursor: pointer !important;
+    }
+    .quote_reference{
+        padding: 10px 15px;
+        font-size: 20px;
+    }
+    #slider{
+        margin: 25px 0px;
+    }
+    .adjust-quoto{
+        margin-bottom: 20px;
+    }
+    #dh-get-quote select{
+        height: 51px;
+        display: none;
+    }
+    @media screen and (max-width: 768px) {
+        .mob-img, .gfdgd {
+    height: 80px;
+}
+.ui.center.aligned.header {
+    position: relative;
+}
+.ui.checkbox.large.nopad {
+    margin: auto;
+    position: relative;
+    top: initial;
+    left: initial;
+    display: table;
+    width: 100%;
+    height: 50px;
+    margin-top: 0;
+}
+.ui.checkbox.large.nopad label {
+    padding: 11px;
+}
+    }
+
+.checkbox-inline{
+border: 1px solid #ddd;
+width: 181px;
+height: 40px;
+line-height: 32px;
+text-align: center;
+background: #F9F9F9;
+font-size: 17px;
+margin-top: 10px;
+border-radius: 3px;
+box-shadow: 0px 1px 1px 0px #ccc;
+padding-top: 2px;
+}
+
+.rangeslider__fill {
+    background: #04cca4 !important;
+    position: absolute;
+}   
+.ui-slider-horizontal .ui-slider-range {
+    background:#04cca4 !important;
+}
+
+
+#listprices {
+padding-top: 10px;
+padding-left: 15px;
+padding-right: 15px;
+}
+
+@media screen and (max-width: 600px) {
+#listprices {
+padding-left: 0;
+padding-right: 0;
+}
+}
+.row .plan-details{
+    display: flex;
+}   
