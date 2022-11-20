@@ -82,9 +82,9 @@
 			var slider2 = localStorage.getItem("price_value");
 			
 			jQuery("#new_window").click(function(){
-				var planId = jQuery.unique(pids);
+				var planId = jQuery.unique(pids); 
 				var main_price = jQuery.unique(price);
-                var compareUrl = "http://lifeadvice.ca/quote/compare_page.php?product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
+                var compareUrl = "{{ url('compareplans') }}?product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
 				if (compareUrl.indexOf("#") > -1) {
 					var myUrl = compareUrl.replace(/\#/g, '');
 					var newUrl = jQuery(".two_select a").prop("href",myUrl);
@@ -107,4 +107,31 @@
 	   });
 	}
 </script>
+<style>
+    .compare_header_top {
+        background: rgb(249, 249, 249) none repeat scroll 0% 0%;padding: 10px;position: fixed;top: 100px;width: 100%;
+		display:none;
+    }
+</style>
+<div class="compare_header_top">
+    <div class="container-fluid">
+		<div class="row">
+            <div class="col-md-12 text-center">
+			<h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
+			</div>
+		</div>	
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="one_select">
+                   <i class="fa fa-warning text-warning"></i> Select one more plan to compare
+                </div>
+                <div class="two_select">
+                    <a href="#" class="btn btn-primary" id="new_window"><i class="fa fa-server"></i> Compare</a>
+                    <i class="icon"></i>
+                    <a href="#"  class="btn btn-default" id="clear"><i class="fa fa-refresh"></i> Clear all</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -20,6 +20,10 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function compareplans(Request $request)
+    {
+        return view('frontend.formone.compare')->with(array('request'=>$request));
+    }
     public function productdetail($id)
     {
         $data = wp_dh_products::where('url' , $id)->first();
@@ -37,13 +41,14 @@ class SiteController extends Controller
     }
     public function quotes(Request $request)
     {
+        $quoteNumber = rand();
         $data = wp_dh_products::where('pro_id' , $request->product_id)->first();
         $fields = unserialize($data->pro_fields);
         $plan = DB::table('wp_dh_insurance_plans' , $data->pro_id)->first();
         $ded = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id', $plan->id)->groupby('deductible1')->get();
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
-        return view('frontend.formone.quote')->with(array('data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request));
+        return view('frontend.formone.quote')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request));
     }
     public function profile()
     {
