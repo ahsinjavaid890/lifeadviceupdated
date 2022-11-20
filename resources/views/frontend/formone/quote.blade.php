@@ -37,7 +37,10 @@
 		@include('frontend.formone.includes.pricelayoutsix')
 	@elseif($fields['price_layout'] == 'layout_7')
 		@include('frontend.formone.includes.pricelayoutseven')
+	@elseif($fields['price_layout'] == 'layout_8')
+		@include('frontend.formone.includes.pricelayouteight')
 	@endif
+
 </section>
 <script>
 	function comparetest(){
