@@ -20,6 +20,10 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function applyplan(Request $request)
+    {
+        return view('frontend.formone.apply')->with(array('request'=>$request));
+    }
     public function compareplans(Request $request)
     {
         return view('frontend.formone.compare')->with(array('request'=>$request));
