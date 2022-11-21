@@ -1,61 +1,330 @@
-body {
-    margin:0;
-    padding:0;
-    background:#f3f5f9;
+.subheading{
+   color: white !important;
+   font-size: 20px;
+   text-align: center;
+}   
+label{
+   color: white !important;
+   text-align: left;
+}
+.page_1{
+   text-align: left;
+}
+   .form-control {
+   font-size: 16px !important;
+   color: #333 !important;
+   border-radius: 4px !important;
+   text-transform: none;
+   border: 2px solid #fff;
+   background: #FFF !important;
+   padding: 5px 10px;
+   max-height: 40px;
+   text-align: left;
+   }
+   .form-control:focus {
+   border: 2px solid #fff;
+   box-shadow: 0px 0px 5px #333 !important;
+   }
+   .wrapper {
+   height: 600px;
+   }
+   #jrange input {
+   width: 200px;
+   }
+   #jrange div {
+   font-size: 9pt;
+   }
+   .date-range-selected > .ui-state-active, .date-range-selected > .ui-state-default {
+   background: none;
+   background-color: lightsteelblue;
+   }
+   .agesbtn {
+   background: #FFF !important;
+   }
+   .agesbtn i{
+   float: right;
+   padding-right: 5px;
+   color: #999;
+   }
+   .no-padding {
+   padding:0;
+   }
+   .ageandcitizen {
+   background: #FFF;
+   margin-top: 5px;
+   box-shadow: 0 0 24px rgba(0,0,0,.16);
+   text-align:left;
+   }
+   .ageandcitizen input {
+   width: 100% !important;
+   height: 20px;
+   border: 0;
+   border-bottom-color: currentcolor;
+   border-bottom-style: none;
+   border-bottom-width: 0px;
+   border-bottom-color: currentcolor;
+   border-bottom-style: none;
+   border-bottom-width: 0px;
+   border-bottom: 1px solid #bbb;
+   padding: 0px;
+   }
+   .ageandcitizen input:focus {
+   border-bottom: 1px solid #1bbc9b;
+   }
+   .ageandcitizen h3 {
+   color: #465c69;
+   font-size: 13px;
+   font-weight: bold;
+   line-height: 0;
+   margin-top: 25px;
+   margin-bottom: 10px;
+   }
+   .ageandcitizen h3 i{
+   color: #36ae8d;
+   font-size: 20px;
+   padding-right: 5px;
+   }
+   input[type=checkbox]{
+   height: 0;
+   width: 0;
+   visibility: hidden;
+   }
+   .personswitch label {
+   cursor: pointer;
+   text-indent: -9999px;
+   width: 40px;
+   height: 15px;
+   background: #DDD;
+   display: block;
+   border-radius: 100px;
+   position: relative;
+   }
+   .personswitch label:after {
+   content: '';
+   position: absolute;
+   top: -2px;
+   left: 2px;
+   width: 19px;
+   height: 19px;
+   background: #44bc9b;
+   border-radius: 90px;
+   transition: 0.3s;
+   }
+   .personswitch input:checked + label {
+   background: rgba(88,169,33,.4);
+   }
+   .personswitch input:checked + label:after {
+   left: calc(100% - 2px);
+   transform: translateX(-100%);
+   }
+   .fa-close {
+   color: #666;
+   font-size: 16px;
+   font-weight: normal;
+   position: absolute;
+   right: 15px;
+   top: 15px;
+   cursor: pointer;
+   }
+   .fa-close:hover {
+   color: #c00;	
+   }
+   .addmorebtn {
+   cursor: pointer;
+   border: 1px solid #1bbc9b;
+   border-radius: 30px;
+   color: #1bbc9b;
+   font-weight: bold;
+   display: block;
+   text-align: center;
+   width: 22px;
+   height: 22px;
+   padding: 0;
+   background: #FFF;
+   box-shadow: none !important;	
+   }
+   .addmorebtn:hover {
+   border: 1px solid #1bbc9b;	
+   background: #1bbc9b;
+   color: #FFF;
+   }
+   .daterangepicker td.start-date {
+   border-radius: 100px !important;
+   }
+   .daterangepicker td.end-date {
+   border-radius: 100px !important;	
+   }
+   .daterangepicker td.in-range {
+   border-radius: 100px !important;	
+   }
+   .durationtext {
+   font-size: 16px;
+   font-weight: bold;
+   display: inline-block;
+   text-align: left;
+   float: left;
+   }
+   .duration_days {
+   color: #35ad8c;
+   padding: 5px 0;
+   }
+   .duration_text {
+   display: inline-block;
+   font-size: 12px;
+   padding-top: 5px;
+   }
+   /*Radio Styling */
+   .daterangepicker .drp-calendar {
+   max-width: none !important;
+   }
+   .daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
+   height: 34px !important;	
+   }
+</style>
+<style>
+   .datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
+   background-color: #04cca4;
+   border-radius: 100px;	
+   }
+   .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+   padding:3px !important;
+   }
+   .datepicker .datepicker-switch, .datepicker .next, .datepicker .prev, .datepicker tfoot tr th { font-weight:bold !important; }
+   .datepicker table tr td, .datepicker table tr th {
+   text-align: center;
+   padding: 8px 12px !important;
+   border-radius: 50px !important;
+   border: none;
+   }
+   .table-striped > tbody > tr:nth-child(2n+1), table > tbody > tr:nth-child(2n+1) {
+   border: none !important;	
+   }
+   .datepicker table tr td.today {
+   background: #F1F1F1 !important;
+   }
+   .table-condensed thead tr:nth-child(2) {
+   background: #44bc9b !important;
+   color: #FFF !important;	
+   }
+   .table-condensed thead tr th:nth-child(1) {
+   border-radius: 0px !important;	
+   }
+   .table-condensed thead tr th:nth-child(2) {
+   border-radius: 0px !important;	
+   }
+   .table-condensed thead tr th:nth-child(3) {
+   border-radius: 0px !important;	
+   }
+   .datepicker .datepicker-switch, .datepicker .next, .datepicker .prev, .datepicker tfoot tr th {
+   font-size:16px;
+   }
+   .mainheading {
+   font-weight:bold;margin: 0px; text-align:center;color: #FFF !important;font-size: 48px;
+   }
+   @media only screen and (max-width: 420px) {
+   #backbtn {
+   width: 100% !important;
+   }
+   #getquote {
+   width: 100% !important;	
+   }
+   .daterangepicker {
+   position: fixed !important;
+   width: 100% !important;
+   z-index: 999999999 !important;
+   top: 0 !important;
+   left: 0 !important;
+   bottom: 0;
+   right: 0 !important;
+   margin-top: 0 !important;
+   }
+   .daterangepicker .drp-calendar {
+   max-width: 99% !important;
+   }
+   .daterangepicker .drp-calendar.left {
+   padding:0px 8px;
+   }
+   .daterangepicker .drp-calendar.right {
+   padding:0px 8px;
+   }
+   .ageandcitizen {
+   position: fixed !important;
+   width: 100% !important;
+   z-index: 999999999 !important;
+   top: 0 !important;
+   left: 0 !important;
+   bottom: 0;
+   right: 0 !important;
+   margin-top: 0 !important;
+   overflow: scroll;
+   }
+   .mainheading {
+   font-size: 29px !important;
+   }
+   }
+   body {
+   margin:0;
+   padding:0;
+   background:#f3f5f9;
 }
 .tabshead {
-    background:#222;
+   background:#222;
+   margin-top: 65px;
 }
-.tabs { 
-    color:#FFF;
-    margin-bottom: 0 !important;
+.tabs {  
+   color:#FFF;
+   margin-bottom: 0 !important;
 }
 .tabs button {
-    display: block;
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-    color: #FFF;
-    border-radius: 5px 5px 0px 0px;
+   display: block;
+   width: 100%;
+   height: auto;
+   padding: 10px 0;
+   color: #FFF;
+   border-radius: 5px 5px 0px 0px;
 }
 .tabs button:hover {
-    background:#333;
-    color:#FFF;
+   background:#333;
+   color:#FFF;
 }
 .tabs button:focus {
-    color:#FFF;
+   color:#FFF;
 }
 .tabs .active {
-    background: #444;
+   background: #444;
 }
 .tabs button i {
-    display: block;
-    color: #FFF;
-    font-size: 2.5em !important;
+   display: block;
+   color: #FFF;
+   font-size: 2.5em !important;
 }
 .tabscontent {
-    color:#222;
+   color:#222;
 }
-.tabscontent .row {
-    margin:0 !important;
+.ageandcitizen input{
+   border: 0 !important;
+   border-bottom: 1px solid #bbb !important;
 }
+/*.tabscontent .row {
+   margin:0 !important;
+}*/
 .tabscontent h1 {
-    color: #222;
-    font-weight: bold;
-    margin: 0;
+   color: #222;
+   font-weight: bold;
+   margin: 0;
 }
 .tabscontent .sub-heading {
-    font-size: 1.125em;
-    line-height: 1.5em;
-    letter-spacing: 1px;    
+   font-size: 1.125em;
+   line-height: 1.5em;
+   letter-spacing: 1px; 
 }
 .tabscontent .fields {
-    background:#FFF;
-    border:1px solid #222;
-    padding:3em;
-    box-shadow:0 1px 2px 0 rgba(34,36,38,.22);
-    border-radius: .25rem;
-    border: 1px solid rgba(34,36,38,.22);
+   background:#FFF;
+   border:1px solid #222;
+   padding:3em;
+   box-shadow:0 1px 2px 0 rgba(34,36,38,.22);
+   border-radius: .25rem;
+   border: 1px solid rgba(34,36,38,.22);
 }
 .tabscontent .fields label {
 font-weight: bold;
@@ -63,23 +332,24 @@ font-size: 15px;
 color: #4F596A;
 }
 .nextbtn {
-    background: #1BBC9B;
-    color: #FFF;
-    padding: 10px 60px;
+   background: #1BBC9B;
+   color: #FFF;
+   padding: 10px 60px;
 }
 .nextbtn:hover {
 background:#040E1F;
 color: #FFF;
 }
 .nextbtn:hover i {
-    color:#82b440;
+   color:#82b440;
 }
 .graybox {
-    background: #FBFBFB;
-    padding: 12px 6px 4px 15px;
-    border-radius: 50px;
-    border: 1px solid #eee;
+   background: #FBFBFB;
+   padding: 12px 6px 4px 15px;
+   border-radius: 50px;
+   border: 1px solid #eee;
 }
+
 .footer{background:#222; padding:30px 0px; color:#fff;}
 .footer h4{color:#fff; font-size:20px; position:relative; font-weight:900; margin-bottom:20px; line-height:28px;}
 .footer h4:after{position:relative; content:'_______'; line-height:4px; font-size:30px; letter-spacing:-2px; width:100%; display:block; color:#1BBC9B; left:0px; bottom:10px;}
@@ -93,7 +363,7 @@ color: #FFF;
     padding-top: 10px;
 }
 .copy a {
-    width: 30px;
+   width: 30px;
     height: 30px;
     display: inline-block;
     border-radius: 50%;
@@ -104,394 +374,72 @@ color: #FFF;
     padding-top: 7px;
     color: #fff;
 }
+
 @media only screen and (max-width: 600px) {
   .tabscontent .fields {
-      background:none;
-      border:none;
-      box-shadow:none;
-      padding:0;
+     background:none;
+     border:none;
+     box-shadow:none;
+     padding:0;
   }
    .tabscontent {
-      background:#FFF;
+     background:#FFF;
   }
 }
-.visible-xs{
-    display: none;
+.daterangepicker {
+    width: 14%;
 }
-input[type="text"], input[type="password"] {
-    border: 0 !important;
+@media (max-width: 1800px){
+.daterangepicker {
+    width: 15%;
 }
-.dh-toggle-show-hide-216{
-    z-index: 2;
 }
-.dh-toggle-show-hide-217{
-    z-index: 2;
+@media (max-width: 1600px){
+.daterangepicker {
+    width: 17%;
 }
-.tabshead{
-    padding-top: 37px !important;
+}
+@media (max-width: 1400px){
+.daterangepicker {
+    width: 19%;
+}
+}
+
+@media (max-width: 1200px){
+.daterangepicker {
+    width: 21%;
+}
+}
+.daterangepicker td.active, .daterangepicker td.active:hover{
+   border: none !important;
+}
+.navbar-brand{
+   height: 75px !important;
+   padding-top: .3125rem !important;
+}
+.navbar-nav>li>a{
+   line-height: 30px !important;
+}
+.tabscontent{
+   padding-top: 0px !important;
+}
+select{
+   padding: 0!important;
+}
+.next{
+   top: 7% !important;
+}
+.prev{
+   top: 7% !important;
+}
+
+
+.coverage input{
+   border: 0 !important;
+}
+   .date-wrapper input{
+   border: 0 !important;
    }
-       .main-content .container{
-        width: 100%;
-    }
-    .dh-listings {
-    }
-    .dh-listings b {
-        font-size: 10px;
-    }
-    .dh-listings hr {
-        border: 1px solid #d0d0d0;
-        margin: 0px !important;
-    }
-    .dh-listings ul {
-        font-size: 12px;
-    }
-    .dh-listings tr td, .dh-listings tr th {
-        border: 0px solid #eee;
-        border-top: 0px !important;
-    }
-    .dh-listings {
-    }
-    .testshortcode {
-        display: none;
-    }
-    .main-content {
-        background: #f3f5f9 !important;
-    }
-    .plan-details, .side-bar {
-position: relative;
-background: #fff;
--webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
-margin: 15px 0;
-padding: 1em;
-border-radius: .25rem;
-border: 1px solid #ddd;
-    }
-    #dh-get-quote select, #dh-get-quote input {
-        height: 51px;
-    }
-    .form-control {
-        border-radius: 5px !important;
-    }
-    .side-bar {
-        height: auto;
-        padding: 20px 0;
-    }
-    .adjust-quoto {
-        border-top: 2px solid #ddd;
-    }
-    .adjust-quoto h2 {
-        color: #464644;
-        font-size: 26px;
-        font-weight: 400;
-    }
-    .adjust-quoto h4 {
-        color: #8e939c;
-        font-size: 20px;
-        font-weight: 400;
-    }
-.adjust-quoto span {
-font-size: 20px;
-border-radius: 50px !important;
-border: 5px solid #3a5371 !important;
-background: #FFF !important;
-cursor: pointer !important;
-height: 25px !important;
-width: 25px !important;
-margin-top: -3px;
-    }
-    .quote_reference{
-        padding: 10px 15px;
-        font-size: 20px;
-    }
-   .adjust-quoto{
-        margin-bottom: 40px;
-    }
-@media only screen and (min-width: 768px) {
-    .row.plan-details {
-        display: flex ;
-        flex-wrap: wrap;
-        align-items: center;
-        /*height: 120px;*/
-        padding: 20px 10px;
-    }
-    .main-content, .entry-content, .entry-blog{
-        padding: 0px !important;
-    }
-}
-button.buynow-btn {
-    float: right;
-    min-width: 150px;
-    background: #1fbd9d;
-    border-radius: 5px;
-}
-.compare.center.aligned.middle.aligned.column {
-    position: relative;
-}
-.ui.checkbox.large.nopad {
-    margin: auto;
-    position: relative;
-    top: initial;
-    left: initial;
-    display: table;
-}
-.ui.checkbox.large.nopad input {
-position: relative;
-height: 100% !important;
-margin: 10px 0;
-width: 100% !important;
-z-index: 1;
-opacity: 0.1;
-}
-.nopadding {
-    padding:0;
-}
-.submit-btn {
-font-weight: bold;
-background-image: linear-gradient(#007352, #44bc9b);
-padding: 10px 35px;
-box-shadow: 0px 0px 1px 1px #999;
-border: 1px solid #FFF;
-color: #FFF;
-background-color: #44bc9b;
-}
-.submit-btn:hover {
-background-color: #44bc9b;
-background-image: linear-gradient(#44bc9b, #007352);
-}
-.submit-btn i{
-    color:#FFF;
-}
-.ui.checkbox.large.nopad label {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    border: 1px solid #c5c5c5;
-    padding: 0px;
-    top: 0;
-    left: 0;
-    text-align: center;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 100;
-    border-radius: 5px;
-}
-.sub.header {
-    text-align: center;
-    font-size: 15px;
-    font-weight: 100;
-}
-.ui.checkbox.large.nopad input:checked+label:before {
-    content: "\f00c";
-    font-family: fontAwesome;
-    font-size: 26px;
-}
-sup.superior {
-    top: -.4em;
-    font-size: 24px;
-}
-@media only screen and (min-width: 768px) {
-    .insurance_form{
-      padding-right: 0px !important;
-      padding-left: 0px !important;
-      background-image: none !important;
-    }
-}
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-  
-    #bg-insurance-form{
-      background-image: none !important;
-    }
-}
-    /* ==========================================================================
-   > Responsive
-   ========================================================================== */
-    @media screen and (min-width: 767px) and (max-width: 991px) {
-    }
-    @media (max-width: 1024px) {
-    }
-    @media screen and (max-width: 767px) {
-        div#demo {
-    display: none;
-}
-.side-bar {
-    padding: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-.ddd.agaya {
-    display: block!important;
-}
-        
-        
-        
-        .row.plan-details {
-        display: block;
-        }
-        .ui.checkbox.large.nopad label{
-            padding:11px;
-        }
-        .hidden-md{
-            display: none;
-        }
-        
-        
-        button.buynow-btn {
-    float: right;
-    min-width: 100%;
-    background: #1fbd9d;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 100;
-}
-.ui.center.aligned.header {
-    position: relative;
-}
-.ui.checkbox.large.nopad {
-    margin: auto;
-    position: relative;
-    top: initial;
-    left: initial;
-    display: table;
-    width: 100%;
-    height: 50px;
-    margin-top: 0;
-}
-.sub.header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    padding: 14px;
-}
-.mob-img, .gfdgd {
-    height: 80px;
-}
-.ui.checkbox.large.nopad input:checked+label:before {
-    display:none;
-    font-family: fontAwesome;
-    font-size: 26px;
-}
-.ui.checkbox.large.nopad input:checked+label {
-    background: #999;
-    color: #fff;
-}
-    }
-    h2.chng_amt.baaababa {
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    margin: 0;
-}
-.chng_amt img {
-    max-width: 15px;
-    vertical-align: middle;
-    margin-right: 6px;
-}
-    #dh-get-quote select{
-        height: 51px;
-        display: none;
-    }
-@media screen and (min-width: 768px) {
-    h2.chng_amt.baaababa {
-    display: none;
-}
-    }
-@media screen and (max-width: 425px) {
-.gfdgd h2 {
-    font-size: 32px;
-}
-    }
-    @media screen and (max-width: 374px) {
-.gfdgd h2 {
-    font-size: 26px;
-}
-button.buynow-btn {
-    font-size: 14px;
-    padding: 14px 15px;
-}
-.mob-img, .gfdgd {
-    height: 100px;
-}
-.ui.checkbox.large.nopad label {
-    padding: 11px 5px;
-}
-.one_select .btn-primary{
-    padding: 12px 15px;
-}
-.compare_header_top {
-    padding: 15px 15px;
-    }
-    
-    }
-@media only screen and (min-width: 768px) {
-    .side-bar {
-        box-shadow: none !important;
-        left: 0 !important;
-        bottom: 0 !important;
-        top: 0px !important;
-        /*min-width: 355px;*/
-        /*margin-top: -80px !important;*/
-    }
-    .right-bar-content{
-        min-height: 400px !important;
-        float: right !important;
-        /*width: 81% !important;*/
-    }
-}
-@media only screen and (max-width: 768px) {
-    .side-bar {
-        margin: 0 !important;
-        box-shadow: none !important;
-        top: 0px !important;
-        /*margin-top: -80px !important;*/
-    }
-    .entry-content, .entry-blog, .main-content{
-        padding: 0px !important;
-    }
-}
-<!--Range Slider CSS-->
-.ui-slider-handle .ui-state-default .ui-corner-all {
-background: #44bc9b !important;
-font-weight: normal !important;
-color: #454545 !important;
-padding: 5px !important !important;
-width: 25px !important;
-height: 25px !important;
-margin-top: -5px !important;
-border-radius: 50px !important;
-border: 5px solid #C00 !important;
-}
-.plan-details {
-border: 5px solid #f1f1f1;
-background-color: #fff;
-box-shadow: 0 0 2px #bbb;
-border-radius: 4px;
-padding: 10px;
-}   
-.planprice {
-color: #d32f2f;
-font-size: 43px;
-text-align: center;
-font-weight: bold;
-margin-top: 0;
-}
-.planprice span {
-color: #777;
-font-size: 14px;
-line-height: 23px;
-margin: 0;
-display: block;
-text-align: left;
-padding-left: 34px; 
-}
-.table td {
-padding: 3px !important;    
-}
-.rangeslider__fill {
-    background: #1BBC9B !important;
-    position: absolute;
-}   
-.ui-slider-horizontal .ui-slider-range {
-    background: #1BBC9B !important;
-}
+   .row{
+      margin-left: 0px !important;
+   }
