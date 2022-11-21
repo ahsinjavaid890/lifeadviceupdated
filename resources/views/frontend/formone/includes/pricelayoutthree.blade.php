@@ -564,11 +564,11 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 </div>
 
     <div style="clear:both;"></div>
-    <div class="row buynow_0286" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
+    <div class="row  buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
     <form method="post" action="tab_buy.php?email=&amp;coverage=100000&amp;traveller=1&amp;deductibles=0&amp;deductible_rate=500&amp;person1=&amp;days=365&amp;companyName=Travel Shield&amp;comp_id=10&amp;planname=Starr-180 Days pre-Conditions&amp;plan_id=286&amp;tripdate=2022-11-09&amp;tripend=2023-11-08&amp;premium=7533.6&amp;destination=&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;product_id=23&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=365&amp;age=52&amp;dob=52-&amp;agent=&amp;broker=">
     <div class="row">
     <div class="col-md-6" style="background:#F9F9F9;;">
-    <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
+    <div class="row" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
     <form method="post" action="<?php echo $buynow_url;?>">
     <div class="col-md-6" style="background:#F9F9F9;">
     <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
