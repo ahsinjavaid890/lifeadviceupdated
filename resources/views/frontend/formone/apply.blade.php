@@ -425,7 +425,7 @@
 									<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
 								</div>
 								<div class="col-md-12 text-right">
-									<img src="images/INGLE-Assurance-Travel-insurance-Logo.png" class="img-responsive">
+									<img src="{{ asset('public/front/img/logos/INGLE.png')}}" class="img-responsive">
 								</div>
 								<div class="col-md-12">
 									<div class="row">

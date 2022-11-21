@@ -35,14 +35,14 @@
     grid-template-columns: auto auto;
     grid-template-rows: 90px 90px 90px;
     grid-template-areas: "name name""number number""expiration security";
-    max-width: 400px;
+    max-width: 100%;
     padding: 20px;
     color: #707070;
 }
 
 label {
-    padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 16px;
+    color: black;
 }
 
 input {
@@ -58,7 +58,7 @@ input {
     height: 38px;
     position: absolute;
     right: 6px;
-    top: calc(73% - 17px);
+    top: calc(90% - 17px);
     width: 60px;
 }
 
@@ -92,6 +92,7 @@ input {
 }
 
 #generatecard{
+    display: none;
     cursor: pointer;
     float: right;
     font-size: 12px;
