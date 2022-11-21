@@ -1,4 +1,138 @@
-    .main-content .container{
+body {
+    margin:0;
+    padding:0;
+    background:#f3f5f9;
+}
+.tabshead {
+    background:#222;
+}
+.tabs { 
+    color:#FFF;
+    margin-bottom: 0 !important;
+}
+.tabs button {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    color: #FFF;
+    border-radius: 5px 5px 0px 0px;
+}
+.tabs button:hover {
+    background:#333;
+    color:#FFF;
+}
+.tabs button:focus {
+    color:#FFF;
+}
+.tabs .active {
+    background: #444;
+}
+.tabs button i {
+    display: block;
+    color: #FFF;
+    font-size: 2.5em !important;
+}
+.tabscontent {
+    color:#222;
+}
+.tabscontent .row {
+    margin:0 !important;
+}
+.tabscontent h1 {
+    color: #222;
+    font-weight: bold;
+    margin: 0;
+}
+.tabscontent .sub-heading {
+    font-size: 1.125em;
+    line-height: 1.5em;
+    letter-spacing: 1px;    
+}
+.tabscontent .fields {
+    background:#FFF;
+    border:1px solid #222;
+    padding:3em;
+    box-shadow:0 1px 2px 0 rgba(34,36,38,.22);
+    border-radius: .25rem;
+    border: 1px solid rgba(34,36,38,.22);
+}
+.tabscontent .fields label {
+font-weight: bold;
+font-size: 15px;
+color: #4F596A;
+}
+.nextbtn {
+    background: #1BBC9B;
+    color: #FFF;
+    padding: 10px 60px;
+}
+.nextbtn:hover {
+background:#040E1F;
+color: #FFF;
+}
+.nextbtn:hover i {
+    color:#82b440;
+}
+.graybox {
+    background: #FBFBFB;
+    padding: 12px 6px 4px 15px;
+    border-radius: 50px;
+    border: 1px solid #eee;
+}
+
+.footer{background:#222; padding:30px 0px; color:#fff;}
+.footer h4{color:#fff; font-size:20px; position:relative; font-weight:900; margin-bottom:20px; line-height:28px;}
+.footer h4:after{position:relative; content:'_______'; line-height:4px; font-size:30px; letter-spacing:-2px; width:100%; display:block; color:#1BBC9B; left:0px; bottom:10px;}
+.footer ul{padding-left:14px;}
+.footer li{list-style:square; color:#1BBC9B;}
+.footer li a{color:#ccc; text-decoration:none;}
+.footer li a:hover{color:#fff;}
+.footer p { margin-bottom: 10px !important; }
+.copy {
+    border-top: 1px solid #546781;
+    padding-top: 10px;
+}
+.copy a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 7px;
+    color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .tabscontent .fields {
+      background:none;
+      border:none;
+      box-shadow:none;
+      padding:0;
+  }
+   .tabscontent {
+      background:#FFF;
+  }
+}
+.visible-xs{
+    display: none;
+}
+input[type="text"], input[type="password"] {
+    border: 0 !important;
+}
+.dh-toggle-show-hide-216{
+    z-index: 2;
+}
+.dh-toggle-show-hide-217{
+    z-index: 2;
+}
+.tabshead{
+    padding-top: 37px !important;
+   }
+       .main-content .container{
         width: 100%;
     }
     .dh-listings {
@@ -95,7 +229,7 @@ margin-top: -3px;
 
 @media only screen and (min-width: 768px) {
     .row.plan-details {
-        display: flex !important;
+        display: flex ;
         flex-wrap: wrap;
         align-items: center;
         /*height: 120px;*/
@@ -413,3 +547,4 @@ padding: 3px !important;
 .ui-slider-horizontal .ui-slider-range {
     background: #1BBC9B !important;
 }
+
