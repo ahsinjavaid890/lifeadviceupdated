@@ -572,6 +572,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
     <div style="clear:both;"></div>
     <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
     <form method="post" action="<?php echo $buynow_url;?>">
+        <div class="row">
     <div class="col-md-6" style="background:#F9F9F9;">
     <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
     <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
@@ -587,6 +588,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
     <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
     <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
     </div>
+</div>
     </form>
     </div>  
 </div>

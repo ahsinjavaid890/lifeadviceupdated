@@ -396,42 +396,36 @@ if($show == '1' && $total_price > 0){
 
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
 <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
-<div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'block'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'block'; } else { echo 'none'; } ?>; padding: 0;">
-<div class="col-md-2 text-center" style="padding-top: 20px;">
+<div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'block'; } else { echo 'none'; } ?>; padding: 0;">
+
+<div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
+<div class="row">
+<div class="compare col-md-2 hidden-xs" style="padding-top: 7px;">
+<label><input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" style="height: auto;margin: 0;" onclick="comparetest()">
+        Add To Compare</label>
+</div>
+<div class="col-md-2 text-center" style="padding-top: 0px;">
 <img style="width:auto;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
 </div>
-<div class="col-md-10" style="border-left: 1px solid #ddd;font-size: 16px;">
-<div class="row">
-<div class="col-md-3 hidden-xs text-center">
+<!-- <div class="col-md-3 hidden-xs text-center">
 <strong>Plan</strong>
 <h1 style="font-size: 20px;font-weight: bold; color:#3a5371;"><?php echo $plan_name;?></h1>
-</div>
-<div class="col-md-3 hidden-xs text-center">
+</div> -->
+<!-- <div class="col-md-2 hidden-xs text-center">
 <strong>Deductible</strong>
 <h2>$<?php echo $deductible; ?></h2>
-</div>
+</div> -->
 <div class="col-md-3 text-center">
 <strong>Coverage Amount</strong>
 <h2>$<?php echo $sum_insured; ?></h2>
+<strong>Deductible:<span> $<?php echo $deductible; ?></span></strong>
 </div>
-<div class="col-md-3 text-center">
+<div class="col-md-2 text-center">
 <strong>Premium</strong>
 <h2 style="color: #C00;font-weight: bold;font-size: 26px;font-family: arial;">$<?php echo number_format($total_price,2);?></h2>
 <?php if($monthly_two == '1'){?>
         <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;background: #F9F9F9;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>
-</div>
-</div>
-<div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
-<div class="col-md-2 col-xs-6">
-<button type="button" class="btn btn-default dh-toggle" data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 9px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
-</div>
-<div class="compare col-md-3 hidden-xs" style="padding-top: 7px;">
-<label><input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" style="height: auto;margin: 0;" onclick="comparetest()">
-        Add To Compare</label>
-</div>
-<div class="col-md-4 hidden-xs" style="padding-top: 7px;">
-<strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?>
 </div>
 <div class="col-md-3 col-xs-6" >
 <?php
@@ -440,13 +434,22 @@ $agent = $request->agent;
 $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
-<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #44bc9b;border-radius: 0;margin-top: 2px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
+<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #262566;border-radius: 4px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
 </div>
+</div>
+<div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
+<div class="col-md-2 col-xs-6">
+<button type="button" class="btn btn-default dh-toggle" data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 9px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
+</div>
+<!-- <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
+<strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?>
+</div> -->
 
 </div>
 
 <div class="row">
 <div class="col-md-12 dh-toggle-show-hide-<?php echo $sum_insured.$deductible.$plan_id; ?>" style="display:none; font-size:16px;">
+    <div class="row">
                                     <div class="col-md-6">
                                         <b style="color:#C00;"><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr/>
@@ -573,6 +576,7 @@ $person_price = $person_price - $p_discountonplan;
                                         ?>
                                     </div>
                                 </div>
+                                </div>
 
 </div>
 
@@ -585,7 +589,7 @@ $person_price = $person_price - $p_discountonplan;
     <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
     <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
         <p></p>
-    <p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #44bc9b;border-radius: 0;margin-top: 2px;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
+    <p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="max-width: 25%; font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #262566;border-radius: 0;margin-top: 2px;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
     </div>
     <div class="col-md-6 text-center" style="font-size:16px;">
     <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
