@@ -293,7 +293,7 @@ input {
 
 /* FLIP ANIMATION */
 .creditcard {
-    margin-top: 100px;
+    margin-top: 45px;
     width: 100%;
     max-width: 400px;
     -webkit-transform-style: preserve-3d;
@@ -335,6 +335,6 @@ input {
     border: 1px solid #dcdcdc;
 }
 .toggle-content{
-    background-color: whitesmoke;
+/*    background-color: whitesmoke;*/
     padding: 5px;
 }
