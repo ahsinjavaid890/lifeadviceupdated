@@ -495,5 +495,12 @@ button.buynow-btn {
     position: absolute;
 }   
 .ui-slider-horizontal .ui-slider-range {
-    background: #1BBC9B !important;
+    background: #262566 !important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default{
+    border: 4px solid #1bbc9b !important;
+    background: #1bbc9b !important;
+    font-weight: normal;
+    color: #454545;
+    border-radius: 11px;
 }

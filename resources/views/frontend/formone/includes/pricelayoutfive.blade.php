@@ -404,7 +404,7 @@ $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
 
-                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn" data-value="<?php echo $plan_id; ?>" style="background: #1c9b22;font-size: 16px;width: 180px;padding: 10px 0 !important;border: 0;box-shadow: none !important;border:0;" class="btn btn-lg btn-danger" name="buynow">Buy this plan</button>
+                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn" data-value="<?php echo $plan_id; ?>" style="color: white;border-radius: 4px; background: #262566;font-size: 16px;width: 180px;padding: 10px 0 !important;border: 0;box-shadow: none !important;border:0;" class="btn btn-lg btn-danger" name="buynow">Buy this plan</button>
                             <div class="compare">
                                 <div class="ui center aligned header">
                                     <label  class="checkbox-inline">
@@ -419,6 +419,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 
 
                         <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="display:none;">
+                            <div class="row">
                             <div class="col-md-6">
                                 <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b> <hr/>
                                 <div style="font-size:70%;">
@@ -542,6 +543,7 @@ $person_price = $person_price - $p_discountonplan;
                                // endforeach;
                                 ?>
                             </div>
+                        </div>
                         </div>
 
 <div style="clear:both;height:10px;"></div>

@@ -210,11 +210,11 @@ input[type="text"], input[type="password"] {
         font-weight: 400;
     }
     .adjust-quoto span {
-font-size: 20px;
-border-radius: 50px !important;
-border: 5px solid #333 !important;
-background: #FFF !important;
-cursor: pointer !important;
+        font-size: 20px;
+        border-radius: 50px !important;
+        border: 5px solid #262566 !important;
+        background: #00c2a2 !important; 
+        cursor: pointer !important;
     }
     .quote_reference{
         padding: 10px 15px;
@@ -300,8 +300,8 @@ opacity: 0.1;
     font-size: 26px;
 }
 sup.superior {
-    top: -.4em;
-    font-size: 24px;
+    top: -6px;
+    font-size: 13px;
 }
 @media only screen and (min-width: 768px) {
     .insurance_form{
@@ -483,7 +483,7 @@ button.buynow-btn {
 }
 
 .submit-btn {
-background: #00c2a2;
+background: #262566;
 border: none;
 box-shadow: none;
 color: #fff;
@@ -499,11 +499,11 @@ width: 100%;
 padding: 10px;
 }
 .submit-btn:hover {
-    background: #048C6C;
+    background: #262566;
 }
 
 .ui-slider-horizontal .ui-slider-range {
-    background:#44bc9b !important;
+    background:#262566 !important;
 }
 .container {
     padding-right: 0 !important;
