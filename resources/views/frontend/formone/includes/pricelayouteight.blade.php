@@ -384,16 +384,18 @@ if($show == '1' && $total_price > 0){
                             
 
 <div class="col-md-12 col-xs-12" style="padding:0;">
+<div class="row">
 <div class="col-md-12 col-xs-12 text-center" style="border-bottom:2px solid #c0c0c0;">
 <h3 style="margin-bottom:5px;font-size: 22px;font-weight: bold;">
 <?php //echo $plan_name;?>
-<button class="btn btn-default dh-toggle" data-value='<?php echo $plan_id; ?>' aria-hidden="true" style="text-transform: none;font-weight: normal;  cursor:pointer; background:#F9F9F9;color:#333;font-size: 12px;margin-left: 10px;padding: 5px 10px;height: auto;margin-top: -5px;border-radius: 0;">
+<button class="btn btn-default dh-toggle"  onclick="$('.summary_<?php echo $deductible.$plan_id;?>').fadeToggle();" data-value='<?php echo $plan_id; ?>' aria-hidden="true" style="text-transform: none;font-weight: normal;  cursor:pointer; background:#1bbc9b;color:#fff;font-size: 12px;margin-left: 10px;padding: 5px 10px;height: auto;margin-top: -5px;border-radius: 0;">
 Summary & Info
     <i class="fa fa-angle-down" data-value='<?php echo $plan_id; ?>' aria-hidden="true"></i> 
 </button>
 </h3>
 
-                                <div class="col-md-12 col-xs-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial; background: rgb(255, 255, 255) none repeat scroll 0% 0%;  padding: 10px 0; display: none;">
+                                <div class="col-md-12 col-xs-12 summary_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial; background: rgb(255, 255, 255) none repeat scroll 0% 0%;  padding: 10px 0; display: none;">
+                                    <div class="row">
                                     <div class="col-md-6 col-xs-6 text-left">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr/>
@@ -516,7 +518,7 @@ $person_price = $person_price - $p_discountonplan;
                                         </ul>
 
                                     </div>
-                                    <div class="col-md-6 col-xs-6 text-left">
+                                    <div class="col-md-3 col-xs-6 text-left">
                                         <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
                                         <span style="display: none;"><?// "SELECT * FROM {$wpdb->prefix}dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_SESSION['sum_insured2']."' limit 1000" ?></span>
                                         <hr/>
@@ -526,6 +528,7 @@ $person_price = $person_price - $p_discountonplan;
                                         //endforeach;
                                         ?>
                                     </div>
+                                </div>
                                 </div>
                                 
 </div>
@@ -575,17 +578,19 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
         name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now
 </button>
 </div>
+</div>
 </div>                          
                             
 <div style="clear:both;"></div>
 <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
 <form method="post" action="<?php echo $buynow_url;?>">
-<div class="col-md-6 col-xs-12" style="background:#F9F9F9;">
+    <div class="row">
+<div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding: 10px;">
 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;font-weight: bold; display:block;background:#1BBC9B;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;font-weight: bold; display:block;background:#262566;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 col-xs-12 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
@@ -594,6 +599,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
 <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
 <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+</div>
 </div>
 </form>
 </div>

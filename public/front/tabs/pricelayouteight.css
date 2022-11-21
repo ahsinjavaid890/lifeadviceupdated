@@ -208,11 +208,11 @@ box-shadow: 0px 0px 2px 0px #C0C0C0;
       text-align:center;
     }
     .adjust-quoto span {
-font-size: 20px;
-border-radius: 50px !important;
-border: 5px solid #1BBC9B !important;
-background: #FFF !important;
-cursor: pointer !important;
+        font-size: 20px;
+        border-radius: 50px !important;
+        border: 5px solid #262566 !important;
+        background: #1bbc9b !important;
+        cursor: pointer !important;
     }
     .quote_reference{
         padding: 10px 15px;
@@ -244,7 +244,7 @@ cursor: pointer !important;
 
 button.buynow-btn {
 min-width: 100%;
-background: #1BBC9B;
+background: #262566;
 font-size: 17px !important;
 padding: 7px;
 }
@@ -488,7 +488,7 @@ button.buynow-btn {
     position: absolute;
 }  
 .ui-slider-horizontal .ui-slider-range {
-   background:#1BBC9B !important;
+   background:#1bbc9b !important;
 }
 
 #listprices {

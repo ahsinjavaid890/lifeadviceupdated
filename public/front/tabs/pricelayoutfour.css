@@ -512,3 +512,6 @@ padding-left: 0 !important;
 .row .plan-details{
     display: flex;
 }
+   .row.plan-details {
+    align-items: flex-start;
+}

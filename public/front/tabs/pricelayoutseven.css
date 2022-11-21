@@ -178,7 +178,7 @@ input[type="text"], input[type="password"] {
    border-radius: 5px !important;
    }
    .side-bar {
-   height: auto;
+   height: 350px;
    padding: 20px 0;
    }
    .adjust-quoto {
@@ -196,11 +196,11 @@ input[type="text"], input[type="password"] {
    text-align:center;
    }
    .adjust-quoto span {
-   font-size: 20px;
-   border-radius: 50px !important;
-   border: 5px solid #F46D00 !important;
-   background: #FFF !important;
-   cursor: pointer !important;
+    font-size: 20px;
+    border-radius: 50px !important;
+    border: 5px solid #262566 !important;
+    background: #1bbc9b !important;
+    cursor: pointer !important;
    }
    .quote_reference{
    padding: 10px 15px;
@@ -227,7 +227,7 @@ input[type="text"], input[type="password"] {
    button.buynow-btn {
    float: right;
    min-width: 150px;
-   background: #F46D00;
+   background: #262566;
    border-radius: 5px;
    text-transform: none !important;
    font-size: 19px !important;
@@ -438,7 +438,7 @@ input[type="text"], input[type="password"] {
    position: absolute;
    }    
    .ui-slider-horizontal .ui-slider-range {
-   background:#F46D00 !important;
+   background:#1bbc9b !important;
    }
    #listprices {
    padding-top: 10px;
@@ -457,3 +457,6 @@ input[type="text"], input[type="password"] {
    max-height: none !important;
    }
    }
+   .row.plan-details {
+    align-items: flex-start;
+}

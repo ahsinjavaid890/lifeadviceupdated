@@ -466,6 +466,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 
                                 <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"
                                      style="display:none;">
+                                     <div class="row">
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr/>
@@ -595,6 +596,7 @@ $person_price = $person_price - $p_discountonplan;
                                         ?>
                                     </div>
                                 </div>
+                            </div>
                                 
 <div style="clear:both;"></div>
 <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">

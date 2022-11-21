@@ -498,3 +498,6 @@ button.buynow-btn {
 .plan-details{
     display: flex;
 } 
+   .row.plan-details {
+    align-items: flex-start;
+}

@@ -504,3 +504,6 @@ button.buynow-btn {
     color: #454545;
     border-radius: 11px;
 }
+   .row.plan-details {
+    align-items: flex-start;
+}

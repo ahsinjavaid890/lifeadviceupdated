@@ -439,7 +439,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 </div>
 <div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
 <div class="col-md-2 col-xs-6">
-<button type="button" class="btn btn-default dh-toggle" data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 9px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
+<button type="button" class="btn btn-default dh-toggle"  onclick="$('.moredetails_<?php echo $deductible.$plan_id;?>').fadeToggle();"  data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 9px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
 </div>
 <!-- <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
 <strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?>
@@ -448,7 +448,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 </div>
 
 <div class="row">
-<div class="col-md-12 dh-toggle-show-hide-<?php echo $sum_insured.$deductible.$plan_id; ?>" style="display:none; font-size:16px;">
+<div class="col-md-12 moredetails_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $sum_insured.$deductible.$plan_id; ?>" style="display:none; font-size:16px;">
     <div class="row">
                                     <div class="col-md-6">
                                         <b style="color:#C00;"><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
