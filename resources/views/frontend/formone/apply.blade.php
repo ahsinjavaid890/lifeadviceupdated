@@ -116,13 +116,14 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="toggle active " onclick="information()">
-										<div class="row">
+										<div class="row align-items-center">
 										<div class="col-md-6">
 											<label style="background: no-repeat;padding-left: 0;"><h2 style="font-size: 22px;font-weight: bold;margin: 0;color:#1BBC9B;">Beneficiary Information</h2></label>
 
 										</div>
 										<div class="col-md-6 text-right">
-											<i class="fa fa-angle-down" style="font-size: 35px;"></i>
+											<a href="javascript:void(0)" id="toggle_icon" style="font-size: 35px; color: black;">-</a>
+											<!-- <i class="fa fa-angle-down" style="font-size: 35px;"></i> -->
 										</div>
 									</div>
 								</div>
@@ -566,8 +567,10 @@
   var x = document.getElementById("benefiaciary");
   if (x.style.display === "none") {
     x.style.display = "block";
+    $('#toggle_icon').text('-');
   } else {
     x.style.display = "none";
+    $('#toggle_icon').text('+');
   }
 }
 </script>
