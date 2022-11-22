@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 <style type="text/css">
-   .bg-primary {
-   background-color: #3a5371!important;
+   .profile_card {
+   background-color: #262566!important;
    }
    body{
    background-color:rgb(246 248 251);
@@ -20,7 +20,7 @@
    .nav-item.active{
     width: 100%;
     margin: auto;
-    background: #3a5371;
+    background: #262566;
 /*    padding: 10px;*/
    }
    .nav-item.active a {
@@ -43,15 +43,19 @@
                         <span class="float-left m-2 mr-4"><img src="{{ asset('public/front/img/images/profile.jpg')}}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
                         <div class="media-body">
                            <h4 class="mt-1 mb-1 text-white">Abubakar</h4>
-                           <p class="font-13 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                           <p class="font-13 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
                            <ul class="mb-0 list-inline text-light">
                               <li class="list-inline-item mr-3">
-                                 <h5 class="mb-1">Phone</h5>
-                                 <p class="mb-0 font-13 text-white-50">0555555</p>
+                                 <h5 class="mb-1 text-white">Phone</h5>
+                                 <p class="mb-0 font-13 text-white">0555555</p>
                               </li>
                               <li class="list-inline-item">
-                                 <h5 class="mb-1">Email</h5>
-                                 <p class="mb-0 font-13 text-white-50">info@gmail.com</p>
+                                 <h5 class="mb-1 text-white">Email</h5>
+                                 <p class="mb-0 font-13 text-white">info@gmail.com</p>
+                              </li>
+                              <li class="list-inline-item">
+                                 <h5 class="mb-1 text-white">Country</h5>
+                                 <p class="mb-0 font-13 text-white">USA</p>
                               </li>
                            </ul>
                         </div>
@@ -68,22 +72,15 @@
             <div class="card-body p-0">
                <ul class="nav nav-tabs " role="tablist" style="display: block;">
                   <li class="nav-item ">
-                     <a class="nav-link" href="{{ url('qoutes')}}" role="tab">Qoutes</a>
+                     <a class="nav-link" href="{{ url('qoutes')}}">My Qoutes</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url('profile')}}" role="tab">General Settings</a>
+                     <a class="nav-link" href="{{ url('profile')}}">General Settings</a>
                   </li>
                   <li class="nav-item active">
-                     <a class="nav-link" href="{{ url('security-settings')}}" role="tab">Security Settings</a>
+                     <a class="nav-link" href="{{ url('security-settings')}}">Security Settings</a>
                   </li>
                </ul>
-               <div class="text-left mt-3 p-3">
-                  <p class="text-muted"><strong>Full Name :</strong> <span class="ml-2">Michael A. Franklin</span></p>
-                  <p class="text-muted"><strong>Mobile :</strong><span class="ml-2">(+55) 123 1234 567</span></p>
-                  <p class="text-muted"><strong>Email :</strong> <span class="ml-2">info@gmail.com</span></p>
-                  <p class="text-muted"><strong>Country :</strong> <span class="ml-2">USA</span></p>
-                  </p>
-               </div>
             </div>
          </div>
       </div>
