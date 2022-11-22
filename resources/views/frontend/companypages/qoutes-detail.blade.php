@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('tittle')
-<title>Qoutes – Get Tips, Online Quotes for Life Insurance</title>
+<title>Qoutes-detail – Get Tips, Online Quotes for Life Insurance</title>
 @endsection
 @section('content')
 <style type="text/css">
@@ -87,7 +87,7 @@
          </div>
       </div>
       <div class="col-md-8">
-         <div class="card">
+         <!-- <div class="card">
             <div class="card-header">
                <div class="row">
                   <div class="col-md-12">
@@ -119,7 +119,7 @@
                   </div>
             </div>
          </div>
-      </div>
+      </div> -->
    </div>
 </div>
 </div>

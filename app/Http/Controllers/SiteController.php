@@ -66,6 +66,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.qoutes');
     }
+    public function qoutesdetail()
+    {
+        return view('frontend.companypages.qoutes-detail');
+    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();
