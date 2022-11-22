@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('tittle')
-<title>General Settings – Get Tips, Online Quotes for Life Insurance</title>
+<title>Security Settings – Get Tips, Online Quotes for Life Insurance</title>
 @endsection
 @section('content')
 <style type="text/css">
@@ -70,10 +70,10 @@
                   <li class="nav-item ">
                      <a class="nav-link" href="{{ url('qoutes')}}" role="tab">Qoutes</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item">
                      <a class="nav-link" href="{{ url('profile')}}" role="tab">General Settings</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item active">
                      <a class="nav-link" href="{{ url('security-settings')}}" role="tab">Security Settings</a>
                   </li>
                </ul>
@@ -82,6 +82,7 @@
                   <p class="text-muted"><strong>Mobile :</strong><span class="ml-2">(+55) 123 1234 567</span></p>
                   <p class="text-muted"><strong>Email :</strong> <span class="ml-2">info@gmail.com</span></p>
                   <p class="text-muted"><strong>Country :</strong> <span class="ml-2">USA</span></p>
+                  </p>
                </div>
             </div>
          </div>
@@ -91,42 +92,30 @@
             <div class="card-header">
                <div class="row">
                   <div class="col-md-12">
-                     <h4>General Settings</h4>
+                     <h4>Secrity Settings</h4>
                   </div>
                </div>
             </div>
             <div class="card-body">
                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                      <div class="form-group">
-                        <label for="simpleinput">Name</label>
-                        <input type="text" id="simpleinput" name="name" class="form-control" placeholder="Name">
+                        <label for="example-password">Current Password</label>
+                        <input type="password" id="currentpassword" class="form-control" Placeholder="Current password">
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="example-email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email">
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="form-group">
-                        <label for="example-password">Phone Number</label>
-                        <input type="number" id="phone" name="phone" class="form-control" placeholder="phone">
+                        <label>New Password</label>
+                        <input type="password" id="newpassword" class="form-control" Placeholder="New Password">
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="example-password">City</label>
-                        <input type="text" id="city" name="city" class="form-control" placeholder="City">
+                        <label>Confirm Password</label>
+                        <input type="password" id="cpassword" class="form-control" Placeholder="Confrim Password">
                      </div>
                   </div>
-               </div>
-               <div class="form-group">
-                  <label for="example-textarea">Text area</label>
-                  <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                </div>
             </div>
             <div class="card-footer">

@@ -58,6 +58,14 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.profile');
     }
+    public function securitysettings()
+    {
+        return view('frontend.companypages.security-settings');
+    }
+    public function qoutes()
+    {
+        return view('frontend.companypages.qoutes');
+    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();
