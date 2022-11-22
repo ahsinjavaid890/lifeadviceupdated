@@ -386,7 +386,7 @@ if($show == '1' && $total_price > 0){
                         </div>       
                                
                                <div class="col-md-12 col-xs-12 text-center">
-                              <button class="btn btn-default dh-toggle" onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true" style="text-transform: none;font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor:pointer;height: 34px;margin-top: -10px; background:#1BBC9B;color:#FFF;">
+                              <button class="btn btn-default dh-toggle" onclick="$('.summar_info_<?php echo $deductible.$plan_id;?>').fadeToggle();" aria-hidden="true" style="text-transform: none;font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor:pointer;height: 34px;margin-top: -10px; background:#1BBC9B;color:#FFF;">
                               Summary & Info
                                     <i class="fa fa-angle-down" aria-hidden="true"></i> 
                               </button>      
@@ -417,10 +417,10 @@ $agent = $request->agent;
 $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
-                                    <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="buynow-btn"
-                                            data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"
-                                            name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now
-                                    </button>
+            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="buynow-btn"
+                    data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"
+                    name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now
+            </button>
                         
                                 </div>
 
@@ -447,7 +447,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
                                 </div>
 
 
-                                <div class="col-md-12 col-xs-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="display:none; z-index: 1; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                                <div class="col-md-12 col-xs-12 summar_info_<?php echo $deductible.$plan_id;?> "  style="display:none; z-index: 1; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
                                     <div class="row">
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>

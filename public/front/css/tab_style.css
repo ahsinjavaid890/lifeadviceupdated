@@ -207,3 +207,7 @@ select{
    .nextbtn:hover{
    	background-color: #262566 !important;
    }
+   .compare_header_top {
+    z-index: 2;
+    top: 90px !important;
+}

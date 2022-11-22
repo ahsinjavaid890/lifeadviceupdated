@@ -414,7 +414,7 @@ $<?php echo $deductible; ?> deductible
 
 <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
 <button style="background-color: #262566; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
-<button class="btn" style="background-color: #3a5371 !important; background-image: linear-gradient(to bottom,#77889d,#3a5371); border:1px solid #3a5371 !important; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+<button class="btn" style="background-color: #262566 !important; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
 </div>
 
 <?php
@@ -428,12 +428,12 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none; margin-top:20px;">
 <form method="post" action="<?php echo $buynow_url;?>">
 <div class="row">
-<div class="col-md-6" style="background:#F9F9F9;">
+<div class="col-md-6" style="background:#F9F9F9; padding: 10px;">
 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><button type="submit" style="background-color: #262566; border: 1px solid #262566;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+<p><button type="submit" style="background-color: #262566; width: 100%; text-align: center; border: 0;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
