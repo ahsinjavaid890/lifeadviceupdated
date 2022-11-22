@@ -30,13 +30,8 @@
 </section>
 <section class="tabscontent">
 	<div class="container">
-		<form action="" method="post">
-		<!-- <div class="row">
-			<div class="col-md-12 hidden-xs text-center">
-				<h3 class="text-center"><strong>Welcome, let's get your  sorted out</strong></h3>
-				<p class="sub-heading" style="margin:0;">It might seem like we're asking quite a few questions, but every answer you give helps us build tailored quotes to suit your circumstances.</p>
-			</div>
-		</div> -->
+		<form action="{{ url('applyqoute') }}" method="post">
+			@csrf
 		<div class="row mt-4">
 			<div class="" style="max-width: 100%;margin: auto;">
 				<div class="row hidden-xs">
@@ -67,12 +62,12 @@
 										<div class="col-md-6 nopad">
 											<label>First Name <small class="text-danger">*</small>
 											</label>
-											<input type="text" name="fname" class="form-control" placeholder="First Name">
+											<input value="{{ $request->fname }}" type="text" name="fname" class="form-control" placeholder="First Name">
 										</div>
 										<div class="col-md-6 nopad">
 											<label>Last Name <small class="text-danger">*</small>
 											</label>
-											<input type="text" name="lname" class="form-control" placeholder="Last Name">
+											<input value="{{ $request->lname }}" type="text" name="lname" class="form-control" placeholder="Last Name">
 										</div>
 									</div>
 								</div>
@@ -99,12 +94,12 @@
 										<div class="col-md-6 nopad">
 											<label>Phone Number<small class="text-danger">*</small>
 											</label>
-											<input type="number" name="phone" class="form-control" placeholder="Phone Number">
+											<input value="{{ $request->phone }}" type="number" name="phone" class="form-control" placeholder="Phone Number">
 										</div>
 										<div class="col-md-6 nopad">
 											<label>Email<small class="text-danger">*</small>
 											</label>
-											<input type="email" name="email" class="form-control" placeholder="Email">
+											<input value="{{ $request->email }}" type="email" name="email" class="form-control" placeholder="Email">
 										</div>
 									</div>
 								</div>
@@ -116,14 +111,13 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="toggle active " onclick="information()">
-										<div class="row align-items-center">
+										<div class="row">
 										<div class="col-md-6">
 											<label style="background: no-repeat;padding-left: 0;"><h2 style="font-size: 22px;font-weight: bold;margin: 0;color:#1BBC9B;">Beneficiary Information</h2></label>
 
 										</div>
 										<div class="col-md-6 text-right">
-											<a href="javascript:void(0)" id="toggle_icon" style="font-size: 35px; color: black;">-</a>
-											<!-- <i class="fa fa-angle-down" style="font-size: 35px;"></i> -->
+											<i class="fa fa-angle-down" style="font-size: 35px;"></i>
 										</div>
 									</div>
 								</div>
@@ -243,25 +237,25 @@
 										<div class="col-md-6">
 											<div class="form-group">
 													<label>Visitor <small class="text-danger">*</small></label>
-													<input class="form-control" value="Super Visa Insurance" name="visitor_visa_type" readonly="" type="text">
+													<input class="form-control" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" name="visitor_visa_type" readonly="" type="text">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip Arrival date <small class="text-danger">*</small></label>
-													<input class="form-control datepicker" required="" id="tripdate" name="tripdate" value="11/21/2022" type="date">
+													<input class="form-control" required="" id="tripdate" name="tripdate" value="{{ $request->tripdate }}" type="date">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Primary Destination <small class="text-danger">*</small></label>
-													<input class="form-control" required="" value="" id="visa_type" name="visa_type" type="text">
+													<input class="form-control" required="" value="{{ $request->primary_destination }}" id="visa_type" name="visa_type" type="text">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip End date <small class="text-danger">*</small></label>
-													<input class="form-control datepicker" required="" id="tripend" name="tripend" value="2023-11-20" type="date">
+													<input class="form-control" required="" id="tripend" name="tripend" value="{{ $request->tripdate }}"type="date">
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -395,7 +389,7 @@
 											        </div>
 											        <div class="field-container mt-3">
 											            <label for="cardnumber">Card Number</label>
-											            <span id="generatecard">generate random</span>
+											            <!-- <span id="generatecard">generate random</span> -->
 											            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
 											            <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
 											                xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -426,7 +420,7 @@
 									<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
 								</div>
 								<div class="col-md-12 text-right">
-									<img src="{{ asset('public/front/img/logos/INGLE.png')}}" class="img-responsive">
+									<img src="images/INGLE-Assurance-Travel-insurance-Logo.png" class="img-responsive">
 								</div>
 								<div class="col-md-12">
 									<div class="row">
@@ -567,10 +561,8 @@
   var x = document.getElementById("benefiaciary");
   if (x.style.display === "none") {
     x.style.display = "block";
-    $('#toggle_icon').text('-');
   } else {
     x.style.display = "none";
-    $('#toggle_icon').text('+');
   }
 }
 </script>
