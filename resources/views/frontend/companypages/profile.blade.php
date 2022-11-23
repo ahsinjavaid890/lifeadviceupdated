@@ -123,6 +123,10 @@
                   </div>
                </div>
                <div class="form-group">
+                  <label>Profile Image</label>
+                  <input type="file" name="profile_img" class="form-control">
+               </div>
+               <div class="form-group">
                   <label for="example-textarea">Text area</label>
                   <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                </div>
@@ -131,7 +135,7 @@
                <div class="row">
                   <div class="col-md-12 text-right">
                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Update">
                      </div>
                   </div>
                </div>

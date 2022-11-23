@@ -98,11 +98,32 @@
                                     Login 
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('signup')}}" class="btn btn-lg sign-up">
-                                        Sign Up
-                                    </a>
-                                </li>
+                                @if(!Auth::check()) 
+                                  <li class="dropdown ml-2">
+                               
+                                <a class="rounded-circle " href="#" role="button" id="dropdownUser"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="avatar avatar-md avatar-indicators avatar-online" style="margin-top: 15px;">
+                                        <img width="30" alt="avatar" src="{{ asset('public/front/img/images/profile.jpg')}}" class="rounded-circle">
+                                    </div>
+                                </a> 
+                
+                                <div class="dropdown-menu pb-2" aria-labelledby="dropdownUser">
+                                    <ul class="">
+                                        <li class="nav-link active">
+                                            <a class=" text-dark" href="#!">
+                                        profile
+                                            </a>
+                                        </li>
+                                        <li class="nav-link">
+                                            <a class=" text-dark" href="#!">
+                                        Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            @endif
                             </ul>
                             <!-- Start Other Option -->
                             <div class="login-signup d-flex">

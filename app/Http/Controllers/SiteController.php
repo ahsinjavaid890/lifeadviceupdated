@@ -70,6 +70,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.qoutes-detail');
     }
+    public function udashboard()
+    {
+        return view('frontend.companypages.udashboard');
+    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();

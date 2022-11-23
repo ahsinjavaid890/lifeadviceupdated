@@ -27,6 +27,7 @@ Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [SiteController::class, 'profile']);
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
 Route::get('/qoutes', [SiteController::class, 'qoutes']);
+Route::get('/udashboard', [SiteController::class, 'udashboard']);
 Route::get('/qoutes-detail', [SiteController::class, 'qoutesdetail']);
 Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);
 Route::get('/travel-insurance', [SiteController::class, 'travel']);
