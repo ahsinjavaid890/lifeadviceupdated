@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
 <div class="clearfix"></div>
-<section id="sectionbackground">
+<section id="sectionbackground" style="background-size:cover;background-position:50% 50%;padding:100px 0px 200px 0px;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
    <div class="container">
       <div class="col-md-12">
          <h1 class="mainheading">
@@ -513,30 +513,6 @@
       </div>
    </div>
 </section>
-<script type="text/javascript">
-    var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"];
-    $(function () {
-        var i = 0;
-        var backgroundurl = '{{ url("public/front/bgs") }}';
-        $("#sectionbackground").css("background", "linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url("+backgroundurl+"/" + images[i] + ")");
-        $("#sectionbackground").css("background-size", "cover");
-        $("#sectionbackground").css("background-position", "50% 50%;");
-        $("#sectionbackground").css("padding", "100px 0px 200px 0px");
-        setInterval(function () {
-            i++;
-            if (i == images.length) {
-                i = 0;
-            }
-            $("#sectionbackground").fadeOut("slow", function () {
-                $(this).css("background", "linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url("+backgroundurl+"/" + images[i] + ")");
-                $(this).css("background-size", "cover");
-                $(this).css("background-position", "50% 50%;");
-                $(this).css("padding", "100px 0px 200px 0px");
-                $(this).fadeIn("slow");
-            });
-        }, 10000);
-    });
-</script>
 <script>
 function checkfamilyplan(){
    //Eligibility

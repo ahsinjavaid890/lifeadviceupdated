@@ -1,3 +1,4 @@
+@include('frontend.companypages.includes.mettatittle')
 @extends('frontend.layouts.main')
 @section('content')
 <style type="text/css">
