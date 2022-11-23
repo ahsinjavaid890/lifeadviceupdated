@@ -1,3 +1,233 @@
+<div class="container">
+   <div class="form-one-layout">
+         <div class="row">
+            <div class="col-md-12 text-center">
+               <h1>{{ $data->pro_name }}</h1>
+               <h2>It's fast and easy using our secure online application.</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-7">
+               <form method="POST" action="{{ url('') }}">
+                  @csrf
+               
+                  <div class="row">
+                     @if($fields['fname'] == 'on')
+                     <div class="col-md-6">
+                        
+                        <div class="custom-form-control">
+                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
+                           <label for="firstname" class="form-label">First name</label>
+                        </div>
+                        
+                     </div>
+                     @endif
+                     @if($fields['lname'] == 'on')
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">
+                           <label for="lname" class="form-label">Last name</label>
+                        </div>
+                     </div>
+                     @endif
+                     @if($fields['sum_insured'] == 'on')
+                     <div class="col-md-12">
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="sum_insured2" id="coverageammount">
+                              <option value="">Coverage Amount</option>
+                              @foreach($sum_insured as $r)
+                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @endforeach
+                           </select>
+                           <label for="coverageammount" class="form-label">Coverage Amount</label>
+                        </div>
+                     </div>
+                     @endif
+
+                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                        @php
+                           $number_of_travel = $fields['traveller_number'];
+                        @endphp
+                        @if($number_of_travel > 0)
+
+                        <div class="col-md-12">
+                           <div class="custom-form-control">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
+                                 <option value="">Number of Travellers</option>
+                                 @for($i=1;$i<=$number_of_travel;$i++)
+                                 <option value="{{ $i }}">{{ $i }}</option>
+                                 @endfor
+                              </select>
+                              <label for="number_travelers" class="form-label">Number of Travellers</label>
+                           </div>
+                        </div>
+
+
+                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
+
+                           @php
+                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                              $c = 0;
+                           @endphp
+
+                           @for($i=1;$i<=$number_of_travel;$i++)
+                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                              <div class="row">
+                                    <div style="padding-left: 0px;" class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="day{{$i}}" class="form-input">
+                                          <label for="day{{$i}}" class="form-label">Day</label>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="month{{$i}}" class="form-input">
+                                          <label for="month{{$i}}" class="form-label">Month</label>
+                                       </div>
+                                    </div>
+                                    <div style="padding-right: 0px;" class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="year{{$i}}" class="form-input">
+                                          <label for="year{{$i}}" class="form-label">Year</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
+                           @endfor
+                        @endif
+                        @endif
+                     @endif
+
+                     @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">
+                           <label for="departure_date" class="form-label">Start Date of Coverage</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                           <label for="return_date" class="form-label">End Date of Coverage</label>
+                        </div>
+                     </div>
+                     @endif
+
+                     @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
+                     <div class="col-md-12">
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="old_traveller_gender" id="gender">
+                              <option value="">Select Gender</option>
+                                <option value="male" >Male</option>
+                                <option value="female" >Female</option>
+                           </select>
+                           <label for="gender" class="form-label">Gender of the Oldest traveller</label>
+                        </div>
+                     </div>
+                     @endif
+                  </div>
+                  
+
+                  
+
+                  
+                  
+               </form>
+            </div>
+            <div class="col-md-5">
+                  <div class="imagesection">
+                      <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
+                      <div class="textsection">
+                        <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.<br>
+                        <strong>How to Apply for Super Visa Insurance</strong>
+                        <ul>
+                           <li>Fill out the <a href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]</a>.</li>
+                           <li>Gather any required documentation.</li>
+                           <li>Submit your completed form and supporting documents to a visa office.</li>
+                           <li>Make sure to pay the <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.</li>
+                           <li>Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
+                        </ul>
+                        <p><strong>Super visa Requirements&nbsp;:&nbsp;</strong>To obtain a Parent or   Grandparent Super Visa for Canada, applicants must have valid Super Visa   Insurance. With Super Visa applications They need to provide a proof   that they have private medical insurance from a Canadian insurance   company valid for a minimum of 1 year from a Canadian insurance company   and that it:    &nbsp; <strong>Here’s the things you need to know before you buy Super Visa Insurance </strong> <strong>Pre-existing Conduction: </strong>A Pre-existing condition   depends on your health condition means the critical illness, injury,   symptom(s) that exists before and after effective date of insurance.   Sometimes a healthy applicant can be deemed to have a pre-existing   condition based on a past health problem or evidence of treatment for a   particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles.   The deductible is the amount of each claim that you will pay. A $0   deductible means the insurance company pays 100% of each eligible claim.   A $1000 deductible means you will pay up to $1000 of each eligible   claim and the insurance company will only pay amounts in excess of the   $1000. <strong>Multiple Entry</strong>: Multiple entry coverage provides   intermittent coverage that allows you to travel back and forth between   Canada and your home country. Your coverage will be interrupted when you   return to your home country, and then be automatically reinstated when   you return to Canada. Plans that do not offer Multiple Entry have   coverage that stops as soon as you return to your home country. <strong>Side Trip: Side</strong> trip coverage provides travel health   insurance for any trips you take outside Canada during your stay, i.e.   if you take vacations to the U.S. If you expect to spend some time   outside of Canada during the term of your super visa, you should choose a   plan that has side trip coverage. <strong>Refundable</strong>: The government requires that you purchase   coverage for a full year. If you’re planning on staying less than a year   a refundable plan will allow you to receive a refund of the unused   portion of the annual/yearly premiums. These refunds come with   conditions, so again it’s important that you read the policy.</p>
+                     </div>
+                  </div>
+                  
+            </div>
+         </div>
+   </div>
+</div>
+
+
+
+<script type="text/javascript">
+   function checknumtravellers(id) {
+      if(id == '')
+      {
+         $('.no_of_travelers').hide();
+      }
+      if(id == 1)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+      }
+      if(id == 2)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+      }
+      if(id == 3)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+      }
+      if(id == 4)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+      }
+      if(id == 5)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+      }
+      if(id == 6)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+      }
+      if(id == 7)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+         $('#traveler7').show();
+
+      }
+   }
+</script>
+
+
+
+
+
 <link rel="stylesheet" href="{{ asset('public/front/css/jquery-ui.js')}}">
 <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 <script type="text/javascript" src="{{ asset('public/front/js/jquery-ui.js')}}"></script>
@@ -204,11 +434,7 @@
                   <div class="clearfix"></div>
                </div>
                
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
  @if($fields['sdate'] == "on" && $fields['edate'] == "on")
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
@@ -218,34 +444,11 @@
                      </span></i>
                      </label>
                   </div>
-                  <div class="col-md-7 col-xs-12">
-                     <div class="input" style="position:relative;">
-                        <label class="icon-left" for="departure_date" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top: 2px;width: 42px;z-index: 2; left:0;">
-                        <i class="fa fa-calendar" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                        </label>
-                        <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control hasDatepicker" type="text" required="" onchange="supervisayes()" style="padding-left: 40px !important;">
-                     </div>
-                  </div>
+
                   <div class="clearfix"></div>
 
                </div>
-               <div class="form-group">
-                  <div class="col-md-5 col-xs-12 " style="padding-right:0px;">
-                     <label class="input-label preinfo">End Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
-                     <strong>End Date</strong><br>
-                     This is the date when your coverage will expire.
-                     </span></i> </label>
-                  </div>
-                  <div class="col-md-7 col-xs-12 oldest-travel ">
-                     <div class="input" style="position:relative;">
-                        <label class="icon-left" for="return_date" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top: 2px;width: 42px;z-index: 2; left:0;">
-                        <i class="fa fa-calendar" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                        </label>
-                        <input autocomplete="off" id="return_date" name="return_date" class="form-control" type="text" required="" readonly="true" style="padding-left: 40px !important;" value="">
-                     </div>
-                  </div>
-                  <div class="clearfix"></div>
-               </div>
+
                @endif
                <div class="form-group">
                   <div class="col-md-5 col-xs-12 ">
@@ -548,43 +751,6 @@
    //}, 1000);
    }
    
-   function checknumtravellers(){
-    //Number OF Traveller
-    var number_of_traveller = document.getElementById('number_travelers').value;
-    for(var t=1; t<=number_of_traveller; t++){
-        $("#traveller_"+t).hide();
-        document.getElementById('age_'+t).value = '';
-    }
-    for(var t=1; t>=number_of_traveller; t++){
-        $("#number_travelers"+t).hide();
-        document.getElementById('traveller_'+t).value = '';
-    }
-    for(var i=1; i<=number_of_traveller; i++){
-        $("#traveller_"+i).show();
-        document.getElementById('add_'+i).required = true;
-    }
-       var startdate = document.getElementById('departure_date').value; 
-       for(var i=1; i<=number_of_traveller; i++){
-           var d = document.getElementById('days_'+i).value;
-           var m = document.getElementById('months_'+i).value;
-           var y = document.getElementById('add_'+i).value;
-           var dob = y + '-' + m + '-' + d;
-           //alert(dob);
-           dob = new Date(dob);
-           var today = new Date(startdate);
-           var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-           $('#age_'+i).val(age);
-       }
-       p = 1;
-       pr = number_of_traveller + p;
-       for(var p = pr; p<=8; p++){
-           document.getElementById('days_'+p).value = '';
-           document.getElementById('months_'+p).value = '';
-           document.getElementById('add_'+p).value = '';
-       }
-   
-   //checkfamilyplan();
-   }
    
    
    
