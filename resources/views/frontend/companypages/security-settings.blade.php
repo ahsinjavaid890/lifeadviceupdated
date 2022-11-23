@@ -119,7 +119,7 @@
                <div class="row">
                   <div class="col-md-12 text-right">
                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Update Password">
                      </div>
                   </div>
                </div>
