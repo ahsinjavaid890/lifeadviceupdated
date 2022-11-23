@@ -1,0 +1,125 @@
+   .profile_cards{
+      border-radius: 20px;
+      border-left: 8px solid #262566;
+   }
+   .coverage{
+      background-color: #262566;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+   }
+   .expire_date label{
+      font-size: 13px;
+   }
+   .coverage .condition{
+      background: #a5ada5;
+      max-width: 26%;
+      border-radius: 0 8px;
+      position: absolute;
+      top: 0px;
+      padding: 0px;
+      right: 15px;
+   }
+   .communication i{
+      color: #ffff1e;
+      font-size: 25px;
+   }
+   .user_data h5{
+      font-size: 19px;
+   }
+   .communication{
+      font-size: 13px;
+   }
+   .policyid{
+      background: #ccebc4;
+      padding: 1px;
+      border-radius: 0 10px;
+      margin-right: 17px;
+   }
+   .user_des{
+      margin-top: -15px;
+   }
+   .covered i{
+      font-size: 20px;
+      color: red;
+      font-weight: 900;
+   }
+   .list-plans{
+      justify-content: end;
+   }
+   .list-plans li {
+      color: gray;
+      margin-right: 40px;
+      font-size: 16px;
+      font-weight: bolder;
+   }
+   .dowload_button{
+      align-items: baseline;
+   }
+   .dowload_button .btn {
+      background-color: #262566;
+      border: none;
+      color: white;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 45px;
+   }
+   .claim_button{
+      background: transparent;
+      border: 3px solid #262566;
+      padding: 8px;
+      border-radius: 37px;
+      margin-right: 19px;
+      font-size: 15px;
+      color: #262566;
+      font-weight: 800;
+   }
+   .extend{
+      background-color: #262566 !important;
+      color: white;
+   }
+   .need_claim{
+      max-width: 57%;
+   }
+   .view_claim{
+      background: transparent;
+      border: 3px solid #262566;
+      padding: 8px;
+      border-radius: 37px;
+      margin-right: 19px;
+      font-size: 15px;
+      color: #262566;
+      font-weight: 800;
+   }
+   .location_desc i {
+      color: #262566;
+      font-size: 20px;
+   }
+   .claim_form a{
+      color: skyblue;
+      font-size: 18px;
+      font-weight: 800;
+   }
+   .claim_form i{
+      color: #262566;
+      margin-right: 10px;
+   }
+   .claim_assistance{
+      color: white;
+      background: #262566;
+      padding-top: 19px;
+   }
+   .policie_check{
+      width: 20px;
+      margin-right: 8px;
+   }
+   .policies_heading span{
+      font-size: 20px;
+   }
+   .helpful_links li{
+      font-size: 17px;
+      margin-top: 21px;
+      color: #262566;
+      font-weight: bold;
+   }

@@ -72,7 +72,7 @@
             <div class="card-body p-0">
                <ul class="nav nav-tabs " role="tablist" style="display: block;">
                   <li class="nav-item ">
-                     <a class="nav-link" href="{{ url('qoutes')}}">My Qoutes</a>
+                     <a class="nav-link" href="{{ url('udashboard')}}">My Qoutes</a>
                   </li>
                   <li class="nav-item active">
                      <a class="nav-link" href="{{ url('profile')}}">General Settings</a>

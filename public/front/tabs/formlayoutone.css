@@ -209,3 +209,67 @@
   height: 300px;
   overflow: auto;
  }
+ .ui-slider .ui-slider-handle {
+    border: 7px solid #1bbc9b !important;
+    background: #ffffff !important;
+    font-weight: normal !important;
+    color: #454545 !important;
+    height: 25px !important;
+    width: 25px !important;
+    margin-top: -4px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    font-size: 14px;
+}
+.ui-slider-horizontal .ui-slider-range {
+    background: #262566 !important;
+}
+.ui-slider .ui-slider-handle:before{
+  width: 0 !important;
+}
+.title-form{
+  font-weight:bold;
+  margin: 0px;
+  color: #262566;
+  font-size: 38px;
+}
+.ui-widget-content{
+  padding: 5px;
+    border: none;
+    background: #c3c3c3;
+}
+.control-label{
+  text-align: left;
+}
+.control-label h4{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  margin-bottom: 0;
+  border: none;
+  text-align: left; 
+  color:#19bd9b;
+
+}
+#coverage_amount{
+  border:0 !important;
+  font-size:23px; 
+  color:#262566; 
+  font-weight:bold;
+  background: no-repeat;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 150px;
+}
+.title_des{
+  font-size: 25px;
+}
+.new-visa{
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background:white;
+  padding-left: 0;
+  padding-right: 0;
+}
