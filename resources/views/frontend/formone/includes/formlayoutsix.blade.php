@@ -182,7 +182,7 @@
                   <div class="yearsdiv">
                      <div class="col-md-5">
                         <small style="font-size: 12px;color: #999;">Age</small>
-                        <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;">
+                        <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3">
                      </div>
                      <div class="col-md-2 text-center" style="padding-top: 10px;">
                         or
@@ -196,15 +196,15 @@
                         <div class="col-md-6 no-padding">
                            <div class="col-md-4" style="padding: 0 5px;">
                               <small style="font-size: 12px;color: #999;padding: 0;">Month</small>
-                              <input type="text" style="margin-top: -5px !important;display: block;">
+                              <input type="text" style="margin-top: -5px !important;display: block;" maxlength="2">
                            </div>
                            <div class="col-md-4" style="padding: 0 5px;">
                               <small style="font-size: 12px;color: #999;padding: 0;">Day</small>
-                              <input type="text" style="margin-top: -5px !important;display: block;">
+                              <input type="text" style="margin-top: -5px !important;display: block;" maxlength="2">
                            </div>
                            <div class="col-md-4" style="padding: 0 5px;">
                               <small style="font-size: 12px;color: #999;padding: 0;">Year</small>
-                              <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;">
+                              <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="4">
                            </div>
                         </div>
                         <div class="col-md-6" style="padding-top: 10px;">
@@ -241,7 +241,7 @@
                      <div class="birthday">
                         <div class="col-md-3 add_1" style="padding-left: 0;">
                            <small style="font-size: 12px;color: #999;">Age</small>
-                           <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;">
+                           <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3">
                         </div>
                      </div>
                      <input type="hidden" id="current_adds" value="1">
@@ -289,7 +289,7 @@
                         var current_travellers = document.getElementById('current_adds').value;
                         var current_id = parseFloat(current_travellers) + 1;
                         var aa = '';
-                        aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
+                        aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
                         if(current_travellers < number_of_traveller){
                         document.getElementById('current_adds').value = parseFloat(current_travellers) + 1;
                         $('.addmoretraveler').fadeIn(300);  
@@ -453,7 +453,7 @@
       </div>
       <div class="col-md-6">
          <button class="btn nextbtn pull-right" type="button" id="nextbtn" onclick="checknext()"> Next <i class="fa fa-arrow-circle-right"></i></button>
-         <button class="btn nextbtn pull-right" type="submit" style="display:none;" id="getaquotebtn"> Get a Quote <i class="fa fa-shopping-cart"></i></button>
+         <button class="btn nextbtn pull-right" type="submit" style="display:none;" id="getaquotebtn"> Get a Quote <i class="fa fa-arrow-circle-right"></i></button>
       </div>
    </div>
    <input type="hidden" value="" id="nextitem">

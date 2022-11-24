@@ -1,11 +1,4 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script type="text/javascript">
-   $(document).ready(function() {
-    $('.selecttwo').select2();
-});
-</script>
 <div class="clearfix"></div>
 <section id="sectionbackground" style="background-size:cover;background-position:50% 50%;padding:100px 0px 200px 0px;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
    <div class="container">
@@ -22,18 +15,20 @@
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
             <div id="listprices_">
                <div class="page_1">
-                  @if($fields['sum_insured'] == 'on')
-                  <div class="col-md-4">
-                     <div class="form-group">
-                        <select class="form-control selecttwo" name="sum_insured2" id="sum_insured2">
-                           <option value="">Coverage Amount</option>
-                           @foreach($sum_insured as $r)
-                           <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                           @endforeach
-                        </select>
+                  @if(isset($fields['sum_insured']))
+                     @if($fields['sum_insured'] == 'on')
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <select required class="form-control" name="sum_insured2" id="coverageammount">
+                              <option value="">Coverage Amount</option>
+                              @foreach($sum_insured as $r)
+                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @endforeach
+                           </select>
+                        </div>
                      </div>
-                  </div>
-                  @endif
+                     @endif
+                     @endif
                   @if($fields['sdate'] == "on" && $fields['edate'] == "on")
                   <div class="col-md-4" style="margin-bottom: 10px;">
                   @if($data->pro_supervisa == 1)
@@ -247,7 +242,7 @@
                               var current_travellers = document.getElementById('current_adds').value;
                               var current_id = parseFloat(current_travellers) + 1;
                               var aa = '';
-                              aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
+                              aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
                               if(current_travellers < number_of_traveller){
                               document.getElementById('current_adds').value = parseFloat(current_travellers) + 1;
                               $('.addmoretraveler').fadeIn(300);	
@@ -268,7 +263,7 @@
                            <div class="col-md-12 no-padding">
                               <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
                               <div class="col-md-12 no-padding">
-                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
+                                 <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
                                  <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                               </div>
                            </div>
@@ -291,7 +286,7 @@
                               <div class="col-md-12 no-padding">
                                  <h3><i class="fa fa-wheelchair"></i> Pre-existing Condition ?</h3>
                                  <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                    <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
                                  </div>
                               </div>
                            @endif
@@ -306,7 +301,7 @@
                               <div class="col-md-12 no-padding">
                                  <h3><i class="fa fa-child"></i> Do you require Family Plan ?</h3>
                                  <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                    <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
                                  </div>
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>

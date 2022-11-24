@@ -82,6 +82,22 @@
                      </div>
                      @endif
                      @endif
+                      @if(isset($fields['sum_insured']))
+                     @if($fields['sum_insured'] == 'on')
+                     <div class="col-md-12">
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="sum_insured2" id="coverageammount">
+                              <option value="">Coverage Amount</option>
+                              @foreach($sum_insured as $r)
+                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @endforeach
+                           </select>
+                           <label for="coverageammount" class="form-label">Coverage Amount</label>
+                        </div>
+                     </div>
+                     @endif
+                     @endif
+
                @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
@@ -102,35 +118,38 @@
                               }
                            </script>
                            <div id="country" class="col-md-12">
-                              <div class="form-group">
-                                 <select onchange="CountryState(this.value)" required class="form-control selecttwo" name="primary_destination" id="primary_destination">
-                                    <option value="">Select Country</option>
-                                    @foreach(DB::table('countries')->get() as $r)
-                                       <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </div>
-                           <div id="canadastate" class="col-md-6" style="display:none;">
-                              <div class="form-group">
-                                 <select required class="form-control selecttwo" name="primary_destination" id="primary_destination">
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
+                              </div>
+                           </div>
+                           <div id="canadastate" class="col-md-6" style="display:none;">
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            @else
 
                            <div class="col-md-12" >
-                              <div class="form-group">
-                                 <select required class="form-control selecttwo" name="primary_destination" id="primary_destination">
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            @endif
@@ -158,13 +177,14 @@
                         @if($number_of_travel > 0)
 
                         <div class="col-md-12">
-                           <div class="form-group">
-                              <select onchange="checknumtravellers(this.value)" required class="form-control selecttwo" name="number_travelers" id="number_travelers">
+                           <div class="custom-form-control">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
                                  <option value="{{ $i }}">{{ $i }}</option>
                                  @endfor
                               </select>
+                              <label for="number_travelers" class="form-label">Number of Travellers</label>
                            </div>
                         </div>
 
@@ -236,33 +256,35 @@
                      </script>
                      @endif
                      @endif
-                     @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                     <div class="col-md-12">
-                        <div class="form-group">
-                           <select required class="form-control selecttwo" name="gender" id="gender">
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
+                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
+                        <div class="col-md-12">
+                           <div class="custom-form-control">
+                              <select required class="form-input" name="gender" id="gender">
+                                 <option value="">Select Gender</option>
+                                   <option value="male" >Male</option>
+                                   <option value="female" >Female</option>
+                              </select>
+                              <label for="gender" class="form-label">Primary Applicant`s Gender</label>
+                           </div>
                         </div>
-                     </div>
-                     @endif
-                     @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                     <div class="col-md-12">
-                        <div class="form-group">
-                           <select required class="form-control selecttwo" name="old_traveller_gender" id="old_traveller_gender">
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
+                        @endif
+                        @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
+                        <div class="col-md-12">
+                           <div class="custom-form-control">
+                              <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                                 <option value="">Select Gender</option>
+                                   <option value="male" >Male</option>
+                                   <option value="female" >Female</option>
+                              </select>
+                              <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
+                           </div>
                         </div>
-                     </div>
-                     @endif
+                        @endif
                       <div class="row">
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
                            <div class="col-md-6 no-padding check_condtion">
-                              <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
+                              <h3>Do you Smoke in last 12 months ?</h3>
                               <div class="col-md-12 no-padding">
                                  <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
                                  <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
@@ -285,7 +307,7 @@
                                  $current_values[$num] = 'group_16'; 
                               @endphp
                               <div class="col-md-6 no-padding check_condtion">
-                                 <h3><i class="fa fa-wheelchair"></i> Pre-existing Condition ?</h3>
+                                 <h3>Pre-existing Condition ?</h3>
                                  <div class="col-md-12 no-padding">
                                     <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
                                  </div>
@@ -299,7 +321,7 @@
                                  $current_values[$num] = 'group_15';  
                               @endphp
                               <div class="col-md-6 no-padding check_condtion">
-                                 <h3><i class="fa fa-child"></i> Do you require Family Plan ?</h3>
+                                 <h3>Do you require Family Plan ?</h3>
                                  <div class="col-md-12 no-padding">
                                     <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
                                  </div>
@@ -322,7 +344,7 @@
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
                      <div class="col-md-6 text-right">
-                        <button type="submit" class="btn btn-primary get_qout">Get Quote</button>
+                        <button type="submit" class="btn btn-primary get_qout">Get Quote <i class="fa fa-arrow-circle-right"></i></button>
                      </div>
                </div>
             </form>

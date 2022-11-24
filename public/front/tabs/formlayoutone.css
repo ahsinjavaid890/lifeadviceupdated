@@ -276,6 +276,8 @@
 .get_qout{
     background: #262566;
     border: 0;
+    border-radius: 5px !important;
+    width: 150px;
 }
 .select2-container .select2-selection--single{
     height: 43px !important;
@@ -283,6 +285,7 @@
 }
 .check_condtion h3{
   font-size: 15px;
+  color: #5a5a5a;
 }
 .check_condtion .col-md-12{
   margin-top: -15px;
