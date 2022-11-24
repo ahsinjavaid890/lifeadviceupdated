@@ -321,7 +321,7 @@
                            <button type="button" class="btn btn-primary" style="margin-bottom: 20px;margin-top: 20px;border-radius: 20px;width: 100%;" onclick="applychanges();">Apply Changes</button>
                            <script>
                               function applychanges(){
-                              var inps = document.getElementsByName('years[]');
+                              var inps = document.getElementsByName('ages[]');
                               var ages = [];
                               for (var i = 0; i <inps.length; i++) {
                               var inp=inps[i];
@@ -329,7 +329,7 @@
                               }
                               
                               var ages = ages.filter(Boolean);
-                              console.log(ages);
+                              console.log(ages);   
                               $('.agesbtn').html(ages + '    <i class="fa fa-caret-down"></i>');
                               $('.ageandcitizen').fadeOut(300);	
                               document.getElementById('number_travelers').value = ages;
