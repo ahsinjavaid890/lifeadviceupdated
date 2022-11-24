@@ -301,7 +301,7 @@
                      <button type="button" class="btn btn-primary" style="margin-bottom: 20px;margin-top: 20px;border-radius: 20px;width: 100%;" onclick="applychanges();">Apply Changes</button>
                      <script>
                         function applychanges(){
-                        var inps = document.getElementsByName('years[]');
+                        var inps = document.getElementsByName('ages[]');
                         var ages = [];
                         for (var i = 0; i <inps.length; i++) {
                         var inp=inps[i];
@@ -413,12 +413,12 @@
          </div>
          <script>
             function changefamilyyes(){
-            document.getElementById('familyplan_temp').value = 'yes';
-            checkfamilyplan();  
+            document.getElementById('familyplan_temp').value = 'yes';   
+            checkfamilyplan();
             }
             function changefamilyno(){
-            document.getElementById('familyplan_temp').value = 'no';
-            checkfamilyplan();    
+            document.getElementById('familyplan_temp').value = 'no'; 
+            checkfamilyplan();
             }
          </script>  
       </div>
@@ -463,14 +463,6 @@
         e.stopPropagation();
     });
 </script>
-<!--<script>
-   jQuery(function($) {
-   var divList = $(".listing-item");
-   divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
-   
-   $("#listprices").html(divList);
-   })
-   </script>-->
 <script>
    function checknext(){
    var javascript_array = new Array();
@@ -579,79 +571,225 @@
    }
 </script>
 <script>
-   //SUPER VISA 
+function checkfamilyplan(){
+//Eligibility
+var inps = null;
+
+Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+
+var max_age = inps.max(); //ages.max();
+var min_age = inps.min();
+//alert(max_age);
+if(document.getElementById('familyplan_temp').value == 'yes'){
+var number_travelers = '';
+if(number_travelers >='2' && max_age <=59 && min_age <=21){
+$('#GET_QUOTES').show();
+document.getElementById('family_error').innerHTML = '';
+document.getElementById('family_error').style.display = 'none';
+} else {
+$('#GET_QUOTES').hide();
+if(number_travelers <'2'){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
+} else if(max_age > 59){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
+} else if(min_age > 21){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
+}
+document.getElementById('family_error').style.display = 'block';  
+}
+
+} else {
+   $('#GET_QUOTES').show();
+   document.getElementById('family_error').style.display = 'none';   
+}
+   
+}
+
+function numoftravelers(){
+if(document.getElementById('familyplan_temp').value == 'yes'){
+checkfamilyplan();
+}
+
+$("#number_travelers").on("change", function(){
+var number_of_traveller = $(this).val();
+var aa = "";
+for(var i=2; i<=number_of_traveller; i++){
+var aa = aa + $("#birthday")[0].outerHTML;
+}
+
+$("#birthday_view").html(aa);
+//console.log( $(".birthday")[0] );
+})
+
+}
+
+
+</script>
+
+<script>
    function supervisayes(){
-   //window.setTimeout(function(){  
-    var tt = document.getElementById('departure_date').value;
-    var date = new Date(tt);
-    var newdate = new Date(date);
-    newdate.setDate(newdate.getDate() + 364);
-    var dd = newdate.getDate();
-    var mm = newdate.getMonth() + 1;
-    var y = newdate.getFullYear();
-    if(mm <= 9){
-    var mm = '0'+mm;  
+//window.setTimeout(function(){  
+   var tt = document.getElementById('departure_date').value;
+   var date = new Date(tt);
+   var newdate = new Date(date);
+   newdate.setDate(newdate.getDate() + 364);
+   var dd = newdate.getDate();
+   var mm = newdate.getMonth() + 1;
+   var y = newdate.getFullYear();
+   if(mm <= 9){
+   var mm = '0'+mm;  
+   }
+   if(dd <= 9){
+   var dd = '0'+dd;  
+   }
+   var someFormattedDate = y + '-' + mm + '-' + dd;
+   document.getElementById('return_date').value = someFormattedDate;
+
+checknumtravellers();
+}
+  
+  
+function checktravellers(){
+   //Number OF Traveller
+   var number_of_traveller = $("#number_travelers").val();
+   for(var t=2; t<=8; t++){
+      $("#traveller_"+t).hide();
+      $("#add_" +t).prop("required", false);
+   }
+   for(var i=2; i<=number_of_traveller; i++){
+      $("#traveller_"+i).show();
+      $('#add_'+i).prop("required", true);
+   }
+   //reset values for other people
+   var numt = $('#number_travelers').val() || 1;
+   var one = 1;
+   var num = parseInt(numt) + parseInt(one);
+   for(var a=num; a<8; a++){
+      $('#add_'+a).val('');
+       $('#add_'+a).prop('required', false);
+   }
+
+    checkfamilyplan();
+}
+
+function checkfamilyplan(){
+    //Eligibility
+    var inps = document.getElementsByName('ages[]');
+    var ages = [];
+    for (var i = 0; i <inps.length; i++) {
+        var inp=inps[i];
+        if(inp.value > 0){
+         ages.push(inp.value);
+        }
     }
-    if(dd <= 9){
-    var dd = '0'+dd;  
-    }
-    //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = y + '/' + mm + '/' + dd;
-    document.getElementById('return_date').value = someFormattedDate;
-   //}, 1000);
-   }
-   
-   
-   function checkfamilyplan(){
-    alert(inps);
-   //Eligibility
-   var inps = document.getElementByName('years').value;
-   
-   var ages = [];
-   for (var i = 0; i <inps.length; i++) {
-   var inp=inps[i];
-   if(inp.value > 0){
-    ages.push(inp.value);
-   }
-   }
-   
-   Array.prototype.max = function() {
-     return Math.max.apply(null, this);
-   };
-   
-   Array.prototype.min = function() {
-     return Math.min.apply(null, this);
-   };
-   
-   var max_age = ages.max();
-   var min_age = ages.min();
-   
-   if(document.getElementById('familyplan_temp').value == 'yes'){
-   if(document.getElementById('number_travelers').value >='2' && max_age <=59 && min_age <=21){
-   document.getElementById('nextbtn').style.display = 'block';
-   document.getElementById('family_error').innerHTML = '';
-   document.getElementById('family_error').style.display = 'none';
-   } else {
-   document.getElementById('nextbtn').style.display = 'none';
-   if(document.getElementById('number_travelers').value <'2'){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
-   } else if(max_age > 59){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59';  
-   } else if(min_age > 21){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21'; 
-   }
-   document.getElementById('family_error').style.display = 'block'; 
-   }
-   
-   
-   } else {
-    document.getElementById('nextbtn').style.display = 'block';
-    document.getElementById('family_error').style.display = 'none'; 
-   }
     
-   }
+    Array.prototype.max = function() {
+      return Math.max.apply(null, this);
+    };
+    
+    Array.prototype.min = function() {
+      return Math.min.apply(null, this);
+    };
+
+    var max_age = ages.max();
+    var min_age = ages.min();
+    if($('#familyplan_temp').val() == 'yes'){
+        if($('#number_travelers').value >='2' && max_age <=59 && min_age <=21){
+            $('#GET_QUOTES').css('display', 'block');
+            $('#family_error').html('');
+            $('#family_error').css('display', 'none');
+        } 
+        else {
+            $('#GET_QUOTES').css('display', 'none');
+            if($('#number_travelers').value <'2'){
+                $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
+            } 
+            else if(max_age > 59){
+                $('#family_error').html('<i class="fa fa-warning"></i> Maximum age for family plan should be 59');   
+            } 
+            else if(min_age > 21){
+                $('#family_error').html('<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21');  
+            }
+            $('#family_error').css('display', 'block');  
+        }
+    } 
+    else {
+      $('#GET_QUOTES').css('display', 'block');
+      $('#family_error').css('display', 'none');   
+    }
    
+}
+
+window.onload = function() {
+  checktravellers();
+};
+</script>
+<script>
+function checkfamilyplan(){
+//Eligibility
+var inps = null;
+
+Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+
+var max_age = inps.max(); //ages.max();
+var min_age = inps.min();
+//alert(max_age);
+if(document.getElementById('familyplan_temp').value == 'yes'){
+var number_travelers = '';
+if(number_travelers >='2' && max_age <=59 && min_age <=21){
+$('#GET_QUOTES').show();
+document.getElementById('family_error').innerHTML = '';
+document.getElementById('family_error').style.display = 'none';
+} else {
+$('#GET_QUOTES').hide();
+if(number_travelers <'2'){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
+} else if(max_age > 59){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
+} else if(min_age > 21){
+document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
+}
+document.getElementById('family_error').style.display = 'block';  
+}
+
+} else {
+   $('#GET_QUOTES').show();
+   document.getElementById('family_error').style.display = 'none';   
+}
    
+}
+
+function numoftravelers(){
+if(document.getElementById('familyplan_temp').value == 'yes'){
+checkfamilyplan();
+}
+
+$("#number_travelers").on("change", function(){
+var number_of_traveller = $(this).val();
+var aa = "";
+for(var i=2; i<=number_of_traveller; i++){
+var aa = aa + $("#birthday")[0].outerHTML;
+}
+
+$("#birthday_view").html(aa);
+//console.log( $(".birthday")[0] );
+})
+
+}
+
+
 </script>
 <script>
    jQuery(document).ready(function() {
