@@ -263,7 +263,7 @@
                            <div class="col-md-12 no-padding">
                               <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
                               <div class="col-md-12 no-padding">
-                                 <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
+                                 <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
                                  <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                               </div>
                            </div>
