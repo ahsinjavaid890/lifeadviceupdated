@@ -136,13 +136,13 @@
                               <div class="col-md-6 no-padding">
                                  <div class="col-md-4" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Month</small>
-                                    <input type="text" style="margin-top: -5px !important;display: block;"  maxlength="2">
+                                    <input type="text" id="ages[]" style="margin-top: -5px !important;display: block;"  maxlength="2">
                                  </div>
-                                 <div class="col-md-4" style="padding: 0 5px;">
+                                 <div class="col-md-4" id="ages[]" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Day</small>
                                     <input type="text" style="margin-top: -5px !important;display: block;" maxlength="2">
                                  </div>
-                                 <div class="col-md-4" style="padding: 0 5px;">
+                                 <div class="col-md-4" id="ages[]" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Year</small>
                                     <input type="text" id="dob_year" onchange="calprimaryage()" style="margin-top: -5px !important;display: block;"  maxlength="4">
                                  </div>
