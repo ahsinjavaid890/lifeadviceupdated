@@ -121,7 +121,7 @@
                         <div class="row yearsdiv">
                            <div class="col-md-5">
                               <small style="font-size: 12px;color: #999;">Age</small>
-                              <input type="text" name="ages[]" id="ages[]" value="" class="primaryage" maxlength="3" style="margin-top: -5px !important;display: block;">
+                              <input type="text" name="ages[]" id="ages[]" value="" class="primaryage" maxlength="3" style="margin-top: -5px !important;display: block;" id="searchTxt">
                            </div>
                            <div class="col-md-2 text-center" style="padding-top: 10px;">
                               or
@@ -329,9 +329,10 @@
                               }
                               
                               var ages = ages.filter(Boolean);
-                              $('.agesbtn').html(ages + ' Years <i class="fa fa-caret-down"></i>');
+                              console.log(ages);
+                              $('.agesbtn').html(ages + '    <i class="fa fa-caret-down"></i>');
                               $('.ageandcitizen').fadeOut(300);	
-                              document.getElementById('number_travelers').value = ages.length;
+                              document.getElementById('number_travelers').value = ages;
                               checkfamilyplan();
                               }
                            </script>
@@ -517,6 +518,19 @@
       </div>
    </div>
 </section>
+<script type="text/javascript">
+window.onkeyup = keyup;
+var inputTextValue;
+function keyup(e) {
+  inputTextValue = e.target.value;
+  $('#searchValue').text(inputTextValue);
+  if (e.keyCode == 13) {
+    window.location = inputTextValue;
+  }
+}
+
+
+</script>
 <script>
 function checkfamilyplan(){
    //Eligibility
