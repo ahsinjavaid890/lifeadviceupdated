@@ -365,7 +365,7 @@
                                  }
                               }
                            </script>
-         <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
                      @foreach(DB::table('countries')->get() as $r)
                               <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
                            @endforeach

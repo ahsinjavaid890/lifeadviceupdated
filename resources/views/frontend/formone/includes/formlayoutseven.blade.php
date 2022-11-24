@@ -209,25 +209,23 @@
                      @endif
                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
                      <div class="col-md-12">
-                        <div class="custom-form-control">
-                           <select required class="form-input" name="gender" id="gender">
+                        <div class="form-group">
+                           <select required class="form-control selecttwo" name="gender" id="gender">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
                            </select>
-                           <label for="gender" class="form-label">Primary Applicant`s Gender</label>
                         </div>
                      </div>
                      @endif
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
                      <div class="col-md-12">
-                        <div class="custom-form-control">
-                           <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                        <div class="form-group">
+                           <select required class="form-control selecttwo" name="old_traveller_gender" id="old_traveller_gender">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
                            </select>
-                           <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
                         </div>
                      </div>
                      @endif
