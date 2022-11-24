@@ -12053,3 +12053,10 @@ font-size: 35px;
 a:focus, a:hover{
     text-decoration: none !important;
 }
+.blog_img{
+    width: 100%;
+    height: 340px;
+}
+.blog_section{
+    margin-top: 88px;
+}

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
-@include('frontend.companypages.includes.main')
+@include('frontend.companypages.includes.mainblog')
 <section class="chooses-blogs choose-us-area-five pb-70">
    <div class="container-fluid">
       <div class="row">
