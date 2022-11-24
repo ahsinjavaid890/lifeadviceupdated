@@ -115,6 +115,7 @@
                   <div class="col-md-4 agesdiv" id="agesdiv">
                      <button class="btn btn-default agesbtn form-control" type="button" onclick="$('.ageandcitizen').fadeIn(300);">Ages and Details <i class="fa fa-caret-down"></i></button>
                      <div class="col-md-12 ageandcitizen" style="padding: 1px 15px; display: none;">
+                        @if(isset($fields['dob']))
                         @if($fields['dob'] == 'on')
                         <div class="col-md-12 no-padding">
                            <h3><i class="fa fa-user"></i> Primary Traveler</h3>
@@ -167,7 +168,7 @@
                         </div>
                         </div>
                         @endif
-
+                        @endif
                         @if($fields['traveller'] == 'on')
                         <div class="col-md-12 no-padding" style="margin-top:10px;">
                            <div class="col-md-10 no-padding" style="padding-top: 1px;">
