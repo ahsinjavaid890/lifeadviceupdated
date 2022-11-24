@@ -1,256 +1,370 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutfive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('.selecttwo').select2();
+});
+</script>
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
-   <h1 style="font-weight:bold;margin: 0px;" class="text-danger"><strong>{{ $data->pro_name }}</strong></h1>
+   <h1 style="font-weight:bold;margin: 0px; color: #262566" class=""><strong>{{ $data->pro_name }}</strong></h1>
    <h2 style="margin-top: -10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
-<div class="container birthdate" style="padding: 20px;">
-         <form action="{{ url('quotes') }}" method="post" class="form-horizontal form-layout2" role="form">
-            @csrf
-            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-                              @if($fields['sum_insured'] == 'on')
+<div class="container birthdate new-visa mb-5 mt-5" style="padding: 20px;">
+         <form method="POST" action="{{ url('') }}">
+                  @csrf
+               
+                  <div class="row">
+                     @if(isset($fields['fname']))
+                     @if($fields['fname'] == 'on')
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
+                           <label for="firstname" class="form-label">First name</label>
+                        </div>
+                     </div>
+                     @endif
+                     @endif
+                     @if(isset($fields['lname']))
+                     @if($fields['lname'] == 'on')
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">
+                           <label for="lname" class="form-label">Last name</label>
+                        </div>
+                     </div>
+                     @endif
+                     @endif
+                     @if(isset($fields['email']))
+                        @if($fields['email'] == "on" )
+                           <div class="col-md-12">
+                              <div class="custom-form-control">
+                                 <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
+                                 <label for="savers_email" class="form-label">Email</label>
+                              </div>
+                           </div>
+                        @endif
+                     @endif
+                     @if(isset($fields['phone']))
+                     @if($fields['phone'] == 'on')
+                     <div class="col-md-12">
+                        <div class="custom-form-control">
+                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="firstname" required id="phone" class="form-input">
+                           <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
+                        </div>
+                     </div>
+                     <script>
+                        function validatephone(){
+                           var checkphone = document.getElementById('phone').value;
+                           document.getElementById('phone').value = checkphone.replace(/\D/g,'');
+                           if (checkphone.length < 10) {
+                           document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
+                           document.getElementById('getquote').disabled = true;  
+                           } else {
+                           document.getElementById('getquote').disabled = false; 
+                           document.getElementById('phone_error').innerHTML = '';
+                           }
+                           }
+                     </script>
+                     @endif
+                     @endif
+                     @if(isset($fields['sum_insured']))
+                     @if($fields['sum_insured'] == 'on')
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <select required class="form-control selecttwo" name="sum_insured2" id="coverageammount">
+                              <option value="">Coverage Amount</option>
+                              @foreach($sum_insured as $r)
+                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @endforeach
+                           </select>
+                        </div>
+                     </div>
+                     @endif
+                     @endif
 
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label"> Sum Insured </label>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <select name="sum_insured2" class="form-control form-control" id="sum_insured2" autocomplete="off" required="">
-            <option value="">Please choose</option>
-            @foreach($sum_insured as $r)
-            <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-            @endforeach
-         </select>
-      </div>
-      @endif
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label">Primary destination in Canada </label> 
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-          @if(isset($fields['Country']))
+
+                     @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
                             <script>
-                              function CountryState(evt) {
-                                  if(evt.value=="Canada")
+                              function CountryState(id) {
+                                  if(id=="Canada")
                                   {
-                                      jQuery("#primary_destination_State_div").show();
-                                      jQuery("#usa_stop_div").hide();
-                                  }else if(evt.value=="United States")
+                                      $('#canadastate').fadeIn();
+                                      $('#country').removeClass('col-md-12')
+                                      $('#country').addClass('col-md-6')
+                                  }else 
                                   {
-                                      jQuery("#primary_destination_State_div").hide();
-                                      jQuery("#usa_stop_div").hide();
-                                 }else
-                                 {
-                                     jQuery("#primary_destination_State_div").hide();
-                                      jQuery("#usa_stop_div").show();
+                                      $('#canadastate').hide();
+                                      $('#country').removeClass('col-md-6')
+                                      $('#country').addClass('col-md-12')
+                                      
                                  }
                               }
                            </script>
-         <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
-                     @foreach(DB::table('countries')->get() as $r)
-                              <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
-                           @endforeach
-                  </select>
-                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
-                     <option value=""> --- Primary destination in Canada ---</option>
-                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                     <option value="{{ $r->name }}">{{ $r->name }}</option>
-                     @endforeach
-                  </select>
-                  <div id="usa_stop_div" style="display:none;">
+                           <div id="country" class="col-md-6">
+                              <div class="form-group">
+                                 <select onchange="CountryState(this.value)" required class="form-control selecttwo" name="primary_destination" id="primary_destination">
+                                    <option value="">Select Country</option>
+                                    @foreach(DB::table('countries')->get() as $r)
+                                       <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </div>
+                           <div id="canadastate" class="col-md-6" style="display:none;">
+                              <div class="form-group">
+                                 <select required class="form-control selecttwo" name="primary_destination" id="primary_destination">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
+                              </div>
+                           </div>
+                           @else
+
+                           <div class="col-md-6" >
+                              <div class="form-group">
+                                 <select required class="form-control selecttwo" name="primary_destination" id="primary_destination">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </div>
+                           @endif
+                        @endif
+                     @endif
+
+
+                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                        @php
+                           $number_of_travel = $fields['traveller_number'];
+                        @endphp
+                        @if($number_of_travel > 0)
+
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <select onchange="checknumtravellers(this.value)" required class="form-control selecttwo" name="number_travelers" id="number_travelers">
+                                 <option value="">Number of Travellers</option>
+                                 @for($i=1;$i<=$number_of_travel;$i++)
+                                 <option value="{{ $i }}">{{ $i }}</option>
+                                 @endfor
+                              </select>
+                           </div>
+                        </div>
+
+
+                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
+
+                           @php
+                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                              $c = 0;
+                           @endphp
+
+                           @for($i=1;$i<=$number_of_travel;$i++)
+                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                              <div class="row">
+                                    <div style="padding-left: 0px;" class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="day{{$i}}" class="form-input">
+                                          <label for="day{{$i}}" class="form-label">Day</label>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="month{{$i}}" class="form-input">
+                                          <label for="month{{$i}}" class="form-label">Month</label>
+                                       </div>
+                                    </div>
+                                    <div style="padding-right: 0px;" class="col-md-4">
+                                       <div class="custom-form-control">
+                                          <input type="text" name="fname" placeholder="firstname" id="year{{$i}}" class="form-input">
+                                          <label for="year{{$i}}" class="form-label">Year</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
+                           @endfor
+                        @endif
+                        @endif
+                     @endif
+                     @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">
+                           <label for="departure_date" class="form-label">Start Date of Coverage</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="custom-form-control">
+                           <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                           <label for="return_date" class="form-label">End Date of Coverage</label>
+                        </div>
+                     </div>
+                     @endif
+                     @if(isset($fields['gender']) && $fields['gender'] == "on" )
                      <div class="col-md-12">
-                        <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
-                        <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
-                           if($allow_input_field['us_stop_days'] == 0 ):
-                            echo "<option selected='' value='0'>None</option>";
-                            else:
-                            echo  "<option value='$i'>$i days</option>";
-                            endif;  
-                           
-                           endfor; ?>
-                        </select>
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="gender" id="gender">
+                              <option value="">Select Gender</option>
+                                <option value="male" >Male</option>
+                                <option value="female" >Female</option>
+                           </select>
+                           <label for="gender" class="form-label">Primary Applicant`s Gender</label>
+                        </div>
+                     </div>
+                     @endif
+                     @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
+                     <div class="col-md-12">
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                              <option value="">Select Gender</option>
+                                <option value="male" >Male</option>
+                                <option value="female" >Female</option>
+                           </select>
+                           <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
+                        </div>
+                     </div>
+                     @endif
+                     <div class="row">
+                           @if(isset($fields['Smoke12']))
+                           @if($fields['Smoke12'] == 'on')
+                           <div class="col-md-6 no-padding check_condtion">
+                              <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
+                              <div class="col-md-12 no-padding">
+                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
+                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                              </div>
+                           </div>
+                           @endif
+                        @endif
+                        @php
+                           $i = 0;
+                           $position_array = array();
+                           foreach($fields as $key => $value){
+                              $i ++;
+                              $position_array[$i] = $key;
+                           }
+                        @endphp
+                        @if(isset($fields['pre_existing']))
+                           @if($fields['pre_existing'] == 'on')
+                              @php
+                                 $num = array_search("pre_existing", $position_array); 
+                                 $current_values[$num] = 'group_16'; 
+                              @endphp
+                              <div class="col-md-6 no-padding check_condtion">
+                                 <h3><i class="fa fa-wheelchair"></i> Pre-existing Condition ?</h3>
+                                 <div class="col-md-12 no-padding">
+                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                 </div>
+                              </div>
+                           @endif
+                        @endif
+                        @if(isset($fields['fplan']))
+                           @if($fields['fplan'] == 'on')
+                              @php
+                                 $num = array_search("fplan", $position_array); 
+                                 $current_values[$num] = 'group_15';  
+                              @endphp
+                              <div class="col-md-6 no-padding check_condtion">
+                                 <h3><i class="fa fa-child"></i> Do you require Family Plan ?</h3>
+                                 <div class="col-md-12 no-padding">
+                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                 </div>
+                                 <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                                 <script>
+                                    function changefamilyyes(){
+                                       document.getElementById('familyplan_temp').value = 'yes';   
+                                       checkfamilyplan();
+                                    }
+                                    function changefamilyno(){
+                                       document.getElementById('familyplan_temp').value = 'no'; 
+                                       checkfamilyplan();
+                                    }
+                                 </script>
+                              </div>
+                           @endif
+                        @endif
+                        </div>
+                     <div class="col-md-6">
+                        <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
+                     </div>
+                     <div class="col-md-6 text-right">
+                        <button type="submit" class="btn btn-primary get_qout">Get Quote</button>
                      </div>
                   </div>
-                  @else
-                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
-                        <option value=""> --- Primary destination in Canada ---</option>
-                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                           <option value="{{ $r->name }}">{{ $r->name }}</option>
-                        @endforeach
-                     </select>
-                  @endif
-                  @endif
-                  @endif
-      </div>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
-         @if($fields['sdate'] == "on" && $fields['edate'] == "on")
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label">Start date of coverage </label>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" type="text" placeholder="MM/DD/YYY" required="" onchange="supervisayes()" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
-         <label for="departure_date" style="z-index: 1;padding: 8px 13px !important;position: absolute;top: 1px;right: 1px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
-         <i class="fa fa-calendar" aria-hidden="true"></i>
-         </label>
-         <script>
-            $('#departure_date').datepicker({
-            format: 'yyyy-mm-dd',
-            todayHighlight:'TRUE',
-            autoclose: true,
-            });
-         </script>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label">End date of coverage </label>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <input autocomplete="off" id="return_date" name="return_date" value="" class="form-control datepicker" type="text" placeholder="End Date" required="" readonly="true" data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
-         <label for="return_date" style="z-index: 1;padding: 8px 13px !important;position: absolute;top: 1px;right: 1px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
-         <i class="fa fa-calendar" aria-hidden="true"></i>
-         </label>
-      </div>
-      @endif
-               @if($fields['traveller'] == 'on')
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label">Number of travellers (up to  5)</label>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <select name="number_travelers" class="form-control form-control" id="number_travelers" autocomplete="off" required="" onchange="checknumtravellers()">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-         </select>
-      </div>
-      <div class="form-group" id="traveller_1" style="">
-         <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-            <label class="input-label">Oldest Traveller's Date of Birth</label>
-         </div>
-         <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding">
-            <div class="date-wrapper question-answer oldest-travel">
-               <input type="text" placeholder="DD" id="days_1" name="days[]" maxlength="2" value="" class="numeric lpad2 day-holder">/
-               <input type="text" placeholder="MM" id="months_1" name="months[]" maxlength="2" value="" class="numeric lpad2 month-holder">/
-               <select name="years[]" id="add_1" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                  <option value="">Year</option>
-                  @for($i=1919; $i < 1982; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-               </select>
-            </div>
-         </div>
-      </div>
-      <input type="hidden" name="ages[]" id="age_1" value="">
-      <div class="form-group" id="traveller_2" style="display: none">
-         <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-            <label class="input-label">Second Traveller's Date of Birth</label>
-         </div>
-         <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding">
-            <div class="date-wrapper question-answer oldest-travel">
-               <input type="text" placeholder="DD" id="days_2" name="days[]" maxlength="2" value="" class="numeric lpad2 day-holder">/
-               <input type="text" placeholder="MM" id="months_2" name="months[]" maxlength="2" value="" class="numeric lpad2 month-holder">/
-               <select name="years[]" id="add_2" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                  <option value="">Year</option>
-                  @for($i=1919; $i < 1982; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-               </select>
-            </div>
-         </div>
-      </div>
-      <input type="hidden" name="ages[]" id="age_2" value="">
-      <div class="form-group" id="traveller_3" style="display: none">
-         <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-            <label class="input-label">Third Traveller's Date of Birth</label>
-         </div>
-         <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding">
-            <div class="date-wrapper question-answer oldest-travel">
-               <input type="text" placeholder="DD" id="days_3" name="days[]" maxlength="2" value="" class="numeric lpad2 day-holder">/
-               <input type="text" placeholder="MM" id="months_3" name="months[]" maxlength="2" value="" class="numeric lpad2 month-holder">/
-               <select name="years[]" id="add_3" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                  <option value="">Year</option>
-                  @for($i=1919; $i < 1982; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-               </select>
-            </div>
-         </div>
-      </div>
-      <input type="hidden" name="ages[]" id="age_3" value="">
-      <div class="form-group" id="traveller_4" style="display: none">
-         <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-            <label class="input-label">Fourth Traveller's Date of Birth</label>
-         </div>
-         <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding">
-            <div class="date-wrapper question-answer oldest-travel">
-               <input type="text" placeholder="DD" id="days_4" name="days[]" maxlength="2" value="" class="numeric lpad2 day-holder">/
-               <input type="text" placeholder="MM" id="months_4" name="months[]" maxlength="2" value="" class="numeric lpad2 month-holder">/
-               <select name="years[]" id="add_4" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                  <option value="">Year</option>
-                  @for($i=1919; $i < 1982; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-               </select>
-            </div>
-         </div>
-      </div>
-      <input type="hidden" name="ages[]" id="age_4" value="">
-      <div class="form-group" id="traveller_5" style="display: none">
-         <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-            <label class="input-label">Fifth Traveller's Date of Birth</label>
-         </div>
-         <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding">
-            <div class="date-wrapper question-answer oldest-travel">
-               <input type="text" placeholder="DD" id="days_5" name="days[]" maxlength="2" value="" class="numeric lpad2 day-holder">/
-               <input type="text" placeholder="MM" id="months_5" name="months[]" maxlength="2" value="" class="numeric lpad2 month-holder">/
-               <select name="years[]" id="add_5" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                  <option value="">Year</option>
-                  @for($i=1919; $i < 1982; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                  @endfor
-               </select>
-            </div>
-         </div>
-      </div>
-      <input type="hidden" name="ages[]" id="age_5" value="">
-      <div style="clear:both;"> </div>
-      @endif
-         @if(isset($fields['email']))
-               @if($fields['email'] == "on" )
-      <div class="col-md-6 col-sm-6 col-xs-12 control-label no-padding">
-         <label class="input-label">Email address (required) </label> 
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-         <input id="savers_email" name="savers_email" size="20" maxlength="100" value="" style="padding-left:10px !important" class="form-control form-control" type="text" required="" placeholder="Email">
-      </div>
-      <div style="clear:both;"></div>
-         @endif
-         @endif
-      <div class="col-md-12 no-padding" style="margin-top: 20px; clear:both;">
-         <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
-         <button type="submit" name="GET QUOTES" id="getquote" class="btn nextbtn  pull-right"><i class="fa fa-list"></i> Continue </button>
-         <div style="clear:both;"></div>
-      </div>
-      <input type="hidden" name="broker" value="">     
-      <input type="hidden" name="agent" value="">       
-   </form>
+               </form>
 </div>
+<script type="text/javascript">
+   function checknumtravellers(id) {
+      if(id == '')
+      {
+         $('.no_of_travelers').hide();
+      }
+      if(id == 1)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+      }
+      if(id == 2)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+      }
+      if(id == 3)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+      }
+      if(id == 4)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+      }
+      if(id == 5)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+      }
+      if(id == 6)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+      }
+      if(id == 7)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+         $('#traveler7').show();
+
+      }
+   }
+</script>
 <script>
    var container = document.getElementsByClassName("birthdate")[0];
    container.onkeyup = function(e) {
@@ -355,50 +469,6 @@
    
 </script>
 <script>
-   function checknumtravellers(){
-    //Number OF Traveller
-    var number_of_traveller = $('#number_travelers').val() || 1;
-    for(var t=1; t<=number_of_traveller; t++){
-        $("#traveller_"+t).hide();
-        $('#age_'+t).val("");
-    }
-    for(var i=1; i<=number_of_traveller; i++){
-        $("#traveller_"+i).show();
-        $('#add_'+i).prop('required', true);
-    }
-       var startdate = $('#departure_date').val();  
-       for(var i=1; i<=number_of_traveller; i++){
-           var d = document.getElementById('days_'+i).value;
-           var m = document.getElementById('months_'+i).value;
-           var y = document.getElementById('add_'+i).value;
-           var dob = y + '-' + m + '-' + d;
-   
-           dob = new Date(dob);
-           var today = new Date(startdate);
-           var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-           $('#age_'+i).val(age);
-       }
-       p = 1;
-       pr = number_of_traveller + p;
-       
-       for(var p = pr; p<=8; p++){
-           $('#days_'+p).val("");
-           $('#months_'+p).val("");
-           $('#add_'+p).val("");
-       }
-       //checkfamilyplan();
-   }
-   
-   window.onload = function() {
-     checknumtravellers();
-   };
-   
-   /*
-         jQuery(document).ready(function() {
-          jQuery("#primary_destination").msDropdown();
-          });
-   */
-   
    
         jQuery('#gender:before').click(function() {
            var text = jQuery(this).attr('data-on-text');

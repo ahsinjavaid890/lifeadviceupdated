@@ -273,3 +273,17 @@
   padding-left: 0;
   padding-right: 0;
 }
+.get_qout{
+    background: #262566;
+    border: 0;
+}
+.select2-container .select2-selection--single{
+    height: 43px !important;
+    padding: 5px !important;
+}
+.check_condtion h3{
+  font-size: 15px;
+}
+.check_condtion .col-md-12{
+  margin-top: -15px;
+}

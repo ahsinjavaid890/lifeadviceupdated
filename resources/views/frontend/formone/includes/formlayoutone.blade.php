@@ -233,12 +233,71 @@
                         </div>
                      </div>
                      @endif
-
+                        <div class="row">
+                           @if(isset($fields['Smoke12']))
+                           @if($fields['Smoke12'] == 'on')
+                           <div class="col-md-6 no-padding check_condtion">
+                              <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
+                              <div class="col-md-12 no-padding">
+                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
+                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                              </div>
+                           </div>
+                           @endif
+                        @endif
+                        @php
+                           $i = 0;
+                           $position_array = array();
+                           foreach($fields as $key => $value){
+                              $i ++;
+                              $position_array[$i] = $key;
+                           }
+                        @endphp
+                        @if(isset($fields['pre_existing']))
+                           @if($fields['pre_existing'] == 'on')
+                              @php
+                                 $num = array_search("pre_existing", $position_array); 
+                                 $current_values[$num] = 'group_16'; 
+                              @endphp
+                              <div class="col-md-6 no-padding check_condtion">
+                                 <h3><i class="fa fa-wheelchair"></i> Pre-existing Condition ?</h3>
+                                 <div class="col-md-12 no-padding">
+                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                 </div>
+                              </div>
+                           @endif
+                        @endif
+                        @if(isset($fields['fplan']))
+                           @if($fields['fplan'] == 'on')
+                              @php
+                                 $num = array_search("fplan", $position_array); 
+                                 $current_values[$num] = 'group_15';  
+                              @endphp
+                              <div class="col-md-6 no-padding check_condtion">
+                                 <h3><i class="fa fa-child"></i> Do you require Family Plan ?</h3>
+                                 <div class="col-md-12 no-padding">
+                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                 </div>
+                                 <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                                 <script>
+                                    function changefamilyyes(){
+                                       document.getElementById('familyplan_temp').value = 'yes';   
+                                       checkfamilyplan();
+                                    }
+                                    function changefamilyno(){
+                                       document.getElementById('familyplan_temp').value = 'no'; 
+                                       checkfamilyplan();
+                                    }
+                                 </script>
+                              </div>
+                           @endif
+                        @endif
+                        </div>
                      <div class="col-md-6">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
                      <div class="col-md-6 text-right">
-                        <button type="submit" class="btn btn-primary">Get Quote</button>
+                        <button type="submit" class="btn btn-primary get_qout">Get Quote</button>
                      </div>
                   </div>
                </form>

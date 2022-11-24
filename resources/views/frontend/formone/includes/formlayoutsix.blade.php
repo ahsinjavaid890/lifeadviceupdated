@@ -1,5 +1,12 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutsix.css')}}">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('.selecttwo').select2();
+});
+</script>
 <div class="clearfix"></div>
 <div class="wizzard hidden-xs" style="display:none;">
    <div class="container">
@@ -42,13 +49,14 @@
          </div>
          @if($fields['sum_insured'] == 'on')
          <div class="col-md-12 no-padding oldest-travel">
-            <select class="form-control" name="sum_insured2" id="sum_insured2">
-               <option value="">Coverage Amount</option>
-               @foreach($sum_insured as $r)
-               <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-               @endforeach
-            </select>
-            <span></span>
+            <div class="form-group">
+               <select required class="form-control selecttwo" name="sum_insured2" id="coverageammount">
+                  <option value="">Coverage Amount</option>
+                  @foreach($sum_insured as $r)
+                  <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                  @endforeach
+               </select>
+            </div>
          </div>
          @endif
       </div>

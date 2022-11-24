@@ -1,4 +1,11 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('.selecttwo').select2();
+});
+</script>
 <div class="clearfix"></div>
 <section id="sectionbackground" style="background-size:cover;background-position:50% 50%;padding:100px 0px 200px 0px;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
    <div class="container">
@@ -17,12 +24,14 @@
                <div class="page_1">
                   @if($fields['sum_insured'] == 'on')
                   <div class="col-md-4">
-                     <select class="form-control" name="sum_insured2" id="sum_insured2">
-                        <option value="">Coverage Amount</option>
-                        @foreach($sum_insured as $r)
-                        <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                        @endforeach
-                     </select>
+                     <div class="form-group">
+                        <select class="form-control selecttwo" name="sum_insured2" id="sum_insured2">
+                           <option value="">Coverage Amount</option>
+                           @foreach($sum_insured as $r)
+                           <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                           @endforeach
+                        </select>
+                     </div>
                   </div>
                   @endif
                   @if($fields['sdate'] == "on" && $fields['edate'] == "on")
@@ -117,7 +126,7 @@
                         <div class="row yearsdiv">
                            <div class="col-md-5">
                               <small style="font-size: 12px;color: #999;">Age</small>
-                              <input type="text" name="ages[]" id="ages[]" value="" class="primaryage" style="margin-top: -5px !important;display: block;">
+                              <input type="text" name="ages[]" id="ages[]" value="" class="primaryage" maxlength="3" style="margin-top: -5px !important;display: block;">
                            </div>
                            <div class="col-md-2 text-center" style="padding-top: 10px;">
                               or
@@ -132,15 +141,15 @@
                               <div class="col-md-6 no-padding">
                                  <div class="col-md-4" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Month</small>
-                                    <input type="text" style="margin-top: -5px !important;display: block;">
+                                    <input type="text" style="margin-top: -5px !important;display: block;"  maxlength="2">
                                  </div>
                                  <div class="col-md-4" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Day</small>
-                                    <input type="text" style="margin-top: -5px !important;display: block;">
+                                    <input type="text" style="margin-top: -5px !important;display: block;" maxlength="2">
                                  </div>
                                  <div class="col-md-4" style="padding: 0 5px;">
                                     <small style="font-size: 12px;color: #999;padding: 0;">Year</small>
-                                    <input type="text" id="dob_year" onchange="calprimaryage()" style="margin-top: -5px !important;display: block;">
+                                    <input type="text" id="dob_year" onchange="calprimaryage()" style="margin-top: -5px !important;display: block;"  maxlength="4">
                                  </div>
                               </div>
                               <script>
@@ -170,7 +179,7 @@
                               <h3><i class="fa fa-list-ul"></i> Additional Travelers</h3>
                            </div>
                            <div class="col-md-2 personswitch" style="padding-top: 25px;padding-right: 0;padding-left: 0;">
-                              <input type="checkbox" id="switch" style="float:right;" onclick="checkadditionals();"><label for="switch">Toggle</label>
+                              <input type="checkbox" id="switch" style="float:right;" onclick="checkadditionals();" maxlength="3"><label for="switch">Toggle</label>
                               <input type="hidden" id="temp_addi" value="0">
                               <script>
                                  function checkadditionals(){
@@ -190,7 +199,7 @@
                            <div class="birthday">
                               <div class="col-md-3 add_1" style="padding-left: 0;">
                                  <small style="font-size: 12px;color: #999;">Age</small>
-                                 <input type="text" name="years[]" class="add_1" value="" style="margin-top: -5px !important;display: block;">
+                                 <input type="text" name="years[]" class="add_1" value="" style="margin-top: -5px !important;display: block;" maxlength="3">
                               </div>
                            </div>
                            <input type="hidden" id="current_adds" value="1">
