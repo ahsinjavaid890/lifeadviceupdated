@@ -331,7 +331,7 @@
                               
                               var ages = ages.filter(Boolean);
                               console.log(ages);   
-                              $('.agesbtn').html(ages + '    <i class="fa fa-caret-down"></i>');
+                              $('.agesbtn').html(ages + '  Years  <i class="fa fa-caret-down"></i>');
                               $('.ageandcitizen').fadeOut(300);	
                               document.getElementById('number_travelers').value = ages;
                               checkfamilyplan();

@@ -175,7 +175,7 @@
                   <div class="yearsdiv">
                      <div class="col-md-5">
                         <small style="font-size: 12px;color: #999;">Age</small>
-                        <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3">
+                        <input type="text" name="ages[]" id="ages[]" style="margin-top: -5px !important;display: block;" maxlength="3">
                      </div>
                      <div class="col-md-2 text-center" style="padding-top: 10px;">
                         or
@@ -197,7 +197,7 @@
                            </div>
                            <div class="col-md-4" style="padding: 0 5px;">
                               <small style="font-size: 12px;color: #999;padding: 0;">Year</small>
-                              <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="4">
+                              <input type="text" name="ages[]" id="ages[]" style="margin-top: -5px !important;display: block;" maxlength="4">
                            </div>
                         </div>
                         <div class="col-md-6" style="padding-top: 10px;">
@@ -300,20 +300,22 @@
                   <div class="col-md-12 no-padding oldest-travel text-center">
                      <button type="button" class="btn btn-primary" style="margin-bottom: 20px;margin-top: 20px;border-radius: 20px;width: 100%;" onclick="applychanges();">Apply Changes</button>
                      <script>
-                        function applychanges(){
-                        var inps = document.getElementsByName('ages[]');
-                        var ages = [];
-                        for (var i = 0; i <inps.length; i++) {
-                        var inp=inps[i];
-                        ages.push(inp.value);
-                        }
-                        var ages = ages.filter(Boolean);
-                        
-                        $('.agesbtn').html(ages + ' Years <i class="fa fa-caret-down"></i>');
-                        $('.ageandcitizen').fadeOut(300); 
-                        document.getElementById('number_travelers').value = ages.length;
-                        }
-                     </script>
+                              function applychanges(){
+                              var inps = document.getElementsByName('ages[]');
+                              var ages = [];
+                              for (var i = 0; i <inps.length; i++) {
+                              var inp=inps[i];
+                              ages.push(inp.value);
+                              }
+                              
+                              var ages = ages.filter(Boolean);
+                              console.log(ages);   
+                              $('.agesbtn').html(ages + '  Years  <i class="fa fa-caret-down"></i>');
+                              $('.ageandcitizen').fadeOut(300);   
+                              document.getElementById('number_travelers').value = ages;
+                              checkfamilyplan();
+                              }
+                           </script>
                   </div>
                   @endif
                   <div class="clear:both;"></div>
@@ -413,14 +415,14 @@
          </div>
          <script>
             function changefamilyyes(){
-            document.getElementById('familyplan_temp').value = 'yes';   
-            checkfamilyplan();
+               document.getElementById('familyplan_temp').value = 'yes';   
+               checkfamilyplan();
             }
             function changefamilyno(){
-            document.getElementById('familyplan_temp').value = 'no'; 
-            checkfamilyplan();
+               document.getElementById('familyplan_temp').value = 'no'; 
+               checkfamilyplan();
             }
-         </script>  
+         </script> 
       </div>
       <div class="col-md-4 listing-item" id="group_13" style="display:none;" data-listing-price="8">
          <div class="col-md-12 control-label ">
@@ -598,7 +600,7 @@ if(number_travelers <'2'){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
 } else if(max_age > 59){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
-} else if(min_age > 21){
+} else if(min_age < 21){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
 }
 document.getElementById('family_error').style.display = 'block';  
@@ -678,6 +680,7 @@ function checktravellers(){
     checkfamilyplan();
 }
 
+
 function checkfamilyplan(){
     //Eligibility
     var inps = document.getElementsByName('ages[]');
@@ -713,7 +716,7 @@ function checkfamilyplan(){
             else if(max_age > 59){
                 $('#family_error').html('<i class="fa fa-warning"></i> Maximum age for family plan should be 59');   
             } 
-            else if(min_age > 21){
+            else if(min_age < 21){
                 $('#family_error').html('<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21');  
             }
             $('#family_error').css('display', 'block');  
@@ -729,66 +732,6 @@ function checkfamilyplan(){
 window.onload = function() {
   checktravellers();
 };
-</script>
-<script>
-function checkfamilyplan(){
-//Eligibility
-var inps = null;
-
-Array.prototype.max = function() {
-  return Math.max.apply(null, this);
-};
-
-Array.prototype.min = function() {
-  return Math.min.apply(null, this);
-};
-
-var max_age = inps.max(); //ages.max();
-var min_age = inps.min();
-//alert(max_age);
-if(document.getElementById('familyplan_temp').value == 'yes'){
-var number_travelers = '';
-if(number_travelers >='2' && max_age <=59 && min_age <=21){
-$('#GET_QUOTES').show();
-document.getElementById('family_error').innerHTML = '';
-document.getElementById('family_error').style.display = 'none';
-} else {
-$('#GET_QUOTES').hide();
-if(number_travelers <'2'){
-document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
-} else if(max_age > 59){
-document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
-} else if(min_age > 21){
-document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
-}
-document.getElementById('family_error').style.display = 'block';  
-}
-
-} else {
-   $('#GET_QUOTES').show();
-   document.getElementById('family_error').style.display = 'none';   
-}
-   
-}
-
-function numoftravelers(){
-if(document.getElementById('familyplan_temp').value == 'yes'){
-checkfamilyplan();
-}
-
-$("#number_travelers").on("change", function(){
-var number_of_traveller = $(this).val();
-var aa = "";
-for(var i=2; i<=number_of_traveller; i++){
-var aa = aa + $("#birthday")[0].outerHTML;
-}
-
-$("#birthday_view").html(aa);
-//console.log( $(".birthday")[0] );
-})
-
-}
-
 
 </script>
 <script>
