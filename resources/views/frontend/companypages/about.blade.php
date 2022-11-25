@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-@include('frontend.companypages.includes.main')
+@include('frontend.companypages.includes.mainblog')
 <div class="our-mission-section">
     <div class="container-homepage">
         <div class="row">

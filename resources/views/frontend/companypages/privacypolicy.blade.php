@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
-@include('frontend.companypages.includes.main')
+@include('frontend.companypages.includes.mainblog')
 @php
     $url = request()->segment(count(request()->segments()));
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();

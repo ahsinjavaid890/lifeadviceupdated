@@ -502,3 +502,8 @@ select{
     left: 0.75rem;
     z-index: 5;
 }
+#family_error{
+   position: absolute;
+   top: 80px;
+   max-width: 60%;
+}

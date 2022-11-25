@@ -365,8 +365,8 @@
                      </div>
                      @endif
                   @endif
-                  @if(isset($fields['fname']))
-                     @if($fields['fname'] == "on" )
+                  @if(isset($fields['lname']))
+                     @if($fields['lname'] == "on" )
                      <div class="col-md-4" style="margin-bottom:10px;">
                      <input  id="lname" name="lname" class="form-control" required type="text" placeholder="Your last name">
                      </div>
@@ -561,7 +561,7 @@ if(number_travelers <'2'){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
 } else if(max_age > 59){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
-} else if(min_age > 21){
+} else if(min_age < 21){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
 }
 document.getElementById('family_error').style.display = 'block';  
@@ -678,7 +678,7 @@ function checkfamilyplan(){
             else if(max_age > 59){
                 $('#family_error').html('<i class="fa fa-warning"></i> Maximum age for family plan should be 59');   
             } 
-            else if(min_age > 21){
+            else if(min_age < 21){
                 $('#family_error').html('<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21');  
             }
             $('#family_error').css('display', 'block');  

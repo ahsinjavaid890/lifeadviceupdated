@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
-@include('frontend.companypages.includes.main')
+@include('frontend.companypages.includes.mainblog')
 @foreach(DB::table('product_categories')->get() as $r)
 <section class="products ptb-100">
     <div class="container">

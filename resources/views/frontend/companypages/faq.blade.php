@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/faq.css')}}">
 
 @section('content')
-@include('frontend.companypages.includes.main')
+@include('frontend.companypages.includes.mainblog')
    <section class="first-section-of-page">
       <div id="faq" class="container py-5">
             <style type="text/css">
