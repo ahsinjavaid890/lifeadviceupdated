@@ -11,6 +11,16 @@
                 <input type="file" style="height:45px;" class="form-control" name="resp_two_vector">
             </div>
            @endif
+           @if($data->url == 'rrsp')
+            <div class="form-group">
+                <label>Claim Description</label>
+                <textarea class="summernote" name="rrsp_two_description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Claim Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="rrsp_two_vector">
+            </div>
+           @endif
            @if($data->url == 'claim')
             <div class="form-group">
                 <label>Claim Description</label>

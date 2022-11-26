@@ -150,6 +150,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.resp');
     }
+    public function rrsp()
+    {
+        return view('frontend.companypages.rrsp');
+    }
     public function login()
     {
         return view('frontend.companypages.login');

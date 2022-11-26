@@ -16,7 +16,7 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
@@ -24,7 +24,7 @@
                                    <h2> {{ $data->name }} </h2>
 
                             @endif
-                            @if($data->url == 'resp')
+                            @if($data->url == 'resp'  || $data->url == 'rrsp')
                               <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
