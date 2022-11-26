@@ -50,11 +50,11 @@
            @if($data->url == 'rrsp')
         <div class="form-group">
             <label>Claim Description</label>
-            <textarea class="summernote" name="rrsp_four_description"></textarea>
+            <textarea class="summernote" name="resp_four_description"></textarea>
         </div>
         <div class="form-group">
             <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="rrsp_four_vector">
+            <input type="file" style="height:45px;" class="form-control" name="resp_four_vector">
         </div>
        @endif
             @if($data->url == 'claim')
