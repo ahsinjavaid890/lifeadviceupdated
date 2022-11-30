@@ -1,29 +1,5 @@
 
-.payment-title {
-    width: 100%;
-    text-align: center;
-}
 
-.form-container .field-container:first-of-type {
-    grid-area: name;
-}
-
-.form-container .field-container:nth-of-type(2) {
-    grid-area: number;
-}
-
-.form-container .field-container:nth-of-type(3) {
-    grid-area: expiration;
-}
-
-.form-container .field-container:nth-of-type(4) {
-    grid-area: security;
-}
-
-.field-container input {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 .field-container {
     position: relative;
@@ -58,7 +34,7 @@ input {
     height: 38px;
     position: absolute;
     right: 6px;
-    top: calc(90% - 17px);
+    top: calc(75% - 17px);
     width: 60px;
 }
 
