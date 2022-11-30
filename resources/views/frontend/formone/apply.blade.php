@@ -59,29 +59,29 @@
                     			<div class="f1-step active">
                     				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
                     				<div class="headitem">
-										<p>About you <small>(APPLICANT 1)</small></p>
+										<p>About Info</p>
 									</div>
                     			</div>
                     			<div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-map"></i></div>
+                    				<div class="f1-step-icon"><i class="fa fa-location-arrow"></i></div>
                     				<div class="headitem">
-										<p>Your Address in Canada</p>
+										<p>Address</p>
 									</div>
                     			</div>
                     		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<div class="f1-step-icon"><i class="fa fa-subway"></i></div>
                     				<div class="headitem">
 										<p style="">Trip Information</p>
 									</div>
                     			</div>
                     		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<div class="f1-step-icon"><i class="fa fa-credit-card"></i></div>
                     				<div class="headitem">
 										<p style="">Payment Details</p>
 									</div>
                     			</div>
                     		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-shield"></i></div>
+                    				<div class="f1-step-icon"><i class="fa fa-info-circle"></i></div>
                     				<div class="headitem">
 										<p>Coverage Information</p>
 									</div>
@@ -391,19 +391,19 @@
 								        </div>
 								        <div class="field-container">
 								            <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
-								            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
+								            <input id="cardnumber"  type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
 								            <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
 								                xmlns:xlink="http://www.w3.org/1999/xlink">
 
 								            </svg>
 								        </div>
 								        <div class="field-container">
-								            <label for="expirationdate" style="margin-top:25px;">Expiration (mm/yy)</label>
-								            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric">
+								            <label for="expirationdate">Expiration (mm/yy)</label>
+								            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
 								        </div>
 								        <div class="field-container">
-								            <label for="securitycode" style="margin-top:25px;">Security Code</label>
-								            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric">
+								            <label for="securitycode">Security Code</label>
+								            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
 								        </div>
 								    </div>
 								    </div>
