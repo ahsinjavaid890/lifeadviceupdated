@@ -352,13 +352,20 @@ $salestaxes = 0;
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
 if($smoke == '0'){
-$smoke_price = $smoke_rate;
+    if($smoke_rate == 0)
+    {
+        $smoke_price = 0;
+    }else{
+        $smoke_price = $smoke_rate;
+    }
+
 } else if($smoke == '1'){
 $smoke_price = ($totaldaysprice * $smoke_rate) / 100;
 }
 } else {
 $smoke_price = 0;
 }
+
 
 // OTHERS
 $others = ($flat_price + $salestaxes) + $smoke_price;
@@ -507,7 +514,15 @@ $p_salestaxes = 0;
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
 if($smoke == '0'){
-$p_smoke_price = $smoke_rate;
+
+    if($smoke_rate == 0)
+    {
+        $p_smoke_price = 0;
+    }else{
+       $p_smoke_price = $smoke_rate;
+    }
+
+
 } else if($smoke == '1'){
 $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
 }
