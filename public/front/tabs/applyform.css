@@ -416,7 +416,7 @@ input {
 
 .f1-buttons { text-align: right; }
 
-.f1 .input-error { border-color: #262566 !important; }
+.f1 .input-error { border-color: red !important; }
 .f1-buttons button {
     background: #262566;
     color: white;
