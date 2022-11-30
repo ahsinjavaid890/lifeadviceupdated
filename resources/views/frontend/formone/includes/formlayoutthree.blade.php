@@ -551,13 +551,13 @@ var min_age = inps.min();
 //alert(max_age);
 if(document.getElementById('familyplan_temp').value == 'yes'){
 var number_travelers = '';
-if(number_travelers >='2' && max_age <=59 && min_age <=21){
+if(number_travelers >=2 && max_age <=59 && min_age <=21){
 $('#GET_QUOTES').show();
 document.getElementById('family_error').innerHTML = '';
 document.getElementById('family_error').style.display = 'none';
 } else {
 $('#GET_QUOTES').hide();
-if(number_travelers <'2'){
+if(number_travelers < 2){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
 } else if(max_age > 59){
 document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59'; 
@@ -665,14 +665,14 @@ function checkfamilyplan(){
     var max_age = ages.max();
     var min_age = ages.min();
     if($('#familyplan_temp').val() == 'yes'){
-        if($('#number_travelers').value >='2' && max_age <=59 && min_age <=21){
+        if($('#number_travelers').value >=2 && max_age <=59 && min_age <=21){
             $('#GET_QUOTES').css('display', 'block');
             $('#family_error').html('');
             $('#family_error').css('display', 'none');
         } 
         else {
             $('#GET_QUOTES').css('display', 'none');
-            if($('#number_travelers').value <'2'){
+            if($('#number_travelers').value < 2){
                 $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
             } 
             else if(max_age > 59){

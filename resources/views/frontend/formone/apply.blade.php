@@ -1,10 +1,14 @@
 @extends('frontend.layouts.main')
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css')}}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
 <style type="text/css">
 	.tabshead{
 		margin-top: 67px;
 	}
+	
+
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">
@@ -28,36 +32,60 @@
 		</div>
 	</div>
 </section>
-<section class="tabscontent">
-	<div class="container">
-		<form action="{{ url('applyqoute') }}" method="post">
-			@csrf
-		<div class="row mt-4">
-			<div class="" style="max-width: 100%;margin: auto;">
-				<div class="row hidden-xs">
-					<div class="col-md-12">
-						<div class="alert alert-primary" style="background-color: #FFF;color: #222;">	
-							<h4 style="color:#1BBC9B;"><i class="fa fa-bell"></i> We want everything to go <strong>smoothly!</strong></h4>
-							<p><strong>So please make sure all your answers are complete and accurate. </strong></p>
-							<p>Insurers rely on the information and may not check it, if the information you provide is not accurate your policy may be cancelled or the insurer may not pay out in the event of a claim.</p>
+
+
+
+
+
+		<div class="top-content">
+            <div class="container">
+            	<div class="" style="max-width: 100%;margin: auto;">
+					<div class="row hidden-xs">
+						<div class="col-md-12">
+							<div class="alert alert-primary" style="background-color: #FFF;color: #222;">	
+								<h4 style="color:#1BBC9B;"><i class="fa fa-bell"></i> We want everything to go <strong>smoothly!</strong></h4>
+								<p><strong>So please make sure all your answers are complete and accurate. </strong></p>
+								<p>Insurers rely on the information and may not check it, if the information you provide is not accurate your policy may be cancelled or the insurer may not pay out in the event of a claim.</p>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card">
-						<div class="card-header">
-							<div class="col-md-12">
-								<div class="form-group">
-									<div class="headitem">
-										<h2 style="font-size: 22px;font-weight: bold;margin-top: 20px;color:#1BBC9B;">About you <small>(APPLICANT 1)</small></h2>
+                <div class="row">
+                    <div class="col-md-12">
+			        	<form action="{{ url('applyqoute') }}" method="post" class="f1">
+							@csrf
+                    		<div class="f1-steps">
+                    			<div class="f1-progress">
+                    			    <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+                    			</div>
+                    			<div class="f1-step active">
+                    				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                    				<div class="headitem">
+										<p>About you <small>(APPLICANT 1)</small></p>
 									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="col-md-12">
-								<div class="form-group">
+                    			</div>
+                    			<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-map"></i></div>
+                    				<div class="headitem">
+										<p>Your Address in Canada</p>
+									</div>
+                    			</div>
+                    		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<div class="headitem">
+										<p style="">Trip Information</p>
+									</div>
+                    			</div>
+                    		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-shield"></i></div>
+                    				<div class="headitem">
+										<p>Coverage Information</p>
+									</div>
+                    			</div>
+                    		</div>
+                    		
+                    		<fieldset>
+                    			<div class="form-group">
 									<div class="row">
 										<div class="col-md-6 nopad">
 											<label>First Name <small class="text-danger">*</small>
@@ -81,7 +109,7 @@
 										<div class="col-md-6 nopad">
 											<label>Gender<small class="text-danger">*</small>
 											</label>
-											<select name="gender" class="form-control">
+											<select name="gender" class="form-control selectpicker" data-live-search="true">
 												<option>Select Gender</option>
 												<option>Male</option>
 												<option>Female</option>
@@ -103,13 +131,12 @@
 										</div>
 									</div>
 								</div>
+								<div class="card-body">
+							<div class="col-md-12">
+								
 								</div>
 							</div>
-						</div>
-					</div>
-						<div class="col-md-12 mt-4">
-							<div class="card">
-								<div class="card-header">
+								<!-- <div class="card-header" style="display: none;">
 									<div class="toggle active " onclick="information()">
 										<div class="row">
 										<div class="col-md-6">
@@ -122,7 +149,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="card-body"  id="benefiaciary" >
+							<div class="card-body"  id="benefiaciary" style="display: none;">
 									<div class="toggle toggle-transparent toggle-noicon" >
 											<div class="toggle-content"style="display: block;">
 												<div class="form-group">
@@ -163,22 +190,13 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-4">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="col-md-12">
-										<div class="headitem">
-											<h2 style="font-size: 22px;font-weight: bold;color:#1BBC9B;">Your Address in Canada</h2>
-										</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
+								</div> -->
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                            	<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Street Number and Name<small class="text-danger">*</small></label>
@@ -216,30 +234,19 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-4">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="col-md-12">
-										<div class="form-group">
-											<div class="headitem">
-												<h2 style="font-size: 22px;font-weight: bold;color:#1BBC9B;">Trip Information</h2>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                            	<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label>Visitor <small class="text-danger">*</small></label>
+												<input class="form-control" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" name="visitor_visa_type" readonly="" type="text">
 											</div>
 										</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-													<label>Visitor <small class="text-danger">*</small></label>
-													<input class="form-control" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" name="visitor_visa_type" readonly="" type="text">
-												</div>
-											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip Arrival date <small class="text-danger">*</small></label>
@@ -265,22 +272,13 @@
 												</div>
 											</div>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-4">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<div class="col-md-12">
-										<div class="headitem">
-											<h2 style="font-size: 22px;font-weight: bold;color:#1BBC9B;">Payment Details</h2>
-										</div>
-									</div>
-								</div>
-								<div class="card-body">
-										<div class="row">
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                            	<div class="row">
 												<div class="col-md-6">
 													<div class="container preload">
 											        <div class="creditcard">
@@ -407,102 +405,97 @@
 											    </div>
 											   </div>
 										    </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                            	<div class="row ">
+									<div class="col-md-12">
+										<div class="alert alert-primary" style="background-color: #FFF;color: #222;">
+											<div class="col-md-12">
+												<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
+											</div>
+											<div class="col-md-12 text-right">
+												<img src="images/INGLE-Assurance-Travel-insurance-Logo.png" class="img-responsive">
+											</div>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6 nopad">
+														<div class="row">
+														<div class="col-md-5 nopad">
+															<label>Plan Name</label>
+														</div>
+														<div class="col-md-7 nopad">
+															Plan-A NO- Pre-Condition						
+														</div>
+														<div class="clearfix"></div>
+														<div class="col-md-5 nopad">
+															<label>Product Name</label>
+														</div>
+														<div class="col-md-7 nopad">
+															Super Visa Insurance						
+														</div>
+														<div class="clearfix"></div>
+														<div class="col-md-5 nopad">
+															<label>Coverage Amount</label>
+														</div>
+														<div class="col-md-7 nopad">
+															150000						
+														</div>
+														<div class="clearfix"></div>
+													</div>
+												</div>
+													<div class="col-md-6 nopad">	
+														<div class="row">
+															<div class="col-md-5 nopad">
+																<label>Coverage Dates</label>
+															</div>
+															<div class="col-md-7 nopad">
+																11/21/2022 / 2023-11-20						
+															</div>
+															<div class="clearfix"></div>
+															<div class="col-md-5 nopad">
+																<label>Deductible</label>
+															</div>
+															<div class="col-md-7 nopad">
+																$1000						
+															</div>
+															<div class="clearfix"></div>
+															<div class="col-md-5 nopad">
+																<label>Premium</label>
+															</div>
+															<div class="col-md-7 nopad">
+																$1,128.96	
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" style="margin:0;">
+											<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
+					  						<label class="radio padtop0 d-flex">
+												<input name="accept" value="mastercard" required="required" type="checkbox">
+												<i></i>
+												<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
+											</label>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-4">
-						<div class="col-md-12">
-							<div class="alert alert-primary" style="background-color: #FFF;color: #222;">
-								<div class="col-md-12">
-									<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
-								</div>
-								<div class="col-md-12 text-right">
-									<img src="images/INGLE-Assurance-Travel-insurance-Logo.png" class="img-responsive">
-								</div>
-								<div class="col-md-12">
-									<div class="row">
-										<div class="col-md-6 nopad">
-											<div class="row">
-											<div class="col-md-5 nopad">
-												<label>Plan Name</label>
-											</div>
-											<div class="col-md-7 nopad">
-												Plan-A NO- Pre-Condition						
-											</div>
-											<div class="clearfix"></div>
-											<div class="col-md-5 nopad">
-												<label>Product Name</label>
-											</div>
-											<div class="col-md-7 nopad">
-												Super Visa Insurance						
-											</div>
-											<div class="clearfix"></div>
-											<div class="col-md-5 nopad">
-												<label>Coverage Amount</label>
-											</div>
-											<div class="col-md-7 nopad">
-												150000						
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-										<div class="col-md-6 nopad">	
-											<div class="row">
-												<div class="col-md-5 nopad">
-													<label>Coverage Dates</label>
-												</div>
-												<div class="col-md-7 nopad">
-													11/21/2022 / 2023-11-20						
-												</div>
-												<div class="clearfix"></div>
-												<div class="col-md-5 nopad">
-													<label>Deductible</label>
-												</div>
-												<div class="col-md-7 nopad">
-													$1000						
-												</div>
-												<div class="clearfix"></div>
-												<div class="col-md-5 nopad">
-													<label>Premium</label>
-												</div>
-												<div class="col-md-7 nopad">
-													$1,128.96	
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-group" style="margin:0;">
-								<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
-		  						<label class="radio padtop0 d-flex">
-									<input name="accept" value="mastercard" required="required" type="checkbox">
-									<i></i>
-									<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="margin-top:10px !important;opacity: 0.7;">
-						<div class="col-md-12 text-center">
-							<button type="submit" id="getquote" class="btn btn-lg nextbtn"><i class="fa fa-shopping-cart"></i> Complete Purchase</button>
-						</div>
-					</div>
-					<div class="row" style="margin-top:30px !important;opacity: 0.7;">
-						<div class="col-md-12 col-lg-offset-3 text-center" style="font-size:13px; max-width: 50%; margin: auto;">Don't worry, nothing's set in stone. Your dedicated advisor will review everything and contact you before submitting your application. By submitting this form, you consent to your data being sent to an independent representative working with LifeAdvice Insurance.</div>
-					</div>
-					<div class="row" style="margin-top:30px !important;opacity: 0.7;">
-						<div class="col-md-12 text-center"><i class="fa fa-lock"></i> Your information is protected.</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-	</div>
-</section>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="submit" id="getquote" class="btn nextbtn">Purchase</button>
+                                </div>
+                            </fieldset>
+                    	
+                    	</form>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
 
 
 

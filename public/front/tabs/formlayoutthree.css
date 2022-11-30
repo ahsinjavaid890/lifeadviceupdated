@@ -401,7 +401,7 @@ color: #FFF;
 }
 @media (max-width: 1400px){
 .daterangepicker {
-    width: 19%;
+    width: 250px;
 }
 }
 

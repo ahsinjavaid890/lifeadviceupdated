@@ -30,6 +30,7 @@ a {
     transition: all 0.5s;
     text-decoration: none;
     color: #31abfc;
+    cursor: pointer !important;
 }
 
 a:hover {
@@ -12059,4 +12060,7 @@ a:focus, a:hover{
 }
 .blog_section{
     margin-top: 88px;
+}
+.coverage-amt form .row{
+    padding: 10px;
 }
