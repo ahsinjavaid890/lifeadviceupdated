@@ -585,8 +585,11 @@ $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&
         <!--<small style="display:block"><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>-->
     </div>
     <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
-       <form method="GET" action="{{ url('apply') }}">
-        <input type="hidden" value="{{ $request->email }}" name="email">
+       <form method="POST" action="{{ url('apply') }}">
+        @csrf
+        <input type="hidden" value="{{ $request->savers_email }}" name="email">
+        <input type="hidden" value="{{ $request->fname }}" name="fname">
+        <input type="hidden" value="{{ $request->lname }}" name="lname">
         <input type="hidden" value="{{ $sum_insured }}" name="coverage">
         <input type="hidden" value="{{ $number_travelers }}" name="traveller">
         <input type="hidden" value="{{ $deductible }}" name="deductibles">

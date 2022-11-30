@@ -88,7 +88,7 @@
                     			</div>
                     		</div>
                     		
-                    		<fieldset>
+                    		<fieldset> 
                     			<div class="form-group">
 									<div class="row">
 										<div class="col-md-6 nopad">
@@ -108,15 +108,15 @@
 										<div class="col-md-6 nopad">
 											<label>Date OF Birth<small class="text-danger">*</small>
 											</label>
-											<input type="date" name="dob" class="form-control" placeholder="Date OF Birth">
+											<input value="{{ $request->person1 }}" type="date" name="dob" class="form-control" placeholder="Date OF Birth">
 										</div>
 										<div class="col-md-6 nopad">
 											<label>Gender<small class="text-danger">*</small>
 											</label>
 											<select name="gender" class="form-control selectpicker" data-live-search="true">
-												<option>Select Gender</option>
-												<option>Male</option>
-												<option>Female</option>
+												<option value="">Select Gender</option>
+												<option value="Male">Male</option>
+												<option value="Female">Female</option>
 											</select>
 										</div>
 									</div>
@@ -136,10 +136,10 @@
 									</div>
 								</div>
 								<div class="card-body">
-							<div class="col-md-12">
-								
+									<div class="col-md-12">
+										
+									</div>
 								</div>
-							</div>
 								<!-- <div class="card-header" style="display: none;">
 									<div class="toggle active " onclick="information()">
 										<div class="row">
@@ -204,7 +204,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Street Number and Name<small class="text-danger">*</small></label>
-												<input id="autocomplete_search" class="form-control pac-target-input" name="autocomplete_search" type="text" placeholder="Enter a location" autocomplete="off">
+												<input class="form-control pac-target-input" name="streetname" type="text" placeholder="Enter a location" autocomplete="off">
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -216,25 +216,25 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>City<small class="text-danger">*</small></label>
-												<input id="city" name="city" class="form-control" required="" type="text">
+												<input id="city" name="city" class="form-control" type="text">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Province<small class="text-danger">*</small></label>
-												<input id="province" class="form-control" name="province" required="" type="text">
+												<input id="province" class="form-control" name="province" type="text">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Postal Code<small class="text-danger">*</small></label>
-												<input id="postalcode" class="form-control" name="postalcode" required="" type="text">
+												<input id="postalcode" class="form-control" name="postalcode"  type="text">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Country<small class="text-danger">*</small></label>
-												<input id="country" class="form-control" name="country" required="" type="text">
+												<input id="country" class="form-control" name="country"  type="text">
 											</div>
 										</div>
 									</div>
@@ -254,25 +254,25 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip Arrival date <small class="text-danger">*</small></label>
-													<input class="form-control" required="" id="tripdate" name="tripdate" value="{{ $request->tripdate }}" type="date">
+													<input class="form-control"  id="tripdate" name="tripdate" value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" type="date">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Primary Destination <small class="text-danger">*</small></label>
-													<input class="form-control" required="" value="{{ $request->primary_destination }}" id="visa_type" name="visa_type" type="text">
+													<input class="form-control"  value="{{ $request->country }}" id="visa_type" name="visa_type" type="text">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip End date <small class="text-danger">*</small></label>
-													<input class="form-control" required="" id="tripend" name="tripend" value="{{ $request->tripdate }}"type="date">
+													<input class="form-control"  id="tripend" name="tripend" value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>"type="date">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label>Trip Duration(days) <small class="text-danger">*</small></label>
-													<input class="form-control" required="" value="365" id="tripduration" name="tripduration" type="text">
+													<input class="form-control"  value="{{ $request->tripduration }}" id="tripduration" name="tripduration" type="text">
 												</div>
 											</div>
 									</div>
@@ -283,7 +283,7 @@
                             </fieldset>
                             <fieldset>
                             	<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<div class="container preload">
 								        <div class="creditcard">
 								            <div class="front">
@@ -383,27 +383,26 @@
 								        </div>
 								    </div>
 									</div>
-								    <div class="col-md-6">
+								    <div class="col-md-8">
 								    	<div class="form-container">
 								        <div class="field-container">
 								            <label for="name">Name</label>
-								            <input id="name" maxlength="20" type="text">
+								            <input name="cardholdername" id="name" maxlength="20" type="text">
 								        </div>
 								        <div class="field-container">
 								            <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
-								            <input id="cardnumber"  type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
+								            <input name="cardholdernumber" id="cardnumber"  type="text" pattern="[0-9]*" inputmode="numeric" >
 								            <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
 								                xmlns:xlink="http://www.w3.org/1999/xlink">
-
 								            </svg>
 								        </div>
 								        <div class="field-container">
 								            <label for="expirationdate">Expiration (mm/yy)</label>
-								            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
+								            <input name="expirationdate" id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" >
 								        </div>
 								        <div class="field-container">
 								            <label for="securitycode">Security Code</label>
-								            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control">
+								            <input name="cvc" id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" >
 								        </div>
 								    </div>
 								    </div>
@@ -417,11 +416,13 @@
                             	<div class="row ">
 									<div class="col-md-12">
 										<div class="alert alert-primary" style="background-color: #FFF;color: #222;">
-											<div class="col-md-12">
-												<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
-											</div>
-											<div class="col-md-12 text-right">
-												<img src="{{ asset('public/front/img/logos/INGLE.png')}}">
+											<div class="row">
+												<div class="col-md-6">
+													<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
+												</div>
+												<div class="col-md-6 text-right">
+													<img src="{{  url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_logo }}">
+												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="row">
@@ -431,21 +432,21 @@
 															<label>Plan Name</label>
 														</div>
 														<div class="col-md-7 nopad">
-															Plan-A NO- Pre-Condition						
+															{{ $request->planname }}
 														</div>
 														<div class="clearfix"></div>
 														<div class="col-md-5 nopad">
 															<label>Product Name</label>
 														</div>
 														<div class="col-md-7 nopad">
-															Super Visa Insurance						
+															{{ $request->product_name }}
 														</div>
 														<div class="clearfix"></div>
 														<div class="col-md-5 nopad">
 															<label>Coverage Amount</label>
 														</div>
 														<div class="col-md-7 nopad">
-															150000						
+															{{ $request->coverage }}						
 														</div>
 														<div class="clearfix"></div>
 													</div>
@@ -456,21 +457,21 @@
 																<label>Coverage Dates</label>
 															</div>
 															<div class="col-md-7 nopad">
-																11/21/2022 / 2023-11-20						
+																{{ $request->tripdate }} / {{ $request->tripend }}						
 															</div>
 															<div class="clearfix"></div>
 															<div class="col-md-5 nopad">
 																<label>Deductible</label>
 															</div>
 															<div class="col-md-7 nopad">
-																$1000						
+																${{ $request->deductibles }}			
 															</div>
 															<div class="clearfix"></div>
 															<div class="col-md-5 nopad">
 																<label>Premium</label>
 															</div>
 															<div class="col-md-7 nopad">
-																$1,128.96	
+																$<?php echo number_format($request->premium,2); ?>
 															</div>
 														</div>
 													</div>
@@ -480,7 +481,7 @@
 										<div class="form-group" style="margin:0;">
 											<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
 					  						<label class="radio padtop0 d-flex">
-												<input name="accept" value="mastercard" required="required" type="checkbox">
+												<input name="accept" value="mastercard" type="checkbox">
 												<i></i>
 												<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
 											</label>

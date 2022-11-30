@@ -53,7 +53,9 @@ Route::get('/signup', [SiteController::class, 'signup']);
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 Route::get('/compareplans', [SiteController::class, 'compareplans']);
-Route::get('/apply', [SiteController::class, 'applyplan']);
+Route::POST('/apply', [SiteController::class, 'applyplan']);
+Route::POST('/applyqoute', [SiteController::class, 'applyqoute']);
+
 
 
 Route::get('/product/{id}', [SiteController::class, 'productdetail']);
