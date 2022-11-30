@@ -408,3 +408,6 @@ input {
     color: white;
     width: 120px;
 }
+.btn-next:hover{
+    color: white;
+}
