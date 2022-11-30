@@ -47,7 +47,7 @@
                </div>
                <div class="col-md-6">
                    <div class="claim-process-heading mt-5">
-                       <h2><span>Benefits why nearly half of Canadians invest in an RRSP</span></h2>
+                       <h2><span>Benefits why nearly half of</span> Canadians invest in an RRSP</h2>
                    </div>
                    <div class="claim-process-process">
                        <p>Use an RRSP to save for retirement while also saving for anything in a TFSA<br>Contributions reduce your annual income, lowering your tax bill</p>
@@ -71,7 +71,7 @@
            <div class="row">
                <div class="col-md-6">
                    <div class="claim-process-heading mt-5">
-                       <h2><span>What is your RRSP contribution limit?</span></h2>
+                       <h2><span>What is your RRSP</span>  contribution limit?</h2>
                    </div>
                    <div class="claim-process-process">
                        <p>Generally, your contribution limit is calculated by the Canada Revenue Agency based on these 3 factors:</p>
