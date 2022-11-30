@@ -349,7 +349,7 @@ input {
 
 /***** Top content *****/
 .nextbtn{
-    padding: 0px !important;
+    padding: .375rem .75rem !important;
 }
 .top-content { padding: 40px 0 75px 0; }
 
@@ -369,9 +369,9 @@ input {
 }
 .f1 h3 { margin-top: 0; margin-bottom: 5px; text-transform: uppercase; }
 
-.f1-steps { overflow: hidden; position: relative; margin-top: 20px; }
+.f1-steps { text-align: center; overflow: hidden; position: relative; margin-top: 20px; }
 
-.f1-progress { position: absolute; top: 24px; left: 5px; width: 80%; height: 1px; background: #ddd; }
+.f1-progress { position: absolute; top: 24px; left: 88px; width: 70%; height: 1px; background: #ddd; }
 .f1-progress-line { position: absolute; top: 0; left: 0; height: 1px; background: #262566; }
 
 .f1-step { position: relative; float: left; width: 216px; padding: 0 5px; }
@@ -412,11 +412,11 @@ input {
 .f1-step.activated p { color: #262566; }
 .f1-step.active p { color: #262566; }
 
-.f1 fieldset { display: none; text-align: left; }
+.f1 fieldset { margin-top: 40px; display: none; text-align: left; }
 
 .f1-buttons { text-align: right; }
 
-.f1 .input-error { border-color: #f35b3f; }
+.f1 .input-error { border-color: #262566 !important; }
 .f1-buttons button {
     background: #262566;
     color: white;

@@ -7,8 +7,6 @@
 	.tabshead{
 		margin-top: 67px;
 	}
-	
-
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">
@@ -383,7 +381,7 @@
 											   	 <div class="form-container">
 											        <div class="field-container">
 											            <label for="name">Name</label>
-											            <input id="name" maxlength="20" type="text">
+											            <input id="name" maxlength="20" type="text" class="">
 											        </div>
 											        <div class="field-container mt-3">
 											            <label for="cardnumber">Card Number</label>
@@ -418,7 +416,7 @@
 												<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
 											</div>
 											<div class="col-md-12 text-right">
-												<img src="images/INGLE-Assurance-Travel-insurance-Logo.png" class="img-responsive">
+												<img src="{{ asset('public/front/img/logos/INGLE.png')}}">
 											</div>
 											<div class="col-md-12">
 												<div class="row">
