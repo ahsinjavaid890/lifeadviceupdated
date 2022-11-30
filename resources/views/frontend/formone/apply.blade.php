@@ -75,6 +75,12 @@
 									</div>
                     			</div>
                     		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<div class="headitem">
+										<p style="">Payment Details</p>
+									</div>
+                    			</div>
+                    		    <div class="f1-step">
                     				<div class="f1-step-icon"><i class="fa fa-shield"></i></div>
                     				<div class="headitem">
 										<p>Coverage Information</p>
