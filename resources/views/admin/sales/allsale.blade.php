@@ -19,11 +19,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-separate table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                
+                            <tr>                        
                                 <th><strong>Policy Number</strong></th>
                                 <th><strong>Policy Title</strong></th>
                                 <th><strong>Product</strong></th>
@@ -66,9 +64,7 @@
                                     $st_date = strtotime($r->start_date);
                                 @endphp
 
-                                <tr>
-                                    <td>{{ $r->sales_id }}</td>
-                                    
+                                <tr>                                
                                     <td>
                                         {{ $policy_number }}
                                     </td>
@@ -80,7 +76,6 @@
                                     </td>
                                     <td>
                                         {{ $r->fname }} {{ $r->lname }} <br>
-                                        {{ $r->email }}
                                     </td>
                                     <td>{{ $r->purchase_date }}</td>
                                     <td>
@@ -111,6 +106,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="margin-top:10px;" class="row">
+                        {!! $data->links('frontend.pagination') !!}
+                    </div>
                 </div>
             </div>
             <!--end::Card-->

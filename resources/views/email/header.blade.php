@@ -66,21 +66,7 @@
             }
         }
     </style>
-    <!--<![endif]-->
-    <!--[if mso]>
-        <xml>
-        <o:OfficeDocumentSettings>
-          <o:AllowPNG/>
-          <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-        </xml>
-        <![endif]-->
-    <!--[if lte mso 11]>
-        <style type="text/css">
-          .outlook-group-fix { width:100% !important; }
-        </style>
-        <![endif]-->
-
+   
 
     <style type="text/css">
         @media only screen and (min-width:480px) {

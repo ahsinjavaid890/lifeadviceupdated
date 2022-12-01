@@ -544,7 +544,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->orderby('purchase_date' , 'DESC')->get();
+        $data = DB::table('sales')->orderby('purchase_date' , 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)

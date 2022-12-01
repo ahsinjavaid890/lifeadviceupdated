@@ -22,18 +22,17 @@ class SiteController extends Controller
     }
     public function applyqoute(Request $request)
     {
-
-
-
-
-
-       $sql =  "INSERT INTO `sales`(`policy_id`, `policy_title`, `fname`, `lname`, `email`, `phone`, `address`, `address_2`, `city`, `postcode`, `country`, `billing_province`, `deductible`, `deductible_rate`, `benefit`, `duration`, `age`, `product`, `plan`, `dob`, `start_date`, `end_date`, `departure_date`, `arrival_date`, `return_date`, `additional_travellers`, `price_total`, `price_payable`, `broker`, `agent`, `user_id`) VALUES ('$reqest->plan_id','$request->plan_name','$request->fname','$request->lname','$request->useremail','$request->phone','$request->streetname','$request->suit','$request->city','$request->postalcode','CA','$request->province','$request->deductibles','$request->deductible_rate','$request->coverage','$request->tripduration','$request->years','$request->product_id','$request->plane_name','$request->day_birth','$request->tripdate','$request->tripend','$request->tripdate','$request->tripdate','$request->tripend','$request->traveller','$request->premium','$request->broker','$request->agent','$request->user_id')";
-
-
-        "INSERT INTO `sales_cards`(`card_name`, `card_number`, `card_month`, `card_year`, `card_cvc`, `sales_id`) VALUES ('$request->card_name','$request->card_number','$card_month','$card_year','$request->card_cvc','$lastid')"
-
-
-        "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$lastid', 'payment', 'Policy Purchase Payment', '$product_premium')"
+       $sql =  "INSERT INTO `sales`(`policy_id`, `policy_title`, `fname`, `lname`, `email`, `phone`, `address`, `address_2`, `city`, `postcode`, `country`, `billing_province`, `deductible`, `deductible_rate`, `benefit`, `duration`, `age`, `product`, `plan`, `dob`, `start_date`, `end_date`, `departure_date`, `arrival_date`, `return_date`, `additional_travellers`, `price_total`, `price_payable`, `broker`, `agent`, `user_id`) VALUES ('$request->plan_id','$request->plan_name','$request->fname','$request->lname','$request->email','$request->phone','$request->streetname','$request->suit','$request->city','$request->postalcode','CA','$request->province','$request->deductibles','$request->deductible_rate','$request->coverage','$request->tripduration','$request->age','$request->product_id','$request->plan_name','$request->dob','$request->tripdate','$request->tripend','$request->tripdate','$request->tripdate','$request->tripend','$request->traveller','$request->premium','$request->premium','$request->broker','$request->agent','0')";
+        DB::statement($sql);
+        $sales = DB::Table('sales')->limit(1)->orderBy('sales_id' , 'DESC')->first();
+        $saleid = $sales->sales_id;
+        $card_expiry = explode('/', $request->expirationdate);
+        $card_month = $card_expiry[0];
+        $card_year = $card_expiry[1];
+        $sql2 = "INSERT INTO `sales_cards`(`card_name`, `card_number`, `card_month`, `card_year`, `card_cvc`, `sales_id`) VALUES ('$request->cardholdername','$request->cardholdernumber','$card_month','$card_year','$request->card_cvc','$saleid')";
+        DB::statement($sql2);
+        $sql3 = "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$saleid', 'payment', 'Policy Purchase Payment', '$request->premium')";
+        DB::statement($sql3);
     }
     public function applyplan(Request $request)
     {

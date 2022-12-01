@@ -97,7 +97,7 @@ jQuery(document).ready(function() {
     // submit
     $('.f1').on('submit', function(e) {
         // fields validation
-        $(this).find('input[type="text"], input[type="password"], textarea').each(function() {
+        $(this).find('input[type="text"],input[type="date"],input[type="number"],input[type="email"],input[type="checkbox"],select[name="gender"]').each(function() {
             if( $(this).val() == "" ) {
                 e.preventDefault();
                 $(this).addClass('input-error');
