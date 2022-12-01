@@ -20,7 +20,15 @@ use App\Http\Controllers\JobController;
 */
 
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::POST('/attemptlogin', [SiteController::class, 'attemptlogin']);
+
+
+Route::name('user.')->prefix('user')->group(function(){
+    Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
+    
+});
+
+
 // Site Routes
 
 Route::get('/', [SiteController::class, 'index']);
@@ -49,12 +57,13 @@ Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);
 Route::get('/blogs', [SiteController::class, 'blogs']);
 Route::get('/faq', [SiteController::class, 'faq']);
 Route::get('/login', [SiteController::class, 'login']);
-Route::get('/signup', [SiteController::class, 'signup']);
+
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 Route::get('/compareplans', [SiteController::class, 'compareplans']);
 Route::POST('/apply', [SiteController::class, 'applyplan']);
 Route::POST('/applyqoute', [SiteController::class, 'applyqoute']);
+Route::get('/conferm', [SiteController::class, 'confermquote']);
 
 
 
