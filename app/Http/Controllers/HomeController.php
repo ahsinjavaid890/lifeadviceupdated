@@ -9,24 +9,10 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
-    public function index()
+    public function dashboard()
     {
-        if(Auth::user()->approved_status == 1)
-        {
-            return redirect('/dashboard');
-        }
-        else
-        {
-            $subject = 'Your Account Is Not Approved Yet';
-            $request = Auth::user();
-            // Mail::send('email.accountnotapproved', ['name' => $request->name], function($message) use($request , $subject){
-            //     $message->to($request->email);
-            //     $message->subject($subject);
-            // });
-            Auth::logout();
-            return redirect()->route('login')->with('warning', 'Your Account is Not Approved.');
-        }        
+        return view('frontend.user.dashboard');
     }
 }

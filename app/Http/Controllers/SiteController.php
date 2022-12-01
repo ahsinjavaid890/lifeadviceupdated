@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\companies;
 use App\Models\jobs;
+use App\Models\User;
 use App\Models\jobsubmissionsrequests;
 use App\Models\linktemplatewithjobs;
 use App\Models\maplocations;
@@ -13,12 +14,19 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
+use Illuminate\Support\Facades\Hash;
 use DB;
+use Mail;
+use Auth;
 class SiteController extends Controller
 {
     public function index()
     {
         return view('frontend.homepage.index');
+    }
+    public function confermquote()
+    {
+        return view('frontend.formone.conferm');
     }
     public function applyqoute(Request $request)
     {
@@ -33,6 +41,24 @@ class SiteController extends Controller
         DB::statement($sql2);
         $sql3 = "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$saleid', 'payment', 'Policy Purchase Payment', '$request->premium')";
         DB::statement($sql3);
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request){
+              $message->to($request->email);
+              $message->subject('New Purchase');
+          });
+        $password = 10000000+$sales->sales_id;
+        $newuser = new User();
+        $newuser->name = $request->fname.' '.$request->lname;
+        $newuser->email = $request->email;
+        $newuser->phone = $request->phone;
+        $newuser->dob = $request->dob;
+        $newuser->address = $request->streetname;
+        $newuser->country = 'CA';
+        $newuser->postal = $request->postalcode; 
+        $newuser->password = Hash::make($password);
+        $newuser->user_type = 'customer';
+        $newuser->status = 'active';
+        $newuser->save();
+        return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)
     {
@@ -174,7 +200,42 @@ class SiteController extends Controller
     }
     public function login()
     {
-        return view('frontend.companypages.login');
+        if(Auth::check())
+        {
+            return redirect()->route('user.dashboard');   
+        }else{
+            return view('auth.login');
+        }
+        
+    }
+    public function attemptlogin(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {   
+            if(Auth::user()->user_type == 'customer')
+            {
+                if (Auth::user()->status == 'active') {
+                    return redirect()->route('user.dashboard');   
+                }else{
+                    Auth::logout();
+                    return redirect()->back()->with('warning', 'Your Account Is Banned Due To Some Reason');
+                }
+            }
+            else
+            {
+                Auth::logout();
+                return redirect()->back()->with('warning', 'This Is for Customers.');
+            }
+        }
+        else
+        {
+            return redirect()->back()->with('warning', 'Email or Password are Incorrect');
+        }
     }
     public function signup()
     {
