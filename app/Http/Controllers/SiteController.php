@@ -14,6 +14,7 @@ use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
 use DB;
+use Mail;
 class SiteController extends Controller
 {
     public function index()
@@ -33,6 +34,13 @@ class SiteController extends Controller
         DB::statement($sql2);
         $sql3 = "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$saleid', 'payment', 'Policy Purchase Payment', '$request->premium')";
         DB::statement($sql3);
+
+
+
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request){
+              $message->to($request->email);
+              $message->subject('New Purchase');
+          });
     }
     public function applyplan(Request $request)
     {
