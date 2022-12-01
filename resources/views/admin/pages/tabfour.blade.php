@@ -39,22 +39,32 @@
            @endif
            @if($data->url == 'resp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="resp_four_description"></textarea>
+            <label>Section Four Description</label>
+            <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="resp_four_vector">
+            <label>Section Four Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
         </div>
        @endif
            @if($data->url == 'rrsp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="resp_four_description"></textarea>
+            <label>Section Four Description</label>
+            <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="resp_four_vector">
+            <label>Section Four Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
+        </div>
+       @endif
+           @if($data->url == 'nonmedical')
+        <div class="form-group">
+            <label>Section Four Description</label>
+            <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Section Four Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
         </div>
        @endif
             @if($data->url == 'claim')

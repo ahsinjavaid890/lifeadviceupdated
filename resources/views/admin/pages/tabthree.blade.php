@@ -35,22 +35,32 @@
            @endif
            @if($data->url == 'resp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="resp_three_description"></textarea>
+            <label>Section Three Description</label>
+            <textarea class="summernote" name="sectionthreedescription">{{ $data->sectionthreedescription }}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="resp_three_vector">
+            <label>Section Three Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="vector">
+        </div>
+       @endif
+           @if($data->url == 'nonmedical')
+        <div class="form-group">
+            <label>Section Three Description</label>
+            <textarea class="summernote" name="sectionthreedescription">{{ $data->sectionthreedescription }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Section Three Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="vector">
         </div>
        @endif
            @if($data->url == 'rrsp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="resp_three_description"></textarea>
+            <label>Section Three Description</label>
+            <textarea class="summernote" name="sectionthreedescription">{{ $data->sectionthreedescription }}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="rrsp_three_vector">
+            <label>Section Three Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="vector">
         </div>
        @endif
           @if($data->url == 'claim')
@@ -121,7 +131,7 @@
      @if($data->url == 'critical-illness')
         <div class="form-group">
             <label>Sec Three Heading</label>
-             <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+             <textarea class="summernote" name="sectionthreedescription">{{ $data->sectionthreedescription }}</textarea>
         </div>
         <div class="form-group">
             <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#illness"><i class="fa fa-plus"></i>Add New Questions</a>

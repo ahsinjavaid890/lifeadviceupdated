@@ -72,7 +72,7 @@
             <div class="card-body p-0">
                <ul class="nav nav-tabs" role="tablist" style="display: block;">
                   <li class="nav-item active">
-                     <a class="nav-link" href="{{ url('udashboard')}}">MY Qoutes</a>
+                     <a class="nav-link" href="{{ url('qoutes')}}">All Qoutes</a>
                   </li>
                   <li class="nav-item ">
                      <a class="nav-link" href="{{ url('profile')}}">General Settings</a>
@@ -85,18 +85,11 @@
          </div>
       </div>
       <div class="col-md-8">
-         <div class="card">
-            <div class="card-header">
-               <div class="row">
-                  <div class="col-md-12">
-                     <h4>Qoutes</h4>
-                  </div>
-               </div>
-            </div>
+         <div class="card shadow rounded">
             <div class="card-body">
                <div class="row">
                   <div class="col-md-12">
-                     <table id="example" class="table table-bordered table-head-custom table-checkable dataTable no-footer">
+                     <table id="example" class="table table-striped table-head-custom table-checkable dataTable no-footer">
                         <thead>
                             <tr>
                               <th class="sorting">ID</th>
@@ -110,7 +103,7 @@
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td><a href="{{ url('qoutes-detail')}}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i>View</a></td>
+                              <td><a href="{{ url('udashboard')}}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i>View</a></td>
                            </tr>
                         </tbody>
                      </table>

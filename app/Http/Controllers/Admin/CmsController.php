@@ -55,8 +55,17 @@ class CmsController extends Controller
         $update->section_four_description = $request->section_four_description;
         $update->section_four_notice = $request->section_four_notice;
         $update->section_four_lists = $request->section_four_lists;
-
-        if($request->section_two_vector)
+        if($request->section_five_vector)
+        {
+            $update->section_five_vector = Cmf::sendimagetodirectory($request->section_five_vector);
+        }
+        $update->section_five_description = $request->section_five_description;
+        if($request->section_six_vector)
+        {
+            $update->section_six_vector = Cmf::sendimagetodirectory($request->section_six_vector);
+        }
+        $update->section_six_description = $request->section_six_description;
+        if($request->meta_image)
         {
             $update->meta_image = Cmf::sendimagetodirectory($request->meta_image);
         }

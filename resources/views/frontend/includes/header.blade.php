@@ -76,7 +76,7 @@
                                             <a href="{{ url('critical-illness') }}" class="nav-link">Critical Illness Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('health-insurance') }}" class="nav-link">Health-Insurance</a>
+                                            <a href="{{ url('health-insurance') }}" class="nav-link">Health Insurance</a>
                                         </li>
                                     </ul>
                                 </li>

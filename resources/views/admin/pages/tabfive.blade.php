@@ -3,22 +3,32 @@
         <div class="col-md-12">
            @if($data->url == 'resp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="resp_five_description"></textarea>
+            <label>Section Five Description</label>
+            <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="resp_five_vector">
+            <label>Section Five Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
         </div>
        @endif
            @if($data->url == 'rrsp')
         <div class="form-group">
-            <label>Claim Description</label>
-            <textarea class="summernote" name="rrsp_five_description"></textarea>
+            <label>Section Five Description</label>
+            <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
         </div>
         <div class="form-group">
-            <label>Claim Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="rrsp_five_vector">
+            <label>Section Five Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+        </div>
+       @endif
+           @if($data->url == 'nonmedical')
+        <div class="form-group">
+            <label>Section Five Description</label>
+            <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Section Five Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
         </div>
        @endif
             @if($data->url == 'health-insurance') 

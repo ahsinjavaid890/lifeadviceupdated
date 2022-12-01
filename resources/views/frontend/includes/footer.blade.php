@@ -34,7 +34,17 @@
                     </li>
                     <li>
                         <a href="{{ url('resp')}}">
-                                RSEP Insurance
+                                RESP Insurance
+                            </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('rrsp')}}">
+                                RRSP Insurance
+                            </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('nonmedical')}}">
+                                Non Medical Insurance
                             </a>
                     </li>
                     <li>

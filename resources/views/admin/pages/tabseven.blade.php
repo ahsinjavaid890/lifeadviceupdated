@@ -80,6 +80,36 @@
                 <textarea class="summernote" name="life_six_description"></textarea>
             </div>
            @endif
+            @if($data->url == 'resp')
+            <div class="form-group">
+                <label>Sec Six Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_six_vector">
+            </div>
+            <div class="form-group">
+                <label>Sec Six Description</label>
+                <textarea class="summernote" name="section_six_description">{{ $data->section_six_description}}</textarea>
+            </div>
+           @endif
+            @if($data->url == 'nonmedical')
+            <div class="form-group">
+                <label>Sec Six Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_six_vector">
+            </div>
+            <div class="form-group">
+                <label>Sec Six Description</label>
+                <textarea class="summernote" name="section_six_description">{{ $data->section_six_description}}</textarea>
+            </div>
+           @endif
+            @if($data->url == 'rrsp')
+            <div class="form-group">
+                <label>Sec Six Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_six_vector">
+            </div>
+            <div class="form-group">
+                <label>Sec Six Description</label>
+                <textarea class="summernote" name="section_six_description">{{ $data->section_six_description}}</textarea>
+            </div>
+           @endif
         </div>
     </div>
  </div>

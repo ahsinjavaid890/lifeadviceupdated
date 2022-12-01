@@ -3,21 +3,33 @@
         <div class="col-md-12">
            @if($data->url == 'resp')
             <div class="form-group">
-                <label>Claim Description</label>
-                <textarea class="summernote" name="resp_two_description"></textarea>
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
             </div>
             <div class="form-group">
-                <label>Claim Vector</label>
-                <input type="file" style="height:45px;" class="form-control" name="resp_two_vector">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
             </div>
+        
+           @endif
+           @if($data->url == 'nonmedical')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
+        
            @endif
            @if($data->url == 'rrsp')
             <div class="form-group">
-                <label>RRSP Description</label>
-                <textarea class="summernote" name="section_two_description"></textarea>
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
             </div>
             <div class="form-group">
-                <label>RRSP Vector</label>
+                <label>Section Two Vector</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
             </div>
            @endif
@@ -81,7 +93,7 @@
                         <td>
                             <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
                         </td>
-                        <td>{!! $r->heading !!}</td>
+                        <td>{!! $r->section_two_description !!}</td>
                         <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#section_three_elements{{ $r->id }}"><i class="fa fa-edit"></i>Edit 1</a></td>
                     </tr>
                     @endforeach

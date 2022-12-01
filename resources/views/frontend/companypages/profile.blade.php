@@ -71,8 +71,8 @@
          <div class="card">
             <div class="card-body p-0">
                <ul class="nav nav-tabs " role="tablist" style="display: block;">
-                  <li class="nav-item ">
-                     <a class="nav-link" href="{{ url('udashboard')}}">My Qoutes</a>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url('qoutes')}}">All Qoutes</a>
                   </li>
                   <li class="nav-item active">
                      <a class="nav-link" href="{{ url('profile')}}">General Settings</a>
@@ -85,14 +85,7 @@
          </div>
       </div>
       <div class="col-md-8">
-         <div class="card">
-            <div class="card-header">
-               <div class="row">
-                  <div class="col-md-12">
-                     <h4>General Settings</h4>
-                  </div>
-               </div>
-            </div>
+         <div class="card shadow rounded">
             <div class="card-body">
                <div class="row">
                   <div class="col-md-6">
@@ -130,8 +123,6 @@
                   <label for="example-textarea">Text area</label>
                   <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                </div>
-            </div>
-            <div class="card-footer">
                <div class="row">
                   <div class="col-md-12 text-right">
                      <div class="form-group">

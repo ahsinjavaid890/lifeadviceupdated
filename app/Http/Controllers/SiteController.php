@@ -168,6 +168,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.rrsp');
     }
+    public function nonmedical()
+    {
+        return view('frontend.companypages.nonmedical');
+    }
     public function login()
     {
         return view('frontend.companypages.login');
