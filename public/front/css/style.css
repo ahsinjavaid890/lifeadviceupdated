@@ -12111,3 +12111,8 @@ ul .child-list li a{
     line-height: 32px;
     margin-bottom: 1.5rem;
 }
+
+.avatar.avatar-md.avatar-indicators.avatar-online {
+    width: 40px;
+    height: 40px;
+}
