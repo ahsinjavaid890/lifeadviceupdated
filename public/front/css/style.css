@@ -1929,7 +1929,7 @@ Footer Top Area Style
 }
 
 .single-widget ul li a {
-    color: #ffffff;
+    color: black;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
@@ -7525,7 +7525,7 @@ section {
 }
 .blank-card {
     /*margin-top: 35px;*/
-    border: 1px solid #f3f2f2;
+    border: 1px solid #c8cdd2;
     border-radius: 10px;
 }
 .blank-card h3{
@@ -7573,11 +7573,9 @@ section {
     margin-top: 20px;
 }
 .blogbutton a{
-        font-size: 12px;
+    font-size: 12px;
     border-radius: 10px;
     color: black;
-    background-color: #f4f7fa;
-    border: 1px solid #0fc099;
     font-weight: 500;
     cursor: pointer !important;
     padding: 4px 10px 4px 10px;
@@ -8744,13 +8742,15 @@ left: 95px;
         font-size: 13px;
     }
     .faqlinks li {
-    width: 13% !important;
+    width: 100% !important;
     }
     .faqlinks li h3 {
-    font-size: 8px !important;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 8px;
+        text-align: justify;
+        font-size: 14px !important;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 24px;
+        color: #262566;
     }
     .left-image {
     position: absolute;
@@ -10548,8 +10548,8 @@ left: 95px;
    }
 
 .first-section-of-page{
-    margin-top: 40px;
-    background-color: rgb(249, 250, 252);
+/*    margin-top: 40px;*/
+    background-color: #f4f7fa;
 }
 .image-center{
     text-align: center;
@@ -10821,23 +10821,33 @@ time {
     border: 0px;
 }
 .faq .card-header .btn-link.collapsed {
-    background: #1BBC9B;
+    background: #ffffff;
 }
 .faq .card-header button {
-    font-size: 20px;
-    color: #fff;
+/*    box-shadow: 0 10px 24px rgb(109 126 152 / 8%);*/
+    border-radius: 16px;
+    color: #262566;
+    padding: 32px;;
+}
+.faq .card-header .btn-link:focus{
+    border: none !important;
+    border-color: white !important;
+    box-shadow: 0 0 0 0.2rem rgb(255 255 255) !important;
 }
 .faq .card {
     border: 0px;
-    border-radius: 0px;
+    border-radius: 16px !important;
     margin-bottom: 5px;
+}
+.faqquestion:first-child{
+    margin-top: 0 !important;
 }
 .faq .card-header {
     padding: 2px;
     border: 0px;
 }
 .faq .card-header .btn-link {
-    background: #18AB8D;
+    background: #ffffff;
     text-decoration: none;
     display: block;
     width: 100%;
@@ -10909,9 +10919,9 @@ time {
     font-size: 20px;
 }
 .hr-footer{
-    height: 2px;
+    height: 0px;
     background-color: white;
-    width: 50%;
+    width: 90%;
     margin: unset;
 }
 .favicon{
@@ -11048,12 +11058,11 @@ ul.tabs li {
     padding: 10px 15px;
     cursor: pointer;
     width: 219px;
-}
-ul.tabs li.current{
-    color: white;
-    background-color: #12b48b;
-    border-radius: 10px;
 }*/
+ul.tabs li.current{
+    border-left: 4px solid #262566;
+    border-radius: 8px;
+}
 .blogsproducts {
     text-align: center;
     padding: 10px;
@@ -11065,9 +11074,9 @@ ul.tabs li.current{
     cursor: pointer;
     width: 100%;
 }
-ul.tabs li.current{
+/*ul.tabs li.current{
     background-color: #262566;
-}
+}*/
 .tab-content{
     display: none;
     background: white;
@@ -12063,4 +12072,42 @@ a:focus, a:hover{
 }
 .coverage-amt form .row{
     padding: 10px;
+}
+ul.child-list {
+    margin:0px 0 0px 16px;
+    font-size: 15px;
+}
+ul .child-list li a{
+    font-size: 14px !important;
+    color: #67778f !important;
+    caret-color: #67778f !important;
+    font-weight: 700 !important;
+}
+.tabssidebar .parent-list li a{
+    font-size: 16px;
+    color: #67778f !important;
+    caret-color: #67778f !important;
+    font-weight: 700;
+}
+.card-footer .card-button {
+    margin-left: auto;
+    margin-top: auto;
+}
+.button-next {
+    background-color: #2b3481;
+    flex: 0 0 auto;
+    font-size: 40px;
+    width: 1em;
+    border-radius: 50%;
+    background-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nNDAnIGhlaWdodD0nNDAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzQwJyBoZWlnaHQ9JzQwJyByeD0nMjAnIGZpbGw9JyMyQjM0ODEnLz48cGF0aCBkPSdNMjguNzA3IDIwLjcwN2ExIDEgMCAwMDAtMS40MTRsLTYuMzY0LTYuMzY0YTEgMSAwIDAwLTEuNDE0IDEuNDE0TDI2LjU4NiAyMGwtNS42NTcgNS42NTdhMSAxIDAgMDAxLjQxNCAxLjQxNGw2LjM2NC02LjM2NHpNMTIgMjFoMTZ2LTJIMTJ2MnonIGZpbGw9JyNmZmYnLz48L3N2Zz4=);
+}
+.blog-card{
+    height: 100%;
+}
+.card-content h3{
+    color: #262566;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 1.5rem;
 }

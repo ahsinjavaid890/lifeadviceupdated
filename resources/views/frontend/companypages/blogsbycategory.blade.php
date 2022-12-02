@@ -6,20 +6,7 @@
 <div class="health-inssurance-hero-banners super-hero">          
     <div class="container-homepage">
         <div class="row mb-3">
-            <div class="col-md-6 hero-texts">
-                <div class="herrotext super-hero-text">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s" style="color:white;">{{ $category->name }} Blogs</h2>
-                    <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
-                    @if($firstsection->main_button_text)
-                    <div class="btns d-flex">
-                        <div class="details">
-                            <a href="{{ $firstsection->main_button_link }}" class=" btn-lg">{{ $firstsection->main_button_text }}</a>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-            </div>
-            <div class="col-md-6 hero-images">
+            <div class="col-md-12 hero-images">
                 <div class="hero-image super-images" style=" background-image: url('{{ url('') }}/public/images/{{ $firstsection->main_image  }}');
                     background-position: 50% 70%;
                     background-size: 100%;
@@ -29,60 +16,64 @@
         </div>
     </div>
 </div>
-<section class="chooses-blogs choose-us-area-five pb-70">
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-md-9">
-            <div class="row">
-               @foreach($data as $r)
-               <div class="col-md-4">
-                  <div class="card blank-card mt-3">
-                     <div class="card-body">
-                        <div class="blog-image-card">
-                           <img src="{{ url('public/images') }}/{{ $r->image }}">
+<section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
+<div class="container-homepage">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow " style="border-radius:25px;">
+                <div class="card-body p-0">
+                    <div class="tabssidebar">
+                        <style type="text/css">
+                            .nav-tabs .nav-link.active{
+                                    border-left: 4px solid #262566 !important;
+                                    border-color: white;
+                                }
+                                .nav-tabs{
+                                    border-bottom: 0 !important;
+                                }
+                        </style>
+                        <div class="card-list-heading p-3">
+                            <h3 style="color: #262566;">Browse by topic</h3>
+                            <hr>
                         </div>
-                        <div class="card-content">
-                           <h3>{{ $r->title }}</h3>
-                           <p><?php $blog_text = strip_tags($r->content); echo substr($blog_text, 0, 400);?>... </p>
-                        </div>
-                        <div class="blogbutton">
-                           <a href="{{ url('blog') }}/{{ $r->url}}">Read More..</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-                @endforeach
-            </div>
-            <div style="margin-top:10px;" class="row">
-                {!! $data->links('frontend.pagination') !!}
-            </div>
-         </div>
-         <div class="col-md-3">
-            <div class="box-widget fl-wrap mt-3">
-               <div class="box-widget-content">
-                   <div class="search-widget fl-wrap">
-                       <form action="#" class="d-flex">
-                           <input name="se" id="se12" type="text" class="search form-control" placeholder="Search..." value="">
-                           <button class="search-submit2" id="submit_btn12"><i class="fa fa-search"></i> </button>
-                       </form>
-                   </div>
-                  <div style="background-color: #262566;"  class="single-widget p-3 mt-3 rounded">
-                        <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
-                        <ul>
+                        <ul class="parent-list nav  nav-tabs d-block" role="tablist">
                             @foreach(DB::table('blogcategories')->get() as $r)
-                            <li>
-                                <a href="{{ url('category') }}/{{ $r->url }}">
-                                        {{ $r->name }}
-                                    </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a  class="nav-link @if($loop->first) active @endif" data-toggle="tab-{{$r->id}}" role="tab"href="{{ url('category') }}/{{ $r->url }}">{{ $r->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
-               </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+        <div class="col-md-9">
+             @foreach(DB::table('blogcategories')->get() as $s)
+            <div class="tab-pane active" id="{{ $s->url }}" role="tabpanel">
+                <div class="row">
+                   @foreach($data as $r)
+                    <div class="col-md-4 mb-3tab-content @if($loop->first) active @endif">
+                        <div class="card blank-card">
+                             <div class="card-body">
+                                <div class="blog-image-card">
+                                   <img src="{{ url('public/images') }}/{{ $r->image }}">
+                                </div>
+                                <div class="card-content">
+                                   <h3>{{ $r->title }}</h3>
+                                   <p><?php $blog_text = strip_tags($r->content); echo substr($blog_text, 0, 400);?>... </p>
+                                </div>
+                                <div class="blogbutton">
+                                   <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                                </div>
+                             </div>
+                          </div>
+                    </div>
+                    @endforeach 
+                </div>
+            </div>
+          @endforeach 
+        </div>
+    </div>
+</div>
 </section>
-
 @endsection

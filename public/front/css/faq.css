@@ -215,15 +215,16 @@ h1.head span{ font-family:'Sofia' !important; font-size:22px !important}
 .faqlinks ul{ padding:0px; margin:0px; width:100%; text-align:center;}
 
 .faqlinks li {
+	padding: 5px 0 5px 17px;
     position: relative;
-    display: inline-block;
+    /*display: inline-block;
     list-style: none;
     margin-bottom: 20px;
     padding: 8px 2px;
     transition: all .5s ease-out;
     box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
     background-color: white;
-    border-radius: 15px;
+    border-radius: 15px;*/
     cursor: pointer;
 }
 
@@ -233,10 +234,10 @@ h1.head span{ font-family:'Sofia' !important; font-size:22px !important}
 .faqlinks li a{text-decoration:none;  color:#3D4B5D; display:block;}
 .faqlinks li:hover a, .faqlinks li.active a{text-decoration:none;  color:#fff;}
 
-.faqlinks li:hover, .faqlinks li.active{background:#3D4B5D; color:#fff;}
+/*.faqlinks li:hover, .faqlinks li.active{background:#3D4B5D; color:#fff;}
 .faqlinks li:hover:after, .faqlinks li.active:after{color:#3D4B5D;}
 .faqlinks li:hover img, .faqlinks li.active img{filter: brightness(0) invert(1);}
- 
+ */
 
 
 .cnctmain{background-image:url(../images/lifeadvice-trans.png), url(../images/email-bg.jpg); background-repeat:no-repeat,no-repeat;  background-position:left top, bottom right; padding-bottom:100px !important; padding-top: 100px;}
@@ -361,7 +362,7 @@ iframe{-webkit-filter: grayscale(40%);  filter: grayscale(40%);}
 	
 
 
-.faqlinks li{width:14%;}
+.faqlinks li{width:100%;}
 
 
 .faqsection .col-md-3{border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3;}

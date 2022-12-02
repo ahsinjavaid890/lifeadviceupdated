@@ -15,16 +15,16 @@
                .faqlinks li:after{
                   content: none;
                }
-               ul.tabs li.current {
+               /*ul.tabs li.current {
                   background: #3D4B5D;
-               }
-               .faqlinks li.active {
+               }*/
+               /*.faqlinks li.active {
                   background: #3D4B5D;
                   color: #3D4B5D !important;
                }
                .faqlinks li.current{
                   color: #3D4B5D;
-               }
+               }*/
                .tab-content{
                   display: none;
                   background: white;
@@ -34,42 +34,54 @@
                }
             </style>
          <div class="row faq">
-            <div class="col-md-12 pb-4 mb-4 faqlinks">
-               <div class="row">
-                  <ul class="tabs">
-                     @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
-                     <li class="tab-link @if($loop->first) current @endif" data-tab="tab-{{ $r->id }}">
-                        <img src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}">
-                        <h3>{{ $r->name }}</h3>
-                     </li>
-                     @endforeach
-                  </ul>
-               </div>
-            </div>
-            @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
-            <div class="col-md-12" style="padding-left: inherit;">
-               <div id="tab-{{ $r->id }}" class="tab-content @if($loop->first) current @endif">
-                  <div class="accordion" id="accordionExample{{ $r->id }}">
-                     @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $r->id)->orderby('order' , 'asc')->get() as $f)
-                     <div class="card">
-                        <div class="card-header" id="faq{{ $f->id }}">
-                           <h5 class="mb-0">
-                              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq_content{{ $f->id }}" aria-expanded="false" aria-controls="collapseOne">
-                              <i class="fa fa-plus"></i> {{ $f->question }}
-                              </button>
-                           </h5>
+            <div class="col-md-3 pb-4 mb-4 faqlinks">
+               <div class="">
+                  <div class="card">
+                     <div class="card-body p-0">
+                        <div class="card-list-heading p-3">
+                            <h3 style="color: #262566;">Browse by topic</h3>
+                            <hr>
                         </div>
-                        <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample{{ $r->id }}" style="">
-                           <div class="card-body">
-                             {!! $f->answer !!}
-                           </div>
-                        </div>
+                        <ul class="tabs">
+                           @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
+                           <li class="tab-link @if($loop->first) current @endif" data-tab="tab-{{ $r->id }}">
+                              <!-- <img src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}"> -->
+                              <h3>{{ $r->name }}</h3>
+                           </li>
+                           @endforeach
+                        </ul>
                      </div>
-                     @endforeach
                   </div>
                </div>
             </div>
-            @endforeach
+            <div class="col-md-9">
+              <div class="row">
+                  @foreach(DB::table('frequesntlyaskquest_categories')->where('status' , 'Published')->orderby('order' , 'asc')->get() as $r)
+                  <div class="col-md-12" style="padding-left: inherit;">
+                     <div id="tab-{{ $r->id }}" class="tab-content @if($loop->first) current @endif">
+                        <div class="accordion" id="accordionExample{{ $r->id }}" style="background: #f4f7fa;">
+                           @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $r->id)->orderby('order' , 'asc')->get() as $f)
+                           <div class="card faqquestion" style="border-radius: 16px;margin-top: 30px;">
+                              <div class="card-header" id="faq{{ $f->id }}" style="background-color: #ffffffff;">
+                                 <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq_content{{ $f->id }}" aria-expanded="false" aria-controls="collapseOne">
+                                    <i class="fa fa-plus"></i> {{ $f->question }}
+                                    </button>
+                                 </h5>
+                              <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample{{ $r->id }}" style="">
+                                 <div class="card-body">
+                                   {!! $f->answer !!}
+                                 </div>
+                              </div>
+                              </div>
+                           </div>
+                           @endforeach
+                        </div>
+                     </div>
+                  </div>
+                  @endforeach
+              </div>
+            </div>
          </div>
       </div>
 </section>
