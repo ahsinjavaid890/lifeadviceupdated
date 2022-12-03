@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom" style="width:100%">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Created On</th>
@@ -32,9 +32,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(DB::table('contactus_messages')->get() as $r)
+                            @foreach($data as $r)
                                 <tr>
-                                    <td>{{$r->id}}</td>
+                                    <td>{{ Cmf::create_time_ago($r->created_at) }}</td>
                                     <td>{{ $r->fname }} {{ $r->lname}}</td>
                                     
                                     <td>
@@ -47,14 +47,16 @@
                                         {{ $r->subject }}
                                     </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href=""><i class="fa fa-eye"></i> View Message</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/contact/viewmessage') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View Message</a>
                                        <a class="btn btn-danger btn-sm" href=""><i class="fa fa-trash"></i> Delete Message</a>
                                    </td>
                                 </tr>
-
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="margin-top:10px;" class="row">
+                        {!! $data->links('frontend.pagination') !!}
+                    </div>
                 </div>
             </div>
             <!--end::Card-->

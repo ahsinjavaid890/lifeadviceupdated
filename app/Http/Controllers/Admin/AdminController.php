@@ -178,8 +178,13 @@ class AdminController extends Controller
     }
     public function messages()
     {   
-
-        return view('admin/contact/messages');
+        $data = DB::table('contactus_messages')->orderby('created_at' , 'desc')->paginate(10);
+        return view('admin/contact/messages')->with(array('data'=>$data));
+    }
+    public function viewmessagedetails($id)
+    {
+        $data = DB::table('contactus_messages')->where('id' , $id)->first();
+        return view('admin/contact/messagesdetail')->with(array('data'=>$data));
     }
     public function allproducts()
     {
