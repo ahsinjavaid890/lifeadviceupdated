@@ -10,7 +10,7 @@
         <div class="benifitrow faq">
             <div class="accordion" id="accordionExample">
                @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $faq->faq_id)->orderby('order' , 'asc')->get() as $f)
-               <div class="card">
+               <div class="card" style="border: 1px solid #262566;">
                   <div class="card-header" id="faq{{ $f->id }}">
                      <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq_content{{ $f->id }}" aria-expanded="false" aria-controls="collapseOne">
@@ -19,7 +19,7 @@
                      </h5>
                   </div>
                   <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample" style="">
-                     <div class="card-body">
+                     <div class="card-body" style="border-top: 1px solid #262566;">
                        {!! $f->answer !!}
                      </div>
                   </div>

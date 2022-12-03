@@ -293,6 +293,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::name('quotation.')->prefix('quotation')->group(function(){
         Route::get('/allquotations','AdminController@allquotations');    
     });
+    Route::name('contact.')->prefix('contact')->group(function(){
+        Route::get('/messages','AdminController@messages');    
+    });
 
     Route::name('users.')->prefix('users')->group(function(){
         Route::get('/allusers','AdminController@allusers');

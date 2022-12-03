@@ -176,6 +176,11 @@ class AdminController extends Controller
         $data = quotes::all();
         return view('admin/quotations/index')->with(array('data'=>$data));
     }
+    public function messages()
+    {   
+
+        return view('admin/contact/messages');
+    }
     public function allproducts()
     {
         $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();

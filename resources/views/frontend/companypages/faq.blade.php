@@ -70,7 +70,7 @@
                                  </h5>
                               <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample{{ $r->id }}" style="">
                                  <hr>
-                                 <div class="card-body p-1">
+                                 <div class="card-body p-4">
                                    {!! $f->answer !!}
                                  </div>
                               </div>
