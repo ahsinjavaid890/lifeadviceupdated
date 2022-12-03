@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','All Messages')
+@section('title','View Messages')
 @section('content')
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -13,8 +13,8 @@
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            All Messages
-                            <div class="text-muted pt-2 font-size-sm">Manage All Messages</div>
+                            View Message
+                            <div class="text-muted pt-2 font-size-sm">View Messages</div>
                         </h3>
                     </div>
                 </div>
