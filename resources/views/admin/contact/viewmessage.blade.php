@@ -19,40 +19,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile</th>
-                                <th>Subject</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($data as $r)
-                                <tr>
-                                    <td>{{ $r->fname }} {{ $r->lname}}</td>
-                                    
-                                    <td>
-                                        {{ $r->email }}
-                                    </td>
-                                    <td>
-                                       {{ $r->mobile}}
-                                    </td>
-                                    <td>
-                                        {{ $r->subject }}
-                                    </td>
-                                    <td>
-                                        {{ $r->description }}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div style="margin-top:10px;" class="row">
-                        {!! $data->links('frontend.pagination') !!}
-                    </div>
+                    <b>Name</b> : {{$data->fname}} {{ $data->lname }}<br>
+                    <b>Email</b> : {{$data->email}}<br>
                 </div>
             </div>
             <!--end::Card-->
