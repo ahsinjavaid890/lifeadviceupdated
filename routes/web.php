@@ -294,7 +294,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/allquotations','AdminController@allquotations');    
     });
     Route::name('contact.')->prefix('contact')->group(function(){
-        Route::get('/messages','AdminController@messages');    
+        Route::get('/messages','AdminController@messages');
+        Route::get('/viewmessage','AdminController@viewmessage'); 
+        Route::get('/deletemessage','AdminController@deletemessage');   
     });
 
     Route::name('users.')->prefix('users')->group(function(){

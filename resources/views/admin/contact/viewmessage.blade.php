@@ -22,19 +22,16 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Created On</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                
                                 <th>Mobile</th>
                                 <th>Subject</th>
-                                <th>Action</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
                                 <tr>
-                                    <td>{{ Cmf::create_time_ago($r->created_at) }}</td>
                                     <td>{{ $r->fname }} {{ $r->lname}}</td>
                                     
                                     <td>
@@ -46,10 +43,9 @@
                                     <td>
                                         {{ $r->subject }}
                                     </td>
-                                   <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/contact/viewmessage') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View Message</a>
-                                       <a class="btn btn-danger btn-sm" href="{{ url('admin/contact/deletemessage') }}/{{ $r->id }}"><i class="fa fa-trash"></i> Delete Message</a>
-                                   </td>
+                                    <td>
+                                        {{ $r->description }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

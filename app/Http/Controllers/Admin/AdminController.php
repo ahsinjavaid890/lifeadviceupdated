@@ -181,10 +181,10 @@ class AdminController extends Controller
         $data = DB::table('contactus_messages')->orderby('created_at' , 'desc')->paginate(10);
         return view('admin/contact/messages')->with(array('data'=>$data));
     }
-    public function viewmessagedetails($id)
+    public function viewmessage($id)
     {
         $data = DB::table('contactus_messages')->where('id' , $id)->first();
-        return view('admin/contact/messagesdetail')->with(array('data'=>$data));
+        return view('admin/contact/viewmessage')->with(array('data'=>$data));
     }
     public function deletemessage($id)
     {
