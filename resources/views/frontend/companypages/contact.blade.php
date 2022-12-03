@@ -50,6 +50,7 @@
             
                         <div class="col-md-7 contactform" id="contact-result">
                             <div id="result"></div>
+                            @include('alerts.index')
                             <h2 class="contact-heading"><span>Send a</span> Message</h2>
                             <h5><span>Please fill the form below and submit... We will contact you.</span></h5>
                             <form method="post" action="{{ url('contactus') }}" id="contact-form" enctype="multipart/form-data">

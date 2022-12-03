@@ -14,7 +14,7 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
-use App\Models\contact_us;
+use App\Models\contactus_messages;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
@@ -185,7 +185,8 @@ class SiteController extends Controller
             'subject' => 'required',
             'description' => 'required',
         ]);
-        $insert = new contact_us();
+
+        $insert = new contactus_messages();
         $insert->fname = $request->fname;
         $insert->lname = $request->lname;
         $insert->email = $request->email;
@@ -193,7 +194,7 @@ class SiteController extends Controller
         $insert->subject = $request->subject; 
         $insert->description = $request->description;
         $insert->save();
-        return view('frontend.companypages.contact')->with(array('request'=>$request));
+        return redirect()->back()->with('message', 'Your Query Submited Successfully We Will Contact You With In 24 Hours');
     }
     public function privacypolicy()
     {
