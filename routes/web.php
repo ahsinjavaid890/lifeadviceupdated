@@ -54,6 +54,7 @@ Route::get('/rrsp', [SiteController::class, 'rrsp']);
 Route::get('/nonmedical', [SiteController::class, 'nonmedical']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);
+Route::POST('/contactus', [SiteController::class, 'contacts']);
 Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);
 Route::get('/blogs', [SiteController::class, 'blogs']);
 Route::get('/faq', [SiteController::class, 'faq']);

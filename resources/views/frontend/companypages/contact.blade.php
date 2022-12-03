@@ -52,16 +52,17 @@
                             <div id="result"></div>
                             <h2 class="contact-heading"><span>Send a</span> Message</h2>
                             <h5><span>Please fill the form below and submit... We will contact you.</span></h5>
-                            <form method="post" action="process_contact.php" id="contact-form">
+                            <form method="post" action="{{ url('contactus') }}" id="contact-form" enctype="multipart/form-data">
+                                 @csrf
                                 <div class="row">
                                     <p class="col-6"><label class="">Your Name *</label><br><span><input type="text" name="fname" class="form-control"></span></p>
                                     <p class="col-6"><label class="">Your Last Name</label><br><span><input type="text" name="lname" class="form-control"></span></p>
                                     <p class="col-6"><label class="">Your Email *</label><br><span><input type="text" name="email" class="form-control"></span></p>
                                     <p class="col-6"><label class="">Your Contact No *</label><br><span><input type="text" name="mobile" class="form-control"></span></p>
                                     <p class="col-12"><label class="">Your Subject</label><br><span><input type="text" name="subject" class="form-control"></span></p>
-                                    <p class="col-12"><label class="">Your Message</label><br><span><textarea name="message" rows="2" class="form-control"></textarea></span></p>
-                                    <p class="col-12 text-right">
-                                        <button type="submit" class="btn-lg save-btn mr-4" name="contact-submit">Submit</button>
+                                    <p class="col-12"><label class="">Your Message</label><br><span><textarea name="description" rows="2" class="form-control"></textarea></span></p>
+                                    <p class="col-12">
+                                        <input type="submit" class="btn-lg save-btn mr-4" name="submit" value="Submit">
                                     </p>
                                 </div>
                             </form>

@@ -61,7 +61,7 @@
                      <div id="tab-{{ $r->id }}" class="tab-content @if($loop->first) current @endif">
                         <div class="accordion" id="accordionExample{{ $r->id }}" style="background: #f4f7fa;">
                            @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $r->id)->orderby('order' , 'asc')->get() as $f)
-                           <div class="card faqquestion" style="border-radius: 16px;margin-top: 30px;">
+                           <div class="card faqquestion" style="border-radius: 16px !important;margin-top: 13px;">
                               <div class="card-header" id="faq{{ $f->id }}" style="background-color: #ffffffff;">
                                  <h5 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq_content{{ $f->id }}" aria-expanded="false" aria-controls="collapseOne">
@@ -69,7 +69,8 @@
                                     </button>
                                  </h5>
                               <div id="faq_content{{ $f->id }}" class="collapse" aria-labelledby="faq{{ $f->id }}" data-parent="#accordionExample{{ $r->id }}" style="">
-                                 <div class="card-body">
+                                 <hr>
+                                 <div class="card-body p-1">
                                    {!! $f->answer !!}
                                  </div>
                               </div>

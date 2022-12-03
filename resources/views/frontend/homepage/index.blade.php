@@ -337,7 +337,7 @@
  </div>
 </section>
 <!-- Start Choose Us Area -->
-<section class="chooses-blogs choose-us-area-five pb-70">
+<section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
    <div class="container-homepage">
       <ul class="tabs row">
          @php
@@ -384,20 +384,23 @@
                    $blog_url = $r->url;
              ?>
             <div class="col-md-3">
-               <div class="card blank-card">
-                  <div class="card-body">
-                     <div class="blog-image-card">
-                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
-                     </div>
-                     <div class="card-content">
-                        <h3><?php echo $blog_title;?></h3>
-                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
-                     </div>
-                     <div class="blogbutton">
-                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
-                     </div>
-                  </div>
-               </div>
+             <div class="card blank-card">
+                   <div class="card-body">
+                      <div class="blog-image-card">
+                         <img src="{{ url('public/images') }}/{{ $r->image }}">
+                      </div>
+                      <div class="card-content">
+                         <h3>{{ $r->title }}</h3>
+                         @php
+                          $blog_text = strip_tags($r->content);
+                         @endphp
+                         <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                      </div>
+                      <div class="blogbutton">
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                      </div>
+                   </div>
+                </div>
             </div>
 
          <?php } ?>
@@ -417,19 +420,22 @@
              ?>
             <div class="col-md-3">
                <div class="card blank-card">
-                  <div class="card-body">
-                     <div class="blog-image-card">
-                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
-                     </div>
-                     <div class="card-content">
-                        <h3><?php echo $blog_title;?></h3>
-                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
-                     </div>
-                     <div class="blogbutton">
-                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
-                     </div>
-                  </div>
-               </div>
+                   <div class="card-body">
+                      <div class="blog-image-card">
+                         <img src="{{ url('public/images') }}/{{ $r->image }}">
+                      </div>
+                      <div class="card-content">
+                         <h3>{{ $r->title }}</h3>
+                         @php
+                          $blog_text = strip_tags($r->content);
+                         @endphp
+                         <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                      </div>
+                      <div class="blogbutton">
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                      </div>
+                   </div>
+                </div>
             </div>
 
          <?php } ?>
@@ -449,19 +455,22 @@
              ?>
             <div class="col-md-3">
                <div class="card blank-card">
-                  <div class="card-body">
-                     <div class="blog-image-card">
-                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
-                     </div>
-                     <div class="card-content">
-                        <h3><?php echo $blog_title;?></h3>
-                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
-                     </div>
-                     <div class="blogbutton">
-                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
-                     </div>
-                  </div>
-               </div>
+                   <div class="card-body">
+                      <div class="blog-image-card">
+                         <img src="{{ url('public/images') }}/{{ $r->image }}">
+                      </div>
+                      <div class="card-content">
+                         <h3>{{ $r->title }}</h3>
+                         @php
+                          $blog_text = strip_tags($r->content);
+                         @endphp
+                         <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                      </div>
+                      <div class="blogbutton">
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                      </div>
+                   </div>
+                </div>
             </div>
 
          <?php } ?>
@@ -481,19 +490,22 @@
              ?>
             <div class="col-md-3">
                <div class="card blank-card">
-                  <div class="card-body">
-                     <div class="blog-image-card">
-                        <img src="{{ url('public/images') }}/{{ $blog_img }}">
-                     </div>
-                     <div class="card-content">
-                        <h3><?php echo $blog_title;?></h3>
-                        <p><?php echo substr($blog_text, 0, 400);?>...</p>
-                     </div>
-                     <div class="blogbutton">
-                        <a href="{{ url('blog') }}/{{ $blog_url }}">Read More..</a>
-                     </div>
-                  </div>
-               </div>
+                   <div class="card-body">
+                      <div class="blog-image-card">
+                         <img src="{{ url('public/images') }}/{{ $r->image }}">
+                      </div>
+                      <div class="card-content">
+                         <h3>{{ $r->title }}</h3>
+                         @php
+                          $blog_text = strip_tags($r->content);
+                         @endphp
+                         <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                      </div>
+                      <div class="blogbutton">
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                      </div>
+                   </div>
+                </div>
             </div>
 
          <?php } ?>

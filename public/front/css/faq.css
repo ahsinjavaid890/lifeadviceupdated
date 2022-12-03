@@ -229,7 +229,14 @@ h1.head span{ font-family:'Sofia' !important; font-size:22px !important}
 }
 
 .faqlinks li img{width:65px; height:auto; transition:all .5s ease-in-out;}
-.faqlinks li h3{font-size:14px; text-transform:uppercase;  font-weight:bold; margin-top:8px;}
+.faqlinks li h3{
+	text-align: justify;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 24px;
+    color: #262566;
+}
 
 .faqlinks li a{text-decoration:none;  color:#3D4B5D; display:block;}
 .faqlinks li:hover a, .faqlinks li.active a{text-decoration:none;  color:#fff;}

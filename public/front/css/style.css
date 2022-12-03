@@ -7524,6 +7524,7 @@ section {
     height: 177px;
 }
 .blank-card {
+    height: 440px;
     /*margin-top: 35px;*/
     border: 1px solid #c8cdd2;
     border-radius: 10px;
@@ -10827,7 +10828,7 @@ time {
 /*    box-shadow: 0 10px 24px rgb(109 126 152 / 8%);*/
     border-radius: 16px;
     color: #262566;
-    padding: 17px;;
+    padding: 17px;
 }
 .faq .card-header .btn-link:focus{
     border: none !important;
@@ -11066,11 +11067,11 @@ ul.tabs li.current{
 .blogsproducts {
     text-align: center;
     padding: 10px;
-    background-color: #1bbc9b;
+    background-color: #ffffff;
     margin-bottom: 25px;
     border-radius: 10px;
     font-size: 23px;
-    color: white;
+    color: #262566;
     cursor: pointer;
     width: 100%;
 }
@@ -11079,7 +11080,7 @@ ul.tabs li.current{
 }*/
 .tab-content{
     display: none;
-    background: white;
+    background: #f4f7fa;
 }
 .tab-content.current{
     display: inherit;

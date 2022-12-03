@@ -6,7 +6,7 @@
 <div class="container-homepage">
     <div class="row">
         <div class="col-md-3">
-            <div class="card shadow rounded">
+            <div class="card shadow" style="border-radius:16px;">
                 <div class="card-body p-0">
                     <div class="tabssidebar">
                         <style type="text/css">
@@ -33,23 +33,23 @@
             <div class="row">
                @foreach($data as $r)
                 <div class="col-md-4 mb-3 @if($loop->first) active @endif">
-                    <div class="card blank-card mt-3">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ url('public/images') }}/{{ $r->image }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>{{ $r->title }}</h3>
-                               @php
-                                $blog_text = strip_tags($r->content);
-                               @endphp
-                               <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
-                            </div>
+                 <div class="card blank-card">
+                      <div class="card-body">
+                         <div class="blog-image-card">
+                            <img src="{{ url('public/images') }}/{{ $r->image }}">
+                         </div>
+                         <div class="card-content">
+                            <h3>{{ $r->title }}</h3>
+                            @php
+                             $blog_text = strip_tags($r->content);
+                            @endphp
+                            <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                         </div>
+                         <div class="blogbutton">
+                            <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
                          </div>
                       </div>
+                   </div>
                 </div>
                 @endforeach 
             </div>

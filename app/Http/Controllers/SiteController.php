@@ -14,6 +14,7 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
+use App\Models\contact_us;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
@@ -173,6 +174,26 @@ class SiteController extends Controller
     public function contactus()
     {
         return view('frontend.companypages.contact');
+    }
+    public function contacts(Request $request)
+    {
+        $this->validate($request, [
+            'fname' => 'required',
+            'lname' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'subject' => 'required',
+            'description' => 'required',
+        ]);
+        $insert = new contact_us();
+        $insert->fname = $request->fname;
+        $insert->lname = $request->lname;
+        $insert->email = $request->email;
+        $insert->mobile = $request->mobile;
+        $insert->subject = $request->subject; 
+        $insert->description = $request->description;
+        $insert->save();
+        return view('frontend.companypages.contact')->with(array('request'=>$request));
     }
     public function privacypolicy()
     {

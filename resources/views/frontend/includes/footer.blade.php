@@ -76,7 +76,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="blogs.php">
+                        <a href="{{ url('blogs')}}">
                                 Blogs
                             </a>
                     </li>
