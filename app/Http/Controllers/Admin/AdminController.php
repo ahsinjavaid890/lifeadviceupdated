@@ -186,6 +186,12 @@ class AdminController extends Controller
         $data = DB::table('contactus_messages')->where('id' , $id)->first();
         return view('admin/contact/messagesdetail')->with(array('data'=>$data));
     }
+    public function deletemessage($id)
+    {
+        DB::table('contactus_messages')->where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'Message Deleted Successfully');
+    }
+
     public function allproducts()
     {
         $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
