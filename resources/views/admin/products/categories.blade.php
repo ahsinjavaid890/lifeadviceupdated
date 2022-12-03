@@ -46,11 +46,15 @@
                         </thead>
                         <tbody>
                             @foreach($data as $r)
+
+                            @php
+                                $name = strip_tags($r->name);
+                            @endphp
                             <tr>
                                 <td>
                                     <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
                                 </td>
-                                <td>{!! $r->name !!}</td>
+                                <td>{!! $name !!}</td>
                                 <td>{{ DB::table('wp_dh_products')->where('category_id' , $r->id)->count() }}</td>
                                 <td>{{ $r->show_on }}</td>
                                 <td nowrap="">
@@ -63,7 +67,7 @@
                                         <div class="modal-header">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Update Category: {!! $r->name !!}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update Category: {!! $name !!}</h5>
                                                 </div>
                                             </div>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
