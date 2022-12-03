@@ -78,6 +78,15 @@
                                         <li class="nav-item">
                                             <a href="{{ url('health-insurance') }}" class="nav-link">Health Insurance</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('nonmedical') }}" class="nav-link">Non Medical Insurance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('rrsp') }}" class="nav-link">RRSP Insurance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('resp') }}" class="nav-link">RESP Insurance</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
