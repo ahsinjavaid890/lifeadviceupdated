@@ -345,7 +345,7 @@ input {
 }
 .f1 h3 { margin-top: 0; margin-bottom: 5px; text-transform: uppercase; }
 
-.f1-steps { text-align: center; overflow: hidden; position: relative; margin-top: 20px; margin-left:80px }
+.f1-steps { text-align: center; overflow: hidden; position: relative; margin-top: 20px; margin-left:60px }
 
 .f1-progress { position: absolute; top: 24px; left: 88px; width: 80%; height: 1px; background: #ddd; }
 .f1-progress-line { position: absolute; top: 0; left: 0; height: 1px; background: #262566; }
@@ -410,4 +410,23 @@ input {
 }
 .btn-next:hover{
     color: white;
+}
+@media only screen and (min-width: 1240px) and (max-width: 1370px){
+    .f1-step {
+    position: relative;
+    float: left;
+    width: 185px;
+    padding: 0 5px;
+}
+}
+@media only screen and (min-width: 1050px) and (max-width: 1240px){
+    .f1-step {
+    position: relative;
+    float: left;
+    width: 153px;
+    padding: 0 5px;
+}
+.headitem p {
+    font-size: 11px;
+}
 }

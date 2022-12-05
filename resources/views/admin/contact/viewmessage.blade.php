@@ -21,9 +21,9 @@
                 <div class="card-body">
                     <b>Name</b> : {{$data->fname}} {{ $data->lname }}<br>
                     <b>Email</b> : {{$data->email}}<br>
-                    <b>Email</b> : {{$data->mobile}}<br>
-                    <b>Email</b> : {{$data->subject}}<br>
-                    <b>Email</b> : {{$data->description}}<br>
+                    <b>Mobile</b> : {{$data->mobile}}<br>
+                    <b>Subject</b> : {{$data->subject}}<br>
+                    <b>Description</b> : {{$data->description}}<br>
                 </div>
             </div>
             <!--end::Card-->
