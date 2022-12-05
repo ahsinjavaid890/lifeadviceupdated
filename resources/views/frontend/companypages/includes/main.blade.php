@@ -282,7 +282,7 @@
     $(document).ready(function(){
 
         $('#departure_dates').on('click','#paramsOkay', function (e) {
-           console.log($('#departure_date').val());
+            $('#departure').val($('#departure_date').val())
     });
     })
 </script>
