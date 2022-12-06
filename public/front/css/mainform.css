@@ -65,7 +65,7 @@
    max-width: 1096px;
    margin: 0 auto -48px;
    width: 100%;
-   bottom: -102px;
+   bottom: -71px;
    }
    .quotes-generator-bar {
    padding: 24px 28px;
@@ -105,8 +105,8 @@
    justify-content: unset;
    }
    .quotes-generator-bar .generator-bar-row-wrap {
-   grid-template-columns: 166px 272px 268px 127px;
-   grid-gap: 24px;
+    grid-template-columns: 267px 272px 268px 127px;
+    grid-gap: 31px;
    justify-content: center;
 /*   align-items: center;*/
    }
@@ -282,7 +282,7 @@
    background-color: #c2cad7;
    }
    .button-disabled, .button-disabled:hover, .button:disabled, .button:disabled:hover {
-   cursor: unset;
+   cursor: pointer;
    color: #fff;
    background-color: #c2cad7;
    }
@@ -788,7 +788,7 @@
     text-align: end;
     margin-top: 110px;
    }
-   .nextbtns button{
+   .nextbtns input{
     border-radius: 18px;
     width: 101px;
    }
