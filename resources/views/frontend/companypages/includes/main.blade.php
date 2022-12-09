@@ -31,29 +31,46 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       <div class="row">
          <div class="col-md-12">
             <form method="post" action="#">
-            <div data-v-5170d561="" data-v-67adc629="" class="quotes-generator-bar fixed">
-               <div data-v-5170d561="" class="grid-container">
-                  <div data-v-5170d561="" class="grid-row grid-row--bar">
-                     <div data-v-5170d561="" class="d-grid generator-bar-row-wrap">
-                        <label data-v-5170d561=""  data-toggle="modal" data-target="#myModal1" class="form-input input-destination has-arrow">
-                        <input data-v-5170d561="" id="txtmanuid" type="text" placeholder="Coverage Ammount" required="required" class="input-field hide-value" disabled><span data-v-5170d561="" class="label-text">Coverage Ammount</span>
-                        </label>
-                        <div data-v-5170d561="" data-toggle="modal" data-target="#myModal2" class="form-input date-range form-input__date-range">
-                           <label style="width: 270px !important;" data-v-5170d561="" class="form-input input-traveler-info has-arrow"><input data-v-5170d561=""  type="text" placeholder="Start Date" required="required" class="input-field" id="departure"  data-toggle="modal" data-target="#myModal3" disabled><span data-v-5170d561="" class="label-text">Star Date</span></label>
+                <div class="card qoute-card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label data-v-5170d561=""  data-toggle="modal" data-target="#myModal1" class="form-input input-destination has-arrow">
+                                    <input data-v-5170d561="" id="txtmanuid" type="text" placeholder="Coverage Ammount" required="required" class="input-field hide-value" disabled><span data-v-5170d561="" class="label-text">Coverage Ammount</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                     <label data-v-5170d561="" class="form-input input-traveler-info has-arrow"   data-toggle="modal" data-target="#myModal2"><input data-v-5170d561=""  type="text" placeholder="Start Date" required="required" class="input-field" id="departure"disabled><span data-v-5170d561="" class="label-text">Star Date</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label data-v-5170d561=""   data-toggle="modal" data-target="#myModal3" class="form-input input-traveler-info has-arrow"><input data-v-5170d561="" type="text" placeholder="Traveler Information" required="required" class="input-field" id="destinations" disabled><span data-v-5170d561="" class="label-text" >Traveler Information</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group text-center">
+                                    <input type="submit" name="submit" value="Qoutes" class="btn btn-block qoute-submit">
+                                </div>
+                            </div>
                         </div>
-                        <label data-v-5170d561=""   data-toggle="modal" data-target="#myModal3" class="form-input input-traveler-info has-arrow"><input data-v-5170d561="" type="text" placeholder="Traveler Information" required="required" class="input-field" id="destinations" disabled><span data-v-5170d561="" class="label-text" >Traveler Information</span></label>
-                        <input type="submit" value="Get Quotes" data-v-5170d561="" disabled="disabled" class="button button-primary button-rounded get-quotes-button">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal fade zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+                    </div>
+                </div>
+        
+
+                            <!-- Modals  -->
+                <div class="modal fade zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-lg  modal-dialog-centered">
                   <div class="modal-content rounded-3">
-                     <div class="modal-header">
+                     <div class="container">
+                         <div class="modal-header border-0">
                         <h4 class="modal-title" id="myModalLabel" style="color: #262566;">Choose the Coverage Ammount</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                      </div>
+                     <hr style="width: 100%;">
                      <div class="modal-body">
                         <div class="row">
                            <div class="col-md-6">
@@ -88,16 +105,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <input type="submit" value="Next" class="btn btn-default btn-next">
                         </div>
                      </div>
+                     </div>
                   </div>
                </div>
             </div>
-            <div class="modal fade zoom-in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+             <div class="modal fade zoom-in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-lg  modal-dialog-centered">
                   <div class="modal-content">
-                     <div class="modal-header">
+                     <div class="container">
+                         <div class="modal-header border-0">
                         <h4 class="modal-title" id="myModalLabel" style="color: #262566;">Departure Date</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                      </div>
+                     <hr style="width: 100%;">
                      <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -130,16 +150,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <input type="submit" value="Next" id="paramsOkay" class="btn btn-default btn-next">
                         </div>
                      </div>
+                     </div>
                   </div>
                </div>
             </div>
-            <div class="modal fade zoom-in mt-5" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 111px !important;" data-keyboard="false" data-backdrop="static">
+             <div class="modal fade zoom-in mt-5" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 111px !important;" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-lg">
                   <div class="modal-content">
-                     <div class="modal-header">
+                     <div class="container">
+                         <div class="modal-header border-0">
                         <h4 class="modal-title" id="myModalLabel" style="color: #262566;">Primary Destination</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                      </div>
+                     <hr style="width: 100%;">
                      <div class="modal-body">
                         <div class="row">
                            <div class="col-md-6">
@@ -217,9 +240,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <input type="submit" value="Done"  class="btn btn-default btn-next">
                         </div>
                      </div>
+                     </div>
                   </div>
                </div>
             </div>
+            
+        
         </form>
          </div>
       </div>

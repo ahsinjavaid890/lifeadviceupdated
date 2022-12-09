@@ -58,14 +58,14 @@
    transform: scale(1)!important;
    transform:none;
    }*/
-   .quotes-generator-bar.fixed {
+   .qoute-card {
    border-radius: 1rem;
    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
    position: relative;
    max-width: 1096px;
    margin: 0 auto -48px;
    width: 100%;
-   bottom: -71px;
+   bottom: -71px !important;
    }
    .quotes-generator-bar {
    padding: 24px 28px;
@@ -101,7 +101,7 @@
    grid-template-columns: repeat(12,1fr);
    grid-gap: 16px;
    }
-   .insurance-plans-type__page .quotes-generator-bar.fixed .generator-bar-row-wrap {
+   .insurance-plans-type__page .qoute-card .generator-bar-row-wrap {
    justify-content: unset;
    }
    .quotes-generator-bar .generator-bar-row-wrap {
@@ -123,7 +123,7 @@
    }
    .form-input {
    position: relative;
-   width: 312px;
+   width: 256px;
    display: inline-block;
    }
    .has-arrow:before {
@@ -172,7 +172,7 @@
    top: -8px;
    visibility: visible;
    }
-   .quotes-generator-bar .input-destination .dest-value[data-v-5170d561] {
+   .input-destination .dest-value[data-v-5170d561] {
    color: #2b3481;
    font-weight: 600;
    font-size: .875rem;
@@ -204,7 +204,7 @@
    transition-duration: .12s;
    transition-property: opacity,visibility,top;
    }
-   .quotes-generator-bar .form-input.date-range .input-field {
+   .form-input.date-range .input-field {
    color: #67778f;
    }
    .form-input.date-range .input-field {
@@ -395,7 +395,7 @@
    margin: 48px auto;
    border-color: transparent;
    }
-   .card {
+/*   .card {
    position: relative;
    display: flex;
    flex-direction: column;
@@ -406,7 +406,7 @@
    box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
    padding: 32px 24px;
    border-radius: 16px;
-   }
+   }*/
    .country-selection .lg-wizard-card .card-content {
    min-height: 185px;
    margin-top: 7px;
@@ -676,7 +676,7 @@
    }
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
-   .insurance-plans-type__page .quotes-generator-bar.fixed .generator-bar-row-wrap {
+   .insurance-plans-type__page .qoute-card .generator-bar-row-wrap {
    grid-template-columns: 166px 272px 268px 127px;
    }
    .insurance-plans-type__hero[data-v-67adc629] .quotes-generator-bar .generator-bar-row-wrap {
@@ -795,3 +795,129 @@
    .get-quotes-button{
     width: 145px;
    }
+   @media (min-width: 1850px) and (max-width: 2050px){
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -130px !important;
+}
+  }
+   @media (min-width: 1360px) and (max-width: 1520px){
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -40px !important;
+}
+   }
+    @media (min-width: 1240px) and (max-width: 1360px){
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -8px !important;
+}
+  .get-quotes-button {
+      width: 94px;
+}
+   }
+    @media (min-width: 1090px) and (max-width: 1240px){
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: 35px !important;
+}
+  .get-quotes-button {
+      width: 85px;
+}
+.quotes-generator-bar .generator-bar-row-wrap {
+    grid-gap: 0px;
+}
+   }
+   @media (min-width: 910px) and (max-width: 1090px){
+    .quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 204px 272px 234px 127px;
+    grid-gap: 0px;
+}
+.qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -36px !important;
+}
+   }
+   @media (min-width: 780px) and (max-width: 910px){
+    .quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 197px 277px 148px 131px;
+    grid-gap: 0px;
+}
+.qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -11px !important;
+}
+.get-quotes-button {
+    width: 97px;
+}
+   }
+   @media (min-width: 680px) and (max-width: 780px){
+
+.qoute-card {
+  display: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -11px !important;
+}
+
+   }
+   .qoute-card{
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    position: relative;
+    max-width: 1096px;
+    margin: 0 auto -48px;
+    width: 100%;
+    bottom: -40px ;
+    background: #fff;
+    padding: 0;
+  }
+  .qoute-submit{
+    background: #262566;
+    color: white;
+    width: 120px !important;
+    border-radius: 20px;
+    margin: auto;
+  }
+  .form-group {
+    margin-bottom: 0 !important;
+}
+
+
+
+
+
