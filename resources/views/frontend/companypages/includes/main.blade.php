@@ -93,18 +93,16 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 <span>Primary Destination</span>
                                 <ul class="dropdown"  >
                                  @foreach(DB::table('formcountries')->get() as $r)
-                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect('{{$r->name}}');"><span class="selectspan">{{ $r->name }}</span></li>
+                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect('{{$r->name}}');"><span class="selectspan">{{ $r->name }}</span></li>  
+                                    <script type="text/javascript">
+                                        function optionselect() {
+                                      var params = $('#selectboxes').val();
+                                      $('#testfield2').val(params);
+                                    }
+                                    </script>
                                  @endforeach
                                 </ul>
                               </div>
-                           </div>
-                           <!---->
-                           <div data-v-73e0d048="" data-v-5ed4506d="" class="card-foot mt-4">
-                              <div data-v-73e0d048="" class="card-foot--container">
-                                 <!---->
-                                 <div data-v-73e0d048="" class="card-footer--center-col"></div>
-                              </div>
-                              <!---->
                            </div>
                         </div>
                         <div class="nextbtns">
@@ -373,11 +371,5 @@ dropDown.prototype = {
       obj.placeholder.text(obj.val);
     });
   }
-}
-</script>
-<script type="text/javascript">
-    function optionselect(value) {
-  var params = $('#selectboxes').val();
-  $('#testfield2').val(params);
 }
 </script>
