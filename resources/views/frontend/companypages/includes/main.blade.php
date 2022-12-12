@@ -89,15 +89,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <h2 data-v-5ed4506d="" class="heading-3 card-heading">What countries will be visited?</h2>
                            <div data-v-5ed4506d="" class="card-content">
                               <p data-v-5ed4506d="" class="card-info">Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered.</p>
-
-                                       <div class="wrapper-dropdown" id="primary_destination">
-                                            <span>Primary Destination</span>
-                                            <ul class="dropdown"  >
-                                                @foreach(DB::table('formcountries')->get() as $r)
-                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect(this.value);"><span class="selectspan">{{ $r->name }}</span></li>
-                                              @endforeach
-                                            </ul>
-                                          </div>
+                              <div class="wrapper-dropdown" id="primary_destination">
+                                <span>Primary Destination</span>
+                                <ul class="dropdown"  >
+                                 @foreach(DB::table('formcountries')->get() as $r)
+                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect(this.value);"><span class="selectspan">{{ $r->name }}</span></li>
+                                 @endforeach
+                                </ul>
+                              </div>
                            </div>
                            <!---->
                            <div data-v-73e0d048="" data-v-5ed4506d="" class="card-foot mt-4">
