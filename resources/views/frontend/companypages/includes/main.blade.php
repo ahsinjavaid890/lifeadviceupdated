@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{{ asset('public/front/formqoute/main.2a3546da.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/formqoute/0dbf611d.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/formqoute/c8c274397857.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -87,26 +88,16 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <h2 data-v-5ed4506d="" class="heading-3 card-heading">What countries will be visited?</h2>
                            <div data-v-5ed4506d="" class="card-content">
                               <p data-v-5ed4506d="" class="card-info">Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered.</p>
-                              <div data-v-5ed4506d="" class="form-line">
-                                 <div data-v-5ed4506d="" class="line-content">
-                                    <span data-v-2cd039a3="" data-v-5ed4506d="" class="form-input select has-mobile-exit wide-input">
-                                       <div data-v-2cd039a3="" class="mobile-exit">&nbsp;</div>
-                                        <select  data-v-2cd039a3="" placeholder="Destination Country" name="destination_country" id="destination_country" autocomplete="destination_country" required="required" class="input-field" style=" background-image: none !important;">
-                                          <option class="optionselect">Primary Destination</option>
-                                          @foreach(DB::table('formcountries')->get() as $r)
-                                          <option data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect"><span data-v-6e3bf6e8="">{{ $r->name }}</span></option>
-                                          @endforeach
-                                          </select>
-                                          <span data-v-2cd039a3="" class="label-text">Primary Destination</span>
-                                       <div data-v-2cd039a3="" class="dropdown">
-                                          <select data-v-6e3bf6e8="" name="primary_destination" id="primary_destination" class="input-field" required>
-                                        
-                                       </select>
-                                       </div>
-                                    </span>
-                                 </div>
-                                 <!---->
-                              </div>
+
+                                       <div class="wrapper-dropdown" id="primary_destination">
+                                            <span>Primary Destination</span>
+                                            <ul class="dropdown">
+                                                <li>Primary Destination</li>
+                                                @foreach(DB::table('formcountries')->get() as $r)
+                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect">{{ $r->name }}</li>
+                                              @endforeach
+                                            </ul>
+                                          </div>
                            </div>
                            <!---->
                            <div data-v-73e0d048="" data-v-5ed4506d="" class="card-foot mt-4">
@@ -155,7 +146,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </div>
                                          <div class="row dobdiv" style="display:none;">
                                             <div class="col-md-12 d-flex">
-                                               <div class="col-md-7 no-padding d-flex">
+                                               <div class="col-md-7 no-padding d-flex p-o">
                                                   <div class="col-md-4" style="padding: 0 5px;">
                                                      <small style="font-size: 7px;color: #999;padding: 0;">Month</small>
                                                      <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" style="margin-top: -5px !important;display: block;" autocomplete="dob_year" maxlength="2">
@@ -192,20 +183,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       </div>
                                       </div>
                                        <div class="col-md-6">
-                                        <div data-v-0fda4d6e="" class="d-inline-block visitor-citizenship-container">
-                                          <div data-v-0fda4d6e="" class="d-inline-block citizenship-section">
-                                             <span data-v-2cd039a3="" data-v-0fda4d6e="" class="form-input select cd-visitor country-of-citizenship has-mobile-exit wide-input">
-                                                <div data-v-2cd039a3="" class="mobile-exit">&nbsp;</div>
-                                                <select data-v-2cd039a3="" type="text" placeholder="Country of Citizenship" name="l6pm00qp41" autocomplete="l6pm00qp41" required="required" class="input-field" style="background-image: none !important;">
-                                                    <option class="optionselect">Primary Destination</option>
-                                                  @foreach(DB::table('formcountries')->get() as $r)
-                                                  <option data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect"><span data-v-6e3bf6e8="">{{ $r->name }}</span></option>
-                                                  @endforeach
-                                                </select>
-                                                <span data-v-2cd039a3="" class="label-text">Citizenship</span>
-                                             </span>
+                                       <div class="wrapper-dropdown" id="citizenship">
+                                            <span>Citizenship</span>
+                                            <ul class="dropdown">
+                                                <li>Citizenship</li>
+                                                @foreach(DB::table('formcountries')->get() as $r)
+                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect">{{ $r->name }}</li>
+                                              @endforeach
+                                            </ul>
                                           </div>
-                                       </div>
                                        </div>
                                     </div>
                                  </div>
@@ -320,4 +306,74 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    
    });
    
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#citizenship'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#primary_destination'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
 </script>

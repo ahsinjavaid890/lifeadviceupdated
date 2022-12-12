@@ -1591,3 +1591,119 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .calculate-heading h2 .container{
     display: none !important;
 }
+
+
+
+
+
+.wrapper-dropdown {
+  position: relative;
+  
+  display: inline-block; 
+  min-width: 290px;
+  padding: 0 5px 0 15px;
+  
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 2px 0 rgba(0 ,0 , 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+  
+  text-align: left;
+  line-height: 45px;
+  color: #444;
+  
+  cursor: pointer;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.wrapper-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  
+  margin-top: -2px;
+  width: 0;
+  height: 0;
+  
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #a0a0a0 transparent;
+}
+
+.wrapper-dropdown.active::before {
+  border-width: 0 6px 6px 6px;
+}
+
+.wrapper-dropdown .dropdown {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  left: 0;
+  
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+  
+  border-radius: inherit;
+  box-shadow: inherit;
+  background: inherit;
+  
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+  
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  transform: scaleY(0);
+  
+  -webkit-transform-origin: top;
+  -moz-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  opacity: 0;
+  visibility: hidden;
+}
+
+.wrapper-dropdown .dropdown li {
+  padding: 0 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  overflow: hidden;
+  
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+}
+
+.wrapper-dropdown .dropdown li:last-child {
+  border-bottom: none;
+}
+
+.wrapper-dropdown .dropdown li:hover {
+  background: rgba(197, 239, 247, .55);
+}
+
+.wrapper-dropdown.active .dropdown {
+    height: 241px;
+    overflow: scroll;
+    opacity: 1;
+     visibility: visible;
+  
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+}
