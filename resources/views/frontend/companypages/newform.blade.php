@@ -94,7 +94,7 @@
                            </div>
                         </div>
                         <div class="nextbtns">
-                           <button class="btn btn-default btn-next">Next</button>
+                           <input type="submit" value="Next" class="btn btn-default btn-next">
                         </div>
                      </div>
                   </div>
@@ -111,7 +111,7 @@
                            <h2 data-v-0fda4d6e="" class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
                            <div data-v-0fda4d6e="" class="card-content">
-                              <p data-v-0fda4d6e="" class="card-info"> Enter the age and citizenship for each person that will be traveling. </p>
+                              <p data-v-0fda4d6e="" class="card-info"> Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered. </p>
                               <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
                                  <div data-v-0fda4d6e="" class="line-content fd-column">
                                     <div data-v-0fda4d6e="" class="row">
