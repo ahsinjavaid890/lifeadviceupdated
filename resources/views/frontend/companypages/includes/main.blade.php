@@ -1,14 +1,14 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-b2560f80.9329634e.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-5970b8c1.3cbf45f8.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-e66e9cce.0bfb26e0.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-ebe193e4.1c34b978.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-3e82b756.822e1495.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/21/css/chunk-92251a5e.90e3ff4d.css">
-<script type="text/javascript" src="https://assets.visitorscoverage.com/production/app/vue-builds/21/js/main.2a3546da.js"></script>
-<script type="text/javascript" src="https://assets.visitorscoverage.com/production/app/vue-builds/21/js/chunk-vendors.0dbf611d.js"></script>
-<script type="text/javascript" src="https://static.zdassets.com/ekr/snippet.js?key=7a3787b9-6f3d-4a81-826c-c8c274397857"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-b2560f80.9329634e.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-5970b8c1.3cbf45f8.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-e66e9cce.0bfb26e0.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-ebe193e4.1c34b978.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-3e82b756.822e1495.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-92251a5e.90e3ff4d.css')}}">
+<script type="text/javascript" src="{{ asset('public/front/formqoute/main.2a3546da.js')}}"></script>
+<script type="text/javascript" src="{{ asset('public/front/formqoute/0dbf611d.js')}}"></script>
+<script type="text/javascript" src="{{ asset('public/front/formqoute/c8c274397857.js')}}"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();

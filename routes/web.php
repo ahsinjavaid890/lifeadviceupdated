@@ -30,7 +30,6 @@ Route::name('user.')->prefix('user')->group(function(){
 
 
 // Site Routes
-Route::get('/newform', [SiteController::class, 'newform']);
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [SiteController::class, 'profile']);
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);

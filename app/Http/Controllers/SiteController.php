@@ -115,10 +115,6 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.udashboard');
     }
-    public function newform()
-    {
-        return view('frontend.companypages.newform');
-    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();
