@@ -93,7 +93,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 <span>Primary Destination</span>
                                 <ul class="dropdown"  >
                                  @foreach(DB::table('formcountries')->get() as $r)
-                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect(this.value);"><span class="selectspan">{{ $r->name }}</span></li>
+                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect('{{$r->name}}');"><span class="selectspan">{{ $r->name }}</span></li>
                                  @endforeach
                                 </ul>
                               </div>
