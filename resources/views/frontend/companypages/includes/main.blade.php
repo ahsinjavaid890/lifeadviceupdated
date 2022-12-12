@@ -9,7 +9,8 @@
 <script type="text/javascript" src="{{ asset('public/front/formqoute/main.2a3546da.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/formqoute/0dbf611d.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/formqoute/c8c274397857.js')}}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('public/front/formqoute/bvselect.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/bvselect.css')}}">
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -48,6 +49,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div data-v-5170d561="" class="grid-container">
                         <div data-v-5170d561="" class="grid-row grid-row--bar">
                            <div data-v-5170d561="" class="d-grid generator-bar-row-wrap">
+                                 <input data-v-5170d561="" type="hidden"   required="required" id="txtmanuid">
                               <label data-toggle="modal" data-target="#myModal1" data-v-5170d561="" class="form-input input-destination has-arrow">
                                  <input data-v-5170d561="" type="text" placeholder="Destination" required="required" id="txtmanuid" class="input-field" disabled>
                                  <span data-v-5170d561="" class="label-text">Destination</span>
@@ -88,16 +90,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <h2 data-v-5ed4506d="" class="heading-3 card-heading">What countries will be visited?</h2>
                            <div data-v-5ed4506d="" class="card-content">
                               <p data-v-5ed4506d="" class="card-info">Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered.</p>
-
-                                       <div class="wrapper-dropdown" id="primary_destination">
+                                        <select id="selectbox" class="selectbox" >
+                                            <option value="" class="selectoption">Primary Destination</option>
+                                            @foreach(DB::table('formcountries')->get() as $r)
+                                            <option class="selectoption" data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" >{{ $r->name }} </option>
+                                            @endforeach
+                                        </select>
+                                      <!--  <div class="wrapper-dropdown" id="primary_destination">
                                             <span>Primary Destination</span>
                                             <ul class="dropdown">
-                                                <li>Primary Destination</li>
                                                 @foreach(DB::table('formcountries')->get() as $r)
-                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect">{{ $r->name }}</li>
+                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect"><span class="selectspan">{{ $r->name }}</span></li>
                                               @endforeach
                                             </ul>
-                                          </div>
+                                          </div> -->
                            </div>
                            <!---->
                            <div data-v-73e0d048="" data-v-5ed4506d="" class="card-foot mt-4">
@@ -186,9 +192,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div class="wrapper-dropdown" id="citizenship">
                                             <span>Citizenship</span>
                                             <ul class="dropdown">
-                                                <li>Citizenship</li>
                                                 @foreach(DB::table('formcountries')->get() as $r)
-                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect">{{ $r->name }}</li>
+                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect"><span class="selectspan">{{ $r->name }}</span></li>
                                               @endforeach
                                             </ul>
                                           </div>
@@ -266,10 +271,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    </div>
 </div>
 <script type="text/javascript">
-   $( "#destination_country" ).change(function() {
-       var sel = $( "#destination_country option:selected" ).val();
+   $( "#selectbox" ).change(function() {
+       var sel = $( "#selectbox option:selected" ).val();
        var textbox = document.getElementById("txtmanuid");
-       textbox.value =$( "#destination_country option:selected" ).text();
+       textbox.value =$( "#selectbox option:selected" ).text();
    });
 </script>
 <script>
@@ -343,37 +348,11 @@ dropDown.prototype = {
 }
 </script>
 <script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#primary_destination'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
+    document.addEventListener("DOMContentLoaded", function() {
+        var demo1 = new BVSelect({
+          selector: "#selectbox",
+          searchbox: false,
+          offset: false
+        });
   });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
 </script>
