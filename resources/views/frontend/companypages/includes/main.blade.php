@@ -42,6 +42,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       <div class="row">
          <div class="col-md-12">
             <form action="#" method="POST">
+               <input type="hidden"  name="sum_insured2" id="sum_insured2">
             <div class="card p-0 qoute-card">
                <div class="card-body p-0">
                   <div data-v-5170d561="" data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -86,27 +87,42 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div data-v-5ed4506d="" data-v-6d46de94="" class="card lg-wizard-card  border-0">
-                           <h2 data-v-5ed4506d="" class="heading-3 card-heading">What countries will be visited?</h2>
+                           <h2 data-v-5ed4506d="" class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
                            <div data-v-5ed4506d="" class="card-content">
-                              <p data-v-5ed4506d="" class="card-info">Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered.</p>
+                              <p data-v-5ed4506d="" class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                               <div class="wrapper-dropdown" id="primary_destination">
-                                <span>Primary Destination</span>
+                                <span>Coverage Ammount</span>
                                 <ul class="dropdown"  >
-                                 @foreach(DB::table('formcountries')->get() as $r)
-                                 <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" value="{{ $r->name }}" class="optionselect" id="selectboxes" onclick="optionselect('{{$r->name}}');"><span class="selectspan">{{ $r->name }}</span></li>  
-                                    <script type="text/javascript">
-                                        function optionselect() {
-                                      var params = $('#selectboxes').val();
-                                      $('#testfield2').val(params);
-                                    }
-                                    </script>
+                                 @foreach($sum_insured as $r)
+                                 <li onclick="selectcoverageammount({{$r->sum_insured}});">
+                                    <span class="selectspan">${{ $r->sum_insured }}</span>
+                                 </li>
                                  @endforeach
+                                 <script type="text/javascript">
+                                     function selectcoverageammount(id) {
+                                         $('#sum_insured2').val(id);
+                                         $('#covergaeerror').hide();
+                                       }
+                                       function firstnext() {
+                                          if($('#sum_insured2').val() == '')
+                                          {
+                                             $('#covergaeerror').show();
+                                             $('#covergaeerror').html('Please Select Covergae Ammount');
+                                          }else{
+                                             $('#firstnextfake').hide();
+                                             $('#firstnextorignal').show();
+                                             $('#firstnextorignal').click();
+                                          }
+                                       }
+                                 </script>
                                 </ul>
                               </div>
                            </div>
+                           <div class="text-danger" id="covergaeerror"></div>
                         </div>
                         <div class="nextbtns">
-                           <input type="submit" value="Next" class="btn btn-default btn-next"> 
+                           <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
+                           <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -127,7 +143,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
                                  <div data-v-0fda4d6e="" class="line-content fd-column">
                                     <div data-v-0fda4d6e="" class="row">
-                                      <div class="col-md-6">
+                                      <div class="col-md-7">
                                        <div class=" ageandcitizen">
                                          <div class="row yearsdiv" style="">
                                             <div class="col-md-4">
@@ -179,7 +195,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </div>
                                       </div>
                                       </div>
-                                       <div class="col-md-6">
+                                       <div class="col-md-5">
                                        <div class="wrapper-dropdown" id="citizenship">
                                             <span>Citizenship</span>
                                             <ul class="dropdown">
@@ -251,7 +267,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-             </div>
          </form>
          </div>
       </div>
