@@ -10,6 +10,8 @@
 <script type="text/javascript" src="{{ asset('public/front/formqoute/0dbf611d.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/front/formqoute/c8c274397857.js')}}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -399,24 +401,28 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="row">
                                         @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                                         <div class="col-md-12">
-                                         <input type="date" placeholder="" id="date" onclick="openCalendar()" required>
-                                            <div class="timetable_container hide">
-                                              <div id="calendar" class="calendar">
-                                                <span>Add something here</span>
-                                              </div>
-                                            </div>
+                                         <div class="calander noselect">
+                                            <div class = "cal_output paper-shadow-top-z-1">
+                                            <span id="outputText"></span>
+                                          </div>
+                                          <div class="cal_head paper-shadow-top-z-1 paper-shadow-bottom-z-1">
+                                            <button class ="button_left">
+                                              <i class="material-icons">keyboard_arrow_left</i></button>
+                                            <span id="month_label">Month</span>
+                                            <button class ="button_right"><i class="material-icons">keyboard_arrow_right</i></button>
+                                          </div>  
+                                          <div class = "cal_body paper-shadow-top-z-1 paper-shadow-bottom-z-1">
+                                            <table class="calender_table">
+                                              <tbody id = "cal">
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
                                         </div>
                                         @endif
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <!---->
-                           <div data-v-73e0d048="" data-v-0fda4d6e="" class="card-foot mt-4">
-                              <div data-v-73e0d048="" class="card-foot--container">
-                                 <div data-v-73e0d048="" class="card-footer--center-col"></div>
-                              </div>
-                              <!---->
                            </div>
                         </div>
                         <div class="nextbtns">
@@ -581,185 +587,136 @@ dropDown.prototype = {
 }
 </script>
 <script type="text/javascript">
-    var calendarNode = document.querySelector("#calendar");
+  //----------variables----------//
 
-var currDate = new Date();
-var currYear = currDate.getFullYear();
-var currMonth = currDate.getMonth() + 1;
+var day = "";
+var month = "";
+var year = "";
+var currentDate = "";
+var monthStartDay = "";
 
-var selectedYear = currYear;
-var selectedMonth = currMonth;
-var selectedMonthName = getMonthName(selectedYear, selectedMonth);
-var selectedMonthDays = getDayCount(selectedYear, selectedMonth);
+var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-renderDOM(selectedYear, selectedMonth);
+var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-function getMonthName(year, month) {
-  let selectedDate = new Date(year, month - 1, 1);
-  return selectedDate.toLocaleString("default", { month: "long" });
+//----------functions----------//
+
+function getMonthInfo(year, month) {
+
+  //use current month to find number of days in month
+  //i dont know why i have to add 1 to month
+  var startDate = new Date(year, month + 1, 0);
+  var monthLength = startDate.getDate();
+
+  var startDate = new Date(year, month, 1);
+  var monthStartDay = startDate.getDay();
+
+  return [monthLength, monthStartDay];
+
 }
 
-function getMonthText() {
-  // if (selectedYear === currYear)
-  //     return selectedMonthName;
-  // else
-  return selectedMonthName + ", " + selectedYear;
-}
+function drawCal(monthInfo) {
 
-function getDayName(year, month, day) {
-  let selectedDate = new Date(year, month - 1, day);
-  return selectedDate.toLocaleDateString("en-US", { weekday: "long" });
-}
+  var daysInMonth = monthInfo[0];
+  var monthStartDays = monthInfo[1];
 
-function getDayCount(year, month) {
-  return 32 - new Date(year, month - 1, 32).getDate();
-}
+  //clear cal tbody
+  $("#cal").empty();
+  $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
 
-function getDaysArray() {
-  let emptyFieldsCount = 0;
-  let emptyFields = [];
-  let days = [];
+  //create empty row, append to to tbody
+  var $rowOut = $("<tr></tr>");
+  $("#cal").append($rowOut);
 
-  switch (getDayName(selectedYear, selectedMonth, 1)) {
-    case "Tuesday":
-      emptyFieldsCount = 1;
-      break;
-    case "Wednesday":
-      emptyFieldsCount = 2;
-      break;
-    case "Thursday":
-      emptyFieldsCount = 3;
-      break;
-    case "Friday":
-      emptyFieldsCount = 4;
-      break;
-    case "Saturday":
-      emptyFieldsCount = 5;
-      break;
-    case "Sunday":
-      emptyFieldsCount = 6;
-      break;
+  //shift first row by month start date
+  for (var i = 1; i <= monthStartDays; i++) {
+    var $day = "<td></td>";
+    $("#cal tr:last").append($day);
   }
 
-  emptyFields = Array(emptyFieldsCount).fill("");
-  days = Array.from(Array(selectedMonthDays + 1).keys());
-  days.splice(0, 1);
+  //for each day, append a td to the row
+  for (var i = 1; i <= daysInMonth; i++) {
+    var $day = "<td><a>" + (i) + "</a></td>";
+    $("#cal tr:last").append($day);
 
-  return emptyFields.concat(days);
-}
-
-function renderDOM(year, month) {
-  let newCalendarNode = document.createElement("div");
-  newCalendarNode.id = "calendar";
-  newCalendarNode.className = "calendar";
-
-  let dateText = document.createElement("div");
-  dateText.append(getMonthText());
-  dateText.className = "date-text";
-  newCalendarNode.append(dateText);
-
-  let leftArrow = document.createElement("div");
-  leftArrow.append("«");
-  leftArrow.className = "button";
-  leftArrow.addEventListener("click", goToPrevMonth);
-  newCalendarNode.append(leftArrow);
-
-  let curr = document.createElement("div");
-  curr.append("📅");
-  curr.className = "button";
-  curr.addEventListener("click", goToCurrDate);
-  newCalendarNode.append(curr);
-
-  let rightArrow = document.createElement("div");
-  rightArrow.append("»");
-  rightArrow.className = "button";
-  rightArrow.addEventListener("click", goToNextMonth);
-  newCalendarNode.append(rightArrow);
-
-  let dayNames = ["M", "T", "W", "T", "F", "S", "S"];
-
-  dayNames.forEach((cellText) => {
-    let cellNode = document.createElement("div");
-    cellNode.className = "cell cell--unselectable";
-    cellNode.append(cellText);
-    newCalendarNode.append(cellNode);
-  });
-
-  let days = getDaysArray(year, month);
-
-  days.forEach((cellText) => {
-    let cellNode = document.createElement("div");
-    cellNode.className = "cell";
-    cellNode.append(cellText);
-    newCalendarNode.append(cellNode);
-  });
-
-  calendarNode.replaceWith(newCalendarNode);
-  calendarNode = document.querySelector("#calendar");
-}
-
-function goToPrevMonth() {
-  selectedMonth--;
-  if (selectedMonth === 0) {
-    selectedMonth = 12;
-    selectedYear--;
-  }
-  selectedMonthDays = getDayCount(selectedYear, selectedMonth);
-  selectedMonthName = getMonthName(selectedYear, selectedMonth);
-
-  renderDOM(selectedYear, selectedMonth);
-}
-
-function goToNextMonth() {
-  selectedMonth++;
-  if (selectedMonth === 13) {
-    selectedMonth = 1;
-    selectedYear++;
-  }
-  selectedMonthDays = getDayCount(selectedYear, selectedMonth);
-  selectedMonthName = getMonthName(selectedYear, selectedMonth);
-
-  renderDOM(selectedYear, selectedMonth);
-}
-
-function goToCurrDate() {
-  selectedYear = currYear;
-  selectedMonth = currMonth;
-
-  selectedMonthDays = getDayCount(selectedYear, selectedMonth);
-  selectedMonthName = getMonthName(selectedYear, selectedMonth);
-
-  renderDOM(selectedYear, selectedMonth);
-}
-
-// open calendar function
-function openCalendar() {
-  $(".timetable_container.hide").removeClass("hide");
-}
-// function to pick date from calendar
-$(".timetable_container").click(function (e) {
-  if (e.target.className == "cell") {
-    selectedDay = parseInt(e.target.textContent);
-    if ((selectedDay + "").length == 1) {
-      selectedDay = "0" + selectedDay;
+    //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
+    if ((i + monthStartDays) % 7 == 0 & i != 0) {
+      $("#cal").append($rowOut);
+      $rowOut = "<tr></tr>";
+      $("#cal").append($rowOut);
     }
-    if ((selectedMonth + "").length == 1) {
-      selectedMonth = "0" + selectedMonth;
-    }
-    var selectedDateByUser =
-      selectedYear + "-" + selectedMonth + "-" + selectedDay;
-    // alert(selectedDateByUser)
-    $("input#date").val(selectedDateByUser);
-    $(".timetable_container").addClass("hide");
   }
+}
+
+//----------wiring----------//
+
+$(".button_left").click(function() {
+
+  month--;
+
+  if (month < 0) {
+    year--;
+    month = 11;
+  }
+
+  //left button click
+  $(".cal_head span").text(monthTextArray[month] + " " + year);
+  drawCal(getMonthInfo(year, month));
+
 });
 
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".timetable_container").length === 0) {
-    // $(".container").hide();
-    // alert('outside')
-    $(".timetable_container").addClass("hide");
+//right button click
+$(".button_right").click(function() {
+
+  month++;
+
+  if (month > 11) {
+    year++;
+    month = 0;
   }
+
+  $(".cal_head span").text(monthTextArray[month] + " " + year);
+  drawCal(getMonthInfo(year, month));
+
 });
 
+$("#cal").on("click", "td", function(e) {
+
+  e.preventDefault();
+  $("#cal td").removeClass("circle");
+  $(this).addClass("circle");
+  var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
+  console.log(outputDate);
+  $("#outputText").text(outputDate);
+
+});
+
+//----------run----------//
+
+//get current month and year
+currentDate = new Date();
+year = currentDate.getFullYear();
+month = currentDate.getMonth();
+day = currentDate.getDate();
+
+//get text month name from month number and write to span
+$(".cal_head span").text(monthTextArray[month] + " " + year);
+
+//inital calander draw based on current month
+drawCal(getMonthInfo(year, month));
+
+//var selector = ("td a:contains(" + day + ")");
+var selector = $("td a").filter(function(){
+ return $(this).text() === day.toString();
+});
+
+//var selector = $("#cal").find("a="+day+"");
+
+
+$(selector.parent()).addClass("circle");
+
+var outputDate = monthTextArray[month] + " " + day + ", " + year;
+
+
+$("#outputText").text(outputDate);
 </script>
