@@ -245,7 +245,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="nextbtns">
                            <input type="submit" value="Prev" class="btn btn-default btn-prev">
-                           <input type="submit" value="Next" class="btn btn-default btn-next">
+                           <input type="submit" value="Done" class="btn btn-default btn-next">
                         </div>
                      </div>
                   </div>
