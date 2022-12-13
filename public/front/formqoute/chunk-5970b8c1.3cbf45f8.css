@@ -284,7 +284,7 @@
     grid-template-columns:166px 272px 268px 127px;
     grid-gap:24px;
     justify-content:center;
-    align-items:center
+    align-items:baseline;
 }
 @media(min-width:1024px)and (max-width:1439.98px){
     .quotes-generator-bar .generator-bar-row-wrap{

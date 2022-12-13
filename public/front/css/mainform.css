@@ -1406,7 +1406,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     text-align: end;
     margin-top: 110px;
    }
-   .nextbtns input{
+   .nextbtns span{
     border-radius: 18px;
     width: 101px;
    }
@@ -1846,6 +1846,9 @@ input#date::-webkit-calendar-picker-indicator {
     height: 39px;
     padding: 2px;
 }
+.yearsdiv{
+    position: absolute;
+}
 .yearsdiv small{
     position: absolute !important;
     font-size: 0.757rem !important;
@@ -1881,4 +1884,7 @@ input#date::-webkit-calendar-picker-indicator {
 }
 input#date:focus-visible{
     border: 0px !important;
+}
+.dobdiv{
+    position: absolute;
 }

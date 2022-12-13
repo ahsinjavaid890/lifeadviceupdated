@@ -49,7 +49,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div data-v-5170d561="" class="grid-container">
                         <div data-v-5170d561="" class="grid-row grid-row--bar">
                            <div data-v-5170d561="" class="d-grid generator-bar-row-wrap">
-                                 <input data-v-5170d561="" type="hidden"  required="required" id="testfield2" value="">
                               <label data-toggle="modal" data-target="#myModal1" data-v-5170d561="" class="form-input input-destination has-arrow">
                                  <input data-v-5170d561="" type="text" placeholder="Destination" required="required" id="txtmanuid" class="input-field" disabled>
                                  <span data-v-5170d561="" class="label-text">Destination</span>
