@@ -89,32 +89,93 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <h2 data-v-5ed4506d="" class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
                            <div data-v-5ed4506d="" class="card-content">
                               <p data-v-5ed4506d="" class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
-                              <div class="wrapper-dropdown" id="primary_destination">
-                                <span>Coverage Ammount</span>
-                                <ul class="dropdown"  >
-                                 @foreach($sum_insured as $r)
-                                 <li onclick="selectcoverageammount({{$r->sum_insured}});">
-                                    <span class="selectspan">${{ $r->sum_insured }}</span>
-                                 </li>
-                                 @endforeach
-                                 <script type="text/javascript">
-                                     function selectcoverageammount(id) {
-                                         $('#sum_insured2').val(id);
-                                         $('#covergaeerror').hide();
+                              <div class="row">
+                                @if(isset($fields['sum_insured']))
+                                @if($fields['sum_insured'] == 'on')
+                                  <div class="col-md-4">
+                                      <div class="wrapper-dropdown" id="primary_destination">
+                                        <span>Coverage Ammount</span>
+                                        <ul class="dropdown"  >
+                                         @foreach($sum_insured as $r)
+                                         <li onclick="selectcoverageammount({{$r->sum_insured}});">
+                                            <span class="selectspan">${{ $r->sum_insured }}</span>
+                                         </li>
+                                         @endforeach
+                                         <script type="text/javascript">
+                                             function selectcoverageammount(id) {
+                                                 $('#sum_insured2').val(id);
+                                                 $('#covergaeerror').hide();
+                                               }
+                                               function firstnext() {
+                                                  if($('#sum_insured2').val() == '')
+                                                  {
+                                                     $('#covergaeerror').show();
+                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
+                                                  }else{
+                                                     $('#firstnextfake').hide();
+                                                     $('#firstnextorignal').show();
+                                                     $('#firstnextorignal').click();
+                                                  }
+                                               }
+                                         </script>
+                                        </ul>
+                                      </div>
+                                  </div>
+                                 @endif
+                                 @endif
+                                 @if(isset($fields['fname']))
+                                 @if($fields['fname'] == 'on')
+                                 <div class="col-md-4">
+                                    <div class="custom-form-control">
+                                       <input type="text" name="fname" placeholder="First Name" required id="irstname" class="wrapperfrom">
+                                       <label for="firstname" class="form-label">First name</label>
+                                    </div>
+                                 </div>
+                                 @endif
+                                 @endif
+                                 @if(isset($fields['lname']))
+                                 @if($fields['lname'] == 'on')
+                                 <div class="col-md-4">
+                                    <div class="custom-form-control">
+                                       <input type="text" name="lname" placeholder="Last Name" required id="lname" class="wrapperfrom">
+                                       <label for="lname" class="form-label">Last name</label>
+                                    </div>
+                                 </div>
+                                 @endif
+                                 @endif
+                                 @if(isset($fields['email']))
+                                 @if($fields['email'] == "on" )
+                                   <div class="col-md-4">
+                                      <div class="custom-form-control">
+                                         <input type="text" name="savers_email" placeholder="Savers_Email" required id="savers_email" class="wrapperfrom">
+                                         <label for="savers_email" class="form-label">Email</label>
+                                      </div>
+                                   </div>
+                                @endif
+                                @endif
+                                @if(isset($fields['phone']))
+                                @if($fields['phone'] == 'on')
+                                 <div class="col-md-4">
+                                    <div class="custom-form-control">
+                                       <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="wrapperfrom">
+                                       <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
+                                    </div>
+                                 </div>
+                                 <script>
+                                    function validatephone(){
+                                       var checkphone = document.getElementById('phone').value;
+                                       document.getElementById('phone').value = checkphone.replace(/\D/g,'');
+                                       if (checkphone.length < 10) {
+                                       document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
+                                       document.getElementById('getquote').disabled = true;  
+                                       } else {
+                                       document.getElementById('getquote').disabled = false; 
+                                       document.getElementById('phone_error').innerHTML = '';
                                        }
-                                       function firstnext() {
-                                          if($('#sum_insured2').val() == '')
-                                          {
-                                             $('#covergaeerror').show();
-                                             $('#covergaeerror').html('Please Select Covergae Ammount');
-                                          }else{
-                                             $('#firstnextfake').hide();
-                                             $('#firstnextorignal').show();
-                                             $('#firstnextorignal').click();
-                                          }
                                        }
                                  </script>
-                                </ul>
+                                 @endif
+                                 @endif
                               </div>
                            </div>
                            <div class="text-danger" id="covergaeerror"></div>
@@ -142,6 +203,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
                                  <div data-v-0fda4d6e="" class="line-content fd-column">
                                     <div data-v-0fda4d6e="" class="row">
+                                    @if(isset($fields['dob']) && $fields['dob'] == "on" )
+                                    @php
+                                        $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                                          $c = 0;
+                                    @endphp
                                       <div class="col-md-7">
                                        <div class=" ageandcitizen">
                                          <div class="row yearsdiv" style="">
@@ -194,7 +260,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </div>
                                       </div>
                                       </div>
-                                       <div class="col-md-5">
+                                      @endif
+                                      @if(isset($fields['Country']))
+                                      @if($fields['Country'] == "on" )
+                                       <div class="col-md-4">
                                        <div class="wrapper-dropdown" id="citizenship">
                                             <span>Citizenship</span>
                                             <ul class="dropdown">
@@ -204,6 +273,96 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             </ul>
                                           </div>
                                        </div>
+                                      @endif
+                                      @endif
+                                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
+                                        <div class="col-md-4">
+                                           <div class="custom-form-control">
+                                              <select required class="wrapperfrom" name="gender" id="gender">
+                                                 <option value="">Primary Applicant`s Gender</option>
+                                                   <option value="male" >Male</option>
+                                                   <option value="female" >Female</option>
+                                              </select>
+                                              <label for="gender" class="form-label"></label>
+                                           </div>
+                                        </div>
+                                        @endif
+                                        @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
+                                        <div class="col-md-4">
+                                           <div class="custom-form-control">
+                                              <select required class="wrapperfrom" name="old_traveller_gender" id="old_traveller_gender">
+                                                 <option value="">Gender of the Oldest traveller</option>
+                                                   <option value="male" >Male</option>
+                                                   <option value="female" >Female</option>
+                                              </select>
+                                              <label for="old_traveller_gender" class="form-label"></label>
+                                           </div>
+                                        </div>
+                                        @endif
+                                        @if(isset($fields['Smoke12']))
+                                        @if($fields['Smoke12'] == 'on')
+                                        <div class="col-md-4 no-padding check_condtion">
+                                        <div class="">
+                                          <h3>Do you Smoke in last 12 months ?</h3>
+                                              <div class="no-padding">
+                                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px; color: #262566;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
+                                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto; color: #262566;"> No</label>
+                                             </div>
+                                          </div>
+                                        </div>
+                                        @endif
+                                        @endif
+                                        @php
+                                           $i = 0;
+                                           $position_array = array();
+                                           foreach($fields as $key => $value){
+                                              $i ++;
+                                              $position_array[$i] = $key;
+                                           }
+                                        @endphp
+                                        @if(isset($fields['pre_existing']))
+                                        @if($fields['pre_existing'] == 'on')
+                                          @php
+                                             $num = array_search("pre_existing", $position_array); 
+                                             $current_values[$num] = 'group_16'; 
+                                          @endphp
+                                          <div class="col-md-4 no-padding check_condtion">
+                                             <div class="">
+                                                <h3>Pre-existing Condition ?</h3>
+                                                <div class="no-padding">
+                                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;color: #262566;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;color: #262566;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                                </div>
+                                             </div>
+                                          </div>
+                                        @endif
+                                        @endif
+                                        @if(isset($fields['fplan']))
+                                        @if($fields['fplan'] == 'on')
+                                          @php
+                                             $num = array_search("fplan", $position_array); 
+                                             $current_values[$num] = 'group_15';  
+                                          @endphp
+                                          <div class="col-md-4 no-padding check_condtion">
+                                             <div class="">
+                                                <h3>Do you require Family Plan ?</h3>
+                                                 <div class="no-padding">
+                                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto; color: #262566;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto; color: #262566;" onclick="changefamilyno()"> No</label>
+                                                 </div>
+                                             </div>
+                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                                             <script>
+                                                function changefamilyyes(){
+                                                   document.getElementById('familyplan_temp').value = 'yes';   
+                                                   checkfamilyplan();
+                                                }
+                                                function changefamilyno(){
+                                                   document.getElementById('familyplan_temp').value = 'no'; 
+                                                   checkfamilyplan();
+                                                }
+                                             </script>
+                                          </div>
+                                        @endif
+                                        @endif
                                     </div>
                                  </div>
                               </div>
@@ -234,18 +393,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div data-v-0fda4d6e="" class="card lg-wizard-card border-0">
                            <h2 data-v-0fda4d6e="" class="heading-3 card-heading">What dates do you need coverage?</h2>
                            <div data-v-0fda4d6e="" class="card-content">
-                              <p data-v-0fda4d6e="" class="card-info"> Star Date to Visit Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered. </p>
+                              <p data-v-0fda4d6e="" class="card-info"> Star Date to Visit Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered. </p>>
                               <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
                                  <div data-v-0fda4d6e="" class="line-content fd-column">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
+                                        <div class="col-md-12">
+                                         <input type="date" placeholder="" id="date" onclick="openCalendar()" required>
                                             <div class="timetable_container hide">
                                               <div id="calendar" class="calendar">
                                                 <span>Add something here</span>
                                               </div>
                                             </div>
-                                            <input type="date" placeholder="" id="date" onclick="openCalendar()" required>
                                         </div>
+                                        @endif
                                     </div>
                                  </div>
                               </div>
@@ -313,6 +474,41 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    
    });
    
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#gender'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
 </script>
 <script type="text/javascript">
     $(function() {

@@ -1593,14 +1593,19 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 
 
+.card-content h3 {
+    color: #262566;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    line-height: 20px;
+    margin-bottom: -0.5rem !important;
+}
 
-
-
-.wrapper-dropdown {
+.wrapperfrom{
+  height: 47px;
   position: relative;
-  
   display: inline-block; 
-  min-width: 290px;
+  min-width: 100%;
   padding: 0 5px 0 15px;
   
   border-radius: 3px;
@@ -1617,6 +1622,33 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.wrapper-dropdown {
+    height: 47px;
+
+  position: relative;
+  display: inline-block; 
+  min-width: 100%;
+  padding: 0 5px 0 5px;
+  
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 2px 0 rgba(0 ,0 , 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+  
+  text-align: left;
+  line-height: 45px;
+  color: #444;
+  
+  cursor: pointer;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.gender_dropdown.active .dropdown{
+        height: auto !important;
 }
 
 .wrapper-dropdown::before {
@@ -1639,6 +1671,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 
 .wrapper-dropdown .dropdown {
+    z-index: 5 !important;
     height: 241px;
     overflow: auto;
   position: absolute;
@@ -1711,6 +1744,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 
 .wrapper-dropdown.active .dropdown {
+    z-index: 5;
     height: 241px;
     overflow: auto;
     opacity: 1;
@@ -1730,13 +1764,13 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 
 
 .timetable_container {
-    position: absolute;
+/*    position: absolute;*/
     z-index: 1;
     left: 33px;
     top: 120px;
 }
 .timetable_container.hide {
-  display: none;
+  display: block;
 }
 
 .timetable_container .calendar {
@@ -1813,7 +1847,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 
 .timetable_container {
   height: 200px;
-  width: fit-content;
+/*  width: fit-content;*/
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -1821,11 +1855,11 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 input#date {
 box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 display: block;
-width: 293px;
+width: 100%;
 /* border-radius: 10px; */
 padding: 10px;
 font-family: "Ubuntu", "sans-serif";
-margin: 50px auto;
+margin: 9px auto;
 border: none;
 cursor: pointer;
 }

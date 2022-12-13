@@ -47,7 +47,7 @@
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12">
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="firstname" required id="phone" class="form-input">
+                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input">
                            <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
                         </div>
                      </div>
