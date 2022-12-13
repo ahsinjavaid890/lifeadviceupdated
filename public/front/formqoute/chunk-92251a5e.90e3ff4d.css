@@ -2717,7 +2717,7 @@ input[type=date][data-v-35e7ee94]::-webkit-calendar-picker-indicator{
     flex:1 1 auto;
     margin:-12px
 }
-.row+.row{
+/*.row+.row{
     margin-top:12px
 }
 .row+.row--dense{
@@ -2725,7 +2725,7 @@ input[type=date][data-v-35e7ee94]::-webkit-calendar-picker-indicator{
 }
 .row--dense{
     margin:-4px
-}
+}*/
 .row--dense>.col,.row--dense>[class*=col-]{
     padding:4px
 }
