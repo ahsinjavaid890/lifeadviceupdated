@@ -1409,7 +1409,12 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     text-align: end;
     margin-top: 110px;
    }
+   .nextbtns .btn-prev{
+    background-color: #919192 !important;
+   }
    .nextbtns span{
+    background: #262566;
+    color: white;
     border-radius: 18px;
     width: 101px;
    }
@@ -1581,8 +1586,26 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     padding: 10px 0;
 }
 }
-
-
+@media only screen and (min-width: 1000px) and (max-width: 1100px){
+.super-hero {
+    height: 330px !important;
+}
+.quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 153px 185px 268px 1fr !important;
+    grid-gap: 5px !important;
+}
+.width_website {
+    width: 920px;
+}
+}
+@media only screen and (min-width: 770px) and (max-width: 1000px){
+    .super-images {
+    right: 1px !important;
+}
+.super-hero {
+    height: 246px !important;
+}
+}
 
 
 .heading-1, .heading-2, .heading-3, .subheading-2{
@@ -1603,14 +1626,22 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     line-height: 20px;
     margin-bottom: -0.5rem !important;
 }
-
+.yearsdiv{
+    position: absolute;
+    width: 450px;
+}
+.dobdiv{
+    position: absolute;
+    width: 403px;
+    bottom: -26px;
+}
 .wrapperfrom{
     cursor: pointer;
-    width: 95%;
+    width: 97%;
     height: 48px;
     padding-left: 16px;
     border-radius: 10px;
-    border: 4px solid #cfd9e8;
+    border: 1px solid #cfd9e8 !important;
     color: #2b3481;
     font-weight: 600;
     font-size: .875rem;
@@ -1625,7 +1656,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 .wrapper-dropdown {
    cursor: pointer;
-    width: 95%;
+    width: 97%;
     height: 48px;
     padding-left: 16px;
     border-radius: 10px;
@@ -1805,7 +1836,7 @@ body .cal_head .button_left
 
 body .cal_body {
   padding: 5px 5px 5px 5px;
-  height: 275px;
+  height: 321px;
   text-align: center;
 }
 
@@ -1818,8 +1849,58 @@ body .cal_body .button {
   text-align: center;
 }
 
-
-
+input.switch {
+   display: inline-block;
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 12px;
+    left: 20px;
+}
+input.switch:checked::before {
+    background: #12b48b;
+}
+input.switch::before {
+    font-size: 13px;
+    color: #fff;
+    box-shadow: 0 0 1px 1px #ffffff;   
+    content:'Yes  No';
+    display: block;
+    position: absolute;
+    background: #262566;
+    width: 50px;
+    border-radius: 20px;
+    height: 28px;
+    top: -5px;
+    left: 0px;
+    text-align: center;
+}
+input.switch::after {
+   content:'';
+   display: block;
+   position: absolute;
+   background: #FFF;
+   border-radius: 50px;
+   height: 25px;
+   width: 25px;
+   top: -3px;
+   left: 1px;
+   box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+   transition: all 30000ms;
+}
+input.switch:active::after{
+  width:30px;
+}
+input.switch:checked::after {
+   left: auto;
+   right: 2px;
+}
+input.round.switch::after, input.round.switch::before {
+      border-radius: 20px;
+}
 body .cal_output {
     margin-top: 15px;
     margin-bottom: 0px;
@@ -1891,15 +1972,29 @@ body .cal_output {
 .calender_table tr{
     color: black;
 }
+
 .ageandcitizen input {
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
-    width: 100% !important;
-    height: 39px;
-    padding: 2px;
-}
-.yearsdiv{
+    cursor: pointer;
+    width: 100%;
+    height: 48px;
+    padding-left: 8px;
+    border-radius: 10px;
+    border: 1px solid #cfd9e8 !important;
+    color: #2b3481;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.5;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    transition-duration: .18s;
+    transition-property: border-color;
+    transition-delay: .06s;
     position: absolute;
 }
+/*.yearsdiv{
+    position: absolute;
+}*/
 .yearsdiv small{
     position: absolute !important;
     font-size: 0.757rem !important;
@@ -1915,27 +2010,4 @@ body .cal_output {
     top: -2px !important;
     height: 12px;
 }
-.ageandcitizen input:focus{
-    border-bottom: 1px solid #262566!important;
-}
-.dobdiv small{
-     position: absolute !important;
-    font-size: 0.557rem !important;
-    line-height: 16px;
-    letter-spacing: 0.2px;
-    font-weight: 600;
-    color: #1b8fe4 !important;
-    display: block;
-    padding: 0 3px;
-    background-color: transparent !important;
-    background: linear-gradient(180deg,hsla(0,0%,100%,0),#fff 73%);
-    left: 10px !important;
-    top: -13px !important;
-    height: 12px;
-}
-input#date:focus-visible{
-    border: 0px !important;
-}
-.dobdiv{
-    position: absolute;
-}
+

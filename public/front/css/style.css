@@ -11637,10 +11637,16 @@ ul.tabs li.current{
 }
 @media only screen and (min-width: 770px) and (max-width: 1000px){
     .super-images {
-    width: 886px !important;
+    width: 545px !important;
     position: absolute;
     right: 0px !important;
-    height: 466px !important;
+    height: 235px !important;
+}
+.super-hero {
+    height: 246px !important;
+}
+.btns {
+    margin-top: 8px;
 }
     .login-signup{
         margin-top: 20px ;

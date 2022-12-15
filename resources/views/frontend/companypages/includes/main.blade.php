@@ -52,7 +52,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">
                               <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="Destination" required="required" id="coverageprice" class="input-field" disabled>
+                                 <input  type="text" placeholder="Coverage Amount" required="required" id="coverageprice" class="input-field" disabled>
                                  <span  class="label-text">Coverage Amount</span>
                                  <div  class="dest-value"></div>
                               </label>
@@ -125,7 +125,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </script>
                                         </ul>
                                       </div>
-                                        <div class="text-danger" id="covergaeerror"></div>
                                   </div>
                                  @endif
                                  @endif
@@ -183,11 +182,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @endif
                               </div>
+                                <div class="text-danger mt-4" id="covergaeerror"></div>
+                                <div class="nextbtns">
+                                   <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
+                                   <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
+                                </div>
                            </div>
-                        </div>
-                        <div class="nextbtns">
-                           <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
-                           <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -214,11 +214,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           $c = 0;
                                     @endphp
                                       <div class="col-md-7">
+                                        <div>
                                        <div class=" ageandcitizen">
                                          <div class="row yearsdiv" style="">
                                             <div class="col-md-4">
-                                               <small style="font-size: 12px;color: #999;">Age</small>
-                                               <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" maxlength="3" name="ages[]" autocomplete="ages" id="ages" value="" class="primaryage" style="margin-top: -5px !important;display: block;" required>
+                                               <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" maxlength="3" name="ages[]" autocomplete="ages" id="ages" value="" class="primaryage" placeholder="Age" style="margin-top: -5px !important;display: block;" required>
                                             </div>
                                             <div class="col-md-3 text-center" style="padding-top: 10px; color: #1b8fe4 !important;font-size: 15px;font-weight: 900;">
                                                or
@@ -231,16 +231,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             <div class="col-md-12 d-flex">
                                                <div class="col-md-7 no-padding d-flex p-0">
                                                   <div class="col-md-4" style="padding: 0 5px;">
-                                                     <small style="font-size: 7px;color: #999;padding: 0;">Month</small>
-                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" style="margin-top: -5px !important;display: block;" autocomplete="dob_year" maxlength="2">
+                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" style="margin-top: -5px !important;display: block; border-radius: 9px 0 0 10px;" placeholder="Month" autocomplete="dob_year" maxlength="2">
                                                   </div>
                                                   <div class="col-md-4" style="padding: 0 5px;">
-                                                     <small style="font-size: 7px;color: #999;padding: 0;">Day</small>
-                                                     <input type="number" autocomplete="dob_year" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" style="margin-top: -5px !important;display: block;" maxlength="2">
+                                                     <input type="number" autocomplete="dob_year" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" placeholder="Day" style="margin-top: -5px !important;display: block;border-radius: 0px !important;" maxlength="2">
                                                   </div>
                                                   <div class="col-md-4" style="padding: 0 5px;">
-                                                     <small style="font-size: 7px;color: #999;padding: 0;">Year</small>
-                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" id="dob_year" autocomplete="dob_year" onchange="calprimaryage()" style="margin-top: -5px !important;display: block;" required>
+                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" id="dob_year" autocomplete="dob_year" onchange="calprimaryage()" placeholder="Year" style="margin-top: -5px !important;display: block;border-radius: 0 10px 10px 0px;" required>
                                                   </div>
                                                </div>
                                                <script>
@@ -264,11 +261,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             </div>
                                          </div>
                                       </div>
+                                  </div>
                                       </div>
                                       @endif
                                       @if(isset($fields['Country']))
                                       @if($fields['Country'] == "on" )
-                                       <div class="col-md-4">
+                                       <div class="col-md-5">
                                        <div class="wrapper-dropdown" id="citizenship">
                                             <span>Citizenship</span>
                                             <ul class="dropdown">
@@ -288,7 +286,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       @endif
                                       @endif
                                       @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                                        <div class="col-md-4">
+                                        <div class="col-md-6 mt-4">
                                            <div class="custom-form-control">
                                               <select required class="wrapperfrom" name="gender" id="gender">
                                                  <option value="">Primary Applicant`s Gender</option>
@@ -300,7 +298,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </div>
                                         @endif
                                         @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                                        <div class="col-md-4">
+                                        <div class="col-md-6 mt-4">
                                            <div class="custom-form-control">
                                               <select required class="wrapperfrom" name="old_traveller_gender" id="old_traveller_gender">
                                                  <option value="">Gender of the Oldest traveller</option>
@@ -313,12 +311,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         @endif
                                         @if(isset($fields['Smoke12']))
                                         @if($fields['Smoke12'] == 'on')
-                                        <div class="col-md-4 no-padding check_condtion">
+                                        <div class="col-md-6  mt-4">
                                         <div class="">
                                           <h3>Do you Smoke in last 12 months ?</h3>
                                               <div class="no-padding">
-                                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px; color: #262566;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
-                                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto; color: #262566;"> No</label>
+                                               <input class="switch" type='checkbox'>
                                              </div>
                                           </div>
                                         </div>
@@ -338,11 +335,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              $num = array_search("pre_existing", $position_array); 
                                              $current_values[$num] = 'group_16'; 
                                           @endphp
-                                          <div class="col-md-4 no-padding check_condtion">
+                                          <div class="col-md-6  mt-4">
                                              <div class="">
                                                 <h3>Pre-existing Condition ?</h3>
                                                 <div class="no-padding">
-                                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;color: #262566;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;color: #262566;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                                    <input class="switch" type='checkbox'>
                                                 </div>
                                              </div>
                                           </div>
@@ -354,11 +351,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              $num = array_search("fplan", $position_array); 
                                              $current_values[$num] = 'group_15';  
                                           @endphp
-                                          <div class="col-md-4 no-padding check_condtion">
+                                          <div class="col-md-6  mt-4">
                                              <div class="">
                                                 <h3>Do you require Family Plan ?</h3>
                                                  <div class="no-padding">
-                                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto; color: #262566;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto; color: #262566;" onclick="changefamilyno()"> No</label>
+                                                    <input class="switch" type='checkbox'>
                                                  </div>
                                              </div>
                                              <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -376,20 +373,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         @endif
                                         @endif
                                     </div>
+                                    <div class="nextbtns">
+                                       <span class="btn btn-default btn-prev">Prev</span>
+                                       <span id="paramsOkay" class="btn btn-default btn-next">Next</span>
+                                    </div>
                                  </div>
                               </div>
                            </div>
-                           <!---->
-                           <div data-v-73e0d048="" data-v-0fda4d6e="" class="card-foot mt-4">
-                              <div data-v-73e0d048="" class="card-foot--container">
-                                 <div data-v-73e0d048="" class="card-footer--center-col"></div>
-                              </div>
-                              <!---->
-                           </div>
-                        </div>
-                        <div class="nextbtns">
-                           <input type="submit" value="Prev" class="btn btn-default btn-prev">
-                           <input type="submit" value="Next" id="paramsOkay" class="btn btn-default btn-next">
                         </div>
                      </div>
                   </div>
@@ -410,7 +400,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div data-v-0fda4d6e="" class="line-content fd-column">
                                     <div class="row">
                                         @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 p-0">
                                          <div class="calander noselect">
                                             <div class = "cal_output paper-shadow-top-z-1">
                                             <span id="outputText"></span>
@@ -431,13 +421,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </div>
                                         @endif
                                     </div>
+                                        <div class="nextbtns">
+                                           <span class="btn btn-default btn-prev">Prev</span>
+                                           <span class="btn btn-default btn-next">Done</span>
+                                        </div>
                                  </div>
                               </div>
                            </div>
-                        </div>
-                        <div class="nextbtns">
-                           <input type="submit" value="Prev" class="btn btn-default btn-prev">
-                           <input type="submit" value="Done" class="btn btn-default btn-next">
                         </div>
                      </div>
                   </div>
