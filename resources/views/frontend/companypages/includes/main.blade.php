@@ -12,6 +12,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -311,11 +313,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         @endif
                                         @if(isset($fields['Smoke12']))
                                         @if($fields['Smoke12'] == 'on')
-                                        <div class="col-md-6  mt-4">
+                                        <div class="col-md-7" style="margin-top: 65px;">
                                         <div class="">
                                           <h3>Do you Smoke in last 12 months ?</h3>
                                               <div class="no-padding">
-                                               <input class="switch" type='checkbox'>
+                                               <div class=" check-button button r" id="button-1">
+                                                  <input type="checkbox" class="checkbox" />
+                                                  <div class="knobs"></div>
+                                                  <div class="layer"></div>
+                                                </div>
                                              </div>
                                           </div>
                                         </div>
@@ -335,11 +341,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              $num = array_search("pre_existing", $position_array); 
                                              $current_values[$num] = 'group_16'; 
                                           @endphp
-                                          <div class="col-md-6  mt-4">
+                                          <div class="col-md-5" style="margin-top: 65px;">
                                              <div class="">
                                                 <h3>Pre-existing Condition ?</h3>
                                                 <div class="no-padding">
-                                                    <input class="switch" type='checkbox'>
+                                                    <div class=" check-button button r" id="button-1">
+                                                      <input type="checkbox" class="checkbox" />
+                                                      <div class="knobs"></div>
+                                                      <div class="layer"></div>
+                                                    </div>
                                                 </div>
                                              </div>
                                           </div>
@@ -351,11 +361,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              $num = array_search("fplan", $position_array); 
                                              $current_values[$num] = 'group_15';  
                                           @endphp
-                                          <div class="col-md-6  mt-4">
+                                          <div class="col-md-7" style="margin-top: 65px;">
                                              <div class="">
                                                 <h3>Do you require Family Plan ?</h3>
                                                  <div class="no-padding">
-                                                    <input class="switch" type='checkbox'>
+                                                    <div class=" check-button button r" id="button-1">
+                                                      <input type="checkbox" class="checkbox" />
+                                                      <div class="knobs"></div>
+                                                      <div class="layer"></div>
+                                                    </div>
                                                  </div>
                                              </div>
                                              <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -401,23 +415,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="row">
                                         @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                                         <div class="col-md-12 p-0">
-                                         <div class="calander noselect">
-                                            <div class = "cal_output paper-shadow-top-z-1">
-                                            <span id="outputText"></span>
-                                          </div>
-                                          <div class="cal_head paper-shadow-top-z-1 paper-shadow-bottom-z-1">
-                                            <button class ="button_left">
-                                              <i class="material-icons">keyboard_arrow_left</i></button>
-                                            <span id="month_label">Month</span>
-                                            <button class ="button_right"><i class="material-icons">keyboard_arrow_right</i></button>
-                                          </div>  
-                                          <div class = "cal_body paper-shadow-top-z-1 paper-shadow-bottom-z-1">
-                                            <table class="calender_table">
-                                              <tbody id = "cal">
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
+                                         
+
+  
+  <label>
+    <input type="text" class="dateselect" required="required"/>
+    <span>Date</span>
+  </label>
+  
+
                                         </div>
                                         @endif
                                     </div>
@@ -587,137 +593,24 @@ dropDown.prototype = {
 }
 </script>
 <script type="text/javascript">
-  //----------variables----------//
+ // https://github.com/uxsolutions/bootstrap-datepicker
 
-var day = "";
-var month = "";
-var year = "";
-var currentDate = "";
-var monthStartDay = "";
-
-var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-//----------functions----------//
-
-function getMonthInfo(year, month) {
-
-  //use current month to find number of days in month
-  //i dont know why i have to add 1 to month
-  var startDate = new Date(year, month + 1, 0);
-  var monthLength = startDate.getDate();
-
-  var startDate = new Date(year, month, 1);
-  var monthStartDay = startDate.getDay();
-
-  return [monthLength, monthStartDay];
-
-}
-
-function drawCal(monthInfo) {
-
-  var daysInMonth = monthInfo[0];
-  var monthStartDays = monthInfo[1];
-
-  //clear cal tbody
-  $("#cal").empty();
-  $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
-
-  //create empty row, append to to tbody
-  var $rowOut = $("<tr></tr>");
-  $("#cal").append($rowOut);
-
-  //shift first row by month start date
-  for (var i = 1; i <= monthStartDays; i++) {
-    var $day = "<td></td>";
-    $("#cal tr:last").append($day);
-  }
-
-  //for each day, append a td to the row
-  for (var i = 1; i <= daysInMonth; i++) {
-    var $day = "<td><a>" + (i) + "</a></td>";
-    $("#cal tr:last").append($day);
-
-    //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
-    if ((i + monthStartDays) % 7 == 0 & i != 0) {
-      $("#cal").append($rowOut);
-      $rowOut = "<tr></tr>";
-      $("#cal").append($rowOut);
-    }
-  }
-}
-
-//----------wiring----------//
-
-$(".button_left").click(function() {
-
-  month--;
-
-  if (month < 0) {
-    year--;
-    month = 11;
-  }
-
-  //left button click
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
-
+$('.dateselect').datepicker({
+    format: 'mm/dd/yyyy',
+    // startDate: '-3d'
 });
 
-//right button click
-$(".button_right").click(function() {
-
-  month++;
-
-  if (month > 11) {
-    year++;
-    month = 0;
-  }
-
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
-
-});
-
-$("#cal").on("click", "td", function(e) {
-
-  e.preventDefault();
-  $("#cal td").removeClass("circle");
-  $(this).addClass("circle");
-  var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
-  console.log(outputDate);
-  $("#outputText").text(outputDate);
-  $("#coveragedate").text(outputDate);
-
-});
-
-//----------run----------//
-
-//get current month and year
-currentDate = new Date();
-year = currentDate.getFullYear();
-month = currentDate.getMonth();
-day = currentDate.getDate();
-
-//get text month name from month number and write to span
-$(".cal_head span").text(monthTextArray[month] + " " + year);
-
-//inital calander draw based on current month
-drawCal(getMonthInfo(year, month));
-
-//var selector = ("td a:contains(" + day + ")");
-var selector = $("td a").filter(function(){
- return $(this).text() === day.toString();
-});
-
-//var selector = $("#cal").find("a="+day+"");
+// $('.dateselect2').datepicker({
+//     format: 'mm/dd/yyyy',
+//     autoclose:true,
+//     todayHighlidht: true,
+// }).on("hide", function(){
+//   if ($)
+// }
 
 
-$(selector.parent()).addClass("circle");
-
-var outputDate = monthTextArray[month] + " " + day + ", " + year;
 
 
-$("#outputText").text(outputDate);
+
+ 
 </script>

@@ -2687,36 +2687,7 @@ input[type=date][data-v-35e7ee94]::-webkit-calendar-picker-indicator{
 .v-input[data-v-890250b8] input{
     font-weight:600
 }
-.container{
-    width:100%;
-    padding:12px;
-    margin-right:auto;
-    margin-left:auto
-}
-@media(min-width:960px){
-    .container{
-        max-width:900px
-    }
-}
-@media(min-width:1264px){
-    .container{
-        max-width:1185px
-    }
-}
-@media(min-width:1904px){
-    .container{
-        max-width:1785px
-    }
-}
-.container--fluid{
-    max-width:100%
-}
-.row{
-    display:flex;
-    flex-wrap:wrap;
-    flex:1 1 auto;
-    margin:-12px
-}
+
 /*.row+.row{
     margin-top:12px
 }
