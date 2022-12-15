@@ -12118,3 +12118,10 @@ ul .child-list li a{
     width: 40px;
     height: 40px;
 }
+
+.modal-backdrop{
+    background-color: #2b3042 !important;
+}
+.modal-backdrop.show{
+    opacity: .7 !important;
+}

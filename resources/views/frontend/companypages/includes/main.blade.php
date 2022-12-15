@@ -87,19 +87,21 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div data-v-5ed4506d="" data-v-6d46de94="" class="card lg-wizard-card  border-0">
-                           <h2 data-v-5ed4506d="" class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
-                           <div data-v-5ed4506d="" class="card-content">
-                              <p data-v-5ed4506d="" class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
+                        <div class="card lg-wizard-card  border-0">
+                           <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
+                           <div class="card-content">
+                              <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                               <div class="row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                  <div class="col-md-4">
+                                  <div class="col-md-6">
                                       <div class="wrapper-dropdown" id="primary_destination">
                                         <span>Coverage Ammount</span>
                                         <ul class="dropdown"  >
                                          @foreach($sum_insured as $r)
-                                         <li onclick="selectcoverageammount({{$r->sum_insured}});">
+
+
+                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammount({{$r->sum_insured}});">
                                             <span class="selectspan">${{ $r->sum_insured }}</span>
                                          </li>
                                          @endforeach
@@ -149,9 +151,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['email']))
                                  @if($fields['email'] == "on" )
-                                   <div class="col-md-4">
+                                   <div class="col-md-6">
                                       <div class="custom-form-control">
-                                         <input type="text" name="savers_email" placeholder="Savers_Email" required id="savers_email" class="wrapperfrom">
+                                         <input type="text" name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
                                          <label for="savers_email" class="form-label">Email</label>
                                       </div>
                                    </div>
