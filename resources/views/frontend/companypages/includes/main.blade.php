@@ -47,33 +47,33 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
             <div class="card p-0 qoute-card">
                <div class="card-body p-0">
-                  <div data-v-5170d561="" data-v-67adc629="" class="quotes-generator-bar fixed">
-                     <div data-v-5170d561="" class="grid-container">
-                        <div data-v-5170d561="" class="grid-row grid-row--bar">
-                           <div data-v-5170d561="" class="d-grid generator-bar-row-wrap">
-                              <label data-toggle="modal" data-target="#myModal1" data-v-5170d561="" class="form-input input-destination has-arrow">
-                                 <input data-v-5170d561="" type="text" placeholder="Destination" required="required" id="txtmanuid" class="input-field" disabled>
-                                 <span data-v-5170d561="" class="label-text">Destination</span>
-                                 <div data-v-5170d561="" class="dest-value"></div>
+                  <div  data-v-67adc629="" class="quotes-generator-bar fixed">
+                     <div  class="grid-container">
+                        <div  class="grid-row grid-row--bar">
+                           <div  class="d-grid generator-bar-row-wrap">
+                              <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
+                                 <input  type="text" placeholder="Destination" required="required" id="coverageprice" class="input-field" disabled>
+                                 <span  class="label-text">Coverage Amount</span>
+                                 <div  class="dest-value"></div>
                               </label>
-                              <label  data-toggle="modal" data-target="#myModal2" data-v-5170d561="" class="form-input input-traveler-info has-arrow">
-                              <input data-v-5170d561="" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
-                              <span data-v-5170d561="" class="label-text">Traveler Information</span>
+                              <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
+                              <input  id="citishow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
+                              <span  class="label-text">Traveler Information</span>
                               </label>
-                              <div  data-toggle="modal" data-target="#myModal3"  data-v-5170d561="" class="form-input date-range form-input__date-range">
-                                 <div data-v-5170d561="" class="input-field">
-                                    <div data-v-5170d561="" class="from">
-                                       <i data-v-5170d561="" class="icon icon-calendar"></i>
-                                       <div data-v-5170d561="" class="value"> Start Date 
+                              <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
+                                 <div  class="input-field">
+                                    <div  class="from">
+                                       <i  class="icon icon-calendar"></i>
+                                       <div id="coveragedate" class="value"> Start Date 
                                        </div>
                                     </div>
-                                    <div data-v-5170d561="" class="sep"></div>
-                                    <div data-v-5170d561="" class="to">
-                                       <div data-v-5170d561="" class="value">End Date</div>
-                                    </div>
+                                   <!--  <div  class="sep"></div>
+                                    <div  class="to">
+                                       <div  class="value">End Date</div>
+                                    </div> -->
                                  </div>
                               </div>
-                              <button data-v-5170d561="" disabled="disabled" class="button button-primary button-rounded get-quotes-button"> Get Quotes </button>
+                              <button  disabled="disabled" class="button button-primary button-rounded get-quotes-button"> Get Quotes </button>
                            </div>
                         </div>
                      </div>
@@ -106,6 +106,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          <script type="text/javascript">
                                              function selectcoverageammount(id) {
                                                  $('#sum_insured2').val(id);
+                                                 $('#coverageprice').val(id);
                                                  $('#covergaeerror').hide();
                                                }
                                                function firstnext() {
@@ -122,6 +123,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </script>
                                         </ul>
                                       </div>
+                                        <div class="text-danger" id="covergaeerror"></div>
                                   </div>
                                  @endif
                                  @endif
@@ -180,7 +182,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                            </div>
-                           <div class="text-danger" id="covergaeerror"></div>
                         </div>
                         <div class="nextbtns">
                            <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
@@ -270,10 +271,17 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             <span>Citizenship</span>
                                             <ul class="dropdown">
                                                 @foreach(DB::table('formcountries')->get() as $r)
-                                              <li data-v-6e3bf6e8="{{ $r->code }}" data-title="{{ $r->name }}" data-value="{{ $r->code }}" class="optionselect"><span class="selectspan">{{ $r->name }}</span></li>
+                                              <li   onclick="citizenship('{{ $r->name }}');"><span class="selectspan">{{ $r->name }}</span></li>
                                               @endforeach
+                                              <script type="text/javascript">
+                                                function citizenship(id) {
+                                                 $('#citishow').val(id);
+                                                 $('#citizenshiperror').hide();
+                                               }
+                                              </script>
                                             </ul>
                                           </div>
+                                          <div class="text-danger" id="citizenshiperror"></div>
                                        </div>
                                       @endif
                                       @endif
@@ -688,6 +696,7 @@ $("#cal").on("click", "td", function(e) {
   var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
   console.log(outputDate);
   $("#outputText").text(outputDate);
+  $("#coveragedate").text(outputDate);
 
 });
 

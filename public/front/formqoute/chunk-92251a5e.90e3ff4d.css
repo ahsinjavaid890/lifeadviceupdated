@@ -4479,15 +4479,16 @@ input[type=date][data-v-35e7ee94]::-webkit-calendar-picker-indicator{
 }
 .form-input.date-range .from{
     position:relative;
-    cursor:pointer
+    cursor:pointer;
+    width: 150px;
 }
 .form-input.date-range .from .icon{
     width:16px
 }
 .form-input.date-range .from .icon+.value{
     position:relative;
-    top:2px;
-    left:16px
+    top: 0px;
+    left: 40px;
 }
 .form-input.date-range .from:before{
     position:absolute;
