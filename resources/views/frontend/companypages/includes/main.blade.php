@@ -1,19 +1,7 @@
-
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-b2560f80.9329634e.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-5970b8c1.3cbf45f8.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-e66e9cce.0bfb26e0.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-ebe193e4.1c34b978.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-3e82b756.822e1495.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/formqoute/chunk-92251a5e.90e3ff4d.css')}}">
-<script type="text/javascript" src="{{ asset('public/front/formqoute/main.2a3546da.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/formqoute/0dbf611d.js')}}"></script>
-<script type="text/javascript" src="{{ asset('public/front/formqoute/c8c274397857.js')}}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -47,7 +35,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          <div class="col-md-12">
             <form action="#" method="POST">
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
-            <div class="card p-0 qoute-card">
+            <div class="p-0 qoute-card">
                <div class="card-body p-0">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
                      <div  class="grid-container">
@@ -75,7 +63,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div> -->
                                  </div>
                               </div>
-                              <button  disabled="disabled" class="button button-primary button-rounded get-quotes-button"> Get Quotes </button>
+                              <button  disabled="disabled" class="button button-primary get-quotes-button"> Get Quotes </button>
                            </div>
                         </div>
                      </div>
@@ -83,13 +71,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                </div>
             </div>
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-lg  modal-dialog-centered">
+               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
                      <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card lg-wizard-card  border-0">
+                        <div class="card lg-wizard-card modal-card border-0">
                            <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
                            <div class="card-content">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
@@ -132,7 +120,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['fname']))
                                  @if($fields['fname'] == 'on')
-                                 <div class="col-md-4">
+                                 <div class="col-md-6">
                                     <div class="custom-form-control">
                                        <input type="text" name="fname" placeholder="First Name" required id="irstname" class="wrapperfrom">
                                        <label for="firstname" class="form-label">First name</label>
@@ -142,7 +130,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['lname']))
                                  @if($fields['lname'] == 'on')
-                                 <div class="col-md-4">
+                                 <div class="col-md-6">
                                     <div class="custom-form-control">
                                        <input type="text" name="lname" placeholder="Last Name" required id="lname" class="wrapperfrom">
                                        <label for="lname" class="form-label">Last name</label>
@@ -162,7 +150,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 @endif
                                 @if(isset($fields['phone']))
                                 @if($fields['phone'] == 'on')
-                                 <div class="col-md-4">
+                                 <div class="col-md-6">
                                     <div class="custom-form-control">
                                        <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="wrapperfrom">
                                        <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
@@ -185,192 +173,90 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                                 <div class="text-danger mt-4" id="covergaeerror"></div>
-                                <div class="nextbtns">
-                                   <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
-                                   <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
-                                </div>
+                                
                            </div>
                         </div>
+                     </div>
+                     <div class="modal-footer">
+                        <div class="nextbtns">
+                          <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
+                          <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
+                       </div>
                      </div>
                   </div>
                </div>
             </div>
             <div class="modal zoom-in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-lg  modal-dialog-centered">
+               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div data-v-0fda4d6e="" class="card lg-wizard-card border-0">
-                           <h2 data-v-0fda4d6e="" class="heading-3 card-heading">How many travelers?</h2>
+                        <div class="card modal-card lg-wizard-card border-0">
+                           <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
-                           <div data-v-0fda4d6e="" class="card-content">
-                              <p data-v-0fda4d6e="" class="card-info"> Enter the age and citizenship for each person that will be traveling. Traveling to Multiple Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. </p>
-                              <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
-                                 <div data-v-0fda4d6e="" class="line-content fd-column">
-                                    <div data-v-0fda4d6e="" class="row">
-                                    @if(isset($fields['dob']) && $fields['dob'] == "on" )
-                                    @php
-                                        $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                                          $c = 0;
-                                    @endphp
-                                      <div class="col-md-7">
-                                        <div>
-                                       <div class=" ageandcitizen">
-                                         <div class="row yearsdiv" style="">
-                                            <div class="col-md-4">
-                                               <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" maxlength="3" name="ages[]" autocomplete="ages" id="ages" value="" class="primaryage" placeholder="Age" style="margin-top: -5px !important;display: block;" required>
-                                            </div>
-                                            <div class="col-md-3 text-center" style="padding-top: 10px; color: #1b8fe4 !important;font-size: 15px;font-weight: 900;">
-                                               or
-                                            </div>
-                                            <div class="col-md-5" style="padding-top: 10px;">
-                                               <a style="cursor: pointer; color: #1b8fe4 !important;font-size: 15px;font-weight: 900;" onclick="$('.dobdiv').show(); $('.yearsdiv').hide()">Enter Date of Birth</a>
-                                            </div>
-                                         </div>
-                                         <div class="row dobdiv" style="display:none;">
-                                            <div class="col-md-12 d-flex">
-                                               <div class="col-md-7 no-padding d-flex p-0">
-                                                  <div class="col-md-4" style="padding: 0 5px;">
-                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" style="margin-top: -5px !important;display: block; border-radius: 9px 0 0 10px;" placeholder="Month" autocomplete="dob_year" maxlength="2">
-                                                  </div>
-                                                  <div class="col-md-4" style="padding: 0 5px;">
-                                                     <input type="number" autocomplete="dob_year" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" placeholder="Day" style="margin-top: -5px !important;display: block;border-radius: 0px !important;" maxlength="2">
-                                                  </div>
-                                                  <div class="col-md-4" style="padding: 0 5px;">
-                                                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" id="dob_year" autocomplete="dob_year" onchange="calprimaryage()" placeholder="Year" style="margin-top: -5px !important;display: block;border-radius: 0 10px 10px 0px;" required>
-                                                  </div>
-                                               </div>
-                                               <script>
-                                                  function calprimaryage(){
-                                                  var currentyear = new Date().getFullYear();
-                                                  var dobyear = document.getElementById('dob_year').value;
-                                                  var primaryage = currentyear - dobyear;
-                                                  $('.primaryage').val(primaryage);
-                                                  }
-                                               </script>
-                                               <div class="col-md-5 " style="padding-top: 10px;">
-                                                  <div class="row">
-                                                     <div style="padding: 0; color: #1b8fe4 !important;font-size: 15px;font-weight: 900;" class="col-md-3 text-center">
-                                                        or
-                                                     </div>
-                                                     <div style="padding: 0;text-align: center;" class="col-md-9">
-                                                        <a style="cursor: pointer; color: #1b8fe4 !important;font-size: 15px;font-weight: 900;" onclick="$('.dobdiv').hide(); $('.yearsdiv').show()">Enter Age</a>
-                                                     </div>
-                                                  </div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                  </div>
-                                      </div>
-                                      @endif
-                                      @if(isset($fields['Country']))
-                                      @if($fields['Country'] == "on" )
-                                       <div class="col-md-5">
-                                       <div class="wrapper-dropdown" id="citizenship">
-                                            <span>Citizenship</span>
-                                            <ul class="dropdown">
-                                                @foreach(DB::table('formcountries')->get() as $r)
-                                              <li   onclick="citizenship('{{ $r->name }}');"><span class="selectspan">{{ $r->name }}</span></li>
-                                              @endforeach
-                                              <script type="text/javascript">
-                                                function citizenship(id) {
-                                                 $('#citishow').val(id);
-                                                 $('#citizenshiperror').hide();
-                                               }
-                                              </script>
-                                            </ul>
-                                          </div>
-                                          <div class="text-danger" id="citizenshiperror"></div>
+                           <div class="card-content">
+                              <p  class="card-info"> Enter the age for each person that will be traveling.</p>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="d-flex travelerinfo">
+                                       <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                                       <div id="ageinput" class="form-input input-age">
+                                          <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
-                                      @endif
-                                      @endif
-                                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                                        <div class="col-md-6 mt-4">
-                                           <div class="custom-form-control">
-                                              <select required class="wrapperfrom" name="gender" id="gender">
-                                                 <option value="">Primary Applicant`s Gender</option>
-                                                   <option value="male" >Male</option>
-                                                   <option value="female" >Female</option>
-                                              </select>
-                                              <label for="gender" class="form-label"></label>
-                                           </div>
-                                        </div>
-                                        @endif
-                                        @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                                        <div class="col-md-6 mt-4">
-                                           <div class="custom-form-control">
-                                              <select required class="wrapperfrom" name="old_traveller_gender" id="old_traveller_gender">
-                                                 <option value="">Gender of the Oldest traveller</option>
-                                                   <option value="male" >Male</option>
-                                                   <option value="female" >Female</option>
-                                              </select>
-                                              <label for="old_traveller_gender" class="form-label"></label>
-                                           </div>
-                                        </div>
-                                        @endif
-                                        @if(isset($fields['Smoke12']))
-                                        @if($fields['Smoke12'] == 'on')
-                                        <div class="col-md-7" style="margin-top: 65px;">
-                                        <div class="">
-                                          <h3>Do you Smoke in last 12 months ?</h3>
-                                              <div class="no-padding">
-                                               <div class=" check-button button r" id="button-1">
-                                                  <input type="checkbox" class="checkbox" />
-                                                  <div class="knobs"></div>
-                                                  <div class="layer"></div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                        </div>
-                                        @endif
-                                        @endif
-                                        @php
-                                           $i = 0;
-                                           $position_array = array();
-                                           foreach($fields as $key => $value){
-                                              $i ++;
-                                              $position_array[$i] = $key;
-                                           }
-                                        @endphp
-                                        @if(isset($fields['pre_existing']))
-                                        @if($fields['pre_existing'] == 'on')
-                                          @php
-                                             $num = array_search("pre_existing", $position_array); 
-                                             $current_values[$num] = 'group_16'; 
-                                          @endphp
-                                          <div class="col-md-5" style="margin-top: 65px;">
-                                             <div class="">
-                                                <h3>Pre-existing Condition ?</h3>
-                                                <div class="no-padding">
-                                                    <div class=" check-button button r" id="button-1">
-                                                      <input type="checkbox" class="checkbox" />
-                                                      <div class="knobs"></div>
-                                                      <div class="layer"></div>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                        @endif
-                                        @endif
-                                        @if(isset($fields['fplan']))
-                                        @if($fields['fplan'] == 'on')
-                                          @php
-                                             $num = array_search("fplan", $position_array); 
-                                             $current_values[$num] = 'group_15';  
-                                          @endphp
-                                          <div class="col-md-7" style="margin-top: 65px;">
-                                             <div class="">
-                                                <h3>Do you require Family Plan ?</h3>
-                                                 <div class="no-padding">
-                                                    <div class=" check-button button r" id="button-1">
-                                                      <input type="checkbox" class="checkbox" />
-                                                      <div class="knobs"></div>
-                                                      <div class="layer"></div>
-                                                    </div>
-                                                 </div>
+                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
+                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
+                                       </div>
+                                       <span class="switch-input">or 
+                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
+                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="additionaltraveler"></div>
+                                 <div class="col-md-12 mt-3">
+                                    <div class="travelerinfo">
+                                       <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
+                                    </div>
+                                 </div>
+                                 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <div class="nextbtns">
+                           <span class="btn btn-default btn-prev">Prev</span>
+                           <span id="paramsOkay" class="btn btn-default btn-next">Next</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal zoom-in" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
+                  <div class="modal-content">
+                     <div class="modal-body">
+                        <div class="close-btn">
+                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="card modal-card lg-wizard-card border-0">
+                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
+                           <div class="card-content">
+                              <p class="card-info">Please Select Date When You Start Coverage</p>
+                              <div class="row">
+                                 <div class="col-md-6 birthdateinput">
+                                    <input autocomplete="off" id="departure_date"  name="departure_date" class="wrapperfrom" type="text" required onchange="supervisayes()">
+                                    <i class="fa fa-calendar" onclick="$('#departure_date').focus();"></i> 
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                             <span class="questionheading">Do you require Family Plan ?</span>
+                                             <div class="col-md-12 no-padding">
+                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
                                              </div>
                                              <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                              <script>
@@ -383,58 +269,31 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                    checkfamilyplan();
                                                 }
                                              </script>
+                                       </div>
+                                       <div class="col-md-12">
+                                          <span class="questionheading">Pre-existing Condition ?</span>
+                                          <div class="col-md-12 no-padding">
+                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                       </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
+                                          <div class="col-md-12 no-padding">
+                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
+                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                                           </div>
-                                        @endif
-                                        @endif
-                                    </div>
-                                    <div class="nextbtns">
-                                       <span class="btn btn-default btn-prev">Prev</span>
-                                       <span id="paramsOkay" class="btn btn-default btn-next">Next</span>
+                                       </div>
                                     </div>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal zoom-in" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-lg  modal-dialog-centered">
-                  <div class="modal-content">
-                     <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div data-v-0fda4d6e="" class="card lg-wizard-card border-0">
-                           <h2 data-v-0fda4d6e="" class="heading-3 card-heading">What dates do you need coverage?</h2>
-                           <div data-v-0fda4d6e="" class="card-content">
-                              <p data-v-0fda4d6e="" class="card-info"> Star Date to Visit Countries? : If any part of your trip includes the United States, please select the United States as your Destination Country. Other eligible countries except Home Country and restricted countries under this plan are covered. </p>>
-                              <div data-v-0fda4d6e="" class="traveler-visitor form-line spec-trev-info visitor-primary">
-                                 <div data-v-0fda4d6e="" class="line-content fd-column">
-                                    <div class="row">
-                                        @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                                        <div class="col-md-12 p-0">
-                                         
-
-  
-  <label>
-    <input type="text" class="dateselect" required="required"/>
-    <span>Date</span>
-  </label>
-  
-
-                                        </div>
-                                        @endif
-                                    </div>
-                                        <div class="nextbtns">
-                                           <span class="btn btn-default btn-prev">Prev</span>
-                                           <span class="btn btn-default btn-next">Done</span>
-                                        </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                     <div class="modal-footer">
+                        <div class="nextbtns">
+                         <span class="btn btn-default btn-prev">Prev</span>
+                         <span class="btn btn-default btn-next">Done</span>
+                      </div>
                      </div>
                   </div>
                </div>
@@ -445,6 +304,80 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       @endif
    </div>
 </div>
+<script type="text/javascript">
+   var a = 0;
+   function addtravellers() {
+      a++
+      var number_of_traveller = '5';
+
+      if(a < number_of_traveller){
+         $('.additionaltraveler').append('<div id="removebutton'+a+'" class="col-md-12 mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
+      }else{
+         $('.button-add-another').fadeOut(300);
+      }
+   }
+</script>
+<script>
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth() + 1; //January is 0!
+   var yyyy = today.getFullYear();
+   if (dd < 10) {
+      dd = '0' + dd;
+   } 
+   if (mm < 10) {
+     mm = '0' + mm;
+   } 
+   var today = mm + '/' + dd + '/' + yyyy;
+   $(function() {
+     $('input[name="departure_date"]').daterangepicker({
+       opens: 'left',
+      minDate: today,
+      singleDatePicker: true,
+       showDropdowns: true,
+     }, function(start, end, label) {
+
+     });
+   });
+   function supervisayes(){
+      var tt = document.getElementById('departure_date').value;
+      var date = new Date(tt);
+      var newdate = new Date(date);
+      newdate.setDate(newdate.getDate() + 364);
+      var dd = newdate.getDate();
+      var mm = newdate.getMonth() + 1;
+      var y = newdate.getFullYear();
+      if(mm <= 9){
+      var mm = '0'+mm;  
+      }
+      if(dd <= 9){
+      var dd = '0'+dd;  
+      }
+      //var someFormattedDate = mm + '/' + dd + '/' + y;
+      var someFormattedDate = y + '-' + mm + '-' + dd;
+      document.getElementById('return_date').value = someFormattedDate;
+   }
+</script>
+<script type="text/javascript">
+   function removeappendvalue(id) {
+      $('.button-add-another').fadeIn(300);
+      $('#removebutton'+id).remove();
+   }
+   function showdateofbirth() {
+      $('#ageinput').hide();
+      $('#dateofbirthtext').hide();
+      $('#agetext').show();
+      $('#dateofbirthinput').show();
+      
+   }
+   function showage() {
+      $('#agetext').hide();
+      $('#dateofbirthinput').hide();
+      $('#ageinput').show();
+      $('#dateofbirthtext').show();
+      
+   }
+</script>
 <script type="text/javascript">
    $( "#destination_country" ).change(function() {
        var sel = $( "#destination_country option:selected" ).val();
@@ -593,24 +526,137 @@ dropDown.prototype = {
 }
 </script>
 <script type="text/javascript">
- // https://github.com/uxsolutions/bootstrap-datepicker
+  //----------variables----------//
 
-$('.dateselect').datepicker({
-    format: 'mm/dd/yyyy',
-    // startDate: '-3d'
+var day = "";
+var month = "";
+var year = "";
+var currentDate = "";
+var monthStartDay = "";
+
+var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+//----------functions----------//
+
+function getMonthInfo(year, month) {
+
+  //use current month to find number of days in month
+  //i dont know why i have to add 1 to month
+  var startDate = new Date(year, month + 1, 0);
+  var monthLength = startDate.getDate();
+
+  var startDate = new Date(year, month, 1);
+  var monthStartDay = startDate.getDay();
+
+  return [monthLength, monthStartDay];
+
+}
+
+function drawCal(monthInfo) {
+
+  var daysInMonth = monthInfo[0];
+  var monthStartDays = monthInfo[1];
+
+  //clear cal tbody
+  $("#cal").empty();
+  $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
+
+  //create empty row, append to to tbody
+  var $rowOut = $("<tr></tr>");
+  $("#cal").append($rowOut);
+
+  //shift first row by month start date
+  for (var i = 1; i <= monthStartDays; i++) {
+    var $day = "<td></td>";
+    $("#cal tr:last").append($day);
+  }
+
+  //for each day, append a td to the row
+  for (var i = 1; i <= daysInMonth; i++) {
+    var $day = "<td><a>" + (i) + "</a></td>";
+    $("#cal tr:last").append($day);
+
+    //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
+    if ((i + monthStartDays) % 7 == 0 & i != 0) {
+      $("#cal").append($rowOut);
+      $rowOut = "<tr></tr>";
+      $("#cal").append($rowOut);
+    }
+  }
+}
+
+//----------wiring----------//
+
+$(".button_left").click(function() {
+
+  month--;
+
+  if (month < 0) {
+    year--;
+    month = 11;
+  }
+
+  //left button click
+  $(".cal_head span").text(monthTextArray[month] + " " + year);
+  drawCal(getMonthInfo(year, month));
+
 });
 
-// $('.dateselect2').datepicker({
-//     format: 'mm/dd/yyyy',
-//     autoclose:true,
-//     todayHighlidht: true,
-// }).on("hide", function(){
-//   if ($)
-// }
+//right button click
+$(".button_right").click(function() {
+
+  month++;
+
+  if (month > 11) {
+    year++;
+    month = 0;
+  }
+
+  $(".cal_head span").text(monthTextArray[month] + " " + year);
+  drawCal(getMonthInfo(year, month));
+
+});
+
+$("#cal").on("click", "td", function(e) {
+
+  e.preventDefault();
+  $("#cal td").removeClass("circle");
+  $(this).addClass("circle");
+  var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
+  console.log(outputDate);
+  $("#outputText").text(outputDate);
+  $("#coveragedate").text(outputDate);
+
+});
+
+//----------run----------//
+
+//get current month and year
+currentDate = new Date();
+year = currentDate.getFullYear();
+month = currentDate.getMonth();
+day = currentDate.getDate();
+
+//get text month name from month number and write to span
+$(".cal_head span").text(monthTextArray[month] + " " + year);
+
+//inital calander draw based on current month
+drawCal(getMonthInfo(year, month));
+
+//var selector = ("td a:contains(" + day + ")");
+var selector = $("td a").filter(function(){
+ return $(this).text() === day.toString();
+});
+
+//var selector = $("#cal").find("a="+day+"");
 
 
+$(selector.parent()).addClass("circle");
+
+var outputDate = monthTextArray[month] + " " + day + ", " + year;
 
 
-
- 
+$("#outputText").text(outputDate);
 </script>

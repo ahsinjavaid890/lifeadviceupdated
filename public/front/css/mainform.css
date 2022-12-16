@@ -1,3 +1,19 @@
+.qoute-card{
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 100px;
+}
+.get-quotes-button{
+   height: 48px !important;
+   border-radius: 40px;
+}
+
+
  .step {
    height: 100%;
    background-color: #ffff;
@@ -45,30 +61,6 @@
    }
    .btn-next:hover{
    color: white;
-   }
-   /*.zoom-in {
-   transform: scale(0)!important;
-   opacity: 0;
-   -webkit-transition: 1.0s all 0s;
-   -moz-transition: 1.0s all 0s;
-   -ms-transition: 1.0s all 0s;
-   -o-transition: 1.0s all 0s;
-   transition: 1.0s all 0s;
-   display: block !important;
-   }
-   .zoom-in.show {
-   opacity: 1;
-   transform: scale(1)!important;
-   transform:none;
-   }*/
-   .qoute-card {
-   border-radius: 1rem;
-   box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-   position: relative;
-   max-width: 1096px;
-   margin: 0 auto -48px;
-   width: 100%;
-   bottom: -128px !important;
    }
    .super-images {
     right: -102px !important;
@@ -444,7 +436,9 @@
        font-size: 14px;
        line-height: 1.5;
        color: #67778f;
+       border-bottom: 1px solid #ddd;
        margin-top: 8px;
+       padding-bottom: 30px;
        margin-bottom: 25px;
    }
    .quote-wizard-page .lg-wizard-card .card-info {
@@ -705,9 +699,7 @@
    cursor: pointer;
    transition: .1s ease-out;
    }
-   .heading-3 {
-    margin-bottom: 1em;
-}
+
 .heading-1, .heading-2, .heading-3, .subheading-2 {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -724,7 +716,7 @@
     margin: 48px auto;
     border-color: transparent;
 }
-.lg-wizard-card {
+.card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -733,7 +725,7 @@
     background: #fff;
     border: 1px solid #cfd9e8;
     padding: 32px 24px;
-     border-radius: 25px;
+    border-radius: 25px;
 }
 .traveler-info .lg-wizard-card {
     min-height: 300px;
@@ -1133,9 +1125,6 @@ button, input, select, textarea {
 .daterangepicker .drp-calendar.left {
     padding: 8px 0 8px 8px;
 }
-.daterangepicker.show-calendar .drp-buttons, .daterangepicker.show-calendar .drp-calendar {
-    display: block;
-}
 .daterangepicker .drp-calendar {
     display: none;
     max-width: 270px;
@@ -1405,12 +1394,17 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     font-size: 40px;
     color: #262566;
    }
+   .modal-card{
+      height: 450px;
+   }
    .nextbtns{
-    text-align: end;
-    margin-top: 110px;
+      padding-right: 40px;
    }
    .nextbtns .btn-prev{
     background-color: #919192 !important;
+   }
+   .modal-footer{
+      border-top: none !important;
    }
    .nextbtns span{
     background: #262566;
@@ -1421,45 +1415,9 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    .get-quotes-button{
     width: 145px;
    }
-   @media (min-width: 1850px) and (max-width: 2050px){
-    .qoute-card {
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    position: relative;
-    max-width: 1096px;
-    margin: 0 auto -48px;
-    width: 100%;
-    bottom: -190px !important;
-}
-.super-images {
-    width: 1378px;
-    position: absolute;
-    right: -102px !important;
-    height: 510px;
-}
-.super-hero {
-    height: 523px !important;
-}
-  }
-   @media (min-width: 1360px) and (max-width: 1520px){
-    .qoute-card {
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    position: relative;
-    max-width: 1096px;
-    margin: 0 auto -48px;
-    width: 100%;
-    bottom: -93px !important;
-}
-.quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 166px 272px 268px 127px;
-    grid-gap: 40px !important;
-}
-.super-hero {
-    height: 433px !important;
-}
-   }
-    @media (min-width: 1240px) and (max-width: 1360px){
+
+
+@media (min-width: 1240px) and (max-width: 1360px){
     .qoute-card {
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
@@ -1560,17 +1518,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 
 
    }
-   .qoute-card{
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    position: relative;
-    max-width: 1096px;
-    margin: 0 auto -48px;
-    width: 100%;
-    bottom: -40px ;
-    background: #fff;
-    padding: 0;
-  }
+  
   .qoute-submit{
     background: #262566;
     color: white;
@@ -1849,87 +1797,82 @@ body .cal_body .button {
   text-align: center;
 }
 
-.knobs,
-.layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+input.switch {
+   display: inline-block;
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 12px;
+    left: 20px;
 }
-.check-button {
-  position: relative;
-  top: 50%;
-  width: 74px;
-  height: 36px;
-  margin: 14px auto 0 auto;
-  overflow: hidden;
+input.switch:checked::before {
+    background: #12b48b;
 }
-
-.button.r,
-.button.r .layer {
-  border-radius: 100px;
+input.switch::before {
+    font-size: 13px;
+    color: #fff;
+    box-shadow: 0 0 1px 1px #ffffff;   
+    content:'Yes  No';
+    display: block;
+    position: absolute;
+    background: #262566;
+    width: 50px;
+    border-radius: 20px;
+    height: 28px;
+    top: -5px;
+    left: 0px;
+    text-align: center;
 }
-
-.button.b2 {
-  border-radius: 2px;
+input.switch::after {
+   content:'';
+   display: block;
+   position: absolute;
+   background: #FFF;
+   border-radius: 50px;
+   height: 25px;
+   width: 25px;
+   top: -3px;
+   left: 1px;
+   box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+   transition: all 30000ms;
 }
-
-.checkbox {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 3;
+input.switch:active::after{
+  width:30px;
 }
-
-.knobs {
-  z-index: 2;
+input.switch:checked::after {
+   left: auto;
+   right: 2px;
 }
-
-.layer {
-  width: 100%;
-  background-color: #262566;
-  transition: 0.3s ease all;
-  z-index: 1;
+input.round.switch::after, input.round.switch::before {
+      border-radius: 20px;
 }
-
-/* Button 1 */
-#button-1 .knobs:before {
-  content: "YES";
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  width: 31px;
-  height: 31px;
-  color: #262566;
-  font-size: 10px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1;
-  padding: 11px 4px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+body .cal_output {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    height: 42px;
+    text-align: center;
+    color: #000000;
 }
 
-#button-1 .checkbox:checked + .knobs:before {
-  content: "NO";
-  left: 42px;
-  background-color: white;
+.days{
+  color:#1976D2;
+  
 }
+.circle {
+    border-radius: 50%;
+    
+    width: 10px;
+    height: 10px;
+    padding: 5px 5px 5px 5px;
+    background: #fff;
+    border: 2px solid #262566;
+    text-align: center;
 
-#button-1 .checkbox:checked ~ .layer {
-  background-color: #12b48b;
-}
-
-#button-1 .knobs,
-#button-1 .knobs:before,
-#button-1 .layer {
-  transition: 0.3s ease all;
+    
 }
 
 
@@ -2017,137 +1960,81 @@ body .cal_body .button {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-label > input {
-  position: relative;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  border-radius: 0;
-  outline: none;
-  height: 45px;
-  width: 100%;
-  font-size: 16px;
-  margin: 0 0 30px 0;
-  padding: 0;
-  box-shadow: none;
-  box-sizing: content-box;
-  transition: all .3s;
-}
-label > input:valid + span {
-  transform: translateY(-25px) scale(0.8);
-  transform-origin: 0;
-}
-label > input:valid {
-  border-bottom: 1px solid #3F51B5;
-  box-shadow: 0 1px 0 0 #3F51B5;
-}
-label > span {
-  color: #9e9e9e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 16px;
-  cursor: text;
-  transition: .2s ease-out;
-}
-label > input:focus + span {
-  transform: translateY(-25px) scale(0.8);
-  transform-origin: 0;
-  color: #3F51B5;
-}
-label > input:focus {
-  border-bottom: 1px solid #3F51B5;
-  box-shadow: 0 1px 0 0 #3F51B5;
+.travelerinfo .travelerheading{
+   margin-right: 29px;
+    color: #2b3481!important;
+    font-family: Open Sans,sans-serif!important;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
 }
 
+.input-age{
+   width: 64px !important;
+   margin-left: 0;
+}
 
+.switch-input{
+    display: inline-block;
+    margin-left: 16px;
+    font-size: .875rem;
+    color: #67778f;
+    margin-top: 10px;
+}
 
+.link-text-4{
+   font-weight: 900;
+   font-size: .875rem;
+   margin-left: 6px;
+}
+.button-add-another {
+   cursor: pointer;
+    height: 24px;
+    background-size: 24px 24px;
+    background-position: 0;
+    padding-left: 32px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiMyQjM0ODEiLz48cGF0aCBkPSJNMTIgOHY0bTAgNHYtNG0wIDBoNC04IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+);
+}
+.input-date-of-birth {
+    width: 120px;
+    margin-left: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.primarytravelheading{
+   margin-right: 48px !important;
+}
 
-/*Bootstrap Calendar*/
-.datepicker {
-    border-radius: 0;
-    padding: 0;
+.remove-icon{
+   background-image: url(https://assets.visitorscoverage.com/production/app/img/quote-wizardpage/delete.png);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    margin-left: 15px;
+    margin-top: 15px;
 }
-.datepicker-days table thead, .datepicker-days table tbody, .datepicker-days table tfoot {
-    padding: 10px;
-    display: list-item;
+
+.drp-buttons{
+   display: none;
 }
-.datepicker-days table thead, .datepicker-months table thead, .datepicker-years table thead, .datepicker-decades table thead, .datepicker-centuries table thead {
-    background: #3546b3;
-    color: #ffffff;
-    border-radius: 0;
+.birthdateinput i{
+    position: absolute;
+    top: 14px;
+    right: 28px;
+    font-size: 16px;
+    color: #262566;
 }
-.datepicker-days table thead tr:nth-child(2n+0) td, .datepicker-days table thead tr:nth-child(2n+0) th {
-    border-radius: 3px;
-}
-.datepicker-days table thead tr:nth-child(3n+0) {
-    text-transform: uppercase;
-    font-weight: 300 !important;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-}
-.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
-    padding: 11px 13px;
-}
-.datepicker-months table thead td, .datepicker-months table thead th, .datepicker-years table thead td, .datepicker-years table thead th, .datepicker-decades table thead td, .datepicker-decades table thead th, .datepicker-centuries table thead td, .datepicker-centuries table thead th {
-    border-radius: 0;
-}
-.datepicker td, .datepicker th {
-    border-radius: 50%;
-    padding: 0 12px;
-}
-.datepicker-days table thead, .datepicker-months table thead, .datepicker-years table thead, .datepicker-decades table thead, .datepicker-centuries table thead {
-    background: #3546b3;
-    color: #ffffff;
-    border-radius: 0;
-}
-.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover {
-    background-image: none;
-}
-.datepicker .prev, .datepicker .next {
-    color: rgba(255, 255, 255, 0.5);
-    transition: 0.3s;
-    width: 37px;
-    height: 37px;
-}
-.datepicker .prev:hover, .datepicker .next:hover {
-    background: transparent;
-    color: rgba(255, 255, 255, 0.99);
-    font-size: 21px;
-}
-.datepicker .datepicker-switch {
-    font-size: 24px;
-    font-weight: 400;
-    transition: 0.3s;
-}
-.datepicker .datepicker-switch:hover {
-    color: rgba(255, 255, 255, 0.7);
-    background: transparent;
-}
-.datepicker table tr td span {
-    border-radius: 2px;
-    margin: 3%;
-    width: 27%;
-}
-.datepicker table tr td span.active, .datepicker table tr td span.active:hover, .datepicker table tr td span.active.disabled, .datepicker table tr td span.active.disabled:hover {
-  background-color: #3546b3;
-  background-image: none;
-}
-.dropdown-menu {
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-.datepicker-dropdown.datepicker-orient-top:before {
-    border-top: 7px solid rgba(0,0,0,.1);
+.questionheading{
+    margin-left: 30px;
+    color: #2b3481!important;
+    font-family: Open Sans,sans-serif!important;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
 }
