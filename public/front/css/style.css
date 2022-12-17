@@ -11288,6 +11288,9 @@ ul.tabs li.current{
     .card-section{
         display: none;
     }
+    .new-qoute{
+        position: inherit !important;
+    }
 }
 .modal-qoute-card{
     display: none;

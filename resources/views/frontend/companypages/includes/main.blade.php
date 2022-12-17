@@ -322,7 +322,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             <div class="col-md-12">
                 <form action="#" method="POST">
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
-            <div class="p-0 qoute-card">
+            <div class="p-0 qoute-card new-qoute">
                <div class="card-body p-0">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
                      <div  class="grid-container">
