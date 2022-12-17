@@ -1257,6 +1257,10 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
+    .qoute-card{
+        padding-right: 150px !important;
+        left: 0px;
+    }
     .popup-overlay.date-sel-popup>.custom-container .lg-wizard-card .dates-selection.cal {
         margin-bottom: 0;
     }
@@ -2037,4 +2041,199 @@ input::-webkit-inner-spin-button {
     line-height: 1.5rem;
     font-weight: 800;
     margin-top: 10px;
+}
+@media screen and (min-width:300px) and (max-width:360px) {
+    .qoute-card{
+        max-width: 350px;
+        left: 2%;
+        top: 0%;
+    }
+    .d-grid{
+        display: block;
+    }
+    .container-homepage{
+        margin-top: 80px;
+    }
+    .quotes-generator-bar .form-input {
+        width: -webkit-fill-available;
+    }
+    .get-quotes-button {
+        margin-top: 10px;
+    }
+    .zoom-in{
+        max-width: 350px !important;
+    }
+    .zoom-in .card-heading{
+        font-size: 13px;
+    }
+    .zoom-in .card-info{
+        font-size: 12px;
+        margin-top: 0px;
+    }
+    .zoom-in .coverage .row{
+        margin-top: 70px !important;
+    }
+    .zoom-in .card-content .wrapper-dropdown::before {
+        right: 30px;
+    }
+    .zoom-in .card-content .wrapper-dropdown{
+        bottom: 10px;
+    }
+    .userdata-card{
+        padding-left: 0px;
+    }
+    .travelerinfo .travelerheading 
+    {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+   .travelerinfo{
+    flex-direction: column !important;
+   }
+   .travelerinfo .input-age{
+    width: 100% !important;
+   }
+   .travelerinfo .input-date-of-birth {
+    width: 100%;
+}
+.zoom-in .questionheading{
+    font-size: 12px;
+    margin-left: -12px;
+}
+.zoom-in .traveler-question{
+    margin-top: 50px ;
+}
+.traveler-question .user-answer{
+    margin-left: -50px;
+}
+}
+@media screen and (min-width:370px) and (max-width:400px) {
+    .qoute-card{
+        max-width: 350px;
+        left: 13px;
+        top: 0%;
+    }
+    .d-grid{
+        display: block;
+    }
+    .container-homepage{
+        margin-top: 80px;
+    }
+    .quotes-generator-bar .form-input {
+        width: -webkit-fill-available;
+    }
+    .get-quotes-button {
+        margin-top: 10px;
+    }
+    .zoom-in{
+        max-width: 380px !important;
+    }
+    .zoom-in .card-heading{
+        font-size: 15px;
+    }
+    .zoom-in .card-info{
+        font-size: 13px;
+        margin-top: 0px;
+    }
+    .zoom-in .coverage .row{
+        margin-top: 70px !important;
+    }
+    .zoom-in .card-content .wrapper-dropdown::before {
+        right: 30px;
+    }
+    .zoom-in .card-content .wrapper-dropdown{
+        bottom: 10px;
+    }
+    .userdata-card{
+        padding-left: 0px;
+    }
+    .travelerinfo .travelerheading 
+    {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+   .travelerinfo{
+    flex-direction: column !important;
+   }
+   .travelerinfo .input-age{
+    width: 100% !important;
+   }
+   .travelerinfo .input-date-of-birth {
+    width: 100%;
+}
+.zoom-in .questionheading{
+    font-size: 12px;
+    margin-left: -12px;
+}
+.zoom-in .traveler-question{
+    margin-top: 50px ;
+}
+.traveler-question .user-answer{
+    margin-left: -50px;
+}
+}
+@media screen and (min-width:400px) and (max-width:430px) {
+    .qoute-card{
+        max-width: 400px;
+        left: 5px;
+        top: 0%;
+    }
+    .d-grid{
+        display: block;
+    }
+    .container-homepage{
+        margin-top: 80px;
+    }
+    .quotes-generator-bar .form-input {
+        width: -webkit-fill-available;
+    }
+    .get-quotes-button {
+        margin-top: 10px;
+    }
+    .zoom-in{
+        max-width: 400px !important;
+    }
+    .zoom-in .card-heading{
+        font-size: 15px;
+    }
+    .zoom-in .card-info{
+        font-size: 13px;
+        margin-top: 0px;
+    }
+    .zoom-in .coverage .row{
+        margin-top: 70px !important;
+    }
+    .zoom-in .card-content .wrapper-dropdown::before {
+        right: 30px;
+    }
+    .zoom-in .card-content .wrapper-dropdown{
+        bottom: 10px;
+    }
+    .userdata-card{
+        padding-left: 0px;
+    }
+    .travelerinfo .travelerheading 
+    {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+   .travelerinfo{
+    flex-direction: column !important;
+   }
+   .travelerinfo .input-age{
+    width: 100% !important;
+   }
+   .travelerinfo .input-date-of-birth {
+    width: 100%;
+}
+.zoom-in .questionheading{
+    font-size: 12px;
+    margin-left: -12px;
+}
+.zoom-in .traveler-question{
+    margin-top: 50px ;
+}
+.traveler-question .user-answer{
+    margin-left: -50px;
+}
 }

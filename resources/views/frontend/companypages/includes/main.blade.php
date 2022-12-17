@@ -79,12 +79,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card lg-wizard-card modal-card border-0">
                            <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
-                           <div class="card-content">
+                           <div class="card-content coverage">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                               <div class="row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                  <div class="col-md-6">
+                                  <div class="col-md-6 userdata-card">
                                       <div class="wrapper-dropdown" id="primary_destination">
                                         <span>Coverage Ammount</span>
                                         <ul class="dropdown"  >
@@ -140,7 +140,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['email']))
                                  @if($fields['email'] == "on" )
-                                   <div class="col-md-6">
+                                   <div class="col-md-6 userdata-card">
                                       <div class="custom-form-control">
                                          <input type="text" name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
                                          <label for="savers_email" class="form-label">Email</label>
@@ -252,10 +252,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <i class="fa fa-calendar" onclick="$('#departure_date').focus();"></i> 
                                  </div>
                                  <div class="col-md-6">
-                                    <div class="row">
+                                    <div class="row traveler-question">
                                        <div class="col-md-12">
                                              <span class="questionheading">Do you require Family Plan ?</span>
-                                             <div class="col-md-12 no-padding">
+                                             <div class="col-md-12 no-padding user-answer">
                                                 <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
                                              </div>
                                              <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -272,13 +272,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                        <div class="col-md-12">
                                           <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding">
+                                          <div class="col-md-12 no-padding user-answer">
                                           <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
                                        </div>
                                        </div>
                                        <div class="col-md-12">
                                           <span class="questionheading">Do you Smoke in last 12 months ?</span>
-                                          <div class="col-md-12 no-padding">
+                                          <div class="col-md-12 no-padding user-answer">
                                              <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
                                              <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                                           </div>
