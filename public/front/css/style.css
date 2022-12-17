@@ -11390,14 +11390,33 @@ ul.tabs li.current{
 .super-images {
     width: 1031px !important;
     position: absolute;
-    right: -101px !important;
+    right: -102px !important;
     height: 421px  !important;
     background-position: 50% 75% !important;
     }
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 38px !important;
+}
 
 }
 @media only screen and (min-width: 1350px) and (max-width: 1515px) {
-
+.qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 36px !important;
+}
  .super-images {
     width: 957px !important;
     position: absolute;
@@ -11464,6 +11483,23 @@ ul.tabs li.current{
     top: 17px;
     opacity: 0.5;
     }
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 9px !important;
+}
+.super-hero {
+    height: 389px !important;
+}
+.quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 166px 272px 268px 127px;
+    grid-gap: 47px !important;
+}
     .client-card-paragraph p {
     text-align: justify;
     font-size: 16px !important;
@@ -11471,6 +11507,7 @@ ul.tabs li.current{
     font-weight: 900;
     color: black;
     }
+
     .super-images {
     width: 867px !important;
     position: absolute;
@@ -11648,6 +11685,19 @@ ul.tabs li.current{
     position: absolute !important;
     top: 260px !important;
     left: 209px !important;
+}
+.super-hero {
+    height: 319px !important;
+}
+.qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: -34px !important;
 }
 .super-images {
     width: 765px !important;
