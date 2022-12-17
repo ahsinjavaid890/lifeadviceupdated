@@ -11280,8 +11280,16 @@ ul.tabs li.current{
     top: 76px !important;
     }
 }
-
-@media screen and (min-width: 250px) and (max-width: 780px){
+@media screen and (min-width: 431px) and (max-width: 768px){
+    .d-grid{
+        display: block !important;
+    }
+    .new-qoute{
+        display: block !important;
+        margin: 0 !important;
+    }
+}
+@media screen and (min-width: 250px) and (max-width: 768px){
     .modal-qoute-card{
         display: block !important;
     }

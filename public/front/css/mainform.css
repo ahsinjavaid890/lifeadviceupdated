@@ -16,7 +16,7 @@
 .modal-qoute-btn{
     margin: auto;
     background-color: #262566;
-    width: 160px;
+    width: 314px;
     /* margin: auto; */
     color: white;
     font-size: 24px;
@@ -1512,7 +1512,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    @media (min-width: 680px) and (max-width: 780px){
 
 .qoute-card {
-  display: none;
+/*  display: none;*/
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     position: relative;
@@ -2269,3 +2269,48 @@ input::-webkit-inner-spin-button {
 }
 
 }
+
+
+
+
+
+
+
+.modal.modal-fullscreen .modal-dialog,
+.modal.modal-fullscreen .modal-content {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.modal.modal-fullscreen .modal-dialog {
+  margin: 0;
+  width: 100%;
+  animation-duration:0.6s;
+}
+.modal.modal-fullscreen .modal-content {
+  border: none;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: inherit;
+  -moz-box-shadow: inherit;
+  -o-box-shadow: inherit;
+  box-shadow: inherit;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-body {
+  padding: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header,
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header {
+  top: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+  bottom: 0;
+}
+
