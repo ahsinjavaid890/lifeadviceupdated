@@ -7569,6 +7569,9 @@ section {
 .products-arrow{
     width: 60px;
 }
+.clients img:hover {
+    filter: initial;
+}
 .blogbutton{
     text-align: right;
     margin-top: 20px;
@@ -8325,6 +8328,7 @@ left: 95px;
     overflow: hidden;
 }
 .clients img {
+    cursor: pointer;
     filter: grayscale(100%);
     transition: all 0.5s ease-out;
     height: 100px;
