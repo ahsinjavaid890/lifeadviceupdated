@@ -2135,14 +2135,6 @@ input::-webkit-inner-spin-button {
     margin-left: -15px;
 }
 }
-@media screen and (min-width: 250px) and (max-width: 780px){
-    .modal-qoute-card{
-        display: block;
-    }
-    .card-section{
-        display: none;
-    }
-}
 @media screen and (min-width:370px) and (max-width:400px) {
     .qoute-card{
         max-width: 350px;
