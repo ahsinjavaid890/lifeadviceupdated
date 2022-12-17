@@ -6,7 +6,7 @@
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 100px;
+    top: 37px;
 }
 .get-quotes-button{
    height: 48px !important;
@@ -65,9 +65,9 @@
    /* .super-images {
     right: -102px !important;
    } */
-   .super-hero {
+/*   .super-hero {
     height: 477px !important;
-}
+}*/
    .quotes-generator-bar {
    padding: 24px 28px;
    }

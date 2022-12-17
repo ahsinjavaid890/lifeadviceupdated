@@ -10826,7 +10826,7 @@ time {
 }
 .faq .card-header button {
 /*    box-shadow: 0 10px 24px rgb(109 126 152 / 8%);*/
-    border-radius: 16px;
+/*    border-radius: 16px;*/
     color: #262566;
     padding: 17px;
 }
@@ -10844,7 +10844,7 @@ time {
     margin-top: 0 !important;
 }
 .faq .card-header {
-    padding: 2px;
+    padding: 0px;
     border: 0px;
 }
 .faq .card-header .btn-link {
@@ -11354,7 +11354,7 @@ ul.tabs li.current{
  .super-images {
     width: 957px !important;
     position: absolute;
-    right: -101px !important;
+    right: -102px !important;
     height: 425px !important;
     }
 }
