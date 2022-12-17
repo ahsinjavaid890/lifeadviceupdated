@@ -380,12 +380,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          @foreach($sum_insured as $r)
 
 
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammount({{$r->sum_insured}});">
+                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammounts({{$r->sum_insured}});">
                                             <span class="selectspan">${{ $r->sum_insured }}</span>
                                          </li>
                                          @endforeach
                                          <script type="text/javascript">
-                                             function selectcoverageammount(id) {
+                                             function selectcoverageammounts(id) {
                                                  $('#mobile_sum_insured2').val(id);
                                                  $('#coverageprices').val(id);
                                                  $('#covergaeerrors').hide();

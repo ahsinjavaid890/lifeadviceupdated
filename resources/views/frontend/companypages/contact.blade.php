@@ -61,7 +61,7 @@
                                     <p class="col-6"><label class="">Your Email *</label><br><span><input type="text" name="email" class="form-control"></span></p>
                                     <p class="col-6"><label class="">Your Contact No *</label><br><span><input type="text" name="mobile" class="form-control"></span></p>
                                     <p class="col-12"><label class="">Your Subject</label><br><span><input type="text" name="subject" class="form-control"></span></p>
-                                    <p class="col-12"><label class="">Your Message</label><br><span><textarea name="description" rows="2" class="form-control"></textarea></span></p>
+                                    <p class="col-12"><label class="">Your Message</label><br><span><textarea name="description" rows="2" class="form-control" required></textarea></span></p>
                                     <p class="col-12">
                                         <input type="submit" class="btn-lg save-btn mr-4" name="submit" value="Submit">
                                     </p>
