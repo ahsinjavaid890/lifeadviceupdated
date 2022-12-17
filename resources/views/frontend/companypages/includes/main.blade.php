@@ -306,7 +306,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
               <div class="row">
                   <div class="col-md-12">
                       <div class="quotes-button">
-                          <button class="modal-qoute-btn btn btn-block" data-toggle="modal" data-target="#qoutemodal">Qoutes</button>
+                          <button class="modal-qoute-btn btn btn-block" data-toggle="modal" data-target="#qoutemodal">Get Qoutes</button>
                       </div>
                   </div>
               </div>
