@@ -12,13 +12,6 @@
    height: 48px !important;
    border-radius: 40px;
 }
-.modal-qoute-card{
-    display: none;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 1;
-}
 
 .modal-qoute-btn{
     margin: auto;

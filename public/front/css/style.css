@@ -11283,12 +11283,20 @@ ul.tabs li.current{
 
 @media screen and (min-width: 250px) and (max-width: 780px){
     .modal-qoute-card{
-        display: block;
+        display: block !important;
     }
     .card-section{
         display: none;
     }
 }
+.modal-qoute-card{
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+}
+
 @media only screen and (min-width: 1650px) and (max-width: 1800px) {
     .logo-image {
     position: absolute;
