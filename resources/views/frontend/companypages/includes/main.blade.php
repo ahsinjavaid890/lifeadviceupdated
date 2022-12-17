@@ -346,10 +346,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div id="coveragedate" class="value"> Start Date 
                                        </div>
                                     </div>
-                                   <!--  <div  class="sep"></div>
-                                    <div  class="to">
-                                       <div  class="value">End Date</div>
-                                    </div> -->
                                  </div>
                               </div>
                               <button  disabled="disabled" class="button button-primary get-quotes-button"> Get Quotes </button>
