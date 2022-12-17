@@ -12,7 +12,24 @@
    height: 48px !important;
    border-radius: 40px;
 }
+.modal-qoute-card{
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+}
 
+.modal-qoute-btn{
+    margin: auto;
+    background-color: #262566;
+    width: 160px;
+    /* margin: auto; */
+    color: white;
+    font-size: 24px;
+    border-radius: 37px;
+    padding: 11px;
+}
 
  .step {
    height: 100%;
@@ -2117,6 +2134,14 @@ input::-webkit-inner-spin-button {
 .zoom-in .userdate-coverage{
     margin-left: -15px;
 }
+}
+@media screen and (min-width: 250px) and (max-width: 780px){
+    .modal-qoute-card{
+        display: block;
+    }
+    .card-section{
+        display: none;
+    }
 }
 @media screen and (min-width:370px) and (max-width:400px) {
     .qoute-card{
