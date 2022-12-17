@@ -62,9 +62,9 @@
    .btn-next:hover{
    color: white;
    }
-   .super-images {
+   /* .super-images {
     right: -102px !important;
-   }
+   } */
    .super-hero {
     height: 477px !important;
 }
@@ -2042,6 +2042,12 @@ input::-webkit-inner-spin-button {
     font-weight: 800;
     margin-top: 10px;
 }
+@media screen and (min-width:300px) and (max-width:768px) {
+    .mean-container a.meanmenu-reveal span {
+        top: 0px;
+        margin-top: 5px;
+    }
+}
 @media screen and (min-width:300px) and (max-width:360px) {
     .qoute-card{
         max-width: 350px;
@@ -2065,6 +2071,7 @@ input::-webkit-inner-spin-button {
     }
     .zoom-in .card-heading{
         font-size: 13px;
+        line-height: 20px;
     }
     .zoom-in .card-info{
         font-size: 12px;
@@ -2089,6 +2096,7 @@ input::-webkit-inner-spin-button {
     }
    .travelerinfo{
     flex-direction: column !important;
+    margin-left: -15px;
    }
    .travelerinfo .input-age{
     width: 100% !important;
@@ -2105,6 +2113,9 @@ input::-webkit-inner-spin-button {
 }
 .traveler-question .user-answer{
     margin-left: -50px;
+}
+.zoom-in .userdate-coverage{
+    margin-left: -15px;
 }
 }
 @media screen and (min-width:370px) and (max-width:400px) {
@@ -2130,6 +2141,7 @@ input::-webkit-inner-spin-button {
     }
     .zoom-in .card-heading{
         font-size: 15px;
+        line-height: 20px;
     }
     .zoom-in .card-info{
         font-size: 13px;
@@ -2154,6 +2166,7 @@ input::-webkit-inner-spin-button {
     }
    .travelerinfo{
     flex-direction: column !important;
+    margin-left: -15px;
    }
    .travelerinfo .input-age{
     width: 100% !important;
@@ -2171,11 +2184,14 @@ input::-webkit-inner-spin-button {
 .traveler-question .user-answer{
     margin-left: -50px;
 }
+.zoom-in .userdate-coverage{
+    margin-left: -15px;
+}
 }
 @media screen and (min-width:400px) and (max-width:430px) {
     .qoute-card{
         max-width: 400px;
-        left: 5px;
+        left: 7px;
         top: 0%;
     }
     .d-grid{
@@ -2191,10 +2207,11 @@ input::-webkit-inner-spin-button {
         margin-top: 10px;
     }
     .zoom-in{
-        max-width: 400px !important;
+        max-width: 410px !important;
     }
     .zoom-in .card-heading{
         font-size: 15px;
+        line-height: 20px;
     }
     .zoom-in .card-info{
         font-size: 13px;
@@ -2219,6 +2236,7 @@ input::-webkit-inner-spin-button {
     }
    .travelerinfo{
     flex-direction: column !important;
+    margin-left: -15px;
    }
    .travelerinfo .input-age{
     width: 100% !important;
@@ -2236,4 +2254,10 @@ input::-webkit-inner-spin-button {
 .traveler-question .user-answer{
     margin-left: -50px;
 }
+.zoom-in .userdate-coverage{
+    margin-left: -15px;
+}
+/* .super-images{
+    right: 0px !important;
+} */
 }

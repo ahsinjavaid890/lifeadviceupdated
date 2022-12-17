@@ -246,7 +246,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
                            <div class="card-content">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
-                              <div class="row">
+                              <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
                                     <input autocomplete="off" id="departure_date"  name="departure_date" class="wrapperfrom" type="text" required onchange="supervisayes()">
                                     <i class="fa fa-calendar" onclick="$('#departure_date').focus();"></i> 
