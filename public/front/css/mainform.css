@@ -6,7 +6,7 @@
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 37px;
+    top: 133px;
 }
 .get-quotes-button{
    height: 48px !important;
@@ -716,7 +716,7 @@
     margin: 48px auto;
     border-color: transparent;
 }
-.card {
+.lg-wizard-card {
     position: relative;
     display: flex;
     flex-direction: column;

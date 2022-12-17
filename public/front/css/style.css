@@ -10844,7 +10844,7 @@ time {
     margin-top: 0 !important;
 }
 .faq .card-header {
-    padding: 0px;
+    padding: 2px;
     border: 0px;
 }
 .faq .card-header .btn-link {
@@ -11287,10 +11287,20 @@ ul.tabs li.current{
     top: 180px !important;
     left: 386px !important; 
 }
+.qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 74px !important;
+}
     .super-images {
     width: 1163px !important;
     position: absolute;
-    right: -101px !important;
+    right: -102px !important;
     height: 465px !important;
     background-position: 50% 93% !important;
     } 
@@ -11313,10 +11323,20 @@ ul.tabs li.current{
     top: 150px !important;
     left: 445px !important; 
 }
+.qoute-card{
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 1150px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 15%;
+    top: 72px !important;
+}
     .super-images {
     width: 1260px !important;
     position: absolute;
-    right: -101px !important;
+    right: -102px !important;
     height: 465px !important;
     background-position: 50% 93% !important;
     } 
@@ -11564,6 +11584,16 @@ ul.tabs li.current{
     }
 }
 @media only screen and (min-width: 2700px) and (max-width: 2800px){
+    .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 72% !important;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 18% !important;
+    top: 288px !important;
+}
 .super-images {
     width: 1876px !important;
     position: absolute;
@@ -11829,7 +11859,7 @@ ul.tabs li.current{
 .super-images {
     width: 1378px;
     position: absolute;
-    right: -101px;
+    right: -102px;
     height: 510px;
 }
 .super-hero{
