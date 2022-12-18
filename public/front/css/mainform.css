@@ -1512,7 +1512,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    @media (min-width: 680px) and (max-width: 780px){
 
 .qoute-card {
-/*  display: none;*/
+  display: none;
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     position: relative;
@@ -2269,22 +2269,65 @@ input::-webkit-inner-spin-button {
 }
 
 }
+@media screen and (min-width:431px) and (max-width:768px) {
+    .zoom-in .card-heading{
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .zoom-in .card-info{
+        font-size: 13px;
+        margin-top: 0px;
+    }
+    .zoom-in .coverage .row{
+        margin-top: 70px !important;
+    }
+    .zoom-in .card-content .wrapper-dropdown::before {
+        right: 30px;
+    }
+    .zoom-in .card-content .wrapper-dropdown{
+        bottom: 10px;
+    }
+    .userdata-card{
+        padding-left: 0px;
+    }
+    .travelerinfo .travelerheading 
+    {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+   .travelerinfo{
+    flex-direction: column !important;
+    margin-left: -15px;
+   }
+   .travelerinfo .input-age{
+    width: 100% !important;
+   }
+   .travelerinfo .input-date-of-birth {
+    width: 100%;
+}
+.zoom-in .questionheading{
+    font-size: 12px;
+    margin-left: -12px;
+}
+.zoom-in .traveler-question{
+    margin-top: 50px ;
+}
+.traveler-question .user-answer{
+    margin-left: -50px;
+}
+.zoom-in .userdate-coverage{
+    margin-left: -15px;
+}
+.get-quotes-button{
+    margin-top: 10px;
+}
 
-
-
-
-
-
+}
 
 .modal.modal-fullscreen .modal-dialog,
 .modal.modal-fullscreen .modal-content {
   bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.modal.modal-fullscreen .modal-dialog {
+@ -2288,29 +2332,4 @@ .modal.modal-fullscreen .modal-dialog {
   margin: 0;
   width: 100%;
   animation-duration:0.6s;
@@ -2313,4 +2356,3 @@ input::-webkit-inner-spin-button {
 .modal.modal-fullscreen.force-fullscreen .modal-footer {
   bottom: 0;
 }
-
