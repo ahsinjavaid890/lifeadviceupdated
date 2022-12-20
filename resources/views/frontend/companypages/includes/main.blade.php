@@ -36,6 +36,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          <div class="col-md-12">
             <form action="#" method="POST">
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
+               <input type="hidden" id="primarydestination" name="primarydestination">
+               <input type="hidden" id="departure_date" name="departure_date">
+               <input type="hidden" id="return_date" name="return_date">
             <div class="p-0 qoute-card">
                <div class="card-body p-0">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -204,10 +207,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
-                                          <input type="number" placeholder="Age" required="required" onclick="age(this.value)" pattern="[0-9]*" maxlength="     3" class="input-field age" min="0" inputmode="numeric">
-                                          <script type="text/javascript">
-                                              
-                                          </script>
+                                          <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
                                        <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
                                           <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
@@ -226,6 +226,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  @if(isset($fields['Country']))
                                 @if($fields['Country'] == "on" )
+
                                  <div class="col-md-6">
                                       <div class="wrapper-dropdown" id="primary_destination">
                                         <span>Priamry Destination</span>
@@ -236,29 +237,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </li>
                                          @endforeach
                                          <script type="text/javascript">
-                                            function age(id) {
-                                                var ageid = id
-                                                // console.log(ageid);
-                                                $('#citishow').val(id);
-                                              }
-                                             function selectdestination(id) {
-                                                var destid = id
-                                                // console.log(destid);
-                                                 // $('#citishow').val(id);
-                                               var result = ageid.concat(destid);
-                                               consol.log(result);
-                                               document.getElementById('#citishow').val(result);
-                                                 $('#destinationerror').hide();
+                                               function selectdestination(id) {
+                                                   $('#primarydestination').val(id);   
                                                }
                                                function secondnext() {
-                                                  if($('#citishow').val() == '')
+                                                  if($('#primarydestination').val() == '')
                                                   {
                                                      $('#destinationerror').show();
                                                      $('#destinationerror').html('Please Select Destination Ammount');
                                                   }else{
-                                                     $('#secondnextfake').hide();
-                                                     $('#secondnextorignal').show();
-                                                     $('#secondnextorignal').click();
+                                                      var travelerage = $('#travelerage').val();
+                                                      var primarydestination = $('#primarydestination').val();
+                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
+                                                      $('#secondnextfake').hide();
+                                                      $('#secondnextorignal').click();
                                                   }
                                                }
                                          </script>
@@ -267,14 +259,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  @endif
                                  @endif
-                                 <!-- <div class="text-danger mt-4" id="destinationerror">Please Select Destination</div> -->
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
 
                               </div>
                            </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
-                           <span class="btn btn-default btn-prev">Prev</span>
+                          <span class="btn btn-default btn-prev">Prev</span>
                           <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span>
                           <span style="display: none;" id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
                         </div>
@@ -731,16 +723,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
      mm = '0' + mm;
    } 
    var today = mm + '/' + dd + '/' + yyyy;
-   $(function() {
-     $('input[name="departure_date"]').daterangepicker({
-       opens: 'left',
-      minDate: today,
-      singleDatePicker: true,
-       showDropdowns: true,
-     }, function(start, end, label) {
 
-     });
-   });
    function supervisayes(){
       var tt = document.getElementById('departure_date').value;
       var date = new Date(tt);
@@ -758,6 +741,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
       document.getElementById('return_date').value = someFormattedDate;
+   }
+   function setdeparuredate(month, date, day, year) {
+      var setmonth = +month + 1;
+      $('#departure_date').val(year+'-'+setmonth+'-'+date)
+      supervisayes();
    }
 </script>
 <script>

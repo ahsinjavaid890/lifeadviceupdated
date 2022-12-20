@@ -165,6 +165,7 @@ const view = (function (model, utils) {
   }
 
   function fillSelectedDate(month, date, day, year) {
+    setdeparuredate(month, date, day, year);
     const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
     DOMElements.datePickerMonthDay.innerHTML = `${
       CONSTANTS.MONTH_MAP[month]
