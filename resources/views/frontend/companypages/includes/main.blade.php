@@ -178,7 +178,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 
                            </div>
                         </div>
-                     </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
