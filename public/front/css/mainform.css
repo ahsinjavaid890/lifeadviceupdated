@@ -2413,7 +2413,7 @@ input::-webkit-inner-spin-button {
     align-items: baseline;
   display: flex;
 /*  flex-direction: column;*/
-  padding: 0 0 16px 0;
+/*  padding: 0 0 16px 0;*/
   border-bottom: 1px slid #262566;
 /*  margin-bottom: 2.5rem;*/
 }
@@ -2423,7 +2423,7 @@ input::-webkit-inner-spin-button {
 .date_picker_year {
     color: #262566;
   text-align: left;
-  font-size: 23px;
+  font-size: 17px;
   font-weight: 900;
 }
 
@@ -2458,7 +2458,7 @@ input::-webkit-inner-spin-button {
   font-size: 30px;
 }
 .modal-dialog{
-    max-width: 1200px !important;
+    max-width: 1050px !important;
 }
 .date_picker_month_name {
   font-weight: 500;
@@ -2466,13 +2466,14 @@ input::-webkit-inner-spin-button {
   transform: translateY(-1px);
 }
 .date_picker_month_day{
-    font-size: 23px !important;
+    font-size: 17px !important;
     color: #262566 !important;
 }
 .date_picker_month_days {
+    margin-top: -24px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows:1px repeat(1, minmax(2px, 76px));
+  grid-template-rows:1px repeat(1, minmax(1px, 57px));
   text-align: center;
 }
 

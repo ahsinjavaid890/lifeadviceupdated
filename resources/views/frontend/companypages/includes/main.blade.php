@@ -80,13 +80,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card lg-wizard-card modal-card border-0">
                            <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
-                           <div class="card-content coverage">
+                           <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
+                          </div>
                               <div class="row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
                                   <div class="col-md-6 userdata-card">
-                                      <div class="wrapper-dropdown" id="primary_destination">
+                                      <div class="wrapper-dropdown" id="coverage_amount">
                                         <span>Coverage Ammount</span>
                                         <ul class="dropdown"  >
                                          @foreach($sum_insured as $r)
@@ -196,9 +197,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
-                           <!----><!----><!----><!---->
-                           <div class="card-content">
+                           <div class="card-content mb-3 pb-3">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
+                          </div>
                               <div class="row">
                                  <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
@@ -240,7 +241,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  
                               </div>
                            </div>
-                        </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
@@ -896,6 +896,41 @@ dropDown.prototype = {
 <script type="text/javascript">
     $(function() {
   var dd1 = new dropDown($('#citizenship'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#coverage_amount'));
   
   $(document).click(function() {
     $('.wrapper-dropdown').removeClass('active');

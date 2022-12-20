@@ -12241,7 +12241,7 @@ ul .child-list li a{
     background-color: #2b3042 !important;
 }
 .modal-backdrop.show{
-    opacity: .7 !important;
+    opacity:  0.95 !important;
 }
 @media screen and (min-width:300px) and (max-width:768px) {    
 .date_picker_wrapper {
