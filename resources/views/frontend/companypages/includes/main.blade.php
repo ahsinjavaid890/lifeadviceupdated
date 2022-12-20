@@ -250,6 +250,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                       var primarydestination = $('#primarydestination').val();
                                                       $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
                                                       $('#secondnextfake').hide();
+                                                      $('#secondnextorignal').show();
                                                       $('#secondnextorignal').click();
                                                   }
                                                }
@@ -828,13 +829,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
        var sel = $( "#destination_country option:selected" ).val();
        var textbox = document.getElementById("txtmanuid");
        textbox.value =$( "#destination_country option:selected" ).text();
-   });
-</script>
-<script type="text/javascript">
-   $( "#primary_destination" ).change(function() {
-       var sel = $( "#primary_destination option:selected" ).val();
-       var textbox = document.getElementById("destinations");
-       textbox.value =$( "#primary_destination option:selected" ).text();
    });
 </script>
 <script type="text/javascript">
