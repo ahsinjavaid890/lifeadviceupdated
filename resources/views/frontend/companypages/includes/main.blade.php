@@ -204,11 +204,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
-                                          <input type="number" placeholder="Age" required="required" onclick="age()" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
+                                          <input type="number" placeholder="Age" required="required" onclick="age(this.value)" pattern="[0-9]*" maxlength="     3" class="input-field age" min="0" inputmode="numeric">
                                           <script type="text/javascript">
-                                              function age(id) {
-                                                $('#citishow').val(id);
-                                              }
+                                              
                                           </script>
                                        </div>
                                        <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
@@ -238,8 +236,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          </li>
                                          @endforeach
                                          <script type="text/javascript">
+                                            function age(id) {
+                                                var ageid = id
+                                                // console.log(ageid);
+                                                $('#citishow').val(id);
+                                              }
                                              function selectdestination(id) {
-                                                 $('#citishow').val(id);
+                                                var destid = id
+                                                // console.log(destid);
+                                                 // $('#citishow').val(id);
+                                               var result = ageid.concat(destid);
+                                               consol.log(result);
+                                               document.getElementById('#citishow').val(result);
                                                  $('#destinationerror').hide();
                                                }
                                                function secondnext() {
