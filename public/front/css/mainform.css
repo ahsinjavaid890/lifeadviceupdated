@@ -446,10 +446,13 @@
        font-size: 14px;
        line-height: 1.5;
        color: #67778f;
-       border-bottom: 1px solid #ddd;
+/*       border-bottom: 1px solid #ddd;*/
        margin-top: 8px;
-       padding-bottom: 30px;
-       margin-bottom: 25px;
+   }
+   .card-content{
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: baseline;
    }
    .quote-wizard-page .lg-wizard-card .card-info {
    font-weight: 600;
@@ -1718,7 +1721,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .wrapper-dropdown .dropdown li .selectspan{
     cursor: pointer;
 }
-.wrapper-dropdown .dropdown li .selectspan:hover {
+.wrapper-dropdown .dropdown li:hover  .selectspan{
     padding: 10px 0px 10px 10px;
     transform: translate(3%,0);
     -webkit-transition: .5s ease; 
@@ -2057,6 +2060,7 @@ input::-webkit-inner-spin-button {
         top: 0px;
         margin-top: 5px;
     }
+
 }
 @media screen and (min-width:300px) and (max-width:360px) {
     .qoute-card{
@@ -2332,6 +2336,9 @@ input::-webkit-inner-spin-button {
   right: 0;
   top: 0;
 }
+.modal-open .modal{
+        background-color: #605fa463;
+}
 .modal.modal-fullscreen .modal-dialog {
   margin: 0;
   width: 100%;
@@ -2362,3 +2369,139 @@ input::-webkit-inner-spin-button {
   bottom: 0;
 }
 
+
+
+
+
+
+
+
+
+
+  .modal-dialog-scrollable {
+    scrollbar-width: auto;
+    scrollbar-color: #262566 #ffffff;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar{
+    width: 8px;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar-track{
+    background: #ffffff;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar-thumb{
+    background-color: #262566;
+    border-radius: 29px;
+    border: 1px solid #ffffff;
+  }
+
+
+
+
+
+
+
+
+.date_picker_wrapper {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.date_picker_header {
+    align-items: baseline;
+  display: flex;
+/*  flex-direction: column;*/
+  padding: 0 0 16px 0;
+  border-bottom: 1px slid #262566;
+/*  margin-bottom: 2.5rem;*/
+}
+.date_picker_month_day{
+    font-size: 30px !important;
+}
+.date_picker_year {
+    color: #262566;
+  text-align: left;
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.date_picker_month_day {
+  margin-top: 1rem;
+  font-size: 2.3rem;
+}
+
+.date_picker_body {
+  padding: 1.5rem;
+}
+
+.date_picker_month_navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.date_picker_prev_month {
+  transform: translateX(28%);
+}
+
+.date_picker_next_month {
+  transform: translateX(-28%);
+}
+
+.date_picker_month_nav_btn {
+    color: #262566;
+  display: block;
+  position: relative;
+  font-size: 30px;
+}
+.modal-dialog{
+    max-width: 1200px !important;
+}
+.date_picker_month_name {
+  font-weight: 500;
+  font-size: 2.2rem;
+  transform: translateY(-1px);
+}
+.date_picker_month_day{
+    font-size: 23px !important;
+    color: #262566 !important;
+}
+.date_picker_month_days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows:1px repeat(1, minmax(2px, 76px));
+  text-align: center;
+}
+
+.date_picker_month_days li {
+  color: #262566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date_picker_month_days li button {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  color: var(--primary-color-1);
+  border-radius: 50%;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.date_picker_month_days li button.active {
+  background: #262566;
+  color:white;
+}
+li.date_picker_week_day {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.traveler-question{
+   margin-top: 20px;
+}

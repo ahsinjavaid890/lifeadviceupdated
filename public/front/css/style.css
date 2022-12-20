@@ -8327,6 +8327,7 @@ left: 95px;
 .clients {
     overflow: hidden;
 }
+
 .clients img {
     cursor: pointer;
     filter: grayscale(100%);
@@ -12241,4 +12242,101 @@ ul .child-list li a{
 }
 .modal-backdrop.show{
     opacity: .7 !important;
+}
+@media screen and (min-width:300px) and (max-width:768px) {    
+.date_picker_wrapper {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.date_picker_header {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 16px 0;
+  border-bottom: 1px slid #262566;
+/*  margin-bottom: 2.5rem;*/
+}
+.date_picker_month_day{
+    font-size: 30px !important;
+}
+.date_picker_year {
+  text-align: left;
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.date_picker_month_day {
+  margin-top: 1rem;
+  font-size: 2.3rem;
+}
+
+.date_picker_body {
+  padding: 1.5rem;
+}
+
+.date_picker_month_navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.date_picker_prev_month {
+  transform: translateX(28%);
+}
+
+.date_picker_next_month {
+  transform: translateX(-28%);
+}
+
+.date_picker_month_nav_btn {
+    color: #262566;
+  display: block;
+  position: relative;
+  font-size: 30px;
+}
+
+.date_picker_month_name {
+  font-weight: 500;
+  font-size: 2.2rem;
+  transform: translateY(-1px);
+}
+.date_picker_month_day{
+    font-size: 30px !important;
+    color: #262566 !important;
+}
+.date_picker_month_days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows:1px repeat(1, minmax(2px, 76px));
+  text-align: center;
+}
+
+.date_picker_month_days li {
+  color: #262566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date_picker_month_days li button {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  color: var(--primary-color-1);
+  border-radius: 50%;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.date_picker_month_days li button.active {
+  background: #262566;
+  color:white;
+}
+li.date_picker_week_day {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
 }

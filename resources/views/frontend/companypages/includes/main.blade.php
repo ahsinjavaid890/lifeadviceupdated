@@ -2,6 +2,7 @@
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -199,7 +200,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div class="row">
-                                 <div class="col-md-12">
+                                 <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
@@ -213,14 +214,29 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
                                        </span>
                                     </div>
+                                     <div class="additionaltraveler"></div>
+                                     <div class="mt-3 mb-3">
+                                        <div class="travelerinfo">
+                                           <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
+                                        </div>
+                                     </div>
                                  </div>
-                                 
-                                 <div class="additionaltraveler"></div>
-                                 <div class="col-md-12 mt-3">
-                                    <div class="travelerinfo">
-                                       <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                    </div>
+                                 @if(isset($fields['Country']))
+                                @if($fields['Country'] == "on" )
+                                 <div class="col-md-6">
+                                     <div class="wrapper-dropdown" id="primary_destination">
+                                        <span>Select Destination</span>
+                                        <ul class="dropdown"  >
+                                        @foreach(DB::table('formcountries')->get() as $r)
+                                         <li @if($loop->last) class="borderbottomnone" @endif>
+                                            <span class="selectspan">{{ $r->name }}</span>
+                                         </li>
+                                         @endforeach
+                                        </ul>
+                                      </div>
                                  </div>
+                                 @endif
+                                 @endif
                                  
                               </div>
                            </div>
@@ -244,13 +260,37 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
-                           <div class="card-content">
+                              <div class="date_picker_wrapper" id="date_picker_1">
+                           <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
+                                <div class="date_picker_header">
+                                  <h2 class="date_picker_month_day"></h2>
+                                  <h2 class="date_picker_year ml-2"></h2>
+                                </div>
+                            </div>
                               <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
-                                    <input autocomplete="off" id="departure_date"  name="departure_date" class="wrapperfrom" type="text" required onchange="supervisayes()">
-                                    <i class="fa fa-calendar" onclick="$('#departure_date').focus();"></i> 
-                                 </div>
+                                        <div class="date_picker_body">
+                                          <div class="date_picker_month_navigation">
+                                            <button class="date_picker_prev_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
+                                            </button>
+                                            <h2 class="date_picker_month_name"></h2>
+                                            <button class="date_picker_next_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                            </button>
+                                          </div>
+                                          <ul class="date_picker_month_days">
+                                            <li>Sun</li>
+                                            <li>Mon</li>
+                                            <li>Tue</li>
+                                            <li>Wed</li>
+                                            <li>Thu</li>
+                                            <li>Fri</li>
+                                            <li>Sat</li>
+                                          </ul>
+                                        </div>
+                                      </div>
                                  <div class="col-md-6">
                                     <div class="row traveler-question">
                                        <div class="col-md-12">
@@ -285,7 +325,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                  </div>
-                              </div>
+                                 </div>
                            </div>
                         </div>
                      </div>
@@ -370,7 +410,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
                                   <div class="col-md-6 userdata-card">
-                                      <div class="wrapper-dropdown" id="mobile_primary_destination">
+                                      <div class="wrapper-dropdown" id="mobile_coverage_amount">
                                         <span>Coverage Ammount</span>
                                         <ul class="dropdown"  >
                                          @foreach($sum_insured as $r)
@@ -484,7 +524,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div class="row">
-                                 <div class="col-md-12">
+                                 <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinputs" class="form-input input-age">
@@ -498,14 +538,29 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <a onclick="showages()" style="display: none;" id="agetexts" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
                                        </span>
                                     </div>
-                                 </div>
-                                 
                                  <div class="additionaltraveler"></div>
-                                 <div class="col-md-12 mt-3">
+                                 <div class="mt-3">
                                     <div class="travelerinfo">
                                        <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                     </div>
                                  </div>
+                                 </div>
+                                 @if(isset($fields['Country']))
+                                @if($fields['Country'] == "on" )
+                                 <div class="col-md-6">
+                                     <div class="wrapper-dropdown" id="mobile_primary_destination" style="position: initial !important; ">
+                                        <span>Select Destination</span>
+                                        <ul class="dropdown"  >
+                                        @foreach(DB::table('formcountries')->get() as $r)
+                                         <li @if($loop->last) class="borderbottomnone" @endif>
+                                            <span class="selectspan">{{ $r->name }}</span>
+                                         </li>
+                                         @endforeach
+                                        </ul>
+                                      </div>
+                                 </div>
+                                 @endif
+                                 @endif
                                  
                               </div>
                            </div>
@@ -533,8 +588,32 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <p class="card-info">Please Select Date When You Start Coverage</p>
                               <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
-                                    <input autocomplete="off" id="departure_dates"  name="departure_dates" class="wrapperfrom" type="text" required onchange="supervisayess()">
-                                    <i class="fa fa-calendar" onclick="$('#departure_dates').focus();"></i> 
+                                    <div class="date_picker_wrappers" id="date_pickers_1">
+                                        <div class="date_picker_headers">
+                                          <button class="date_picker_years"></button>
+                                          <h2 class="date_picker_month_days"></h2>
+                                        </div>
+                                        <div class="date_picker_bodys">
+                                          <div class="date_picker_month_navigations">
+                                            <button class="date_picker_prev_months date_picker_month_nav_btns">
+                                              <ion-icon name="caret-back-circle-outlines"></ion-icon>
+                                            </button>
+                                            <h2 class="date_picker_month_names"></h2>
+                                            <button class="date_picker_next_months date_picker_month_nav_btns">
+                                              <ion-icon name="caret-forward-circle-outlines"></ion-icon>
+                                            </button>
+                                          </div>
+                                          <ul class="date_picker_month_dayss">
+                                            <li>Sun</li>
+                                            <li>Mon</li>
+                                            <li>Tue</li>
+                                            <li>Wed</li>
+                                            <li>Thu</li>
+                                            <li>Fri</li>
+                                            <li>Sat</li>
+                                          </ul>
+                                        </div>
+                                      </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="row traveler-question">
@@ -603,7 +682,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       var number_of_traveller = '5';
 
       if(a < number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class="col-md-12 mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
+         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
       }else{
          $('.button-add-another').fadeOut(300);
       }
@@ -1021,6 +1100,41 @@ $("#outputText").text(outputDate);
 </script>
 <script type="text/javascript">
     $(function() {
+  var dd1 = new dropDown($('#mobile_coverage_amount'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+    $(function() {
   var dd1 = new dropDown($('#mobile_primary_destination'));
   
   $(document).click(function() {
@@ -1055,137 +1169,571 @@ dropDown.prototype = {
 }
 </script>
 <script type="text/javascript">
-  //----------variables----------//
+  const CONSTANTS = {
+  DOM_SELECTORS: {
+    datePicker: "",
+    datePickerPrevMonth: ".date_picker_prev_month",
+    datePickerNextMonth: ".date_picker_next_month",
+    datePickerMonthDays: ".date_picker_month_days",
+    datePickerMonthDay: ".date_picker_month_day",
+    datePickerYear: ".date_picker_year",
+    datePickerMonthName: ".date_picker_month_name",
+    datePickerDay: ".day"
+  },
+  DOM_STRINGS: {
+    dataTime: "li[data-time]"
+  },
+  DUMMY_LI_FOR_EMPTY_DAYS: '<li class="day"></li>',
+  DAY_MAP: {
+    0: "Sun",
+    1: "Mon",
+    2: "Tue",
+    3: "Wed",
+    4: "Thu",
+    5: "Fri",
+    6: "Sat"
+  },
+  MONTH_MAP: {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December"
+  }
+};
 
-var day = "";
-var month = "";
-var year = "";
-var currentDate = "";
-var monthStartDay = "";
-
-var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-//----------functions----------//
-
-function getMonthInfo(year, month) {
-
-  //use current month to find number of days in month
-  //i dont know why i have to add 1 to month
-  var startDate = new Date(year, month + 1, 0);
-  var monthLength = startDate.getDate();
-
-  var startDate = new Date(year, month, 1);
-  var monthStartDay = startDate.getDay();
-
-  return [monthLength, monthStartDay];
-
-}
-
-function drawCal(monthInfo) {
-
-  var daysInMonth = monthInfo[0];
-  var monthStartDays = monthInfo[1];
-
-  //clear cal tbody
-  $("#cal").empty();
-  $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
-
-  //create empty row, append to to tbody
-  var $rowOut = $("<tr></tr>");
-  $("#cal").append($rowOut);
-
-  //shift first row by month start date
-  for (var i = 1; i <= monthStartDays; i++) {
-    var $day = "<td></td>";
-    $("#cal tr:last").append($day);
+const utils = (function () {
+  function prefixDOMSelectorsWithPickerSelector(pickerSelector) {
+    let DOM_SELECTORS = {};
+    for (let selector in CONSTANTS.DOM_SELECTORS) {
+      DOM_SELECTORS[
+        selector
+      ] = `${pickerSelector} ${CONSTANTS.DOM_SELECTORS[selector]}`.trim();
+    }
+    CONSTANTS.DOM_SELECTORS = DOM_SELECTORS;
   }
 
-  //for each day, append a td to the row
-  for (var i = 1; i <= daysInMonth; i++) {
-    var $day = "<td><a>" + (i) + "</a></td>";
-    $("#cal tr:last").append($day);
+  function getDOMElements(DOMSelectors) {
+    let DOMElements = {};
+    for (let selector in DOMSelectors) {
+      if (DOMSelectors.hasOwnProperty(selector)) {
+        DOMElements[selector] = document.querySelector(DOMSelectors[selector]);
+      }
+    }
+    return DOMElements;
+  }
 
-    //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
-    if ((i + monthStartDays) % 7 == 0 & i != 0) {
-      $("#cal").append($rowOut);
-      $rowOut = "<tr></tr>";
-      $("#cal").append($rowOut);
+  function getDatePickerWeekDaysNameMarkUp() {
+    return `
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>`;
+  }
+
+  function getDayMarkup(day = 1, isActive = false, time = null) {
+    if (!time) {
+      console.trace(`The time provided for getDayMarkup ${time} is invalid`);
+    }
+    return `
+        <li class="day" data-time="${time}">
+            <button class="${isActive ? "active" : ""}">${day}</button>
+        </li>`;
+  }
+
+  function getAllDays() {
+    let days = document.querySelectorAll(CONSTANTS.DOM_SELECTORS.datePickerDay);
+    return [...(days ?? [])];
+  }
+
+  function getDaySuffix(day) {
+    switch (day) {
+      case 1:
+      case 21:
+      case 31:
+        return "st";
+      case 2:
+      case 22:
+        return "nd";
+      case 3:
+      case 23:
+        return "rd";
+      default:
+        return "th";
     }
   }
-}
 
-//----------wiring----------//
+  return {
+    prefixDOMSelectorsWithPickerSelector,
+    getDOMElements,
+    getDatePickerWeekDaysNameMarkUp,
+    getDayMarkup,
+    getAllDays,
+    getDaySuffix
+  };
+})();
 
-$(".button_left").click(function() {
+const model = (function () {
+  const data = {
+    currentDate: new Date(),
+    selectedDate: new Date()
+  };
 
-  month--;
-
-  if (month < 0) {
-    year--;
-    month = 11;
+  function setCurrentDate(newDate) {
+    data.currentDate = newDate;
   }
 
-  //left button click
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
-
-});
-
-//right button click
-$(".button_right").click(function() {
-
-  month++;
-
-  if (month > 11) {
-    year++;
-    month = 0;
+  function setSelectedDate(newDate) {
+    data.selectedDate = newDate;
   }
 
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
+  function getCurrentDate() {
+    return data.currentDate;
+  }
 
-});
+  function getSelectedDate() {
+    return data.selectedDate;
+  }
 
-$("#cal").on("click", "td", function(e) {
+  return { setCurrentDate, setSelectedDate, getCurrentDate, getSelectedDate };
+})();
 
-  e.preventDefault();
-  $("#cal td").removeClass("circle");
-  $(this).addClass("circle");
-  var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
-  console.log(outputDate);
-  $("#outputText").text(outputDate);
-  $("#coveragedate").text(outputDate);
+const view = (function (model, utils) {
+  function removeDays() {
+    const allDays = utils.getAllDays();
+    allDays.forEach((day) => day.remove());
+  }
 
-});
+  function fillEmptyDays(count) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    for (let i = 0; i < count; i++) {
+      DOMElements.datePickerMonthDays.insertAdjacentHTML(
+        "beforeend",
+        CONSTANTS.DUMMY_LI_FOR_EMPTY_DAYS
+      );
+    }
+  }
 
-//----------run----------//
+  function fillDay(day, isActive = false, time) {
+    const dayMarkUp = utils.getDayMarkup(day, isActive, time);
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthDays.insertAdjacentHTML("beforeend", dayMarkUp);
+  }
 
-//get current month and year
-currentDate = new Date();
-year = currentDate.getFullYear();
-month = currentDate.getMonth();
-day = currentDate.getDate();
+  function fillCurrentMonth(string) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthName.textContent = string;
+  }
 
-//get text month name from month number and write to span
-$(".cal_head span").text(monthTextArray[month] + " " + year);
+  function fillSelectedDate(month, date, day, year) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthDay.innerHTML = `${
+      CONSTANTS.MONTH_MAP[month]
+    } ${date}<sup>${utils.getDaySuffix(date)}</sup>, ${CONSTANTS.DAY_MAP[day]}`;
+    DOMElements.datePickerYear.textContent = year;
+  }
 
-//inital calander draw based on current month
-drawCal(getMonthInfo(year, month));
+  return {
+    removeDays,
+    fillEmptyDays,
+    fillDay,
+    fillCurrentMonth,
+    fillSelectedDate
+  };
+})(model, utils);
 
-//var selector = ("td a:contains(" + day + ")");
-var selector = $("td a").filter(function(){
- return $(this).text() === day.toString();
-});
+const controller = (function (model, view, utils) {
+  let DOMElements = null;
+  function init(pickerSelector = "", selectedDate = new Date()) {
+    utils.prefixDOMSelectorsWithPickerSelector(pickerSelector);
+    DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    if (!DOMElements.datePicker) {
+      throw new Error(
+        `Date Picker with selector ${pickerSelector} not found in the document`
+      );
+    }
+    DOMElements.datePickerNextMonth.addEventListener(
+      "click",
+      handleNextMonthClick
+    );
+    DOMElements.datePickerPrevMonth.addEventListener(
+      "click",
+      handlePrevMonthClick
+    );
+    DOMElements.datePickerMonthDays.addEventListener("click", handleSelectDate);
+    if (selectedDate.constructor !== Date) {
+      throw new Error(`The initial date ${selectedDate} is not a Date Object`);
+    }
+    let clonedSelectedDate = new Date(selectedDate.getTime());
+    let clonedCurrentDate = new Date(selectedDate.getTime());
+    model.setSelectedDate(clonedSelectedDate);
+    model.setCurrentDate(clonedCurrentDate);
+    render(selectedDate);
+  }
 
-//var selector = $("#cal").find("a="+day+"");
+  function handleSelectDate(event) {
+    const time = event.target.closest(CONSTANTS.DOM_STRINGS.dataTime)?.dataset
+      .time;
+    if (!time) return;
+    model.setSelectedDate(new Date(Number(time)));
+    model.setCurrentDate(new Date(Number(time)));
+    render();
+  }
 
+  function handleNextMonthClick() {
+    render();
+  }
 
-$(selector.parent()).addClass("circle");
+  function handlePrevMonthClick() {
+    let currentDate = new Date(model.getCurrentDate().getTime());
+    currentDate.setMonth(currentDate.getMonth() - 2);
+    model.setCurrentDate(currentDate);
+    render();
+  }
 
-var outputDate = monthTextArray[month] + " " + day + ", " + year;
+  function render(selectedDate = null) {
+    updateSelectedDateMarkUp();
+    view.removeDays();
+    let currentDate = new Date(
+      selectedDate?.getTime() ?? model.getCurrentDate().getTime()
+    );
+    let selected = model.getSelectedDate();
+    let selectedDay = selected.getDate();
+    let selectedMonth = selected.getMonth();
+    let selectedYear = selected.getFullYear();
+    currentDate.setDate(1);
+    let renderingMonth = currentDate.getMonth();
+    view.fillEmptyDays(currentDate.getDay());
+    view.fillCurrentMonth(
+      `${CONSTANTS.MONTH_MAP[renderingMonth]} - ${currentDate.getFullYear()}`
+    );
+    while (currentDate.getMonth() === renderingMonth) {
+      let currentMonth = currentDate.getMonth();
+      let currentDay = currentDate.getDate();
+      let currentYear = currentDate.getFullYear();
+      let currentStringDate = `${currentDay}/${
+        currentMonth + 1
+      }/${currentYear}`;
+      let selectedStringDate = `${selectedDay}/${
+        selectedMonth + 1
+      }/${selectedYear}`;
+      view.fillDay(
+        currentDate.getDate(),
+        selectedStringDate === currentStringDate,
+        currentDate.getTime()
+      );
+      currentDate.setDate(currentDay + 1);
+    }
+    model.setCurrentDate(currentDate);
+  }
 
+  function updateSelectedDateMarkUp() {
+    const currentDate = new Date(model.getSelectedDate().getTime());
+    view.fillSelectedDate(
+      currentDate.getMonth(),
+      currentDate.getDate(),
+      currentDate.getDay(),
+      currentDate.getFullYear()
+    );
+  }
 
-$("#outputText").text(outputDate);
+  return { init };
+})(model, view, utils);
+
+controller.init("#date_picker_1");
+</script>
+
+<script type="text/javascript">
+  const CONSTANTS = {
+  DOM_SELECTORS: {
+    datePicker: "",
+    datePickerPrevMonth: ".date_picker_prev_months",
+    datePickerNextMonth: ".date_picker_next_months",
+    datePickerMonthDays: ".date_picker_month_dayss",
+    datePickerMonthDay: ".date_picker_month_days",
+    datePickerYear: ".date_picker_years",
+    datePickerMonthName: ".date_picker_month_names",
+    datePickerDay: ".days"
+  },
+  DOM_STRINGS: {
+    dataTime: "li[data-time]"
+  },
+  DUMMY_LI_FOR_EMPTY_DAYS: '<li class="days"></li>',
+  DAY_MAP: {
+    0: "Sun",
+    1: "Mon",
+    2: "Tue",
+    3: "Wed",
+    4: "Thu",
+    5: "Fri",
+    6: "Sat"
+  },
+  MONTH_MAP: {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December"
+  }
+};
+
+const utils = (function () {
+  function prefixDOMSelectorsWithPickerSelectors(pickerSelector) {
+    let DOM_SELECTORS = {};
+    for (let selector in CONSTANTS.DOM_SELECTORS) {
+      DOM_SELECTORS[
+        selector
+      ] = `${pickerSelector} ${CONSTANTS.DOM_SELECTORS[selector]}`.trim();
+    }
+    CONSTANTS.DOM_SELECTORS = DOM_SELECTORS;
+  }
+
+  function getDOMElementss(DOMSelectors) {
+    let DOMElements = {};
+    for (let selector in DOMSelectors) {
+      if (DOMSelectors.hasOwnProperty(selector)) {
+        DOMElements[selector] = document.querySelector(DOMSelectors[selector]);
+      }
+    }
+    return DOMElements;
+  }
+
+  function getDatePickerWeekDaysNameMarkUps() {
+    return `
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>`;
+  }
+
+  function getDayMarkups(day = 1, isActive = false, time = null) {
+    if (!time) {
+      console.trace(`The time provided for getDayMarkup ${time} is invalid`);
+    }
+    return `
+        <li class="day" data-time="${time}">
+            <button class="${isActive ? "active" : ""}">${day}</button>
+        </li>`;
+  }
+
+  function getAllDayss() {
+    let days = document.querySelectorAll(CONSTANTS.DOM_SELECTORS.datePickerDay);
+    return [...(days ?? [])];
+  }
+
+  function getDaySuffixs(day) {
+    switch (day) {
+      case 1:
+      case 21:
+      case 31:
+        return "st";
+      case 2:
+      case 22:
+        return "nd";
+      case 3:
+      case 23:
+        return "rd";
+      default:
+        return "th";
+    }
+  }
+
+  return {
+    prefixDOMSelectorsWithPickerSelector,
+    getDOMElements,
+    getDatePickerWeekDaysNameMarkUp,
+    getDayMarkup,
+    getAllDays,
+    getDaySuffix
+  };
+})();
+
+const model = (function () {
+  const data = {
+    currentDate: new Date(),
+    selectedDate: new Date()
+  };
+
+  function setCurrentDates(newDate) {
+    data.currentDate = newDate;
+  }
+
+  function setSelectedDates(newDate) {
+    data.selectedDate = newDate;
+  }
+
+  function getCurrentDates() {
+    return data.currentDate;
+  }
+
+  function getSelectedDates() {
+    return data.selectedDate;
+  }
+
+  return { setCurrentDate, setSelectedDate, getCurrentDate, getSelectedDate };
+})();
+
+const view = (function (model, utils) {
+  function removeDayss() {
+    const allDays = utils.getAllDays();
+    allDays.forEach((day) => day.remove());
+  }
+
+  function fillEmptyDayss(count) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    for (let i = 0; i < count; i++) {
+      DOMElements.datePickerMonthDays.insertAdjacentHTML(
+        "beforeend",
+        CONSTANTS.DUMMY_LI_FOR_EMPTY_DAYS
+      );
+    }
+  }
+
+  function fillDays(day, isActive = false, time) {
+    const dayMarkUp = utils.getDayMarkup(day, isActive, time);
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthDays.insertAdjacentHTML("beforeend", dayMarkUp);
+  }
+
+  function fillCurrentMonths(string) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthName.textContent = string;
+  }
+
+  function fillSelectedDates(month, date, day, year) {
+    const DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    DOMElements.datePickerMonthDay.innerHTML = `${
+      CONSTANTS.MONTH_MAP[month]
+    } ${date}<sup>${utils.getDaySuffix(date)}</sup>, ${CONSTANTS.DAY_MAP[day]}`;
+    DOMElements.datePickerYear.textContent = year;
+  }
+
+  return {
+    removeDays,
+    fillEmptyDays,
+    fillDay,
+    fillCurrentMonth,
+    fillSelectedDate
+  };
+})(model, utils);
+
+const controller = (function (model, view, utils) {
+  let DOMElements = null;
+  function inits(pickerSelector = "", selectedDate = new Date()) {
+    utils.prefixDOMSelectorsWithPickerSelector(pickerSelector);
+    DOMElements = utils.getDOMElements(CONSTANTS.DOM_SELECTORS);
+    if (!DOMElements.datePicker) {
+      throw new Error(
+        `Date Picker with selector ${pickerSelector} not found in the document`
+      );
+    }
+    DOMElements.datePickerNextMonth.addEventListener(
+      "click",
+      handleNextMonthClick
+    );
+    DOMElements.datePickerPrevMonth.addEventListener(
+      "click",
+      handlePrevMonthClicks
+    );
+    DOMElements.datePickerMonthDays.addEventListener("click", handleSelectDates);
+    if (selectedDate.constructor !== Date) {
+      throw new Error(`The initial date ${selectedDate} is not a Date Object`);
+    }
+    let clonedSelectedDate = new Date(selectedDate.getTime());
+    let clonedCurrentDate = new Date(selectedDate.getTime());
+    model.setSelectedDate(clonedSelectedDate);
+    model.setCurrentDate(clonedCurrentDate);
+    render(selectedDate);
+  }
+
+  function handleSelectDates(event) {
+    const time = event.target.closest(CONSTANTS.DOM_STRINGS.dataTime)?.dataset
+      .time;
+    if (!time) return;
+    model.setSelectedDate(new Date(Number(time)));
+    model.setCurrentDate(new Date(Number(time)));
+    render();
+  }
+
+  function handleNextMonthClicks() {
+    render();
+  }
+
+  function handlePrevMonthClicks() {
+    let currentDate = new Date(model.getCurrentDate().getTime());
+    currentDate.setMonth(currentDate.getMonth() - 2);
+    model.setCurrentDate(currentDate);
+    render();
+  }
+
+  function render(selectedDate = null) {
+    updateSelectedDateMarkUps();
+    view.removeDays();
+    let currentDate = new Date(
+      selectedDate?.getTime() ?? model.getCurrentDate().getTime()
+    );
+    let selected = model.getSelectedDate();
+    let selectedDay = selected.getDate();
+    let selectedMonth = selected.getMonth();
+    let selectedYear = selected.getFullYear();
+    currentDate.setDate(1);
+    let renderingMonth = currentDate.getMonth();
+    view.fillEmptyDays(currentDate.getDay());
+    view.fillCurrentMonth(
+      `${CONSTANTS.MONTH_MAP[renderingMonth]} - ${currentDate.getFullYear()}`
+    );
+    while (currentDate.getMonth() === renderingMonth) {
+      let currentMonth = currentDate.getMonth();
+      let currentDay = currentDate.getDate();
+      let currentYear = currentDate.getFullYear();
+      let currentStringDate = `${currentDay}/${
+        currentMonth + 1
+      }/${currentYear}`;
+      let selectedStringDate = `${selectedDay}/${
+        selectedMonth + 1
+      }/${selectedYear}`;
+      view.fillDay(
+        currentDate.getDate(),
+        selectedStringDate === currentStringDate,
+        currentDate.getTime()
+      );
+      currentDate.setDate(currentDay + 1);
+    }
+    model.setCurrentDate(currentDate);
+  }
+
+  function updateSelectedDateMarkUps() {
+    const currentDate = new Date(model.getSelectedDate().getTime());
+    view.fillSelectedDate(
+      currentDate.getMonth(),
+      currentDate.getDate(),
+      currentDate.getDay(),
+      currentDate.getFullYear()
+    );
+  }
+
+  return { init };
+})(model, view, utils);
+
+controller.init("#date_picker_1");
 </script>
