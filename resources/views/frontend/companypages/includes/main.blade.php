@@ -690,9 +690,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             </div>
         </div>
       </div>
-
-      
-
     </div>
   </div>
 </div>
@@ -746,6 +743,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    function setdeparuredate(month, date, day, year) {
       var setmonth = +month + 1;
       $('#departure_date').val(year+'-'+setmonth+'-'+date)
+      $('#coveragedate').html(year+'-'+setmonth+'-'+date)
       supervisayes();
    }
 </script>
