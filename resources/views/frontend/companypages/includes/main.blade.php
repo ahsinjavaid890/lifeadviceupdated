@@ -34,11 +34,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       @if($firstsection->form == 1)
       <div class="row card-section">
          <div class="col-md-12">
-            <form action="#" method="POST">
+            <script type="text/javascript">
+               function getquotesubmitform() {
+                  $('#quoteform').submit();
+               }
+            </script>
+            <form id="quoteform" action="{{ url('quotes') }}" method="POST">
+               @csrf
+               <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
                <input type="hidden" id="primarydestination" name="primarydestination">
                <input type="hidden" id="departure_date" name="departure_date">
                <input type="hidden" id="return_date" name="return_date">
+               <input type="hidden" name="ages[]" id="selectage">
             <div class="p-0 qoute-card">
                <div class="card-body p-0">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -67,13 +75,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div> -->
                                  </div>
                               </div>
-                              <button  disabled="disabled" class="button button-primary get-quotes-button"> Get Quotes </button>
+                              <span style="color:white;" onclick="getquotesubmitform()" id="getqoutesubmitbutton" type="submit" class="button button-primary get-quotes-button"> Get Quotes </span>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
+            
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
@@ -231,7 +240,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       <div class="wrapper-dropdown" id="primary_destination">
                                         <span>Priamry Destination</span>
                                         <ul class="dropdown"  >
-                                        @foreach(DB::table('formcountries')->get() as $r)
+
+                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                          <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
                                             <span class="selectspan">{{ $r->name }}</span>
                                          </li>
@@ -249,6 +259,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                       var travelerage = $('#travelerage').val();
                                                       var primarydestination = $('#primarydestination').val();
                                                       $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
+                                                      $('#selectage').val(travelerage);
                                                       $('#secondnextfake').hide();
                                                       $('#secondnextorignal').show();
                                                       $('#secondnextorignal').click();
@@ -362,7 +373,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-         </form>
+            </form>
          </div>
       </div>
       <div class="card modal-qoute-card ">
@@ -703,7 +714,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       var number_of_traveller = '5';
 
       if(a < number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
+         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" name="years[]" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
       }else{
          $('.button-add-another').fadeOut(300);
       }
