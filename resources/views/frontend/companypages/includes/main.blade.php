@@ -47,6 +47,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" id="departure_date" name="departure_date">
                <input type="hidden" id="return_date" name="return_date">
                <input type="hidden" name="ages[]" id="selectage">
+               <input type="hidden" name="years[]" id="selectage">
             <div class="p-0 qoute-card">
                <div class="card-body p-0">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
