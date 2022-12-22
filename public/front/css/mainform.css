@@ -1271,6 +1271,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
     .qoute-card{
+        z-index: 1;
         padding-right: 150px !important;
         left: 0px;
     }
@@ -2505,4 +2506,94 @@ li.date_picker_week_day {
 }
 .traveler-question{
    margin-top: 20px;
+}
+.plan-highlights{
+    list-style-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nMTAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTguNzUuODIybC0uMDE4LjAyLS4wMTYuMDIzLTQuNDc4IDYuMDEtMS45ODMtMi4xMjdzMCAwIDAgMGEuOTk1Ljk5NSAwIDAwLTEuNDY2IDBoMGExLjA4NiAxLjA4NiAwIDAwMCAxLjQ3aDBsMi43NTkgMi45NnMwIDAgMCAwYy40LjQzIDEuMDY1LjQzIDEuNDY2IDBsLjAxNy0uMDIuMDE2LS4wMiA1LjE5LTYuODY4YTEuMDg3IDEuMDg3IDAgMDAtLjAyLTEuNDQ4Ljk5NS45OTUgMCAwMC0xLjQ2NiAweicgZmlsbD0nIzVFQTA0Nycgc3Ryb2tlPScjNUVBMDQ3Jy8+PC9zdmc+);
+}
+.plan-highlights li{
+    color: #5ea047;
+    font-size: 15px;
+    font-weight: 800;
+}
+.plan-highlights li span i{
+    color: #262566;
+    margin-left: 5px;
+}
+.qoute-price-card{
+    box-shadow: 0 4px 16px rgb(87 106 134 / 15%);
+    border: 0;
+    border-radius: 20px;
+    border-left: 7px solid #816c62;
+}
+.plan-label h2{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #262566;
+    font-weight: 800;
+}
+.plan-subheading{
+    color: #67778f;
+}
+.plan-subheading span{
+    font-size: .875rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+
+}
+.limit-lable span{
+    color: #67778f;
+    font-size: 20px;
+}
+.plan-coverage-limit{
+    margin-top: 37px;
+}
+.plan-coverage-limits{
+    margin-top: 73px;
+}
+.qoute-price-select .wrapper-dropdown{
+    width: 78% !important;
+}
+.price-limit{
+    border-right: 1px solid #67778f;
+}
+
+.total-price-traveller h2{
+    color: #262566;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+.total-price-traveller h2 span{
+    color: #67778f;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 3px;
+}
+.total-price-traveller p span{
+    font-size: 11px;
+    line-height: 1.125rem;
+    color: #67778f;
+}
+.buy_now{
+    background: #5ea047;
+    color: white !important;
+    border-radius: 33px;
+}
+.total-price-traveller{
+    margin-top: 108px;
+    text-align: center;
+}
+.compare-checkbox {
+    height: 23px;
+    color: #262566;
+    /*border: 1px solid #e8e8e8;
+    background-color: #f9f9f9;
+    border-radius: 4px;*/
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 100%;
+}
+.compare-check span{
+    color: #67778f;
 }
