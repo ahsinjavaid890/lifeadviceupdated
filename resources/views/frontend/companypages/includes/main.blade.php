@@ -166,8 +166,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                           </div>
                       </div>
                   </div>
-            </div>
             
+            </div>
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">

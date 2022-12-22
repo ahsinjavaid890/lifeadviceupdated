@@ -1271,7 +1271,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
     .qoute-card{
-        z-index: 1;
+/*        z-index: 1;*/
         padding-right: 150px !important;
         left: 0px;
     }
