@@ -10554,7 +10554,7 @@ left: 95px;
    }
 
 .first-section-of-page{
-    margin-top: 415px;
+/*    margin-top: 415px;*/
     background-color: #f4f7fa;
 }
 .image-center{
@@ -11363,7 +11363,7 @@ ul.tabs li.current{
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 72px !important;
+    top: -47px !important;
 }
     .super-images {
     width: 1260px !important;
@@ -11661,7 +11661,7 @@ ul.tabs li.current{
     background: #fff;
     position: absolute;
     left: 18% !important;
-    top: 288px !important;
+    top: -46px !important;
 }
 .super-images {
     width: 1876px !important;
