@@ -213,6 +213,18 @@ a.ssolink {
   animation: animationLeftRight 4s ease-in-out infinite;
 }
 
+@media only screen and (min-width: 200px) and (max-width: 300px){
+  .mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+.mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
 @keyframes animationLeftRight {
   0% {
     transform: translateX(0px);
@@ -235,6 +247,7 @@ a.ssolink {
   100% {
     transform: translateX(0px);
   }
+ 
 } 
 </style>
 <div class="login-root">

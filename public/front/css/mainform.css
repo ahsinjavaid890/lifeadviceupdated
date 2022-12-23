@@ -35,6 +35,9 @@
    padding: 20px 30px;
    text-align: left;
    }
+   .step_1 p{
+    margin-left: 25px ;
+   }
    .health-inssurance-hero-banner {
    background-color: #262566;
    }
@@ -1550,7 +1553,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 @media only screen and (min-width: 1000px) and (max-width: 1100px){
 .super-hero {
-    height: 319px !important;
+    height: 314px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
     grid-template-columns: 150px 175px 310px 1fr !important;
@@ -1559,10 +1562,25 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .width_website {
     width: 920px;
 }
+.super-hero-text h2 font {
+    font-size: 17px !important;
+}
+.super-hero-text h2 span {
+    font-size: 17px !important;
+}
+.super-hero-text h2  {
+    font-size: 17px !important;
+}
+.super-hero-text h5 span  {
+    font-size: 12px !important;
+}
+.details{
+    margin-top: -25px;
+}
 }
 @media only screen and (min-width: 770px) and (max-width: 1000px){
     .super-images {
-    right: 1px !important;
+    right: -1px !important;
 }
 .super-hero {
     height: 246px !important;

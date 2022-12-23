@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-5">
+            <div class="col-md-5 trans-card">
                 
                 <div class="card transparent-card">
                  <div class="card-body text-center">
@@ -55,7 +55,7 @@
                  </div>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 trans-card">
                 <div class="card transparent-card">
                  <div class="card-body text-center">
                     <div class="transparent-card-heading mt-3">
@@ -122,7 +122,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 trans-card">
                 
                 <div class="card transparent-card">
                  <div class="card-body text-center">
@@ -135,7 +135,7 @@
                  </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 trans-card">
                 <div class="card transparent-card">
                  <div class="card-body text-center">
                     <div class="transparent-card-heading mt-3">
@@ -210,7 +210,7 @@
                 </div>
 
         <div class="row mt-3">
-            <div class="col-md-12">
+            <div class="col-md-12 ages-12">
                 <div class="ages">
                     <p>Benefits are payable under the following conditions Disclaimer 5:</p>
                 </div>

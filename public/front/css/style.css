@@ -1874,7 +1874,6 @@ Footer Top Area Style
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
     position: relative;
     background-attachment: fixed;
     z-index: 1;
@@ -7301,6 +7300,11 @@ p{
     margin-right: auto;
     margin-left: auto;
 }
+@media screen and (min-width:1700px) and (max-width:2049px) {
+    .blog-container{
+        max-width: 80%;
+    }
+}
 .appointment-area{
     padding: 20px 0px 20px 0px; 
     background-color: #f5f9ff;
@@ -8116,7 +8120,7 @@ left: 95px;
 .health-inssurance-hero-banners {
     /*padding: 40px 50px 40px 15px;*/
         background-color: #262566;
-    margin-top: 70px;
+    margin-top: 59px;
     color: white;
 }
 .benefits-heading h2{
@@ -8498,6 +8502,13 @@ left: 95px;
     }
     .herrotext{
         max-width: 100%;
+        margin-top: 80px;
+    }
+    .hero-texts h5 span{
+     font-size: 13px !important;
+    }
+    .details a{
+        margin-top: 5px;
     }
     .policy-heading{
     text-align: center;       
@@ -8663,10 +8674,10 @@ left: 95px;
         display: none;
     }
     .choice1{
-        margin-top: 270px;
+        /* margin-top: 270px; */
     }
     .choice2 {
-        margin-top: 170px;
+        /* margin-top: 170px; */
     }
     .mobile-card .row{
         text-align: -webkit-center;
@@ -10054,7 +10065,7 @@ left: 95px;
     .text-section {
     position: absolute;
     left: 7px;
-    top: 30px;
+    top: 55px;
     } 
     .vector-contact img {
     width: 300px;
@@ -10460,9 +10471,9 @@ left: 95px;
     .contact-form .col-md-7{
         display: none;
     }
-    .chooses-blogs {
+    /* .chooses-blogs {
         margin-top: 140px;
-    }
+    } */
     .find-all-products h3{
         font-size: 13px;
     }
@@ -11325,7 +11336,7 @@ ul.tabs li.current{
     top: 74px !important;
 }
     .super-images {
-    width: 1163px !important;
+    width: 1137px !important;
     position: absolute;
     right: -102px !important;
     height: 465px !important;
@@ -11361,7 +11372,7 @@ ul.tabs li.current{
     top: 72px !important;
 }
     .super-images {
-    width: 1260px !important;
+    width: 1190px !important;
     position: absolute;
     right: -102px !important;
     height: 465px !important;
@@ -11659,10 +11670,10 @@ ul.tabs li.current{
     top: 288px !important;
 }
 .super-images {
-    width: 1876px !important;
+    width: 1835px !important;
     position: absolute;
     right: -101px;
-    height: 709px !important;
+    height: 710px !important;
 }
 .logo-image {
     position: absolute;
@@ -11681,7 +11692,23 @@ ul.tabs li.current{
 }
 }
 @media only screen and (min-width: 1000px) and (max-width: 1100px){
-      .logo-image {
+    .super-hero-text h2 font {
+        font-size: 17px !important;
+    }
+    .super-hero-text h2 span {
+        font-size: 17px !important;
+    }
+    .super-hero-text h2  {
+        font-size: 17px !important;
+    }
+    .super-hero-text h5 span  {
+        font-size: 12px !important;
+    }
+    .details{
+        margin-top: -25px;
+    }
+   
+    .logo-image {
     position: absolute !important;
     top: 260px !important;
     left: 209px !important;
@@ -11700,7 +11727,7 @@ ul.tabs li.current{
     top: -34px !important;
 }
 .super-images {
-    width: 765px !important;
+    width: 700px !important;
     position: absolute;
     right: -102px;
     height: 319px !important;
@@ -11763,12 +11790,100 @@ ul.tabs li.current{
     .date-card{
         display: none!important;
     }
+    .mean-container a.meanmenu-reveal span {
+        background-color: #31abfc;
+        position: relative;
+        top: 0px !important;
+        margin-top: 4px !important;
+    }
+    .permanent-team-subsection {
+        position: relative;
+        width: 100%;
+        top: 122px !important;
+        z-index: 9976;
+    }
 }
-@media only screen and (min-width: 700px) and (max-width: 770px){
+
+@media only screen and (min-width: 200px) and (max-width: 300px){
+   .hero-images{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    right: 100px !important;
+    top: -70px !important;
+    order: 1 !important;
+}
+.hero-texts{
+    order: 2;
+    margin-top: 395px;
+}
+
+.hero-texts h5{ 
+    display: none;
+}
+.hero-texts .details a{
+    display: none;
+}
+.claim-process-heading h2{
+    font-size: 20px !important;
+}
+.claim-process-heading h2 span{
+    font-size: 20px !important;
+}
+.mean-container a.meanmenu-reveal span {
+    background-color: #31abfc;
+    position: relative;
+    top: 0px !important;
+    margin-top: 3px !important;
+}
+.advant{
+    font-size: 40px !important;
+}
+.men-image{
+    left: 0px !important;
+}
+   }
+
+
+@media only screen and (min-width: 768px) and (max-width: 769px){
+    .super-images {
+        height: 304px !important;
+    }
+    .super-hero{
+        height: 295px !important;
+    }
+    .super-images {
+        right: 0px !important;
+    }
+    .super-hero-text {
+        margin-top: 307px !important;
+    }
+    .mean-container a.meanmenu-reveal span {
+        background-color: #31abfc;
+        position: relative;
+        top: 29px !important;
+        margin-top: -11px !important;
+    }
+    .permanent-team-subsection {
+        position: relative;
+        width: 100%;
+        top: 122px !important;
+        z-index: 9976;
+    }
+    .herrotext h5 span{
+        display: none !important;
+    }
+    .details a{
+        display: none !important;
+    }
+     
+}
+@media only screen and (min-width: 700px) and (max-width: 767px){
     .super-images {
     width: 1058px !important;
     position: absolute;
-    right: 0px !important;
+   right: 0px !important;
     height: 368px !important;
     }
 
@@ -11788,7 +11903,7 @@ ul.tabs li.current{
     .herrotext h5 span{
         display: none !important;
     }
-    .btns{
+    .details a{
         display: none !important;
     }
     .super-hero {
@@ -11819,12 +11934,18 @@ ul.tabs li.current{
     height: 402px !important;
 }
 .super-hero {
-    height: 525px !important;
+    height: 495px !important;
 }
 .herrotext {
-    margin-top: 470px !important;
+    margin-top: 435px !important;
     text-align: center;
 }
+.herrotext h5 span{
+        display: none !important;
+    }
+    .details a{
+        display: none !important;
+    }
 }
 @media only screen and (min-width: 650px) and (max-width: 700px){
     .super-images {
@@ -11904,7 +12025,7 @@ ul.tabs li.current{
     .super-images {
         width: 595px ;
         position: absolute;
-        right: 0px !important;
+        right: -1px !important;
         height: 262px ;
     }
     .btns{
@@ -11914,7 +12035,7 @@ ul.tabs li.current{
         margin-top: 10px;
     }
     .super-hero-text {
-        margin-top: 249px;
+        margin-top: 260px;
     }
     .hero-texts{
         order: 2;
@@ -12237,4 +12358,205 @@ ul .child-list li a{
 }
 .modal-backdrop.show{
     opacity: .7 !important;
+}
+@media only screen and (min-width: 700px) and (max-width: 1024px)
+{
+.choice-card-paragraph p{
+    font-size: 11px;
+}
+.logo-image img{
+    margin-top: -60px;
+}
+.blogsproducts{
+    font-size: 15px !important;
+}
+.lists-checkmark{
+    padding-bottom: 30px !important;
+}
+.list-checkmark li{
+    font-size: 10px !important;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px)
+{
+    .men-image{
+        left: 60px !important;
+    }
+.slider-heading h2{
+    font-size: 20px !important;
+}
+.slider-heading h2 span{
+    font-size: 20px !important;
+}
+.slider-pargraph p{
+    font-size: 12px !important;
+}
+.choice-card-paragraph p{
+    font-size: 11px ;
+}
+.super-hero .hero-texts {
+    padding: 0px 50px 0px 25px;
+    margin-top: -50px;
+}
+.super-hero-text h5 {
+    font-size: 10px;
+    margin-top: -5px;
+}
+.super-images{
+    height: 251px !important;
+}
+}
+
+@media only screen and (min-width: 200px) and (max-width: 300px)
+{
+.slider-heading h2{
+    font-size: 13px !important;
+}
+.slider-heading h2 span{
+    font-size: 13px !important;
+}
+.slider-pargraph p{
+    font-size: 11px !important;
+}
+.blank-card{
+    margin-bottom: 10px !important;
+}
+.text-section .herrotext h2 {
+    font-size: 10px;
+}
+.homepage-hero-banner-margin {
+    margin-top: 70px !important;
+}
+.herrotext{
+    margin-top: 25px !important;
+}
+.reset-pass a{
+    font-size: 8px !important;
+}
+.product-card-images img {
+    left: -38px;
+    top: 75px;
+}
+.choice-card-paragraph p{
+    font-size: 12px;
+}
+.mission-card{
+    margin-bottom: 10px;
+}
+}
+
+@media only screen and (min-width: 301px) and (max-width: 600px){
+    .product-card-images img {
+        left: -38px;
+        top: 50px !important;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 768px)
+{
+.text-section {
+    position: absolute;
+    left: 27px;
+    top: -215px;
+}
+.slider-pargraph p{
+    font-size: 10px !important;
+}
+}
+
+@media screen and (min-width:200px) and (max-width:768px) {
+ .blank-card{
+    margin-top: 15px;
+ } 
+ .blog_section {
+    margin-top: 70px;
+}  
+.life-heading h2{
+    font-size: 1.5rem !important;
+}
+.life-heading h2 span{
+    font-size: 1.5rem !important;
+}
+.life-product{
+    padding-left: 40px !important;
+}
+.whloelife-card{
+    margin-bottom: 10px;
+}
+.glance-sec{
+    margin-bottom: 30px;
+}
+.trans-card{
+    margin-bottom: 20px;
+}
+.ages-12{
+    margin-left: -16px;
+}
+.super-hero-text h2 span{
+    font-size: 17px !important;
+}
+.super-hero-text h2 font{
+    font-size: 17px !important;
+}
+.super-hero-text h2{
+    font-size: 17px !important;
+}
+.lists-checkmark{
+    padding-bottom: 150px !important;
+}
+.list-checkmark li{
+    font-size: 9px !important;
+}
+}
+@media screen and (min-width:769px) and (max-width:1000px) {
+    .life-heading h2{
+        font-size: 1.6rem !important;
+    }
+    .life-heading h2 span{
+        font-size: 1.6rem !important;
+    }
+.life-product{
+    padding-left: 40px !important;
+}.super-hero-text h2 span{
+    font-size: 20px !important;
+}
+.super-hero-text h2 font{
+    font-size: 20px !important;
+}
+.super-hero-text h2{
+    font-size: 20px !important;
+}
+.lists-checkmark{
+    padding-bottom: 20px !important;
+}
+.list-checkmark li{
+    font-size: 9px !important;
+}
+.blog_section {
+    margin-top: 70px;
+}
+}
+@media screen and (min-width:500px) and (max-width:540px)
+{
+    .mobile-nav .logo {
+        width: 70px;
+        top: 7px !important;
+    }
+}
+
+.blank-card{
+    margin-bottom: 10px;
+}
+@media only screen and (min-width: 300px) and (max-width: 380px)
+{
+.super-hero-text {
+    margin-top: 250px;
+}
+}
+@media only screen and (min-width: 381px) and (max-width: 768px)
+{
+.super-hero-text {
+    margin-top: 266px;
+}
 }

@@ -85,7 +85,7 @@
     <section class="services-area-three services-area-five p-0">
         <div class="container-homepage">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 whloelife-card">
                     <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
@@ -100,7 +100,7 @@
                          </div>
                       </div>
                 </div>
-                 <div class="col-md-3">
+                 <div class="col-md-3 whloelife-card">
                     <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
@@ -115,7 +115,7 @@
                          </div>
                       </div>
                 </div>
-                 <div class="col-md-3">
+                 <div class="col-md-3 whloelife-card">
 
                     <div class="card transparent-card">
                          <div class="card-body text-center">
@@ -131,7 +131,7 @@
                          </div>
                       </div>
                 </div>
-                 <div class="col-md-3">
+                 <div class="col-md-3 whloelife-card">
                     <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">

@@ -3,6 +3,20 @@
 <title>Life Insurance Ontario – Get Tips, Online Quotes for Life Insurance</title>
 @endsection
 @section('content')
+<style>
+    @media only screen and (min-width: 200px) and (max-width: 300px){
+  .mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+.mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+</style>
 <div class="right-images">
  <img src="{{ asset('public/front/img/images/right-side.png') }}">
 </div>
@@ -338,7 +352,7 @@
 </section>
 <!-- Start Choose Us Area -->
 <section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
-   <div class="container-homepage">
+   <div class="container-homepage blog-container">
       <ul class="tabs row">
          @php
             $srno = 0;
