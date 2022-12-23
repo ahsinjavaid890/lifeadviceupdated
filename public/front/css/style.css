@@ -11327,7 +11327,7 @@ ul.tabs li.current{
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 74px !important;
+    top: -43px !important;
 }
     .super-images {
     width: 1163px !important;
@@ -11407,7 +11407,7 @@ ul.tabs li.current{
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 38px !important;
+    top: -35px !important;
 }
 
 }
@@ -11420,7 +11420,7 @@ ul.tabs li.current{
     background: #fff;
     position: absolute;
     left: 15%;
-    top: 36px !important;
+    top: -37px !important;
 }
  .super-images {
     width: 957px !important;
@@ -11495,8 +11495,8 @@ ul.tabs li.current{
     width: 100%;
     background: #fff;
     position: absolute;
-    left: 15%;
-    top: 9px !important;
+    left: 50px !important;
+    top: -35px !important;
 }
 .super-hero {
     height: 389px !important;
@@ -11701,7 +11701,7 @@ ul.tabs li.current{
     width: 100%;
     background: #fff;
     position: absolute;
-    left: 15%;
+    left: 6px !important;
     top: -34px !important;
 }
 .super-images {
