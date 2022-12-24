@@ -5,7 +5,7 @@
     width: 100%;
     background: #fff;
     position: relative;
-    left: 21%;
+    left: 20%;
     top: -31px;
 }
 .get-quotes-button{
@@ -1272,7 +1272,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    @media (min-width: 1024px) and (max-width: 1439.98px){
     .qoute-card{
 /*        z-index: 1;*/
-        padding-right: 150px !important;
+/*        padding-right: 150px !important;*/
         left: 131px;
     }
     .popup-overlay.date-sel-popup>.custom-container .lg-wizard-card .dates-selection.cal {
@@ -1292,9 +1292,20 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    grid-template-columns: 166px 272px 268px 1fr!important;
    }
    .quotes-generator-bar .generator-bar-row-wrap {
-   grid-template-columns: 200px 272px 268px 1fr;
+   grid-template-columns: 171px 192px 268px 1fr;
    justify-content: flex-start;
+       grid-gap: 44px !important;
    }
+   .qoute-card {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    max-width: 965px;
+    width: 100%;
+    background: #fff;
+    position: relative;
+    left: 4%;
+    top: -31px;
+}
    }
    @media (min-width: 1440px){
    .grid-container {
@@ -1440,13 +1451,14 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     position: relative;
-    max-width: 1096px;
+    max-width: 929px;
     margin: 0 auto -48px;
     width: 100%;
     bottom: -64px !important;
+    left: -11% !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 166px 272px 268px 127px;
+    grid-template-columns: 166px 201px 268px 127px;
     grid-gap: 47px !important;
 }
   .get-quotes-button {
@@ -1461,10 +1473,12 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     position: relative;
-    max-width: 1096px;
+    max-width: 865px;
     margin: 0 auto -48px;
     width: 100%;
     bottom: -22px !important;
+    left: -7% !important;
+    top: -24px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
     grid-template-columns: 166px 272px 268px 127px;
@@ -1497,8 +1511,8 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 780px) and (max-width: 910px){
     .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 197px 277px 148px 131px;
-    grid-gap: 0px;
+    grid-template-columns: 123px 123px 318px 131px;
+    grid-gap: 12px !important;
 }
 .qoute-card {
     border-radius: 1rem;
@@ -1508,6 +1522,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     margin: 0 auto -48px;
     width: 100%;
     bottom: -11px !important;
+    left: 1% !important ;
 }
 .get-quotes-button {
     width: 97px;

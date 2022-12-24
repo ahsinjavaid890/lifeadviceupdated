@@ -11326,9 +11326,10 @@ ul.tabs li.current{
     width: 100%;
     background: #fff;
     position: absolute;
-    left: 15%;
+    left: 8% !important;
     top: -43px !important;
 }
+
     .super-images {
     width: 1163px !important;
     position: absolute;
@@ -11362,7 +11363,7 @@ ul.tabs li.current{
     width: 100%;
     background: #fff;
     position: absolute;
-    left: 15%;
+    left: 12%!important;
     top: -47px !important;
 }
     .super-images {
@@ -11399,14 +11400,18 @@ ul.tabs li.current{
     height: 421px  !important;
     background-position: 50% 75% !important;
     }
+    .quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 199px 199px 268px 127px !important;
+    grid-gap: 48px !important;
+}
     .qoute-card {
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    max-width: 1150px;
+    max-width: 1014px !important;
     width: 100%;
     background: #fff;
     position: absolute;
-    left: 15%;
+    left: 9% !important;
     top: -35px !important;
 }
 
