@@ -186,7 +186,7 @@ class SiteController extends Controller
     public function contactus()
     {
         return view('frontend.companypages.contact');
-    }
+    } 
     public function contacts(Request $request)
     {
         $this->validate($request, [

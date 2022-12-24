@@ -1,5 +1,11 @@
 @php
     $url = request()->segment(count(request()->segments()));
+    if($url)
+    {
+        $url = $url;
+    }else{
+        $url = 'homepage';
+    }
     $faq = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
 <section class="fourth-section">

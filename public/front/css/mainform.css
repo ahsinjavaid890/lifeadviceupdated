@@ -449,10 +449,13 @@
        font-size: 14px;
        line-height: 1.5;
        color: #67778f;
-       border-bottom: 1px solid #ddd;
+/*       border-bottom: 1px solid #ddd;*/
        margin-top: 8px;
-       padding-bottom: 30px;
-       margin-bottom: 25px;
+   }
+   .card-content{
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: baseline;
    }
    .quote-wizard-page .lg-wizard-card .card-info {
    font-weight: 600;
@@ -1271,6 +1274,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
     .qoute-card{
+/*        z-index: 1;*/
         padding-right: 150px !important;
         left: 0px;
     }
@@ -1736,7 +1740,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .wrapper-dropdown .dropdown li .selectspan{
     cursor: pointer;
 }
-.wrapper-dropdown .dropdown li .selectspan:hover {
+.wrapper-dropdown .dropdown li:hover  .selectspan{
     padding: 10px 0px 10px 10px;
     transform: translate(3%,0);
     -webkit-transition: .5s ease; 
@@ -2075,6 +2079,7 @@ input::-webkit-inner-spin-button {
         top: 0px;
         margin-top: 5px;
     }
+
 }
 @media screen and (min-width:300px) and (max-width:360px) {
     .qoute-card{
@@ -2345,7 +2350,15 @@ input::-webkit-inner-spin-button {
 .modal.modal-fullscreen .modal-dialog,
 .modal.modal-fullscreen .modal-content {
   bottom: 0;
-@ -2288,29 +2332,4 @@ .modal.modal-fullscreen .modal-dialog {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.modal-open .modal{
+        background-color: #605fa463;
+}
+.modal.modal-fullscreen .modal-dialog {
   margin: 0;
   width: 100%;
   animation-duration:0.6s;
@@ -2373,4 +2386,232 @@ input::-webkit-inner-spin-button {
 }
 .modal.modal-fullscreen.force-fullscreen .modal-footer {
   bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+  .modal-dialog-scrollable {
+    scrollbar-width: auto;
+    scrollbar-color: #262566 #ffffff;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar{
+    width: 8px;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar-track{
+    background: #ffffff;
+  }
+
+  .modal-dialog-scrollable ::-webkit-scrollbar-thumb{
+    background-color: #262566;
+    border-radius: 29px;
+    border: 1px solid #ffffff;
+  }
+
+
+
+
+
+
+
+
+.date_picker_wrapper {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.date_picker_header {
+    align-items: baseline;
+  display: flex;
+/*  flex-direction: column;*/
+/*  padding: 0 0 16px 0;*/
+  border-bottom: 1px slid #262566;
+/*  margin-bottom: 2.5rem;*/
+}
+.date_picker_month_day{
+    font-size: 30px !important;
+}
+.date_picker_year {
+    color: #262566;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.date_picker_month_day {
+  margin-top: 1rem;
+  font-size: 2.3rem;
+}
+
+.date_picker_body {
+  padding: 1.5rem;
+}
+
+.date_picker_month_navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.date_picker_prev_month {
+  transform: translateX(28%);
+}
+
+.date_picker_next_month {
+  transform: translateX(-28%);
+}
+
+.date_picker_month_nav_btn {
+    color: #262566;
+  display: block;
+  position: relative;
+  font-size: 30px;
+}
+.modal-dialog{
+    max-width: 1050px !important;
+}
+.date_picker_month_name {
+  font-weight: 500;
+  font-size: 1.2rem;
+  transform: translateY(-1px);
+}
+.date_picker_month_day{
+    font-size: 17px !important;
+    color: #262566 !important;
+}
+.date_picker_month_days {
+    margin-top: -24px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows:1px repeat(1, minmax(1px, 57px));
+  text-align: center;
+}
+
+.date_picker_month_days li {
+  color: #262566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date_picker_month_days li button {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  color: var(--primary-color-1);
+  border-radius: 50%;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.date_picker_month_days li button.active {
+  background: #262566;
+  color:white;
+}
+li.date_picker_week_day {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.traveler-question{
+   margin-top: 20px;
+}
+.plan-highlights{
+    list-style-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nMTAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTguNzUuODIybC0uMDE4LjAyLS4wMTYuMDIzLTQuNDc4IDYuMDEtMS45ODMtMi4xMjdzMCAwIDAgMGEuOTk1Ljk5NSAwIDAwLTEuNDY2IDBoMGExLjA4NiAxLjA4NiAwIDAwMCAxLjQ3aDBsMi43NTkgMi45NnMwIDAgMCAwYy40LjQzIDEuMDY1LjQzIDEuNDY2IDBsLjAxNy0uMDIuMDE2LS4wMiA1LjE5LTYuODY4YTEuMDg3IDEuMDg3IDAgMDAtLjAyLTEuNDQ4Ljk5NS45OTUgMCAwMC0xLjQ2NiAweicgZmlsbD0nIzVFQTA0Nycgc3Ryb2tlPScjNUVBMDQ3Jy8+PC9zdmc+);
+}
+.plan-highlights li{
+    color: #5ea047;
+    font-size: 15px;
+    font-weight: 800;
+}
+.plan-highlights li span i{
+    color: #262566;
+    margin-left: 5px;
+}
+.qoute-price-card{
+    box-shadow: 0 4px 16px rgb(87 106 134 / 15%);
+    border: 0;
+    border-radius: 20px;
+    border-left: 7px solid #816c62;
+}
+.plan-label h2{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #262566;
+    font-weight: 800;
+}
+.plan-subheading{
+    color: #67778f;
+}
+.plan-subheading span{
+    font-size: .875rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+
+}
+.limit-lable span{
+    color: #67778f;
+    font-size: 20px;
+}
+.plan-coverage-limit{
+    margin-top: 37px;
+}
+.plan-coverage-limits{
+    margin-top: 73px;
+}
+.qoute-price-select .wrapper-dropdown{
+    width: 78% !important;
+}
+.price-limit{
+    border-right: 1px solid #67778f;
+}
+
+.total-price-traveller h2{
+    color: #262566;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+.total-price-traveller h2 span{
+    color: #67778f;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 3px;
+}
+.total-price-traveller p span{
+    font-size: 11px;
+    line-height: 1.125rem;
+    color: #67778f;
+}
+.buy_now{
+    background: #5ea047;
+    color: white !important;
+    border-radius: 33px;
+}
+.total-price-traveller{
+    margin-top: 108px;
+    text-align: center;
+}
+.compare-checkbox {
+    height: 23px;
+    color: #262566;
+    /*border: 1px solid #e8e8e8;
+    background-color: #f9f9f9;
+    border-radius: 4px;*/
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 100%;
+}
+.compare-check span{
+    color: #67778f;
 }
