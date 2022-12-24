@@ -35,6 +35,9 @@
    padding: 20px 30px;
    text-align: left;
    }
+   .step_1 p{
+    margin-left: 25px ;
+   }
    .health-inssurance-hero-banner {
    background-color: #262566;
    }
@@ -446,13 +449,10 @@
        font-size: 14px;
        line-height: 1.5;
        color: #67778f;
-/*       border-bottom: 1px solid #ddd;*/
+       border-bottom: 1px solid #ddd;
        margin-top: 8px;
-   }
-   .card-content{
-    border-bottom: 1px solid #ddd;
-    justify-content: space-between;
-    align-items: baseline;
+       padding-bottom: 30px;
+       margin-bottom: 25px;
    }
    .quote-wizard-page .lg-wizard-card .card-info {
    font-weight: 600;
@@ -1271,7 +1271,6 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 1024px) and (max-width: 1439.98px){
     .qoute-card{
-/*        z-index: 1;*/
         padding-right: 150px !important;
         left: 131px;
     }
@@ -1554,7 +1553,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 @media only screen and (min-width: 1000px) and (max-width: 1100px){
 .super-hero {
-    height: 319px !important;
+    height: 314px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
     grid-template-columns: 150px 175px 310px 1fr !important;
@@ -1563,10 +1562,11 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .width_website {
     width: 920px;
 }
+
 }
 @media only screen and (min-width: 770px) and (max-width: 1000px){
     .super-images {
-    right: 1px !important;
+    right: -1px !important;
 }
 .super-hero {
     height: 246px !important;
@@ -1722,7 +1722,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .wrapper-dropdown .dropdown li .selectspan{
     cursor: pointer;
 }
-.wrapper-dropdown .dropdown li:hover  .selectspan{
+.wrapper-dropdown .dropdown li .selectspan:hover {
     padding: 10px 0px 10px 10px;
     transform: translate(3%,0);
     -webkit-transition: .5s ease; 
@@ -2061,7 +2061,6 @@ input::-webkit-inner-spin-button {
         top: 0px;
         margin-top: 5px;
     }
-
 }
 @media screen and (min-width:300px) and (max-width:360px) {
     .qoute-card{
@@ -2332,15 +2331,7 @@ input::-webkit-inner-spin-button {
 .modal.modal-fullscreen .modal-dialog,
 .modal.modal-fullscreen .modal-content {
   bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.modal-open .modal{
-        background-color: #605fa463;
-}
-.modal.modal-fullscreen .modal-dialog {
+@ -2288,29 +2332,4 @@ .modal.modal-fullscreen .modal-dialog {
   margin: 0;
   width: 100%;
   animation-duration:0.6s;
@@ -2369,6 +2360,7 @@ input::-webkit-inner-spin-button {
 .modal.modal-fullscreen.force-fullscreen .modal-footer {
   bottom: 0;
 }
+<<<<<<< Updated upstream
 
 
 
@@ -2628,3 +2620,5 @@ li.date_picker_week_day {
 #plan_show{
     cursor: pointer;
 }
+=======
+>>>>>>> Stashed changes

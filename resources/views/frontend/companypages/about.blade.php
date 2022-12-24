@@ -8,11 +8,25 @@
 
 @section('content')
 @include('frontend.companypages.includes.mainblog')
+<style>
+    @media only screen and (min-width: 200px) and (max-width: 300px){
+  .mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+.mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+</style>
 <div class="our-mission-section">
     <div class="container-homepage">
         <div class="row">
             @foreach($secondsection as $r)
-            <div class="col-md-4">
+            <div class="col-md-4 mission-card">
                 <div class="our-mission">
                     <div class="heading-our-mission-section">
                         <img src="{{ url('public/images') }}/{{ $r->vector }}">

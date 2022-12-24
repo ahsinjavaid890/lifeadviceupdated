@@ -2,11 +2,25 @@
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
 @include('frontend.companypages.includes.mainblog')
+<style>
+    @media only screen and (min-width: 200px) and (max-width: 300px){
+  .mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+.mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+</style>
 <section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
 <div class="container-homepage">
     <div class="row">
-        <div class="col-md-3">
-            <div class="card shadow" style="border-radius:16px;">
+        <div class="col-md-3 blogs-card">
+            <div class="card shadow " style="border-radius:16px;">
                 <div class="card-body p-0">
                     <div class="tabssidebar">
                         <style type="text/css">

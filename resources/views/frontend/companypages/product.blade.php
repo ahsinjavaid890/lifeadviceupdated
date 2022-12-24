@@ -3,6 +3,20 @@
 @section('content')
 @include('frontend.companypages.includes.mainblog')
 @foreach(DB::table('product_categories')->get() as $r)
+<style>
+    @media only screen and (min-width: 200px) and (max-width: 300px){
+  .mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px){
+.mean-container a.meanmenu-reveal span {
+    top: 7px !important;
+    margin-top: -2px !important;
+}
+  }
+</style>
 <section class="products ptb-100">
     <div class="container">
       <div class="row align-items-center">
@@ -17,7 +31,7 @@
          <div class="col-md-8 pl-5">
             <div class="row">
                 @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->get() as $p)
-               <div class="col-md-6 mt-3">
+               <div class="col-md-6 mt-3 life-product">
                   <div class="card">
                      <div class="card-body">
                         <div class="product-card-heading">
@@ -43,7 +57,7 @@
         <div class="col-md-8">
             <div class="row">
                 @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->get() as $p)
-                <div class="col-md-6 mt-3">
+                <div class="col-md-6 mt-3 life-product">
                   <div class="card">
                      <div class="card-body">
                         <div class="product-card-heading">
