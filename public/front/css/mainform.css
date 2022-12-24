@@ -1303,7 +1303,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     width: 100%;
     background: #fff;
     position: relative;
-    left: 4%;
+    left: 14%;
     top: -31px;
 }
    }
@@ -1455,7 +1455,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     margin: 0 auto -48px;
     width: 100%;
     bottom: -64px !important;
-    left: -11% !important;
+    left: 1% !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
     grid-template-columns: 166px 201px 268px 127px;
@@ -1477,7 +1477,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     margin: 0 auto -48px;
     width: 100%;
     bottom: -22px !important;
-    left: -7% !important;
+    left: 1% !important;
     top: -24px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
