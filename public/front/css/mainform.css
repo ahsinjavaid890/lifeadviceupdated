@@ -4,9 +4,9 @@
     max-width: 1150px;
     width: 100%;
     background: #fff;
-    position: absolute;
-    left: 15%;
-    top: 133px;
+    position: relative;
+    left: 21%;
+    top: -31px;
 }
 .get-quotes-button{
    height: 48px !important;
@@ -1276,7 +1276,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     .qoute-card{
 /*        z-index: 1;*/
         padding-right: 150px !important;
-        left: 0px;
+        left: 131px;
     }
     .popup-overlay.date-sel-popup>.custom-container .lg-wizard-card .dates-selection.cal {
         margin-bottom: 0;
@@ -2530,7 +2530,7 @@ li.date_picker_week_day {
 }
 .plan-highlights li{
     color: #5ea047;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 800;
 }
 .plan-highlights li span i{
@@ -2541,7 +2541,7 @@ li.date_picker_week_day {
     box-shadow: 0 4px 16px rgb(87 106 134 / 15%);
     border: 0;
     border-radius: 20px;
-    border-left: 7px solid #816c62;
+    border-left: 7px solid #262566;
 }
 .plan-label h2{
     font-size: 1.5rem;
@@ -2599,7 +2599,7 @@ li.date_picker_week_day {
     border-radius: 33px;
 }
 .total-price-traveller{
-    margin-top: 108px;
+    margin-top: 21px;
     text-align: center;
 }
 .compare-checkbox {
@@ -2614,4 +2614,33 @@ li.date_picker_week_day {
 }
 .compare-check span{
     color: #67778f;
+}
+.qoute-logo{
+    margin-top: 31px;
+}
+.qoute-policy{
+    font-size: 21px;
+    color: #67778f !important;
+}
+.plan-cat{
+    color: #262566;
+}
+.plan-subcat{
+    color: #262566;
+}
+.qoute-person-plan{
+    display: none;
+    border: 1px solid #66554123;
+    background: white;
+    color: white;
+    padding: 10px;
+    max-width: 70%;
+    margin: auto;
+    position: absolute;
+    border-radius: 11px;
+    left: 116px;
+    top: 213px;
+}
+#plan_show{
+    cursor: pointer;
 }

@@ -31,6 +31,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             </div>
          </div>
       </div>
+  </div>
+</div>
       @if($firstsection->form == 1)
       <div class="row card-section">
          <div class="col-md-12">
@@ -78,96 +80,113 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      </div>
                   </div>
                </div>
-                  <div class="container">
-                      <div class="row mt-4 mb-4">
-                          <div class="col-md-12">
-                              <div class="card qoute-price-card">
-                                  <div class="card-body">
-                                      <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="plan-label">
-                                                  <h2>VisitorSecure</h2>
-                                              </div>
-                                                <p class="plan-subheading"><span><span>Limited<span class="d-none d-md-inline"> Coverage</span>,</span><span> Rated A (Excellent)</span></span><span  class="plan-company-uw plan-quote"><br><span >Lloyd's of London</span></span></p>
-                                              <ul class="plan-highlights text-dark ml-3">
-                                                  <li><span>COVID-19 Included <i class="fa fa-info-circle"></i></span></li>
-                                                  <li><span>Acute onset of Pre-Existing Conditions <i class="fa fa-info-circle"></i></span></li>
-                                                  <li><span>Medical Coverage During Travel <i class="fa fa-info-circle"></i></span></li>
-                                                  <li><span>Extendable <i class="fa fa-info-circle"></i></span></li>
-                                                  <li><span>Cancelable <i class="fa fa-info-circle"></i></span></li>
+                  <div class=" mb-4">
+                      <div class="card qoute-price-card">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="plan-label">
+                                          <h2>VisitorSecure</h2>
+                                      </div>
+                                        <p class="plan-subheading"><span><span>Limited<span class="d-none d-md-inline"> Coverage</span>,</span><span> Rated A (Excellent)</span></span><span  class="plan-company-uw plan-quote"><br><span >Lloyd's of London</span></span></p>
+                                        <h2 class="qoute-policy">Policy Details</h2>
+                                      <ul class="plan-highlights text-dark ml-3">
+                                          <li><span>Plan: <span class="plan-cat"> Plan-A NO- Pre-Condition - 216;</span></span></li>
+                                          <li><span>Days: <span class="plan-cat">365 (12/31/2022 - 2023-12-30);</span></span></li>
+                                          <li><span>Total: <span class="plan-cat">$1,669.54</span></span></li>
+                                          <li><span>Option: <span class="plan-cat">Deductible Option ($1000 (included in premium));</span></span></li>
+                                          <li><span >Person 1 <i class="fa fa-info-circle" id="plan_show"></i></span></li>
+                                          <div class="qoute-person-plan" id="person_plan">
+                                              <ul>
+                                                  <li><span>Age: <span class="plan-subcat">65 ;</span></span></li>
+                                                  <li><span>Coverage Amount: <span class="plan-subcat">$150000 ;</span></span></li>
+                                                  <li><span>Premium: <span class="plan-subcat">$1,669.54 ;</span></span></li>
                                               </ul>
                                           </div>
-                                          <div class="col-md-3 price-limit">
-                                              <div class="plan-coverage-limit">
-                                                  <div class="limit-lable mb-3">
-                                                      <span>Coverage Limit <i class="fa fa-info-circle"></i></span>
-                                                  </div>
-                                                  <div class="qoute-price-select">
-                                                     <div class="wrapper-dropdown" id="coverage-price">
-                                                        <span>Coverage price</span>
-                                                        <ul class="dropdown"  >
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 50,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 70,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 100,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 130,000</span>
-                                                             </li>
-                                                         </ul>
-                                                     </div>
-                                                  </div>
-                                              </div>
-                                              <div class="plan-coverage-limits">
-                                                  <div class="limit-lable mb-3">
-                                                      <span>Deductible <i class="fa fa-info-circle"></i></span>
-                                                  </div>
-                                                  <div class="qoute-price-select">
-                                                     <div class="wrapper-dropdown" id="deductible-price">
-                                                        <span>Deductible price</span>
-                                                        <ul class="dropdown"  >
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 50,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 70,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 100,000</span>
-                                                             </li>
-                                                             <li class="borderbottomnone" >
-                                                                <span class="selectspan">$ 130,000</span>
-                                                             </li>
-                                                         </ul>
-                                                     </div>
-                                                  </div>
-                                              </div>
+
+                                          <script>
+                                              $(document).ready(function(){
+                                                  $("#plan_show").hover(function(){
+                                                    $("#person_plan").show(500);
+                                                    }, function(){
+                                                    $("#person_plan").hide(500);
+                                                  });
+                                                });
+                                          </script>
+                                      </ul>
+                                  </div>
+                                  <div class="col-md-3 price-limit">
+                                      <div class="plan-coverage-limit">
+                                          <div class="limit-lable mb-3">
+                                              <span>Coverage Limit <i class="fa fa-info-circle"></i></span>
                                           </div>
-                                          <div class="col-md-3">
-                                              <div class="compare-check  text-right d-flex">
-                                                <span class="">Compare</span>
-                                                  <input id="checkbox-1" class="compare-checkbox" name="checkbox-1" type="checkbox">
-                                              </div>
-                                              <div class="total-price-traveller">
-                                                  <h2 id="traveler-price">$36.96<span>USD</span></h2>
-                                                  <p><span>All travelers for 22 days</span></p>
-                                              </div>
-                                              <div class="buy_now">
-                                                  <button class="btn btn-block text-white">Buy</button>
-                                              </div>
+                                          <div class="qoute-price-select">
+                                             <!-- <div class="wrapper-dropdown" id="coverage-price">
+                                                <span>Coverage price</span>
+                                                <ul class="dropdown"  >
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 50,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 70,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 100,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 130,000</span>
+                                                     </li>
+                                                 </ul>
+                                             </div> -->
                                           </div>
+                                      </div>
+                                      <div class="plan-coverage-limits">
+                                          <div class="limit-lable mb-3">
+                                              <span>Deductible <i class="fa fa-info-circle"></i></span>
+                                          </div>
+                                          <div class="qoute-price-select">
+                                             <!-- <div class="wrapper-dropdown" id="deductible-price">
+                                                <span>Deductible price</span>
+                                                <ul class="dropdown"  >
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 50,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 70,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 100,000</span>
+                                                     </li>
+                                                     <li class="borderbottomnone" >
+                                                        <span class="selectspan">$ 130,000</span>
+                                                     </li>
+                                                 </ul>
+                                             </div> -->
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <div class="compare-check  text-right d-flex">
+                                        <span class="">Compare</span>
+                                          <input id="checkbox-1" class="compare-checkbox" name="checkbox-1" type="checkbox">
+                                      </div>
+                                      <div class="qoute-logo">
+                                          <img src="{{ asset('public/front/images/destination_travel_logo.png')}}">
+                                      </div>
+                                      <div class="total-price-traveller">
+                                          <h2 id="traveler-price">$36.96<span>USD</span></h2>
+                                          <p><span>All travelers for 22 days</span></p>
+                                      </div>
+                                      <div class="buy_now">
+                                          <button class="btn btn-block text-white">Buy</button>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
-            
             </div>
+            
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
