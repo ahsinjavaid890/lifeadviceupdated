@@ -12345,3 +12345,14 @@ li.date_picker_week_day {
 }
 
 }
+@media screen and (min-width:774px) and (max-width:1100px){
+    .slider__item{
+        width: 247px !important;
+    }
+    .slider-heading h2 span {
+    font-size: 22px;
+}
+    .slider-heading h2{
+        font-size: 22px;
+    }
+}
