@@ -25,6 +25,18 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function ajaxquotes(Request $request)
+    {
+        $quoteNumber = rand();
+        $data = wp_dh_products::where('pro_id' , $request->product_id)->first();
+        $fields = unserialize($data->pro_fields);
+        $plan = DB::table('wp_dh_insurance_plans' , $data->pro_id)->first();
+        $ded = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id', $plan->id)->groupby('deductible1')->get();
+        $query = "CAST(`sum_insured` AS DECIMAL)";
+        $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
+        $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        return response()->json(array('success' => true, 'html'=>$returnHTML));
+    }
     public function confermquote()
     {
         return view('frontend.formone.conferm');

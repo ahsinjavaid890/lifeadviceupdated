@@ -36,12 +36,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       @if($firstsection->form == 1)
       <div class="row card-section">
          <div class="col-md-12">
-            <script type="text/javascript">
-               function getquotesubmitform() {
-                  $('#quoteform').submit();
-               }
-            </script>
-            <form id="quoteform" action="{{ url('quotes') }}" method="POST">
+            
+            <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                <input type="hidden"  name="sum_insured2" id="sum_insured2">
@@ -74,117 +70,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div>
                                  </div>
                               </div>
-                              <span style="color:white;" onclick="getquotesubmitform()" id="getqoutesubmitbutton" type="submit" class="button button-primary get-quotes-button"> Get Quotes </span>
+                              <button style="color:white;" id="getqoutesubmitbutton" type="submit" class="button button-primary get-quotes-button"> Get Quotes </button>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="">
-                      <div class="card qoute-price-card">
-                          <div class="card-body">
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <div class="plan-label">
-                                          <h2>VisitorSecure</h2>
-                                      </div>
-                                        <p class="plan-subheading"><span><span>Limited<span class="d-none d-md-inline"> Coverage</span>,</span><span> Rated A (Excellent)</span></span><span  class="plan-company-uw plan-quote"><br><span >Lloyd's of London</span></span></p>
-                                        <h2 class="qoute-policy">Policy Details</h2>
-                                      <ul class="plan-highlights text-dark ml-3">
-                                          <li><span>Plan: <span class="plan-cat"> Plan-A NO- Pre-Condition - 216;</span></span></li>
-                                          <li><span>Days: <span class="plan-cat">365 (12/31/2022 - 2023-12-30);</span></span></li>
-                                          <li><span>Total: <span class="plan-cat">$1,669.54</span></span></li>
-                                          <li><span>Option: <span class="plan-cat">Deductible Option ($1000 (included in premium));</span></span></li>
-                                          <li><span >Person 1 <i class="fa fa-info-circle" id="plan_show"></i></span></li>
-                                          <div class="qoute-person-plan" id="person_plan">
-                                              <ul>
-                                                  <li><span>Age: <span class="plan-subcat">65 ;</span></span></li>
-                                                  <li><span>Coverage Amount: <span class="plan-subcat">$150000 ;</span></span></li>
-                                                  <li><span>Premium: <span class="plan-subcat">$1,669.54 ;</span></span></li>
-                                              </ul>
-                                          </div>
-
-                                          <script>
-                                              $(document).ready(function(){
-                                                  $("#plan_show").hover(function(){
-                                                    $("#person_plan").show(500);
-                                                    }, function(){
-                                                    $("#person_plan").hide(500);
-                                                  });
-                                                });
-                                          </script>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-3 price-limit">
-                                      <div class="plan-coverage-limit">
-                                          <div class="limit-lable mb-3">
-                                              <span>Coverage Limit <i class="fa fa-info-circle"></i></span>
-                                          </div>
-                                          <div class="qoute-price-select">
-                                            <h2>$150,000</h2>
-                                             <!-- <div class="wrapper-dropdown" id="coverage-price">
-                                                <span>Coverage price</span>
-                                                <ul class="dropdown"  >
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 50,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 70,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 100,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 130,000</span>
-                                                     </li>
-                                                 </ul>
-                                             </div> -->
-                                          </div>
-                                      </div>
-                                      <div class="plan-coverage-limits">
-                                          <div class="limit-lable mb-3">
-                                              <span>Deductible <i class="fa fa-info-circle"></i></span>
-                                          </div>
-                                          <div class="qoute-price-select">
-                                            <h2>$1000 </h2>
-                                             <!-- <div class="wrapper-dropdown" id="deductible-price">
-                                                <span>Deductible price</span>
-                                                <ul class="dropdown"  >
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 50,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 70,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 100,000</span>
-                                                     </li>
-                                                     <li class="borderbottomnone" >
-                                                        <span class="selectspan">$ 130,000</span>
-                                                     </li>
-                                                 </ul>
-                                             </div> -->
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                      <div class="compare-check  text-right d-flex">
-                                        <span class="">Compare</span>
-                                          <input id="checkbox-1" class="compare-checkbox" name="checkbox-1" type="checkbox">
-                                      </div>
-                                      <div class="qoute-logo">
-                                          <img src="{{ asset('public/front/images/destination_travel_logo.png')}}">
-                                      </div>
-                                      <div class="total-price-traveller">
-                                          <h2 id="traveler-price">$36.96<span>USD</span></h2>
-                                          <p><span>All travelers for 22 days</span></p>
-                                      </div>
-                                      <div class="buy_now">
-                                          <button class="btn btn-block text-white">Buy</button>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                  <div class="quotationscards">
+                      
                   </div>
                </div>
             </div>
@@ -325,7 +217,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
                                        <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
+                                          <input type="text" placeholder="MM/DD/YYYY" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
                                        </div>
                                        <span class="switch-input">or 
                                           <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
@@ -1402,3 +1294,28 @@ dropDown.prototype = {
 }
 </script>
   <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
+<script type="text/javascript">
+   function getquotesubmitform() {
+      $('#quoteform').submit();
+   }
+
+
+   $('#quoteform').on('submit',(function(e) {
+       $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+       e.preventDefault();
+       var formData = new FormData(this);
+       $.ajax({
+           type:'POST',
+           url: $(this).attr('action'),
+           data:formData,
+           cache:false,
+           contentType: false,
+           processData: false,
+           success: function(data){
+            console.log(data.html)
+            $('#getqoutesubmitbutton').html('Get Quotes');
+              $('.quotationscards').html(data.html);
+           }
+       });
+   }));
+</script>

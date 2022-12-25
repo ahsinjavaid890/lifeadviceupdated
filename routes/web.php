@@ -72,6 +72,7 @@ Route::get('/product/{id}', [SiteController::class, 'productdetail']);
 
 
 Route::POST('/quotes', [SiteController::class, 'quotes'])->name('quotes');
+Route::POST('/ajaxquotes', [SiteController::class, 'ajaxquotes'])->name('ajaxquotes');
 
 
 
