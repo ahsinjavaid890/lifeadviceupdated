@@ -75,9 +75,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                      </div>
                   </div>
-                  <div class="quotationscards">
-                      
-                  </div>
                </div>
             </div>
             

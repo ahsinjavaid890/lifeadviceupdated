@@ -1,62 +1,109 @@
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
-$sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
-<script>
-  function covergagechange() 
-  {
-      var coverageammountget = $('#coverageammountget').val();
-      $('.coverage-amt').hide();
-      $('.coverage-amt-'+coverageammountget).show();
-  }
-  function deductiblechange() 
-  {
-      var deductibleammountget = $('#deductibleammountget').val();
-      $('.deductable').hide();
-      $('.deductable-'+deductibleammountget).show();
-  }
-</script>
-<div class="row mb-5">
-  <div class="col-md-6">
-      <select id="coverageammountget" onchange="covergagechange()" class="form-control">
-          <option>Select Coverage</option>
-          <?php
-                $s = 0;
-                foreach($sum as $r){
-                $s++;?>
-          <option value="<?php echo $sumamount = $r->sum_insured; ?>">Coverage Ammount ($<?php echo $sumamount = $r->sum_insured; ?>)</option>
-          <?php 
-
-          if($s < count($sum)){
-                echo ', ';
-                }
-                } ?>
-          ?>
-      </select>
-  </div>
-  <div class="col-md-6">
-      <select onchange="deductiblechange()" id="deductibleammountget" class="form-control">
-          <option>Select Deductible</option>
-          <?php
-            $d = 0;
-            $havethousand = 'no';
-            foreach($ded as $r){
-                $d++; ?>
-          <option value="<?php echo $dedivalue = $r->deductible1; ?>">Deductible ($<?php echo $dedivalue = $r->deductible1; ?>)</option>
-
-          <?php 
-          if($dedivalue == 1000)
+var Slider_Values = [<?php
+                $d = 0;
+                $havethousand = 'no';
+                foreach($ded as $r){
+                    $d++;
+                        echo $dedivalue = $r->deductible1;
+                    if($d < count($ded)){
+                        echo ', ';
+                    }
+                    if($dedivalue == 1000)
                     { 
                         $havethousand = 'yes'; 
                     }
+                } ?>];
+<?php if($havethousand == 'yes'){?>
+var dValue = Slider_Values.indexOf(1000);
+<?php } else { ?>
+var dValue = Slider_Values[0];
+<?php } ?>
+if(dValue == '-1'){ dValue = '0'; }
+$(function () {
+    $("#slider").slider({
+        range: "min",
+        min: 0,
+        max: Slider_Values.length - 1,
+        step: 1,
+        value: dValue,
+        slide: function (event, ui) {
+            $('#coverage_deductible').text(Slider_Values[ui.value]);
+            //alert(Slider_Values.length);
+            for (i = 0; i < Slider_Values.length; i++) {
+                var group = Slider_Values[i];
+                $('.deductable-'+group).css('display' , 'none');
+            }
+            $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
+            $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
+        }
+    });
+});
 
-                     }
+<?php
+$sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+?>
+//Sum Insured Slider
+var SliderValues = [<?php
+                $s = 0;
+                foreach($sum as $r){
+                $s++;
+                echo $sumamount = $r->sum_insured;
+                if($s < count($sum)){
+                echo ', ';
+                }
+                } ?>];
+var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
+$(function () {
+    $("#sum_slider").slider({
+        range: "min",
+        min: 0,
+        max: SliderValues.length - 1,
+        step: 1,
+        value: iValue,
+        slide: function (event, ui) {
+            $('#coverage_amount').text(SliderValues[ui.value]);
+            //alert(SliderValues.length);
+            for (i = 0; i < SliderValues.length; i++) {
+                var group = SliderValues[i];
+                $('.coverage-amt-'+group).hide();
+            }
+            $('.coverage-amt-'+SliderValues[ui.value]).show();
+            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+        }
+    });
 
-          ?>
-      </select>
-  </div>
-</div>
-
+});
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card qoute-price-card mb-3">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12 adjust-quoto" style="border:none;">
+                    <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
+                    
+                    <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+                </div>
+                <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                    <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+        
+        
+    </div>
+    <div class="col-md-8">
+        
+    
 <?php
 //  error_reporting(E_ERROR);
 $startdate = $request->departure_date;
@@ -337,6 +384,7 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 if($show == '1' && $total_price > 0){
 
   ?>
+
 <span class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
@@ -414,6 +462,9 @@ $daily_rate = 0;
         <?php 
         $display = '';
         }}}} ?>
+
+</div>
+</div>
 <script>
   function comparetest(){
     var pids = [];
