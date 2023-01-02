@@ -58,10 +58,6 @@ var SliderValues = [<?php
                 if($s < count($sum)){
                 echo ', ';
                 }
-                if($sumamount == 1000)
-                    { 
-                        $s = 'yes'; 
-                    }
                 } ?>];
 var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
 $(function () {
