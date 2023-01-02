@@ -58,6 +58,10 @@ var SliderValues = [<?php
                 if($s < count($sum)){
                 echo ', ';
                 }
+                if($sumamount == 1000)
+                    { 
+                        $s = 'yes'; 
+                    }
                 } ?>];
 var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
 $(function () {
@@ -92,7 +96,15 @@ $(function () {
                     <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
                 <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php 
+    if($request->sum_insured2 >= 1000000){
+    $millions = $request->sum_insured2/1000000;
+    $txt = ' Million';
+    } else {
+    $millions = $request->sum_insured2;
+    $txt = '';
+    }
+    echo number_format($millions).$txt; ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
                     <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
               </div>
@@ -444,8 +456,8 @@ if($show == '1' && $total_price > 0){
                   <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>USD</span></h2>
                   <p><span><?php echo $number_travelers;?> Traveller(s)</span></p>
               </div>
-              <div class="buy_now">
-                  <button class="btn btn-block text-white">Buy</button>
+              <div class="buy_now"> 
+                  <button class="btn btn-block text-white" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy</button>
               </div>
           </div>
       </div>
