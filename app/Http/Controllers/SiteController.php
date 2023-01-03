@@ -156,15 +156,48 @@ class SiteController extends Controller
     }
     public function travel()
     {
-        return view('frontend.companypages.travel');
+        $data = wp_dh_products::where('url' , 'travel-insurance')->first();
+        if($data)
+        {
+            $fields = unserialize($data->pro_fields);
+            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
+            $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+            return view('frontend.companypages.travel')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+        }
+        else
+        {
+            return response()->view('frontend.errors.404', [], 404);
+        }
     }
     public function visitorinsurance()
     {
-        return view('frontend.companypages.visitorinsurance');
+         $data = wp_dh_products::where('url' , 'visitor-insurance')->first();
+        if($data)
+        {
+            $fields = unserialize($data->pro_fields);
+            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
+            $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+            return view('frontend.companypages.visitorinsurance')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+        }
+        else
+        {
+            return response()->view('frontend.errors.404', [], 404);
+        }
     }
     public function studentinsurance()
     {
-        return view('frontend.companypages.studentinsurance');
+         $data = wp_dh_products::where('url' , 'student-insurance')->first();
+        if($data)
+        {
+            $fields = unserialize($data->pro_fields);
+            $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
+            $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+            return view('frontend.companypages.studentinsurance')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+        }
+        else
+        {
+            return response()->view('frontend.errors.404', [], 404);
+        }
     }
     public function lifeinsurance()
     {
