@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
-<script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
-<script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
-  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/formqoute/daterangepicker.css')}}">
+<script type="text/javascript" src="{{ url('public/front/formqoute/daterangepicker.js')}}"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -127,6 +127,46 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                   </div>
                                  @endif
                                  @endif
+                                 @if(isset($fields['Country']))
+                                @if($fields['Country'] == "on" )
+
+                                 <div class="col-md-6">
+                                      <div class="wrapper-dropdown" id="primary_destination">
+                                        <span>Priamry Destination</span>
+                                        <ul class="dropdown"  >
+
+                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
+                                            <span class="selectspan">{{ $r->name }}</span>
+                                         </li>
+                                         @endforeach
+                                         <script type="text/javascript">
+                                               function selectdestination(id) {
+                                                   $('#primarydestination').val(id);   
+                                               }
+                                               function secondnext() {
+                                                  if($('#primarydestination').val() == '')
+                                                  {
+                                                     $('#destinationerror').show();
+                                                     $('#destinationerror').html('Please Select Destination Ammount');
+                                                  }else{
+                                                      var travelerage = $('#travelerage').val();
+                                                      var primarydestination = $('#primarydestination').val();
+                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
+                                                      $('#selectage').val(travelerage);
+                                                      $('#firstnextfake').hide();
+                                                      $('#firstnextorignal').show();
+                                                      $('#firstnextorignal').click();
+                                                  }
+                                               }
+                                         </script>
+                                        </ul>
+                                      </div>
+                                 </div>
+                                 @endif
+                                 @endif
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
+
                                  @if(isset($fields['fname']))
                                  @if($fields['fname'] == 'on')
                                  <div class="col-md-6">
@@ -207,7 +247,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                           </div>
                               <div class="row">
-                                 <div class="col-md-6">
+                                 <!-- <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
@@ -227,55 +267,65 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                            <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                         </div>
                                      </div>
+                                 </div> -->
+                                 @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                        @php
+                           $number_of_travel = $fields['traveller_number'];
+                        @endphp
+                        @if($number_of_travel > 0)
+
+                        <div class="col-md-12">
+                           <div class="form-input">
+                              <label for="number_travelers" class="form-label">Number of Travellers</label>
+                              <select onchange="checknumtravellers(this.value)" required class="input-field" name="number_travelers" id="number_travelers">
+                                 <option value="">Number of Travellers</option>
+                                 @for($i=1;$i<=$number_of_travel;$i++)
+                                 <option value="{{ $i }}">{{ $i }}</option>
+                                 @endfor
+                              </select>
+                           </div>
+                        </div>
+
+
+                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
+
+                           @php
+                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                              $c = 0;
+                           @endphp
+
+                           @for($i=1;$i<=$number_of_travel;$i++)
+                           <div style="display: none; margin-top: 10px;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                              <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="form-input">
+                                          <input type="number" name="day" placeholder="Day" id="day{{$i}}" pattern="\d{1,2}" maxlength="3" class="input-field">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="form-input">
+                                          <input type="number" name="month" placeholder="Month" id="month{{$i}}" pattern="\d{1,2}" maxlength="2" class="input-field">
+                                       </div>
+                                    </div>
+                                    <div style="padding-right: 0px;" class="col-md-4">
+                                       <div class="form-input">
+                                          <input type="number" name="year" placeholder="Year" id="year{{$i}}" pattern="\d{4}" maxlength="4" class="input-field">
+                                       </div>
+                                    </div>
                                  </div>
-                                 @if(isset($fields['Country']))
-                                @if($fields['Country'] == "on" )
-
-                                 <div class="col-md-6">
-                                      <div class="wrapper-dropdown" id="primary_destination">
-                                        <span>Priamry Destination</span>
-                                        <ul class="dropdown"  >
-
-                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
-                                            <span class="selectspan">{{ $r->name }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                               function selectdestination(id) {
-                                                   $('#primarydestination').val(id);   
-                                               }
-                                               function secondnext() {
-                                                  if($('#primarydestination').val() == '')
-                                                  {
-                                                     $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Destination Ammount');
-                                                  }else{
-                                                      var travelerage = $('#travelerage').val();
-                                                      var primarydestination = $('#primarydestination').val();
-                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
-                                                      $('#selectage').val(travelerage);
-                                                      $('#secondnextfake').hide();
-                                                      $('#secondnextorignal').show();
-                                                      $('#secondnextorignal').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
-
+                           </div>
+                           @endfor
+                        @endif
+                        @endif
+                     @endif
                               </div>
                            </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
-                          <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span>
-                          <span style="display: none;" id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
+                          <!-- <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span> -->
+                          <span  id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -298,61 +348,17 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                   <h2 class="date_picker_year ml-2"></h2>
                                 </div>
                             </div>
-                              <div class="row userdate-coverage">
+                              <div class="row userdate-coverage mt-4">
                                  <div class="col-md-6 birthdateinput">
-                                        <div class="date_picker_body">
-                                          <div class="date_picker_month_navigation">
-                                            <button class="date_picker_prev_month date_picker_month_nav_btn">
-                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
-                                            </button>
-                                            <h2 class="date_picker_month_name"></h2>
-                                            <button class="date_picker_next_month date_picker_month_nav_btn">
-                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                            </button>
-                                          </div>
-                                          <ul class="date_picker_month_days">
-                                            <li>Sun</li>
-                                            <li>Mon</li>
-                                            <li>Tue</li>
-                                            <li>Wed</li>
-                                            <li>Thu</li>
-                                            <li>Fri</li>
-                                            <li>Sat</li>
-                                          </ul>
-                                        </div>
-                                      </div>
+                                    <div class="form-input">
+                                       <label class="text-dark form-label">Star Date</label>
+                                       <input type="text" name="value_from_start_date" data-datepicker="separateRange" class="input-field" />
+                                    </div>
+                                   </div>
                                  <div class="col-md-6">
-                                    <div class="row traveler-question">
-                                       <div class="col-md-12">
-                                             <span class="questionheading">Do you require Family Plan ?</span>
-                                             <div class="col-md-12 no-padding user-answer">
-                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                             </div>
-                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
-                                             <script>
-                                                function changefamilyyes(){
-                                                   document.getElementById('familyplan_temp').value = 'yes';   
-                                                   checkfamilyplan();
-                                                }
-                                                function changefamilyno(){
-                                                   document.getElementById('familyplan_temp').value = 'no'; 
-                                                   checkfamilyplan();
-                                                }
-                                             </script>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                       </div>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
-                                          </div>
-                                       </div>
+                                    <div class="form-input">
+                                       <label class="form-label">End Date</label>
+                                       <input type="text" name="value_from_end_date" data-datepicker="separateRange" class="input-field" />
                                     </div>
                                  </div>
                                  </div>
@@ -363,12 +369,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="nextbtns">
                          <span class="btn btn-default btn-prev">Prev</span>
                          <span class="btn btn-default btn-next" onclick="formdone()">Done</span>
+                      </div>
                       <script type="text/javascript">
                         function formdone() {
                            $("#getqoutesubmitbutton").click();
                         }
                       </script>
-                      </div>
                      </div>
                   </div>
                </div>
@@ -381,7 +387,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
               <div class="row">
                   <div class="col-md-12">
                       <div class="quotes-button">
-                          <button class="modal-qoute-btn btn btn-block" data-toggle="modal" data-target="#qoutemodal">Get Qoutes</button>
+                          <button class="modal-qoute-btn btn btn-block"data-toggle="modal" data-target="#qoutemodal">Get Qoutes</button>
                       </div>
                   </div>
               </div>
@@ -1320,4 +1326,122 @@ dropDown.prototype = {
            }
        });
    }));
+</script>
+<script type="text/javascript">
+   function checknumtravellers(id) {
+      if(id == '')
+      {
+         $('.no_of_travelers').hide();
+      }
+      if(id == 1)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+      }
+      if(id == 2)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+      }
+      if(id == 3)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+      }
+      if(id == 4)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+      }
+      if(id == 5)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+      }
+      if(id == 6)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+      }
+      if(id == 7)
+      {
+         $('.no_of_travelers').hide();
+         $('#traveler1').show();
+         $('#traveler2').show();
+         $('#traveler3').show();
+         $('#traveler4').show();
+         $('#traveler5').show();
+         $('#traveler6').show();
+         $('#traveler7').show();
+
+      }
+   }
+</script>
+<script type="text/javascript">
+       var separator = ' - ', dateFormat = 'YYYY/MM/DD';
+    var options = {
+        autoUpdateInput: false,
+        autoApply: true,
+        locale: {
+            format: dateFormat,
+            separator: separator,
+            applyLabel: '確認',
+            cancelLabel: '取消'
+        },
+        minDate: moment().add(1, 'days'),
+        maxDate: moment().add(359, 'days'),
+        opens: "right"
+    };
+
+
+        $('[data-datepicker=separateRange]')
+            .daterangepicker(options)
+            .on('apply.daterangepicker' ,function(ev, picker) {
+                var boolStart = this.name.match(/value_from_start_/g) == null ? false : true;
+                var boolEnd = this.name.match(/value_from_end_/g) == null ? false : true;
+
+                var mainName = this.name.replace('value_from_start_', '');
+                if(boolEnd) {
+                    mainName = this.name.replace('value_from_end_', '');
+                    $(this).closest('form').find('[name=value_from_end_'+ mainName +']').blur();
+                }
+
+                $(this).closest('form').find('[name=value_from_start_'+ mainName +']').val(picker.startDate.format(dateFormat));
+                $(this).closest('form').find('[name=value_from_end_'+ mainName +']').val(picker.endDate.format(dateFormat));
+
+                $(this).trigger('change').trigger('keyup');
+            })
+            .on('show.daterangepicker', function(ev, picker) {
+                var boolStart = this.name.match(/value_from_start_/g) == null ? false : true;
+                var boolEnd = this.name.match(/value_from_end_/g) == null ? false : true;
+                var mainName = this.name.replace('value_from_start_', '');
+                if(boolEnd) {
+                    mainName = this.name.replace('value_from_end_', '');
+                }
+
+                var startDate = $(this).closest('form').find('[name=value_from_start_'+ mainName +']').val();
+                var endDate = $(this).closest('form').find('[name=value_from_end_'+ mainName +']').val();
+
+                $('[name=daterangepicker_start]').val(startDate).trigger('change').trigger('keyup');
+                $('[name=daterangepicker_end]').val(endDate).trigger('change').trigger('keyup');
+                
+                if(boolEnd) {
+                    $('[name=daterangepicker_end]').focus();
+                }
+            });
 </script>
