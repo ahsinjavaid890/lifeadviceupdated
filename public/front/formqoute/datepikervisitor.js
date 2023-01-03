@@ -1,18 +1,18 @@
   const CONSTANTS = {
   DOM_SELECTORS: {
     datePicker: "",
-    datePickerPrevMonth: "#date_picker_prev_month",
-    datePickerNextMonth: "#date_picker_next_month",
-    datePickerMonthDays: "#date_picker_month_days",
-    datePickerMonthDay: "#date_picker_month_day",
-    datePickerYear: "#date_picker_year",
-    datePickerMonthName: "#date_picker_month_name",
-    datePickerDay: "#day"
+    datePickerPrevMonth: ".date_picker_prev_months",
+    datePickerNextMonth: ".date_picker_next_months",
+    datePickerMonthDays: ".date_picker_months_days",
+    datePickerMonthDay: ".date_picker_months_day",
+    datePickerYear: ".date_pickers_year",
+    datePickerMonthName: ".date_picker_month_names",
+    datePickerDay: ".days"
   },
   DOM_STRINGS: {
     dataTime: "li[data-time]"
   },
-  DUMMY_LI_FOR_EMPTY_DAYS: '<li class="day" id="day"></li>',
+  DUMMY_LI_FOR_EMPTY_DAYS: '<li class="days"></li>',
   DAY_MAP: {
     0: "Sun",
     1: "Mon",
@@ -75,7 +75,7 @@ const utils = (function () {
       console.trace(`The time provided for getDayMarkup ${time} is invalid`);
     }
     return `
-        <li class="day" data-time="${time}">
+        <li class="days" data-time="${time}">
             <button class="${isActive ? "active" : ""}">${day}</button>
         </li>`;
   }
@@ -280,4 +280,4 @@ const controller = (function (model, view, utils) {
   return { init };
 })(model, view, utils);
 
-controller.init("#date_picker_1");
+controller.init("#date_picker_2");

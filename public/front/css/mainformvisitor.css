@@ -1,0 +1,105 @@
+
+.date_picker_wrapper {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.date_picker_header {
+    align-items: baseline;
+  display: flex;
+/*  flex-direction: column;*/
+/*  padding: 0 0 16px 0;*/
+  border-bottom: 1px slid #262566;
+/*  margin-bottom: 2.5rem;*/
+}
+.date_picker_month_day{
+    font-size: 30px !important;
+}
+.date_picker_year {
+    color: #262566;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.date_pickers_year {
+    color: #262566;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 900;
+}
+.date_picker_month_day {
+  margin-top: 1rem;
+  font-size: 2.3rem;
+}
+
+.date_picker_body {
+  padding: 1.5rem;
+}
+
+.date_picker_month_navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.date_picker_prev_months {
+  transform: translateX(28%);
+}
+
+
+.date_picker_next_months {
+  transform: translateX(-28%);
+}
+.date_picker_month_nav_btn {
+    color: #262566;
+  display: block;
+  position: relative;
+  font-size: 30px;
+}
+.modal-dialog{
+    max-width: 1050px !important;
+}
+
+.date_picker_month_names {
+  font-weight: 500;
+  font-size: 1.2rem;
+  transform: translateY(-1px);
+}
+
+.date_picker_months_day{
+    font-size: 17px !important;
+    color: #262566 !important;
+}
+
+.date_picker_months_days {
+    margin-top: -24px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows:1px repeat(1, minmax(1px, 57px));
+  text-align: center;
+}
+
+.date_picker_months_days li {
+  color: #262566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.date_picker_months_days li button {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  color: var(--primary-color-1);
+  border-radius: 50%;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+.date_picker_months_days li button.active {
+  background: #262566;
+  color:white;
+}

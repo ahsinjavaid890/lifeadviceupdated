@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/formqoute/daterangepicker.css')}}">
-<script type="text/javascript" src="{{ url('public/front/formqoute/daterangepicker.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -340,30 +340,68 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
-                              <div class="date_picker_wrapper" id="date_picker_1">
                            <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
-                                <div class="date_picker_header">
-                                  <h2 class="date_picker_month_day"></h2>
-                                  <h2 class="date_picker_year ml-2"></h2>
-                                </div>
                             </div>
-                              <div class="row userdate-coverage mt-4">
+                              <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
-                                    <div class="form-input">
-                                       <label class="text-dark form-label">Star Date</label>
-                                       <input type="text" name="value_from_start_date" data-datepicker="separateRange" class="input-field" />
-                                    </div>
-                                   </div>
+                                    <div class="date_picker_wrapper" id="date_picker_2">
+                                      <div class="date_picker_header">
+                                        <h2 class="date_picker_months_day"></h2>
+                                        <h2 class="date_pickers_year ml-2"></h2>
+                                      </div>
+                                        <div class="date_picker_body">
+                                          <div class="date_picker_month_navigation">
+                                            <button class="date_picker_prev_months date_picker_month_nav_btn">
+                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
+                                            </button>
+                                            <h2 class="date_picker_month_names"></h2>
+                                            <button class="date_picker_next_months date_picker_month_nav_btn">
+                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                            </button>
+                                          </div>
+                                          <ul class="date_picker_months_days">
+                                            <li>Sun</li>
+                                            <li>Mon</li>
+                                            <li>Tue</li>
+                                            <li>Wed</li>
+                                            <li>Thu</li>
+                                            <li>Fri</li>
+                                            <li>Sat</li>
+                                          </ul>
+                                        </div>
+                                     </div>
+                                  </div>
                                  <div class="col-md-6">
-                                    <div class="form-input">
-                                       <label class="form-label">End Date</label>
-                                       <input type="text" name="value_from_end_date" data-datepicker="separateRange" class="input-field" />
+                                    <div class="date_picker_wrapper" id="date_picker_1">
+                                      <div class="date_picker_header">
+                                        <h2 class="date_picker_month_day"></h2>
+                                        <h2 class="date_picker_year ml-2"></h2>
+                                      </div>
+                                        <div class="date_picker_body">
+                                          <div class="date_picker_month_navigation">
+                                            <button class="date_picker_prev_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
+                                            </button>
+                                            <h2 class="date_picker_month_name"></h2>
+                                            <button class="date_picker_next_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                            </button>
+                                          </div>
+                                          <ul class="date_picker_month_days">
+                                            <li>Sun</li>
+                                            <li>Mon</li>
+                                            <li>Tue</li>
+                                            <li>Wed</li>
+                                            <li>Thu</li>
+                                            <li>Fri</li>
+                                            <li>Sat</li>
+                                          </ul>
+                                        </div>
+                                       
                                     </div>
-                                 </div>
                                  </div>
                            </div>
-                        </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
@@ -1301,7 +1339,8 @@ dropDown.prototype = {
   }
 }
 </script>
-  <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
+  <!-- <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script> -->
+  <script type="text/javascript" src="{{ url('public/front/formqoute/datepikervisitor.js')}}"></script>
 <script type="text/javascript">
    function getquotesubmitform() {
       $('#quoteform').submit();
