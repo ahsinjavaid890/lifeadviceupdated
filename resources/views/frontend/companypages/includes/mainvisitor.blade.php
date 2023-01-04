@@ -299,17 +299,50 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <input type="number" name="day" placeholder="Day" id="day{{$i}}" pattern="\d{1,2}" maxlength="3" class="input-field">
+                                          <select required class="input-field" name="day" id="day">
+                                             <option value="">Day</option>
+                                             <?php
+                                                // $month_num =1;
+                                                // $month_num =2;
+                                                // $month_num =3;
+                                                // $month_num =4;
+                                                // $month_num =5;
+                                                // $month_num =6;
+                                                // $month_num =7;
+                                                // $month_num =8;
+                                                // $month_num =9;
+                                                // $month_num =10;
+                                                // $month_num =11;
+                                                $month_num =12;
+                                                $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
+                                                
+                                             ?>
+                                             <option value=""><?php echo $month_name."\n";?></option>
+                                             <?php
+
+                                               
+                                             ?>
+                                          </select>
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <input type="number" name="month" placeholder="Month" id="month{{$i}}" pattern="\d{1,2}" maxlength="2" class="input-field">
+                                          <select required class="input-field" name="month" id="month">
+                                             <option value="">Month</option>
+                                             @for($month=1;$month<=12;$month++)
+                                             <option value="{{ $month }}">{{ $month }}</option>
+                                             @endfor
+                                          </select>
                                        </div>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-4">
                                        <div class="form-input">
-                                          <input type="number" name="year" placeholder="Year" id="year{{$i}}" pattern="\d{4}" maxlength="4" class="input-field">
+                                          <select required class="input-field" name="year" id="year">
+                                             <option value="">Year</option>
+                                             @for($year=1900; $year <= 2050; $year++)
+                                             <option value="{{ $year }}">{{ $year }}</option>
+                                             @endfor
+                                          </select>
                                        </div>
                                     </div>
                                  </div>
@@ -577,7 +610,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                                 <div class="text-danger mt-4" id="covergaeerrors"></div>
-                                
                            </div>
                         </div>
                      </div>
@@ -599,7 +631,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
-                           <!----><!----><!----><!---->
                            <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div class="row">
