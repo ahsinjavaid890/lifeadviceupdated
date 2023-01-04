@@ -1339,7 +1339,7 @@ dropDown.prototype = {
   }
 }
 </script>
-  <!-- <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script> -->
+  <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
   <script type="text/javascript" src="{{ url('public/front/formqoute/datepikervisitor.js')}}"></script>
 <script type="text/javascript">
    function getquotesubmitform() {
