@@ -1566,10 +1566,10 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 @media only screen and (min-width: 770px) and (max-width: 1000px){
     .super-images {
-    right: 1px !important;
+    right: -1px !important;
 }
 .super-hero {
-    height: 246px !important;
+    height: 234px !important;
 }
 }
 

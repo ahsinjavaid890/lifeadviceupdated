@@ -1884,7 +1884,7 @@ Footer Top Area Style
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
     background-attachment: fixed;
     z-index: 1;
@@ -7851,6 +7851,7 @@ section {
     width: 100%;
     margin: auto;
     margin-top: 50px;
+    padding-right: 20px;
 }
 
 .hero-button {
@@ -8771,24 +8772,59 @@ section {
 }
 
 /*media Querys*/
+@media only screen and (min-width: 800px) and (max-width: 900px)
+{
+    .herrotext {
+        max-width: 100%;
+        margin-top: -40px !important;
+        margin-left: 15px;
+    }
+    .super-hero-text .wow{
+        font-size: 1rem !important;
+    }
+    .super-hero-text .wow span font{
+        font-size: 1rem !important;
+    }
+    .super-hero-text .wow span{
+        font-size: 1rem !important;
+    }
+}
+@media only screen and (min-width: 901px) and (max-width: 999px)
+{
+    .herrotext {
+        max-width: 100%;
+       margin-top: -35px !important;
+        margin-left: 15px;
+    }
+    .super-hero-text .wow{
+        font-size: 1rem !important;
+    }
+    .super-hero-text .wow span font{
+        font-size: 1rem !important;
+    }
+    .super-hero-text .wow span{
+        font-size: 1rem !important;
+    }
+}
 @media only screen and (min-width: 700px) and (max-width: 1000px) {
     .universal-image {
         max-width: 100%;
         margin: auto;
     }
 
-    .herrotext {
-        max-width: 100%;
+    .super-hero-text h5 {
+        padding-right: 77px;
+        font-size: 10px;
+       
     }
-
     .policy-heading {
         text-align: center;
     }
 
-    /*    .chooses-blogs {
+      .chooses-blogs {
         margin-top: 140px;
     }
-*/
+
     .home-image {
         max-width: 60%;
         width: 739px;
@@ -8986,13 +9022,18 @@ section {
     }
 
     .choice1 {
-        margin-top: 270px;
+        margin-top: 0px;
     }
 
     .choice2 {
-        margin-top: 170px;
+        margin-top: 0px;
     }
-
+    .choice-card-paragraph p{
+        font-size: 10px;
+    }
+    .heading-our-mission-section h1 {
+        font-size: 28px !important;
+    }
     .mobile-card .row {
         text-align: -webkit-center;
     }
@@ -10328,6 +10369,7 @@ section {
         width: 100%;
         margin: auto;
         margin-top: 50px;
+        padding-right: 85px;
     }
 
     /*.each-event:nth-child(odd) {
@@ -10843,8 +10885,11 @@ section {
 
     .herrotext {
         max-width: 100%;
+        margin-top: 260px !important;
     }
-
+    .blank-card{
+        margin-bottom: 10px;
+    }
     .policy-heading {
         text-align: center;
     }
@@ -10965,8 +11010,8 @@ section {
         width: 54px;
         height: 53px;
         position: absolute;
-        left: 26px;
-        top: 107px;
+        left: -33px;
+        top: 55px !important;
     }
 
     .products .card {
@@ -12087,7 +12132,7 @@ ul.tabs li.current {
 @media only screen and (min-width: 1650px) and (max-width: 1800px) {
     .logo-image {
         position: absolute;
-        top: 180px !important;
+        top: 168px !important;
         left: 386px !important;
     }
 
@@ -12126,8 +12171,8 @@ ul.tabs li.current {
 @media only screen and (min-width: 1800px) and (max-width: 1950px) {
     .logo-image {
         position: absolute;
-        top: 150px !important;
-        left: 445px !important;
+        top: 160px !important;
+        left: 415px !important;
     }
 
     .qoute-card {
@@ -12275,7 +12320,7 @@ ul.tabs li.current {
 
     .logo-image {
         position: absolute !important;
-        top: 234px !important;
+        top: 195px !important;
         left: 251px !important;
     }
 
@@ -12530,14 +12575,33 @@ ul.tabs li.current {
         top: 295px !important;
     }
 }
-
-@media only screen and (min-width: 1000px) and (max-width: 1100px) {
+@media only screen and (min-width: 1050px) and (max-width: 1100px) {
     .logo-image {
         position: absolute !important;
-        top: 260px !important;
+        top: 155px !important;
         left: 209px !important;
     }
-
+    .choice-card-paragraph p{
+        font-size: 11px !important;
+    }
+}
+@media only screen and (min-width: 1000px) and (max-width: 1049px) {
+    .logo-image {
+        position: absolute !important;
+        top: 200px !important;
+        left: 185px !important;
+    }
+    .choice-card-paragraph p{
+        font-size: 11px !important;
+    }
+    .heading-our-mission-section h1 {
+        font-size: 24px !important;
+    }
+    .our-mission p {
+        font-size: 13px !important;
+    }
+}
+@media only screen and (min-width: 1000px) and (max-width: 1100px) {
     .super-hero {
         height: 319px !important;
     }
@@ -12554,14 +12618,14 @@ ul.tabs li.current {
     }
 
     .super-images {
-        width: 765px !important;
+        width: 710px !important;
         position: absolute;
         right: -102px;
-        height: 319px !important;
+        height: 320px !important;
     }
 
     .blogsproducts {
-        font-size: 17px !important;
+        font-size: 16px !important;
     }
 
     .home-image {
@@ -12637,20 +12701,22 @@ ul.tabs li.current {
     .super-images {
         width: 1058px !important;
         position: absolute;
-        right: 0px !important;
-        height: 368px !important;
+        right: -1px !important;
+        height: 400px !important;
     }
-
+    .herrotext h2{
+        margin-top: 370px !important;
+    }
     .date-card {
         display: none !important;
     }
 
     .hero-texts {
-        order: 2;
+        order: 1;
     }
 
     .hero-images {
-        order: 1;
+        order: 2;
     }
 
     .herrotext {
@@ -12704,7 +12770,7 @@ ul.tabs li.current {
     }
 
     .herrotext {
-        margin-top: 470px !important;
+        margin-top: 444px !important;
         text-align: center;
     }
 }
@@ -12802,7 +12868,7 @@ ul.tabs li.current {
     .super-images {
         width: 595px;
         position: absolute;
-        right: 0px !important;
+        right: -1px !important;
         height: 262px;
     }
 
@@ -13210,7 +13276,16 @@ ul .child-list li a {
         width: 100%;
         border-radius: 3px;
     }
-
+    .blog_section {
+        margin-top: 70px;
+    }
+    
+    .life-heading h2{
+        font-size: 1.5rem !important;
+    }
+    .life-heading h2 span{
+        font-size: 1.5rem !important;
+    }
     .date_picker_header {
         display: flex;
         flex-direction: column;
@@ -13320,19 +13395,37 @@ ul .child-list li a {
     .slider-heading h2 {
         font-size: 22px;
     }
+    .life-heading h2{
+        font-size: 1.5rem !important;
+    }
+    .life-heading h2 span{
+        font-size: 1.5rem !important;
+    }
 }
 
 @media screen and (min-width:200px) and (max-width:767px) {
     .blogs-card {
         margin-bottom: 10px !important;
     }
+    .whloelife-card{
+        margin-bottom: 10px;
+    }
+    .trans-card{
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (min-width:200px) and (max-width:299px) {
+    .mission-card{
+        margin-bottom: 10px;
+    }
+    .choice-card-paragraph p{
+        font-size: 10px;
+    }
     .slider-heading h2 span {
         font-size: 10px !important;
     }
-
+    
     .slider-heading h2 {
         font-size: 10px !important;
     }
@@ -13344,8 +13437,42 @@ ul .child-list li a {
     .slider-card {
         height: 250px !important;
     }
-}
+    .blog_section {
+        margin-top: 70px;
+    }
 
+    .life-heading h2{
+        font-size: 1rem !important;
+    }
+    .life-heading h2 span{
+        font-size: 1rem !important;
+    }
+    .product-card-images img {
+        width: 54px;
+        height: 53px;
+        position: absolute;
+        left: -35px;
+        top: 80px !important;
+    }
+    .herrotext{
+        display: none !important;
+    }
+    .hero-image{
+        margin-top: 150px !important;
+    }
+    .policy-paragraph{
+        margin-bottom: 15px !important;
+    }
+}
+@media screen and (min-width:800px) and (max-width:1000px)
+{
+    .life-product{
+        padding-left: 50px ;
+    }
+    .blogsproducts{
+        font-size: 15px !important;
+    }
+}
 @media screen and (min-width:800px) and (max-width:1199px) {
     .slider-heading h2 span {
         font-size: 15px !important;
@@ -13362,13 +13489,33 @@ ul .child-list li a {
     .slider-card {
         height: 300px !important;
     }
+    .blog_section {
+        margin-top: 72px !important;
+    } 
+    .policy-headings{
+        margin-left: 30px !important;
+    } 
+    .policy-paragraph{
+        margin-left: 30px !important;
+    }
 }
 
 @media screen and (min-width:1200px) and (max-width:1299px) {
+    .policy-headings{
+        margin-left: 28px !important;
+    } 
+    .policy-paragraph{
+        margin-left: 28px !important;
+    }
     .slider-heading h2 span {
         font-size: 18px !important;
     }
-
+    .our-mission p {
+        font-size: 13px !important;
+    }
+    .heading-our-mission-section h1 {
+        font-size: 25px !important;
+    }
     .slider-heading h2 {
         font-size: 18px !important;
     }
@@ -13392,6 +13539,9 @@ ul .child-list li a {
 
     .blank-card .card-content p {
         font-size: 12px !important;
+    }
+    .choice-card-heading h2{
+        font-size: 20px;
     }
 }
 
@@ -13473,7 +13623,9 @@ ul .child-list li a {
     .slider-card {
         height: 300px !important;
     }
-
+    .herrotext{
+        padding-right: 40px;
+    }
     .blank-card {
         height: 410px !important;
         width: 350px;
@@ -13522,3 +13674,53 @@ ul .child-list li a {
 #quoteform{
     background-color: #f4f7fa;
 }
+.card-body .n-collapse__content{
+    padding: 0rem !important;
+}
+@media screen and (min-width:1090px) and (max-width:1100px) {
+    .choice-card-heading h2{
+        font-size: 18px;
+    }
+    .blank-card{
+        width: 210px;
+        height: 370px;
+    }
+    .blank-card .card-content h3{
+        font-size: 10px;
+        line-height: 20px;
+    }
+    .blank-card .card-content p{
+        font-size: 10px;
+    }
+}
+@media screen and (min-width:768px) and (max-width:773px){
+    .life-product{
+        padding-left: 50px;
+    }
+    .herrotext {
+        max-width: 100%;
+        margin-top: 66px !important;
+    }
+    .blogsproducts{
+        font-size: 15px !important;
+    }
+    .slider-heading h2 span{
+        font-size: 13px !important;
+    }
+    .slider-heading h2{
+        font-size: 13px !important;
+    }
+    .slider-pargraph p {
+        font-size: 9px !important;
+    }
+}
+@media screen and (min-width:2700px) and (max-width:2800px){
+  .herrotext{
+    padding-right: 100px;
+  }
+}
+@media screen and (min-width:1000px) and (max-width:1049px){
+    .herrotext{
+      padding-right: 10px;
+    }
+  }
