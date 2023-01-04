@@ -46,6 +46,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" id="return_date" name="return_date">
                <input type="hidden" name="ages[]" id="selectage">
                <input type="hidden" name="years[]" id="selectage">
+               <input type="hidden" id="number_travelers" name="number_travelers">
             <div class="qoute-card">
                <div class="card-body">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -276,16 +277,23 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 
                         <div class="col-md-12">
                            <div class="form-input">
-                              <label for="number_travelers" class="form-label">Number of Travellers</label>
-                              <select onchange="checknumtravellers(this.value)" required class="input-field" name="number_travelers" id="number_travelers">
-                                 <option value="">Number of Travellers</option>
-                                 @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option value="{{ $i }}">{{ $i }}</option>
-                                 @endfor
-                              </select>
+                              <div class="wrapper-dropdown" id="year_dropdown">
+                                  <span>Number of Travellers</span>
+                                  <ul required class="dropdown"  >
+                                    @for($i=1;$i<=$number_of_travel;$i++)
+                                      <li onclick="checknumtravellers('{{ $i }}')" >
+                                         <span class="selectspan">{{ $i }}</span>
+                                      </li>
+                                    @endfor
+                                   </ul>
+                                    <script type="text/javascript">
+                                       function selectnumbertraveler(id) {
+                                          $("#number_travelers").val(id);
+                                       }
+                                    </script>
+                              </div>
                            </div>
                         </div>
-
 
                         @if(isset($fields['dob']) && $fields['dob'] == "on" )
 
@@ -299,61 +307,38 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <select onchange="datechange(this.val)" required class="input-field" name="month" id="month">
-                                             <option >Month</option>
-                                             <?php 
-                                             $arrayName = array('January', 'February', 'March', 'April', 'May', 'June','July','August','Septemper','October','November','December',  );
-                                             foreach ($arrayName as $month) {
-                                                
-                                             ?>
-                                             <option value="<?php echo $month;?>"><?php echo $month;?></option>
-                                             <?php
-                                          }
-                                             ?>
-                                          </select>
+                                          <div class="wrapper-dropdowns" >
+                                             <input type="number" name="day" placeholder="Day" id="day{{$i}}" pattern="\d{1,2}" maxlength="3" >
+                                          </div>
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <select required class="input-field" name="day" id="january">
-                                             <option value="">Day</option>
-                                             @for($day=1;$day<=31;$day++)
-                                             <option value="{{ $day }}">{{ $day }}</option>
-                                             @endfor
-                                          </select>
-                                          <select style="display: none;" required class="input-field" name="day" id="february">
-                                             <option value="">Day</option>
-                                             @for($day=1;$day<=28;$day++)
-                                             <option value="{{ $day }}">{{ $day }}</option>
-                                             @endfor
-                                          </select>
+                                          <div class="wrapper-dropdowns" >
+                                             <input type="number" name="month" placeholder="Month" id="month{{$i}}" pattern="\d{1,2}" maxlength="2" >
+                                          </div>
                                        </div>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-4">
                                        <div class="form-input">
-                                          <select required class="input-field" name="year" id="year">
-                                             <option value="">Year</option>
-                                             @for($year=1900; $year <= 2050; $year++)
-                                             <option value="{{ $year }}">{{ $year }}</option>
-                                             @endfor
-                                          </select>
+                                          <div class="wrapper-dropdown" id="year_dropdown">
+                                              <span>Year</span>
+                                              <ul class="dropdown"  >
+                                                <?php
+                                                  for($year = 1950 ; $year <= date('Y'); $year++){
+                                                ?>
+                                                  <li >
+                                                     <span class="selectspan"><?php echo $year; ?></span>
+                                                  </li>
+                                                <?php
+                                                }
+                                                ?>
+                                               </ul>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
                            </div>
-                           <script>
-                              function datechange(id) {
-                                if (id = "january") {
-                                $("#january").show();
-                                $("#february").hide();
-                                }
-                                if (id = "february") {
-                                $("#january").hide();
-                                $("#february").show();
-                                 
-                                }
-                              }
-                           </script>
                            @endfor
                         @endif
                         @endif
@@ -617,6 +602,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                                 <div class="text-danger mt-4" id="covergaeerrors"></div>
+                                
                            </div>
                         </div>
                      </div>
@@ -638,6 +624,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
+                           <!----><!----><!----><!---->
                            <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div class="row">
@@ -1105,6 +1092,41 @@ dropDown.prototype = {
 <script type="text/javascript">
     $(function() {
   var dd1 = new dropDown($('#coverage-price'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#year_dropdown'));
   
   $(document).click(function() {
     $('.wrapper-dropdown').removeClass('active');
