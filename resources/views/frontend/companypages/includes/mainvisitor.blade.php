@@ -299,61 +299,21 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <select onchange="datechange(this.val)" required class="input-field" name="month" id="month">
-                                             <option >Month</option>
-                                             <?php 
-                                             $arrayName = array('January', 'February', 'March', 'April', 'May', 'June','July','August','Septemper','October','November','December',  );
-                                             foreach ($arrayName as $month) {
-                                                
-                                             ?>
-                                             <option value="<?php echo $month;?>"><?php echo $month;?></option>
-                                             <?php
-                                          }
-                                             ?>
-                                          </select>
+                                          <input type="number" name="day" placeholder="Day" id="day{{$i}}" pattern="\d{1,2}" maxlength="3" class="input-field">
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="form-input">
-                                          <select required class="input-field" name="day" id="january">
-                                             <option value="">Day</option>
-                                             @for($day=1;$day<=31;$day++)
-                                             <option value="{{ $day }}">{{ $day }}</option>
-                                             @endfor
-                                          </select>
-                                          <select style="display: none;" required class="input-field" name="day" id="february">
-                                             <option value="">Day</option>
-                                             @for($day=1;$day<=28;$day++)
-                                             <option value="{{ $day }}">{{ $day }}</option>
-                                             @endfor
-                                          </select>
+                                          <input type="number" name="month" placeholder="Month" id="month{{$i}}" pattern="\d{1,2}" maxlength="2" class="input-field">
                                        </div>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-4">
                                        <div class="form-input">
-                                          <select required class="input-field" name="year" id="year">
-                                             <option value="">Year</option>
-                                             @for($year=1900; $year <= 2050; $year++)
-                                             <option value="{{ $year }}">{{ $year }}</option>
-                                             @endfor
-                                          </select>
+                                          <input type="number" name="year" placeholder="Year" id="year{{$i}}" pattern="\d{4}" maxlength="4" class="input-field">
                                        </div>
                                     </div>
                                  </div>
                            </div>
-                           <script>
-                              function datechange(id) {
-                                if (id = "january") {
-                                $("#january").show();
-                                $("#february").hide();
-                                }
-                                if (id = "february") {
-                                $("#january").hide();
-                                $("#february").show();
-                                 
-                                }
-                              }
-                           </script>
                            @endfor
                         @endif
                         @endif
@@ -617,6 +577,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                                 <div class="text-danger mt-4" id="covergaeerrors"></div>
+                                
                            </div>
                         </div>
                      </div>
@@ -638,6 +599,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
+                           <!----><!----><!----><!---->
                            <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div class="row">
