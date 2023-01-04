@@ -301,27 +301,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div class="form-input">
                                           <select required class="input-field" name="day" id="day">
                                              <option value="">Day</option>
-                                             <?php
-                                                // $month_num =1;
-                                                // $month_num =2;
-                                                // $month_num =3;
-                                                // $month_num =4;
-                                                // $month_num =5;
-                                                // $month_num =6;
-                                                // $month_num =7;
-                                                // $month_num =8;
-                                                // $month_num =9;
-                                                // $month_num =10;
-                                                // $month_num =11;
-                                                $month_num =12;
-                                                $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
-                                                
-                                             ?>
-                                             <option value=""><?php echo $month_name."\n";?></option>
-                                             <?php
-
-                                               
-                                             ?>
+                                             @for($day=1;$day<=31;$day++)
+                                             <option value="{{ $day }}">{{ $day }}</option>
+                                             @endfor
                                           </select>
                                        </div>
                                     </div>
