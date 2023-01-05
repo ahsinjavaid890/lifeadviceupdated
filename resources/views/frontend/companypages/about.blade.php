@@ -7,147 +7,256 @@
 @endphp
 
 @section('content')
-@include('frontend.companypages.includes.mainblog')
-<style>
-    @media only screen and (min-width: 200px) and (max-width: 300px){
-  .mean-container a.meanmenu-reveal span {
-    top: 7px !important;
-    margin-top: -2px !important;
-}
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1000px){
-.mean-container a.meanmenu-reveal span {
-    top: 7px !important;
-    margin-top: -2px !important;
-}
-  }
-</style>
-<div class="our-mission-section">
+<section class="about_us_banner" style="background-image: url('{{ url('public/front/images/about/about_us_main.png') }}'); background-repeat: no-repeat; background-size: cover;">
     <div class="container-homepage">
-        <div class="row">
-            @foreach($secondsection as $r)
-            <div class="col-md-4 mission-card">
-                <div class="our-mission">
-                    <div class="heading-our-mission-section">
-                        <img src="{{ url('public/images') }}/{{ $r->vector }}">
-                        <h1>{{ $r->heading }}</h1>
-                    </div>
-                    <p>{!! $r->description !!}</p>
-                </div>
-            </div>
-            @endforeach
+        <div class="about_main_text">
+            <h1 class="main_heading_about">About Us</h1>
+            <h6 class="main_subheading_about">What Makes Life Advice Extra Smart?</h6>
+            <p class="main_description_about">Life Advice Insurance Inc. has been providing superior insurance throughout Ontario for over a century</p>
         </div>
     </div>
-</div>
-    <div class="finding-right">
-        <div class="container-homepage">
-            <div class="row aboutussecondrow">
-                <div class="col-md-2">
-                    <img src="{{ asset('public/front/img/images/png-17.png') }}">
-                </div>
-                <div class="col-md-8">
-                    <h1 class="wow fadeInUp" data-wow-delay=".4s"> <span> Finding Right Coverage</h1>
-                    <p>Finding the right coverage can be difficult, which is why we take pride in assisting our customers to navigate coverage options by providing custom-tailored insurance solutions. We offer Life Insurance, Health insurance, Travel Insurance, employee health benefits, group health insurance and Investment products– protecting everything that matters to you!</p>
-                    <p>We know that life can throw us all curveballs and that there can be bumps along the way, which is why it is crucial for us to ensure our clients are safeguarded against these unexpected turns. Furthermore, we know our clients work hard for the success they have achieved. Thus, it is extremely important to minimize tax and retain as much of their earnings as possible.</p>
-                </div>
-                <div class="col-md-2">
-                    <img src="{{ asset('public/front/img/images/png-18.png') }}">
-                </div>
-            </div>
+</section>
+<!-- End Banner Area -->
+<section class="testimonial-area">
+ <div class="container-homepage">
+    <div class="row">
+       <div class="col-md-12 heroSlider-fixed">
+          <div class="overlay">
+          </div>
+          <div class="slider clients">
+             <div><img src="{{ asset('public/front/img/images/insurance.png') }}"  alt="logo2" /></div>
+             <div><img src="{{ asset('public/front/img/images/manu-life.png') }}" alt="logo3" /></div>
+             <div><img src="{{ asset('public/front/img/images/sub-life.png') }}" /></div>
+             <div><img src="{{ asset('public/front/img/images/assumption.png') }}" /></div>
+             <div><img src="{{ asset('public/front/img/images/desjardins.png') }}" /></div>
+             <div><img src="{{ asset('public/front/img/images/canada.png') }}" /></div>
+             <div><img src="{{ asset('public/front/img/images/protection.png') }}" /></div>
+          </div>
+          <div class="prev"><span class="fa fa-chevron-left" aria-hidden="true"></span></div>
+          <div class="next"><span class="fa fa-chevron-right" aria-hidden="true"></span></div>
+       </div>
+    </div>
+ </div>
+</section>
+<section class="about_sec_section" style="background-image: url('{{ url('public/front/images/about/finding_coverage.png') }}'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container-homepage">
+        <div class="about_sec_heading">
+            <h2>Finding Right Coverage</h2>
+        </div>
+        <div class="about_sec_description">
+            <p> <b>F</b>inding the right coverage can be difficult, which is why we take pride in assisting our customers to navigate coverage options by providing custom- tailored insurance solutions. We offer Life Insurance, Health insurance, Travel Insurance, employee health benefits, group health insurance and Investment products protecting everything that matters to you!</p>
+            <p> <b>W</b>e know that life can throw us all curveballs and that there can be bumps along the way, which is why it is crucial for us to ensure our clients are safeguarded against these unexpected turns. Furthermore, we know our clients work hard for the success they have achieved. Thus, it is extremely important to minimize tax and retain as much of their earnings as possible.</p>
         </div>
     </div>
-    <div class="what-we-offer">
-        <div class="container-homepage">
+</section>    
+<section class="about_three_section">
+   <div class="container-homepage">
+        <div class="about_three_cards">
             <div class="row">
-                <div class="col-md-5">
-                    <img src="{{ asset('public/front/img/images/png-02.png') }}">
+                <div class="col-md-4">
+                    <div class="card_one_vector">
+                        <img src="{{ url('public/front/images/about/card_circle_two.png')}}">
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="about_one_heading">
+                                <h2 class="text-center">Our Mission</h2>
+                            </div>
+                            <div class="about_one_description">
+                                <p>Our mission is to make insurance shopping for Canadians simple, easily accessible, and transparent, so our clients can get the coverage they really need. providing our customers most cost effective and best available insurance & investment products through search & development with an aim of not only saving them money but also to protect families for a better & secure future</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="col-md-6 choice1 pb-5" style="border-top-left-radius: 40px;">
-                            <div class="choice-card-image">
-                                <img src="{{ asset('public/front/img/images/people.png') }}" style="width: 100px;">
-                            </div>
-                            <div class="choice-card-heading mt-5">
-                                <h2 class="text-white">Multi Insurance Choices</h2>
-                            </div>
-                            <div class="choice-card-paragraph">
-                                <p>We deliver quality insurance policies to individuals and family's in Canada and design insurance policies to fit your needs.</p>
-                            </div>
-
-                        </div>
-                              <div class="col-md-6 choice2">
-                                <div class="card choice-card">
-                                    <div class="card-body" style="padding: 0px 0px 0px 20px;">
-                                        <div class="choice-card-image">
-                                <img src="{{ asset('public/front/img/images/one-men.png') }}" style="width: 100px;">
-                            </div>
-                            <div class="choice-card-heading mt-5">
-                                <h2>An Honest Guide</h2>
-                            </div>
-                            <div class="choice-card-paragraph">
-                                <p>Experience the quality service and attentions in detail. We deliver exceptional insurance services to individuals and family’s in Canada.</p>
-                            </div>
-                                    </div>
-                                </div>
-                            
-                        </div>
+                <div class="col-md-4">
+                    <div class="card_one_vector">
+                        <img src="{{ url('public/front/images/about/card_circle_one.png')}}">
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 choice2 pt-3">
-                           <div class="card choice-cards">
-                                    <div class="card-body">
-                            <div class="choice-card-heading">
-                                <h2>We get You Covered</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="about_one_heading">
+                                <h2 class="text-center">Our Goal</h2>
                             </div>
-                            <div class="choice-card-paragraph">
-                                <p>We commit to provide customers with the best insurance value and service available for complete family and their needs like car, home etc.</p>
-                            </div>
-                            <div class="choice-card-images">
-                                <img src="{{ asset('public/front/img/images/meet.png') }}" style="width: 100px;">
-                            </div>
-                                    </div>
-                                </div>
-                            
-                        </div>
-                              <div class="col-md-6 choice1" style="border-bottom-right-radius: 40px;height: 225px;">
-                            <div class="choice-card-heading mt-5">
-                                <h2 class="text-white">Perfect Policy Plans</h2>
-                            </div>
-                            <div class="choice-card-paragraph">
-                                <p>Get a comprehensive rundown of insurance plans that what’s covered to... from what coverage amounts.</p>
-                            </div>
-                            <div class="choice-card-images">
-                                <img src="{{ asset('public/front/img/images/pencil.png') }}" style="width: 100px;">
+                            <div class="about_one_description">
+                                <p>Our goal is to empower you to make informed financial choices through education and then match you with the right financial solutions that can help you achieve your financial goals. Create best value for Customers, Shareholders and all Stake holders Achieve impeccable reputation and credentials through best business practice</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="logo-image">
-                        <img src="{{ asset('public/front/img/images/logo.png') }}">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-<div class="online-support">
-    <div class="container-homepage">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="suppot-heading">
-                    <h2>Life Insurance Online Support</h2>
-                </div>
-                <div class="suppot-pargraph">
-                    <p>Lifes advice will be providing ongoing support and helpful articles that will provide our readers with all of the latest info on insurance products and requirements for travel and immigration. Through our resources and our skilled staff members, we can make insurance products more accessible and affordable than ever before.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="suppot-image">
-                    <img src="{{ asset('public/front/img/images/play.png') }}">
-                </div>
-            </div>
+        <div class="about_three_main_vector">
+            <img src="{{ url('public/front/images/about/main_sec_image.png')}}">
         </div>
-    </div>
-</div>
+</section>                       
+@endsection
+@section('script')
+<script type="text/javascript">
+   $('.clients').slick({
+    dots: false,
+     prevArrow: $('.prev'),
+     nextArrow: $('.next'),
+     infinite: true,
+     speed: 300,
+     slidesToShow: 6,
+     slidesToScroll: 6,
+     responsive: [
+       {
+         breakpoint: 1024,
+         settings: {
+           slidesToShow: 5,
+           slidesToScroll: 5,
+           infinite: true,
+           dots: false
+         }
+       },
+       {
+         breakpoint: 600,
+         settings: {
+           slidesToShow: 3,
+           slidesToScroll: 3
+         }
+       },
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1
+         }
+       }
+     ]
+   });
+   var TxtRotate = function(el, toRotate, period) {
+     this.toRotate = toRotate;
+     this.el = el;
+     this.loopNum = 0;
+     this.period = parseInt(period, 10) || 2000;
+     this.txt = '';
+     this.tick();
+     this.isDeleting = false;
+   };
+
+   TxtRotate.prototype.tick = function() {
+     var i = this.loopNum % this.toRotate.length;
+     var fullTxt = this.toRotate[i];
+
+     if (this.isDeleting) {
+       this.txt = fullTxt.substring(0, this.txt.length - 1);
+     } else {
+       this.txt = fullTxt.substring(0, this.txt.length + 1);
+     }
+
+     this.el.innerHTML = '<span style="font-size:30px;" class="wrap">'+this.txt+'</span>';
+
+     var that = this;
+     var delta = 200 - Math.random() * 100;
+
+     if (this.isDeleting) { delta /= 2; }
+
+     if (!this.isDeleting && this.txt === fullTxt) {
+       delta = this.period;
+       this.isDeleting = true;
+     } else if (this.isDeleting && this.txt === '') {
+       this.isDeleting = false;
+       this.loopNum++;
+       delta = 500;
+     }
+
+     setTimeout(function() {
+       that.tick();
+     }, delta);
+   };
+
+   window.onload = function() {
+     var elements = document.getElementsByClassName('txt-rotate');
+     for (var i=0; i<elements.length; i++) {
+       var toRotate = elements[i].getAttribute('data-rotate');
+       var period = elements[i].getAttribute('data-period');
+       if (toRotate) {
+         new TxtRotate(elements[i], JSON.parse(toRotate), period);
+       }
+     }
+     // INJECT CSS
+     var css = document.createElement("style");
+     css.type = "text/css";
+     css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #fff }";
+     document.body.appendChild(css);
+   };
+   $(document).ready(function(){
+     $('.carousel').slick({
+       speed: 500,
+       slidesToShow: 4,
+       slidesToScroll: 1,
+       autoplay: true,
+       autoplaySpeed: 2000,
+       // dots:true,
+       centerMode: true,
+       responsive: [{
+         breakpoint: 1024,
+         settings: {
+           slidesToShow: 3,
+           slidesToScroll: 1,
+           // centerMode: true,
+
+         }
+
+       }, {
+         breakpoint: 800,
+         settings: {
+           slidesToShow: 2,
+           slidesToScroll: 2,
+           dots: true,
+           infinite: true,
+
+         }
+       },  {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1,
+           dots: true,
+           infinite: true,
+           autoplay: true,
+           autoplaySpeed: 2000,
+         }
+       }]
+     });
+   });
+   function myFunction() {
+   var dots = document.getElementById("dots");
+   var moreText = document.getElementById("more");
+   var btnText = document.getElementById("myBtn");
+
+   if (dots.style.display === "none") {
+   dots.style.display = "inline";
+   btnText.innerHTML = "Read more"; 
+   moreText.style.display = "none";
+   } else {
+   dots.style.display = "none";
+   btnText.innerHTML = "Read less"; 
+   moreText.style.display = "inline";
+   }
+   }
+   var $element=$('.each-event, .title');
+   var $window = $(window);
+   $window.on('scroll resize', check_for_fade);
+   $window.trigger('scroll');
+   function check_for_fade() { 
+       var window_height = $window.height();
+       
+       $.each($element, function (event) {
+           var $element = $(this);
+           var element_height = $element.outerHeight();
+           var element_offset = $element.offset().top;
+           space = window_height - (element_height + element_offset -$(window).scrollTop());
+           if (space < 60) {
+               $element.addClass("non-focus");
+           } else {
+               $element.removeClass("non-focus");
+           }
+    
+       });
+   };
+</script>
 @endsection

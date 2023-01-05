@@ -13877,3 +13877,85 @@ ul .child-list li a {
     font-size: 12px;
    }
   }
+
+
+
+
+
+
+
+
+                        /*  about us New style*/
+    .about_us_banner {
+        height: 984px !important;
+    }
+    .about_super_images{
+        width: 100px;
+    }
+    .about_main_text{
+        max-width: 100%;
+        padding-top: 306px;
+        padding-left: 44px;
+    }
+    .main_heading_about{
+        font-weight: 600;
+        font-size: 50px;
+        color: #262566 !important;
+        font-family: 'Open Sans';
+    }
+    .main_subheading_about{
+        font-family: 'Open Sans';
+        line-height: 20px;
+        font-size: 27px;
+        font-weight: 500;
+        color: #262566 !important;
+    }
+    .main_description_about{
+        max-width: 53%;
+        font-family: 'Open Sans';
+        color: #262566 !important;
+        font-size: 19px;
+        text-align: justify;
+        font-weight: 500;
+        line-height: 25px;
+    }
+    .about_sec_heading h2{
+        font-size: 40px;
+        line-height: 102px;
+        color: #262566 !important;
+    }
+    .about_sec_description p{
+        line-height: 29px;
+        font-weight: 500;
+        text-align: justify;
+        font-size: 18px;
+        font-family: 'Open Sans';
+    }
+    .about_three_cards img{
+        width: 820px;
+    }
+    .card_one_vector{
+        position: absolute;
+        width: 65px;
+        z-index: 1;
+        left: 0px;
+        top: -18px;
+    }
+    .about_three_cards .card{
+        height: 100%;
+        border-radius: 42px;
+        box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+
+    }
+    .about_one_heading h2{
+        color: #262566;
+    }
+    .about_one_description p{
+        font-size: 13px;
+        text-align: center;
+    }
+    .about_three_cards{
+        width: 77%;
+        top: 1530px;
+        position: absolute;
+    }
