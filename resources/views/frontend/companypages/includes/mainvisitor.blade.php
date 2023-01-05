@@ -46,7 +46,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" id="return_date" name="return_date">
                <input type="hidden" name="ages[]" id="selectage">
                <input type="hidden" name="years[]" id="selectage">
-               <input type="hidden" id="number_travelers" name="number_travelers">
             <div class="qoute-card">
                <div class="card-body">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -286,11 +285,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       </li>
                                     @endfor
                                    </ul>
-                                    <script type="text/javascript">
-                                       function selectnumbertraveler(id) {
-                                          $("#number_travelers").val(id);
-                                       }
-                                    </script>
                               </div>
                            </div>
                         </div>
@@ -303,7 +297,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none; margin-top: 10px;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                           <div style="display: none; margin-top: 37px;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-input">
