@@ -12408,7 +12408,7 @@ ul.tabs li.current {
     }
 
     .super-images {
-        width: 543px !important;
+        width: 551px !important;
         position: absolute;
         right: 0px !important;
         height: 230px !important;
@@ -12699,7 +12699,7 @@ ul.tabs li.current {
 
 @media only screen and (min-width: 700px) and (max-width: 770px) {
     .super-images {
-        width: 1058px !important;
+        width: 1087px !important;
         position: absolute;
         right: -1px !important;
         height: 400px !important;
@@ -12912,6 +12912,7 @@ ul.tabs li.current {
     right: -102px;
     height: 510px;
 }
+
 
 .super-hero {
     height: 510px;
@@ -13402,6 +13403,27 @@ ul .child-list li a {
         font-size: 1.5rem !important;
     }
 }
+@media screen and (min-width:376px) and (max-width:400px){
+      #contact-form label{
+        font-size: 10px !important;
+      }
+}
+@media screen and (min-width:300px) and (max-width:375px){
+    .hero-texts h1{
+        margin-top: -20px !important;
+      }
+      #contact-form label{
+        font-size: 10px !important;
+      }
+}
+@media screen and (min-width:376px) and (max-width:500px){
+.hero-texts{
+    margin-top: 8px;
+}
+.hero-texts h1{
+  margin-top: -17px !important;
+}
+}
 
 @media screen and (min-width:200px) and (max-width:767px) {
     .blogs-card {
@@ -13413,9 +13435,21 @@ ul .child-list li a {
     .trans-card{
         margin-bottom: 10px;
     }
+    .herrotext h2 span{
+        font-size: 18px !important;
+    }
+    .herrotext h2 span font{
+        font-size: 18px !important;
+    }
+    .herrotext h2 {
+        font-size: 18px !important;
+    }
 }
 
 @media screen and (min-width:200px) and (max-width:299px) {
+    .privacy-heading{
+        font-size: 1rem !important;
+    }
     .mission-card{
         margin-bottom: 10px;
     }
@@ -13425,7 +13459,12 @@ ul .child-list li a {
     .slider-heading h2 span {
         font-size: 10px !important;
     }
-    
+    .whole{
+        font-size: 20px  !important;
+    }
+    .advant{
+        font-size: 20px !important;
+    }
     .slider-heading h2 {
         font-size: 10px !important;
     }
@@ -13454,14 +13493,42 @@ ul .child-list li a {
         left: -35px;
         top: 80px !important;
     }
-    .herrotext{
+    .herrotext h5 {
         display: none !important;
+    }
+    .herrotext .details {
+        display: none !important;
+    }
+    .herrotext h2 span font{
+        font-size: 12px !important;
+    }
+    .herrotext h2 font{
+        font-size: 12px !important;
     }
     .hero-image{
         margin-top: 150px !important;
     }
     .policy-paragraph{
         margin-bottom: 15px !important;
+    }
+    .super-images {
+        top: -867px;
+        width: 415px;
+        position: absolute;
+        right: -1px;
+        height: 691px;
+    }
+    .super-hero{
+        height: 270px;
+    }
+    .hero-texts{
+        margin-top: -75px;
+    }
+    .list-checkmark li{
+        font-size: 9px !important;
+    }
+    .lists-checkmark{
+        height: 770px ;
     }
 }
 @media screen and (min-width:800px) and (max-width:1000px)
@@ -13694,6 +13761,27 @@ ul .child-list li a {
     }
 }
 @media screen and (min-width:768px) and (max-width:773px){
+    .claim-btn{
+        font-size: 10px;
+       }
+       .policy-btn{
+        font-size: 10px;
+       }
+       .claim-download h2{
+        font-size: 10px;
+       }
+       .claim-download h2 span{
+        font-size: 10px;
+       }
+    .herrotext h2 span{
+        font-size: 18px !important;
+    }
+    .herrotext h2 span font{
+        font-size: 18px !important;
+    }
+    .herrotext h2 {
+        font-size: 18px !important;
+    }
     .life-product{
         padding-left: 50px;
     }
@@ -13721,6 +13809,71 @@ ul .child-list li a {
 }
 @media screen and (min-width:1000px) and (max-width:1049px){
     .herrotext{
-      padding-right: 10px;
+      /* padding-right: 10px; */
+      margin-top: -10px !important;
     }
+    .claim-btn{
+        font-size: 12px;
+       }
+       .policy-btn{
+        font-size: 12px;
+       }
+       .claim-download h2{
+        font-size: 12px;
+       }
+       .claim-download h2 span{
+        font-size: 12px;
+       }
+  }
+  @media screen and (min-width:1050px) and (max-width:1099px){
+    .herrotext{
+     margin-top: -10px !important;
+    }
+    .list-checkmark li{
+        font-size: 10px;
+    }
+    .universal-image {
+        width: 430px;
+    }
+    .counter-image{
+        width: 360px !important;
+    }
+    .permanent-team-subsection {
+        position: absolute;
+        width: 97%;
+  }
+  .claim-btn{
+    font-size: 15px;
+  }
+  .policy-btn{
+    font-size: 15px;
+  }
+}
+  @media screen and (min-width:1200px) and (max-width:1299px){
+    .list-checkmark li{
+        font-size: 12px;
+    }
+    .permanent-team-subsection {
+        position: absolute;
+        width: 97% !important;
+  }
+  }
+  @media screen and (min-width:200px) and (max-width:768px){
+  .herrotext h5{
+    display: none !important;
+  }  
+}
+@media screen and (min-width:800px) and (max-width:999px){
+   .claim-btn{
+    font-size: 12px;
+   }
+   .policy-btn{
+    font-size: 12px;
+   }
+   .claim-download h2{
+    font-size: 12px;
+   }
+   .claim-download h2 span{
+    font-size: 12px;
+   }
   }

@@ -1554,7 +1554,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 }
 @media only screen and (min-width: 1000px) and (max-width: 1100px){
 .super-hero {
-    height: 319px !important;
+    height: 315px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
     grid-template-columns: 150px 175px 310px 1fr !important;
