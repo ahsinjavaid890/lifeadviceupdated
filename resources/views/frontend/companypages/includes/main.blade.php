@@ -289,7 +289,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
+                           <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
                               <div class="date_picker_wrapper" id="date_picker_1">
                            <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
