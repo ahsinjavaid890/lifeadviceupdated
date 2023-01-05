@@ -420,7 +420,15 @@ if($show == '1' && $total_price > 0){
     $millions = $sum_insured;
     $txt = '';
     }
-    echo number_format($millions).$txt; ?></h2>
+    echo number_format($millions).$txt; 
+
+
+    $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+    $agent = $request->agent;
+    $broker = $request->broker;
+    $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
+
+?></h2>
                   </div>
               </div>
               <div class="plan-coverage-limits">
@@ -435,7 +443,9 @@ if($show == '1' && $total_price > 0){
           <div class="col-md-3">
               <div class="compare-check  text-right d-flex">
                 <span class="">Compare</span>
-                  <input id="checkbox-1" class="compare-checkbox" name="checkbox-1" type="checkbox">
+                <input data-productid="<?php echo $data->pro_id; ?>"
+                                                           data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="width: 20px; height:auto !important;"
+                                                           type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
               </div>
               <div class="qoute-logo">
                   <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
@@ -445,7 +455,38 @@ if($show == '1' && $total_price > 0){
                   <p><span><?php echo $number_travelers;?> Traveller(s)</span></p>
               </div>
               <div class="buy_now"> 
-                  <button class="btn btn-block text-white" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy</button>
+                <form method="POST" action="{{ url('apply') }}">
+                @csrf
+                <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                <input type="hidden" value="{{ $request->fname }}" name="fname">
+                <input type="hidden" value="{{ $request->lname }}" name="lname">
+                <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                <input type="hidden" value="{{ $num_of_days }}" name="days">
+                <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                <input type="hidden" value="{{ $plan_name }}" name="planname">
+                <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                <input type="hidden" value="{{ $enddate }}" name="tripend">
+                <input type="hidden" value="{{ $total_price }}" name="premium">
+                <input type="hidden" value="{{ $request->destination }}" name="destination">
+                <input type="hidden" value="" name="cdestination">
+                <input type="hidden" value="{{ $product_name }}" name="product_name">
+                <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+                <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                <input type="hidden" value="{{ $dob }}" name="dob">
+                <input type="hidden" value="{{ $agent }}" name="agent">
+                <input type="hidden" value="{{ $broker }}" name="broker">
+                  <button class="btn btn-block text-white" type="submit">Buy</button>
+
+              </form>
               </div>
           </div>
       </div>
@@ -469,21 +510,22 @@ $daily_rate = 0;
   function comparetest(){
     var pids = [];
     var price = [];
-    var $checkboxes = jQuery('.compare input[type="checkbox"]');
+    var $checkboxes = $('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
-            var pid =  jQuery(this).attr('data-pid');
-            var product_id =  jQuery(this).attr('data-productid');
-      var price_plan = jQuery(this).val();
+            alert('ok');
+            var pid =  $(this).attr('data-pid');
+            var product_id =  $(this).attr('data-productid');
+            var price_plan = $(this).val();
             $checkboxes.attr("disabled", false);
             var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
             console.log(countCheckedCheckboxes);
             if (countCheckedCheckboxes == 1){
-                jQuery('.compare_header_top').show();
-                jQuery('.two_select').hide();
-                jQuery('.one_select').show();
+                $('.compare_header_top').show();
+                $('.two_select').hide();
+                $('.one_select').show();
             }else if(countCheckedCheckboxes == 2 || countCheckedCheckboxes == 3){
-        jQuery('.compare_header_top').show();
-                jQuery('.two_select').show();
+        $('.compare_header_top').show();
+                $('.two_select').show();
                 jQuery('.one_select').hide();
             }else if(countCheckedCheckboxes >= 4){
         jQuery('.compare_header_top').show();
@@ -535,17 +577,22 @@ $daily_rate = 0;
 </script>
 <style>
     .compare_header_top {
-        background: rgb(249, 249, 249) none repeat scroll 0% 0%;padding: 10px;position: fixed;top: 100px;width: 100%;
-    display:none;
+        background: rgb(249, 249, 249) none repeat scroll 0% 0%;
+        padding: 10px;
+        position: fixed;
+        top: 88px;
+        border-radius: 20px;
+        width: 87%;
+        display: none;
     }
 </style>
 <div class="compare_header_top">
-    <div class="container-fluid">
-    <div class="row">
-            <div class="col-md-12 text-center">
-      <h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
-      </div>
-    </div>  
+    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+          <h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
+          </div>
+        </div>  
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="one_select">

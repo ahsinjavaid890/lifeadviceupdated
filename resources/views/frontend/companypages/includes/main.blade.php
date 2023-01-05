@@ -349,8 +349,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div class="col-md-12">
                                           <span class="questionheading">Do you Smoke in last 12 months ?</span>
                                           <div class="col-md-12 no-padding user-answer">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"    style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
+                                             <input checked="" type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                                           </div>
                                        </div>
                                     </div>
