@@ -13959,3 +13959,82 @@ ul .child-list li a {
         top: 1530px;
         position: absolute;
     }
+    .circle_one{
+        padding-top: 312px;
+        padding-left: 203px;
+    }
+    .about_three_circle_vector{
+        position: absolute;
+        top: 2445px;
+    }
+    .circle_one .circle_text{
+        position: absolute;
+        top: 416px;
+        left: 243px;
+        text-align: center;
+    }
+    .circle_text h2{
+        font-size: 23px;
+        color: #262566;
+    }
+    .circle_text p{
+        color: #262566;
+        font-size: 16px;
+        font-weight: 800;
+    }
+    .circle_two .circle_text{
+        position: absolute;
+        top: 159px;
+        left: 764px;
+        text-align: center;
+    }
+    .circle_three .circle_text{
+        position: absolute;
+        top: 161px;
+        left: 1192px;
+        text-align: center;
+    }
+    .circle_four .circle_text{
+        position: absolute;
+        top: 163px;
+        left: 1615px;
+        text-align: center;
+    }
+    .offer_heading h2{
+        font-size: 60px;
+        color: #262566;
+        text-align: center;
+    }
+    .online_support_heading h2{
+        font-size: 93px;
+        text-align: center;
+        color: #262566;
+        font-style: italic;
+        font-weight: 900;
+    }
+    .online_support_description p{
+        font-size: 26px;
+        text-align: justify;
+        font-style: oblique;
+        font-weight: 600;
+    }
+    .online_support_vector img{
+        max-width: 55%;
+        margin: auto;
+    }
+    .online_support_qoute{
+        text-align: center;
+    }
+    .online_support_qoute p{
+        font-size: 30px;
+        max-width: 48%;
+        margin: auto;
+        color: #262566;
+        font-style: italic;
+    }
+    .online_support_qoute button{
+        background: #1bbc9b;
+        border: none;
+        height: 47px;
+        border-radius: 9px;
+    }

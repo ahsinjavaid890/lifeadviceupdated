@@ -86,10 +86,75 @@
             </div>
         </div>
     </div>
-        <div class="about_three_main_vector">
-            <img src="{{ url('public/front/images/about/main_sec_image.png')}}">
+    <div class="about_three_main_vector">
+        <img src="{{ url('public/front/images/about/main_sec_image.png')}}">
+        <div class="about_three_circle_vector d-flex">
+            <div class="circle_one">
+                <img src="{{ url('public/front/images/about/icon1.png')}}">
+                <div class="circle_text">
+                    <h2>1450</h2>
+                    <p class="mt-3">Happy Clients</p>
+                </div>
+            </div>
+            <div class="circle_two">
+                <img src="{{ url('public/front/images/about/icon2.png')}}">
+                <div class="circle_text">
+                    <h2>35</h2>
+                    <p class="mt-3">Insurance Product</p>
+                </div>
+            </div>
+            <div class="circle_three">
+                <img src="{{ url('public/front/images/about/icon3.png')}}">
+                <div class="circle_text">
+                    <h2>35</h2>
+                    <p class="mt-3">Insurance Product</p>
+                </div>
+            </div>
+            <div class="circle_four">
+                <img src="{{ url('public/front/images/about/icon4.png')}}">
+                <div class="circle_text">
+                    <h2>35</h2>
+                    <p class="mt-3">Insurance Product</p>
+                </div>
+            </div>
         </div>
-</section>                       
+    </div>
+    <div class="container-homepage">
+        <div class="what_we_offer">
+            <div class="offer_heading">
+                <h2>What We Offer</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="offer_vector">
+                <img src="{{ url('public/front/images/about/offer_circles.png')}}">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about_sec_four">
+    <div class="container-homepage">
+        <div class="online_support_heading">
+            <h2>Life Insurance Online Support</h2>
+        </div>
+        <div class="online_support_description">
+            <p>Lifes advice will be providing ongoing support and helpful articles that will provide our readers with all of the latest info on insurance products and requirements for travel and immigration. Through our resources and our skilled staff members, we can make insurance productsa more accessible and affordable than ever before.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="online_support_vector text-center">
+                    <img src="{{ url('public/front/images/about/online_support_vector.png')}}">
+                </div>
+                <div class="online_support_qoute">
+                    <p>"Like to learn more about our company and what we can offer through our products and services"</p>
+                    <button class="btn btn-secondary mt-3">Get A qoute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>                 
 @endsection
 @section('script')
 <script type="text/javascript">
