@@ -36,9 +36,13 @@ class SiteController extends Controller
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
         $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
 
-        if($request->email)
+        if($request->savers_email)
         {
-            echo "string";
+            Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request), function($message) use ($request) {
+               $message->to($request->savers_email)->subject
+                  ('Quote Suggestion');
+               $message->from('quote@lifeadvice.ca','LIFEADVICE');
+            });
         }
 
         return response()->json(array('success' => true, 'html'=>$returnHTML));
@@ -63,7 +67,7 @@ class SiteController extends Controller
         Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request){
               $message->to($request->email);
               $message->subject('New Purchase');
-          });
+        });
         $password = 10000000+$sales->sales_id;
         $newuser = new User();
         $newuser->name = $request->fname.' '.$request->lname;
