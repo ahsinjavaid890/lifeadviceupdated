@@ -35,6 +35,12 @@ class SiteController extends Controller
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
         $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+
+        if($request->email)
+        {
+            echo "string";
+        }
+
         return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
     public function confermquote()

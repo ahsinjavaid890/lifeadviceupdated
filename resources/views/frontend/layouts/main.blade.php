@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('public/front/css/time.css') }}">
 	<link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
 	<script src="{{ asset('public/front/js/jquery-3.5.1.slim.min.js') }}"></script>
+	<script src="{{ asset('public/front/js/popper.min.js') }}"></script>
 	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	@yield('tittle')
@@ -26,7 +27,7 @@
 		@include('frontend.includes.header')
 			@yield('content')
 		@include('frontend.includes.footer')
-		<script src="{{ asset('public/front/js/popper.min.js') }}"></script>
+		
 		<script src="{{ asset('public/front/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/jquery.meanmenu.js') }}"></script>
 		<script src="{{ asset('public/front/js/wow.min.js') }}"></script>
@@ -40,6 +41,19 @@
 		<script src="{{ asset('public/front/js/form-validator.min.js') }}"></script>
 		<script src="{{ asset('public/front/js/contact-form-script.js') }}"></script>
 		<script src="{{ asset('public/front/js/custom.js') }}"></script>
+		<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+
+<!-- ✅ load jQuery UI ✅ -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+  integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js"></script>
 	</body>
 </html>

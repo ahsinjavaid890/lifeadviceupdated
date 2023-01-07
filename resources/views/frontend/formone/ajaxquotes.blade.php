@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -75,7 +76,7 @@ $(function () {
                 $('.coverage-amt-'+group).hide();
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverageammount" ).val( "$" + SliderValues[ui.value] );
         }
     });
 
@@ -89,11 +90,11 @@ $(function () {
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
                     
-                    <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+                    <div class="mt-4" id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
                 <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-                    <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverageammount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                    <div class="mt-4" id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
               </div>
           </div>
@@ -441,17 +442,15 @@ if($show == '1' && $total_price > 0){
               </div>
           </div>
           <div class="col-md-3">
-              <div class="compare-check  text-right d-flex">
+            <div class="compare compare-check  text-right d-flex">
                 <span class="">Compare</span>
-                <input data-productid="<?php echo $data->pro_id; ?>"
-                                                           data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="width: 20px; height:auto !important;"
-                                                           type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
-              </div>
+                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
+            </div>
               <div class="qoute-logo">
                   <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
               </div>
               <div class="total-price-traveller">
-                  <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>USD</span></h2>
+                  <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>CAD</span></h2>
                   <p><span><?php echo $number_travelers;?> Traveller(s)</span></p>
               </div>
               <div class="buy_now"> 
@@ -507,34 +506,34 @@ $daily_rate = 0;
 </div>
 </div>
 <script>
-  function comparetest(){
-    var pids = [];
-    var price = [];
-    var $checkboxes = $('.compare input[type="checkbox"]');
+    function comparetest(){
+        var pids = [];
+        var price = [];
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
-            alert('ok');
-            var pid =  $(this).attr('data-pid');
-            var product_id =  $(this).attr('data-productid');
-            var price_plan = $(this).val();
+            console.log('ok');
+            var pid =  jQuery(this).attr('data-pid');
+            var product_id =  jQuery(this).attr('data-productid');
+            var price_plan = jQuery(this).val();
             $checkboxes.attr("disabled", false);
             var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
             console.log(countCheckedCheckboxes);
             if (countCheckedCheckboxes == 1){
-                $('.compare_header_top').show();
-                $('.two_select').hide();
-                $('.one_select').show();
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').hide();
+                jQuery('.one_select').show();
             }else if(countCheckedCheckboxes == 2 || countCheckedCheckboxes == 3){
-        $('.compare_header_top').show();
-                $('.two_select').show();
-                jQuery('.one_select').hide();
-            }else if(countCheckedCheckboxes >= 4){
-        jQuery('.compare_header_top').show();
+                jQuery('.compare_header_top').show();
                 jQuery('.two_select').show();
                 jQuery('.one_select').hide();
-        $checkboxes.attr("disabled", true);
+            }else if(countCheckedCheckboxes >= 4){
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').show();
+                jQuery('.one_select').hide();
+                $checkboxes.attr("disabled", true);
                 $checkboxes.filter(':checked').attr("disabled", false);
             }
-      else{
+            else{
                 jQuery('.compare_header_top').hide();
             }
             if (jQuery(this).is(":checked")== false) {
@@ -545,35 +544,35 @@ $daily_rate = 0;
                 price.push(price_plan);
            }
             var url = window.location.href; 
-      var arr=url.split('?')[1];
-      var slider1 = localStorage.getItem("default_value");
-      var slider2 = localStorage.getItem("price_value");
-      
-      jQuery("#new_window").click(function(){
-        var planId = jQuery.unique(pids); 
-        var main_price = jQuery.unique(price);
+            var arr=url.split('?')[1];
+            var slider1 = localStorage.getItem("default_value");
+            var slider2 = localStorage.getItem("price_value");
+            
+            jQuery("#new_window").click(function(){
+                var planId = jQuery.unique(pids); 
+                var main_price = jQuery.unique(price);
                 var compareUrl = "{{ url('compareplans') }}?product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
-        if (compareUrl.indexOf("#") > -1) {
-          var myUrl = compareUrl.replace(/\#/g, '');
-          var newUrl = jQuery(".two_select a").prop("href",myUrl);
-          }else{
-          var newUrl = jQuery(".two_select a").prop("href",compareUrl);
-        }
-        var newwindow = window.open($(this).prop("href"), '', 'height=800,width=1024');
-        if (window.focus) {newwindow.focus()}
-        return false; 
-      });
+                if (compareUrl.indexOf("#") > -1) {
+                    var myUrl = compareUrl.replace(/\#/g, '');
+                    var newUrl = jQuery(".two_select a").prop("href",myUrl);
+                }else{
+                    var newUrl = jQuery(".two_select a").prop("href",compareUrl);
+                }
+                var newwindow = window.open($(this).prop("href"), '', 'height=800,width=1024');
+                if (window.focus) {newwindow.focus()}
+                return false;   
+            });
 
         });
-    jQuery("#clear").click(function(){
-      $(".hidden1").prop("checked", false);
-      $(".hidden1").prop("disabled", false);
-      $(".two_select a").removeAttr("href");
-      pids = [];
+        jQuery("#clear").click(function(){
+          $(".hidden1").prop("checked", false);
+          $(".hidden1").prop("disabled", false);
+          $(".two_select a").removeAttr("href");
+          pids = [];
           price = [];
-      jQuery('.compare_header_top').hide();
-     });
-  }
+          jQuery('.compare_header_top').hide();
+       });
+    }
 </script>
 <style>
     .compare_header_top {
@@ -587,11 +586,11 @@ $daily_rate = 0;
     }
 </style>
 <div class="compare_header_top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-                <div class="col-md-12 text-center">
-          <h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
-          </div>
+            <div class="col-md-12 text-center">
+            <h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
+            </div>
         </div>  
         <div class="row">
             <div class="col-md-12 text-center">

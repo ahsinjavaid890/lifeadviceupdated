@@ -249,7 +249,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                   if($('#primarydestination').val() == '')
                                                   {
                                                      $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Destination Ammount');
+                                                     $('#destinationerror').html('Please Select Destination');
                                                   }else{
                                                       var travelerage = $('#travelerage').val();
                                                       var primarydestination = $('#primarydestination').val();
@@ -1314,7 +1314,7 @@ dropDown.prototype = {
            contentType: false,
            processData: false,
            success: function(data){
-            console.log(data.html)
+            // console.log(data.html)
             $('#getqoutesubmitbutton').html('Get Quotes');
               $('.quotationscards').html(data.html);
            }
