@@ -38,7 +38,10 @@
     </div>
  </div>
 </section>
-<section class="about_sec_section" style="background-image: url('{{ url('public/front/images/about/finding_coverage.png') }}'); background-repeat: no-repeat; background-size: cover;">
+<div class="about_sec_vector_top">
+    <img src="{{ url('public/front/images/about/finding_2.png')}}">
+</div>
+<section class="about_sec_section">
     <div class="container-homepage">
         <div class="about_sec_heading">
             <h2>Finding Right Coverage</h2>
@@ -48,7 +51,10 @@
             <p> <b>W</b>e know that life can throw us all curveballs and that there can be bumps along the way, which is why it is crucial for us to ensure our clients are safeguarded against these unexpected turns. Furthermore, we know our clients work hard for the success they have achieved. Thus, it is extremely important to minimize tax and retain as much of their earnings as possible.</p>
         </div>
     </div>
-</section>    
+</section>
+<div class="about_sec_vector_bottom">
+    <img src="{{ url('public/front/images/about/finding_1.png')}}">
+</div>
 <section class="about_three_section">
    <div class="container-homepage">
         <div class="about_three_cards">
@@ -106,15 +112,15 @@
             <div class="circle_three">
                 <img src="{{ url('public/front/images/about/icon3.png')}}">
                 <div class="circle_text">
-                    <h2>35</h2>
-                    <p class="mt-3">Insurance Product</p>
+                    <h2>10</h2>
+                    <p class="mt-3">Years of Experience</p>
                 </div>
             </div>
             <div class="circle_four">
                 <img src="{{ url('public/front/images/about/icon4.png')}}">
                 <div class="circle_text">
-                    <h2>35</h2>
-                    <p class="mt-3">Insurance Product</p>
+                    <h2>196</h2>
+                    <p class="mt-3">Professional Agents</p>
                 </div>
             </div>
         </div>
@@ -130,6 +136,40 @@
         <div class="col-md-12">
             <div class="offer_vector">
                 <img src="{{ url('public/front/images/about/offer_circles.png')}}">
+            </div>
+        </div>
+    </div>
+    <div class="offer_circle_text d-flex">
+        <div class="offer_circle_one">
+            <div class="offer_circle_heading  text-center">
+                <h2>Multi Insurance Choices</h2>
+            </div>
+            <div class="offer_circle_description text-center">
+                <p>We deliver quality insurance policies to individuals and family's in Canada and design insurance policies to fit your needs.</p>
+            </div>
+        </div>
+        <div class="offer_circle_two">
+            <div class="offer_circle_heading  text-center">
+                <h2>An Honest Guide</h2>
+            </div>
+            <div class="offer_circle_description  text-center">
+                <p>Experience the quality service and attentions in detail. We deliver exceptional insurance services to individuals and family’s in Canada</p>
+            </div>
+        </div>
+        <div class="offer_circle_three">
+            <div class="offer_circle_heading  text-center">
+                <h2>Perfect Policy Plans</h2>
+            </div>
+            <div class="offer_circle_description  text-center">
+                <p>Get a comprehensive rundown of insurance plans that what’s covered to,from what coverage amounts.</p>
+            </div>
+        </div>
+        <div class="offer_circle_four">
+            <div class="offer_circle_heading  text-center">
+                <h2>We get You Covered</h2>
+            </div>
+            <div class="offer_circle_description  text-center">
+                <p>We commit to provide customers with the best insurance value and service available for complete family and their needs like car, home etc.</p>
             </div>
         </div>
     </div>
