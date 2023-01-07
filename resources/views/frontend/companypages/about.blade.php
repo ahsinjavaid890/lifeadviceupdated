@@ -44,7 +44,7 @@
 <section class="about_sec_section">
     <div class="container-homepage">
         <div class="about_sec_heading">
-            <h2>Finding Right Coverage</h2>
+            <h2><span>Finding Right</span> Coverage</h2>
         </div>
         <div class="about_sec_description">
             <p> <b>F</b>inding the right coverage can be difficult, which is why we take pride in assisting our customers to navigate coverage options by providing custom- tailored insurance solutions. We offer Life Insurance, Health insurance, Travel Insurance, employee health benefits, group health insurance and Investment products protecting everything that matters to you!</p>
@@ -66,7 +66,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="about_one_heading">
-                                <h2 class="text-center">Our Mission</h2>
+                                <h2 class="text-center"><span>Our</span> Mission</h2>
                             </div>
                             <div class="about_one_description">
                                 <p>Our mission is to make insurance shopping for Canadians simple, easily accessible, and transparent, so our clients can get the coverage they really need. providing our customers most cost effective and best available insurance & investment products through search & development with an aim of not only saving them money but also to protect families for a better & secure future</p>
@@ -81,7 +81,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="about_one_heading">
-                                <h2 class="text-center">Our Goal</h2>
+                                <h2 class="text-center"><span>Our</span> Goal</h2>
                             </div>
                             <div class="about_one_description">
                                 <p>Our goal is to empower you to make informed financial choices through education and then match you with the right financial solutions that can help you achieve your financial goals. Create best value for Customers, Shareholders and all Stake holders Achieve impeccable reputation and credentials through best business practice</p>
@@ -142,7 +142,7 @@
     <div class="offer_circle_text d-flex">
         <div class="offer_circle_one">
             <div class="offer_circle_heading  text-center">
-                <h2>Multi Insurance Choices</h2>
+                <h2><span>Multi Insurance</span> Choices</h2>
             </div>
             <div class="offer_circle_description text-center">
                 <p>We deliver quality insurance policies to individuals and family's in Canada and design insurance policies to fit your needs.</p>
@@ -150,7 +150,7 @@
         </div>
         <div class="offer_circle_two">
             <div class="offer_circle_heading  text-center">
-                <h2>An Honest Guide</h2>
+                <h2><span>An Honest</span> Guide</h2>
             </div>
             <div class="offer_circle_description  text-center">
                 <p>Experience the quality service and attentions in detail. We deliver exceptional insurance services to individuals and family’s in Canada</p>
@@ -158,7 +158,7 @@
         </div>
         <div class="offer_circle_three">
             <div class="offer_circle_heading  text-center">
-                <h2>Perfect Policy Plans</h2>
+                <h2><span>Perfect Policy</span> Plans</h2>
             </div>
             <div class="offer_circle_description  text-center">
                 <p>Get a comprehensive rundown of insurance plans that what’s covered to,from what coverage amounts.</p>
@@ -166,7 +166,7 @@
         </div>
         <div class="offer_circle_four">
             <div class="offer_circle_heading  text-center">
-                <h2>We get You Covered</h2>
+                <h2><span>We get</span> You Covered</h2>
             </div>
             <div class="offer_circle_description  text-center">
                 <p>We commit to provide customers with the best insurance value and service available for complete family and their needs like car, home etc.</p>
@@ -177,7 +177,7 @@
 <section class="about_sec_four">
     <div class="container-homepage">
         <div class="online_support_heading">
-            <h2>Life Insurance Online Support</h2>
+            <h2><span>Life Insurance</span> Online Support</h2>
         </div>
         <div class="online_support_description">
             <p>Lifes advice will be providing ongoing support and helpful articles that will provide our readers with all of the latest info on insurance products and requirements for travel and immigration. Through our resources and our skilled staff members, we can make insurance productsa more accessible and affordable than ever before.</p>

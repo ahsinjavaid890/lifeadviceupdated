@@ -13901,10 +13901,10 @@ ul .child-list li a {
         font-weight: 600;
         font-size: 50px;
         color: #262566 !important;
-        font-family: 'Open Sans';
+        font-family: "Open Sans", sans-serif;
     }
     .main_subheading_about{
-        font-family: 'Open Sans';
+        font-family: "Open Sans", sans-serif;
         line-height: 20px;
         font-size: 27px;
         font-weight: 500;
@@ -13912,7 +13912,7 @@ ul .child-list li a {
     }
     .main_description_about{
         max-width: 53%;
-        font-family: 'Open Sans';
+        font-family: "Open Sans", sans-serif;
         color: #262566 !important;
         font-size: 19px;
         text-align: justify;
@@ -13929,7 +13929,7 @@ ul .child-list li a {
         font-weight: 500;
         text-align: justify;
         font-size: 18px;
-        font-family: 'Open Sans';
+        font-family: "Open Sans", sans-serif;
     }
     .about_three_cards img{
         width: 820px;
@@ -13947,12 +13947,25 @@ ul .child-list li a {
         box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
 
     }
+    .offer_circle_heading h2 span{
+        color: #262566;
+    }
     .about_one_heading h2{
+        font-family: "Open Sans", sans-serif;
+    }
+    .about_one_heading h2 span{
         color: #262566;
     }
     .about_one_description p{
+        font-family: "Open Sans", sans-serif;
         font-size: 13px;
         text-align: center;
+    }
+    .offer_circle_heading h2{
+        font-family: "Open Sans", sans-serif;
+    }
+    .offer_circle_heading p{
+        font-family: "Open Sans", sans-serif;
     }
     .about_three_cards{
         width: 77%;
@@ -14008,14 +14021,16 @@ ul .child-list li a {
     .online_support_heading h2{
         font-size: 93px;
         text-align: center;
-        color: #262566;
-        font-style: italic;
+        font-family: "Open Sans", sans-serif;
         font-weight: 900;
+    }
+    .online_support_heading h2 span{
+        color: #262566;
     }
     .online_support_description p{
         font-size: 26px;
         text-align: justify;
-        font-style: oblique;
+        font-family: "Open Sans", sans-serif;
         font-weight: 600;
     }
     .online_support_vector img{
@@ -14026,6 +14041,7 @@ ul .child-list li a {
         text-align: center;
     }
     .online_support_qoute p{
+        font-family: "Open Sans", sans-serif;
         font-size: 30px;
         max-width: 48%;
         margin: auto;
@@ -14097,7 +14113,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 13px;
             max-width: 52%;
             margin: auto;
@@ -14148,6 +14164,12 @@ ul .child-list li a {
             right: 0;
             opacity: 0.5;
             top: 1120px;
+        }
+        .online_support_heading h2 {
+            font-size: 50px;
+        }
+        .online_support_description p {
+            font-size: 15px;
         }
     }
 
@@ -14211,7 +14233,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 16px;
             max-width: 52%;
             margin: auto;
@@ -14262,6 +14284,12 @@ ul .child-list li a {
             right: 0;
             opacity: 0.5;
             top: 1120px;
+        }
+        .online_support_heading h2 {
+            font-size: 70px;
+        }
+        .online_support_description p {
+            font-size: 15px;
         }
     }
 
@@ -14324,7 +14352,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 17px;
             max-width: 52%;
             margin: auto;
@@ -14374,6 +14402,12 @@ ul .child-list li a {
             right: 0;
             opacity: 0.5;
             top: 1120px;
+        }
+        .online_support_heading h2 {
+            font-size: 50px;
+        }
+        .online_support_description p {
+            font-size: 15px;
         }
     }
     @media only screen and (min-width: 1515px) and (max-width: 1707px){
@@ -14435,7 +14469,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 22px;
             max-width: 52%;
             margin: auto;
@@ -14547,7 +14581,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 24px;
             max-width: 52%;
             margin: auto;
@@ -14664,7 +14698,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 24px;
             max-width: 52%;
             margin: auto;
@@ -14781,7 +14815,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 28px;
             max-width: 52%;
             margin: auto;
@@ -14883,7 +14917,7 @@ ul .child-list li a {
             top: 4330px;
         }
         .offer_circle_heading h2{
-            color: #262566;
+/*            color: #262566;*/
             font-size: 45px;
             max-width: 52%;
             margin: auto;
