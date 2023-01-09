@@ -5,7 +5,7 @@
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
     $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get();
 @endphp
-
+@include('frontend.companypages.includes.mettatittle')
 @section('content')
 <section class="about_us_banner" style="background-image: url('{{ url('public/front/images/about/about_us_main.png') }}'); background-repeat: no-repeat; background-size: cover;">
     <div class="container-homepage">
