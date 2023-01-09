@@ -400,12 +400,83 @@ if($show == '1' && $total_price > 0){
                   Days: <?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)
                 </p>
                 <h2 class="qoute-policy">Policy Details</h2>
-              <ul class="plan-highlights text-dark ml-3">
-                  <li><span>Quote Reference: <span class="plan-cat"> <?php echo $quoteNumber; ?></span></span></li>
-                  <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
-                  <li><span>Total Premium: <span class="plan-cat">$<?php echo number_format($total_price,2);?></span></span></li>
-                  <li><span>Start Date: <span class="plan-cat"><?php echo $startdate;?></span></span></li>
-              </ul>
+                  <ul class="plan-highlights text-dark ml-3">
+                      <li><span>Quote Reference: <span class="plan-cat"> <?php echo $quoteNumber; ?></span></span></li>
+                      <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
+                  </ul>
+                <h3 style="font-size:15px;" class="qoute-policy">Additional Travelers <i class="fa fa-info-circle "></i> </h3>
+                <div class="row hoverdetails_<?php echo $deductible.$plan_id;?>" >
+                    <div class="col-md-12"><h2>Quote Details <?php echo $product_name;?></h2></div>
+                    <div class="col-md-12"><h3>Totel Premium: <span>$<?php echo number_format($total_price,2);?></span></h3></div>
+                    <div class="col-md-12">
+                    <div class="col-md-12" style="border:1px solid #333; text-align:left;">
+                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
+                    <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
+                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
+                    <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
+                    <div class="col-md-12 no-padding">
+                    <?php
+                    $per = 0;
+                    $single_person_rate = 0;
+                    foreach($ages_array as $person_age){
+                        $per++;
+                        $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery" )->first();
+                        echo  $single_person_rate = $p_planrates->rate;
+                        // if($family_plan == 'yes' && $elder_age != $person_age){
+                        // $person_daily = 0;
+                        // } else if($family_plan == 'yes' && $elder_age == $person_age){
+                        // $person_daily = $single_person_rate * 2;
+                        // } else {
+                        // $person_daily = $single_person_rate;
+                        // }
+                        // if($rate_base == '0'){ 
+                        // $person_price = $person_daily * $num_of_days;
+                        // } else if($rate_base == '1'){ 
+                        // $person_price = $person_daily * $num_months;
+                        // } else if($rate_base == '2'){ 
+                        // $person_price = $person_daily;
+                        // }
+                        // else if($rate_base == '3'){ 
+                        // $person_price = $person_daily;
+                        // }
+
+                        // if($flatrate_type == 'each'){
+                        // $p_flat_price = $flatrate;
+                        // }else if($flatrate_type == 'total'){
+                        // $p_flat_price = $flatrate  / $number_travelers;
+                        // } else {
+                        // $p_flat_price = 0;
+                        // }
+                        // $ptotaldaysprice = $person_price;
+                        // if($salestax_dest == $post_dest){
+                        // $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                        // } else {
+                        // $p_salestaxes = 0;
+                        // }
+
+                        // if($_REQUEST['Smoke12'] == 'yes' || $_REQUEST['traveller_Smoke'] == 'yes'){
+                        // if($smoke == '0'){
+                        // $p_smoke_price = $smoke_rate;
+                        // } else if($smoke == '1'){
+                        // $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
+                        // }
+                        // } else {
+                        // $p_smoke_price = 0; 
+                        // }
+
+                        // $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+
+                        // $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                        // $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                        // $p_discount = $p_deduct_discount + $p_cdiscount;
+                        // $person_price = ($person_price - $p_discount) + $p_others;
+                    ?>
+                    
+                    <?php $single_person_rate = '';} ?>
+                    </div>
+                    </div>
+                    </div>
+                </div>
           </div>
           <div class="col-md-3 price-limit">
               <div class="plan-coverage-limit">
