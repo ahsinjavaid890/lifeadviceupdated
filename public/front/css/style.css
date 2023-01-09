@@ -14998,6 +14998,69 @@ ul .child-list li a {
 
 
                         /*    Extar querys*/
+    @media only screen and (min-width: 1800px) and (max-width: 1850px){
+        .circle_one {
+            padding-top: 492px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 598px !important;
+            left: 222px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 150px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 310px !important;
+            left: 733px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 200px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 357px !important;
+            left: 1140px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 150px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 316px !important;
+            left: 1553px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 11px;
+            width: 433px;
+            top: -210px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 490px;
+            width: 403px;
+            top: -102px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 925px;
+            width: 422px;
+            top: -232px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1408px;
+            width: 377px;
+            top: -357px;
+        }
+    }
     @media only screen and (min-width: 1850px) and (max-width: 1900px){
         .circle_one {
             padding-top: 492px !important;
