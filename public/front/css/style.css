@@ -14988,3 +14988,328 @@ ul .child-list li a {
             top: 1120px;
         }
     }
+
+
+
+
+
+
+
+
+
+                        /*    Extar querys*/
+    @media only screen and (min-width: 1850px) and (max-width: 1900px){
+        .circle_one {
+            padding-top: 492px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 598px !important;
+            left: 222px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 174px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 332px !important;
+            left: 742px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 222px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 383px !important;
+            left: 1156px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 171px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 335px !important;
+            left: 1576px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 17px;
+            width: 433px;
+            top: -166px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 503px;
+            width: 403px;
+            top: -62px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 947px;
+            width: 422px;
+            top: -204px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1438px;
+            width: 377px;
+            top: -320px;
+        }
+    }
+    @media only screen and (min-width: 1900px) and (max-width: 1950px){
+        .circle_one {
+            padding-top: 492px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 598px !important;
+            left: 215px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 200px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 332px !important;
+            left: 760px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 255px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 417px !important;
+            left: 1191px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 208px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 375px !important;
+            left: 1618px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 23px;
+            width: 433px;
+            top: -134px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 521px;
+            width: 403px;
+            top: -8px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 980px;
+            width: 422px;
+            top: -141px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1482px;
+            width: 377px;
+            top: -258px;
+        }
+    }
+    @media only screen and (min-width: 1950px) and (max-width: 1995px){
+        .circle_one {
+            padding-top: 600px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 711px !important;
+            left: 233px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 225px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 391px !important;
+            left: 779px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 265px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 431px !important;
+            left: 1223px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 213px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 383px !important;
+            left: 1670px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 30px;
+            width: 433px;
+            top: -75px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 538px;
+            width: 403px;
+            top: 24px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 1017px;
+            width: 422px;
+            top: -109px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1532px;
+            width: 377px;
+            top: -233px;
+        }
+    }
+    @media only screen and (min-width: 1995px) and (max-width: 2030px){
+        .circle_one {
+            padding-top: 600px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 711px !important;
+            left: 233px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 258px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 428px !important;
+            left: 801px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 310px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 486px !important;
+            left: 1257px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 257px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 441px !important;
+            left: 1715px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 37px;
+            width: 433px;
+            top: 0px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 563px;
+            width: 403px;
+            top: 110px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 1045px;
+            width: 422px;
+            top: -70px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1570px;
+            width: 377px;
+            top: -175px;
+        }
+    }
+    @media only screen and (min-width: 2030px) and (max-width: 2070px){
+        .circle_one {
+            padding-top: 600px !important;
+            padding-left: 177px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 711px !important;
+            left: 233px !important;
+            text-align: center;
+        }
+        .circle_two {
+            padding-top: 258px !important;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 428px !important;
+            left: 801px !important;
+            text-align: center;
+        }
+        .circle_three {
+            padding-top: 310px;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 486px !important;
+            left: 1257px !important;
+            text-align: center;
+        }
+        .circle_four {
+            padding-top: 257px !important;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 441px !important;
+            left: 1715px !important;
+            text-align: center;
+        }
+        .offer_circle_one {
+            position: absolute;
+            left: 37px;
+            width: 433px;
+            top: 0px;
+        }
+        .offer_circle_two {
+            position: absolute;
+            left: 563px;
+            width: 403px;
+            top: 110px;
+        }
+        .offer_circle_three {
+            position: absolute;
+            left: 1045px;
+            width: 422px;
+            top: -70px;
+        }
+        .offer_circle_four {
+            position: absolute;
+            left: 1570px;
+            width: 377px;
+            top: -175px;
+        }
+    }
