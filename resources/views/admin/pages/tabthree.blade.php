@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label>Section Three Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="vector">
+            <input type="file" style="height:45px;" class="form-control" name="section_three_vector">
         </div>
        @endif
            @if($data->url == 'nonmedical')
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
             <label>Section Three Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="vector">
+            <input type="file" style="height:45px;" class="form-control" name="section_three_vector">
         </div>
        @endif
            @if($data->url == 'rrsp')
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
             <label>Section Three Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="vector">
+            <input type="file" style="height:45px;" class="form-control" name="section_three_vector">
         </div>
        @endif
           @if($data->url == 'claim')
