@@ -7,10 +7,10 @@
        <div class="container-homepage">
            <div class="row">
                <div class="col-md-6">
-                   <img src="{{ url('public/images') }}/{{ $page->section_five_vector }}">
+                 {!! $page->section_five_description !!}
                </div>
                <div class="col-md-6">
-                 {!! $page->section_five_description !!}
+                   <img src="{{ url('public/images') }}/{{ $page->section_five_vector }}">
                </div>
            </div>
        </div>

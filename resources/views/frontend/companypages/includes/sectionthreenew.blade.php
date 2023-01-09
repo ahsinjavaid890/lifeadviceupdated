@@ -10,7 +10,7 @@
                       {!! $page->sectionthreedescription !!}
                </div>
                <div class="col-md-6">
-                
+                <img src="{{ url('public/images') }}/{{ $page->section_three_vector }}">
                </div>
            </div>
        </div>
