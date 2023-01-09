@@ -45,7 +45,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" id="departure_date" name="departure_date">
                <input type="hidden" id="return_date" name="return_date">
                <input type="hidden" name="ages[]" id="selectage">
-               <input type="hidden" name="years[]" id="selectage">
+               <!-- <input type="hidden" name="years[]" id="selectage"> -->
             <div class="qoute-card">
                <div class="card-body">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -211,7 +211,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
-                                          <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
+                                          <input name="years[]" id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
                                        <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
                                           <input type="text" placeholder="MM/DD/YYYY" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
