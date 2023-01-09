@@ -15132,11 +15132,11 @@ ul .child-list li a {
         .circle_one .circle_text {
             position: absolute;
             top: 598px !important;
-            left: 215px !important;
+            left: 225px !important;
             text-align: center;
         }
         .circle_two {
-            padding-top: 200px !important;
+            padding-top: 165px !important;
         }
         .circle_two .circle_text {
             position: absolute;
@@ -15158,7 +15158,7 @@ ul .child-list li a {
         }
         .circle_four .circle_text {
             position: absolute;
-            top: 375px !important;
+            top: 370px !important;
             left: 1618px !important;
             text-align: center;
         }
