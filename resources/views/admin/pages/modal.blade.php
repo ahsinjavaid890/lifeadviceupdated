@@ -14,7 +14,7 @@
           <div class="modal-body">
             <div class="form-group">
                 <label>Vector</label>
-                <input type="file" style="height:45px;" class="form-control" name="vector">
+                <input type="file" style="height:45px;" class="form-control" name="section_three_vector">
             </div>
             <div class="form-group">
                 <label>Heading</label>

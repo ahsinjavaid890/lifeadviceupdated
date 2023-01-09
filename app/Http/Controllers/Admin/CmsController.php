@@ -40,6 +40,10 @@ class CmsController extends Controller
         $update->sub_heading = $request->sub_heading;
         $update->main_button_text = $request->btn_text;
         $update->main_button_link = $request->btn_link;
+        if($request->section_three_vector)
+        {
+            $update->section_three_vector = Cmf::sendimagetodirectory($request->section_three_vector);
+        }
         $update->sectionthreeheading = $request->sectionthreeheading;
         $update->sectionthreedescription = $request->sectionthreedescription;
         $update->privacy_two_heading = $request->privacy_two_heading;
