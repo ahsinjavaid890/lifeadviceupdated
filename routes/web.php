@@ -40,6 +40,8 @@ Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);
 Route::get('/travel-insurance', [SiteController::class, 'travel']);
 Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
 Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
+Route::get('/sendcompareemail', [SiteController::class, 'sendcompareemail']);
+
 
 
 Route::get('/life-insurance', [SiteController::class, 'lifeinsurance']);

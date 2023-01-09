@@ -551,7 +551,7 @@ $daily_rate = 0;
             jQuery("#new_window").click(function(){
                 var planId = jQuery.unique(pids); 
                 var main_price = jQuery.unique(price);
-                var compareUrl = "{{ url('compareplans') }}?product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
+                var compareUrl = "{{ url('compareplans') }}?email={{$request->savers_email}}&product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
                 if (compareUrl.indexOf("#") > -1) {
                     var myUrl = compareUrl.replace(/\#/g, '');
                     var newUrl = jQuery(".two_select a").prop("href",myUrl);

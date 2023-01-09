@@ -8,5 +8,4 @@
 @include('frontend.companypages.includes.sectionfive')
 @include('frontend.companypages.includes.sectionsix')
 @include('frontend.companypages.includes.faqsection')
-
 @endsection
