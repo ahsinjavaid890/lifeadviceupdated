@@ -84,7 +84,7 @@ $(function () {
 </script>
 <div class="row">
     <div class="col-md-4">
-        <div class="card qoute-price-card mb-3">
+        <div class="card qoute-price-card mb-3 left_qoute_card">
           <div class="card-body">
               <div class="row">
                   <div class="col-md-12 adjust-quoto" style="border:none;">
