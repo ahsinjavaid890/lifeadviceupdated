@@ -1,11 +1,21 @@
 @extends('frontend.layouts.main')
 @section('content')
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css')}}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
 <style type="text/css">
 	.tabshead{
 		margin-top: 67px;
+	}
+	.wrapper-dropdown{
+		top: 43px !important;
+		width: 94% !important;
+	}
+	.f1-buttons{
+		margin-top: 20px;
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
@@ -216,7 +226,8 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label>Street Number and Name<small class="text-danger">*</small></label>
-												<input class="form-control pac-target-input" name="streetname" type="text" placeholder="Enter a location" autocomplete="off">
+												<input class="form-control pac-target-input" name="streetname" id="pac-input" type="text" placeholder="Enter a location" autocomplete="off">
+												<div id="map-canvas" style="display: none;"></div>
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -270,10 +281,34 @@
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
-													<label>Primary Destination <small class="text-danger">*</small></label>
-													<input class="form-control"  value="{{ $request->country }}" id="visa_type" name="visa_type" type="text">
-												</div>
+		                                      <div class="wrapper-dropdown" id="primary_destination">
+		                                        <span>{{ $request->country }}</span>
+		                                        <ul class="dropdown"  >
+		                                         @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+		                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
+		                                            <span class="selectspan">{{ $r->name }}</span>
+		                                         </li>
+		                                         @endforeach
+		                                         <script type="text/javascript">
+		                                             function selectcoverageammount(id) {
+		                                                 $('#sum_insured2').val(id);
+		                                                 $('#coverageprice').val(id);
+		                                                 $('#covergaeerror').hide();
+		                                               }
+		                                               function firstnext() {
+		                                                  if($('#sum_insured2').val() == '')
+		                                                  {
+		                                                     $('#covergaeerror').show();
+		                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
+		                                                  }else{
+		                                                     $('#firstnextfake').hide();
+		                                                     $('#firstnextorignal').show();
+		                                                     $('#firstnextorignal').click();
+		                                                  }
+		                                               }
+		                                         </script>
+		                                        </ul>
+		                                      </div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
@@ -856,5 +891,171 @@ securitycode.addEventListener('focus', function () {
     document.querySelector('.creditcard').classList.add('flipped');
 });
 };
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#coverage_amount'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+    $(function() {
+  var dd1 = new dropDown($('#primary_destination'));
+  
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+	var overlay;
+
+testOverlay.prototype = new google.maps.OverlayView();
+
+function initialize() {
+  var map = new google.maps.Map(document.getElementById("map-canvas"), {
+    zoom: 15,
+    center: {
+      lat: 37.323,
+      lng: -122.0322
+    },
+    mapTypeId: "terrain",
+    draggableCursor: "crosshair"
+  });
+  map.addListener("click", (event) => {
+    map.setCenter(event.latLng);
+    console.log(event.latLng.toString());
+  });
+
+  overlay = new testOverlay(map);
+
+  var input =
+    /** @type {HTMLInputElement} */
+    (document.getElementById("pac-input"));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */ (input)
+  );
+
+  google.maps.event.addListener(searchBox, "places_changed", function () {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+    map.setCenter(places[0].geometry.location);
+  });
+}
+
+function testOverlay(map) {
+  this.map_ = map;
+  this.div_ = null;
+  this.setMap(map);
+}
+
+testOverlay.prototype.onAdd = function () {
+  var div = document.createElement("div");
+  this.div_ = div;
+  div.style.borderStyle = "none";
+  div.style.borderWidth = "0px";
+  div.style.position = "absolute";
+  div.style.left = -window.innerWidth / 2 + "px";
+  div.style.top = -window.innerHeight / 2 + "px";
+  div.width = window.innerWidth;
+  div.height = window.innerHeight;
+
+  const canvas = document.createElement("canvas");
+  canvas.style.position = "absolute";
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  div.appendChild(canvas);
+
+  const panes = this.getPanes();
+  panes.overlayLayer.appendChild(div);
+
+  var ctx = canvas.getContext("2d");
+  this.drawLine(ctx, 0, "rgba(0, 0, 0, 0.2)");
+  this.drawLine(ctx, 90, "rgba(0, 0, 0, 0.2)");
+  this.drawLine(ctx, 37.5, "rgba(255, 0, 0, 0.4)");
+  this.drawLine(ctx, 67.5, "rgba(255, 0, 0, 0.4)");
+};
+
+testOverlay.prototype.drawLine = function (ctx, degrees, style) {
+  // 0 north, growing clockwise
+  const w = window.innerWidth / 2;
+  const h = window.innerHeight / 2;
+  const radians = ((90 - degrees) * Math.PI) / 180;
+  const hlen = Math.min(w, h);
+  const x = Math.cos(radians) * hlen;
+  const y = -Math.sin(radians) * hlen;
+  ctx.beginPath();
+  ctx.strokeStyle = style;
+  ctx.moveTo(w - x, h - y);
+  ctx.lineTo(w + x, h + y);
+  ctx.stroke();
+};
+
+testOverlay.prototype.onRemove = function () {
+  this.div_.parentNode.removeChild(this.div_);
+  this.div_ = null;
+};
+
+google.maps.event.addDomListener(window, "load", initialize);
+
 </script>
 @endsection

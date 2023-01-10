@@ -13934,6 +13934,9 @@ ul .child-list li a {
     .about_three_cards img{
         width: 820px;
     }
+    .card_two{
+        margin-top: 40px;
+    }
     .card_one_vector{
         position: absolute;
         width: 65px;
@@ -15374,5 +15377,372 @@ ul .child-list li a {
             left: 1570px;
             width: 377px;
             top: -175px;
+        }
+    }
+
+    @media only screen and (min-width: 350px) and (max-width: 1050px){
+        .about_three_cards {
+            width: 100%;
+            top: 1530px;
+            position: inherit; 
+        }
+        .second-vector{
+            top: 10px !important;
+        }
+        .card_one_vector{
+            left: 10px;
+        }
+        .about_main_text {
+            max-width: 80%;
+            padding-top: 306px;
+            padding-left: 0;
+            margin: auto;
+        }
+        .main_description_about {
+            max-width: 100%;
+        }
+        .main_subheading_about {
+            line-height: 30px;
+        }
+        .circle_one {
+            padding-top: 328px !important;
+            padding-left: 137px !important;
+        }
+        .about_three_circle_vector {
+            display: none !important;
+            position: inherit !important;
+            top: 1990px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 385px;
+            left: 162px;
+            text-align: center;
+        }
+        .circle_text h2 {
+            font-size: 12px;
+            color: #262566;
+        }
+        .circle_text p {
+            color: #262566;
+            font-size: 8px;
+        }
+        .circle_two{
+            padding-top: 144px;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 230px;
+            left: 453px;
+            text-align: center;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 265px;
+            left: 686px;
+            text-align: center;
+        }
+        .circle_three{
+            padding-top: 177px;
+        }
+        .circle_four{
+            padding-top: 139px;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 228px;
+            left: 921px;
+            text-align: center;
+        }
+        .online_support_qoute p {
+            font-size: 30px;
+            max-width: 99%;
+        }
+        .offer_circle_text{
+            display: block !important;
+            position: inherit;
+            top: 2980px;
+        }
+        .offer_circle_heading h2{
+/*            color: #262566;
+            font-size: 13px;
+            max-width: 52%;
+            margin: auto;
+        }
+        .offer_circle_description p{
+            max-width: 83%;
+            margin: auto;
+            font-size: 10px;
+        }
+        .offer_circle_one{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+        }
+        .offer_circle_two{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .offer_circle_three{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .offer_vector{
+            display: none;
+        }
+        .offer_circle_four{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .about_sec_vector_top img{
+            width: 410px;
+        }
+        .offer_heading h2 {
+            font-size: 28px;
+            color: #262566;
+            text-align: center;
+        }
+        .about_sec_vector_top{
+            position: absolute;
+            left: 1650px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .about_sec_heading h2 {
+            font-size: 31px;
+            line-height: 102px;
+            color: #262566 !important;
+        }
+        .about_sec_vector_bottom img{
+            width: 210px;
+        }
+        .about_sec_vector_bottom{
+            position: absolute;
+            right: 0;
+            opacity: 0.5;
+            top: 1650px;
+        }
+        .online_support_heading h2 {
+            font-size: 22px;
+        }
+        .online_support_description p {
+            font-size: 15px;
+        }
+    }
+    @media only screen and (min-width: 270px) and (max-width: 350px){
+        .about_three_cards {
+            width: 100%;
+            top: 1530px;
+            position: inherit; 
+        }
+        .second-vector{
+            top: 10px !important;
+        }
+        .card_one_vector{
+            left: 10px;
+        }
+        .about_main_text {
+            max-width: 80%;
+            padding-top: 306px;
+            padding-left: 0;
+            margin: auto;
+        }
+        .main_description_about {
+            max-width: 100%;
+        }
+        .main_subheading_about {
+            line-height: 30px;
+        }
+        .circle_one {
+            padding-top: 328px !important;
+            padding-left: 137px !important;
+        }
+        .about_three_circle_vector {
+            display: none !important;
+            position: inherit !important;
+            top: 1990px !important;
+        }
+        .circle_one .circle_text {
+            position: absolute;
+            top: 385px;
+            left: 162px;
+            text-align: center;
+        }
+        .circle_text h2 {
+            font-size: 12px;
+            color: #262566;
+        }
+        .circle_text p {
+            color: #262566;
+            font-size: 8px;
+        }
+        .circle_two{
+            padding-top: 144px;
+        }
+        .circle_two .circle_text {
+            position: absolute;
+            top: 230px;
+            left: 453px;
+            text-align: center;
+        }
+        .circle_three .circle_text {
+            position: absolute;
+            top: 265px;
+            left: 686px;
+            text-align: center;
+        }
+        .circle_three{
+            padding-top: 177px;
+        }
+        .circle_four{
+            padding-top: 139px;
+        }
+        .circle_four .circle_text {
+            position: absolute;
+            top: 228px;
+            left: 921px;
+            text-align: center;
+        }
+        .online_support_qoute p {
+            font-size: 30px;
+            max-width: 99%;
+        }
+        .offer_circle_text{
+            display: block !important;
+            position: inherit;
+            top: 2980px;
+        }
+        .offer_circle_heading h2{
+/*            color: #262566;
+            font-size: 13px;
+            max-width: 52%;
+            margin: auto;
+        }
+        .offer_circle_description p{
+            max-width: 83%;
+            margin: auto;
+            font-size: 10px;
+        }
+        .offer_circle_one{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+        }
+        .offer_circle_two{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .offer_circle_three{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .offer_vector{
+            display: none;
+        }
+        .offer_circle_four{
+            position: inherit;
+            left: 22px;
+            width: auto;
+            top: -251px;
+            padding: 28px;
+            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+            border-radius: 101px;
+            /* background-color: wheat; */
+            max-width: 100%;
+            margin: auto;
+            margin-top: 29px;
+        }
+        .about_sec_vector_top img{
+            width: 410px;
+        }
+        .offer_heading h2 {
+            font-size: 28px;
+            color: #262566;
+            text-align: center;
+        }
+        .about_sec_vector_top{
+            position: absolute;
+            left: 1650px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .about_sec_heading h2 {
+            font-size: 31px;
+            line-height: 102px;
+            color: #262566 !important;
+        }
+        .about_sec_vector_bottom img{
+            width: 210px;
+        }
+        .about_sec_vector_bottom{
+            position: absolute;
+            right: 0;
+            opacity: 0.5;
+            top: 1650px;
+        }
+        .online_support_heading h2 {
+            font-size: 22px;
+        }
+        .online_support_description p {
+            font-size: 15px;
         }
     }

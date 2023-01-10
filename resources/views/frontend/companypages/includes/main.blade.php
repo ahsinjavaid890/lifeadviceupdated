@@ -86,7 +86,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card lg-wizard-card modal-card border-0">
-                           <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
+                           <h2 class="heading-3 card-heading">Please Select Coverage Amount?</h2>
                            <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                           </div>

@@ -75,10 +75,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card_one_vector">
+                    <div class="card_one_vector second-vector">
                         <img src="{{ url('public/front/images/about/card_circle_one.png')}}">
                     </div>
-                    <div class="card">
+                    <div class="card card_two">
                         <div class="card-body">
                             <div class="about_one_heading">
                                 <h2 class="text-center"><span>Our</span> Goal</h2>
