@@ -87,6 +87,12 @@
                                         <li class="nav-item">
                                             <a href="{{ url('resp') }}" class="nav-link">RESP Insurance</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('mortgage') }}" class="nav-link">Mortgage Insurance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url('tfsa') }}" class="nav-link">TFSA Insurance</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">

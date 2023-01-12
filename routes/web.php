@@ -52,6 +52,8 @@ Route::get('/product', [SiteController::class, 'product']);
 Route::get('/claim', [SiteController::class, 'claim']);
 Route::get('/resp', [SiteController::class, 'resp']);
 Route::get('/rrsp', [SiteController::class, 'rrsp']);
+Route::get('/mortgage', [SiteController::class, 'mortgage']);
+Route::get('/tfsa', [SiteController::class, 'tfsa']);
 Route::get('/nonmedical', [SiteController::class, 'nonmedical']);
 Route::get('/aboutus', [SiteController::class, 'aboutus']);
 Route::get('/contactus', [SiteController::class, 'contactus']);

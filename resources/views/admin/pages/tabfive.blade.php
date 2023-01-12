@@ -2,15 +2,35 @@
     <div class="row">
         <div class="col-md-12">
            @if($data->url == 'resp')
-        <div class="form-group">
-            <label>Section Five Description</label>
-            <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
-        </div>
-        <div class="form-group">
-            <label>Section Five Vector</label>
-            <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
-        </div>
-       @endif
+            <div class="form-group">
+                <label>Section Five Description</label>
+                <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Five Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+            </div>
+           @endif
+           @if($data->url == 'mortgage')
+            <div class="form-group">
+                <label>Section Five Description</label>
+                <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Five Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+            </div>
+           @endif
+           @if($data->url == 'tfsa')
+            <div class="form-group">
+                <label>Section Five Description</label>
+                <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Five Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+            </div>
+           @endif
            @if($data->url == 'rrsp')
         <div class="form-group">
             <label>Section Five Description</label>

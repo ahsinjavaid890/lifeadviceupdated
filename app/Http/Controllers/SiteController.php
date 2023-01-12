@@ -292,6 +292,14 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.rrsp');
     }
+    public function mortgage()
+    {
+        return view('frontend.companypages.mortgage');
+    }
+    public function tfsa()
+    {
+        return view('frontend.companypages.tfsa');
+    }
     public function nonmedical()
     {
         return view('frontend.companypages.nonmedical');

@@ -38,6 +38,26 @@
                 </table>
            @endif
            @if($data->url == 'resp')
+            <div class="form-group">
+                <label>Section Four Description</label>
+                <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Four Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
+            </div>
+        @endif
+       @if($data->url == 'mortgage')
+        <div class="form-group">
+            <label>Section Four Description</label>
+            <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Section Four Vector</label>
+            <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
+        </div>
+       @endif
+       @if($data->url == 'tfsa')
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>

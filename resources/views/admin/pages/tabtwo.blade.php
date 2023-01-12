@@ -10,7 +10,26 @@
                 <label>Section Two  Vector</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
             </div>
-        
+           @endif
+           @if($data->url == 'mortgage')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
+           @endif
+           @if($data->url == 'tfsa')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
            @endif
            @if($data->url == 'nonmedical')
             <div class="form-group">
