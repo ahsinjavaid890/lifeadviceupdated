@@ -210,16 +210,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div id="ageinput" class="form-input input-age">
+                                       <!-- <div id="ageinput" class="form-input input-age">
                                           <input name="years[]" id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
+                                       </div> -->
+                                       <div style="display: flex;" class="form-input input-date-of-birth">
+                                          <input  type="text" maxlength="10" placeholder="DD" class="input-field dob dayfield">
+                                          <input placeholder="MM" type="text" maxlength="10" class="input-field dob monthfield">
+                                          <input placeholder="YEAR" type="text" maxlength="10" class="yearfield input-field dob">
                                        </div>
-                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
-                                       </div>
-                                       <span class="switch-input">or 
+                                       <!-- <span class="switch-input">or 
                                           <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
                                           <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span>
+                                       </span> -->
                                     </div>
                                      <div class="additionaltraveler"></div>
                                      <div class="mt-3 mb-3">
