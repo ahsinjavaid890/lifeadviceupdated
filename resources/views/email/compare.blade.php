@@ -121,7 +121,7 @@
     <div class="container-fluid" style="text-align: center; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
     
 <h1 style="font-size: 24px;font-weight: bold;color: #005d9a; margin: 0 0 44px 0;">Compare and Buy Super Visa Insurance Plans</h1>
-<div style="text-align: center; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; position: relative; width: 100%; padding-right: 15px; padding-left: 15px">
+<div style="justify-content: center; text-align: center; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; position: relative; width: 100%; padding-right: 15px; padding-left: 15px">
     <div  style="-ms-flex: 100%; flex: 100%; max-width: 100%;">
         <a href="http://localhost/lifeadvicelaravel/sendcompareemail?email=abubakar19417malik@gmail.com&amp;product_id=23&amp;ids=26,27&amp;default_value=null&amp;price_value=null&amp;rate=989.88,1419.12" class="hoverbutton" style="padding: 4px 10px; display: inline-block; border-radius: 50px; background-color: #00B1FF; color: white; border: 5px solid white; transition: border 0.2s ease;">Get This Comperison on Email</a>
     </div>
@@ -139,25 +139,25 @@
                     <td align="center"><img src="http://localhost/lifeadvicelaravel/public/images/191020200954_TL.jpg" alt="Travlance Insurance" class="img-responsive" height="70" width="200" style="width:200px"></td>
                     <td align="center"><img src="http://localhost/lifeadvicelaravel/public/images/191020200954_TL.jpg" alt="Travlance Insurance" class="img-responsive" height="70" width="200" style="width:200px"></td>
             </tr>
-        <tr>
-            <td class="smallhead" >PREMIUM</td>
+        <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">PREMIUM</td>
                         <td style="text-align: center;font-size: 28px;font-weight: bold;color: #C00;">$ 989.88</td>
                         <td style="text-align: center;font-size: 28px;font-weight: bold;color: #C00;">$ 1,419.12</td>
                     </tr>
-        <tr>
-            <td class="smallhead"></td>
-                        <td>            <button disabled="" type="button" style="display: block;margin: 5px auto 0px auto;font-weight: bold;" class="btn btn-success" onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+        <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;"></td>
+                        <td>            <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </td>
-                        <td>            <button disabled="" type="button" style="display: block;margin: 5px auto 0px auto;font-weight: bold;" class="btn btn-success" onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+                        <td>            <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </td>
                     </tr>
-        <tr>
-            <td class="smallhead">Coverage Amount</td>
+        <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Coverage Amount</td>
                         <td style="text-align: center;font-size: 16px;font-weight: bold;">$ 0</td>
                         <td style="text-align: center;font-size: 16px;font-weight: bold;">$ 0</td>
                     </tr>
-        <tr>
-            <td class="smallhead">Sample PDF Policy</td>
+        <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Sample PDF Policy</td>
                             <td>
                                         <a href="http://localhost/lifeadvicelaravel/public/images/02092022184305_VTC-Essential-Policy (Sep 2022).pdf" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i> View PDF Policy</a>
                                     </td>
@@ -165,8 +165,8 @@
                                         <a href="http://localhost/lifeadvicelaravel/public/images/02092022203023_VTC-Premier-Policy (Sep 2022).pdf" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i> View PDF Policy</a>
                                     </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Available Coverage Amounts</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Available Coverage Amounts</td>
                         <td>
                                 </td>
                         <td>
@@ -175,8 +175,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Bed Side Expences</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Bed Side Expences</td>
                         <td>
                                 </td>
                         <td>
@@ -185,8 +185,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Claim Info</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Claim Info</td>
                         <td>
                                 </td>
                         <td>
@@ -195,8 +195,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Cremation/ Burial Expenses</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Cremation/ Burial Expenses</td>
                         <td>
                                 </td>
                         <td>
@@ -205,8 +205,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Deductible Options</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Deductible Options</td>
                         <td>
                                 </td>
                         <td>
@@ -215,8 +215,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Eligibility</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Eligibility</td>
                         <td>
                                 </td>
                         <td>
@@ -225,8 +225,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Emergency Dental</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Emergency Dental</td>
                         <td>
                                 </td>
                         <td>
@@ -235,8 +235,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Emergency Medical Services</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Emergency Medical Services</td>
                         <td>
                                 </td>
                         <td>
@@ -245,8 +245,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Emergency Transportaion/Ambulance</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Emergency Transportaion/Ambulance</td>
                         <td>
                                 </td>
                         <td>
@@ -255,8 +255,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Extended Health Care</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Extended Health Care</td>
                         <td>
                                 </td>
                         <td>
@@ -265,8 +265,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Follow Up Visits</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Follow Up Visits</td>
                         <td>
                                 </td>
                         <td>
@@ -275,8 +275,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Hospitalization</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Hospitalization</td>
                         <td>
                                 </td>
                         <td>
@@ -285,8 +285,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Out-Of-Pocket Expenses</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Out-Of-Pocket Expenses</td>
                         <td>
                                 </td>
                         <td>
@@ -295,8 +295,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Pre-existing Medical Condition</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Pre-existing Medical Condition</td>
                         <td>
                                 </td>
                         <td>
@@ -305,8 +305,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Prescription Drugs</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Prescription Drugs</td>
                         <td>
                                 </td>
                         <td>
@@ -315,8 +315,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Refund Policy</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Refund Policy</td>
                         <td>
                                 </td>
                         <td>
@@ -325,8 +325,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Return Home</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Return Home</td>
                         <td>
                                 </td>
                         <td>
@@ -335,8 +335,8 @@
 
                                 </td>
                     </tr>
-                    <tr>
-            <td class="smallhead">Waiting Period</td>
+                    <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">Waiting Period</td>
                         <td>
                                 </td>
                         <td>
@@ -346,11 +346,11 @@
                                 </td>
                     </tr>
                             
-        <tr>
-            <td class="smallhead"></td>
-                        <td>            <button disabled="" type="button" style="display: block;margin: 5px auto 0px auto;font-weight: bold;" class="btn btn-success" onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+        <tr style="border: 1px solid #dee2e6;">
+            <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;"></td>
+                        <td>            <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </td>
-                        <td>            <button disabled="" type="button" style="display: block;margin: 5px auto 0px auto;font-weight: bold;" class="btn btn-success" onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+                        <td>            <button   style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </td>
             
         </tr>   
