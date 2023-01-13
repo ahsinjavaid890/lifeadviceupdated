@@ -234,13 +234,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  for($i=1;$i<=$number_of_travel;$i++){
                                     ?>
                                  <div class="row" id="traveller_<?php echo $i;?>" style="<?php if($i > 1){ echo 'display: none'; } ?>">
-                                 <label>Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
+                                 <label class="ml-3">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  <div class="col-md-12" style="margin-bottom: 10px; padding:0;">
-                                 <div class="date-wrapper question-answer">
-                                                   <input type="text" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">/
-                                                   <input type="text" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">/
-                                                   <select name="years[]" id="add_<?php echo $i;?>" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
-                                                   <option value="">Year</option>
+                                 <div class="date-wrapper question-answer d-flex ml-3">
+                                    <input type="text" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">
+                                    <input type="text" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">
+                                    <select name="years[]" id="add_<?php echo $i;?>" class="numeric lpadyear year-holder" onchange="checknumtravellers()" >
+                                    <option value="">Year</option>
                                  <?php $maxyear = date('Y');
                                  $j = $maxyear;
                                  $year = date('Y');
