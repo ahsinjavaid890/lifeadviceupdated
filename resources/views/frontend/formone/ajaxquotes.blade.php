@@ -102,7 +102,7 @@ $(function () {
         
         
     </div>
-    <div class="col-md-8">
+    <div id="main" class="col-md-8">
         
     
 <?php
@@ -386,7 +386,7 @@ if($show == '1' && $total_price > 0){
 
   ?>
 
-<span class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+<span id="dv_{{$total_price}}" class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
       <div class="row">
@@ -576,6 +576,15 @@ $daily_rate = 0;
 </div>
 </div>
 <script>
+
+    $( document ).ready(function() {
+        var main = document.getElementById( 'main' );
+        [].map.call( main.children, Object ).sort( function ( a, b ) {
+            return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
+        }).forEach( function ( elem ) {
+            main.appendChild( elem );
+        });
+    });
     function slideadditionaltravelers(id) {
         $(".hoverdetails_"+id).slideToggle();
     }
