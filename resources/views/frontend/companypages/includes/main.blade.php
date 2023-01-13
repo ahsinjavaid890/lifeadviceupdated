@@ -44,7 +44,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" id="primarydestination" name="primarydestination">
                <input type="hidden" id="departure_date" name="departure_date">
                <input type="hidden" id="return_date" name="return_date">
-               <input type="hidden" name="ages[]" id="selectage">
+               <!-- <input type="hidden" name="ages[]" id="selectage"> -->
                <!-- <input type="hidden" name="years[]" id="selectage"> -->
             <div class="qoute-card">
                <div class="card-body">
@@ -207,21 +207,74 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                           </div>
                               <div class="row">
+                                 @if(isset($fields['traveller']))
+                                @if($fields['traveller'] == 'on')
+
+                                @php
+                                 $number_of_travel = $fields['traveller_number'];
+                                @endphp
+
+                                 <div class="col-md-12" style="margin-bottom: 10px;">
+                                 <label>Number of Travellers</label>
+                                 <select name="number_travelers" class="form-control form-select" id="number_travelers"  autocomplete="off" required onchange="checknumtravellers()">
+                                    <option value="">Number of travellers</option>
+                                    <?php for($t=1;$t<=$number_of_travel;$t++){ ?>
+                                    <option value="<?php echo $t; ?>" ><?php echo $t; ?></option>
+                                    <?php } ?>
+                                 </select>
+                                 </div>   
+                                 @endif
+                                 @endif
+
+
+                                 <div class="col-md-12">
+                                 <?php 
+                                 $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                                 $c = 0;
+                                 for($i=1;$i<=$number_of_travel;$i++){
+                                    ?>
+                                 <div class="row" id="traveller_<?php echo $i;?>" style="<?php if($i > 1){ echo 'display: none'; } ?>">
+                                 <label>Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
+                                 <div class="col-md-12" style="margin-bottom: 10px; padding:0;">
+                                 <div class="date-wrapper question-answer">
+                                                   <input type="text" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">/
+                                                   <input type="text" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">/
+                                                   <select name="years[]" id="add_<?php echo $i;?>" class="numeric lpadyear year-holder" onchange="checknumtravellers()" style="box-shadow: none !important;border: 0 !important;width: 100%;">
+                                                   <option value="">Year</option>
+                                 <?php $maxyear = date('Y');
+                                 $j = $maxyear;
+                                 $year = date('Y');
+                                 if($data->supervisa == 'yes'){
+                                 $startfrom = '1918';
+                                 $j = date('Y') - 40;
+                                 } else {
+                                 $startfrom = '1918';
+                                 }
+                                 while($j>$startfrom) {?>
+                                 <option value="<?php echo $j;?>" ><?php echo $j;?></option>
+                                 <?php if($j == 1984){?>
+                                 <option value="">Year</option>
+                                 <?php } ?>
+                                 <?php $j--; } ?>
+                                 </select>
+                                 </div>
+                                 </div>
+                                 <div class="clearfix"></div>
+                                 </div>
+                                 <input type="hidden" name="ages[]" id="age_<?php echo $i;?>" />
+                                 <?php $c++; } ?>
+                                 </div>
+
+<!-- 
                                  <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <!-- <div id="ageinput" class="form-input input-age">
-                                          <input name="years[]" id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
-                                       </div> -->
                                        <div style="display: flex;" class="form-input input-date-of-birth">
-                                          <input  type="text" maxlength="10" placeholder="DD" class="input-field dob dayfield">
-                                          <input placeholder="MM" type="text" maxlength="10" class="input-field dob monthfield">
-                                          <input placeholder="YEAR" type="text" maxlength="10" class="yearfield input-field dob">
+                                          <input name="days[]" type="text" maxlength="2" placeholder="DD" class="input-field dob dayfield">
+                                          <input name="months[]" placeholder="MM" type="text" maxlength="2" class="input-field dob monthfield">
+                                          <input name="years[]" placeholder="YEAR" type="text" maxlength="4" class="yearfield input-field dob">
+                                          <input type="hidden" name="ages[]" id="age_1" />
                                        </div>
-                                       <!-- <span class="switch-input">or 
-                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
-                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span> -->
                                     </div>
                                      <div class="additionaltraveler"></div>
                                      <div class="mt-3 mb-3">
@@ -229,7 +282,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                            <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                         </div>
                                      </div>
-                                 </div>
+                                 </div> -->
                                  @if(isset($fields['Country']))
                                 @if($fields['Country'] == "on" )
 
@@ -710,6 +763,43 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    </div>
 </div>
 <script type="text/javascript">
+   function checknumtravellers(){
+   //Number OF Traveller
+      var number_of_traveller = document.getElementById('number_travelers').value;
+      
+      for(var t=1; t<=number_of_traveller; t++){
+         $("#traveller_"+t).hide();
+         $('#age_'+t).val('');
+      }
+      //alert(number_of_traveller);
+      for(var i=1; i<=number_of_traveller; i++){
+      $("#traveller_"+i).show();
+      document.getElementById('add_'+i).required = true;
+      }
+   var startdate = document.getElementById('departure_date').value;  
+   for(var i=1; i<=number_of_traveller; i++){
+   var d = document.getElementById('days_'+i).value;
+   var m = document.getElementById('months_'+i).value;
+   var y = document.getElementById('add_'+i).value;
+   var dob = y + '-' + m + '-' + d;
+   alert(dob);
+   dob = new Date(dob);
+   var today = new Date(startdate);
+   var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+   $('#age_'+i).val(age);
+   }
+   p = 1;
+   pr = number_of_traveller + p;
+   for(var p = pr; p<=8; p++){
+   document.getElementById('days_'+p).value = '';
+   document.getElementById('months_'+p).value = '';
+   document.getElementById('add_'+p).value = '';
+   }
+
+   //checkfamilyplan();
+   }
+
+
    var a = 0;
    function addtravellers() {
       a++

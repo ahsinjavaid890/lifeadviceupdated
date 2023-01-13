@@ -147,8 +147,8 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->years)){
-    $ages_array = array_filter($request->years);
+if (is_array($request->ages)){
+    $ages_array = array_filter($request->ages);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -158,7 +158,6 @@ else {
     $elder_age = 0;
     $number_travelers = 1;
 }
-
 if($request->familyplan_temp == 'yes'){
     if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
         $family_plan = 'yes';
@@ -412,67 +411,7 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
                     <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
                     <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
-                    <div class="col-md-12 no-padding">
-                    <?php
-                    $per = 0;
-                    $single_person_rate = 0;
-                    foreach($ages_array as $person_age){
-                        $per++;
-                        $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery" );
-                        $single_person_rate = $p_planrates[0]->rate;
-                        if($family_plan == 'yes' && $elder_age != $person_age){
-                        $person_daily = 0;
-                        } else if($family_plan == 'yes' && $elder_age == $person_age){
-                        $person_daily = $single_person_rate * 2;
-                        } else {
-                        $person_daily = $single_person_rate;
-                        }
-                        if($rate_base == '0'){ 
-                        $person_price = $person_daily * $num_of_days;
-                        } else if($rate_base == '1'){ 
-                        $person_price = $person_daily * $num_months;
-                        } else if($rate_base == '2'){ 
-                        $person_price = $person_daily;
-                        }
-                        else if($rate_base == '3'){ 
-                        $person_price = $person_daily;
-                        }
-
-                        if($flatrate_type == 'each'){
-                        $p_flat_price = $flatrate;
-                        }else if($flatrate_type == 'total'){
-                        $p_flat_price = $flatrate  / $number_travelers;
-                        } else {
-                        $p_flat_price = 0;
-                        }
-                        $ptotaldaysprice = $person_price;
-                        if($salestax_dest == $post_dest){
-                        $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                        } else {
-                        $p_salestaxes = 0;
-                        }
-
-                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-                        if($smoke == '0'){
-                        $p_smoke_price = $smoke_rate;
-                        } else if($smoke == '1'){
-                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
-                        }
-                        } else {
-                        $p_smoke_price = 0; 
-                        }
-
-                        $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
-
-                        $p_deduct_discount = ($person_price * $deduct_rate) / 100;
-                        $p_cdiscount = ($person_price * $cdiscountrate) / 100;
-                        $p_discount = $p_deduct_discount + $p_cdiscount;
-                        $person_price = ($person_price - $p_discount) + $p_others;
-                    ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> </span></div>
-                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Coverage Amount: <span style="color: #f5821f;">$<?php echo $sum_insured;?></span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
-                    <?php $single_person_rate = '';} ?>
-                    </div>
+                    
                     </div>
                     </div>
                 </div>
@@ -585,6 +524,11 @@ $daily_rate = 0;
             main.appendChild( elem );
         });
     });
+
+    
+
+
+
     function slideadditionaltravelers(id) {
         $(".hoverdetails_"+id).slideToggle();
     }
