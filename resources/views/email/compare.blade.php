@@ -122,15 +122,11 @@
     
 <h1 style="font-size: 24px;font-weight: bold;color: #005d9a; margin: 0 0 44px 0;">Compare and Buy Super Visa Insurance Plans</h1>
 <div style="justify-content: center; text-align: center; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; position: relative; width: 100%; padding-right: 15px; padding-left: 15px">
-    <div  style="-ms-flex: 100%; flex: 100%; max-width: 100%;">
-        <a href="http://localhost/lifeadvicelaravel/sendcompareemail?email=abubakar19417malik@gmail.com&amp;product_id=23&amp;ids=26,27&amp;default_value=null&amp;price_value=null&amp;rate=989.88,1419.12" class="hoverbutton" style="padding: 4px 10px; display: inline-block; border-radius: 50px; background-color: #00B1FF; color: white; border: 5px solid white; transition: border 0.2s ease;">Get This Comperison on Email</a>
-    </div>
 </div>
 <table class="table" style="border: 1px solid #dee2e6;width: 100%; margin-bottom: 1rem; color: #212529;margin: 0; border-collapse: collapse">
     <tbody>
     <tr style="background:#239b7a;">
-        <td rowspan="2" style="text-align:center;color: #FFF;font-size: 16px;max-width: 274px;font-weight: 700;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;"><h3 style="background:#45bd9c; padding:3px; font-size:41px; text-align:center;color:#FFF;margin: 0;margin-bottom: 10px;">2</h3>Plans Selected for Comparison
-        <button type="button" style="cursor: pointer; display: block !important;margin: 5px auto 0px auto;font-weight: bold;padding: 4px 10px; display: inline-block; border-radius: 50px; background-color: #00B1FF; color: white; border: 5px solid white; transition: border 0.2s ease;" class="hoverbutton" onclick="javascript:window.print()"><i class="fa fa-print" style="text-decoration: none !important;"></i> Print Plans</button>
+        <td rowspan="2" style="text-align:center;color: #FFF;font-size: 16px;max-width: 274px;font-weight: 700;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;"><h3 style="background:#45bd9c; padding:3px; font-size:41px; text-align:center;color:#FFF;margin: 0;margin-bottom: 10px;">2</h3>Plans Selected for Comparison>
         </td>
                     <th style="color:#FFF; text-align:center; font-weight:bold; font-size:18px;">Essential Plan</th>
                     <th style="color:#FFF; text-align:center; font-weight:bold; font-size:18px;">Premier Plan</th>

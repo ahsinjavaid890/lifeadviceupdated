@@ -64,7 +64,7 @@
     </style>
 </head>
 
-<body style="background-color:#262566; font-family: 'Open Sans', sans-serif;">
+<body style="background-color:#262566; font-family: 'Open Sans', sans-serif;padding: 50px;">
    <div style="max-width: 70%;margin-top: 70px !important; margin: auto;background-color: white;">
        <div style="text-align: center;">
            <img style="width: 200px;" src="https://lifeadvice.ca/lifeadvice.ca/lifeadvicelaravel/public/images/118135255.png">
@@ -87,35 +87,72 @@
                </tr>
                <tr>
                    <th style="display: flex; justify-content: space-around;">
-                       <div style="padding-top: 35px;">$50.17</div>
-                       <div>
-                           <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-                       </div>
-                       <div style="padding-top: 35px;">
-                           <a href="#"><button style="background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a> 
-                       </div>
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th style="padding: 30px;">$50.17</th>
+                           </tr>
+                       </table>
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th>
+                                   <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
+                               </th>
+                           </tr>
+                       </table style="width: 50%;border: 1px solid #dddddd;">
+                       <table  style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th>
+                                   <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                               </th>
+                           </tr>
+                       </table>
+                   </th>
+               </tr>
+               
+               <tr>
+                   <th style="display: flex; justify-content: space-around;">
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th  style="padding: 30px;">$50.17</th>
+                           </tr>
+                       </table>
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th>
+                                   <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
+                               </th>
+                           </tr>
+                       </table style="width: 50%;border: 1px solid #dddddd;">
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th >
+                                   <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                               </th>
+                           </tr>
+                       </table>
                    </th>
                </tr>
                <tr>
                    <th style="display: flex; justify-content: space-around;">
-                       <div style="padding-top: 35px;">$50.17</div>
-                       <div>
-                           <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-                       </div>
-                       <div style="padding-top: 35px;">
-                           <a href="#"><button style="background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a> 
-                       </div>
-                   </th>
-               </tr>
-               <tr>
-                   <th style="display: flex; justify-content: space-around;">
-                       <div style="padding-top: 35px;">$50.17</div>
-                       <div>
-                           <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-                       </div>
-                       <div style="padding-top: 35px;">
-                           <a href="#"><button style="background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a> 
-                       </div>
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th style="padding: 30px;">$50.17</th>
+                           </tr>
+                       </table>
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th>
+                                   <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
+                               </th>
+                           </tr>
+                       </table style="width: 50%;border: 1px solid #dddddd;">
+                       <table style="width: 50%;border: 1px solid #dddddd;">
+                           <tr>
+                               <th>
+                                   <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                               </th>
+                           </tr>
+                       </table>
                    </th>
                </tr>
            </thead>
