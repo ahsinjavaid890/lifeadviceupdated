@@ -283,44 +283,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </div>
                                      </div>
                                  </div> -->
-                                 @if(isset($fields['Country']))
-                                @if($fields['Country'] == "on" )
-
-                                 <div class="col-md-6">
-                                      <div class="wrapper-dropdown" id="primary_destination">
-                                        <span>Priamry Destination</span>
-                                        <ul class="dropdown"  >
-
-                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
-                                            <span class="selectspan">{{ $r->name }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                               function selectdestination(id) {
-                                                   $('#primarydestination').val(id);   
-                                               }
-                                               function secondnext() {
-                                                  if($('#primarydestination').val() == '')
-                                                  {
-                                                     $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Destination');
-                                                  }else{
-                                                      var travelerage = $('#travelerage').val();
-                                                      var primarydestination = $('#primarydestination').val();
-                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
-                                                      $('#selectage').val(travelerage);
-                                                      $('#secondnextfake').hide();
-                                                      $('#secondnextorignal').show();
-                                                      $('#secondnextorignal').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                 </div>
-                                 @endif
-                                 @endif
+                                
                                  <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
 
                               </div>
@@ -329,8 +292,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
-                          <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span>
-                          <span style="display: none;" id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
+                          <!-- <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span> -->
+                          <span id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -377,6 +340,42 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </div>
                                       </div>
                                  <div class="col-md-6">
+                                       @if(isset($fields['Country']))
+                                @if($fields['Country'] == "on" )
+
+                                      <div class="wrapper-dropdown mt-5" id="primary_destination">
+                                        <span>Priamry Destination</span>
+                                        <ul class="dropdown"  >
+
+                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
+                                            <span class="selectspan">{{ $r->name }}</span>
+                                         </li>
+                                         @endforeach
+                                         <script type="text/javascript">
+                                               function selectdestination(id) {
+                                                   $('#primarydestination').val(id);   
+                                               }
+                                               function secondnext() {
+                                                  if($('#primarydestination').val() == '')
+                                                  {
+                                                     $('#destinationerror').show();
+                                                     $('#destinationerror').html('Please Select Destination');
+                                                  }else{
+                                                      var travelerage = $('#travelerage').val();
+                                                      var primarydestination = $('#primarydestination').val();
+                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
+                                                      $('#selectage').val(travelerage);
+                                                      $('#secondnextfake').hide();
+                                                      $('#secondnextorignal').show();
+                                                      $('#secondnextorignal').click();
+                                                  }
+                                               }
+                                         </script>
+                                        </ul>
+                                      </div>
+                                 @endif
+                                 @endif
                                     <div class="row traveler-question">
                                        <div class="col-md-12">
                                              <span class="questionheading">Do you require Family Plan ?</span>
@@ -395,6 +394,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                 }
                                              </script>
                                        </div>
+
                                        <div class="col-md-12">
                                           <span class="questionheading">Pre-existing Condition ?</span>
                                           <div class="col-md-12 no-padding user-answer">
