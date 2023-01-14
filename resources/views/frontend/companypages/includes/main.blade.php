@@ -782,7 +782,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    var m = document.getElementById('months_'+i).value;
    var y = document.getElementById('add_'+i).value;
    var dob = y + '-' + m + '-' + d;
-   // alert(dob);
+   alert(dob);
    dob = new Date(dob);
    var today = new Date(startdate);
    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
