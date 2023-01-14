@@ -1,4 +1,7 @@
 @extends('frontend.layouts.main')
+@section('tittle')
+<title>Apply</title>
+@endsection
 @section('content')
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <script src="js/mobiscroll.jquery.min.js"></script>
@@ -60,19 +63,19 @@
 			        	<form action="{{ url('applyqoute') }}" method="post" class="f1">
 							@csrf
 
-<input type="hidden" name="coverage" value="{{ $request->coverage }}">
-<input type="hidden" name="deductibles" value="{{$request->deductibles}}">
-<input type="hidden" name="deductible_rate" value="{{ $request->deductible_rate }}">
-<input type="hidden" name="premium" value="{{ $request->premium }}">
-<input type="hidden" name="plan_name" value="{{ $request->planname }}">
-<input type="hidden" name="plan_id" value="{{ $request->plan_id }}">
-<input type="hidden" name="comp_id" value="{{ $request->comp_id }}">
-<input type="hidden" name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}">
-<input type="hidden" name="product_id" value="{{ $request->product_id }}">
-<input type="hidden" name="traveller" value="{{ $request->traveller }}">
-<input type="hidden" name="age" value="{{ $request->age }}">
-<input type="hidden" name="broker" value="{{ $request->broker }}">     
-<input type="hidden" name="agent" value="{{ $request->agent }}">
+							<input type="hidden" name="coverage" value="{{ $request->coverage }}">
+							<input type="hidden" name="deductibles" value="{{$request->deductibles}}">
+							<input type="hidden" name="deductible_rate" value="{{ $request->deductible_rate }}">
+							<input type="hidden" name="premium" value="{{ $request->premium }}">
+							<input type="hidden" name="plan_name" value="{{ $request->planname }}">
+							<input type="hidden" name="plan_id" value="{{ $request->plan_id }}">
+							<input type="hidden" name="comp_id" value="{{ $request->comp_id }}">
+							<input type="hidden" name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}">
+							<input type="hidden" name="product_id" value="{{ $request->product_id }}">
+							<input type="hidden" name="traveller" value="{{ $request->traveller }}">
+							<input type="hidden" name="age" value="{{ $request->age }}">
+							<input type="hidden" name="broker" value="{{ $request->broker }}">     
+							<input type="hidden" name="agent" value="{{ $request->agent }}">
 
 
 
@@ -113,6 +116,7 @@
                     		</div>
                     		
                     		<fieldset> 
+                    			
                     			<div class="form-group">
 									<div class="row">
 										<div class="col-md-6 nopad">
