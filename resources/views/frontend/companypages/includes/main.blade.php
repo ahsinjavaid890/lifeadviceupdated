@@ -3,6 +3,9 @@
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
   <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -216,7 +219,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 
                                  <div class="col-md-12" style="margin-bottom: 10px;">
                                  <label>Number of Travellers</label>
-                                 <select name="number_travelers" class="form-control form-select" id="number_travelers"  autocomplete="off" required onchange="checknumtravellers()">
+                                 <select name="number_travelers" class=" form-control form-select" id="number_travelers"  autocomplete="off" required onchange="checknumtravellers()">
                                     <option value="">Number of travellers</option>
                                     <?php for($t=1;$t<=$number_of_travel;$t++){ ?>
                                     <option value="<?php echo $t; ?>" ><?php echo $t; ?></option>
@@ -237,9 +240,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <label class="ml-3">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  <div class="col-md-12" style="margin-bottom: 10px; padding:0;">
                                  <div class="date-wrapper question-answer d-flex ml-3">
-                                    <input type="text" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">
-                                    <input type="text" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">
-                                    <select name="years[]" id="add_<?php echo $i;?>" class="numeric lpadyear year-holder" onchange="checknumtravellers()" >
+                                    <input type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">
+                                    <input type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">
+                                    <select name="years[]" id="add_<?php echo $i;?>" class="js-example-basic-single numeric lpadyear year-holder" onchange="checknumtravellers()" >
                                     <option value="">Year</option>
                                  <?php $maxyear = date('Y');
                                  $j = $maxyear;
@@ -1412,4 +1415,26 @@ dropDown.prototype = {
            }
        });
    }));
+</script>
+<script>
+  function maxLengthCheck(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
+</script>
+<script>
+  // This is an old version, for a more recent version look at
+  // https://jsfiddle.net/DRSDavidSoft/zb4ft1qq/2/
+  function maxLengthChecks(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
+</script>
+<script type="text/javascript">
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
 </script>

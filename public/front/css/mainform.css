@@ -2731,8 +2731,10 @@ li.date_picker_week_day {
     padding-left: 10px;
     border-radius: 10px 0px 0px 10px;
     border-right: none !important;  
+    border: 1px solid #cfd9e8!important;
 }
 .question-answer .month-holder{
+   border: 1px solid #cfd9e8!important;
     border-color: #cfd9e8!important;
     color: #67778f;
     width: 100%;
@@ -2753,3 +2755,7 @@ li.date_picker_week_day {
     border-radius: 0px 10px 10px 0px;
     border-left: none !important;
 }
+
+
+
+
