@@ -16,11 +16,11 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa')   
+                          @if($data->url == 'terms-and-condition' || $data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
-                            @if($data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product' || $data->url == 'faq' || $data->url == 'homepage')
+                            @if($data->url == 'terms-and-condition' || $data->url == 'aboutus' || $data->url == 'contactus' || $data->url == 'privacypolicy' || $data->url == 'blogs' || $data->url == 'product' || $data->url == 'faq' || $data->url == 'homepage')
                                    <h2> {{ $data->name }} </h2>
 
                             @endif
@@ -112,7 +112,7 @@
                                </li>
                              </ul>
                            @endif
-                            @if($data->url == 'critical-illness')
+                            @if($data->url == 'critical-illness' || $data->url == 'terms-and-condition')
                               <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>

@@ -86,6 +86,11 @@
                             </a>
                     </li>
                     <li>
+                        <a href="{{ url('terms-and-condition')}}">
+                                Terms & Condition
+                            </a>
+                    </li>
+                    <li>
                         <a href="{{ url('contactus') }}">
                                 Contact Us
                             </a>
