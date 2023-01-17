@@ -116,50 +116,65 @@
                     		</div>
                     		
                     		<fieldset> 
-                    			
+                    			@for($i=0; $i < $request->traveller; $i++)
+                    			@php
+                    				$day = $request->days[$i];
+                    				$month = $request->months[$i];
+                    				$year = $request->years[$i];
+                    				$dateofbirht = $year.'-'.$month.'-'.$day;
+                    			@endphp
+
+
                     			<div class="form-group">
 									<div class="row">
 										<div class="col-md-6 nopad">
-											<label>First Name <small class="text-danger">*</small>
-											</label>
-											<input value="{{ $request->fname }}" type="text" name="fname" class="form-control" placeholder="First Name">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " name="fname" data-placeholder="First Name" required>
+											   <span class="placeholder">First Name Traveler {{ $i+1 }}<small class="text-danger">*</small></span>
+											 </div>
 										</div>
 										<div class="col-md-6 nopad">
-											<label>Last Name <small class="text-danger">*</small>
-											</label>
-											<input value="{{ $request->lname }}" type="text" name="lname" class="form-control" placeholder="Last Name">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-6 nopad">
-											<label>Date OF Birth<small class="text-danger">*</small>
-											</label>
-											<input value="{{ $request->person1 }}" type="date" name="dob" class="form-control" placeholder="Date OF Birth">
-										</div>
-										<div class="col-md-6 nopad">
-											<label>Gender<small class="text-danger">*</small>
-											</label>
-											<select name="gender" class="form-control selectpicker" data-live-search="true">
-												<option value="">Select Gender</option>
-												<option value="Male">Male</option>
-												<option value="Female">Female</option>
-											</select>
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
+											   <span class="placeholder">Last Name Traveler {{ $i+1 }}<small class="text-danger">*</small></span>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group mt-3">
 									<div class="row">
 										<div class="col-md-6 nopad">
-											<label>Phone Number<small class="text-danger">*</small>
-											</label>
-											<input value="{{ $request->phone }}" type="number" name="phone" class="form-control" placeholder="Phone Number">
+											<div class="input-wrapper">
+											   <input class="input" value="{{ date('Y-m-d',strtotime($dateofbirht)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
+											   <span class="placeholder">Date OF Birth {{ $i+1 }}<small class="text-danger">*</small></span>
+											</div>
 										</div>
 										<div class="col-md-6 nopad">
-											<label>Email<small class="text-danger">*</small>
-											</label>
-											<input value="{{ $request->email }}" type="email" name="email" class="form-control" placeholder="Email">
+											<div class="input-wrapper">
+												<select name="gender" class="input" data-placeholder="Gender">
+													<option value="">Select Gender</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+												</select>
+											   <span class="placeholder">Select Gender {{ $i+1 }}<small class="text-danger">*</small></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								@endfor
+								<div class="form-group mt-3">
+									<div class="row">
+										<div class="col-md-6 nopad">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
+											   <span class="placeholder">Phone Number<small class="text-danger">*</small></span>
+											</div>
+										</div>
+										<div class="col-md-6 nopad">
+											<div class="input-wrapper">
+											   <input class="input" type="email" placeholder=" " value="{{ $request->email }}" name="email" data-placeholder="Email" required>
+											   <span class="placeholder">Email<small class="text-danger">*</small></span>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -230,27 +245,31 @@
                             <fieldset>
                             	<div class="row">
 										<div class="col-md-6">
-											<div class="form-group">
-												<label>Street Number and Name<small class="text-danger">*</small></label>
-												<input class="form-control pac-target-input" name="streetname" id="pac-input" type="text" placeholder="Enter a location" autocomplete="off">
+											<div class="input-wrapper">
+											   <input class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
+											   <span class="placeholder">Street Number and Name<small class="text-danger">*</small></span>
 												<div id="map-canvas" style="display: none;"></div>
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="form-group">
-												<label>Suit/Apt# (optional)<small class="text-danger">*</small></label>
-												<input id="suit" name="suit" class="form-control" type="text">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " id="suit" name="suit" data-placeholder="Suit/Apt">
+											   <span class="placeholder">Suit/Apt# (optional)<small class="text-danger">*</small></span>
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="form-group">
-												<label>City<small class="text-danger">*</small></label>
-												<input id="city" name="city" class="form-control" type="text">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="Suit/Apt">
+											   <span class="placeholder">City<small class="text-danger">*</small></span>
 											</div>
 										</div>
 										<div class="col-md-6">
+											<div class="input-wrapper">
+											   <input class="input" type="email" placeholder=" " id="province" name="text" data-placeholder="Suit/Apt">
+											   <span class="placeholder">Province<small class="text-danger">*</small></span>
+											</div>
 											<div class="form-group">
-												<label>Province<small class="text-danger">*</small></label>
+												<label><small class="text-danger">*</small></label>
 												<input id="province" class="form-control" name="province" type="text">
 											</div>
 										</div>

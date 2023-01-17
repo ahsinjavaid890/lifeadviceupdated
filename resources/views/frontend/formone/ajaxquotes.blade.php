@@ -473,6 +473,15 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                @foreach($request->months as $month)
+                <input type="hidden" name="months[]" value="{{ $month }}">
+                @endforeach
+                @foreach($request->days as $day)
+                <input type="hidden" name="days[]" value="{{ $day }}">
+                @endforeach
+                @foreach($request->years as $year)
+                <input type="hidden" name="years[]" value="{{ $year }}">
+                @endforeach
                 <input type="hidden" value="{{ $num_of_days }}" name="days">
                 <input type="hidden" value="{{ $comp_name }}" name="companyName">
                 <input type="hidden" value="{{ $comp_id }}" name="comp_id">
