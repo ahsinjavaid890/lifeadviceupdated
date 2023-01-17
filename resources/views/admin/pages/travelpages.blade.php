@@ -16,7 +16,7 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'terms-and-condition' || $data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif

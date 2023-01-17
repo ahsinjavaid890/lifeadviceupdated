@@ -1,4 +1,13 @@
-<footer class="footer-top-area footer-top-area-five pt-100 pb-70">
+<style type="text/css">
+    .single-widget-li ul li::before {
+      content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+      color: #1bbc9b; /* Change the color */
+      font-weight: bold; /* If you want it to be bold */
+      display: inline-block; /* Needed to add space between the bullet and the text */
+      width: 1em; /* Also needed for space (tweak if needed) */
+    }
+</style>
+<footer class="footer-top-area footer-top-area-five" style="padding-top:20px;">
 <div class="container-homepage">
     <div class="row">
         <div class="col-lg-3 col-md-6">
@@ -8,18 +17,12 @@
                     </a>
                     <p class="text-white">Life Insurance Insurance has been a trusted name in insurance for more than 10 years. Today, we proudly serve insurance provincewide.</p>
             </div>
-            <div class="footer-icon">
-                <ul class="d-flex" style="color: #06346e">
-                    <li><a href="#"><i class="fa fa-twitter mr-2 favicon"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram mr-2 favicon"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook mr-2 favicon"></i></a></li>
-                </ul>
-            </div>
+            
         </div>
 
         <div class="col-lg-3 col-md-6">
-            <div class="single-widget">
-                <h3 class="text-white">Get Insurance<br><hr class="hr-footer"></h3>
+            <div class="single-widget single-widget-li">
+                <h3 style="border-bottom:4px solid #1bbc9b;width: 160px;" class="text-white">Get Insurance</h3>
 
                 <ul>
                     <li>
@@ -56,8 +59,8 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="single-widget">
-                <h3 class="text-white">Useful Links<br><hr class="hr-footer"></h3>
+            <div class="single-widget single-widget-li">
+                <h3 style="border-bottom:4px solid #1bbc9b;width: 160px;" class="text-white">Useful Links</h3>
 
                 <ul>
                     <li>
@@ -100,9 +103,9 @@
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="single-widget contacts">
-                <h3 class="text-white">Contact Details<br><hr class="hr-footer"></h3>
+                <h3 style="border-bottom:4px solid #1bbc9b;width: 200px;" class="text-white">Contact Details</h3>
 
-                <ul>
+                <ul >
 
                     <li>
                         <i class="flaticon-maps-and-flags"></i>
@@ -127,6 +130,23 @@
             </div>
         </div>
     </div>
+</div>
+<div style=" border-top: 1px solid #1bbc9b; padding-top: 20px; padding-bottom: 20px;" class="container-homepage">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="footer-icon">
+                <ul class="d-flex" style="color: #06346e">
+                    <li><a href="#"><i class="fa fa-twitter mr-2 favicon"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram mr-2 favicon"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook mr-2 favicon"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 text-right">
+            <p>Copyright © All Rights Reserved.</p>
+        </div>
+    </div>
+    
 </div>
 </footer>
 <div class="go-top go-top-five">
