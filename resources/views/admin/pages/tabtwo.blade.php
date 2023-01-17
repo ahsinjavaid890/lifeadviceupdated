@@ -169,6 +169,16 @@
                 <textarea class="summernote" name="critical_description"></textarea>
             </div>
            @endif
+           @if($data->url == 'terms-and-condition')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
+           @endif
            @if($data->url == 'life-insurance')
             <div class="form-group">
                 <label>First Vector</label>

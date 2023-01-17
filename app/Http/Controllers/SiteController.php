@@ -276,6 +276,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.privacypolicy');
     }
+    public function termsandcondition()
+    {
+        return view('frontend.companypages.termsandcondition');
+    }
     public function faq()
     {
         return view('frontend.companypages.faq');
