@@ -52,7 +52,7 @@
                                </li>
                              </ul>
                             @endif
-                            @if($data->url == 'termsandcondition')
+                            @if($data->url == 'term-life-insurance ')
                               <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                  <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
