@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -87,6 +86,9 @@ $(function () {
         <div class="card qoute-price-card mb-3 left_qoute_card">
           <div class="card-body">
               <div class="row">
+                <div class="col-md-12">
+                    <h4>Qoute Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
+                </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
                     
@@ -400,7 +402,7 @@ if($show == '1' && $total_price > 0){
                 </p>
                 <h2 class="qoute-policy">Policy Details</h2>
                   <ul class="plan-highlights text-dark ml-3">
-                      <li><span>Quote Reference: <span class="plan-cat"> <?php echo $quoteNumber; ?></span></span></li>
+                      <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
                   </ul>
                 <h3 style="font-size:15px;cursor: pointer;" class="qoute-policy">Additional Travelers <i onclick="slideadditionaltravelers(<?php echo $deductible.$plan_id;?>)" class="fa fa-info-circle "></i> </h3>
@@ -451,7 +453,7 @@ if($show == '1' && $total_price > 0){
               </div>
           </div>
           <div class="col-md-3">
-            <div class="compare compare-check  text-right d-flex">
+            <div class="compare compare-check  justify-content-end d-flex">
                 <span class="">Compare</span>
                 <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
             </div>
@@ -460,7 +462,7 @@ if($show == '1' && $total_price > 0){
               </div>
               <div class="total-price-traveller">
                   <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>CAD</span></h2>
-                  <p><span><?php echo $number_travelers;?> Traveller(s)</span></p>
+                  
               </div>
               <div class="buy_now"> 
                 <form method="POST" action="{{ url('apply') }}">

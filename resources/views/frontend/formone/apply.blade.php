@@ -127,7 +127,7 @@
                     				$dateofbirht = $year.'-'.$month.'-'.$day;
                     			@endphp
 
-
+                    			<hr class="hr-text mt-5" data-content="Traveler {{ $i+1 }}">
                     			<div class="form-group mt-3">
 									<div class="row">
 										<div class="col-md-6 nopad">
@@ -169,7 +169,7 @@
 									<div class="row">
 										<div class="col-md-6 nopad">
 											<div class="input-wrapper">
-											   <input class="input" type="text" placeholder=" " value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
+											   <input class="input" type="text" placeholder=" " oninput="maxLengthChecks(this)" maxlength="11" value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
 											   <span class="placeholder">Phone Number<small class="text-danger">*</small></span>
 											</div>
 										</div>
@@ -256,8 +256,8 @@
 										</div>
 										<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
-											   <input class="input" type="text" placeholder=" " id="suit" name="suit" data-placeholder="Suit/Apt">
-											   <span class="placeholder">Suit/Apt# (optional)<small class="text-danger">*</small></span>
+											   <input class="input" type="" placeholder=" " id="" name="suit" data-placeholder="Suit/Apt">
+											   <span class="placeholder">Suit/Apt# (optional)</span>
 											</div>
 										</div>
 										<div class="col-md-6 mt-3">
@@ -306,10 +306,10 @@
 											</div>
 											<div class="col-md-6">
 		                                      <div class="wrapper-dropdown" id="primary_destination">
-		                                        <span>{{ $request->country }}</span>
+		                                        <span>ontario</span>
 		                                        <ul class="dropdown"  >
 		                                         @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-		                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
+		                                         <li  @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
 		                                            <span class="selectspan">{{ $r->name }}</span>
 		                                         </li>
 		                                         @endforeach
@@ -458,7 +458,7 @@
 								    	<div class="form-container">
 									        <div class="field-container">
 									            <label for="name">Name</label>
-									            <input name="cardholdername" id="name" maxlength="20" type="text">
+									            <input  onkeydown="return /[a-z]/i.test(event.key)" name="cardholdername" id="name" maxlength="20" type="text">
 									        </div>
 								        <div class="field-container">
 								            <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
@@ -1097,5 +1097,12 @@ testOverlay.prototype.onRemove = function () {
 };
 
 google.maps.event.addDomListener(window, "load", initialize);
+</script>
+<script>
+  function maxLengthChecks(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
 </script>
 @endsection
