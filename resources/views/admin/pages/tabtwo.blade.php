@@ -1,6 +1,16 @@
 <div class="tab-pane fade" id="tab2">
    <div class="row">
         <div class="col-md-12">
+           @if($data->url == 'termsandcondition')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
+           @endif
            @if($data->url == 'resp')
             <div class="form-group">
                 <label>Section Two Description</label>

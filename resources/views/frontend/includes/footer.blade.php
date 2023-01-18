@@ -89,7 +89,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="{{ url('terms-and-condition')}}">
+                        <a href="{{ url('termsandcondition')}}">
                                 Terms & Condition
                             </a>
                     </li>

@@ -16,11 +16,14 @@
 		margin-top: 67px;
 	}
 	.wrapper-dropdown{
-		top: 43px !important;
+		top: 22px !important;
 		width: 94% !important;
 	}
 	.f1-buttons{
 		margin-top: 20px;
+	}
+	.input{
+		border: 1px solid #cfd9e8 !important;
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
@@ -125,7 +128,7 @@
                     			@endphp
 
 
-                    			<div class="form-group">
+                    			<div class="form-group mt-3">
 									<div class="row">
 										<div class="col-md-6 nopad">
 											<div class="input-wrapper">
@@ -244,45 +247,41 @@
                             </fieldset>
                             <fieldset>
                             	<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
 											   <input class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
 											   <span class="placeholder">Street Number and Name<small class="text-danger">*</small></span>
 												<div id="map-canvas" style="display: none;"></div>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
 											   <input class="input" type="text" placeholder=" " id="suit" name="suit" data-placeholder="Suit/Apt">
 											   <span class="placeholder">Suit/Apt# (optional)<small class="text-danger">*</small></span>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
-											   <input class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="Suit/Apt">
+											   <input class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="City">
 											   <span class="placeholder">City<small class="text-danger">*</small></span>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
-											   <input class="input" type="email" placeholder=" " id="province" name="text" data-placeholder="Suit/Apt">
+											   <input class="input" type="text" placeholder=" " id="province" name="province" data-placeholder="Province">
 											   <span class="placeholder">Province<small class="text-danger">*</small></span>
 											</div>
-											<div class="form-group">
-												<label><small class="text-danger">*</small></label>
-												<input id="province" class="form-control" name="province" type="text">
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " id="postalcode" name="postalcode" data-placeholder="Postal Code">
+											   <span class="placeholder">Postal Code<small class="text-danger">*</small></span>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>Postal Code<small class="text-danger">*</small></label>
-												<input id="postalcode" class="form-control" name="postalcode"  type="text">
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>Country<small class="text-danger">*</small></label>
-												<input id="country" class="form-control" name="country"  type="text">
+										<div class="col-md-6 mt-3">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " id="country" name="country" data-placeholder="Country">
+											   <span class="placeholder">Country<small class="text-danger">*</small></span>
 											</div>
 										</div>
 									</div>
@@ -293,17 +292,17 @@
                             </fieldset>
                             <fieldset>
                             	<div class="row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label>Visitor <small class="text-danger">*</small></label>
-												<input class="form-control" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" name="visitor_visa_type" readonly="" type="text">
+										<div class="col-md-6 mt-3">
+											<div class="input-wrapper">
+											   <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
+											   <span class="placeholder">Visitor<small class="text-danger">*</small></span>
 											</div>
 										</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label>Trip Arrival date <small class="text-danger">*</small></label>
-													<input class="form-control"  id="tripdate" name="tripdate" value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" type="date">
-												</div>
+											<div class="col-md-6 mt-3">
+											<div class="input-wrapper">
+											   <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate" data-placeholder="Trip Arrival date">
+											   <span class="placeholder">Trip Arrival date<small class="text-danger">*</small></span>
+											</div>
 											</div>
 											<div class="col-md-6">
 		                                      <div class="wrapper-dropdown" id="primary_destination">
@@ -335,16 +334,16 @@
 		                                        </ul>
 		                                      </div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label>Trip End date <small class="text-danger">*</small></label>
-													<input class="form-control"  id="tripend" name="tripend" value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>"type="date">
-												</div>
+											<div class="col-md-6 mt-3">
+											<div class="input-wrapper">
+											   <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" data-placeholder="Trip End date">
+											   <span class="placeholder">Trip End date<small class="text-danger">*</small></span>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label>Trip Duration(days) <small class="text-danger">*</small></label>
-													<input class="form-control"  value="{{ $request->tripduration }}" id="tripduration" name="tripduration" type="text">
+											</div>
+											<div class="col-md-6 mt-3">
+												<div class="input-wrapper">
+												   <input class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration" data-placeholder="Trip End date">
+												   <span class="placeholder">Trip Duration(days)<small class="text-danger">*</small></span>
 												</div>
 											</div>
 									</div>
@@ -457,10 +456,10 @@
 									</div>
 								    <div class="col-md-8">
 								    	<div class="form-container">
-								        <div class="field-container">
-								            <label for="name">Name</label>
-								            <input name="cardholdername" id="name" maxlength="20" type="text">
-								        </div>
+									        <div class="field-container">
+									            <label for="name">Name</label>
+									            <input name="cardholdername" id="name" maxlength="20" type="text">
+									        </div>
 								        <div class="field-container">
 								            <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
 								            <input name="cardholdernumber" id="cardnumber"  type="text" inputmode="numeric" >

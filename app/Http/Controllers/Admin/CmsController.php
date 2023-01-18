@@ -69,10 +69,18 @@ class CmsController extends Controller
             $update->section_six_vector = Cmf::sendimagetodirectory($request->section_six_vector);
         }
         $update->section_six_description = $request->section_six_description;
+        if($request->section_seven_vector)
+        {
+            $update->section_seven_vector = Cmf::sendimagetodirectory($request->section_seven_vector);
+        }
+        $update->section_seven_description = $request->section_seven_description;
         if($request->meta_image)
         {
             $update->meta_image = Cmf::sendimagetodirectory($request->meta_image);
         }
+        
+        $update->section_eight_description_one = $request->section_eight_description_one;
+        $update->section_eight_description_two = $request->section_eight_description_two;
         $update->save();
         return redirect()->back()->with('message', 'Page Updated Successfully');
     }

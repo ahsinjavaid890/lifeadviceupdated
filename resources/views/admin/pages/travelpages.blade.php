@@ -16,7 +16,7 @@
                         <input type="hidden" value="{{ $data->id }}" name="id">
                        <!-- navigation in .card-header -->
                        <div class="card-header">
-                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa')   
+                          @if($data->url == 'super-visa-insurance' || $data->url == 'visitor-insurance' || $data->url == 'travel-insurance' || $data->url == 'student-insurance' || $data->url == 'life-insurance' || $data->url == 'desability' || $data->url == 'critical-illness' || $data->url == 'health-insurance' || $data->url == 'claim' || $data->url == 'resp' || $data->url == 'rrsp' || $data->url == 'mortgage' || $data->url == 'nonmedical' || $data->url == 'tfsa' || $data->url == 'termsandcondition')   
                                    <h2> {{ $data->name }}</h2>
 
                             @endif
@@ -47,6 +47,40 @@
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
                                </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
+                               </li>
+                             </ul>
+                            @endif
+                            @if($data->url == 'termsandcondition')
+                              <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab1">Section 1</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab2">Section 2</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab3">Section 3</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab4">Section 4</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab8">Section 7</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab9">Section 8</a>
+                               </li>
+                               <!-- <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
+                               </li> -->
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab6">Meta Tags</a>
                                </li>

@@ -11,6 +11,16 @@
                 <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
             </div>
            @endif
+           @if($data->url == 'termsandcondition')
+            <div class="form-group">
+                <label>Section Five Description</label>
+                <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Five Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
+            </div>
+           @endif
            @if($data->url == 'mortgage')
             <div class="form-group">
                 <label>Section Five Description</label>

@@ -1,6 +1,16 @@
 <div class="tab-pane fade" id="tab9">
     <div class="row">
         <div class="col-md-12">
+            @if($data->url == 'termsandcondition')
+            <div class="form-group">
+                <label>Sec Eight Description One</label>
+                <textarea class="summernote" name="section_eight_description_one">{{ $data->section_eight_description_one}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Sec Eight Description Two</label>
+                <textarea class="summernote" name="section_eight_description_two">{{ $data->section_eight_description_two}}</textarea>
+            </div>
+           @endif
             @if($data->url == 'life-insurance')
             <table class="table table-bordered">
                 <thead>

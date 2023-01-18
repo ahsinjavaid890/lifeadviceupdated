@@ -1580,9 +1580,9 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 .heading-1, .heading-2, .heading-3, .subheading-2{
     color: #262566 !important;
 }
-.row+.row{
+/*.row+.row{
     margin: 0 !important;
-}
+}*/
 .calculate-heading h2 .container{
     display: none !important;
 }

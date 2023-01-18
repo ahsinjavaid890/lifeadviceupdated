@@ -276,10 +276,6 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.privacypolicy');
     }
-    public function termsandcondition()
-    {
-        return view('frontend.companypages.termsandcondition');
-    }
     public function faq()
     {
         return view('frontend.companypages.faq');
@@ -299,6 +295,10 @@ class SiteController extends Controller
     public function mortgage()
     {
         return view('frontend.companypages.mortgage');
+    }
+    public function termsandcondition()
+    {
+        return view('frontend.companypages.termsandcondition');
     }
     public function tfsa()
     {
