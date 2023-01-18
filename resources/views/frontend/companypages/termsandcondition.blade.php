@@ -8,4 +8,9 @@
 @include('frontend.companypages.includes.sectionfive')
 @include('frontend.companypages.includes.sectioneight')
 @include('frontend.companypages.includes.sectionseven')
+<style type="text/css">
+    .claim-process .col-md-6 img{
+        height: 400px;
+    }
+</style>
 @endsection
