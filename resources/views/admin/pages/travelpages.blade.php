@@ -69,14 +69,14 @@
                                <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab5">Section 5</a>
                                </li>
-                               <li class="nav-item">
+                               <!-- <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab7">Section 6</a>
+                               </li> -->
+                               <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab8">Section 6</a>
                                </li>
                                <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab8">Section 7</a>
-                               </li>
-                               <li class="nav-item">
-                                 <a class="nav-link" data-toggle="tab" href="#tab9">Section 8</a>
+                                 <a class="nav-link" data-toggle="tab" href="#tab9">Section 7</a>
                                </li>
                                <!-- <li class="nav-item">
                                  <a class="nav-link" data-toggle="tab" href="#tab11">Faq's</a>
