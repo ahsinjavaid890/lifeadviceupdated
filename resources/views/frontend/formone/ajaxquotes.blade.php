@@ -15,13 +15,13 @@ var Slider_Values = [<?php
                     if($d < count($ded)){
                         echo ', ';
                     }
-                    if($dedivalue == 1000)
+                    if($dedivalue == 0)
                     { 
                         $havethousand = 'yes'; 
                     }
                 } ?>];
 <?php if($havethousand == 'yes'){?>
-var dValue = Slider_Values.indexOf(1000);
+var dValue = Slider_Values.indexOf(0);
 <?php } else { ?>
 var dValue = Slider_Values[0];
 <?php } ?>
@@ -34,7 +34,7 @@ $(function () {
         step: 1,
         value: dValue,
         slide: function (event, ui) {
-            $('#coverage_deductible').text(Slider_Values[ui.value]);
+            $('#coverage_deductible').text(0);
             //alert(Slider_Values.length);
             for (i = 0; i < Slider_Values.length; i++) {
                 var group = Slider_Values[i];
@@ -90,7 +90,7 @@ $(function () {
                     <h4>Qoute Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
-                    <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
+                    <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '0'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
                     
                     <div class="mt-4" id="slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
