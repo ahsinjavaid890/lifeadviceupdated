@@ -1,7 +1,17 @@
 <div class="tab-pane fade" id="tab2">
    <div class="row">
         <div class="col-md-12">
-           @if($data->url == 'termsandcondition')
+           @if($data->url == 'term-life-insurance')
+            <div class="form-group">
+                <label>Section Two Description</label>
+                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Section Two  Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
+            </div>
+           @endif
+           @if($data->url == 'terms-and-condition')
             <div class="form-group">
                 <label>Section Two Description</label>
                 <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
@@ -177,16 +187,6 @@
             <div class="form-group">
                 <label>Life Description</label>
                 <textarea class="summernote" name="critical_description"></textarea>
-            </div>
-           @endif
-           @if($data->url == 'terms-and-condition')
-            <div class="form-group">
-                <label>Section Two Description</label>
-                <textarea class="summernote" name="section_two_description">{{ $data->section_two_description }}</textarea>
-            </div>
-            <div class="form-group">
-                <label>Section Two  Vector</label>
-                <input type="file" style="height:45px;" class="form-control" name="section_two_vector">
             </div>
            @endif
            @if($data->url == 'life-insurance')

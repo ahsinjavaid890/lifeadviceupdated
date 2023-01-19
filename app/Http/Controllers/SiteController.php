@@ -300,6 +300,10 @@ class SiteController extends Controller
     {
         return view('frontend.companypages.termsandcondition');
     }
+    public function termlifeinsurance()
+    {
+        return view('frontend.companypages.termlifeinsurance');
+    }
     public function tfsa()
     {
         return view('frontend.companypages.tfsa');

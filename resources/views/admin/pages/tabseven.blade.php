@@ -110,7 +110,17 @@
                 <textarea class="summernote" name="section_six_description">{{ $data->section_six_description}}</textarea>
             </div>
            @endif
-            @if($data->url == 'termsandcondition')
+            @if($data->url == 'terms-and-condition')
+            <div class="form-group">
+                <label>Sec Six Vector</label>
+                <input type="file" style="height:45px;" class="form-control" name="section_six_vector">
+            </div>
+            <div class="form-group">
+                <label>Sec Six Description</label>
+                <textarea class="summernote" name="section_six_description">{{ $data->section_six_description}}</textarea>
+            </div>
+           @endif
+            @if($data->url == 'term-life-insurance')
             <div class="form-group">
                 <label>Sec Six Vector</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_six_vector">

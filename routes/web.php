@@ -42,6 +42,7 @@ Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
 Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
 Route::get('/sendcompareemail', [SiteController::class, 'sendcompareemail']);
 Route::get('/terms-and-condition', [SiteController::class, 'termsandcondition']);
+Route::get('/term-life-insurance', [SiteController::class, 'termlifeinsurance']);
 
 
 

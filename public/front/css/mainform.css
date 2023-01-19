@@ -2805,3 +2805,9 @@ li.date_picker_week_day {
     background-color: #fcfcfa;
     font-size: 32px;
   }
+.shop_heading{
+   max-width: 64%;
+   margin: auto;
+   font-size: 18px;
+   font-weight: 700;
+}
