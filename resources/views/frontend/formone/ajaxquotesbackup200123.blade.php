@@ -66,7 +66,7 @@ $(function () {
         min: 0,
         max: SliderValues.length - 1,
         step: 1,
-        value: 0,
+        value: iValue,
         slide: function (event, ui) {
             $('#coverage_amount').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
@@ -95,7 +95,7 @@ $(function () {
                     <div class="mt-4" id="slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
                 <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverageammount" name="coverage_amount" value="$<?php if ($request->sum_insured2 == $request->sum_insured2) { echo "0";} else{ echo $request->sum_insured2; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverageammount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
                     <div class="mt-4" id="sum_slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
               </div>

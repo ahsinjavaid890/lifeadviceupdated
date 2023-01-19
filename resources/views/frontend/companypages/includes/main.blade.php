@@ -252,9 +252,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  }
                                  while($j>$startfrom) {?>
                                  <option value="<?php echo $j;?>" ><?php echo $j;?></option>
-                                 <?php if($j == 1984){?>
-                                 <option value="">Year</option>
-                                 <?php } ?>
                                  <?php $j--; } ?>
                                  </select>
                                  </div>
