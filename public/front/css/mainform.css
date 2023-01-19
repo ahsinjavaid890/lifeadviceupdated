@@ -2626,7 +2626,7 @@ li.date_picker_week_day {
     margin-top: 37px;
 }
 .plan-coverage-limits{
-    margin-top: 26px;
+    margin-top: 14px;
 }
 .qoute-price-select .wrapper-dropdown{
     width: 78% !important;
@@ -2755,26 +2755,14 @@ li.date_picker_week_day {
     border-radius: 0px 10px 10px 0px;
     border-left: none !important;
 }
-
-
 .quotationscards{
-   max-width: 1550px;
+   max-width: 1470px;
    margin: auto;
 }
-
-
-
-
-
-
-
-
 
 .hr-text {
   line-height: 1em;
   position: relative;
-/*  outline: 0;*/
-/*  border: 0;*/
   color: black;
   text-align: center;
   height: 1.5em;
@@ -2792,7 +2780,7 @@ li.date_picker_week_day {
     height: 1px;
   }
   .hr-text:after {
-    left: -51px;
+    left: 0px;
     top: -26px;
     content: attr(data-content);
     position: relative;
@@ -2810,4 +2798,9 @@ li.date_picker_week_day {
    margin: auto;
    font-size: 18px;
    font-weight: 700;
+}
+@media only screen and (min-width: 1090px) and (max-width: 1515px){
+   .input {
+      width: 486px !important;
+   }
 }

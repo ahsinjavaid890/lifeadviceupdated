@@ -68,6 +68,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div id="coveragedate"  class=" value"> Start Date 
                                        </div>
                                     </div>
+                                    <div class="from ml-3">
+                                       
+                                       <div id="qoutedestination" class="value"></div>
+                                    </div>
                                  </div>
                               </div>
                               <button style="color:white;" id="getqoutesubmitbutton" type="submit" class="button button-primary get-quotes-button"> Get Quotes </button>
@@ -111,11 +115,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                  $('#covergaeerror').hide();
                                                }
                                                function firstnext() {
-                                                  if($('#sum_insured2').val() == '')
+                                                  if($('#sum_insured2').val() == '' )
                                                   {
                                                      $('#covergaeerror').show();
                                                      $('#covergaeerror').html('Please Select Covergae Ammount');
-                                                  }else{
+                                                  }else if($('#savers_email').val() == ''){
+                                                   $('#emailerror').show();
+                                                   $('#emailerror').html('Please Enter Your Email');
+                                                  }
+                                                  else{
                                                      $('#firstnextfake').hide();
                                                      $('#firstnextorignal').show();
                                                      $('#firstnextorignal').click();
@@ -151,7 +159,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @if($fields['email'] == "on" )
                                    <div class="col-md-6 userdata-card">
                                       <div class="custom-form-control">
-                                         <input type="text" name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
+                                         <input type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
                                          <label for="savers_email" class="form-label">Email</label>
                                       </div>
                                    </div>
@@ -182,6 +190,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                               </div>
                                 <div class="text-danger mt-4" id="covergaeerror"></div>
+                                <div class="text-danger mt-4" id="emailerror"></div>
                                 
                            </div>
                         </div>
@@ -254,6 +263,26 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <option value="<?php echo $j;?>" ><?php echo $j;?></option>
                                  <?php $j--; } ?>
                                  </select>
+                                 <script type="text/javascript">
+                                   // function secondnext() {
+                                   //    if($('#days_<?php echo $i;?>').val() == '')
+                                   //    {
+                                   //       $('#dayserror').show();
+                                   //       $('#dayserror').html('Please Enter Your Age days');
+                                   //    }else if($('#months_<?php echo $i;?>').val() == ''){
+                                   //       $('#montherror').show();
+                                   //       $('#montherror').html('Please Enter Your Age Month');
+                                   //    }else if($('#add_<?php echo $i;?>').val() == ''){
+                                   //       $('#yearerror').show();
+                                   //       $('#yearerror').html('Please Enter Your Age Years');
+                                   //    }
+                                   //    else{
+                                   //       $('#secondnextfake').hide();
+                                   //       $('#secondnextorignal').show();
+                                   //       $('#secondnextorignal').click();
+                                   //    }
+                                   // }
+                                 </script>
                                  </div>
                                  </div>
                                  <div class="clearfix"></div>
@@ -281,16 +310,17 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                      </div>
                                  </div> -->
                                 
-                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
-
+                                 <div style="display: none;" class="text-danger mt-4" id="dayserror">Please Enter Your</div>
+                                 <div style="display: none;" class="text-danger mt-4" id="montherror">Please Enter Your</div>
+                                 <div style="display: none;" class="text-danger mt-4" id="yearerror">Please Enter Your</div>
                               </div>
                            </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
-                          <!-- <span id="secondnextfake" class="btn btn-default" onclick="secondnext()">Next</span> -->
-                          <span id="secondnextorignal"  class="btn btn-default btn-next">Next</span>
+                          <!-- <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span> -->
+                          <span id="secondnextorignal"   class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -351,21 +381,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                          @endforeach
                                          <script type="text/javascript">
                                                function selectdestination(id) {
-                                                   $('#primarydestination').val(id);   
+                                                   $('#primarydestination').val(id);
+                                                   $('#qoutedestination').html(id);   
                                                }
-                                               function secondnext() {
+                                               function thirdfake() {
                                                   if($('#primarydestination').val() == '')
                                                   {
                                                      $('#destinationerror').show();
                                                      $('#destinationerror').html('Please Select Destination');
                                                   }else{
-                                                      var travelerage = $('#travelerage').val();
-                                                      var primarydestination = $('#primarydestination').val();
-                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
-                                                      $('#selectage').val(travelerage);
-                                                      $('#secondnextfake').hide();
-                                                      $('#secondnextorignal').show();
-                                                      $('#secondnextorignal').click();
+                                                      $('#donefake').hide();
+                                                      $('#doneoriginal').show();
+                                                      $('#doneoriginal').click();
                                                   }
                                                }
                                          </script>
@@ -407,14 +434,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                  </div>
+
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Enter Your</div>
                                  </div>
+
                            </div>
                         </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                          <span class="btn btn-default btn-prev">Prev</span>
-                         <span class="btn btn-default btn-next" onclick="formdone()">Done</span>
+                         <span class="btn btn-default " id="donefake" onclick="thirdfake()">Done</span>
+                         <span class="btn btn-default btn-next" id="doneoriginal" style="display: none;" onclick="formdone()">Done</span>
                       <script type="text/javascript">
                         function formdone() {
                            $("#getqoutesubmitbutton").click();

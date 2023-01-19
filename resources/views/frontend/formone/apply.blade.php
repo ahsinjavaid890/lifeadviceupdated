@@ -165,6 +165,7 @@
 									</div>
 								</div>
 								@endfor
+								<hr>
 								<div class="form-group mt-3">
 									<div class="row">
 										<div class="col-md-6 nopad">
