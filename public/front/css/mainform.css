@@ -818,7 +818,7 @@
 }
 .form-input {
     position: relative;
-    width: 312px;
+    width: 100%;
     display: inline-block;
 }
 .quote-result-wizard.quote-wizard-page.dates-selection .lg-wizard-card .date-range .input-field {
@@ -838,7 +838,7 @@
     height: 48px;
     padding-left: 16px;
     border-radius: 10px;
-    border: 1px solid #cfd9e8;
+    border: 1px solid #cfd9e8 !important;
     color: #2b3481;
     font-weight: 600;
     font-size: .875rem;
@@ -1980,7 +1980,17 @@ body .cal_output {
     height: 12px;
 }
 
-
+.travelerheading{
+    color: #2b3481!important;
+    font-family: Open Sans,sans-serif!important;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
+}
+.alignitembaseline{
+   align-items: baseline;
+}
 .travelerinfo .travelerheading{
    margin-right: 29px;
     color: #2b3481!important;
@@ -1989,6 +1999,7 @@ body .cal_output {
     line-height: 1.5rem;
     font-weight: 800;
     margin-top: 10px;
+    width: 30%;
 }
 
 .input-age{

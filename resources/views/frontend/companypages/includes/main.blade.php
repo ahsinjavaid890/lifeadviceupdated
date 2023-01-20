@@ -6,6 +6,12 @@
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
+$prosupervisa = $data->pro_supervisa;
+if($prosupervisa == '1'){
+$supervisa = 'yes';
+} else {
+$supervisa = 'no';   
+}
 @endphp
 <div class="health-inssurance-hero-banners super-hero">
    <div class="container-homepage">
@@ -58,7 +64,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
-                              <input  id="citishow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
+                              <input  id="ageshow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
                               <span  class="label-text">Traveler Information</span>
                               </label>
                               <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
@@ -216,44 +222,102 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                           </div>
                               <div class="row">
-                                 <div class="col-md-10">
-                                    <div class="d-flex travelerinfo">
-                                       <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div  id="dateofbirthinput" class="form-input input-date-of-birth d-flex">
-                                          <input type="text" placeholder="MM/DD" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="6" class="input-field dob" id="date-input">
-                                          <select class="input-field select-year">
-                                             <option value="">Year</option>
-                                             <?php $maxyear = date('Y');
-                                             $j = $maxyear;
-                                             $year = date('Y');
-                                             if($data->supervisa == 'yes'){
-                                             $startfrom = '1918';
-                                             $j = date('Y') - 40;
-                                             } else {
-                                             $startfrom = '1918';
-                                             }
-                                             while($j>$startfrom) {?>
-                                             <option value="<?php echo $j;?>" ><?php echo $j;?></option>
-                                             <?php $j--; } ?>
+                                 @if(isset($fields['traveller']))
+                                @if($fields['traveller'] == 'on')
+
+                                @php
+                                 $number_of_travel = $fields['traveller_number'];
+                                @endphp
+                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                    <div class="row alignitembaseline">
+                                       <div class="col-md-4">
+                                          <span class="travelerheading">Number of travellers</span>
+                                       </div>
+                                       <div class="col-md-8 form-input">
+                                          <select name="number_travelers" class="input-field" id="number_travelers"  autocomplete="off" onclick="checkage(this.value)" required onchange="checknumtravellers()">
+                                             <option value="">Number of travellers</option>
+                                             <?php for($t=1;$t<=$number_of_travel;$t++){ ?>
+                                             <option @if($t == 1) selected @endif value="<?php echo $t; ?>" ><?php echo $t; ?></option>
+                                             <?php } ?>
                                           </select>
                                        </div>
                                     </div>
-                                     <div class="additionaltraveler"></div>
-                                     <div class="mt-3 mb-3">
-                                        <div class="travelerinfo">
-                                           <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                        </div>
-                                     </div>
+                                 </div> 
+                                 @endif
+                                 @endif
+
+
+                                 <div class="col-md-12">
+                                 <?php 
+                                 $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                                 $c = 0;
+                                 for($i=1;$i<=$number_of_travel;$i++){
+                                    ?>
+
+                                 <div id="traveller_<?php echo $i;?>" style="<?php if($i > 1){ echo 'display: none !important'; } ?>" class="row alignitembaseline">
+                                    <div class="col-md-4">
+                                       <span class="travelerheading">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                       <div class="row">
+                                          <div class="col-md-12" style="margin-bottom: 10px; padding:0;">
+                                          <div class="date-wrapper question-answer d-flex ml-3">
+                                             <input min="1" max="31" type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="inputs input-field numeric lpad2 day-holder">
+                                             <input min="1" max="12" type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="inputs input-field numeric lpad2 month-holder">
+                                             <select name="years[]" id="add_<?php echo $i;?>" class="inputs input-field numeric lpadyear year-holder" onchange="checknumtravellers()" >
+                                             <option value="">Year</option>
+                                          <?php $maxyear = date('Y');
+                                          $j = $maxyear;
+                                          $year = date('Y');
+                                          if($supervisa == 'yes'){
+                                          $startfrom = '1918';
+                                             $j = date('Y') - 40;
+                                          } else {
+                                             $startfrom = '1918';
+                                          }
+                                          while($j>$startfrom) {?>
+                                          <option value="<?php echo $j;?>" ><?php echo $j;?></option>
+                                          <?php $j--; } ?>
+                                          </select>
+                                          </div>
+                                          </div>
+                                          <div class="clearfix"></div>
+                                          </div>
+                                    </div>
                                  </div>
-                                 <div style="display: none;" class="text-danger mt-4" id="ageerror">Please Enter Your Age</div>
+                                 <input type="hidden" name="ages[]" id="age_<?php echo $i;?>" />
+
+                                 <script type="text/javascript">
+                                     $(".inputs").keyup(function () {
+                                            if (this.value.length == this.maxLength) {
+                                              $(this).next('.inputs').focus();
+                                            }
+                                      });
+                                    function secondnext() {
+                                       if($('#age_<?php echo $i;?>').val() == '')
+                                      {
+                                         $('#agererror').show();
+                                         $('#agererror').html('Please Enter you age');
+                                      }
+                                      else{
+                                         $('#agererror').hide();
+                                          $('#secondnextfake').hide();
+                                          $('#secondnextorignal').show();
+                                          $('#secondnextorignal').click();
+                                       }
+                                    }
+                                 </script>
+                                 <?php $c++; } ?>
+                                 </div>                       
+                                 <div style="display: none;" class="text-danger mt-4" id="agererror">Please Enter Your</div>
                               </div>
                            </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
-                          <!-- <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span> -->
-                          <span id="secondnextorignal"   class="btn btn-default btn-next">Next</span>
+                          <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
+                          <span id="secondnextorignal" style="display: none;"   class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -580,13 +644,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        <div id="ageinputs" class="form-input input-age">
                                           <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
-                                       <div style="display: none;" id="dateofbirthinputs" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
-                                       </div>
-                                       <span class="switch-input">or 
-                                          <a onclick="showdateofbirths()" id="dateofbirthtexts" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
-                                          <a onclick="showages()" style="display: none;" id="agetexts" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span>
                                     </div>
                                  <div class="additionaltraveler"></div>
                                  <div class="mt-3">
@@ -730,6 +787,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       for(var t=1; t<=number_of_traveller; t++){
          $("#traveller_"+t).hide();
          $('#age_'+t).val('');
+         $('#ageshow'+t).val('');
       }
       //alert(number_of_traveller);
       for(var i=1; i<=number_of_traveller; i++){
@@ -747,6 +805,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    var today = new Date(startdate);
    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
    $('#age_'+i).val(age);
+   $('#ageshow'+i).val(age);
    }
    p = 1;
    pr = number_of_traveller + p;
@@ -757,19 +816,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    }
 
    //checkfamilyplan();
-   }
-
-
-   var a = 0;
-   function addtravellers() {
-      a++
-      var number_of_traveller = '5';
-
-      if(a <= number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div  id="dateofbirthinput" class="form-input input-date-of-birth d-flex"><input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="4" class="input-field dob" id="additional-date"> <select class="input-field select-year"><option value="">Year</option><?php $maxyear = date('Y');$j = $maxyear;$year = date('Y');if($data->supervisa == 'yes'){$startfrom = '1918';$j = date('Y') - 40;} else {$startfrom = '1918';}while($j>$startfrom) {?><option value="<?php echo $j;?>" ><?php echo $j;?></option><?php $j--; } ?></select></div> <span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div>');
-      }else{
-         // $('.button-add-another').fadeOut(300);
-      }
    }
 </script>
 <script>
@@ -1408,34 +1454,13 @@ var dateInputMask = function dateInputMask(elm) {
   });
 };
   
-dateInputMask(input);
+   dateInputMask(input);
 </script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script type="text/javascript">
-   var a = 0;
-   a++
-  var input = document.querySelectorAll('#additional-date '+a+'')[0];
-  
-var dateInputMasks = function dateInputMasks(elm) {
-  elm.addEventListener('keypress', function(e) {
-   if(e.keyCode < 47 || e.keyCode > 57) {
-      e.preventDefault();
+   function autodate(id) {
+       $('#additional-date').mask('00/00');
    }
 
-   var len = elm.value.length;
-   if(len !== 1 || len !== 3) {
-      if(e.keyCode == 47) {
-        e.preventDefault();
-      }
-   }
-   if(len === 2) {
-      elm.value += '/';
-   }
-   if(len === 5) {
-      elm.value += '/';
-   }
-  });
-};
   
-dateInputMasks(input);
 </script>
