@@ -219,16 +219,24 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div id="ageinput" class="form-input input-age">
-                                          <input id="travelerage" onclick="checkage(this.value)" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
+                                       <div  id="dateofbirthinput" class="form-input input-date-of-birth d-flex">
+                                          <input type="text" placeholder="MM/DD" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="6" class="input-field dob" id="date-input">
+                                          <select class="input-field select-year">
+                                             <option value="">Year</option>
+                                             <?php $maxyear = date('Y');
+                                             $j = $maxyear;
+                                             $year = date('Y');
+                                             if($data->supervisa == 'yes'){
+                                             $startfrom = '1918';
+                                             $j = date('Y') - 40;
+                                             } else {
+                                             $startfrom = '1918';
+                                             }
+                                             while($j>$startfrom) {?>
+                                             <option value="<?php echo $j;?>" ><?php echo $j;?></option>
+                                             <?php $j--; } ?>
+                                          </select>
                                        </div>
-                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
-                                       </div>
-                                       <span class="switch-input">or 
-                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
-                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span>
                                     </div>
                                      <div class="additionaltraveler"></div>
                                      <div class="mt-3 mb-3">
@@ -766,10 +774,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       a++
       var number_of_traveller = '5';
 
-      if(a < number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" name="years[]" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
+      if(a <= number_of_traveller){
+         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div  id="dateofbirthinput" class="form-input input-date-of-birth d-flex"><input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="4" class="input-field dob" id="additional-date"> <select class="input-field select-year"><option value="">Year</option><?php $maxyear = date('Y');$j = $maxyear;$year = date('Y');if($data->supervisa == 'yes'){$startfrom = '1918';$j = date('Y') - 40;} else {$startfrom = '1918';}while($j>$startfrom) {?><option value="<?php echo $j;?>" ><?php echo $j;?></option><?php $j--; } ?></select></div> <span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div>');
       }else{
-         $('.button-add-another').fadeOut(300);
+         // $('.button-add-another').fadeOut(300);
       }
    }
 </script>
@@ -856,34 +864,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    function removeappendvalue(id) {
       $('.button-add-another').fadeIn(300);
       $('#removebutton'+id).remove();
-   }
-   function showdateofbirth() {
-      $('#ageinput').hide();
-      $('#dateofbirthtext').hide();
-      $('#agetext').show();
-      $('#dateofbirthinput').show();
-      
-   }
-   function showdateofbirths() {
-      $('#ageinputs').hide();
-      $('#dateofbirthtexts').hide();
-      $('#agetexts').show();
-      $('#dateofbirthinputs').show();
-      
-   }
-   function showage() {
-      $('#agetext').hide();
-      $('#dateofbirthinput').hide();
-      $('#ageinput').show();
-      $('#dateofbirthtext').show();
-      
-   }
-   function showages() {
-      $('#agetexts').hide();
-      $('#dateofbirthinputs').hide();
-      $('#ageinputs').show();
-      $('#dateofbirthtexts').show();
-      
    }
 </script>
 <script type="text/javascript">
@@ -1382,11 +1362,102 @@ dropDown.prototype = {
   }
 </script>
 <script>
-  // This is an old version, for a more recent version look at
-  // https://jsfiddle.net/DRSDavidSoft/zb4ft1qq/2/
   function maxLengthChecks(object)
   {
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
+</script>
+<!-- <script type="text/javascript">
+   let dateInput = document.getElementById("date-input")
+
+dateInput.addEventListener('keyup', function(e) {
+  let val = dateInput.value;
+  let newval = '';
+  
+  if (val.length === 4) {
+    newval = val.slice(0,2) + " / " + val.slice(2,4)+ " / ";
+    dateInput.value = newval;
+  } 
+});
+</script>
+<script type="text/javascript">
+   let dateInput = document.getElementById("additional-date")
+
+dateInput.addEventListener('keyup', function(e) {
+  let val = dateInput.value;
+  let newval = '';
+  
+  if (val.length === 4) {
+    newval = val.slice(0,2) + " / " + val.slice(2,4)+ " / ";
+    dateInput.value = newval;
+  } 
+});
+</script> -->
+<script type="text/javascript">
+  var input = document.querySelectorAll('#date-input')[0];
+  
+var dateInputMask = function dateInputMask(elm) {
+  elm.addEventListener('keypress', function(e) {
+    if(e.keyCode < 47 || e.keyCode > 57) {
+      e.preventDefault();
+    }
+    
+    var len = elm.value.length;
+    
+    // If we're at a particular place, let the user type the slash
+    // i.e., 12/12/1212
+    if(len !== 1 || len !== 3) {
+      if(e.keyCode == 47) {
+        e.preventDefault();
+      }
+    }
+    
+    // If they don't add the slash, do it for them...
+    if(len === 2) {
+      elm.value += '/';
+    }
+
+    // If they don't add the slash, do it for them...
+    if(len === 5) {
+      elm.value += '/';
+    }
+  });
+};
+  
+dateInputMask(input);
+</script>
+
+<script type="text/javascript">
+  var input = document.querySelectorAll('#additional-date')[0];
+  
+var dateInputMasks = function dateInputMasks(elm) {
+  elm.addEventListener('keypress', function(e) {
+    if(e.keyCode < 47 || e.keyCode > 57) {
+      e.preventDefault();
+    }
+    
+    var len = elm.value.length;
+    
+    // If we're at a particular place, let the user type the slash
+    // i.e., 12/12/1212
+    if(len !== 1 || len !== 3) {
+      if(e.keyCode == 47) {
+        e.preventDefault();
+      }
+    }
+    
+    // If they don't add the slash, do it for them...
+    if(len === 2) {
+      elm.value += '/';
+    }
+
+    // If they don't add the slash, do it for them...
+    if(len === 5) {
+      elm.value += '/';
+    }
+  });
+};
+  
+dateInputMasks(input);
 </script>
