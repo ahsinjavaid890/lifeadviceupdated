@@ -220,7 +220,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                        <div id="ageinput" class="form-input input-age">
-                                          <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
+                                          <input id="travelerage" onclick="checkage(this.value)" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
                                        <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
                                           <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
@@ -258,8 +258,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                   if($('#primarydestination').val() == '')
                                                   {
                                                      $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Destination');
+                                                     $('#destinationerror').html('Please Select Primary Destination');
+                                                  }else if ($('#travelerage') .val() == '') {
+                                                    $('#ageerror').show();
+                                                     $('#ageerror').html('Please Enter Your Age');
                                                   }else{
+                                                     $('#destinationerror').hide();
+                                                     $('#ageerror').hide();
                                                       var travelerage = $('#travelerage').val();
                                                       var primarydestination = $('#primarydestination').val();
                                                       $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
@@ -276,6 +281,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @endif
                                  <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
+                                 <div style="display: none;" class="text-danger mt-4" id="ageerror">Please Enter Your Age</div>
                               </div>
                            </div>
                      </div>
@@ -372,7 +378,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                          <span class="btn btn-default btn-prev">Prev</span>
-                         <span class="btn btn-default btn-next" id="doneoriginal" style="display: none;" onclick="formdone()">Done</span>
+                         <span class="btn btn-default btn-next" id="doneoriginal"  onclick="formdone()">Done</span>
                       <script type="text/javascript">
                         function formdone() {
                            $("#getqoutesubmitbutton").click();
