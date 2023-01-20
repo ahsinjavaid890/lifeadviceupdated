@@ -216,91 +216,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                           </div>
                               <div class="row">
-                                 @if(isset($fields['traveller']))
-                                @if($fields['traveller'] == 'on')
-
-                                @php
-                                 $number_of_travel = $fields['traveller_number'];
-                                @endphp
-
-                                 <div class="col-md-12" style="margin-bottom: 10px;">
-                                 <label>Number of Travellers</label>
-                                 <select name="number_travelers" class="form-control form-select" id="number_travelers"  autocomplete="off" required onchange="checknumtravellers()">
-                                    <option value="">Number of travellers</option>
-                                    <?php for($t=1;$t<=$number_of_travel;$t++){ ?>
-                                    <option value="<?php echo $t; ?>" ><?php echo $t; ?></option>
-                                    <?php } ?>
-                                 </select>
-                                 </div>   
-                                 @endif
-                                 @endif
-
-
-                                 <div class="col-md-12">
-                                 <?php 
-                                 $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                                 $c = 0;
-                                 for($i=1;$i<=$number_of_travel;$i++){
-                                    ?>
-                                 <div class="row" id="traveller_<?php echo $i;?>" style="<?php if($i > 1){ echo 'display: none'; } ?>">
-                                 <label class="ml-3">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
-                                 <div class="col-md-12" style="margin-bottom: 10px; padding:0;">
-                                 <div class="date-wrapper question-answer d-flex ml-3">
-                                    <input type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_<?php echo $i;?>" maxlength="2" class="numeric lpad2 day-holder">
-                                    <input type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_<?php echo $i;?>" maxlength="2" class="numeric lpad2 month-holder">
-                                    <select name="years[]" id="add_<?php echo $i;?>" class="numeric lpadyear year-holder" onchange="checknumtravellers()" >
-                                    <option value="">Year</option>
-                                 <?php $maxyear = date('Y');
-                                 $j = $maxyear;
-                                 $year = date('Y');
-                                 if($data->supervisa == 'yes'){
-                                 $startfrom = '1918';
-                                 $j = date('Y') - 40;
-                                 } else {
-                                 $startfrom = '1918';
-                                 }
-                                 while($j>$startfrom) {?>
-                                 <option value="<?php echo $j;?>" ><?php echo $j;?></option>
-                                 <?php $j--; } ?>
-                                 </select>
-                                 <script type="text/javascript">
-                                   // function secondnext() {
-                                   //    if($('#days_<?php echo $i;?>').val() == '')
-                                   //    {
-                                   //       $('#dayserror').show();
-                                   //       $('#dayserror').html('Please Enter Your Age days');
-                                   //    }else if($('#months_<?php echo $i;?>').val() == ''){
-                                   //       $('#montherror').show();
-                                   //       $('#montherror').html('Please Enter Your Age Month');
-                                   //    }else if($('#add_<?php echo $i;?>').val() == ''){
-                                   //       $('#yearerror').show();
-                                   //       $('#yearerror').html('Please Enter Your Age Years');
-                                   //    }
-                                   //    else{
-                                   //       $('#secondnextfake').hide();
-                                   //       $('#secondnextorignal').show();
-                                   //       $('#secondnextorignal').click();
-                                   //    }
-                                   // }
-                                 </script>
-                                 </div>
-                                 </div>
-                                 <div class="clearfix"></div>
-                                 </div>
-                                 <input type="hidden" name="ages[]" id="age_<?php echo $i;?>" />
-                                 <?php $c++; } ?>
-                                 </div>
-
-<!-- 
                                  <div class="col-md-6">
                                     <div class="d-flex travelerinfo">
                                        <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div style="display: flex;" class="form-input input-date-of-birth">
-                                          <input name="days[]" type="text" maxlength="2" placeholder="DD" class="input-field dob dayfield">
-                                          <input name="months[]" placeholder="MM" type="text" maxlength="2" class="input-field dob monthfield">
-                                          <input name="years[]" placeholder="YEAR" type="text" maxlength="4" class="yearfield input-field dob">
-                                          <input type="hidden" name="ages[]" id="age_1" />
+                                       <div id="ageinput" class="form-input input-age">
+                                          <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
                                        </div>
+                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
+                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
+                                       </div>
+                                       <span class="switch-input">or 
+                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
+                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
+                                       </span>
                                     </div>
                                      <div class="additionaltraveler"></div>
                                      <div class="mt-3 mb-3">
@@ -308,19 +236,54 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                            <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                         </div>
                                      </div>
-                                 </div> -->
-                                
-                                 <div style="display: none;" class="text-danger mt-4" id="dayserror">Please Enter Your</div>
-                                 <div style="display: none;" class="text-danger mt-4" id="montherror">Please Enter Your</div>
-                                 <div style="display: none;" class="text-danger mt-4" id="yearerror">Please Enter Your</div>
+                                 </div>
+                                 @if(isset($fields['Country']))
+                                @if($fields['Country'] == "on" )
+
+                                 <div class="col-md-6">
+                                      <div class="wrapper-dropdown" id="primary_destination">
+                                        <span>Priamry Destination</span>
+                                        <ul class="dropdown"  >
+
+                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
+                                            <span class="selectspan">{{ $r->name }}</span>
+                                         </li>
+                                         @endforeach
+                                         <script type="text/javascript">
+                                               function selectdestination(id) {
+                                                   $('#primarydestination').val(id);   
+                                               }
+                                               function secondnext() {
+                                                  if($('#primarydestination').val() == '')
+                                                  {
+                                                     $('#destinationerror').show();
+                                                     $('#destinationerror').html('Please Select Destination');
+                                                  }else{
+                                                      var travelerage = $('#travelerage').val();
+                                                      var primarydestination = $('#primarydestination').val();
+                                                      $('#citishow').val('Age:'+travelerage+', Destination: '+primarydestination)
+                                                      $('#selectage').val(travelerage);
+                                                      $('#secondnextfake').hide();
+                                                      $('#secondnextorignal').show();
+                                                      $('#secondnextorignal').click();
+                                                  }
+                                               }
+                                         </script>
+                                        </ul>
+                                      </div>
+                                 </div>
+                                 @endif
+                                 @endif
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
                               </div>
                            </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
-                          <!-- <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span> -->
-                          <span id="secondnextorignal"   class="btn btn-default btn-next">Next</span>
+                          <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
+                          <span id="secondnextorignal" style="display: none;"  class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -367,39 +330,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </div>
                                       </div>
                                  <div class="col-md-6">
-                                       @if(isset($fields['Country']))
-                                @if($fields['Country'] == "on" )
-
-                                      <div class="wrapper-dropdown mt-5" id="primary_destination">
-                                        <span>Priamry Destination</span>
-                                        <ul class="dropdown"  >
-
-                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
-                                            <span class="selectspan">{{ $r->name }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                               function selectdestination(id) {
-                                                   $('#primarydestination').val(id);
-                                                   $('#qoutedestination').html(id);   
-                                               }
-                                               function thirdfake() {
-                                                  if($('#primarydestination').val() == '')
-                                                  {
-                                                     $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Destination');
-                                                  }else{
-                                                      $('#donefake').hide();
-                                                      $('#doneoriginal').show();
-                                                      $('#doneoriginal').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                 @endif
-                                 @endif
                                     <div class="row traveler-question">
                                        <div class="col-md-12">
                                              <span class="questionheading">Do you require Family Plan ?</span>
@@ -434,8 +364,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                  </div>
-
-                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Enter Your</div>
                                  </div>
 
                            </div>
@@ -444,7 +372,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                          <span class="btn btn-default btn-prev">Prev</span>
-                         <span class="btn btn-default " id="donefake" onclick="thirdfake()">Done</span>
                          <span class="btn btn-default btn-next" id="doneoriginal" style="display: none;" onclick="formdone()">Done</span>
                       <script type="text/javascript">
                         function formdone() {
