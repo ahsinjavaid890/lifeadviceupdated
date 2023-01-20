@@ -2045,7 +2045,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 .primarytravelheading{
-   margin-right: 3px !important;
+   margin-right: 60px !important;
 }
 
 .remove-icon{
@@ -2581,7 +2581,7 @@ li.date_picker_week_day {
   font-weight: 500;
 }
 .traveler-question{
-   margin-top: 45px;
+   margin-top: 100px;
 }
 .plan-highlights{
     list-style-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nMTAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTguNzUuODIybC0uMDE4LjAyLS4wMTYuMDIzLTQuNDc4IDYuMDEtMS45ODMtMi4xMjdzMCAwIDAgMGEuOTk1Ljk5NSAwIDAwLTEuNDY2IDBoMGExLjA4NiAxLjA4NiAwIDAwMCAxLjQ3aDBsMi43NTkgMi45NnMwIDAgMCAwYy40LjQzIDEuMDY1LjQzIDEuNDY2IDBsLjAxNy0uMDIuMDE2LS4wMiA1LjE5LTYuODY4YTEuMDg3IDEuMDg3IDAgMDAtLjAyLTEuNDQ4Ljk5NS45OTUgMCAwMC0xLjQ2NiAweicgZmlsbD0nIzVFQTA0Nycgc3Ryb2tlPScjNUVBMDQ3Jy8+PC9zdmc+);
