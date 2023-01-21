@@ -36,7 +36,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: #262566;
+    color: #2b3481;
 }
 
 a:focus {
@@ -67,7 +67,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #262566;
+    color: #2b3481;
     font-weight: 700;
 }
 
@@ -107,7 +107,7 @@ ul {
 
 .form-control {
     height: 50px;
-    color: #262566;
+    color: #2b3481;
     border: 1px solid #e8e8e8;
     background-color: #f9f9f9;
     border-radius: 4px;
@@ -211,7 +211,7 @@ Default Btn Area Style*/
     left: 100%;
     width: 100%;
     height: 50%;
-    background-color: #262566;
+    background-color: #2b3481;
     z-index: -1;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -229,7 +229,7 @@ Default Btn Area Style*/
 }
 
 .step_name span {
-    color: #262566;
+    color: #2b3481;
 }
 
 .datepicker {
@@ -270,7 +270,7 @@ Default Btn Area Style*/
     right: 100%;
     width: 100%;
     height: 50%;
-    background-color: #262566;
+    background-color: #2b3481;
     z-index: -1;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -279,7 +279,7 @@ Default Btn Area Style*/
 .default-btn.active {
     margin-left: 30px;
     color: #ffffff;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .default-btn.btn-five {
@@ -357,7 +357,7 @@ Header Area Style
 }
 
 .header-area .top-header-area .header-content-left p {
-    color: #262566;
+    color: #2b3481;
     font-size: 14px;
     text-transform: capitalize;
 }
@@ -369,7 +369,7 @@ Header Area Style
 .header-area .top-header-area .header-content-right li {
     display: inline-block;
     padding-right: 20px;
-    color: #262566;
+    color: #2b3481;
 }
 
 .header-area .top-header-area .header-content-right li:last-child {
@@ -377,7 +377,7 @@ Header Area Style
 }
 
 .header-area .top-header-area .header-content-right li a {
-    color: #262566;
+    color: #2b3481;
     display: inline-block;
 }
 
@@ -415,7 +415,7 @@ Nav Area Style
 .nav-area .navbar-area .main-nav nav .navbar-nav .nav-item a {
     font-weight: 500;
     font-size: 15px;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -453,7 +453,7 @@ Nav Area Style
 }
 
 .nav-area .navbar-area .main-nav nav .navbar-nav .nav-item .dropdown-menu {
-    background-color: #262566;
+    background-color: #2b3481;
     border: none;
     border-radius: 0;
     top: 80%;
@@ -481,12 +481,12 @@ Nav Area Style
 }
 
 .nav-area .navbar-area .main-nav nav .navbar-nav .nav-item .dropdown-menu li a:hover {
-    color: #262566;
+    color: #2b3481;
     background-color: #f3f3f3;
 }
 
 .nav-area .navbar-area .main-nav nav .navbar-nav .nav-item .dropdown-menu li a.active {
-    color: #262566;
+    color: #2b3481;
     background-color: #f3f3f3;
 }
 
@@ -527,7 +527,7 @@ Nav Area Style
     right: 0;
     margin: auto;
     z-index: 999;
-    background-color: #262566;
+    background-color: #2b3481;
     -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
     box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
     -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
@@ -603,7 +603,7 @@ Nav Area Style
     height: 50px;
     line-height: initial;
     border: 1px solid #eeeeee;
-    color: #262566;
+    color: #2b3481;
     outline: 0;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -632,7 +632,7 @@ Nav Area Style
 }
 
 .nav-area .others-option .option-item .search-overlay.search-popup .search-form .search-button:hover {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .nav-area .others-option .option-item .search-btn {
@@ -731,7 +731,7 @@ Sidebar Modal Area Style
     position: relative;
     z-index: 1;
     margin-bottom: 20px;
-    color: #262566;
+    color: #2b3481;
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 5px;
 }
@@ -766,7 +766,7 @@ Sidebar Modal Area Style
 
 .sidebar-modal .modal.right .modal-body .sidebar-modal-widget ul li a {
     font-size: 14px;
-    color: #262566;
+    color: #2b3481;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -782,7 +782,7 @@ Sidebar Modal Area Style
     text-transform: uppercase;
     margin-bottom: 10px;
     font-size: 14px;
-    color: #262566;
+    color: #2b3481;
 }
 
 .sidebar-modal .modal.right .modal-body .sidebar-modal-widget ul.contact-info li span {
@@ -819,7 +819,7 @@ Sidebar Modal Area Style
     font-size: 29px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 4px;
     font-size: 15px;
 }
@@ -850,7 +850,7 @@ Sidebar Modal Area Style
     line-height: 25px;
     border-radius: 4px;
     color: #ffffff;
-    background-color: #262566;
+    background-color: #2b3481;
     font-size: 12px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -903,7 +903,7 @@ Sidebar Modal Area Style
 }
 
 .sidebar-modal .modal-header h2 {
-    background-color: #262566;
+    background-color: #2b3481;
     -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     padding: 30px 25px;
@@ -986,7 +986,7 @@ Choose Us Area Style
     transition: all 0.5s;
     position: relative;
     z-index: 1;
-    border: 1px dotted #262566;
+    border: 1px dotted #2b3481;
 }
 
 .single-choose::before {
@@ -1055,7 +1055,7 @@ Choose Us Area Style
 .single-choose:hover {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .single-choose:hover h3 {
@@ -1106,7 +1106,7 @@ About Area Style
 }
 
 .about-area .about-content .about-list ul li {
-    color: #262566;
+    color: #2b3481;
     font-size: 16px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
@@ -1133,13 +1133,13 @@ About Area Style
     top: 2px;
     left: 0;
     font-size: 50px;
-    color: #262566;
+    color: #2b3481;
     line-height: 1;
 }
 
 .about-area .about-content .about-list .about-single-list span {
     font-size: 16px;
-    color: #262566;
+    color: #2b3481;
     line-height: 1.5;
 }
 
@@ -1195,7 +1195,7 @@ Our Vision Area Style
 }
 
 .our-vision-area .vision-content .vision-list ul li {
-    color: #262566;
+    color: #2b3481;
     font-size: 16px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
@@ -1428,7 +1428,7 @@ Counter Area Style
 }
 
 .single-counter h2 {
-    color: #262566;
+    color: #2b3481;
     line-height: 1;
     font-size: 40px;
     margin-bottom: 15px;
@@ -1473,7 +1473,7 @@ Achievement Area Style
     right: 30px;
     width: 100%;
     height: 100%;
-    border: 5px solid #262566;
+    border: 5px solid #2b3481;
     z-index: -1;
 }
 
@@ -1505,7 +1505,7 @@ Agent Now Area Style
 }
 
 .agent-now-area .call-now {
-    background-color: #262566;
+    background-color: #2b3481;
     position: relative;
     padding: 50px;
     padding-left: 165px;
@@ -1536,7 +1536,7 @@ Agent Now Area Style
 }
 
 .agent-now-area .subscribe-wrap {
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 10px;
     padding: 40px 50px;
 }
@@ -1651,7 +1651,7 @@ Testimonial Area Style
 }
 
 .testimonial-area .owl-item.active.center .single-client {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .testimonial-area .owl-item.active.center .single-client h3 {
@@ -1674,7 +1674,7 @@ Testimonial Area Style
 }
 
 .testimonial-area .single-client h3 {
-    color: #262566;
+    color: #2b3481;
 }
 
 .testimonial-area .single-client span {
@@ -1702,7 +1702,7 @@ Business Contact Area Style
 }
 
 .business-contact-area .row {
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 15px;
 }
 
@@ -2351,7 +2351,7 @@ Counter Area Two Style
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #262566;
+    background-color: #2b3481;
     opacity: 0.9;
 }
 
@@ -2418,7 +2418,7 @@ Any Contact Area Style
 ======================================================*/
 
 .any-contact-area .row {
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 10px;
     margin-left: 5px;
     margin-right: 5px;
@@ -2512,7 +2512,7 @@ Hero Slider Area Style
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #262566;
+    background-color: #2b3481;
     opacity: 0.8;
     z-index: -1;
 }
@@ -2667,7 +2667,7 @@ Choose Us Area Three
 }
 
 .choose-us-area-three .single-choose:hover {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 /*
@@ -2688,7 +2688,7 @@ Services Area Three
 
 .services-area-three .single-choose {
     border: none;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .services-area-three .single-choose span {
@@ -2712,7 +2712,7 @@ Services Area Three
 }
 
 .services-area-three .single-choose:hover {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 /*
@@ -2736,7 +2736,7 @@ Get Quat Area Style
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #262566;
+    background-color: #2b3481;
     opacity: 0.9;
 }
 */
@@ -2803,7 +2803,7 @@ Nav Style Four
 }
 
 .nav-style-four .navbar-area.is-sticky .main-nav nav .navbar-nav .nav-item a {
-    color: #262566;
+    color: #2b3481;
 }
 
 /*====================================================
@@ -4379,7 +4379,7 @@ Get Quat Area Style
 }
 
 .get-quat-area .nice-select .option:hover {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 /*==================================================== 
@@ -4633,7 +4633,7 @@ Coming Soon Area Style
     position: relative;
     height: 100vh;
     z-index: 1;
-    background-color: #262566;
+    background-color: #2b3481;
     overflow: hidden;
 }
 
@@ -4837,7 +4837,7 @@ Coming Soon Area Style
     height: 100%;
     opacity: 1;
     z-index: -1;
-    background-color: #262566;
+    background-color: #2b3481;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%);
 }
@@ -4900,7 +4900,7 @@ Service Details Area Style
 }
 
 .service-sidebar-area .service-list ul li a {
-    color: #262566;
+    color: #2b3481;
     display: block;
 }
 
@@ -4974,7 +4974,7 @@ Service Details Area Style
 
 .service-details-wrap ul li {
     font-weight: 600;
-    color: #262566;
+    color: #2b3481;
     font-size: 14px;
     padding-left: 35px;
     position: relative;
@@ -5063,7 +5063,7 @@ Blog Details Area Style
 
 .blog-details-area .blog-details-desc .article-image {
     position: relative;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .blog-details-area .blog-details-desc .article-content {
@@ -5253,7 +5253,7 @@ Blog Details Area Style
 }
 
 .blog-details-area blockquote p {
-    color: #262566;
+    color: #2b3481;
     line-height: 1.6;
     margin-bottom: 0;
     font-style: italic;
@@ -5338,7 +5338,7 @@ Blog Details Area Style
 .blog-details-area .post-navigation .navigation-links div a {
     display: inline-block;
     font-weight: 600;
-    color: #262566;
+    color: #2b3481;
 }
 
 .blog-details-area .post-navigation .navigation-links div a:hover {
@@ -5408,7 +5408,7 @@ Blog Details Area Style
 
 .blog-details-area .comments-area .comment-body .reply a {
     border: 1px solid #ded9d9;
-    color: #262566;
+    color: #2b3481;
     display: inline-block;
     padding: 5px 20px;
     border-radius: 30px;
@@ -5446,7 +5446,7 @@ Blog Details Area Style
 
 .blog-details-area .comments-area .comment-author .fn {
     font-weight: 600;
-    color: #262566;
+    color: #2b3481;
     font-size: 18px;
 }
 
@@ -5514,7 +5514,7 @@ Blog Details Area Style
 .blog-details-area .comments-area .comment-respond label {
     display: block;
     font-weight: 500;
-    color: #262566;
+    color: #2b3481;
     margin-bottom: 5px;
 }
 
@@ -5747,7 +5747,7 @@ Blog Details Area Style
 
 .blog-details-area .comments-area .comment-respond .form-submit input:hover {
     color: #ffffff;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .blog-details-area .comments-area .comment-respond .form-submit input:focus {
@@ -5777,7 +5777,7 @@ Blog Details Area Style
     margin-bottom: 0;
     background-color: #ececec;
     padding: 10px 20px;
-    color: #262566;
+    color: #2b3481;
     position: relative;
 }
 
@@ -5836,7 +5836,7 @@ Blog Details Area Style
 }
 
 .blog-details-area .widget-area .widget_search form button:hover {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb {
@@ -5874,7 +5874,7 @@ Blog Details Area Style
     background-repeat: no-repeat;
     background-position: center center !important;
     position: relative;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .blog-details-area .widget-area .widget-peru-posts-thumb .item .thumb .fullimage.bg1 {
@@ -6441,7 +6441,7 @@ Client Area Style
 ======================================================*/
 
 .single-client {
-    background-color: #262566;
+    background-color: #2b3481;
     text-align: center;
     padding: 0 30px 30px 30px;
     border-radius: 4px;
@@ -6548,7 +6548,7 @@ Portfolio Area Style
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     padding: 12px 30px;
-    color: #262566;
+    color: #2b3481;
     margin: 0 10px;
     border-radius: 0;
 }
@@ -6567,7 +6567,7 @@ Portfolio Area Style
 
 .portfolio-wraps .shorting-menu .filter.active {
     color: #31abfc;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .single-portfolio {
@@ -6719,11 +6719,11 @@ Team Area Style
 }
 
 .team-area .owl-theme .owl-dots .owl-dot:hover span {
-    background-color: #262566 !important;
+    background-color: #2b3481 !important;
 }
 
 .team-area .owl-theme .owl-dots .owl-dot.active span {
-    background-color: #262566 !important;
+    background-color: #2b3481 !important;
 }
 
 .single-team {
@@ -6758,7 +6758,7 @@ Team Area Style
     display: block;
     width: 40px;
     height: 40px;
-    background-color: #262566;
+    background-color: #2b3481;
     text-align: center;
     position: relative;
     font-size: 20px;
@@ -6862,7 +6862,7 @@ Preloader Area Style*/
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: #262566;
+    background-color: #2b3481;
     top: 0;
     left: 0;
     z-index: 99999;
@@ -6989,7 +6989,7 @@ Go Top Style*/
 
 .go-top:hover {
     color: #ffffff;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .go-top:hover::before {
@@ -7237,7 +7237,7 @@ Nice select Area Style*/
 }
 
 .nice-select .option.selected.focus {
-    background-color: #262566;
+    background-color: #2b3481;
     color: #31abfc;
 }
 
@@ -7396,8 +7396,8 @@ p {
 }
 
 .advant {
-    color: #262566;
-    border-bottom: 5px solid #262566;
+    color: #2b3481;
+    border-bottom: 5px solid #2b3481;
 }
 
 .whole {
@@ -7926,7 +7926,7 @@ section {
 
 .aboutussecondrow {
     padding: 10px 40px 40px 40px;
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 20px;
     color: white;
 }
@@ -8101,26 +8101,26 @@ section {
 
 .herrotext h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 .calculate-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 
 .decide-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 .travel-medical-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
@@ -8189,11 +8189,11 @@ section {
 }
 
 .privacy-heading span {
-    color: #262566;
+    color: #2b3481;
 }
 
 .contact-heading span {
-    color: #262566;
+    color: #2b3481;
 }
 
 .contactadd {
@@ -8226,7 +8226,7 @@ section {
 
 .form-contact .form-control {
     height: 30px;
-    color: #262566;
+    color: #2b3481;
     border: 1px solid #e8e8e8;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -8294,7 +8294,7 @@ section {
 
 .general-terms {
     color: white;
-    background-color: #262566;
+    background-color: #2b3481;
 }
 
 .detail button {
@@ -8331,7 +8331,7 @@ section {
 
 .health-inssurance-hero-banners {
     /*padding: 40px 50px 40px 15px;*/
-    background-color: #262566;
+    background-color: #2b3481;
     margin-top: 70px;
     color: white;
 }
@@ -8353,7 +8353,7 @@ section {
 .benefit-card {
     max-width: 66%;
     margin-left: auto;
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 20px;
 }
 
@@ -8400,7 +8400,7 @@ section {
 
 .benefits-card {
     max-width: 66%;
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 20px;
 }
 
@@ -8418,7 +8418,7 @@ section {
     max-width: 100%;
     background-color: #f7f7f7;
     border-radius: 65px;
-    box-shadow: -20px 0px 0px #262566;
+    box-shadow: -20px 0px 0px #2b3481;
 }
 
 .drug-cards {
@@ -8426,7 +8426,7 @@ section {
     max-width: 100%;
     background-color: #f7f7f7;
     border-radius: 65px;
-    box-shadow: 25px 0px 0px #262566;
+    box-shadow: 25px 0px 0px #2b3481;
 }
 
 .right-image {
@@ -8552,7 +8552,7 @@ section {
 }
 
 .product-btn button {
-    background: #262566;
+    background: #2b3481;
     font-size: 15px;
     color: white;
 }
@@ -8699,7 +8699,7 @@ section {
 }
 
 .text-section .herrotext h2 {
-    color: #262566;
+    color: #2b3481;
     font-size: 40px;
     font-style: normal;
     font-weight: 800;
@@ -8711,25 +8711,25 @@ section {
 
 .products h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 .policy-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 .transparent-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
 .slider-heading h2 span {
     font-size: 2rem;
-    color: #262566;
+    color: #2b3481;
     text-transform: capitalize;
 }
 
@@ -9134,7 +9134,7 @@ section {
         text-transform: uppercase;
         font-weight: bold;
         margin-top: 24px;
-        color: #262566;
+        color: #2b3481;
     }
 
     .left-image {
@@ -11587,7 +11587,7 @@ time {
 .faq .card-header button {
     /*    box-shadow: 0 10px 24px rgb(109 126 152 / 8%);*/
     /*    border-radius: 16px;*/
-    color: #262566;
+    color: #2b3481;
     padding: 17px;
 }
 
@@ -11629,7 +11629,7 @@ time {
 }
 
 .claim-process h2 span {
-    color: #262566;
+    color: #2b3481;
 }
 
 .claim-btn {
@@ -11715,7 +11715,7 @@ time {
 }
 
 .timline-heading span {
-    color: #262566;
+    color: #2b3481;
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1500px) {
@@ -11865,7 +11865,7 @@ ul.tabs li {
     width: 219px;
 }*/
 ul.tabs li.current {
-    border-left: 4px solid #262566;
+    border-left: 4px solid #2b3481;
     border-radius: 8px;
 }
 
@@ -11876,13 +11876,13 @@ ul.tabs li.current {
     margin-bottom: 25px;
     border-radius: 10px;
     font-size: 23px;
-    color: #262566;
+    color: #2b3481;
     cursor: pointer;
     width: 100%;
 }
 
 /*ul.tabs li.current{
-    background-color: #262566;
+    background-color: #2b3481;
 }*/
 .tab-content {
     display: none;
@@ -12060,11 +12060,11 @@ ul.tabs li.current {
 }
 
 .search-widget input.search {
-    border-color: #262566 !important;
+    border-color: #2b3481 !important;
     background: white;
     border-radius: 4px;
     position: relative;
-    color: #262566;
+    color: #2b3481;
     -webkit-appearance: none;
 }
 
@@ -12926,7 +12926,7 @@ ul.tabs li.current {
     width: 80px;
     height: 35px;
     padding: 3px !important;
-    background-color: #262566;
+    background-color: #2b3481;
     color: white !important;
 }
 
@@ -13252,7 +13252,7 @@ ul .child-list li a {
 }
 
 .card-content h3 {
-    color: #262566;
+    color: #2b3481;
     font-size: 20px;
     font-weight: 600;
     line-height: 32px;
@@ -13291,7 +13291,7 @@ ul .child-list li a {
         display: flex;
         flex-direction: column;
         padding: 0 0 16px 0;
-        border-bottom: 1px slid #262566;
+        border-bottom: 1px slid #2b3481;
         /*  margin-bottom: 2.5rem;*/
     }
 
@@ -13330,7 +13330,7 @@ ul .child-list li a {
     }
 
     .date_picker_month_nav_btn {
-        color: #262566;
+        color: #2b3481;
         display: block;
         position: relative;
         font-size: 30px;
@@ -13344,7 +13344,7 @@ ul .child-list li a {
 
     .date_picker_month_day {
         font-size: 30px !important;
-        color: #262566 !important;
+        color: #2b3481 !important;
     }
 
     .date_picker_month_days {
@@ -13355,7 +13355,7 @@ ul .child-list li a {
     }
 
     .date_picker_month_days li {
-        color: #262566;
+        color: #2b3481;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -13373,7 +13373,7 @@ ul .child-list li a {
     }
 
     .date_picker_month_days li button.active {
-        background: #262566;
+        background: #2b3481;
         color: white;
     }
 
@@ -13900,7 +13900,7 @@ ul .child-list li a {
     .main_heading_about{
         font-weight: 600;
         font-size: 50px;
-        color: #262566 !important;
+        color: #2b3481 !important;
         font-family: "Open Sans", sans-serif;
     }
     .main_subheading_about{
@@ -13908,12 +13908,12 @@ ul .child-list li a {
         line-height: 20px;
         font-size: 27px;
         font-weight: 500;
-        color: #262566 !important;
+        color: #2b3481 !important;
     }
     .main_description_about{
         max-width: 53%;
         font-family: "Open Sans", sans-serif;
-        color: #262566 !important;
+        color: #2b3481 !important;
         font-size: 19px;
         text-align: justify;
         font-weight: 500;
@@ -13922,7 +13922,7 @@ ul .child-list li a {
     .about_sec_heading h2{
         font-size: 40px;
         line-height: 102px;
-        color: #262566 !important;
+        color: #2b3481 !important;
     }
     .about_sec_description p{
         line-height: 29px;
@@ -13951,13 +13951,13 @@ ul .child-list li a {
 
     }
     .offer_circle_heading h2 span{
-        color: #262566;
+        color: #2b3481;
     }
     .about_one_heading h2{
         font-family: "Open Sans", sans-serif;
     }
     .about_one_heading h2 span{
-        color: #262566;
+        color: #2b3481;
     }
     .about_one_description p{
         font-family: "Open Sans", sans-serif;
@@ -13991,10 +13991,10 @@ ul .child-list li a {
     }
     .circle_text h2{
         font-size: 23px;
-        color: #262566;
+        color: #2b3481;
     }
     .circle_text p{
-        color: #262566;
+        color: #2b3481;
         font-size: 16px;
         font-weight: 800;
     }
@@ -14018,7 +14018,7 @@ ul .child-list li a {
     }
     .offer_heading h2{
         font-size: 60px;
-        color: #262566;
+        color: #2b3481;
         text-align: center;
     }
     .online_support_heading h2{
@@ -14028,7 +14028,7 @@ ul .child-list li a {
         font-weight: 900;
     }
     .online_support_heading h2 span{
-        color: #262566;
+        color: #2b3481;
     }
     .online_support_description p{
         font-size: 26px;
@@ -14048,7 +14048,7 @@ ul .child-list li a {
         font-size: 30px;
         max-width: 48%;
         margin: auto;
-        color: #262566;
+        color: #2b3481;
         font-style: italic;
     }
     .online_support_qoute button{
@@ -14074,10 +14074,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 12px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 8px;
         }
         .circle_two{
@@ -14116,7 +14116,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 13px;
             max-width: 52%;
             margin: auto;
@@ -14193,10 +14193,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 16px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 14px;
         }
         .circle_two{
@@ -14236,7 +14236,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 16px;
             max-width: 52%;
             margin: auto;
@@ -14313,10 +14313,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 16px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 14px;
         }
         .circle_two{
@@ -14355,7 +14355,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 17px;
             max-width: 52%;
             margin: auto;
@@ -14430,10 +14430,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 16px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 14px;
         }
         .circle_two{
@@ -14472,7 +14472,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 22px;
             max-width: 52%;
             margin: auto;
@@ -14542,10 +14542,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 20px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 14px;
         }
         .circle_two{
@@ -14584,7 +14584,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 24px;
             max-width: 52%;
             margin: auto;
@@ -14659,10 +14659,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 20px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 14px;
         }
         .circle_two{
@@ -14701,7 +14701,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 24px;
             max-width: 52%;
             margin: auto;
@@ -14776,10 +14776,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 24px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 17px;
         }
         .circle_two{
@@ -14818,7 +14818,7 @@ ul .child-list li a {
             top: 3592px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 28px;
             max-width: 52%;
             margin: auto;
@@ -14878,10 +14878,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 31px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 24px;
         }
         .circle_two{
@@ -14920,7 +14920,7 @@ ul .child-list li a {
             top: 4330px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;*/
+/*            color: #2b3481;*/
             font-size: 45px;
             max-width: 52%;
             margin: auto;
@@ -14957,7 +14957,7 @@ ul .child-list li a {
         .main_description_about {
             max-width: 53%;
             font-family: 'Open Sans';
-            color: #262566 !important;
+            color: #2b3481 !important;
             font-size: 38px;
             text-align: justify;
             font-weight: 500;
@@ -15421,10 +15421,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 12px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 8px;
         }
         .circle_two{
@@ -15464,7 +15464,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;
+/*            color: #2b3481;
             font-size: 13px;
             max-width: 52%;
             margin: auto;
@@ -15533,7 +15533,7 @@ ul .child-list li a {
         }
         .offer_heading h2 {
             font-size: 28px;
-            color: #262566;
+            color: #2b3481;
             text-align: center;
         }
         .about_sec_vector_top{
@@ -15545,7 +15545,7 @@ ul .child-list li a {
         .about_sec_heading h2 {
             font-size: 31px;
             line-height: 102px;
-            color: #262566 !important;
+            color: #2b3481 !important;
         }
         .about_sec_vector_bottom img{
             width: 210px;
@@ -15604,10 +15604,10 @@ ul .child-list li a {
         }
         .circle_text h2 {
             font-size: 12px;
-            color: #262566;
+            color: #2b3481;
         }
         .circle_text p {
-            color: #262566;
+            color: #2b3481;
             font-size: 8px;
         }
         .circle_two{
@@ -15647,7 +15647,7 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #262566;
+/*            color: #2b3481;
             font-size: 13px;
             max-width: 52%;
             margin: auto;
@@ -15716,7 +15716,7 @@ ul .child-list li a {
         }
         .offer_heading h2 {
             font-size: 28px;
-            color: #262566;
+            color: #2b3481;
             text-align: center;
         }
         .about_sec_vector_top{
@@ -15728,7 +15728,7 @@ ul .child-list li a {
         .about_sec_heading h2 {
             font-size: 31px;
             line-height: 102px;
-            color: #262566 !important;
+            color: #2b3481 !important;
         }
         .about_sec_vector_bottom img{
             width: 210px;

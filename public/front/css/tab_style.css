@@ -181,7 +181,7 @@ select{
    }
    .tabshead{
    	padding-top: 20px !important;
-   	background-color: #262566 !important;
+   	background-color: #2b3481 !important;
    }
    .tabs .active{
    	background-color: #1bbc9b !important;
@@ -205,7 +205,7 @@ select{
    	padding-bottom: 0px !important;
    }
    .nextbtn:hover{
-   	background-color: #262566 !important;
+   	background-color: #2b3481 !important;
    }
    .compare_header_top {
     z-index: 2;
