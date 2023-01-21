@@ -1,11 +1,19 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainformstudent.css')}}">
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
   <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script> 
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
+$prosupervisa = $data->pro_supervisa;
+if($prosupervisa == '1'){
+$supervisa = 'yes';
+} else {
+$supervisa = 'no';   
+}
 @endphp
 <div class="health-inssurance-hero-banners super-hero">
    <div class="container-homepage">
@@ -243,99 +251,74 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
-                           <div class="card-content mb-3 pb-3">
+                           <!----><!----><!----><!---->
+                           <div class="card-content">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
-                          </div>
-                              <div class="row">
-                                 <!-- <div class="col-md-6">
-                                    <div class="d-flex travelerinfo">
-                                       <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div id="ageinput" class="form-input input-age">
-                                          <input id="travelerage" type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
-                                       </div>
-                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
-                                       </div>
-                                       <span class="switch-input">or 
-                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
-                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span>
-                                    </div>
-                                     <div class="additionaltraveler"></div>
-                                     <div class="mt-3 mb-3">
-                                        <div class="travelerinfo">
-                                           <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                        </div>
-                                     </div>
-                                 </div> -->
-                                 @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
-                        @php
-                           $number_of_travel = $fields['traveller_number'];
-                        @endphp
-                        @if($number_of_travel > 0)
-
-                        <div class="col-md-12">
-                           <div class="form-input">
-                              <div class="wrapper-dropdown" id="number_traveler">
-                                  <span>Number of Travellers</span>
-                                  <ul required class="dropdown"  >
-                                    @for($i=1;$i<=$number_of_travel;$i++)
-                                      <li onclick="checknumtravellers('{{ $i }}')" >
-                                         <span class="selectspan">{{ $i }}</span>
-                                      </li>
-                                    @endfor
-                                   </ul>
-                              </div>
                            </div>
-                        </div>
-
-                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
-
-                           @php
-                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                              $c = 0;
-                           @endphp
-
-                           @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none; margin-top: 37px;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
-                              <div class="row">
-                                    <div class="col-md-4">
-                                       <div class="form-input">
-                                          <div class="wrapper-dropdowns">
-                                             <input type="number" name="day" placeholder="Day" id="day{{$i}}" pattern="\d{1,2}" maxlength="3" >
+                           <div class="row">
+                              <div class="col-md-12 mt-3">
+                                 <div class="row alignitemcenter">
+                                    <div class="col-md-8">
+                                       <div class="row alignitembaseline">
+                                          <div class="col-md-4">
+                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                           </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="form-input">
-                                          <div class="wrapper-dropdowns" >
-                                             <input type="number" name="month" placeholder="Month" id="month{{$i}}" pattern="\d{1,2}" maxlength="2" >
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div style="padding-right: 0px; padding-top: 19px;" class="col-md-4">
-                                       <div class="form-input">
-                                          <select onchange="checknumtravellers(this.value)" required class="input-field" name="year_dropdown" id="number_travelers">
-                                             <option value="">Number of Travellers</option>
-                                              <?php
-                                                  for($year = 1950 ; $year <= date('Y'); $year++){
-                                                ?>
-                                             <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
-                                                <?php
-                                                }
-                                                ?>
+                                          <div class="col-md-8">
+                                              <div class="date-wrapper question-answer d-flex ml-3">
+                                             <input min="1" max="31" type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_1" maxlength="2" class="inputs input-field numeric lpad2 day-holder">
+                                             <input min="1" max="12" type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_1" maxlength="2" class="inputs input-field numeric lpad2 month-holder">
+                                             <select name="years[]" id="add_1" class="inputs input-field numeric lpadyear year-holder" onchange="checknumtravellers()" >
+                                             <option value="">Year</option>
+                                          <?php $maxyear = date('Y');
+                                          $j = $maxyear;
+                                          $year = date('Y');
+                                          if($supervisa == 'yes'){
+                                          $startfrom = '1918';
+                                             $j = date('Y') - 40;
+                                          } else {
+                                             $startfrom = '1918';
+                                          }
+                                          while($j>$startfrom) {?>
+                                          <option value="<?php echo $j;?>" ><?php echo $j;?></option>
+                                          <?php $j--; } ?>
                                           </select>
+                                          </div>
+                                          </div>
                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <span class="questionheading">Pre-existing Condition ?</span>
+                                          <div class="col-md-12 no-padding user-answer">
+                                             <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                          </div>
                                     </div>
                                  </div>
-                           </div>
-                           @endfor
-                        @endif
-                        @endif
-                     @endif
+                                 <div class="additionaltravelers">
+                                    @for ($i=0; $i < $fields['traveller_number']; $i++)
+                                    <div id="travelerrow{{ $i }}" style="display:none;" class="row alignitemcenter"> <div class="col-md-8"> <div class="row alignitembaseline"> <div class="col-md-4"> <span class="travelerheading primarytravelheading">Additional Traveler</span> </div> <div class="col-md-8"> <div class="date-wrapper question-answer d-flex ml-3"> <input min="1" max="31" type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_1" maxlength="2" class="inputs input-field numeric lpad2 day-holder"> <input min="1" max="12" type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_1" maxlength="2" class="inputs input-field numeric lpad2 month-holder"> <select name="years[]" id="add_1" class="inputs input-field numeric lpadyear year-holder" onchange="checknumtravellers()" > <option value="">Year</option> <?php $maxyear = date('Y'); $j = $maxyear; $year = date('Y'); if($supervisa == 'yes'){ $startfrom = '1918'; $j = date('Y') - 40; } else { $startfrom = '1918'; } while($j>$startfrom) {?> <option value="<?php echo $j;?>" ><?php echo $j;?></option> <?php $j--; } ?> </select> </div> </div> </div> </div> <div class="col-md-4"> <span class="questionheading">Pre-existing Condition ?</span> <div class="col-md-12 no-padding user-answer"> <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing{{$i}}" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing{{$i}}" value="no" checked="" style="width: auto !important;height: auto;"> No</label> </div> </div> </div>
+                                    @endfor
+                                 </div>
                               </div>
+                              <div class="col-md-12 mt-3">
+                                 <div class="travelerinfo">
+                                    <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
+                                 </div>
+                              </div>
+                              <input type="hidden" value="1" id="numberoftraverls" name="">
                            </div>
+                        </div>
                      </div>
+                     <script type="text/javascript">
+                        function addtravellers()
+                        {
+                           var shownumberoftravel = $('#numberoftraverls').val();
+                           $('#travelerrow'+shownumberoftravel).show();
+                           var n1 = parseInt(shownumberoftravel);
+                           var n2 = parseInt(1);
+                           var r = n1 + n2;
+                           $('#numberoftraverls').val(r)
+                        }
+                     </script>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>
@@ -353,46 +336,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
+                           <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
+                              <div class="date_picker_wrapper" id="date_picker_1">
                            <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
+                                <div class="date_picker_header">
+                                  <h2 class="date_picker_month_day"></h2>
+                                  <h2 class="date_picker_year ml-2"></h2>
+                                </div>
                             </div>
                               <div class="row userdate-coverage">
-                                 <div class="col-md-6 birthdateinput">
-                                    <div class="date_picker_wrapper" id="date_picker_2">
-                                      <div class="date_picker_header">
-                                        <h2 class="date_picker_months_day"></h2>
-                                        <h2 class="date_pickers_year ml-2"></h2>
-                                      </div>
-                                        <div class="date_picker_body">
-                                          <div class="date_picker_month_navigation">
-                                            <button class="date_picker_prev_months date_picker_month_nav_btn">
-                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
-                                            </button>
-                                            <h2 class="date_picker_month_names"></h2>
-                                            <button class="date_picker_next_months date_picker_month_nav_btn">
-                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                            </button>
-                                          </div>
-                                          <ul class="date_picker_months_days">
-                                            <li>Sun</li>
-                                            <li>Mon</li>
-                                            <li>Tue</li>
-                                            <li>Wed</li>
-                                            <li>Thu</li>
-                                            <li>Fri</li>
-                                            <li>Sat</li>
-                                          </ul>
-                                        </div>
-                                     </div>
-                                  </div>
-                                 <div class="col-md-6">
-                                    <div class="date_picker_wrapper" id="date_picker_1">
-                                      <div class="date_picker_header">
-                                        <h2 class="date_picker_month_day"></h2>
-                                        <h2 class="date_picker_year ml-2"></h2>
-                                      </div>
-                                        <div class="date_picker_body">
+                                 <div class="col-md-12 birthdateinput">
+                                        <!-- <div class="date_picker_body">
                                           <div class="date_picker_month_navigation">
                                             <button class="date_picker_prev_month date_picker_month_nav_btn">
                                               <ion-icon name="caret-back-circle-outline"></ion-icon>
@@ -411,11 +366,54 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             <li>Fri</li>
                                             <li>Sat</li>
                                           </ul>
+                                        </div> -->
+                                       <div class="form-input">
+                                          <input type="text" id="dates" class="input-field mt-3 text-center" />
+                                          <input type="hidden" id="checkin" />
+                                          <input type="hidden" id="checkout" />
+                                          <div id="datepicker"></div>
                                         </div>
-                                       
+                                      </div>
+                                 <div class="col-md-6">
+                                    <div class="row traveler-question">
+                                       <!-- <div class="col-md-12">
+                                             <span class="questionheading">Do you require Family Plan ?</span>
+                                             <div class="col-md-12 no-padding user-answer">
+                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                             </div>
+                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                                             <script>
+                                                function changefamilyyes(){
+                                                   document.getElementById('familyplan_temp').value = 'yes';   
+                                                   checkfamilyplan();
+                                                }
+                                                function changefamilyno(){
+                                                   document.getElementById('familyplan_temp').value = 'no'; 
+                                                   checkfamilyplan();
+                                                }
+                                             </script>
+                                       </div> -->
+
+                                      <!--  <div class="col-md-12">
+                                          <span class="questionheading">Pre-existing Condition ?</span>
+                                          <div class="col-md-12 no-padding user-answer">
+                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
+                                       </div>
+                                       </div> -->
+                                      <!--  <div class="col-md-12">
+                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
+                                          <div class="col-md-12 no-padding user-answer">
+                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"    style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
+                                             <input checked="" type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                                          </div>
+                                       </div> -->
                                     </div>
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
                                  </div>
+                                 </div>
+
                            </div>
+                        </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
@@ -676,27 +674,28 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
-                           <div class="card-content">
+                           <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
+                              <div class="date_picker_wrapper" id="date_picker_1">
+                           <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
+                                <div class="date_picker_header">
+                                  <h2 class="date_picker_month_day"></h2>
+                                  <h2 class="date_picker_year ml-2"></h2>
+                                </div>
+                            </div>
                               <div class="row userdate-coverage">
-                                 <div class="col-md-6 birthdateinput">
-                                    <div class="date_picker_wrappers" id="date_pickers_1">
-                                        <div class="date_picker_headers">
-                                          <button class="date_picker_years"></button>
-                                          <h2 class="date_picker_month_days"></h2>
-                                        </div>
-                                        <div class="date_picker_bodys">
-                                          <div class="date_picker_month_navigations">
-                                            <button class="date_picker_prev_months date_picker_month_nav_btns">
-                                              <ion-icon name="caret-back-circle-outlines"></ion-icon>
+                                 <div class="col-md-12 birthdateinput">
+                                        <!-- <div class="date_picker_body">
+                                          <div class="date_picker_month_navigation">
+                                            <button class="date_picker_prev_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
                                             </button>
-                                            <h2 class="date_picker_month_names"></h2>
-                                            <button class="date_picker_next_months date_picker_month_nav_btns">
-                                              <ion-icon name="caret-forward-circle-outlines"></ion-icon>
+                                            <h2 class="date_picker_month_name"></h2>
+                                            <button class="date_picker_next_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
                                             </button>
                                           </div>
-                                          <ul class="date_picker_month_dayss">
+                                          <ul class="date_picker_month_days">
                                             <li>Sun</li>
                                             <li>Mon</li>
                                             <li>Tue</li>
@@ -705,12 +704,17 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             <li>Fri</li>
                                             <li>Sat</li>
                                           </ul>
+                                        </div> -->
+                                       <div class="form-input">
+                                          <input type="text" id="dates" class="input-field mt-3 text-center" />
+                                          <input type="hidden" id="checkin" />
+                                          <input type="hidden" id="checkout" />
+                                          <div id="datepicker"></div>
                                         </div>
                                       </div>
-                                 </div>
                                  <div class="col-md-6">
                                     <div class="row traveler-question">
-                                       <div class="col-md-12">
+                                       <!-- <div class="col-md-12">
                                              <span class="questionheading">Do you require Family Plan ?</span>
                                              <div class="col-md-12 no-padding user-answer">
                                                 <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
@@ -726,23 +730,26 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                    checkfamilyplan();
                                                 }
                                              </script>
-                                       </div>
-                                       <div class="col-md-12">
+                                       </div> -->
+
+                                      <!--  <div class="col-md-12">
                                           <span class="questionheading">Pre-existing Condition ?</span>
                                           <div class="col-md-12 no-padding user-answer">
                                           <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
                                        </div>
-                                       </div>
-                                       <div class="col-md-12">
+                                       </div> -->
+                                      <!--  <div class="col-md-12">
                                           <span class="questionheading">Do you Smoke in last 12 months ?</span>
                                           <div class="col-md-12 no-padding user-answer">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"    style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
+                                             <input checked="" type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                                           </div>
-                                       </div>
+                                       </div> -->
                                     </div>
+                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
                                  </div>
-                              </div>
+                                 </div>
+
                            </div>
                         </div>
                      </div>
@@ -765,19 +772,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       @endif
    </div>
 </div>
-<script type="text/javascript">
-   var a = 0;
-   function addtravellers() {
-      a++
-      var number_of_traveller = '5';
-
-      if(a < number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class=" mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" name="years[]" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
-      }else{
-         $('.button-add-another').fadeOut(300);
-      }
-   }
-</script>
 <script>
    var today = new Date();
    var dd = today.getDate();
@@ -1567,4 +1561,156 @@ dropDown.prototype = {
                     $('[name=daterangepicker_end]').focus();
                 }
             });
+</script>
+
+<script type="text/javascript">
+   $(function(){
+  
+  var startDate, endDate;
+  
+  var datepicker = {
+        container: $("#datepicker"),
+        dateFormat: 'mm/dd/yy',
+        dates: [null, null],
+        status: null,
+        inputs: {
+            checkin: $('#checkin'),
+            checkout: $('#checkout'),
+            dates: $('#dates')
+        }
+    };
+
+  datepicker.container.datepicker({
+  numberOfMonths: 2,
+  dateFormat: datepicker.dateFormat,
+  minDate: 0,
+  maxDate: null,
+
+  beforeShowDay: function(date) {
+    var highlight = false,
+        currentTime = date.getTime(),
+        selectedTime = datepicker.dates,
+        checkin_date = selectedTime[0] ? new Date(selectedTime[0]) : null,
+        checkout_date = selectedTime[1] ? new Date(selectedTime[1]) : null,
+        checkin_timestamp,
+        checkout_timestamp,
+        classes = 'ui-datepicker-highlight';
+    
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+
+    currentTime = date.getTime();
+    
+    // CHECKIN/CHECKOUT CLASSES
+     if(checkin_date) {
+       checkin_date.setHours(0);
+       checkin_date.setMinutes(0);
+       checkin_date.setSeconds(0);
+       checkin_date.setMilliseconds(0);
+       checkin_timestamp = checkin_date.getTime();
+
+       startDate = checkin_timestamp;
+     }
+
+    if(checkout_date) {
+      checkout_date.setHours(0);
+      checkout_date.setMinutes(0);
+      checkout_date.setSeconds(0);
+      checkout_date.setMilliseconds(0);
+      checkout_timestamp = checkout_date.getTime();
+
+      endDate = checkout_timestamp;
+    }
+
+    if ( checkin_timestamp && currentTime == checkin_timestamp ) {
+      classes = 'ui-datepicker-highlight ui-checkin';
+    } else if (checkout_timestamp && currentTime == checkout_timestamp) {
+      classes = 'ui-datepicker-highlight ui-checkout';
+    }
+
+    // Highlight date range
+    if ((selectedTime[0] && selectedTime[0] == currentTime) || (selectedTime[1] && (currentTime >= selectedTime[0] && currentTime <= selectedTime[1]))) highlight = true;
+
+    return [true, highlight ? classes : ""];
+  },
+  onSelect: function(dateText) {
+
+    if (!datepicker.dates[0] || datepicker.dates[1] !== null) {
+      // CHOOSE FIRST DATE
+      
+      // fill dates array with first chosen date
+      datepicker.dates[0] = $.datepicker.parseDate(datepicker.dateFormat, dateText).getTime();
+      datepicker.dates[1] = null;
+      
+      // clear all inputs
+        datepicker.inputs.checkin.val('');
+      datepicker.inputs.checkout.val('');
+        datepicker.inputs.dates.val('');
+      
+      // set current datepicker state
+      datepicker.status = 'checkin-selected';
+      
+      // create mouseover for table cell
+      $('#datepicker').delegate('.ui-datepicker td', 'mouseover', function(){
+        
+        // if it doesn't have year data (old month or unselectable date)
+        if ($(this).data('year') == undefined) return;
+        
+        // datepicker state is not in date range select, depart date wasn't chosen, or return date already chosen then exit
+        if (datepicker.status != 'checkin-selected') return;
+        
+        // get date from hovered cell
+        var hoverDate = $(this).data('year')+'-'+($(this).data('month')+1)+'-'+$('a',this).html();
+        
+        // parse hovered date into milliseconds
+        hoverDate = $.datepicker.parseDate('yy-mm-dd', hoverDate).getTime();
+        
+        $('#datepicker td').each(function(){
+          
+          // compare each table cell if it's date is in date range between selected date and hovered
+          if ($(this).data('year') == undefined) return;
+          
+          var year = $(this).data('year'),
+              month = $(this).data('month'),
+              day = $('a', this).html();
+            
+          var cellDate = $(this).data('year')+'-'+($(this).data('month')+1)+'-'+$('a',this).html();
+          
+          // convert cell date into milliseconds for further comparison
+          cellDate = $.datepicker.parseDate('yy-mm-dd', cellDate).getTime();
+
+          if ( (cellDate >= datepicker.dates[0] && cellDate <= hoverDate) || (cellDate <= datepicker.dates[0] && cellDate >= hoverDate) ) {
+              $(this).addClass('ui-datepicker-hover');
+            } else {
+              $(this).removeClass('ui-datepicker-hover');
+            }
+
+        });
+      });
+
+  } else {
+    // CHOOSE SECOND DATE
+    
+    // push second date into dates array
+    datepicker.dates[1] = $.datepicker.parseDate(datepicker.dateFormat, dateText).getTime();
+    
+    // sort array dates
+      datepicker.dates.sort();
+
+    var checkInDate = $.datepicker.parseDate('@', datepicker.dates[0]);
+    var checkOutDate = $.datepicker.parseDate('@', datepicker.dates[1]);
+    
+    datepicker.status = 'checkout-selected';
+                
+//fill input fields
+   datepicker.inputs.checkin.val($.datepicker.formatDate(datepicker.dateFormat, checkInDate));
+                datepicker.inputs.checkout.val($.datepicker.formatDate(datepicker.dateFormat, checkOutDate)).change();
+                datepicker.inputs.dates.val(datepicker.inputs.checkin.val() + ' - ' + datepicker.inputs.checkout.val());
+
+            }
+        }
+    });
+});
 </script>
