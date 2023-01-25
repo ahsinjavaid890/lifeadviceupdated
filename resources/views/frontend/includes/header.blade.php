@@ -70,7 +70,7 @@
                                             <a href="{{ url('life-insurance') }}" class="nav-link">Whole Life Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('terms-life-insurance') }}" class="nav-link">Term Life Insurance</a>
+                                            <a href="{{ url('term-life-insurance') }}" class="nav-link">Term Life Insurance</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ url('desability') }}" class="nav-link">Desability</a>

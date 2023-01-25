@@ -6,12 +6,6 @@
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
-$prosupervisa = $data->pro_supervisa;
-if($prosupervisa == '1'){
-$supervisa = 'yes';
-} else {
-$supervisa = 'no';   
-}
 @endphp
 <div class="health-inssurance-hero-banners super-hero">
    <div class="container-homepage">
@@ -40,6 +34,14 @@ $supervisa = 'no';
   </div>
 </div>
       @if($firstsection->form == 1)
+      @php
+         $prosupervisa = $data->pro_supervisa;
+         if($prosupervisa == '1'){
+         $supervisa = 'yes';
+         } else {
+         $supervisa = 'no';   
+         }
+      @endphp
       <div class="row card-section">
          <div class="col-md-12">
             
