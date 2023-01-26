@@ -2,6 +2,7 @@ function removeappendvalue(id) {
   $('.button-add-another').fadeIn(300);
   $('#removebutton'+id).removeClass('showrowstraveler');
   $('#removebutton'+id).addClass('hiderowstraveler');
+  $('.dateofbirthclass'+id).val('')
 }
 function secondnext() {
     var inputs = $(".dateofbirthclass");
