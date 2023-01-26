@@ -226,40 +226,28 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                            <div class="row">
                               <div class="col-md-12 mt-3">
-                                 <div class="row alignitemcenter">
-                                    <div class="col-md-8">
+                                 <div class="row">
+                                    <div class="col-md-6">
                                        <div class="row alignitembaseline">
-                                          <div class="col-md-4">
+                                          <div class="col-md-6">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                           </div>
-                                          <div class="col-md-8">
-                                              <div class="date-wrapper question-answer d-flex ml-3">
-                                             <input min="1" max="31" type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_1" maxlength="2" class="inputs input-field numeric lpad2 day-holder">
-                                             <input min="1" max="12" type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_1" maxlength="2" class="inputs input-field numeric lpad2 month-holder">
-                                             <select name="years[]" id="add_1" class="inputs input-field numeric lpadyear year-holder" onchange="checknumtravellers()" >
-                                             <option value="">Year</option>
-                                          <?php $maxyear = date('Y');
-                                          $j = $maxyear;
-                                          $year = date('Y');
-                                          if($supervisa == 'yes'){
-                                          $startfrom = '1918';
-                                             $j = date('Y') - 40;
-                                          } else {
-                                             $startfrom = '1918';
-                                          }
-                                          while($j>$startfrom) {?>
-                                          <option value="<?php echo $j;?>" ><?php echo $j;?></option>
-                                          <?php $j--; } ?>
-                                          </select>
-                                          </div>
+                                          <div class="col-md-6 nopad">
+                                             <div class="input-wrapper">
+                                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY">
+                                                <span class="placeholder">MM/DD/YYYY</span>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                       <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                             <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                          </div>
+                                    <div class="col-md-5">
+                                       <div class="wrapper-dropdown" id="coverage_amount">
+                                        <span>Pre Existing Condition</span>
+                                        <ul class="dropdown">
+                                          <li>Yes</li>
+                                          <li>No</li>
+                                        </ul>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="additionaltravelers">
@@ -1379,63 +1367,4 @@ dropDown.prototype = {
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
-</script>
-<!-- <script type="text/javascript">
-   let dateInput = document.getElementById("date-input")
-
-dateInput.addEventListener('keyup', function(e) {
-  let val = dateInput.value;
-  let newval = '';
-  
-  if (val.length === 4) {
-    newval = val.slice(0,2) + " / " + val.slice(2,4)+ " / ";
-    dateInput.value = newval;
-  } 
-});
-</script>
-<script type="text/javascript">
-   let dateInput = document.getElementById("additional-date")
-
-dateInput.addEventListener('keyup', function(e) {
-  let val = dateInput.value;
-  let newval = '';
-  
-  if (val.length === 4) {
-    newval = val.slice(0,2) + " / " + val.slice(2,4)+ " / ";
-    dateInput.value = newval;
-  } 
-});
-</script> -->
-<script type="text/javascript">
-  var input = document.querySelectorAll('#date-input')[0];
-  
-var dateInputMask = function dateInputMask(elm) {
-  elm.addEventListener('keypress', function(e) {
-    if(e.keyCode < 47 || e.keyCode > 57) {
-      e.preventDefault();
-    }
-   var len = elm.value.length;
-   if(len !== 1 || len !== 3) {
-      if(e.keyCode == 47) {
-        e.preventDefault();
-      }
-    }
-   if(len === 2) {
-      elm.value += '/';
-    }
-   if(len === 5) {
-      elm.value += '/';
-    }
-  });
-};
-  
-   dateInputMask(input);
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<script type="text/javascript">
-   function autodate(id) {
-       $('#additional-date').mask('00/00');
-   }
-
-  
 </script>
