@@ -999,9 +999,19 @@
     z-index: 2;
 }
 input:placeholder-shown {
-    border-color: #cfd9e8!important;
+    border-color: #cfd9e8;
     color: #67778f;
 }
+
+.errorinput:placeholder-shown {
+    border-color: red !important;
+    color: #67778f;
+}
+
+.hiderowstraveler{
+    display: none;
+}
+
 button, input, select, textarea {
      background-color: transparent; 
     border-style: none;
@@ -2901,10 +2911,8 @@ li.date_picker_week_day {
    font-size: 18px;
    font-weight: 700;
 }
-@media only screen and (min-width: 1090px) and (max-width: 1515px){
-   .input {
-      width: 486px !important;
-   }
+.pre_existing_dropdown{
+    max-height: 80px !important;
 }
 #date-input{
    border-radius: 10px 0px 0 10px !important;

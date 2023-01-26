@@ -22,6 +22,7 @@
 	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	@yield('tittle')
+  <input type="hidde" id="app_url" value="{{ url('') }}" name="">
 </head>
 	<body class="body-five">
 		@include('frontend.includes.header')

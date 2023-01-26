@@ -4025,10 +4025,7 @@ select {
 .ui-datepicker-header .ui-datepicker-next {
   float: right;
 }
-input[type="text"],
-input[type="password"] {
-  border: 1px solid #9b9b9b !important;
-}
+
 .selectBox {
   border: 1px solid #9b9b9b !important;
 }

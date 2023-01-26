@@ -1,3 +1,30 @@
+function removeappendvalue(id) {
+  $('.button-add-another').fadeIn(300);
+  $('#removebutton'+id).removeClass('showrowstraveler');
+  $('#removebutton'+id).addClass('hiderowstraveler');
+}
+function secondnext() {
+    var inputs = $(".dateofbirthclass");
+    for(var i = 0; i < inputs.length; i++){
+        var date = new Date($(inputs[i]).val());
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if(year > 1983)
+        {
+            $('#errortravelr').show();
+            $('#errortravelr').html('Super Visa Allowed Greater then 40');
+        }else if(year < 1923){
+            $('#errortravelr').show();
+            $('#errortravelr').html('Super Visa Allowed Greater then 40');
+        }else{
+            $('#errortravelr').hide();
+            $('#errortravelr').html('');
+        }
+        console.log(year)
+    }
+}
+
 (function($) {
     'use strict';
     // Mean Menu

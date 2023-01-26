@@ -221,12 +221,15 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
-                           <div class="card-content">
+                           <div class="card-content d-flex">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
+                              <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;" id="errortravelr" class="alert alert-danger">
+                                  
+                              </div>
                            </div>
                            <div class="row">
                               <div class="col-md-12 mt-3">
-                                 <div class="row">
+                                 <div class="row mt-3 showrowstraveler">
                                     <div class="col-md-6">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6">
@@ -234,25 +237,28 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper">
-                                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY">
+                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY">
                                                 <span class="placeholder">MM/DD/YYYY</span>
                                              </div>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-5">
-                                       <div class="wrapper-dropdown" id="coverage_amount">
+                                    <div class="col-md-3">
+                                       <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing">
                                         <span>Pre Existing Condition</span>
-                                        <ul class="dropdown">
+                                        <ul class="dropdown pre_existing_dropdown">
                                           <li>Yes</li>
                                           <li>No</li>
                                         </ul>
                                        </div>
                                     </div>
+                                    <div class="col-md-3 alert1 text-danger">
+                                       
+                                    </div>
                                  </div>
-                                 <div class="additionaltravelers">
-                                    @for ($i=0; $i < $fields['traveller_number']; $i++)
-                                    <div id="travelerrow{{ $i }}" style="display:none;" class="row alignitemcenter"> <div class="col-md-8"> <div class="row alignitembaseline"> <div class="col-md-4"> <span class="travelerheading primarytravelheading">Additional Traveler</span> </div> <div class="col-md-8"> <div class="date-wrapper question-answer d-flex ml-3"> <input min="1" max="31" type="number" oninput="maxLengthCheck(this)" placeholder="DD" name="days[]" id="days_1" maxlength="2" class="inputs input-field numeric lpad2 day-holder"> <input min="1" max="12" type="number" oninput="maxLengthChecks(this)" placeholder="MM" name="months[]" id="months_1" maxlength="2" class="inputs input-field numeric lpad2 month-holder"> <select name="years[]" id="add_1" class="inputs input-field numeric lpadyear year-holder" onchange="checknumtravellers()" > <option value="">Year</option> <?php $maxyear = date('Y'); $j = $maxyear; $year = date('Y'); if($supervisa == 'yes'){ $startfrom = '1918'; $j = date('Y') - 40; } else { $startfrom = '1918'; } while($j>$startfrom) {?> <option value="<?php echo $j;?>" ><?php echo $j;?></option> <?php $j--; } ?> </select> </div> </div> </div> </div> <div class="col-md-4"> <span class="questionheading">Pre-existing Condition ?</span> <div class="col-md-12 no-padding user-answer"> <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing{{$i}}" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing{{$i}}" value="no" checked="" style="width: auto !important;height: auto;"> No</label> </div> </div> </div>
+                                 <div class="additionaltraveler">
+                                    @for ($i=2; $i < 7; $i++)
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Primary Traveler</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper"> <input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY"> <span class="placeholder">MM/DD/YYYY</span> </div> </div> </div> </div> <div class="col-md-3"> <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing'+a+'"> <span>Pre Existing Condition</span> <ul class="dropdown pre_existing_dropdown"> <li>Yes</li> <li>No</li> </ul> </div> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -261,19 +267,31 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                  </div>
                               </div>
-                              <input type="hidden" value="1" id="numberoftraverls" name="">
+                              <input type="hidden" value="5" id="numberoftraverls" name="">
                            </div>
                         </div>
                      </div>
                      <script type="text/javascript">
-                        function addtravellers()
+                        function addtravellers() 
                         {
-                           var shownumberoftravel = $('#numberoftraverls').val();
-                           $('#travelerrow'+shownumberoftravel).show();
-                           var n1 = parseInt(shownumberoftravel);
-                           var n2 = parseInt(1);
-                           var r = n1 + n2;
-                           $('#numberoftraverls').val(r)
+                           var showrowstraveler = $('.showrowstraveler').length;
+
+                           var value = $('.dateofbirthclass'+showrowstraveler).val();
+                           if(value == '')
+                           {
+                              $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                           }else{
+                              var showmext = parseInt(showrowstraveler)+1;
+                              $('#removebutton'+showmext).removeClass('hiderowstraveler');
+                              $('#removebutton'+showmext).addClass('showrowstraveler');
+                              var numberoftraverls = $('#numberoftraverls').val();
+                              if(numberoftraverls == showrowstraveler)
+                              {
+                                 $('.button-add-another').fadeOut(300);
+                              }
+                           }
+
+                           
                         }
                      </script>
                      <div class="modal-footer">
@@ -861,12 +879,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    }
 </script>
 <script type="text/javascript">
-   function removeappendvalue(id) {
-      $('.button-add-another').fadeIn(300);
-      $('#removebutton'+id).remove();
-   }
-</script>
-<script type="text/javascript">
    $( "#destination_country" ).change(function() {
        var sel = $( "#destination_country option:selected" ).val();
        var textbox = document.getElementById("txtmanuid");
@@ -983,6 +995,42 @@ dropDown.prototype = {
   }
 }
 </script>
+<script type="text/javascript">
+$(function() {
+  var dd1 = new dropDown($('#pre_existing'));
+  $(document).click(function() {
+    $('.wrapper-dropdown').removeClass('active');
+  });
+});
+function dropDown(el) {
+  this.dd = el;
+  this.placeholder = this.dd.children('span');
+  this.opts = this.dd.find('ul.dropdown > li');
+  this.val = '';
+  this.index = -1;
+  this.initEvents();
+}
+dropDown.prototype = {
+  initEvents: function() {
+    var obj = this;
+    
+    obj.dd.on('click', function() {
+      $(this).toggleClass('active');
+      return false;
+    });
+    
+    obj.opts.on('click', function() {
+      var opt = $(this);
+      obj.val = opt.text();
+      obj.index = opt.index();
+      obj.placeholder.text(obj.val);
+    });
+  }
+}
+</script>
+
+
+
 <script type="text/javascript">
     $(function() {
   var dd1 = new dropDown($('#coverage_amount'));
