@@ -49,15 +49,15 @@ $(function () {
 <?php
 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
-//Sum Insured Slider
-var SliderValues = [<?php
+
+var SliderValues = [0,<?php
                 $s = 0;
                 foreach($sum as $r){
-                $s++;
+                $s++;   
                 echo $sumamount = $r->sum_insured;
                 if($s < count($sum)){
                 echo ', ';
-                }   
+                }
                 } ?>];
 var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
 $(function () {
@@ -66,16 +66,16 @@ $(function () {
         min: 0,
         max: SliderValues.length - 1,
         step: 1,
-        value: 0,
+        value: iValue,
         slide: function (event, ui) {
             $('#coverage_amount').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
-            for (i = 0; i < SliderValues.length; i++) {
-                var group = SliderValues[i];
-                $('.coverage-amt-'+group).hide();
-            }
+for (i = 0; i < SliderValues.length; i++) {
+var group = SliderValues[i];
+$('.coverage-amt-'+group).hide();
+}
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverageammount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
         }
     });
 
@@ -87,7 +87,7 @@ $(function () {
           <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                    <h4>Qoute Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
+                    <h4>Quote Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
@@ -95,14 +95,17 @@ $(function () {
                     <div class="mt-4" id="slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
                 <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverageammount" name="coverage_amount" value="$<?php if ($request->sum_insured2 == $request->sum_insured2) { echo "0";} else{ echo $request->sum_insured2; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
                     <div class="mt-4" id="sum_slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
               </div>
           </div>
         </div>
-        
-        
+        <div class="card qoute-price-card mb-3 left_qoute_card">
+          <div class="card-body">
+              
+          </div>
+        </div>     
     </div>
     <div id="main" class="col-md-8">
         

@@ -1422,7 +1422,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
       border-top: none !important;
    }
    .nextbtns span{
-    background: #262566;
+    background: #2b3481;
     color: white;
     border-radius: 18px;
     width: 101px;
@@ -1430,7 +1430,10 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    .get-quotes-button{
     width: 145px;
    }
-
+.showrowstraveler{
+    border-bottom: 1px solid #2b3481;
+    padding-bottom: 20px;
+}
 
 @media (min-width: 1240px) and (max-width: 1360px){
     .qoute-card {

@@ -24,6 +24,42 @@ $(".close-tooltip").click(function(){
     $(".activehelpful").slideToggle();
 });
 
+
+function firstnext() {
+  if($('#sum_insured2').val() == '' )
+  {
+     $('#covergaeerror').show();
+     $('#covergaeerror').html('Please Select Covergae Ammount');
+  }else if($('#primarydestination').val() == ''){
+     $('#primarydestinationerror').show();
+     $('#primarydestinationerror').html('Please Select Primary DEstination');
+  }
+  else{
+     $('#firstnextfake').hide();
+     $('#firstnextorignal').show();
+     $('#firstnextorignal').click();
+  }
+}
+
+
+function selectdestination(id) {
+  $('#primarydestination').val(id); 
+     $('#qoutedestination').html(id);  
+}
+function thirdone() {
+ if($('#savers_email').val() == '')
+ {
+    $('#savers_emailerror').show();
+    $('#savers_emailerror').html('Please Enter Your Email');
+ }else{
+    $('#savers_emailerror').hide();
+     $('#donefake').hide();
+     $('#doneoriginal').show();
+     $('#doneoriginal').click();
+  }
+}
+
+
 function addtravellers() 
 {
    var showrowstraveler = $('.showrowstraveler').length;

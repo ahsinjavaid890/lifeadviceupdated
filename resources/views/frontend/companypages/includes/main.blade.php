@@ -2,7 +2,7 @@
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
-  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -48,8 +48,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-               <input type="hidden"  name="sum_insured2" id="sum_insured2">
-               <input type="hidden" id="primarydestination" name="primarydestination">
                <input type="hidden" id="departure_date" name="departure_date">
                <input type="hidden" id="return_date" name="return_date">
                <!-- <input type="hidden" name="ages[]" id="selectage"> -->
@@ -102,112 +100,42 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                           </div>
-                              <div class="row">
+                              <div class="row mt-3">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                  <div class="col-md-6 userdata-card">
-                                      <div class="wrapper-dropdown" id="coverage_amount">
-                                        <span>Coverage Ammount</span>
-                                        <ul class="dropdown"  >
-                                         @foreach($sum_insured as $r)
-
-
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammount({{$r->sum_insured}});">
-                                            <span class="selectspan">${{ $r->sum_insured }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                             function selectcoverageammount(id) {
-                                                 $('#sum_insured2').val(id);
-                                                 $('#coverageprice').val(id);
-                                                 $('#covergaeerror').hide();
-                                               }
-                                               function firstnext() {
-                                                  if($('#sum_insured2').val() == '' )
-                                                  {
-                                                     $('#covergaeerror').show();
-                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
-                                                  }else if($('#savers_email').val() == ''){
-                                                   $('#emailerror').show();
-                                                   $('#emailerror').html('Please Enter Your Email');
-                                                  }
-                                                  else{
-                                                     $('#firstnextfake').hide();
-                                                     $('#firstnextorignal').show();
-                                                     $('#firstnextorignal').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                  </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['fname']))
-                                 @if($fields['fname'] == 'on')
                                  <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="fname" placeholder="First Name" required id="irstname" class="wrapperfrom">
-                                       <label for="firstname" class="form-label">First name</label>
+                                     <select name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
+                                       <option value="">Select Coverage Ammount</option>
+                                       @foreach($sum_insured as $r)
+                                          <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                       @endforeach
+                                     </select>
+                                     <div class="text-danger mt-4" id="covergaeerror"></div>
+                                </div>
+                                 @endif
+                                 @endif
+                                 @if(isset($fields['Country']))
+                                   @if($fields['Country'] == "on" )
+                                    <div class="col-md-6">
+                                        <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
+                                          <option value="">Select Primary Destination</option>
+                                          @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                             <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                          @endforeach
+                                        </select>
+                                        <div class="text-danger mt-4" id="primarydestinationerror"></div>
                                     </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['lname']))
-                                 @if($fields['lname'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="lname" placeholder="Last Name" required id="lname" class="wrapperfrom">
-                                       <label for="lname" class="form-label">Last name</label>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['email']))
-                                 @if($fields['email'] == "on" )
-                                   <div class="col-md-6 userdata-card">
-                                      <div class="custom-form-control">
-                                         <input type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
-                                         <label for="savers_email" class="form-label">Email</label>
-                                      </div>
-                                   </div>
-                                @endif
-                                @endif
-                                @if(isset($fields['phone']))
-                                @if($fields['phone'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="wrapperfrom">
-                                       <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
-                                    </div>
-                                 </div>
-                                 <script>
-                                    function validatephone(){
-                                       var checkphone = document.getElementById('phone').value;
-                                       document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                                       if (checkphone.length < 10) {
-                                       document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                                       document.getElementById('getquote').disabled = true;  
-                                       } else {
-                                       document.getElementById('getquote').disabled = false; 
-                                       document.getElementById('phone_error').innerHTML = '';
-                                       }
-                                       }
-                                 </script>
-                                 @endif
+                                    @endif
                                  @endif
                               </div>
-                                <div class="text-danger mt-4" id="covergaeerror"></div>
-                                <div class="text-danger mt-4" id="emailerror"></div>
-                                
                            </div>
                         </div>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                          <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
-                          <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
-                       </div>
-                     </div>
+                        <div class="modal-footer">
+                           <div class="nextbtns">
+                             <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
+                             <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
+                          </div>
+                        </div>
                   </div>
                </div>
             </div>
@@ -224,7 +152,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="card-content d-flex">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
                               <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;" id="errortravelr" class="alert alert-danger">
-                                  
+
                               </div>
                            </div>
                            <div class="row">
@@ -244,13 +172,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                     <div class="col-md-3">
-                                       <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing">
-                                        <span>Pre Existing Condition</span>
-                                        <ul class="dropdown pre_existing_dropdown">
-                                          <li>Yes</li>
-                                          <li>No</li>
-                                        </ul>
-                                       </div>
+                                          <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="Yes">Yes</option>
+                                             <option value="Yes">No</option>
+                                           </select>
                                     </div>
                                     <div class="col-md-3 alert1 text-danger" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
@@ -265,7 +191,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Primary Traveler</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper"> <input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"> <span class="placeholder">MM/DD/YYYY</span> </div> </div> </div> </div> <div class="col-md-3"> <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing'+a+'"> <span>Pre Existing Condition</span> <ul class="dropdown pre_existing_dropdown"> <li>Yes</li> <li>No</li> </ul> </div> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper"> <input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"> <span class="placeholder">MM/DD/YYYY</span> </div> </div> </div> </div> <div class="col-md-3"> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -327,78 +253,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                             <li>Sat</li>
                                           </ul>
                                         </div>
+                                 </div>
+                                 @if(isset($fields['email']))
+                                 @if($fields['email'] == "on" )
+                                   <div class="col-md-6 userdata-card mt-3">
+                                      <div class="custom-form-control">
+                                         <input type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                         <span class="placeholder">Email</label>
                                       </div>
-                                 <div class="col-md-6">
-                                 @if(isset($fields['Country']))
-                                @if($fields['Country'] == "on" )
-                                      <div class="wrapper-dropdown mt-4" id="primary_destination">
-                                        <span>Priamry Destination</span>
-                                        <ul class="dropdown"  >
-
-                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectdestination('{{$r->name}}')">
-                                            <span class="selectspan">{{ $r->name }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                               function selectdestination(id) {
-                                                   $('#primarydestination').val(id); 
-                                                      $('#qoutedestination').html(id);  
-                                               }
-                                                function thirdone() {
-                                                  if($('#primarydestination').val() == '')
-                                                  {
-                                                     $('#destinationerror').show();
-                                                     $('#destinationerror').html('Please Select Primary Destination');
-                                                  }else{
-                                                     $('#destinationerror').hide();
-                                                      $('#donefake').hide();
-                                                      $('#doneoriginal').show();
-                                                      $('#doneoriginal').click();
-                                                   }
-                                                }
-                                         </script>
-                                        </ul>
-                                      </div>
+                                      <div class="text-danger mt-4" id="savers_emailerror"></div>
+                                   </div>
                                  @endif
                                  @endif
-                                    <div class="row traveler-question">
-                                       <div class="col-md-12">
-                                             <span class="questionheading">Do you require Family Plan ?</span>
-                                             <div class="col-md-12 no-padding user-answer">
-                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                             </div>
-                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
-                                             <script>
-                                                function changefamilyyes(){
-                                                   document.getElementById('familyplan_temp').value = 'yes';   
-                                                   checkfamilyplan();
-                                                }
-                                                function changefamilyno(){
-                                                   document.getElementById('familyplan_temp').value = 'no'; 
-                                                   checkfamilyplan();
-                                                }
-                                             </script>
-                                       </div>
-
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                       </div>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"    style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input checked="" type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 <div style="display: none;" class="text-danger mt-4" id="destinationerror">Please Select Destination</div>
-                                 </div>
-                                 </div>
-
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -420,369 +287,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             </form>
          </div>
       </div>
-      <div class="card modal-qoute-card ">
-          <div class="card-body">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="quotes-button">
-                          <button class="modal-qoute-btn btn btn-block" data-toggle="modal" data-target="#qoutemodal">Get Qoutes</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="modal fade modal-fullscreen  footer-to-bottom" id="qoutemodal">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-md-12">
-                <form action="#" method="POST">
-               <input type="hidden"  name="mobile_sum_insured2" id="mobile_sum_insured2">
-            <div class="p-0 qoute-card new-qoute">
-               <div class="card-body p-0">
-                  <div  data-v-67adc629="" class="quotes-generator-bar fixed">
-                     <div  class="grid-container">
-                        <div  class="grid-row grid-row--bar">
-                           <div  class="d-grid generator-bar-row-wrap">
-                              <label data-toggle="modal" data-target="#myModal4"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="Coverage Amount" required="required" id="coverageprices" class="input-field" disabled>
-                                 <span  class="label-text">Coverage Amount</span>
-                                 <div  class="dest-value"></div>
-                              </label>
-                              <label  data-toggle="modal" data-target="#myModal5"  class="form-input input-traveler-info has-arrow">
-                              <input  id="citishow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
-                              <span  class="label-text">Traveler Information</span>
-                              </label>
-                              <div  data-toggle="modal" data-target="#myModal6"   class="form-input date-range form-input__date-range">
-                                 <div  class="input-field">
-                                    <div  class="from">
-                                       <i  class="icon icon-calendar"></i>
-                                       <div id="coveragedate" class="value"> Start Date 
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <button  disabled="disabled" class="button button-primary get-quotes-button"> Get Quotes </button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal zoom-in" aria-hidden="true" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
-                  <div class="modal-content rounded-3">
-                     <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="card lg-wizard-card modal-card border-0">
-                           <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
-                           <div class="card-content coverage">
-                              <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
-                              <div class="row">
-                                @if(isset($fields['sum_insured']))
-                                @if($fields['sum_insured'] == 'on')
-                                  <div class="col-md-6 userdata-card">
-                                      <div class="wrapper-dropdown" id="mobile_coverage_amount">
-                                        <span>Coverage Ammount</span>
-                                        <ul class="dropdown"  >
-                                         @foreach($sum_insured as $r)
-
-
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammounts({{$r->sum_insured}});">
-                                            <span class="selectspan">${{ $r->sum_insured }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                             function selectcoverageammounts(id) {
-                                                 $('#mobile_sum_insured2').val(id);
-                                                 $('#coverageprices').val(id);
-                                                 $('#covergaeerrors').hide();
-                                               }
-                                               function firstnexts() {
-                                                  if($('#mobile_sum_insured2').val() == '')
-                                                  {
-                                                     $('#covergaeerrors').show();
-                                                     $('#covergaeerrors').html('Please Select Covergae Ammount');
-                                                  }else{
-                                                     $('#firstnextfakes').hide();
-                                                     $('#firstnextorignals').show();
-                                                     $('#firstnextorignals').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                  </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['fname']))
-                                 @if($fields['fname'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="fname" placeholder="First Name" required id="irstname" class="wrapperfrom">
-                                       <label for="firstname" class="form-label">First name</label>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['lname']))
-                                 @if($fields['lname'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="lname" placeholder="Last Name" required id="lname" class="wrapperfrom">
-                                       <label for="lname" class="form-label">Last name</label>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['email']))
-                                 @if($fields['email'] == "on" )
-                                   <div class="col-md-6 userdata-card">
-                                      <div class="custom-form-control">
-                                         <input type="text" name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
-                                         <label for="savers_email" class="form-label">Email</label>
-                                      </div>
-                                   </div>
-                                @endif
-                                @endif
-                                @if(isset($fields['phone']))
-                                @if($fields['phone'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="wrapperfrom">
-                                       <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
-                                    </div>
-                                 </div>
-                                 <script>
-                                    function validatephone(){
-                                       var checkphone = document.getElementById('phone').value;
-                                       document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                                       if (checkphone.length < 10) {
-                                       document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                                       document.getElementById('getquote').disabled = true;  
-                                       } else {
-                                       document.getElementById('getquote').disabled = false; 
-                                       document.getElementById('phone_error').innerHTML = '';
-                                       }
-                                       }
-                                 </script>
-                                 @endif
-                                 @endif
-                              </div>
-                                <div class="text-danger mt-4" id="covergaeerrors"></div>
-                                
-                           </div>
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                          <span id="firstnextfakes" class="btn btn-default" onclick="firstnexts()">Next</span>
-                          <span style="display: none;" id="firstnextorignals"  class="btn btn-default btn-nexts">Next</span>
-                       </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal zoom-in" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
-                  <div class="modal-content">
-                     <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">How many travelers?</h2>
-                           <!----><!----><!----><!---->
-                           <div class="card-content">
-                              <p  class="card-info"> Enter the age for each person that will be traveling.</p>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="d-flex travelerinfo">
-                                       <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div id="ageinputs" class="form-input input-age">
-                                          <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
-                                       </div>
-                                    </div>
-                                 <div class="additionaltraveler"></div>
-                                 <div class="mt-3">
-                                    <div class="travelerinfo">
-                                       <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                    </div>
-                                 </div>
-                                 </div>
-                                 @if(isset($fields['Country']))
-                                @if($fields['Country'] == "on" )
-                                 <div class="col-md-6">
-                                     <div class="wrapper-dropdown" id="mobile_primary_destination" style="position: initial !important; ">
-                                        <span>Select Destination</span>
-                                        <ul class="dropdown"  >
-                                        @foreach(DB::table('formcountries')->get() as $r)
-                                         <li @if($loop->last) class="borderbottomnone" @endif>
-                                            <span class="selectspan">{{ $r->name }}</span>
-                                         </li>
-                                         @endforeach
-                                        </ul>
-                                      </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                           <span class="btn btn-default btn-prevs">Prev</span>
-                           <span id="paramsOkay" class="btn btn-default btn-nexts">Next</span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal zoom-in" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
-                  <div class="modal-content">
-                     <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
-                           <div class="card-content">
-                              <p class="card-info">Please Select Date When You Start Coverage</p>
-                              <div class="row userdate-coverage">
-                                 <div class="col-md-6 birthdateinput">
-                                    <div class="date_picker_wrappers" id="date_pickers_1">
-                                        <div class="date_picker_headers">
-                                          <button class="date_picker_years"></button>
-                                          <h2 class="date_picker_month_days"></h2>
-                                        </div>
-                                        <div class="date_picker_bodys">
-                                          <div class="date_picker_month_navigations">
-                                            <button class="date_picker_prev_months date_picker_month_nav_btns">
-                                              <ion-icon name="caret-back-circle-outlines"></ion-icon>
-                                            </button>
-                                            <h2 class="date_picker_month_names"></h2>
-                                            <button class="date_picker_next_months date_picker_month_nav_btns">
-                                              <ion-icon name="caret-forward-circle-outlines"></ion-icon>
-                                            </button>
-                                          </div>
-                                          <ul class="date_picker_month_dayss">
-                                            <li>Sun</li>
-                                            <li>Mon</li>
-                                            <li>Tue</li>
-                                            <li>Wed</li>
-                                            <li>Thu</li>
-                                            <li>Fri</li>
-                                            <li>Sat</li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="row traveler-question">
-                                       <div class="col-md-12">
-                                             <span class="questionheading">Do you require Family Plan ?</span>
-                                             <div class="col-md-12 no-padding user-answer">
-                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                             </div>
-                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
-                                             <script>
-                                                function changefamilyyes(){
-                                                   document.getElementById('familyplan_temp').value = 'yes';   
-                                                   checkfamilyplan();
-                                                }
-                                                function changefamilyno(){
-                                                   document.getElementById('familyplan_temp').value = 'no'; 
-                                                   checkfamilyplan();
-                                                }
-                                             </script>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                       </div>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
-                                          <div class="col-md-12 no-padding user-answer">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                         <span class="btn btn-default btn-prevs">Prev</span>
-                         <span class="btn btn-default btn-nexts">Done</span>
-                      </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </form>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
       @endif
    </div>
 </div>
-<script type="text/javascript">
-   function checknumtravellers(){
-   //Number OF Traveller
-      var number_of_traveller = document.getElementById('number_travelers').value;
-      
-      for(var t=1; t<=number_of_traveller; t++){
-         $("#traveller_"+t).hide();
-         $('#age_'+t).val('');
-         $('#ageshow'+t).val('');
-      }
-      //alert(number_of_traveller);
-      for(var i=1; i<=number_of_traveller; i++){
-      $("#traveller_"+i).show();
-      document.getElementById('add_'+i).required = true;
-      }
-   var startdate = document.getElementById('departure_date').value;  
-   for(var i=1; i<=number_of_traveller; i++){
-   var d = document.getElementById('days_'+i).value;
-   var m = document.getElementById('months_'+i).value;
-   var y = document.getElementById('add_'+i).value;
-   var dob = y + '-' + m + '-' + d;
-   // alert(dob);
-   dob = new Date(dob);
-   var today = new Date(startdate);
-   var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-   $('#age_'+i).val(age);
-   $('#ageshow'+i).val(age);
-   }
-   p = 1;
-   pr = number_of_traveller + p;
-   for(var p = pr; p<=8; p++){
-   document.getElementById('days_'+p).value = '';
-   document.getElementById('months_'+p).value = '';
-   document.getElementById('add_'+p).value = '';
-   }
-
-   //checkfamilyplan();
-   }
-</script>
 <script>
    var today = new Date();
    var dd = today.getDate();
@@ -795,7 +302,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
      mm = '0' + mm;
    } 
    var today = mm + '/' + dd + '/' + yyyy;
-
    function supervisayes(){
       var tt = document.getElementById('departure_date').value;
       var date = new Date(tt);
@@ -863,13 +369,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    }
 </script>
 <script type="text/javascript">
-   $( "#destination_country" ).change(function() {
-       var sel = $( "#destination_country option:selected" ).val();
-       var textbox = document.getElementById("txtmanuid");
-       textbox.value =$( "#destination_country option:selected" ).text();
-   });
-</script>
-<script type="text/javascript">
    $("div[id^='myModal']").each(function(){
    
    var currentModal = $(this);
@@ -908,252 +407,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    
    });
    
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#gender'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#citizenship'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-$(function() {
-  var dd1 = new dropDown($('#pre_existing'));
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-
-
-
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#coverage_amount'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#deductible-price'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#coverage-price'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#primary_destination'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
 </script>
 <script type="text/javascript">
   //----------variables----------//
@@ -1290,77 +543,7 @@ var outputDate = monthTextArray[month] + " " + day + ", " + year;
 
 $("#outputText").text(outputDate);
 </script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#mobile_coverage_amount'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#mobile_primary_destination'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-  <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
 <script type="text/javascript">
    function getquotesubmitform() {
       $('#quoteform').submit();

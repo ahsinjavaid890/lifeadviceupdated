@@ -16,6 +16,8 @@
 
 
 @section('script')
+<link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
+<script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
    $( document ).ready(function() {
@@ -26,5 +28,51 @@
        $('.dateofbirthfull5').mask('00/00/0000');
        $('.dateofbirthfull6').mask('00/00/0000');
    });
+</script>
+<script>
+$(".sum_insured2").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Coverage Ammount",
+    allowClear: false
+});
+$(".primarydestination").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+
+
+$(".pre_existing_condition1").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+$(".pre_existing_condition2").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+$(".pre_existing_condition3").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+$(".pre_existing_condition4").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+$(".pre_existing_condition5").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+$(".pre_existing_condition6").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select Primary Destination",
+    allowClear: false
+});
+
+
 </script>
 @endsection
