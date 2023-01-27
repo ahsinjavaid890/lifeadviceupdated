@@ -119,15 +119,9 @@
                     		</div>
                     		
                     		<fieldset> 
-
-                    			echo $request->traveller;exit;
-
                     			@for($i=0; $i < $request->traveller; $i++)
                     			@php
-                    				$day = $request->days[$i];
-                    				$month = $request->months[$i];
                     				$year = $request->years[$i];
-                    				$dateofbirht = $year.'-'.$month.'-'.$day;
                     			@endphp
 
                     			<hr class="hr-text mt-5" data-content="Traveler {{ $i+1 }}">
@@ -151,7 +145,7 @@
 									<div class="row">
 										<div class="col-md-6 nopad">
 											<div class="input-wrapper">
-											   <input class="input" value="{{ date('Y-m-d',strtotime($dateofbirht)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
+											   <input class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
 											   <span class="placeholder">Date OF Birth {{ $i+1 }}<small class="text-danger">*</small></span>
 											</div>
 										</div>
