@@ -20,6 +20,11 @@
 <script type="text/javascript">
    $( document ).ready(function() {
        $('#dateofbirthfull').mask('00/00/0000');
+       $('.dateofbirthfull2').mask('00/00/0000');
+       $('.dateofbirthfull3').mask('00/00/0000');
+       $('.dateofbirthfull4').mask('00/00/0000');
+       $('.dateofbirthfull5').mask('00/00/0000');
+       $('.dateofbirthfull6').mask('00/00/0000');
    });
 </script>
 @endsection

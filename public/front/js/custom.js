@@ -4,26 +4,80 @@ function removeappendvalue(id) {
   $('#removebutton'+id).addClass('hiderowstraveler');
   $('.dateofbirthclass'+id).val('')
 }
-function secondnext() {
-    var inputs = $(".dateofbirthclass");
-    for(var i = 0; i < inputs.length; i++){
-        var date = new Date($(inputs[i]).val());
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        if(year > 1983)
-        {
-            $('#errortravelr').show();
-            $('#errortravelr').html('Super Visa Allowed Greater then 40');
-        }else if(year < 1923){
-            $('#errortravelr').show();
-            $('#errortravelr').html('Super Visa Allowed Greater then 40');
-        }else{
-            $('#errortravelr').hide();
-            $('#errortravelr').html('');
-        }
-        console.log(year)
+function secondnext() 
+{
+    var value = $('.dateofbirthclass1').val()
+    if(value == '')
+    {
+        $('.dateofbirthclass1').addClass('errorinput')
+    }else{
+        $('#secondnextfake').hide();
+        $('#secondnextorignal').show();
+        $('#secondnextorignal').click();
     }
+}
+
+$(".show-tooltip").click(function(){
+    $(".activehelpful").slideToggle();
+});
+$(".close-tooltip").click(function(){
+    $(".activehelpful").slideToggle();
+});
+
+function addtravellers() 
+{
+   var showrowstraveler = $('.showrowstraveler').length;
+
+   var value = $('.dateofbirthclass'+showrowstraveler).val();
+   if(value == '')
+   {
+      $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+   }else{
+
+      const d  = new Date(value);
+      let year = d.getFullYear();
+      var CurrentDate = new Date();
+
+
+      var today = new Date();
+      var todayyear = today.getFullYear();
+
+      var getfourtyyear = todayyear-40;
+      var getlastdob = todayyear-100;
+      if(d > CurrentDate){
+          $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+          $('#errortravelr').show();
+          $('#errortravelr').html('Date of birth can not be a future date.');
+      }else{
+          if(year > getfourtyyear)
+          {
+            $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+            $('#errortravelr').show();
+            $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
+          }else{
+
+            if(year < getlastdob)
+            {
+               $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+               $('#errortravelr').show();
+               $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
+            }else{
+               $('#errortravelr').hide();
+               $('#errortravelr').html('');
+               var showmext = parseInt(showrowstraveler)+1;
+               $('#removebutton'+showmext).removeClass('hiderowstraveler');
+               $('#removebutton'+showmext).addClass('showrowstraveler');
+               var numberoftraverls = $('#numberoftraverls').val();
+               if(numberoftraverls == showrowstraveler)
+               {
+                  $('.button-add-another').fadeOut(300);
+               }
+            }
+
+            
+          }
+      }
+   }
 }
 
 (function($) {

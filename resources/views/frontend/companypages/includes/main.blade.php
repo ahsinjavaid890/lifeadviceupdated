@@ -237,7 +237,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper">
-                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY">
+                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                                 <span class="placeholder">MM/DD/YYYY</span>
                                              </div>
                                           </div>
@@ -252,13 +252,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         </ul>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger">
-                                       
+                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                       <span class="button button-help show-tooltip"></span>
+                                       <div class="tooltip-container tooltip--auto-height activehelpful">
+                                          <button class="button button-close-simplified close-tooltip"></button>
+                                          <h4 class="heading heading-5">Helpful Info</h4>
+                                          <div class="content">
+                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Primary Traveler</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper"> <input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="fname" data-placeholder="MM/DD/YYYY"> <span class="placeholder">MM/DD/YYYY</span> </div> </div> </div> </div> <div class="col-md-3"> <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing'+a+'"> <span>Pre Existing Condition</span> <ul class="dropdown pre_existing_dropdown"> <li>Yes</li> <li>No</li> </ul> </div> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Primary Traveler</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper"> <input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"> <span class="placeholder">MM/DD/YYYY</span> </div> </div> </div> </div> <div class="col-md-3"> <div class="wrapper-dropdown pre-existing-dropdown" id="pre_existing'+a+'"> <span>Pre Existing Condition</span> <ul class="dropdown pre_existing_dropdown"> <li>Yes</li> <li>No</li> </ul> </div> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -271,29 +278,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                         </div>
                      </div>
-                     <script type="text/javascript">
-                        function addtravellers() 
-                        {
-                           var showrowstraveler = $('.showrowstraveler').length;
-
-                           var value = $('.dateofbirthclass'+showrowstraveler).val();
-                           if(value == '')
-                           {
-                              $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                           }else{
-                              var showmext = parseInt(showrowstraveler)+1;
-                              $('#removebutton'+showmext).removeClass('hiderowstraveler');
-                              $('#removebutton'+showmext).addClass('showrowstraveler');
-                              var numberoftraverls = $('#numberoftraverls').val();
-                              if(numberoftraverls == showrowstraveler)
-                              {
-                                 $('.button-add-another').fadeOut(300);
-                              }
-                           }
-
-                           
-                        }
-                     </script>
                      <div class="modal-footer">
                         <div class="nextbtns">
                           <span class="btn btn-default btn-prev">Prev</span>

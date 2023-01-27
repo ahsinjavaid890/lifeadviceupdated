@@ -149,8 +149,8 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->ages)){
-    $ages_array = array_filter($request->ages);
+if (is_array($request->years)){
+    $ages_array = array_filter($request->years);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -475,12 +475,6 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($request->months as $month)
-                <input type="hidden" name="months[]" value="{{ $month }}">
-                @endforeach
-                @foreach($request->days as $day)
-                <input type="hidden" name="days[]" value="{{ $day }}">
-                @endforeach
                 @foreach($request->years as $year)
                 <input type="hidden" name="years[]" value="{{ $year }}">
                 @endforeach

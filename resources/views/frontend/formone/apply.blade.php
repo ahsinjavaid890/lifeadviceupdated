@@ -119,6 +119,9 @@
                     		</div>
                     		
                     		<fieldset> 
+
+                    			echo $request->traveller;exit;
+
                     			@for($i=0; $i < $request->traveller; $i++)
                     			@php
                     				$day = $request->days[$i];
