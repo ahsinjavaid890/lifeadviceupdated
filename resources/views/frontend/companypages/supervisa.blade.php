@@ -44,32 +44,32 @@ $(".primarydestination").select2({
 
 $(".pre_existing_condition1").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 $(".pre_existing_condition2").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 $(".pre_existing_condition3").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 $(".pre_existing_condition4").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 $(".pre_existing_condition5").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 $(".pre_existing_condition6").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Primary Destination",
+    placeholder: "Pre Existing",
     allowClear: false
 });
 
