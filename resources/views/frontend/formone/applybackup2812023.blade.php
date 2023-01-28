@@ -150,8 +150,8 @@
 											</div>
 										</div>
 										<div class="col-md-6 nopad">
-											<div class="input-wrapper">
-												<select name="gender" class="input" data-placeholder="Gender">
+											<div  class="input-wrapper">
+												<select name="gender" id="gender" class="input" data-placeholder="Gender">
 													<option value="">Select Gender</option>
 													<option value="Male">Male</option>
 													<option value="Female">Female</option>

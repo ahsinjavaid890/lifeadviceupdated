@@ -261,10 +261,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @if($fields['email'] == "on" )
                                    <div class="col-md-6 userdata-card mt-5">
                                       <div class="custom-form-control positionrelative">
-                                       <label class="selectlabeldateofbirth">Enter Your Email</label>
-                                         <input class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                          <label class="selectlabeldateofbirth">Enter Your Email</label>
+                                            <input class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
                                       </div>
-                                      <div class="text-danger mt-4" id="savers_emailerror"></div>
+                                       <div class="text-danger mt-4" id="savers_emailerror"></div>
                                    </div>
                                  @endif
                                  @endif
