@@ -15,8 +15,8 @@
                   {!! $page->section_two_description !!}
                   @foreach($secondsection as $r)
                     <h5 style="margin-top:20px;" class="text-dark">
-                        <a data-toggle="collapse" data-target="#demotwo{{ $r->id }}" style="color: #262566;"  href="javascript::void(0)">
-                        <i class="fa fa-sign-in" style="color: #262566;"></i> 
+                        <a data-toggle="collapse" data-target="#demotwo{{ $r->id }}" style="color: #2b3481;"  href="javascript::void(0)">
+                        <i class="fa fa-sign-in" style="color: #2b3481;"></i> 
                             {{ $r->heading }}
                         </a>
                     </h5>

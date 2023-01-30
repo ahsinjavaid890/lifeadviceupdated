@@ -15,7 +15,7 @@
 
 .modal-qoute-btn{
     margin: auto;
-    background-color: #262566;
+    background-color: #2b3481;
     width: 314px;
     /* margin: auto; */
     color: white;
@@ -36,7 +36,7 @@
    text-align: left;
    }
    .health-inssurance-hero-banner {
-   background-color: #262566;
+   background-color: #2b3481;
    }
    .ageandcitizen input:focus-visible {
    outline: none;
@@ -63,11 +63,11 @@
    top: 13px !important;
    }
    .btn-next{
-   background-color: #262566;
+   background-color: #2b3481;
    color: white;
    }
    .card-info{
-    color: #262566;
+    color: #2b3481;
    }
    .btn-next:hover{
    color: white;
@@ -177,7 +177,7 @@
    transition-delay: .06s;
    }
    .hide-value[data-v-5170d561] {
-   color: #262566 !important;
+   color: #2b3481 !important;
    }
    .form-input .input-field:valid+.label-text, .form-input .input-field[readonly]+.label-text {
    color: #2b3481;
@@ -1410,7 +1410,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     top: 2px;
     right: 16px;
     font-size: 40px;
-    color: #262566;
+    color: #2b3481;
    }
    .modal-card{
       height: 450px;
@@ -1425,7 +1425,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
       border-top: none !important;
    }
    .nextbtns span{
-    background: #262566;
+    background: #2b3481;
     color: white;
     border-radius: 18px;
     width: 101px;
@@ -1538,7 +1538,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
   
   .qoute-submit{
-    background: #262566;
+    background: #2b3481;
     color: white;
     width: 120px !important;
     border-radius: 20px;
@@ -1575,7 +1575,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 
 
 .heading-1, .heading-2, .heading-3, .subheading-2{
-    color: #262566 !important;
+    color: #2b3481 !important;
 }
 .row+.row{
     margin: 0 !important;
@@ -1586,7 +1586,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
 
 
 .card-content h3 {
-    color: #262566;
+    color: #2b3481;
     font-size: 11px !important;
     font-weight: 900 !important;
     line-height: 20px;
@@ -1731,7 +1731,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     transition: .5s ease;
 }
 .wrapper-dropdown .dropdown li:hover {
-   color: #262566;
+   color: #2b3481;
    cursor: pointer;
 }
 
@@ -1768,7 +1768,7 @@ body .calander {
 
  .cal_head {
   font-size: 20px;
-  background-color:#262566;
+  background-color:#2b3481;
   color:#FFFFFF;
   font-weight:400;
   height: 80px;
@@ -1780,7 +1780,7 @@ body .calander {
   
   background-color: white;
   border: none;
-  background-color:#262566;
+  background-color:#2b3481;
   color:#ffffff;
   display: inline-block;
   margin-top: 25px;
@@ -1836,7 +1836,7 @@ input.switch::before {
     content:'Yes  No';
     display: block;
     position: absolute;
-    background: #262566;
+    background: #2b3481;
     width: 50px;
     border-radius: 20px;
     height: 28px;
@@ -1887,7 +1887,7 @@ body .cal_output {
     height: 10px;
     padding: 5px 5px 5px 5px;
     background: #fff;
-    border: 2px solid #262566;
+    border: 2px solid #2b3481;
     text-align: center;
 
     
@@ -2045,7 +2045,7 @@ input::-webkit-inner-spin-button {
     top: 14px;
     right: 28px;
     font-size: 16px;
-    color: #262566;
+    color: #2b3481;
 }
 .questionheading{
     margin-left: 30px;
@@ -2381,7 +2381,7 @@ input::-webkit-inner-spin-button {
 
   .modal-dialog-scrollable {
     scrollbar-width: auto;
-    scrollbar-color: #262566 #ffffff;
+    scrollbar-color: #2b3481 #ffffff;
   }
 
   .modal-dialog-scrollable ::-webkit-scrollbar{
@@ -2393,7 +2393,7 @@ input::-webkit-inner-spin-button {
   }
 
   .modal-dialog-scrollable ::-webkit-scrollbar-thumb{
-    background-color: #262566;
+    background-color: #2b3481;
     border-radius: 29px;
     border: 1px solid #ffffff;
   }
@@ -2415,21 +2415,21 @@ input::-webkit-inner-spin-button {
   display: flex;
 /*  flex-direction: column;*/
 /*  padding: 0 0 16px 0;*/
-  border-bottom: 1px slid #262566;
+  border-bottom: 1px slid #2b3481;
 /*  margin-bottom: 2.5rem;*/
 }
 .date_picker_month_day{
     font-size: 30px !important;
 }
 .date_picker_year {
-    color: #262566;
+    color: #2b3481;
   text-align: left;
   font-size: 17px;
   font-weight: 900;
 }
 
 .date_pickers_year {
-    color: #262566;
+    color: #2b3481;
   text-align: left;
   font-size: 17px;
   font-weight: 900;
@@ -2466,7 +2466,7 @@ input::-webkit-inner-spin-button {
   transform: translateX(-28%);
 }
 .date_picker_month_nav_btn {
-    color: #262566;
+    color: #2b3481;
   display: block;
   position: relative;
   font-size: 30px;
@@ -2486,11 +2486,11 @@ input::-webkit-inner-spin-button {
 }
 .date_picker_month_day{
     font-size: 17px !important;
-    color: #262566 !important;
+    color: #2b3481 !important;
 }
 .date_picker_months_day{
     font-size: 17px !important;
-    color: #262566 !important;
+    color: #2b3481 !important;
 }
 .date_picker_month_days {
     margin-top: -24px;
@@ -2508,14 +2508,14 @@ input::-webkit-inner-spin-button {
 }
 
 .date_picker_month_days li {
-  color: #262566;
+  color: #2b3481;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .date_picker_months_days li {
-  color: #262566;
+  color: #2b3481;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2543,11 +2543,11 @@ input::-webkit-inner-spin-button {
   transition: all 0.3s ease;
 }
 .date_picker_month_days li button.active {
-  background: #262566;
+  background: #2b3481;
   color:white;
 }
 .date_picker_months_days li button.active {
-  background: #262566;
+  background: #2b3481;
   color:white;
 }
 li.date_picker_week_day {
@@ -2566,7 +2566,7 @@ li.date_picker_week_day {
     font-weight: 800;
 }
 .plan-highlights li span i{
-    color: #262566;
+    color: #2b3481;
     margin-left: 5px;
 }
 .qoute-price-card{
@@ -2575,12 +2575,12 @@ li.date_picker_week_day {
     box-shadow: 0 4px 16px rgb(87 106 134 / 15%);
     border: 0;
     border-radius: 20px;
-    border-left: 7px solid #262566;
+    border-left: 7px solid #2b3481;
 }
 .plan-label h2{
     font-size: 1.5rem;
     line-height: 2rem;
-    color: #262566;
+    color: #2b3481;
     font-weight: 800;
 }
 .plan-subheading{
@@ -2610,7 +2610,7 @@ li.date_picker_week_day {
 }
 
 .total-price-traveller h2{
-    color: #262566;
+    color: #2b3481;
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 700;
@@ -2638,7 +2638,7 @@ li.date_picker_week_day {
 }
 .compare-checkbox {
     height: 23px;
-    color: #262566;
+    color: #2b3481;
     /*border: 1px solid #e8e8e8;
     background-color: #f9f9f9;
     border-radius: 4px;*/
@@ -2657,10 +2657,10 @@ li.date_picker_week_day {
     color: #67778f !important;
 }
 .plan-cat{
-    color: #262566;
+    color: #2b3481;
 }
 .plan-subcat{
-    color: #262566;
+    color: #2b3481;
 }
 .qoute-person-plan{
     display: none;

@@ -58,7 +58,7 @@
          }
       </style>
    </head>
-   <body style="background-color:#262566; font-family: 'Open Sans', sans-serif;padding: 50px;">
+   <body style="background-color:#2b3481; font-family: 'Open Sans', sans-serif;padding: 50px;">
       <div style="max-width: 70%;margin-top: 70px !important; margin: auto;background-color: white;">
          <div style="text-align: center;">
             <img style="width: 200px;" src="https://lifeadvice.ca/lifeadvice.ca/lifeadvicelaravel/public/images/118135255.png">
@@ -96,7 +96,7 @@
             <table  style="width: 50%;border: 1px solid #dddddd;">
                <tr>
                   <th>
-                     <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                     <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
                   </th>
                </tr>
             </table>
@@ -119,7 +119,7 @@
             <table style="width: 50%;border: 1px solid #dddddd;">
                <tr>
                   <th >
-                     <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                     <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
                   </th>
                </tr>
             </table>
@@ -142,7 +142,7 @@
                      <table style="width: 50%;border: 1px solid #dddddd;">
                         <tr>
                            <th>
-                              <a href="#"><button style="cursor: pointer;background-color: #262566; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
+                              <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
                            </th>
                         </tr>
                      </table>

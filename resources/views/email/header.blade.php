@@ -80,8 +80,8 @@
     </style>
 </head>
 
-<body style="background-color:#262566;">
-    <div style="background-color:#262566;">
+<body style="background-color:#2b3481;">
+    <div style="background-color:#2b3481;">
         <div style="background:#f9f9f9;background-color:#f9f9f9;Margin:0px auto;max-width:600px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f9f9f9;background-color:#f9f9f9;width:100%;">
@@ -94,7 +94,7 @@
             </table>
 
         </div>
-        <div style="background: #262566;background-color: #262566;Margin:0px auto;max-width:600px;">
+        <div style="background: #2b3481;background-color: #2b3481;Margin:0px auto;max-width:600px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;">
                 <tbody>

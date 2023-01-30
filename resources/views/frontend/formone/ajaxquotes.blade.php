@@ -87,7 +87,7 @@ $('.coverage-amt-'+group).hide();
           <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                    <h4>Quote Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
+                    <h4>Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
@@ -101,9 +101,15 @@ $('.coverage-amt-'+group).hide();
               </div>
           </div>
         </div>
-        <div class="card qoute-price-card mb-3 left_qoute_card">
-          <div class="card-body">
-              
+        <div class="card  qoute-price-card mb-3 pricegurrantecard">
+          <div class="card-widget card-widget-price-match">
+                <div class="card-header">
+                    <div class="icon icon-price-match"></div>
+                    <div class="card-header__label">Price <br data-v-59a9f311="">Guarantee</div>
+                </div>
+                <div class="card-body">
+                    <p class="text-secondary-color body-text-5"> Insurance rates are regulated by law. You can't find the same insurance plan for a lower price anywhere else. </p>
+                </div>
           </div>
         </div>     
     </div>
@@ -152,8 +158,19 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->years)){
-    $ages_array = array_filter($request->years);
+
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -438,7 +455,7 @@ if($show == '1' && $total_price > 0){
     echo number_format($millions).$txt; 
 
 
-    $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+    $dob = $years[0].'-'.$request->month.''.$request->dob_day;
     $agent = $request->agent;
     $broker = $request->broker;
     $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
@@ -478,7 +495,7 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($request->years as $year)
+                @foreach($years as $year)
                 <input type="hidden" name="years[]" value="{{ $year }}">
                 @endforeach
                 <input type="hidden" value="{{ $num_of_days }}" name="days">

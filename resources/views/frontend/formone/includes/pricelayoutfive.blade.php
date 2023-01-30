@@ -381,7 +381,7 @@ if($show == '1' && $total_price > 0){
                     <div class="row plan-details  deductable-<?php echo $deductible; ?>"  style="border:1px solid #c0c0c0;margin-bottom: 20px; display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
                         <div class="col-md-4" style="border:0px solid #000;  text-align:centerk;padding: 5px 0; ">
                             
-                            <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails(<?php echo $plan_id; ?>)" style="color: #262566;font-size: 21px;cursor:pointer;position: absolute;top: 43%;left: 0;" aria-hidden="true"></i> 
+                            <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails(<?php echo $plan_id; ?>)" style="color: #2b3481;font-size: 21px;cursor:pointer;position: absolute;top: 43%;left: 0;" aria-hidden="true"></i> 
 
                             <img  style="min-height:20px; margin-left: 20px" width="170" height="60"  src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
                         </div>
@@ -404,7 +404,7 @@ $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
 
-                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn" data-value="<?php echo $plan_id; ?>" style="color: white;border-radius: 4px; background: #262566;font-size: 16px;width: 180px;padding: 10px 0 !important;border: 0;box-shadow: none !important;border:0;" class="btn btn-lg btn-danger" name="buynow">Buy this plan</button>
+                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn" data-value="<?php echo $plan_id; ?>" style="color: white;border-radius: 4px; background: #2b3481;font-size: 16px;width: 180px;padding: 10px 0 !important;border: 0;box-shadow: none !important;border:0;" class="btn btn-lg btn-danger" name="buynow">Buy this plan</button>
                             <div class="compare">
                                 <div class="ui center aligned header">
                                     <label  class="checkbox-inline">
@@ -553,7 +553,7 @@ $person_price = $person_price - $p_discountonplan;
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="background: #262566;font-size: 16px;width: 100%;padding: 10px 0 !important;text-align: center; color: white; border-radius: 5px;box-shadow: none !important;border:0; display:block;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
+<p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="background: #2b3481;font-size: 16px;width: 100%;padding: 10px 0 !important;text-align: center; color: white; border-radius: 5px;box-shadow: none !important;border:0; display:block;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
 </div>
 <div class="col-md-6 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>

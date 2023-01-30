@@ -397,7 +397,7 @@
                          <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                       </div>
                       <div class="blogbutton">
-                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #2b3481;"></i></a>
                       </div>
                    </div>
                 </div>
@@ -432,7 +432,7 @@
                          <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                       </div>
                       <div class="blogbutton">
-                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #2b3481;"></i></a>
                       </div>
                    </div>
                 </div>
@@ -467,7 +467,7 @@
                          <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                       </div>
                       <div class="blogbutton">
-                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #2b3481;"></i></a>
                       </div>
                    </div>
                 </div>
@@ -502,7 +502,7 @@
                          <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                       </div>
                       <div class="blogbutton">
-                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                         <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #2b3481;"></i></a>
                       </div>
                    </div>
                 </div>

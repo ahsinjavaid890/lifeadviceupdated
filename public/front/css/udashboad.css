@@ -1,9 +1,9 @@
    .profile_cards{
       border-radius: 20px;
-      border-left: 8px solid #262566;
+      border-left: 8px solid #2b3481;
    }
    .coverage{
-      background-color: #262566;
+      background-color: #2b3481;
       color: white;
       padding: 10px;
       border-radius: 10px;
@@ -57,7 +57,7 @@
       align-items: baseline;
    }
    .dowload_button .btn {
-      background-color: #262566;
+      background-color: #2b3481;
       border: none;
       color: white;
       padding: 8px 10px;
@@ -67,16 +67,16 @@
    }
    .claim_button{
       background: transparent;
-      border: 3px solid #262566;
+      border: 3px solid #2b3481;
       padding: 8px;
       border-radius: 37px;
       margin-right: 19px;
       font-size: 15px;
-      color: #262566;
+      color: #2b3481;
       font-weight: 800;
    }
    .extend{
-      background-color: #262566 !important;
+      background-color: #2b3481 !important;
       color: white;
    }
    .need_claim{
@@ -84,16 +84,16 @@
    }
    .view_claim{
       background: transparent;
-      border: 3px solid #262566;
+      border: 3px solid #2b3481;
       padding: 8px;
       border-radius: 37px;
       margin-right: 19px;
       font-size: 15px;
-      color: #262566;
+      color: #2b3481;
       font-weight: 800;
    }
    .location_desc i {
-      color: #262566;
+      color: #2b3481;
       font-size: 20px;
    }
    .claim_form a{
@@ -102,12 +102,12 @@
       font-weight: 800;
    }
    .claim_form i{
-      color: #262566;
+      color: #2b3481;
       margin-right: 10px;
    }
    .claim_assistance{
       color: white;
-      background: #262566;
+      background: #2b3481;
       padding-top: 19px;
    }
    .policie_check{
@@ -120,6 +120,6 @@
    .helpful_links li{
       font-size: 17px;
       margin-top: 21px;
-      color: #262566;
+      color: #2b3481;
       font-weight: bold;
    }

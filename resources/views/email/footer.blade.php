@@ -1,6 +1,6 @@
 <tr>
                                         <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:20px;text-align:left;color:#262566;">
+                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:20px;text-align:left;color:#2b3481;">
                                                 Best regards,<br><br> Csaba Kissi<br>Elerion ltd., CEO and Founder<br>
                                                 <a href="{{ url('') }}" style="color:#2F67F6">{{ url('') }}</a>
                                             </div>
