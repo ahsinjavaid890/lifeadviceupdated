@@ -653,7 +653,7 @@
     top: -10px;
     left: 17px;
     font-size: 11px;
-    z-index: 1000000;
+    z-index: 1;
     background-color: white;
     font-weight: 550;
     color: #2b3481;

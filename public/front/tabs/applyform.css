@@ -7,15 +7,20 @@
 
 .form-container {
     display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: auto auto;
+    /* grid-column-gap: 10px; */
+    /* grid-template-columns: auto auto; */
     grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
-    max-width: 100%;
-    padding: 20px;
-    color: #707070;
+    /* grid-template-areas:
+        "name name"
+        "number number"
+        "expiration security"; */
+    /* max-width: 100%; */
+    /* padding: 20px; */
+    /* color: #707070; */
 }
-
+.form-container .input{
+    max-width: 100%;
+}
 label {
     font-size: 16px;
     color: black;
@@ -34,7 +39,7 @@ input {
     height: 38px;
     position: absolute;
     right: 6px;
-    top: calc(75% - 17px);
+    top: calc(49% - 17px);
     width: 60px;
 }
 
@@ -68,13 +73,10 @@ input {
 }
 
 #generatecard{
-    display: none;
     cursor: pointer;
     float: right;
     font-size: 12px;
-    color: #fff;
     padding: 2px 4px;
-    background-color: #909090;
     border-radius: 4px;
     cursor: pointer;
     float:right;
