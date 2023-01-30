@@ -77,7 +77,7 @@
 		                        <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
 		                    </div>
 		                </div>
-		                <div class="col-md-6" style="margin-top: 33px;">
+		                <div class="col-md-6" style="margin-top: 27px;">
 		                    <div class="custom-form-control positionrelative">
 		                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
 		                        <input class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
@@ -173,7 +173,7 @@
 		                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
 		                    </div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6" style="margin-top: 5px;">
 		                    <div class=" positionrelative">
                                <label class="selectlabel">Primary Destination</label>
                                 <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
