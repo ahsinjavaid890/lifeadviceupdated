@@ -101,34 +101,6 @@ $('.coverage-amt-'+group).hide();
               </div>
           </div>
         </div>
-        <style type="text/css">
-            .pricegurrantecard .card-widget .icon-price-match {
-                height: 48px;
-                margin-right: 14px;
-                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDBMMCA4LjcyN3YxMy4wOTFDMCAzMy45MjggOC41MzMgNDUuMjUxIDIwIDQ4YzExLjQ2Ny0yLjc1IDIwLTE0LjA3MyAyMC0yNi4xODJWOC43MjhMMjAgMHoiIGZpbGw9IiNGOUIyMUIiLz48cGF0aCBkPSJNMjEuMTgyIDIyLjU0NmMtMy41OS0uODMzLTQuNDQxLTEuNDU2LTQuNDQxLTIuODU4di0uMDU0YzAtMS4xOTUgMS4xMTctMi4xNTUgMy4wMzMtMi4xNTUgMS40NjMgMCAyLjg0NS40NjggNC4yODIgMS4zNzUuMjY2LjE1Ny41My4yMzYuODUuMjM2YTEuNTUzIDEuNTUzIDAgMDAxLjA5LS40MjcgMS40NTggMS40NTggMCAwMC40NTUtMS4wNTYgMS40MTIgMS40MTIgMCAwMC0uMTg0LS43MyAxLjQ1NSAxLjQ1NSAwIDAwLS41MzYtLjU0MSAxMC4xMTggMTAuMTE4IDAgMDAtNC4wMzMtMS41MzZjLjAzOC0uMTQzLjA5MS0uMjgzLjA5MS0uNDM4di00LjE0NGMwLS40NjMtLjE4OC0uOTA4LS41MjQtMS4yMzZBMS44MSAxLjgxIDAgMDAyMCA4LjQ3MWMtLjQ3NCAwLS45My4xODQtMS4yNjUuNTExYTEuNzI3IDEuNzI3IDAgMDAtLjUyNCAxLjIzNnY0LjE0NGMwIC4xNTIuMDUxLjI4Ny4wOS40MjktMi44NzguNTEtNC44MzEgMi40NjQtNC44MzEgNS4xM3YuMDUzYzAgMy4zNSAyLjIzNCA0LjQ5NCA2LjE5OCA1LjQzIDMuNDU2Ljc3OCA0LjIwMiAxLjQ4MiA0LjIwMiAyLjc4di4wNTJjMCAxLjM1LTEuMjc2IDIuMjg2LTMuMjk5IDIuMjg2LTIuMDIyIDAtMy42NzEtLjY3NS01LjIxNC0xLjg3YTEuNTQzIDEuNTQzIDAgMDAtLjk1Ny0uMjg2IDEuNTU0IDEuNTU0IDAgMDAtMS4wODguNDI2IDEuNDg0IDEuNDg0IDAgMDAtLjQ1NSAxLjA1NWMwIC4yMzkuMDU4LjQ3NC4xNjkuNjg3LjExMS4yMTIuMjczLjM5Ni40NzEuNTM1YTExLjgxOCAxMS44MTggMCAwMDQuODE4IDIuMDY2Yy0uMDUxLjE2MS0uMTA0LjMyNS0uMTA0LjUwNHY0LjE0NGMwIC40NjMuMTg4LjkwNy41MjQgMS4yMzUuMzM1LjMyNy43OS41MTEgMS4yNjQuNTExcy45My0uMTg0IDEuMjY1LS41MTFjLjMzNS0uMzI4LjUyMy0uNzcyLjUyMy0xLjIzNXYtNC4xNDRjMC0uMTMtLjA0Ny0uMjQ1LS4wNzUtLjM2NiAzLjI0NC0uMzg0IDUuNDMtMi4zMTMgNS40My01LjM1di0uMDUxYzAtMy4wMTMtMi4wMjEtNC4zOTItNS45Ni01LjMyNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
-            }
-            .card-widget .card-header__label{
-                font-size: 18px!important;
-                line-height: 22px!important;
-                font-size: 14px;
-                line-height: 18px;
-                font-weight: 800;
-                position: relative;
-                padding: 6px 0;
-                color: #2b3481!important;
-                font-family: Open Sans,sans-serif!important;
-                border-bottom: 3px solid #f9b21b;
-            }
-            .pricegurrantecard .card-widget .card-header {
-                display: flex;
-                align-items: center;
-                margin-bottom: 14px;
-                background-color: white;
-                border-bottom: none;
-                border-top-left-radius: 20px;
-                border-top-right-radius: 20px;
-            }
-        </style>
         <div class="card  qoute-price-card mb-3 pricegurrantecard">
           <div class="card-widget card-widget-price-match">
                 <div class="card-header">
@@ -186,8 +158,19 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->years)){
-    $ages_array = array_filter($request->years);
+
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -472,7 +455,7 @@ if($show == '1' && $total_price > 0){
     echo number_format($millions).$txt; 
 
 
-    $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+    $dob = $years[0].'-'.$request->month.''.$request->dob_day;
     $agent = $request->agent;
     $broker = $request->broker;
     $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
@@ -512,7 +495,7 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($request->years as $year)
+                @foreach($years as $year)
                 <input type="hidden" name="years[]" value="{{ $year }}">
                 @endforeach
                 <input type="hidden" value="{{ $num_of_days }}" name="days">

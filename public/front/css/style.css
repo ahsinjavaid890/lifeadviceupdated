@@ -15746,3 +15746,29 @@ ul .child-list li a {
             font-size: 15px;
         }
     }
+.pricegurrantecard .card-widget .icon-price-match {
+    height: 48px;
+    margin-right: 14px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDBMMCA4LjcyN3YxMy4wOTFDMCAzMy45MjggOC41MzMgNDUuMjUxIDIwIDQ4YzExLjQ2Ny0yLjc1IDIwLTE0LjA3MyAyMC0yNi4xODJWOC43MjhMMjAgMHoiIGZpbGw9IiNGOUIyMUIiLz48cGF0aCBkPSJNMjEuMTgyIDIyLjU0NmMtMy41OS0uODMzLTQuNDQxLTEuNDU2LTQuNDQxLTIuODU4di0uMDU0YzAtMS4xOTUgMS4xMTctMi4xNTUgMy4wMzMtMi4xNTUgMS40NjMgMCAyLjg0NS40NjggNC4yODIgMS4zNzUuMjY2LjE1Ny41My4yMzYuODUuMjM2YTEuNTUzIDEuNTUzIDAgMDAxLjA5LS40MjcgMS40NTggMS40NTggMCAwMC40NTUtMS4wNTYgMS40MTIgMS40MTIgMCAwMC0uMTg0LS43MyAxLjQ1NSAxLjQ1NSAwIDAwLS41MzYtLjU0MSAxMC4xMTggMTAuMTE4IDAgMDAtNC4wMzMtMS41MzZjLjAzOC0uMTQzLjA5MS0uMjgzLjA5MS0uNDM4di00LjE0NGMwLS40NjMtLjE4OC0uOTA4LS41MjQtMS4yMzZBMS44MSAxLjgxIDAgMDAyMCA4LjQ3MWMtLjQ3NCAwLS45My4xODQtMS4yNjUuNTExYTEuNzI3IDEuNzI3IDAgMDAtLjUyNCAxLjIzNnY0LjE0NGMwIC4xNTIuMDUxLjI4Ny4wOS40MjktMi44NzguNTEtNC44MzEgMi40NjQtNC44MzEgNS4xM3YuMDUzYzAgMy4zNSAyLjIzNCA0LjQ5NCA2LjE5OCA1LjQzIDMuNDU2Ljc3OCA0LjIwMiAxLjQ4MiA0LjIwMiAyLjc4di4wNTJjMCAxLjM1LTEuMjc2IDIuMjg2LTMuMjk5IDIuMjg2LTIuMDIyIDAtMy42NzEtLjY3NS01LjIxNC0xLjg3YTEuNTQzIDEuNTQzIDAgMDAtLjk1Ny0uMjg2IDEuNTU0IDEuNTU0IDAgMDAtMS4wODguNDI2IDEuNDg0IDEuNDg0IDAgMDAtLjQ1NSAxLjA1NWMwIC4yMzkuMDU4LjQ3NC4xNjkuNjg3LjExMS4yMTIuMjczLjM5Ni40NzEuNTM1YTExLjgxOCAxMS44MTggMCAwMDQuODE4IDIuMDY2Yy0uMDUxLjE2MS0uMTA0LjMyNS0uMTA0LjUwNHY0LjE0NGMwIC40NjMuMTg4LjkwNy41MjQgMS4yMzUuMzM1LjMyNy43OS41MTEgMS4yNjQuNTExcy45My0uMTg0IDEuMjY1LS41MTFjLjMzNS0uMzI4LjUyMy0uNzcyLjUyMy0xLjIzNXYtNC4xNDRjMC0uMTMtLjA0Ny0uMjQ1LS4wNzUtLjM2NiAzLjI0NC0uMzg0IDUuNDMtMi4zMTMgNS40My01LjM1di0uMDUxYzAtMy4wMTMtMi4wMjEtNC4zOTItNS45Ni01LjMyNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
+}
+.card-widget .card-header__label{
+    font-size: 18px!important;
+    line-height: 22px!important;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 800;
+    position: relative;
+    padding: 6px 0;
+    color: #2b3481!important;
+    font-family: Open Sans,sans-serif!important;
+    border-bottom: 3px solid #f9b21b;
+}
+.pricegurrantecard .card-widget .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    background-color: white;
+    border-bottom: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}

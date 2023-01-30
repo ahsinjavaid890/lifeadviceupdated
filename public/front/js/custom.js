@@ -60,6 +60,15 @@ function thirdone() {
 }
 
 
+function calprimaryage(id){
+    var currentyear = new Date().getFullYear();
+    var dobyear = id;
+    var primaryage = currentyear - dobyear;
+    return primaryage;
+}
+
+
+
 function addtravellers() 
 {
    var showrowstraveler = $('.showrowstraveler').length;
@@ -73,11 +82,8 @@ function addtravellers()
       const d  = new Date(value);
       let year = d.getFullYear();
       var CurrentDate = new Date();
-
-
       var today = new Date();
       var todayyear = today.getFullYear();
-
       var getfourtyyear = todayyear-40;
       var getlastdob = todayyear-100;
       if(d > CurrentDate){
