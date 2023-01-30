@@ -49,15 +49,15 @@ $(function () {
 <?php
 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
-//Sum Insured Slider
-var SliderValues = [<?php
+
+var SliderValues = [0,<?php
                 $s = 0;
                 foreach($sum as $r){
-                $s++;
+                $s++;   
                 echo $sumamount = $r->sum_insured;
                 if($s < count($sum)){
                 echo ', ';
-                }   
+                }
                 } ?>];
 var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
 $(function () {
@@ -70,12 +70,12 @@ $(function () {
         slide: function (event, ui) {
             $('#coverage_amount').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
-            for (i = 0; i < SliderValues.length; i++) {
-                var group = SliderValues[i];
-                $('.coverage-amt-'+group).hide();
-            }
+for (i = 0; i < SliderValues.length; i++) {
+var group = SliderValues[i];
+$('.coverage-amt-'+group).hide();
+}
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverageammount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
         }
     });
 
@@ -87,7 +87,7 @@ $(function () {
           <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                    <h4>Qoute Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
+                    <h4>Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
@@ -95,14 +95,23 @@ $(function () {
                     <div class="mt-4" id="slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
                 <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverageammount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+                     <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2 ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
                     <div class="mt-4" id="sum_slider" style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
                 </div>
               </div>
           </div>
         </div>
-        
-        
+        <div class="card  qoute-price-card mb-3 pricegurrantecard">
+          <div class="card-widget card-widget-price-match">
+                <div class="card-header">
+                    <div class="icon icon-price-match"></div>
+                    <div class="card-header__label">Price <br data-v-59a9f311="">Guarantee</div>
+                </div>
+                <div class="card-body">
+                    <p class="text-secondary-color body-text-5"> Insurance rates are regulated by law. You can't find the same insurance plan for a lower price anywhere else. </p>
+                </div>
+          </div>
+        </div>     
     </div>
     <div id="main" class="col-md-8">
         
@@ -149,8 +158,19 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->ages)){
-    $ages_array = array_filter($request->ages);
+
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -405,7 +425,7 @@ if($show == '1' && $total_price > 0){
                       <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
                   </ul>
-                <h3 style="font-size:15px;cursor: pointer;" class="qoute-policy">Additional Travelers <i onclick="slideadditionaltravelers(<?php echo $deductible.$plan_id;?>)" class="fa fa-info-circle "></i> </h3>
+                <h3 onclick="slideadditionaltravelers(<?php echo $deductible.$plan_id;?>)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
                 <div style="display: none;" class="row hoverdetails_<?php echo $deductible.$plan_id;?>" >
                     <div class="col-md-12">
                     <div class="col-md-12" style="border:1px solid #333; text-align:left;">
@@ -413,7 +433,80 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
                     <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
                     <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
-                    
+                        <div class="col-md-12 no-padding">
+                    <?php
+                    $per = 0;
+                    $single_person_rate = 0;
+                    foreach($ages_array as $person_age){
+                    $per++;
+                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                    $single_person_rate = $p_planrates[0]->rate;
+                                    
+                    if($family_plan == 'yes' && $elder_age != $person_age){
+                    $person_daily = 0;
+                    } else if($family_plan == 'yes' && $elder_age == $person_age){
+                    $person_daily = $single_person_rate * 2;
+                    } else {
+                    $person_daily = $single_person_rate;
+                    }
+
+                    if($rate_base == '0'){ // if daily rate
+                    $person_price = $person_daily * $num_of_days;
+                    } else if($rate_base == '1'){ //if monthly rate
+                    $person_price = $person_daily * $num_months;
+                    } else if($rate_base == '2'){ // if yearly rate
+                    $person_price = $person_daily;
+                    }
+                    else if($rate_base == '3'){ // if multi days rate
+                    $person_price = $person_daily;
+                    }
+
+                    if($flatrate_type == 'each'){
+                    $p_flat_price = $flatrate;
+                    }else if($flatrate_type == 'total'){
+                    $p_flat_price = $flatrate  / $number_travelers;
+                    } else {
+                    $p_flat_price = 0;
+                    }
+                    //totaldaysprice
+                    $ptotaldaysprice = $person_price;
+                    //SALES TAX
+                    if($salestax_dest == $post_dest){
+                    //$salesequal = 'yes';
+                    $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                    } else {
+                    $p_salestaxes = 0;
+                    //$salesequal = 'no';
+                    }
+
+                    //SMOKE RATE
+                    if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                    if($smoke == '0'){
+                    $p_smoke_price = $smoke_rate;
+                    } else if($smoke == '1'){
+                    $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
+                    }
+                    } else {
+                    $p_smoke_price = 0; 
+                    }
+
+                    // OTHERS
+                    $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+
+                    //Deductible 
+                    $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                    $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                    $p_discount = $p_deduct_discount + $p_cdiscount;
+                    $person_price = ($person_price - $p_discount) + $p_others;
+                    //$monthly_price = $person_price / $num_months;
+
+
+                    //if($single_person_rate > 0){
+                                        ?>
+                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> </span></div>
+                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
+                    <?php $single_person_rate = '';}//} ?>
+                    </div>
                     </div>
                     </div>
                 </div>
@@ -435,7 +528,7 @@ if($show == '1' && $total_price > 0){
     echo number_format($millions).$txt; 
 
 
-    $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+    $dob = $years[0].'-'.$request->month.''.$request->dob_day;
     $agent = $request->agent;
     $broker = $request->broker;
     $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
@@ -475,13 +568,7 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($request->months as $month)
-                <input type="hidden" name="months[]" value="{{ $month }}">
-                @endforeach
-                @foreach($request->days as $day)
-                <input type="hidden" name="days[]" value="{{ $day }}">
-                @endforeach
-                @foreach($request->years as $year)
+                @foreach($years as $year)
                 <input type="hidden" name="years[]" value="{{ $year }}">
                 @endforeach
                 <input type="hidden" value="{{ $num_of_days }}" name="days">

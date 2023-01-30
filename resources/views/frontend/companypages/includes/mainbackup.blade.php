@@ -2,6 +2,7 @@
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -30,13 +31,29 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             </div>
          </div>
       </div>
+  </div>
+</div>
       @if($firstsection->form == 1)
-      <div class="row">
+      @php
+         $prosupervisa = $data->pro_supervisa;
+         if($prosupervisa == '1'){
+         $supervisa = 'yes';
+         } else {
+         $supervisa = 'no';   
+         }
+      @endphp
+      <div class="row card-section">
          <div class="col-md-12">
-            <form action="#" method="POST">
-               <input type="hidden"  name="sum_insured2" id="sum_insured2">
-            <div class="p-0 qoute-card">
-               <div class="card-body p-0">
+            
+            <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
+               @csrf
+               <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+               <input type="hidden" id="departure_date" name="departure_date">
+               <input type="hidden" id="return_date" name="return_date">
+               <!-- <input type="hidden" name="ages[]" id="selectage"> -->
+               <!-- <input type="hidden" name="years[]" id="selectage"> -->
+            <div class="qoute-card">
+               <div class="card-body">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
                      <div  class="grid-container">
                         <div  class="grid-row grid-row--bar">
@@ -47,29 +64,30 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
-                              <input  id="citishow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
+                              <input  id="ageshow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
                               <span  class="label-text">Traveler Information</span>
                               </label>
                               <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="coveragedate" class="value"> Start Date 
+                                       <div id="coveragedate"  class=" value"> Start Date 
                                        </div>
                                     </div>
-                                   <!--  <div  class="sep"></div>
-                                    <div  class="to">
-                                       <div  class="value">End Date</div>
-                                    </div> -->
+                                    <div class="from ml-3">
+                                       
+                                       <div id="qoutedestination" class="value"></div>
+                                    </div>
                                  </div>
                               </div>
-                              <button  disabled="disabled" class="button button-primary get-quotes-button"> Get Quotes </button>
+                              <button style="color:white;" id="getqoutesubmitbutton" type="submit" class="button button-primary get-quotes-button"> Get Quotes </button>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
+            
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
@@ -78,111 +96,48 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card lg-wizard-card modal-card border-0">
-                           <h2 class="heading-3 card-heading">Please Select Coverage Ammount?</h2>
-                           <div class="card-content">
+                           <h2 class="heading-3 card-heading">Please Select Coverage Amount?</h2>
+                           <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
-                              <div class="row">
+                          </div>
+                              <div class="row mt-3">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                  <div class="col-md-6">
-                                      <div class="wrapper-dropdown" id="primary_destination">
-                                        <span>Coverage Ammount</span>
-                                        <ul class="dropdown"  >
-                                         @foreach($sum_insured as $r)
-
-
-                                         <li @if($loop->last) class="borderbottomnone" @endif onclick="selectcoverageammount({{$r->sum_insured}});">
-                                            <span class="selectspan">${{ $r->sum_insured }}</span>
-                                         </li>
-                                         @endforeach
-                                         <script type="text/javascript">
-                                             function selectcoverageammount(id) {
-                                                 $('#sum_insured2').val(id);
-                                                 $('#coverageprice').val(id);
-                                                 $('#covergaeerror').hide();
-                                               }
-                                               function firstnext() {
-                                                  if($('#sum_insured2').val() == '')
-                                                  {
-                                                     $('#covergaeerror').show();
-                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
-                                                  }else{
-                                                     $('#firstnextfake').hide();
-                                                     $('#firstnextorignal').show();
-                                                     $('#firstnextorignal').click();
-                                                  }
-                                               }
-                                         </script>
-                                        </ul>
-                                      </div>
-                                  </div>
+                                 <div class="col-md-6 positionrelative">
+                                    <label class="selectlabel">Coverage Ammount</label>
+                                     <select name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
+                                       <option value="">Select Coverage Ammount</option>
+                                       @foreach($sum_insured as $r)
+                                          <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                       @endforeach
+                                     </select>
+                                     <div class="text-danger mt-4" id="covergaeerror"></div>
+                                </div>
                                  @endif
                                  @endif
-                                 @if(isset($fields['fname']))
-                                 @if($fields['fname'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="fname" placeholder="First Name" required id="irstname" class="wrapperfrom">
-                                       <label for="firstname" class="form-label">First name</label>
+                                 @if(isset($fields['Country']))
+                                   @if($fields['Country'] == "on" )
+                                    <div class="col-md-6 positionrelative">
+                                       <label class="selectlabel">Primary Destination</label>
+                                        <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
+                                          <option value="">Select Primary Destination</option>
+                                          @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                             <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                          @endforeach
+                                        </select>
+                                        <div class="text-danger mt-4" id="primarydestinationerror"></div>
                                     </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['lname']))
-                                 @if($fields['lname'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input type="text" name="lname" placeholder="Last Name" required id="lname" class="wrapperfrom">
-                                       <label for="lname" class="form-label">Last name</label>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 @endif
-                                 @if(isset($fields['email']))
-                                 @if($fields['email'] == "on" )
-                                   <div class="col-md-6">
-                                      <div class="custom-form-control">
-                                         <input type="text" name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="wrapperfrom">
-                                         <label for="savers_email" class="form-label">Email</label>
-                                      </div>
-                                   </div>
-                                @endif
-                                @endif
-                                @if(isset($fields['phone']))
-                                @if($fields['phone'] == 'on')
-                                 <div class="col-md-6">
-                                    <div class="custom-form-control">
-                                       <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="wrapperfrom">
-                                       <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
-                                    </div>
-                                 </div>
-                                 <script>
-                                    function validatephone(){
-                                       var checkphone = document.getElementById('phone').value;
-                                       document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                                       if (checkphone.length < 10) {
-                                       document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                                       document.getElementById('getquote').disabled = true;  
-                                       } else {
-                                       document.getElementById('getquote').disabled = false; 
-                                       document.getElementById('phone_error').innerHTML = '';
-                                       }
-                                       }
-                                 </script>
-                                 @endif
+                                    @endif
                                  @endif
                               </div>
-                                <div class="text-danger mt-4" id="covergaeerror"></div>
-                                
                            </div>
                         </div>
-                     </div>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                          <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
-                          <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
-                       </div>
-                     </div>
+                        <div class="modal-footer">
+                           <div class="nextbtns">
+                             <span id="firstnextfake" class="btn btn-default" onclick="firstnext()">Next</span>
+                             <span style="display: none;" id="firstnextorignal"  class="btn btn-default btn-next">Next</span>
+                          </div>
+                        </div>
                   </div>
                </div>
             </div>
@@ -196,40 +151,67 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
-                           <div class="card-content">
+                           <div class="card-content d-flex">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="d-flex travelerinfo">
-                                       <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                       <div id="ageinput" class="form-input input-age">
-                                          <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric">
-                                       </div>
-                                       <div style="display: none;" id="dateofbirthinput" class="form-input input-date-of-birth">
-                                          <input type="text" placeholder="MM/DD/YYYY" required="required" pattern="\d{1,2}/\d{1,2}/\d{4}" maxlength="10" class="input-field dob">
-                                       </div>
-                                       <span class="switch-input">or 
-                                          <a onclick="showdateofbirth()" id="dateofbirthtext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Date of Birth</a>
-                                          <a onclick="showage()" style="display: none;" id="agetext" href="javascript:void(0)" class="link-text-4 link-text-default-color">Enter Age</a>
-                                       </span>
-                                    </div>
-                                 </div>
-                                 
-                                 <div class="additionaltraveler"></div>
-                                 <div class="col-md-12 mt-3">
-                                    <div class="travelerinfo">
-                                       <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                    </div>
-                                 </div>
-                                 
+                              <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;" id="errortravelr" class="alert alert-danger">
+
                               </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12 mt-3">
+                                 <div class="row mt-3 showrowstraveler">
+                                    <div class="col-md-6">
+                                       <div class="row alignitembaseline">
+                                          <div class="col-md-6">
+                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                                          </div>
+                                          <div class="col-md-6 nopad">
+                                             <div class="input-wrapper positionrelative">
+                                                <label class="selectlabeldateofbirth">Date Of Birth</label>
+                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-3 positionrelative">
+                                          <label class="selectlabel">Pre Existing Condition</label>
+                                          <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="Yes">Yes</option>
+                                             <option value="Yes">No</option>
+                                           </select>
+                                    </div>
+                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                       <span class="button button-help show-tooltip"></span>
+                                       <div class="tooltip-container tooltip--auto-height activehelpful">
+                                          <button class="button button-close-simplified close-tooltip"></button>
+                                          <h4 class="heading heading-5">Helpful Info</h4>
+                                          <div class="content">
+                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="additionaltraveler">
+                                    @for ($i=2; $i < 7; $i++)
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    @endfor
+                                 </div>
+                              </div>
+                              <div class="col-md-12 mt-3">
+                                 <div class="travelerinfo">
+                                    <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
+                                 </div>
+                              </div>
+                              <input type="hidden" value="5" id="numberoftraverls" name="">
                            </div>
                         </div>
                      </div>
                      <div class="modal-footer">
                         <div class="nextbtns">
-                           <span class="btn btn-default btn-prev">Prev</span>
-                           <span id="paramsOkay" class="btn btn-default btn-next">Next</span>
+                          <span class="btn btn-default btn-prev">Prev</span>
+                          <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
+                          <span id="secondnextorignal" style="display: none;"   class="btn btn-default btn-next">Next</span>
                         </div>
                      </div>
                   </div>
@@ -243,48 +225,49 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">Start Date Of Covergae and Some Other Details</h2>
-                           <div class="card-content">
+                           <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
+                              <div class="date_picker_wrapper" id="date_picker_1">
+                           <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start Coverage</p>
-                              <div class="row">
+                                <div class="date_picker_header">
+                                  <h2 class="date_picker_month_day"></h2>
+                                  <h2 class="date_picker_year ml-2"></h2>
+                                </div>
+                            </div>
+                              <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
-                                    <input autocomplete="off" id="departure_date"  name="departure_date" class="wrapperfrom" type="text" required onchange="supervisayes()">
-                                    <i class="fa fa-calendar" onclick="$('#departure_date').focus();"></i> 
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="row">
-                                       <div class="col-md-12">
-                                             <span class="questionheading">Do you require Family Plan ?</span>
-                                             <div class="col-md-12 no-padding">
-                                                <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                             </div>
-                                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
-                                             <script>
-                                                function changefamilyyes(){
-                                                   document.getElementById('familyplan_temp').value = 'yes';   
-                                                   checkfamilyplan();
-                                                }
-                                                function changefamilyno(){
-                                                   document.getElementById('familyplan_temp').value = 'no'; 
-                                                   checkfamilyplan();
-                                                }
-                                             </script>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Pre-existing Condition ?</span>
-                                          <div class="col-md-12 no-padding">
-                                          <label  class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;" class="text-dark"> Yes</label> <label class="text-dark" style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                       </div>
-                                       </div>
-                                       <div class="col-md-12">
-                                          <span class="questionheading">Do you Smoke in last 12 months ?</span>
-                                          <div class="col-md-12 no-padding">
-                                             <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
-                                             <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                                        <div class="date_picker_body">
+                                          <div class="date_picker_month_navigation">
+                                            <button class="date_picker_prev_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-back-circle-outline"></ion-icon>
+                                            </button>
+                                            <h2 class="date_picker_month_name"></h2>
+                                            <button class="date_picker_next_month date_picker_month_nav_btn">
+                                              <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                            </button>
                                           </div>
-                                       </div>
-                                    </div>
+                                          <ul class="date_picker_month_days">
+                                            <li>Sun</li>
+                                            <li>Mon</li>
+                                            <li>Tue</li>
+                                            <li>Wed</li>
+                                            <li>Thu</li>
+                                            <li>Fri</li>
+                                            <li>Sat</li>
+                                          </ul>
+                                        </div>
                                  </div>
+                                 @if(isset($fields['email']))
+                                 @if($fields['email'] == "on" )
+                                   <div class="col-md-6 userdata-card mt-5">
+                                      <div class="custom-form-control positionrelative">
+                                          <label class="selectlabeldateofbirth">Enter Your Email</label>
+                                            <input class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                      </div>
+                                       <div class="text-danger mt-4" id="savers_emailerror"></div>
+                                   </div>
+                                 @endif
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -292,31 +275,24 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                          <span class="btn btn-default btn-prev">Prev</span>
-                         <span class="btn btn-default btn-next">Done</span>
+                         <span class="btn btn-default " id="donefake"  onclick="thirdone()">Done</span>
+                         <span class="btn btn-default btn-next" style="display: none;" id="doneoriginal"  onclick="formdone()">Done</span>
+                      <script type="text/javascript">
+                        function formdone() {
+                           $("#getqoutesubmitbutton").click();
+                        }
+                      </script>
                       </div>
                      </div>
                   </div>
                </div>
             </div>
-         </form>
+            </form>
          </div>
       </div>
       @endif
    </div>
 </div>
-<script type="text/javascript">
-   var a = 0;
-   function addtravellers() {
-      a++
-      var number_of_traveller = '5';
-
-      if(a < number_of_traveller){
-         $('.additionaltraveler').append('<div id="removebutton'+a+'" class="col-md-12 mt-3"> <div class="d-flex travelerinfo"> <span class="travelerheading">Additional Traveler</span> <div class="form-input input-age"> <input type="number" placeholder="Age" required="required" pattern="[0-9]*" maxlength="3" class="input-field age" min="0" inputmode="numeric"> </div>  </span><span onclick="removeappendvalue('+a+')" class="button remove-line remove-icon md-hide sm-hide"> </div> </div></span>');
-      }else{
-         $('.button-add-another').fadeOut(300);
-      }
-   }
-</script>
 <script>
    var today = new Date();
    var dd = today.getDate();
@@ -329,16 +305,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
      mm = '0' + mm;
    } 
    var today = mm + '/' + dd + '/' + yyyy;
-   $(function() {
-     $('input[name="departure_date"]').daterangepicker({
-       opens: 'left',
-      minDate: today,
-      singleDatePicker: true,
-       showDropdowns: true,
-     }, function(start, end, label) {
-
-     });
-   });
    function supervisayes(){
       var tt = document.getElementById('departure_date').value;
       var date = new Date(tt);
@@ -357,48 +323,53 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       var someFormattedDate = y + '-' + mm + '-' + dd;
       document.getElementById('return_date').value = someFormattedDate;
    }
-</script>
-<script type="text/javascript">
-   function removeappendvalue(id) {
-      $('.button-add-another').fadeIn(300);
-      $('#removebutton'+id).remove();
+   function setdeparuredate(month, date, day, year) {
+      var setmonth = +month + 1;
+      $('#departure_date').val(year+'-'+setmonth+'-'+date)
+      $('#coveragedate').html(year+'-'+setmonth+'-'+date)
+      supervisayes();
    }
-   function showdateofbirth() {
-      $('#ageinput').hide();
-      $('#dateofbirthtext').hide();
-      $('#agetext').show();
-      $('#dateofbirthinput').show();
-      
-   }
-   function showage() {
-      $('#agetext').hide();
-      $('#dateofbirthinput').hide();
-      $('#ageinput').show();
-      $('#dateofbirthtext').show();
-      
-   }
-</script>
-<script type="text/javascript">
-   $( "#destination_country" ).change(function() {
-       var sel = $( "#destination_country option:selected" ).val();
-       var textbox = document.getElementById("txtmanuid");
-       textbox.value =$( "#destination_country option:selected" ).text();
-   });
 </script>
 <script>
-   $(document).ready(function(){
-   
-       $('#myModal2').on('click','#paramsOkay', function (e) {
-           $('#ages').val($('#age').val())
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth() + 1; //January is 0!
+   var yyyy = today.getFullYear();
+   if (dd < 10) {
+      dd = '0' + dd;
+   } 
+   if (mm < 10) {
+     mm = '0' + mm;
+   } 
+   var today = mm + '/' + dd + '/' + yyyy;
+   $(function() {
+     $('input[name="departure_dates"]').daterangepicker({
+       opens: 'left',
+      minDate: today,
+      singleDatePicker: true,
+       showDropdowns: true,
+     }, function(start, end, label) {
+
+     });
    });
-   })
-</script>
-<script type="text/javascript">
-   $( "#primary_destination" ).change(function() {
-       var sel = $( "#primary_destination option:selected" ).val();
-       var textbox = document.getElementById("destinations");
-       textbox.value =$( "#primary_destination option:selected" ).text();
-   });
+   function supervisayess(){
+      var tt = document.getElementById('departure_dates').value;
+      var date = new Date(tt);
+      var newdate = new Date(date);
+      newdate.setDate(newdate.getDate() + 364);
+      var dd = newdate.getDate();
+      var mm = newdate.getMonth() + 1;
+      var y = newdate.getFullYear();
+      if(mm <= 9){
+      var mm = '0'+mm;  
+      }
+      if(dd <= 9){
+      var dd = '0'+dd;  
+      }
+      //var someFormattedDate = mm + '/' + dd + '/' + y;
+      var someFormattedDate = y + '-' + mm + '-' + dd;
+      document.getElementById('return_date').value = someFormattedDate;
+   }
 </script>
 <script type="text/javascript">
    $("div[id^='myModal']").each(function(){
@@ -421,109 +392,24 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    
 </script>
 <script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#gender'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#citizenship'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#primary_destination'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
+   $("div[id^='myModal']").each(function(){
+   
+   var currentModal = $(this);
+   
+   //click next
+   currentModal.find('.btn-nexts').click(function(){
+   currentModal.modal('hide');
+   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+   });
+   
+   //click prev
+   currentModal.find('.btn-prevs').click(function(){
+   currentModal.modal('hide');
+   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+   });
+   
+   });
+   
 </script>
 <script type="text/javascript">
   //----------variables----------//
@@ -659,4 +545,44 @@ var outputDate = monthTextArray[month] + " " + day + ", " + year;
 
 
 $("#outputText").text(outputDate);
+</script>
+<script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
+<script type="text/javascript">
+   function getquotesubmitform() {
+      $('#quoteform').submit();
+   }
+
+
+   $('#quoteform').on('submit',(function(e) {
+       $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+       e.preventDefault();
+       var formData = new FormData(this);
+       $.ajax({
+           type:'POST',
+           url: $(this).attr('action'),
+           data:formData,
+           cache:false,
+           contentType: false,
+           processData: false,
+           success: function(data){
+            // console.log(data.html)
+            $('#getqoutesubmitbutton').html('Get Quotes');
+              $('.quotationscards').html(data.html);
+           }
+       });
+   }));
+</script>
+<script>
+  function maxLengthCheck(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
+</script>
+<script>
+  function maxLengthChecks(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
 </script>
