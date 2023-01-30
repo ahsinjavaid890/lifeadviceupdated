@@ -2896,3 +2896,16 @@ li.date_picker_week_day {
 .qoute-price-select h2{
    font-size: 20px;
 }
+#getquote{
+    background-color: #2b3481;
+    color: white;
+    border: none;
+}
+.formsection .card .card-header{
+    background-color: #2b3481;
+    border-bottom: #2b3481;
+}
+.formsection .card .card-header h3{
+    color: white;
+    font-size: 25px;
+}
