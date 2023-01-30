@@ -2867,7 +2867,7 @@ li.date_picker_week_day {
 
 .ui-datepicker-select a {
   background-color: darken(#62748c, 15%);
-  color: #262566 !important;
+  color: #2b3481 !important;
 }
 
 .ui-datepicker {
@@ -2908,7 +2908,7 @@ li.date_picker_week_day {
       }
       .ui-datepicker-header .ui-datepicker-prev, .ui-datepicker-next:hover {
 /*        background-color: #050505;*/
-         color: #262566;
+         color: #2b3481;
       }
 
          .ui-datepicker-header .ui-datepicker-prev, .ui-datepicker-next .ui-state-disabled {
@@ -2918,7 +2918,7 @@ li.date_picker_week_day {
          left: 10px;
       }
       .ui-datepicker-next {
-         color: #262566;
+         color: #2b3481;
          right: 10px;
       }
    
