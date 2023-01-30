@@ -150,8 +150,8 @@
 											</div>
 										</div>
 										<div class="col-md-6 nopad">
-											<div  class="input-wrapper">
-												<select name="gender" id="gender" class="input" data-placeholder="Gender">
+											<div class="input-wrapper">
+												<select name="gender" class="input" data-placeholder="Gender">
 													<option value="">Select Gender</option>
 													<option value="Male">Male</option>
 													<option value="Female">Female</option>
@@ -296,13 +296,13 @@
 											   <span class="placeholder">Visitor<small class="text-danger">*</small></span>
 											</div>
 										</div>
-										<div class="col-md-6 mt-3">
+											<div class="col-md-6 mt-3">
 											<div class="input-wrapper">
 											   <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate" data-placeholder="Trip Arrival date">
 											   <span class="placeholder">Trip Arrival date<small class="text-danger">*</small></span>
 											</div>
-										</div>
-										<div class="col-md-6">
+											</div>
+											<div class="col-md-6">
 		                                      <div class="wrapper-dropdown" id="primary_destination">
 		                                        <span>ontario</span>
 		                                        <ul class="dropdown"  >
@@ -333,10 +333,10 @@
 		                                      </div>
 											</div>
 											<div class="col-md-6 mt-3">
-												<div class="input-wrapper">
-												   <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" data-placeholder="Trip End date">
-												   <span class="placeholder">Trip End date<small class="text-danger">*</small></span>
-												</div>
+											<div class="input-wrapper">
+											   <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" data-placeholder="Trip End date">
+											   <span class="placeholder">Trip End date<small class="text-danger">*</small></span>
+											</div>
 											</div>
 											<div class="col-md-6 mt-3">
 												<div class="input-wrapper">

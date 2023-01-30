@@ -342,8 +342,8 @@ input {
 .form-box { padding-top: 40px; }
 
 .f1 {
-    padding: 25px; background: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    padding: 25px; background: #fff;box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 15px;
 }
 .f1 h3 { margin-top: 0; margin-bottom: 5px; text-transform: uppercase; }
 

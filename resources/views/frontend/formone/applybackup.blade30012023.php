@@ -3,647 +3,563 @@
 <title>Apply</title>
 @endsection
 @section('content')
-<link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
-<script src="js/mobiscroll.jquery.min.js"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css')}}">
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css')}}">
-<script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-<script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
+<script src="{{ url('public/front/js/select2.min.js') }}"></script>
+<script src="js/mobiscroll.jquery.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
 <style type="text/css">
-	.tabshead{
-		margin-top: 67px;
+	.applyformfirstsection{
+		padding-top: 150px;
+		background-color: #2b3481;
+		padding-bottom: 50px;
 	}
-	.wrapper-dropdown{
-		top: 22px !important;
-		width: 94% !important;
+	.applyformfirstsection h1{
+		color: white;
 	}
-	.f1-buttons{
-		margin-top: 20px;
-	}
-	.input{
-		border: 1px solid #cfd9e8 !important;
+	.formsection{
+		background-color: #eeeded;
 	}
 </style>
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
-<section class="tabshead">
+<section class="applyformfirstsection">
 	<div class="container">
-		<div class="row tabs" style="padding-top: 20px;">
-			<div class="col-md-4 col-xs-4 text-center information_qoutes">
-				<button class="btn">
-					<i class="fa fa-user"></i> Information
-				</button>
-			</div>
-			<div class="col-md-4 col-xs-4 text-center price_qoutes">
-				<button class="btn ">
-					<i class="fa fa-shopping-cart"></i> Quotes
-				</button>
-			</div>
-			<div class="col-md-4 col-xs-4 text-center apply_qoutes">
-				<button class="btn active">
-					<i class="fa fa-edit"></i> Apply / Buy
-				</button>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1>Please Fill the Form</h1>
 			</div>
 		</div>
 	</div>
 </section>
-		<div class="top-content">
-            <div class="container">
-            	<div class="" style="max-width: 100%;margin: auto;">
-					<div class="row hidden-xs">
+<section class="formsection p-10">
+	<div class="container">
+		<form action="{{ url('applyqoute') }}" method="post" >
+			@csrf
+			<input type="hidden" name="coverage" value="{{ $request->coverage }}">
+			<input type="hidden" name="deductibles" value="{{$request->deductibles}}">
+			<input type="hidden" name="deductible_rate" value="{{ $request->deductible_rate }}">
+			<input type="hidden" name="premium" value="{{ $request->premium }}">
+			<input type="hidden" name="plan_name" value="{{ $request->planname }}">
+			<input type="hidden" name="plan_id" value="{{ $request->plan_id }}">
+			<input type="hidden" name="comp_id" value="{{ $request->comp_id }}">
+			<input type="hidden" name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}">
+			<input type="hidden" name="product_id" value="{{ $request->product_id }}">
+			<input type="hidden" name="traveller" value="{{ $request->traveller }}">
+			<input type="hidden" name="age" value="{{ $request->age }}">
+			<input type="hidden" name="broker" value="{{ $request->broker }}">     
+			<input type="hidden" name="agent" value="{{ $request->agent }}">
+			<div class="card">
+				<div class="card-header">
+					<h3>About Info</h3>
+				</div>
+				<div class="card-body">
+					@for($i=0; $i < $request->traveller; $i++)
+            			@php
+            				$year = $request->years[$i];
+            			@endphp
+					<hr class="hr-text mt-5" data-content="Traveler {{ $i+1 }}">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+                  <label class="selectlabeldateofbirth">First Name Traveler {{ $i+1 }}</label>
+                 	<input class="input" type="text" placeholder=" " name="fname" data-placeholder="First Name" required>
+              </div>
+		         </div>
+		                <div class="col-md-6">
+		                    <div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Second Name Traveler {{ $i+1 }}</label>
+		                        <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
+		                    </div>
+		                </div>
+		                <div class="col-md-6" style="margin-top: 27px;">
+		                    <div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
+		                        <input class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
+		                    </div>
+		                </div>
+		                <div class="col-md-6" style="margin-top: 33px;">
+		                    <div class=" positionrelative">
+		                    	<label class="selectlabel">Select Gender</label>
+                            <select name="gender" class="gender form-control">
+                               	<option value="">Select Gender</option>
+																<option value="Male">Male</option>
+																<option value="Female">Female</option>
+                            </select>
+		                    </div>
+		                </div>
+					</div>
+					@endfor
+					<div class="row"style="margin-top: 33px;">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+	            	<label class="selectlabeldateofbirth">Email</label>
+	                <input class="input" type="text" placeholder=" " oninput="maxLengthChecks(this)" maxlength="11" value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
+	            </div>
+						</div>
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+              	<label class="selectlabeldateofbirth">Phone Number</label>
+                  <input class="input" type="email" placeholder=" " value="{{ $request->email }}" name="email" data-placeholder="Email" required>
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-4">
+				<div class="card-header">
+					<h3>Address</h3>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Street Number and Name</label>
+		                        <input class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
+								<div id="map-canvas" style="display: none;"></div>
+		                    </div>
+						</div>
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Suit/Apt# (optional)</label>
+		                        <input class="input" type="" placeholder=" " id="" name="suit" data-placeholder="Suit/Apt">
+		                    </div>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">City</label>
+		                        <input class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="City">
+		                    </div>
+						</div>
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Province</label>
+		                        <input  class="input" type="text" placeholder=" " id="province" name="province" data-placeholder="Province">
+		                    </div>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Postal Code</label>
+		                        <input class="input" type="text" placeholder=" " id="postalcode" name="postalcode" data-placeholder="Postal Code">
+		                    </div>
+						</div>
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Country</label>
+		                        <input  class="input" type="text" placeholder=" " id="country" name="country" data-placeholder="Country">
+		                    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-4	">
+				<div class="card-header">
+					<h3>Trip Information</h3>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Visitor</label>
+		                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
+		                    </div>
+						</div>
+						<div class="col-md-6" style="margin-top: 5px;">
+		                    <div class=" positionrelative">
+                               <label class="selectlabel">Primary Destination</label>
+                                <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
+                                  @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                     <option @if ($r->name = 'ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                  @endforeach
+                                </select>
+		                    </div>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
+		                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
+		                    </div>
+						</div>
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Trip End date</label>
+		                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
+		                    </div>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col-md-6">
+							<div class="custom-form-control positionrelative">
+		                    	<label class="selectlabeldateofbirth">Trip Duration(days)</label>
+		                        <input class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration">
+		                    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-4">
+				<div class="card-header">
+					<h3>Payment Details</h3>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="container preload">
+						        <div class="creditcard">
+						            <div class="front">
+						                <div id="ccsingle"></div>
+						                <svg version="1.1" id="cardfront" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						                    x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
+						                    <g id="Front">
+						                        <g id="CardBackground">
+						                            <g id="Page-1_1_">
+						                                <g id="amex_1_">
+						                                    <path id="Rectangle-1_1_" class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+						                            C0,17.9,17.9,0,40,0z" />
+						                                </g>
+						                            </g>
+						                            <path class="darkcolor greydark" d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
+						                        </g>
+						                        <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber" class="st2 st3 st4">0123 4567 8910 1112</text>
+						                        <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">JOHN DOE</text>
+						                        <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">cardholder name</text>
+						                        <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8">expiration</text>
+						                        <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8">card number</text>
+						                        <g>
+						                            <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">01/23</text>
+						                            <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
+						                            <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
+						                            <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9 		" />
+						                        </g>
+						                        <g id="cchip">
+						                            <g>
+						                                <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
+						                        c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z" />
+						                            </g>
+						                            <g>
+						                                <g>
+						                                    <rect x="82" y="70" class="st12" width="1.5" height="60" />
+						                                </g>
+						                                <g>
+						                                    <rect x="167.4" y="70" class="st12" width="1.5" height="60" />
+						                                </g>
+						                                <g>
+						                                    <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
+						                            c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3
+						                            C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5
+						                            c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5
+						                            c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z" />
+						                                </g>
+						                                <g>
+						                                    <rect x="82.8" y="82.1" class="st12" width="25.8" height="1.5" />
+						                                </g>
+						                                <g>
+						                                    <rect x="82.8" y="117.9" class="st12" width="26.1" height="1.5" />
+						                                </g>
+						                                <g>
+						                                    <rect x="142.4" y="82.1" class="st12" width="25.8" height="1.5" />
+						                                </g>
+						                                <g>
+						                                    <rect x="142" y="117.9" class="st12" width="26.2" height="1.5" />
+						                                </g>
+						                            </g>
+						                        </g>
+						                    </g>
+						                    <g id="Back">
+						                    </g>
+						                </svg>
+						            </div>
+						            <div class="back">
+						                <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						                    x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
+						                    <g id="Front">
+						                        <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
+						                    </g>
+						                    <g id="Back">
+						                        <g id="Page-1_2_">
+						                            <g id="amex_2_">
+						                                <path id="Rectangle-1_2_" class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+						                        C0,17.9,17.9,0,40,0z" />
+						                            </g>
+						                        </g>
+						                        <rect y="61.6" class="st2" width="750" height="78" />
+						                        <g>
+						                            <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
+						                    C707.1,246.4,704.4,249.1,701.1,249.1z" />
+						                            <rect x="42.9" y="198.6" class="st4" width="664.1" height="10.5" />
+						                            <rect x="42.9" y="224.5" class="st4" width="664.1" height="10.5" />
+						                            <path class="st5" d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
+						                        </g>
+						                        <text transform="matrix(1 0 0 1 621.999 227.2734)" id="svgsecurity" class="st6 st7">985</text>
+						                        <g class="st8">
+						                            <text transform="matrix(1 0 0 1 518.083 280.0879)" class="st9 st6 st10">security code</text>
+						                        </g>
+						                        <rect x="58.1" y="378.6" class="st11" width="375.5" height="13.5" />
+						                        <rect x="58.1" y="405.6" class="st11" width="421.7" height="13.5" />
+						                        <text transform="matrix(1 0 0 1 59.5073 228.6099)" id="svgnameback" class="st12 st13">John Doe</text>
+						                    </g>
+						                </svg>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					    <div class="col-md-8">
+					    	<div class="form-container">
+								<div class="row mt-5">
+									<div class="col-md-6">
+										<div class="custom-form-control positionrelative">
+					                    	<label class="selectlabeldateofbirth">Name</label>
+					                        <input onkeydown="return /[a-z]/i.test(event.key)" name="cardholdername" id="name" maxlength="20" type="text" class="input" >
+					                    </div>
+									</div>
+									<div class="col-md-6">
+										<div class="custom-form-control positionrelative">
+					                    	<label class="selectlabeldateofbirth" id="generatecard">Card Number</label>
+					                        <input class="input"  name="cardholdernumber" id="cardnumber"  type="text" inputmode="numeric" >
+							           	 <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
+							                xmlns:xlink="http://www.w3.org/1999/xlink">
+							            </svg>
+					                    </div>
+									</div>
+								</div>
+								<div class="row mt-5">
+									<div class="col-md-6">
+										<div class="custom-form-control positionrelative">
+					                    	<label class="selectlabeldateofbirth">Expiration (mm/yy)</label>
+					                        <input class="input"  name="expirationdate" id="expirationdate" type="text"  inputmode="numeric" >
+					                    </div>
+									</div>
+									<div class="col-md-6">
+										<div class="custom-form-control positionrelative">
+					                    	<label class="selectlabeldateofbirth" >Security Code</label>
+					                        <input class="input" name="cvc" id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" >
+					                    </div>
+									</div>
+								</div>
+					    	</div>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-4">
+				<div class="card-header">
+					<h3>Coverage Information</h3>
+				</div>
+				<div class="card-body">
+					<div class="row ">
 						<div class="col-md-12">
-							<div class="alert alert-primary" style="background-color: #FFF;color: #222;">	
-								<h4 style="color:#1BBC9B;"><i class="fa fa-bell"></i> We want everything to go <strong>smoothly!</strong></h4>
-								<p><strong>So please make sure all your answers are complete and accurate. </strong></p>
-								<p>Insurers rely on the information and may not check it, if the information you provide is not accurate your policy may be cancelled or the insurer may not pay out in the event of a claim.</p>
+							<div class="alert alert-primary" style="background-color: #FFF;color: #222;">
+								<div class="row">
+									<div class="col-md-6">
+										<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
+									</div>
+									<div class="col-md-6 text-right">
+										<img src="{{  url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_logo }}">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-6 nopad">
+											<div class="row">
+											<div class="col-md-5 nopad">
+												<label>Plan Name</label>
+											</div>
+											<div class="col-md-7 nopad">
+												{{ $request->planname }}
+											</div>
+											<div class="clearfix"></div>
+											<div class="col-md-5 nopad">
+												<label>Product Name</label>
+											</div>
+											<div class="col-md-7 nopad">
+												{{ $request->product_name }}
+											</div>
+											<div class="clearfix"></div>
+											<div class="col-md-5 nopad">
+												<label>Coverage Amount</label>
+											</div>
+											<div class="col-md-7 nopad">
+												{{ $request->coverage }}						
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+										<div class="col-md-6 nopad">	
+											<div class="row">
+												<div class="col-md-5 nopad">
+													<label>Coverage Dates</label>
+												</div>
+												<div class="col-md-7 nopad">
+													{{ $request->tripdate }} / {{ $request->tripend }}						
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-md-5 nopad">
+													<label>Deductible</label>
+												</div>
+												<div class="col-md-7 nopad">
+													${{ $request->deductibles }}			
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-md-5 nopad">
+													<label>Premium</label>
+												</div>
+												<div class="col-md-7 nopad">
+													$<?php echo number_format($request->premium,2); ?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group" style="margin:0;">
+								<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
+		  						<label class="radio padtop0 d-flex">
+									<input name="accept" value="mastercard" type="checkbox">
+									<i></i>
+									<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
+								</label>
 							</div>
 						</div>
 					</div>
 				</div>
-                <div class="row">
-                    <div class="col-md-12">
-			        	<form action="{{ url('applyqoute') }}" method="post" class="f1">
-							@csrf
-
-							<input type="hidden" name="coverage" value="{{ $request->coverage }}">
-							<input type="hidden" name="deductibles" value="{{$request->deductibles}}">
-							<input type="hidden" name="deductible_rate" value="{{ $request->deductible_rate }}">
-							<input type="hidden" name="premium" value="{{ $request->premium }}">
-							<input type="hidden" name="plan_name" value="{{ $request->planname }}">
-							<input type="hidden" name="plan_id" value="{{ $request->plan_id }}">
-							<input type="hidden" name="comp_id" value="{{ $request->comp_id }}">
-							<input type="hidden" name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}">
-							<input type="hidden" name="product_id" value="{{ $request->product_id }}">
-							<input type="hidden" name="traveller" value="{{ $request->traveller }}">
-							<input type="hidden" name="age" value="{{ $request->age }}">
-							<input type="hidden" name="broker" value="{{ $request->broker }}">     
-							<input type="hidden" name="agent" value="{{ $request->agent }}">
-
-
-
-                    		<div class="f1-steps">
-                    			<div class="f1-progress">
-                    			    <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
-                    			</div>
-                    			<div class="f1-step active">
-                    				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
-                    				<div class="headitem">
-										<p>About Info</p>
-									</div>
-                    			</div>
-                    			<div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-location-arrow"></i></div>
-                    				<div class="headitem">
-										<p>Address</p>
-									</div>
-                    			</div>
-                    		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-subway"></i></div>
-                    				<div class="headitem">
-										<p style="">Trip Information</p>
-									</div>
-                    			</div>
-                    		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-credit-card"></i></div>
-                    				<div class="headitem">
-										<p style="">Payment Details</p>
-									</div>
-                    			</div>
-                    		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-info-circle"></i></div>
-                    				<div class="headitem">
-										<p>Coverage Information</p>
-									</div>
-                    			</div>
-                    		</div>
-                    		
-                    		<fieldset> 
-                    			@for($i=0; $i < $request->traveller; $i++)
-                    			@php
-                    				$year = $request->years[$i];
-                    			@endphp
-
-                    			<hr class="hr-text mt-5" data-content="Traveler {{ $i+1 }}">
-                    			<div class="form-group mt-3">
-									<div class="row">
-										<div class="col-md-6 nopad">
-											<div class="custom-form-control positionrelative">
-							                  	<label class="selectlabeldateofbirth">First Name Traveler {{ $i+1 }}</label>
-							                 	<input class="input" type="text" placeholder=" " name="fname" data-placeholder="First Name" required>
-							              	</div>
-										</div>
-										<div class="col-md-6 nopad">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Second Name Traveler {{ $i+1 }}</label>
-						                        <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
-						                    </div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group mt-3">
-									<div class="row">
-										<div class="col-md-6 nopad">
-						                    <div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
-						                        <input class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
-						                    </div>
-										</div>
-										<div class="col-md-6 nopad">
-						                    <div class=" positionrelative">
-						                    	<label class="selectlabel">Select Gender</label>
-					                            <select name="gender" class="gender form-control">
-					                               	<option value="">Select Gender</option>
-													<option value="Male">Male</option>
-													<option value="Female">Female</option>
-					                            </select>
-						                    </div>
-										</div>
-									</div>
-								</div>
-								@endfor
-								<hr>
-								<div class="form-group mt-3">
-									<div class="row">
-										<div class="col-md-6 nopad">
-											<div class="custom-form-control positionrelative">
-								            	<label class="selectlabeldateofbirth">Phone Number</label>
-								                <input class="input" type="text" placeholder=" " oninput="maxLengthChecks(this)" maxlength="11" value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
-								            </div>
-										</div>
-										<div class="col-md-6 nopad">
-											<div class="custom-form-control positionrelative">
-								              	<label class="selectlabeldateofbirth">Phone Number</label>
-								                <input class="input" type="email" placeholder=" " value="{{ $request->email }}" name="email" data-placeholder="Email" required>
-								            </div>
-										</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="col-md-12">
-										
-									</div>
-								</div>
-								<!-- <div class="card-header" style="display: none;">
-									<div class="toggle active " onclick="information()">
-										<div class="row">
-										<div class="col-md-6">
-											<label style="background: no-repeat;padding-left: 0;"><h2 style="font-size: 22px;font-weight: bold;margin: 0;color:#1BBC9B;">Beneficiary Information</h2></label>
-
-										</div>
-										<div class="col-md-6 text-right">
-											<i class="fa fa-angle-down" style="font-size: 35px;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card-body"  id="benefiaciary" style="display: none;">
-									<div class="toggle toggle-transparent toggle-noicon" >
-											<div class="toggle-content"style="display: block;">
-												<div class="form-group">
-												<div class="row">
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>First Name (optional) <small class="text-danger">*</small>
-														</label></div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficialfname" class="form-control" name="beneficialfname" type="text">
-															</div>
-														</div>
-													</div>	
-													
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>Last Name (optional) <small class="text-danger">*</small>
-														</label></div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficiallname" class="form-control" name="beneficiallname" type="text">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>E-mail (optional) <small class="text-danger">*</small>
-															</label>
-														</div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficialemail" class="form-control" name="beneficialemail" value="" type="email">
-															</div>
-														</div>
-													</div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</div> -->
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                            	<div class="row">
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Street Number and Name</label>
-						                        <input class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
-												<div id="map-canvas" style="display: none;"></div>
-						                    </div>
-										</div>
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Suit/Apt# (optional)</label>
-						                        <input class="input" type="" placeholder=" " id="" name="suit" data-placeholder="Suit/Apt">
-						                    </div>
-										</div>
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">City</label>
-						                        <input class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="City">
-						                    </div>
-										</div>
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Province</label>
-						                        <input  class="input" type="text" placeholder=" " id="province" name="province" data-placeholder="Province">
-						                    </div>
-										</div>
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Postal Code</label>
-						                        <input class="input" type="text" placeholder=" " id="postalcode" name="postalcode" data-placeholder="Postal Code">
-						                    </div>
-										</div>
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Country</label>
-						                        <input  class="input" type="text" placeholder=" " id="country" name="country" data-placeholder="Country">
-						                    </div>
-										</div>
-									</div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                            	<div class="row">
-										<div class="col-md-6 mt-3">
-											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Visitor</label>
-						                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
-						                    </div>
-										</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
-							                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
-							                    </div>
-											</div>
-											<div class="col-md-6" style="margin-top: 23px;">
-							                    <div class=" positionrelative">
-					                               <label class="selectlabel">Primary Destination</label>
-					                                <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
-					                                  @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-					                                     <option @if ($r->name = 'ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-		                                         @endforeach
-		                                         <script type="text/javascript">
-		                                             function selectcoverageammount(id) {
-		                                                 $('#sum_insured2').val(id);
-		                                                 $('#coverageprice').val(id);
-		                                                 $('#covergaeerror').hide();
-		                                               }
-		                                               function firstnext() {
-		                                                  if($('#sum_insured2').val() == '')
-		                                                  {
-		                                                     $('#covergaeerror').show();
-		                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
-		                                                  }else{
-		                                                     $('#firstnextfake').hide();
-		                                                     $('#firstnextorignal').show();
-		                                                     $('#firstnextorignal').click();
-		                                                  }
-		                                               }
-		                                         </script>
-		                                        </select>
-		                                      </div>
-											</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip End date</label>
-							                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
-							                    </div>
-											</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip Duration(days)</label>
-							                        <input class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration">
-							                    </div>
-											</div>
-									</div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                            	<div class="row">
-									<div class="col-md-4">
-										<div class="container preload">
-									        <div class="creditcard">
-									            <div class="front">
-									                <div id="ccsingle"></div>
-									                <svg version="1.1" id="cardfront" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-									                    x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-									                    <g id="Front">
-									                        <g id="CardBackground">
-									                            <g id="Page-1_1_">
-									                                <g id="amex_1_">
-									                                    <path id="Rectangle-1_1_" class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
-									                            C0,17.9,17.9,0,40,0z" />
-									                                </g>
-									                            </g>
-									                            <path class="darkcolor greydark" d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
-									                        </g>
-									                        <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber" class="st2 st3 st4">0123 4567 8910 1112</text>
-									                        <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">JOHN DOE</text>
-									                        <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">cardholder name</text>
-									                        <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8">expiration</text>
-									                        <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8">card number</text>
-									                        <g>
-									                            <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">01/23</text>
-									                            <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
-									                            <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
-									                            <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9 		" />
-									                        </g>
-									                        <g id="cchip">
-									                            <g>
-									                                <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
-									                        c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z" />
-									                            </g>
-									                            <g>
-									                                <g>
-									                                    <rect x="82" y="70" class="st12" width="1.5" height="60" />
-									                                </g>
-									                                <g>
-									                                    <rect x="167.4" y="70" class="st12" width="1.5" height="60" />
-									                                </g>
-									                                <g>
-									                                    <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
-									                            c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3
-									                            C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5
-									                            c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5
-									                            c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z" />
-									                                </g>
-									                                <g>
-									                                    <rect x="82.8" y="82.1" class="st12" width="25.8" height="1.5" />
-									                                </g>
-									                                <g>
-									                                    <rect x="82.8" y="117.9" class="st12" width="26.1" height="1.5" />
-									                                </g>
-									                                <g>
-									                                    <rect x="142.4" y="82.1" class="st12" width="25.8" height="1.5" />
-									                                </g>
-									                                <g>
-									                                    <rect x="142" y="117.9" class="st12" width="26.2" height="1.5" />
-									                                </g>
-									                            </g>
-									                        </g>
-									                    </g>
-									                    <g id="Back">
-									                    </g>
-									                </svg>
-									            </div>
-									            <div class="back">
-									                <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-									                    x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-									                    <g id="Front">
-									                        <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
-									                    </g>
-									                    <g id="Back">
-									                        <g id="Page-1_2_">
-									                            <g id="amex_2_">
-									                                <path id="Rectangle-1_2_" class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
-									                        C0,17.9,17.9,0,40,0z" />
-									                            </g>
-									                        </g>
-									                        <rect y="61.6" class="st2" width="750" height="78" />
-									                        <g>
-									                            <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
-									                    C707.1,246.4,704.4,249.1,701.1,249.1z" />
-									                            <rect x="42.9" y="198.6" class="st4" width="664.1" height="10.5" />
-									                            <rect x="42.9" y="224.5" class="st4" width="664.1" height="10.5" />
-									                            <path class="st5" d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
-									                        </g>
-									                        <text transform="matrix(1 0 0 1 621.999 227.2734)" id="svgsecurity" class="st6 st7">985</text>
-									                        <g class="st8">
-									                            <text transform="matrix(1 0 0 1 518.083 280.0879)" class="st9 st6 st10">security code</text>
-									                        </g>
-									                        <rect x="58.1" y="378.6" class="st11" width="375.5" height="13.5" />
-									                        <rect x="58.1" y="405.6" class="st11" width="421.7" height="13.5" />
-									                        <text transform="matrix(1 0 0 1 59.5073 228.6099)" id="svgnameback" class="st12 st13">John Doe</text>
-									                    </g>
-									                </svg>
-									            </div>
-									        </div>
-									    </div>
-									</div>
-								    <div class="col-md-8">
-								    	<div class="form-container">
-											<div class="row mt-5">
-												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
-								                    	<label class="selectlabeldateofbirth">Name</label>
-								                        <input onkeydown="return /[a-z]/i.test(event.key)" name="cardholdername" id="name" maxlength="20" type="text" class="input" >
-								                    </div>
-												</div>
-												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
-								                    	<label class="selectlabeldateofbirth" id="generatecard">Card Number</label>
-								                        <input class="input"  name="cardholdernumber" id="cardnumber"  type="text" inputmode="numeric" >
-										           	 <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
-										                xmlns:xlink="http://www.w3.org/1999/xlink">
-										            </svg>
-								                    </div>
-												</div>
-											</div>
-											<div class="row mt-5">
-												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
-								                    	<label class="selectlabeldateofbirth">Expiration (mm/yy)</label>
-								                        <input class="input"  name="expirationdate" id="expirationdate" type="text"  inputmode="numeric" >
-								                    </div>
-												</div>
-												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
-								                    	<label class="selectlabeldateofbirth" >Security Code</label>
-								                        <input class="input" name="cvc" id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" >
-								                    </div>
-												</div>
-											</div>
-								    	</div>
-								    </div>
-								</div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                            	<div class="row ">
-									<div class="col-md-12">
-										<div class="alert alert-primary" style="background-color: #FFF;color: #222;">
-											<div class="row">
-												<div class="col-md-6">
-													<h2 style="font-size: 22px;font-weight: bold; color:#1BBC9B;"><i class="fa fa-shield"></i> Coverage Information</h2>
-												</div>
-												<div class="col-md-6 text-right">
-													<img src="{{  url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_logo }}">
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="row">
-													<div class="col-md-6 nopad">
-														<div class="row">
-														<div class="col-md-5 nopad">
-															<label>Plan Name</label>
-														</div>
-														<div class="col-md-7 nopad">
-															{{ $request->planname }}
-														</div>
-														<div class="clearfix"></div>
-														<div class="col-md-5 nopad">
-															<label>Product Name</label>
-														</div>
-														<div class="col-md-7 nopad">
-															{{ $request->product_name }}
-														</div>
-														<div class="clearfix"></div>
-														<div class="col-md-5 nopad">
-															<label>Coverage Amount</label>
-														</div>
-														<div class="col-md-7 nopad">
-															{{ $request->coverage }}						
-														</div>
-														<div class="clearfix"></div>
-													</div>
-												</div>
-													<div class="col-md-6 nopad">	
-														<div class="row">
-															<div class="col-md-5 nopad">
-																<label>Coverage Dates</label>
-															</div>
-															<div class="col-md-7 nopad">
-																{{ $request->tripdate }} / {{ $request->tripend }}						
-															</div>
-															<div class="clearfix"></div>
-															<div class="col-md-5 nopad">
-																<label>Deductible</label>
-															</div>
-															<div class="col-md-7 nopad">
-																${{ $request->deductibles }}			
-															</div>
-															<div class="clearfix"></div>
-															<div class="col-md-5 nopad">
-																<label>Premium</label>
-															</div>
-															<div class="col-md-7 nopad">
-																$<?php echo number_format($request->premium,2); ?>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="form-group" style="margin:0;">
-											<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
-					  						<label class="radio padtop0 d-flex">
-												<input name="accept" value="mastercard" type="checkbox">
-												<i></i>
-												<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
-											</label>
-										</div>
-									</div>
-								</div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="submit" id="getquote" class="btn nextbtn">Purchase</button>
-                                </div>
-                            </fieldset>
-                    	
-                    	</form>
-                    </div>
-                </div>
-                    
-            </div>
-        </div>
-
-
-
-
-
-
-<!-- Term and Condition Modal -->
-<div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none; padding-right: 17px;">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-
-			<!-- header modal -->
-			<div class="modal-header">
-				<h4 class="modal-title" id="myLargeModalLabel">Terms and Conditions</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 			</div>
-
-			<!-- body modal -->
-			<div class="modal-body">
-				<p style="font-weight: normal !important;text-align: justify;font-size: 12px;">Please read carefully before submitting the application: Important. You have applied for travel insurance offered by: <span id="company3">Ingle Assurance</span> insurance and You certify that you are at least 18 years of age. You certify that the information provided on this form is true and accurate, and understand that such information is material to the risk, and constitutes the basis of any coverage offered. You fully understand that if any of your answers are untrue or incorrect, then coverage offered will be null and void. You understand that the Policy contains important terms and conditions of coverage including exclusions and other limitations. It is your responsibility to review the insurance policies in detail prior to purchase and / or upon initial receipt of the policy. You may also request information directly from our providers.or call us at 855-500-8999 or send us a request by Email contact@lifeadvice.ca
-				<b>LIMITED LIABILITY:</b><br> 
-				NEITHER VISITOR GUARD, ITS EMPLOYEES, DIRECTORS, OFFICERS AND AFFILIATED COMPANIES, NOR ANY OTHER PARTY INVOLVED IN CREATING, PRODUCING, OR DELIVERING THIS SITE, SHALL BE LIABLE FOR ANY LOSS, HARM OR DAMAGE, INCLUDING WITHOUT LIMITATION, ANY DIRECT, INDIRECT, DAMAGES, HOWSOEVER CAUSED, TO ANY PERSON AS A CONSEQUENCE OF, OR ARISING OUT OF, ACCESS TO, OR USE OF, THIS WEBSITE OR ANY MATERIAL FROM THIS WEBSITE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF THESE DAMAGES. USE OF THIS WEBSITE, AND ANY WEBSITES LINKING TO OR FROM THIS WEBSITE, IS ENTIRELY AT THE USER RISK.<br>
-				<br>
-				<b>DISCLOSURE:</b><br>
-				We are insurance broker licensed in the provinces of, Ontario life insurance,  Accident and Sickness Insurance. We also market health, travel insurance business ,As a broker by contractual agreements with our insurance carriers. We earn a commission when a new policy is sold or certificate of insurance placed or an existing policy or certificate is renewed.
-				The products and services  The information contained in this website is not intended to be an offer to sell or a solicitation in connection with any product or service by us in any jurisdiction where such an offer or solicitation would be unlawful or in which we, our insurance carriers or managing general underwriters are not qualified to do so. Purchasers of insurance products should check their local laws before buying any insurance product.
-				<b>For more information please contact us</b>
-				<br>
-				Visitor Guard
-				<br>
-				Att : Manish Kumar Sharda (insurance broker)
-				<br>
-				<i class="fa fa-map-marker"></i> Life Advice Insurance Inc, 912 Isaiah Place, Kitchener, ON, N2E0B6
-				<br>
-				<i class="fa fa-envelope"></i> contact@lifeadvice.ca
-				<br>
-				<i class="fa fa-phone"></i> Tollfree: 855-500-8999
-				</p> 
+			<div class="row mt-3">
+				<div class="col-md-12 text-right">
+					<button type="submit" id="getquote" class="btn btn-lg btn-primary ">Purchase</button>
+				</div>
 			</div>
-			
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"><i class="fa fa-check"></i> I Agree</button>
-			</div>
-
-		</div>
+		</form>
 	</div>
-</div>
-
-
-
+</section>
 @endsection
 @section('script')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+
+<script type="text/javascript">
+	$(".gender").select2({
+		minimumResultsForSearch: -1,
+		placeholder: "Select Coverage Ammount",
+		allowClear: false
+	});
+</script>
+<script type="text/javascript">
+	$(".primarydestination").select2({
+		minimumResultsForSearch: -1,
+		placeholder: "Select Primary Destination",
+		allowClear: false
+	});
+</script>
 <script>
-	function information() {
-  var x = document.getElementById("benefiaciary");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  function maxLengthChecks(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
   }
+</script>
+<script type="text/javascript">
+	var overlay;
+
+testOverlay.prototype = new google.maps.OverlayView();
+
+function initialize() {
+  var map = new google.maps.Map(document.getElementById("map-canvas"), {
+    zoom: 15,
+    center: {
+      lat: 37.323,
+      lng: -122.0322
+    },
+    mapTypeId: "terrain",
+    draggableCursor: "crosshair"
+  });
+  map.addListener("click", (event) => {
+    map.setCenter(event.latLng);
+    console.log(event.latLng.toString());
+  });
+
+  overlay = new testOverlay(map);
+
+  var input =
+    /** @type {HTMLInputElement} */
+    (document.getElementById("pac-input"));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */ (input)
+  );
+
+  google.maps.event.addListener(searchBox, "places_changed", function () {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+    map.setCenter(places[0].geometry.location);
+  });
 }
+
+function testOverlay(map) {
+  this.map_ = map;
+  this.div_ = null;
+  this.setMap(map);
+}
+
+testOverlay.prototype.onAdd = function () {
+  var div = document.createElement("div");
+  this.div_ = div;
+  div.style.borderStyle = "none";
+  div.style.borderWidth = "0px";
+  div.style.position = "absolute";
+  div.style.left = -window.innerWidth / 2 + "px";
+  div.style.top = -window.innerHeight / 2 + "px";
+  div.width = window.innerWidth;
+  div.height = window.innerHeight;
+
+  const canvas = document.createElement("canvas");
+  canvas.style.position = "absolute";
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  div.appendChild(canvas);
+
+  const panes = this.getPanes();
+  panes.overlayLayer.appendChild(div);
+
+  var ctx = canvas.getContext("2d");
+  this.drawLine(ctx, 0, "rgba(0, 0, 0, 0.2)");
+  this.drawLine(ctx, 90, "rgba(0, 0, 0, 0.2)");
+  this.drawLine(ctx, 37.5, "rgba(255, 0, 0, 0.4)");
+  this.drawLine(ctx, 67.5, "rgba(255, 0, 0, 0.4)");
+};
+
+testOverlay.prototype.drawLine = function (ctx, degrees, style) {
+  // 0 north, growing clockwise
+  const w = window.innerWidth / 2;
+  const h = window.innerHeight / 2;
+  const radians = ((90 - degrees) * Math.PI) / 180;
+  const hlen = Math.min(w, h);
+  const x = Math.cos(radians) * hlen;
+  const y = -Math.sin(radians) * hlen;
+  ctx.beginPath();
+  ctx.strokeStyle = style;
+  ctx.moveTo(w - x, h - y);
+  ctx.lineTo(w + x, h + y);
+  ctx.stroke();
+};
+
+testOverlay.prototype.onRemove = function () {
+  this.div_.parentNode.removeChild(this.div_);
+  this.div_ = null;
+};
+
+google.maps.event.addDomListener(window, "load", initialize);
 </script>
 <script type="text/javascript">
 window.onload = function () {
@@ -928,206 +844,5 @@ securitycode.addEventListener('focus', function () {
     document.querySelector('.creditcard').classList.add('flipped');
 });
 };
-</script>
-<script type="text/javascript">
-$(function () {
-
-    var now = new Date(),
-        until = new Date(now.getFullYear() + 10, now.getMonth());
-
-    $('#expirationdate').mobiscroll().datepicker({
-        controls: ['date'],
-        dateFormat: 'MM/YYYY',
-        dateWheels: 'DD MMMM YYYY',
-        min: now,
-        max: until
-    });
-});
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#coverage_amount'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-    $(function() {
-  var dd1 = new dropDown($('#primary_destination'));
-  
-  $(document).click(function() {
-    $('.wrapper-dropdown').removeClass('active');
-  });
-});
-
-function dropDown(el) {
-  this.dd = el;
-  this.placeholder = this.dd.children('span');
-  this.opts = this.dd.find('ul.dropdown > li');
-  this.val = '';
-  this.index = -1;
-  this.initEvents();
-}
-dropDown.prototype = {
-  initEvents: function() {
-    var obj = this;
-    
-    obj.dd.on('click', function() {
-      $(this).toggleClass('active');
-      return false;
-    });
-    
-    obj.opts.on('click', function() {
-      var opt = $(this);
-      obj.val = opt.text();
-      obj.index = opt.index();
-      obj.placeholder.text(obj.val);
-    });
-  }
-}
-</script>
-<script type="text/javascript">
-	var overlay;
-
-testOverlay.prototype = new google.maps.OverlayView();
-
-function initialize() {
-  var map = new google.maps.Map(document.getElementById("map-canvas"), {
-    zoom: 15,
-    center: {
-      lat: 37.323,
-      lng: -122.0322
-    },
-    mapTypeId: "terrain",
-    draggableCursor: "crosshair"
-  });
-  map.addListener("click", (event) => {
-    map.setCenter(event.latLng);
-    console.log(event.latLng.toString());
-  });
-
-  overlay = new testOverlay(map);
-
-  var input =
-    /** @type {HTMLInputElement} */
-    (document.getElementById("pac-input"));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  var searchBox = new google.maps.places.SearchBox(
-    /** @type {HTMLInputElement} */ (input)
-  );
-
-  google.maps.event.addListener(searchBox, "places_changed", function () {
-    var places = searchBox.getPlaces();
-    if (places.length == 0) {
-      return;
-    }
-    map.setCenter(places[0].geometry.location);
-  });
-}
-
-function testOverlay(map) {
-  this.map_ = map;
-  this.div_ = null;
-  this.setMap(map);
-}
-
-testOverlay.prototype.onAdd = function () {
-  var div = document.createElement("div");
-  this.div_ = div;
-  div.style.borderStyle = "none";
-  div.style.borderWidth = "0px";
-  div.style.position = "absolute";
-  div.style.left = -window.innerWidth / 2 + "px";
-  div.style.top = -window.innerHeight / 2 + "px";
-  div.width = window.innerWidth;
-  div.height = window.innerHeight;
-
-  const canvas = document.createElement("canvas");
-  canvas.style.position = "absolute";
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  div.appendChild(canvas);
-
-  const panes = this.getPanes();
-  panes.overlayLayer.appendChild(div);
-
-  var ctx = canvas.getContext("2d");
-  this.drawLine(ctx, 0, "rgba(0, 0, 0, 0.2)");
-  this.drawLine(ctx, 90, "rgba(0, 0, 0, 0.2)");
-  this.drawLine(ctx, 37.5, "rgba(255, 0, 0, 0.4)");
-  this.drawLine(ctx, 67.5, "rgba(255, 0, 0, 0.4)");
-};
-
-testOverlay.prototype.drawLine = function (ctx, degrees, style) {
-  // 0 north, growing clockwise
-  const w = window.innerWidth / 2;
-  const h = window.innerHeight / 2;
-  const radians = ((90 - degrees) * Math.PI) / 180;
-  const hlen = Math.min(w, h);
-  const x = Math.cos(radians) * hlen;
-  const y = -Math.sin(radians) * hlen;
-  ctx.beginPath();
-  ctx.strokeStyle = style;
-  ctx.moveTo(w - x, h - y);
-  ctx.lineTo(w + x, h + y);
-  ctx.stroke();
-};
-
-testOverlay.prototype.onRemove = function () {
-  this.div_.parentNode.removeChild(this.div_);
-  this.div_ = null;
-};
-
-google.maps.event.addDomListener(window, "load", initialize);
-</script>
-<script>
-  function maxLengthChecks(object)
-  {
-    if (object.value.length > object.maxLength)
-      object.value = object.value.slice(0, object.maxLength)
-  }
-</script>
-<script type="text/javascript">
-	$(".gender").select2({
-		minimumResultsForSearch: -1,
-		placeholder: "Select Coverage Ammount",
-		allowClear: false
-	});
-</script>
-<script type="text/javascript">
-	$(".primarydestination").select2({
-		minimumResultsForSearch: -1,
-		placeholder: "Select Primary Destination",
-		allowClear: false
-	});
 </script>
 @endsection

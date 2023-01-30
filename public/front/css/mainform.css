@@ -2909,3 +2909,9 @@ li.date_picker_week_day {
     color: white;
     font-size: 25px;
 }
+.formsection .positionrelative .selectlabel{
+    left: 18px !important;
+}
+fieldset .input{
+    width: 480px !important;
+}
