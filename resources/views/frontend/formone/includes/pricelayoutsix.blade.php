@@ -393,7 +393,7 @@ if($show == '1' && $total_price > 0){
                             <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
 
 <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
-<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i style="color: #262566;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails(<?php echo $plan_id; ?>)" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
 </div>
 <div class="col-md-3 col-xs-11 text-center">
 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
@@ -413,8 +413,8 @@ $<?php echo $deductible; ?> deductible
 </div>
 
 <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-<button style="background-color: #262566; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
-<button class="btn" style="background-color: #262566 !important; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+<button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+<button class="btn" style="background-color: #2b3481 !important; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
 </div>
 
 <?php
@@ -433,7 +433,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><button type="submit" style="background-color: #262566; width: 100%; text-align: center; border: 0;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+<p><button type="submit" style="background-color: #2b3481; width: 100%; text-align: center; border: 0;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>

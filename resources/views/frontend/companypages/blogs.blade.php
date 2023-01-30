@@ -25,11 +25,11 @@
                     <div class="tabssidebar">
                         <style type="text/css">
                             .nav-tabs .nav-link.active{
-                                    border-left: 4px solid #262566 !important;
+                                    border-left: 4px solid #2b3481 !important;
                                 }
                         </style>
                         <div class="card-list-heading p-3">
-                            <h3 style="color: #262566;">Browse by topic</h3>
+                            <h3 style="color: #2b3481;">Browse by topic</h3>
                             <hr>
                         </div>
                         <ul class="parent-list nav  nav-tabs d-block" role="tablist">
@@ -60,7 +60,7 @@
                             <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                          </div>
                          <div class="blogbutton">
-                            <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #262566;"></i></a>
+                            <a href="{{ url('blog') }}/{{ $r->url}}"><i class="fa fa-arrow-circle-right" style="font-size: 40px;color: #2b3481;"></i></a>
                          </div>
                       </div>
                    </div>

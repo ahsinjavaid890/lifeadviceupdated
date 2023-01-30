@@ -5,7 +5,7 @@
 @section('content')
 <style type="text/css">
    .profile_card {
-   background-color: #262566!important;
+   background-color: #2b3481!important;
    }
    body{
    background-color:rgb(246 248 251);
@@ -20,7 +20,7 @@
    .nav-item.active{
     width: 100%;
     margin: auto;
-    background: #262566;
+    background: #2b3481;
 /*    padding: 10px;*/
    }
    .nav-item.active a {

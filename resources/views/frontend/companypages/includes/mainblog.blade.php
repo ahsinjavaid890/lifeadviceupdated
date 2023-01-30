@@ -11,7 +11,7 @@
     text-align: left;
 }
 .health-inssurance-hero-banner {
-    background-color: #262566;
+    background-color: #2b3481;
 }
 .ageandcitizen input:focus-visible {
     outline: none;

@@ -161,7 +161,7 @@ label {
 }
 
 input[type="submit"] {
-    background-color: #262566;
+    background-color: #2b3481;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                 rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 

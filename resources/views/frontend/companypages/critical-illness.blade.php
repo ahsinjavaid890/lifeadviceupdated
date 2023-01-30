@@ -15,13 +15,13 @@
 
             <div class="col-md-6">
                 <div class="travel-medical-heading2" style="margin-top:20px;">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span style="color: #262566;">Critical Illness </span>Insurance Ontario,Canada</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span style="color: #2b3481;">Critical Illness </span>Insurance Ontario,Canada</h2>
                 </div>
                 <div class="travel-medical-paragraph">
                     <p>Critical illness is a stressful event for an individual and can disturb your fnancial balance manifold. Critical Illness Insurance can help you pay-off such fnancial overheads in life-altering illness. If you are insured under Critical Illness Insurance and the policy covers for the associated illness, you receive a lump-sum amount in cash to pay for the expenses. It can also be claimed under the circumstances where you have already paid for the expenses, the amount hence received can be used to recover the loss of income. Critical Illness covers for a variety of illnesses and accidents like: Heart Attacks, Strokes, Cancer, physical disabilities, Alzheimer’s disease, etc</p>
                 </div>
                 <div class="travel-medical-heading2" style="margin-top:20px;">
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span style="color: #262566;">What Does It </span>Cover for?</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s"><span style="color: #2b3481;">What Does It </span>Cover for?</h2>
                 </div>
                 <div class="travel-medical-paragraph" style="margin-top:20px;">
                       <p>Critical Illness Insurance also covers the cost if you have to travel out of the country for treatment. Statistics say it all; anyone can face such life-changing event. According to statistics, on an average over 70,000 Canadians go through heart attacks and between 40,000 to 50,000 strokes every year. Also over 3000 people are diagnosed with cancer every week in Canada. These are some shocking statistics and hence critical illness insurance is recommended to all.</p>
@@ -129,13 +129,13 @@
 <div class="type-of-policies pb-5 pt-5">
     <div class="container-homepage">
    <div class="policies-heading text-center">
-       <h2><span style="color: #262566;">Type of Policies</span> under Critical Illness Insurance</h2>
+       <h2><span style="color: #2b3481;">Type of Policies</span> under Critical Illness Insurance</h2>
    </div>
    <div class="row mt-5">
        <div class="col-md-3 policy-col">
            <div class="card policies-card">
                <div class="card-body">
-                   <h3 class="text-center"><span style="color: #262566;">Term based</span> Policies</h3>
+                   <h3 class="text-center"><span style="color: #2b3481;">Term based</span> Policies</h3>
                    <div class="policies-image">
                        <img src="{{asset('public/front/img/images/board.png')}}">
                    </div>
@@ -149,7 +149,7 @@
        <div class="col-md-3 policy-col">
            <div class="card policies-card">
                <div class="card-body">
-                   <h3 class="text-center"><span style="color: #262566;">Return of</span> Premiums</h3>
+                   <h3 class="text-center"><span style="color: #2b3481;">Return of</span> Premiums</h3>
                    <div class="policies-image">
                        <img src="{{asset('public/front/img/images/dollar-bags.png')}}">
                    </div>
@@ -163,7 +163,7 @@
        <div class="col-md-3 policy-col">
            <div class="card policies-card">
                <div class="card-body">
-                   <h3 class="text-center"><span style="color: #262566;">Special</span> Cases</h3>
+                   <h3 class="text-center"><span style="color: #2b3481;">Special</span> Cases</h3>
                    <div class="policies-image">
                        <img src="{{asset('public/front/img/images/search.png')}}">
                    </div>
@@ -177,7 +177,7 @@
        <div class="col-md-3 policy-col">
            <div class="card policies-card">
                <div class="card-body">
-                   <h3 class="text-center"><span style="color: #262566;">Full</span> Recovery</h3>
+                   <h3 class="text-center"><span style="color: #2b3481;">Full</span> Recovery</h3>
                    <div class="policies-image">
                        <img src="{{asset('public/front/img/images/umbrella-dollar.png')}}">
                    </div>
@@ -196,7 +196,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="advantages-heading">
-                    <h2><span style="color: #262566;">Advantages of </span>Critical Life Insurance</h2>
+                    <h2><span style="color: #2b3481;">Advantages of </span>Critical Life Insurance</h2>
                 </div>
                 <div class="advantages-paragraph mt-3">
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exercitation ullamcorper sus</p>

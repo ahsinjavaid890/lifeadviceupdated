@@ -590,7 +590,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;width: 100%; text-align: center; font-weight: bold; display:block;background:#262566;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;width: 100%; text-align: center; font-weight: bold; display:block;background:#2b3481;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 col-xs-12 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>

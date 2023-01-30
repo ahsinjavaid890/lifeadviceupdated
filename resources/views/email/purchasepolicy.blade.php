@@ -80,8 +80,8 @@
     </style>
 </head>
 
-<body style="background-color:#262566;">
-    <div style="background-color:#262566;">
+<body style="background-color:#2b3481;">
+    <div style="background-color:#2b3481;">
         <div style="background:#f9f9f9;background-color:#f9f9f9;Margin:0px auto;max-width:600px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f9f9f9;background-color:#f9f9f9;width:100%;">
@@ -94,7 +94,7 @@
             </table>
 
         </div>
-        <div style="background: #262566;background-color: #262566;Margin:0px auto;max-width:600px;">
+        <div style="background: #2b3481;background-color: #2b3481;Margin:0px auto;max-width:600px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;">
                 <tbody>
@@ -122,7 +122,7 @@
 <tr>
     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;font-weight:bold;line-height:22px;text-align:center;color:#262566;">
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;font-weight:bold;line-height:22px;text-align:center;color:#2b3481;">
             Thank you for Purchasing Plan
         </div>
 
@@ -131,7 +131,7 @@
 <tr>
     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;text-align:left;color:#262566;">
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;text-align:left;color:#2b3481;">
             <p>Hi {{ $request->name }},</p>
             <p>We are Happy that You Purchased {{ $request->plan_name }}. </p>
         </div>
@@ -141,7 +141,7 @@
 <tr>
     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
-        <table 0="[object Object]" 1="[object Object]" 2="[object Object]" border="0" class="table table-bordered invoice" style="cellspacing:0;color:#262566;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;">
+        <table 0="[object Object]" 1="[object Object]" 2="[object Object]" border="0" class="table table-bordered invoice" style="cellspacing:0;color:#2b3481;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;">
             <tr style="border-bottom:1px solid #ecedee;text-align:left;">
                 <th style="padding: 0 15px 10px 0; border: 0;"><h3>Policy Details</h3> </th>
             </tr>
@@ -221,7 +221,7 @@
 </tr>
 <tr>
                                         <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:20px;text-align:left;color:#262566;">
+                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:20px;text-align:left;color:#2b3481;">
                                                 Best regards,<br><br> Csaba Kissi<br>Elerion ltd., CEO and Founder<br>
                                                 <a href="{{ url('') }}" style="color:#2F67F6">{{ url('') }}</a>
                                             </div>

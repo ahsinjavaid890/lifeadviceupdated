@@ -87,7 +87,7 @@ $(function () {
           <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                    <h4>Qoute Reference : <span style="color: #262566;"><?php echo $quoteNumber; ?></span></h4>
+                    <h4>Qoute Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>

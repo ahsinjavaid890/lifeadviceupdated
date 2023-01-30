@@ -39,7 +39,7 @@
                   <div class="card">
                      <div class="card-body p-0">
                         <div class="card-list-heading p-3">
-                            <h3 style="color: #262566;">Browse by topic</h3>
+                            <h3 style="color: #2b3481;">Browse by topic</h3>
                             <hr>
                         </div>
                         <ul class="tabs">

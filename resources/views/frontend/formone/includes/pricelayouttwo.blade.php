@@ -434,7 +434,7 @@ $agent = $request->agent;
 $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
-<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #262566;border-radius: 4px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
+<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #2b3481;border-radius: 4px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
 </div>
 </div>
 <div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
@@ -589,7 +589,7 @@ $person_price = $person_price - $p_discountonplan;
     <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
     <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
         <p></p>
-    <p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="max-width: 25%; font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #262566;border-radius: 0;margin-top: 2px;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
+    <p><a class="submit-btn" href="<?php echo $buynow_url;?>" style="max-width: 25%; font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #2b3481;border-radius: 0;margin-top: 2px;"><i class="fa fa-shopping-cart"></i> Buy Now</a></p>
     </div>
     <div class="col-md-6 text-center" style="font-size:16px;">
     <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>

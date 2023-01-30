@@ -33,7 +33,7 @@
                                <input name="se" id="se12" type="text" class="search form-control" placeholder="Search..." value="">
                            </form>
                        </div>
-                      <div style="background-color: #262566;"  class="single-widget p-3 mt-3 rounded">
+                      <div style="background-color: #2b3481;"  class="single-widget p-3 mt-3 rounded">
                             <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
 
                             <ul>
