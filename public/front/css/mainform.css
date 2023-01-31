@@ -2803,7 +2803,7 @@ li.date_picker_week_day {
     padding: 0 0.5em;
     line-height: 1.5em;
     color: #262566;
-    background-color: #fcfcfa;
+    background-color: #ffffff;
     font-size: 32px;
   }
 .shop_heading{
@@ -2913,5 +2913,5 @@ li.date_picker_week_day {
     left: 18px !important;
 }
 fieldset .input{
-    width: 480px !important;
+    width: 100% !important;
 }
