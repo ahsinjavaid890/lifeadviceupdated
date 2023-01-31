@@ -59,7 +59,6 @@ function thirdone() {
   }
 }
 
-
 function calprimaryage(id){
     var currentyear = new Date().getFullYear();
     var dobyear = id;
