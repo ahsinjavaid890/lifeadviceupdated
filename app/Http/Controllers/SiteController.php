@@ -14,7 +14,7 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
-use App\Models\contactus_messages;
+use App\Models\contactus_messages; 
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
@@ -44,14 +44,8 @@ class SiteController extends Controller
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
 
-        if($data->url == 'visitor-insurance')
-        {
-            $returnHTML =  view('frontend.formone.ajaxquote_visitor')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
-        }else{
-            $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
-        }
-        
 
+        $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
         if($request->savers_email)
         {
             // Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request), function($message) use ($request) {
