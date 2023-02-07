@@ -124,6 +124,7 @@ $enddate = $request->return_date;
 $dStart = new DateTime($request->departure_date);
 $dEnd  = new DateTime($request->return_date);
 $dDiff = $dStart->diff($dEnd);
+// print_r($dDiff);exit;
 $dDiff->format('%R'); // use for point out relation: smaller/greater
 $num_of_days = $dDiff->days + 1;
 if($num_of_days > 365 || $num_of_days == 364){ $num_of_days = 365; }
@@ -268,6 +269,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
           
             if($supervisa == 'yes'){
                 $addinbenefit = "AND CAST(`sum_insured` AS DECIMAL)>='100000'";
+            }else{
+                $addinbenefit = '';
             }
             $sum_insured= '';        
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
@@ -431,7 +434,7 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-12" style="border:1px solid #333; text-align:left;">
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
                     <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
-                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
+                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div> 
                     <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
                         <div class="col-md-12 no-padding">
                     <?php

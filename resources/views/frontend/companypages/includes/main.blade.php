@@ -122,7 +122,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
                                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                             <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                             <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                           @endforeach
                                         </select>
                                         <div class="text-danger mt-4" id="primarydestinationerror"></div>
@@ -175,7 +175,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div>
                                     <div class="col-md-3 positionrelative">
                                           <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
+                                          <select name="pre_existing[]" class="pre_existing_condition1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="Yes">Yes</option>
                                              <option value="Yes">No</option>
@@ -194,7 +194,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>

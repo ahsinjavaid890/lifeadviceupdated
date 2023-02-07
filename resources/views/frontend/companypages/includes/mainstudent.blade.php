@@ -149,7 +149,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="card modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">How many travelers?</h2>
+                           <h2 class="heading-3 card-heading">Enter Student Date of Birth</h2>
                            <!----><!----><!----><!---->
                            <div class="card-content d-flex">
                               <p  class="card-info"> Enter the age for each person that will be traveling.</p>
@@ -163,7 +163,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="col-md-6">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6">
-                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                                             <span class="travelerheading primarytravelheading">Student DOB</span>
                                           </div>
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper positionrelative">
@@ -198,11 +198,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     @endfor
                                  </div>
                               </div>
-                              <div class="col-md-12 mt-3">
+                              <!-- <div class="col-md-12 mt-3">
                                  <div class="travelerinfo">
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                  </div>
-                              </div>
+                              </div> -->
                               <input type="hidden" value="5" id="numberoftraverls" name="">
                            </div>
                         </div>

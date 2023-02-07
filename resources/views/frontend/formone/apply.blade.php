@@ -56,7 +56,7 @@
             	<div class="" style="max-width: 100%;margin: auto;">
 					<div class="row hidden-xs">
 						<div class="col-md-12">
-							<div class="alert alert-primary" style="background-color: #FFF;color: #222;box-shadow: 0 10px 24px rgb(87 106 134 / 20%); border-radius: 15px;">	
+							<div class="alert alert-primary" style="border-color: white !important; background-color: #FFF;color: #222;box-shadow: 0 10px 24px rgb(87 106 134 / 20%); border-radius: 15px;">	
 								<h4 style="color:#1BBC9B;"><i class="fa fa-bell"></i> We want everything to go <strong>smoothly!</strong></h4>
 								<p><strong>So please make sure all your answers are complete and accurate. </strong></p>
 								<p>Insurers rely on the information and may not check it, if the information you provide is not accurate your policy may be cancelled or the insurer may not pay out in the event of a claim.</p>

@@ -108,7 +108,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                      <select name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Ammount</option>
                                        @foreach($sum_insured as $r)
-                                          <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                          <option value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
                                        @endforeach
                                      </select>
                                      <div class="text-danger mt-4" id="covergaeerror"></div>
@@ -122,7 +122,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
                                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                             <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                             <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                           @endforeach
                                         </select>
                                         <div class="text-danger mt-4" id="primarydestinationerror"></div>
