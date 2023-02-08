@@ -4,6 +4,10 @@ function removeappendvalue(id) {
   $('#removebutton'+id).addClass('hiderowstraveler');
   $('.dateofbirthclass'+id).val('')
 }
+
+function dateofbirth(id) {
+    $('#ageshow').val(id);
+}
 function secondnext() 
 {
     var value = $('.dateofbirthclass1').val()
@@ -23,8 +27,9 @@ $(".show-tooltip").click(function(){
 $(".close-tooltip").click(function(){
     $(".activehelpful").slideToggle();
 });
-
-
+function sum_insured(id) {
+    $('#coverageprice').val(id);
+}
 function firstnext() {
   if($('#sum_insured2').val() == '' )
   {
@@ -42,10 +47,7 @@ function firstnext() {
 }
 
 
-function selectdestination(id) {
-  $('#primarydestination').val(id); 
-     $('#qoutedestination').html(id);  
-}
+
 function thirdone() {
  if($('#savers_email').val() == '')
  {

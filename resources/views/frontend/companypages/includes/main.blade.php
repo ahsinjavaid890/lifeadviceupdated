@@ -105,10 +105,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 @if($fields['sum_insured'] == 'on')
                                  <div class="col-md-6 positionrelative">
                                     <label class="selectlabel">Coverage Ammount</label>
-                                     <select  name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
+                                     <select onchange="sum_insured(this.value)"  name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Ammount</option>
                                        @foreach($sum_insured as $r)
-                                          <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                          <option value="{{ $r->sum_insured }}" >${{ $r->sum_insured }}</option>
                                        @endforeach
                                      </select>
                                      <div class="text-danger mt-4" id="covergaeerror"></div>
@@ -168,7 +168,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
@@ -322,6 +322,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
       document.getElementById('return_date').value = someFormattedDate;
+      $('#qoutedestination').text(someFormattedDate)
+
    }
    function setdeparuredate(month, date, day, year) {
       var setmonth = +month + 1;

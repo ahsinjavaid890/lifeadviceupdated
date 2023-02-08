@@ -2915,3 +2915,6 @@ li.date_picker_week_day {
 fieldset .input{
     width: 100% !important;
 }
+#qoutedestination{
+    width: 100px;
+}

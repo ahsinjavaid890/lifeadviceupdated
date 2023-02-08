@@ -402,6 +402,8 @@ function addChosenDates(firstClicked, secondClicked, selected) {
 
         $('.date_picker_month_day').html(finalstartdate)
         $('.date_picker_year').html(finalenddate)
+        $('#coveragedate').html(finalenddate)
+        $('#qoutedestination').html(finalenddate)
         $('.date_picker_month_day').show()
         $('.linebar').show()
         $('.date_picker_year').show()

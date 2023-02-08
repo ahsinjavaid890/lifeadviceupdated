@@ -1119,7 +1119,7 @@ google.maps.event.addDomListener(window, "load", initialize);
 <script type="text/javascript">
 	$(".gender").select2({
 		minimumResultsForSearch: -1,
-		placeholder: "Select Coverage Ammount",
+		placeholder: "Select Gender",
 		allowClear: false
 	});
 </script>

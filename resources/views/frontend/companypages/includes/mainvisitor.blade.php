@@ -105,7 +105,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                 @if($fields['sum_insured'] == 'on')
                                  <div class="col-md-6 positionrelative">
                                     <label class="selectlabel">Coverage Ammount</label>
-                                     <select name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
+                                     <select onchange="sum_insured(this.value)" name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Ammount</option>
                                        @foreach($sum_insured as $r)
                                           <option value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
@@ -168,7 +168,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
