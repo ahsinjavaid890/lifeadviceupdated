@@ -215,7 +215,7 @@
    justify-content: unset;
    }
    .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns:125px 241px 260px 134px;
+    grid-template-columns: 211px 241px 260px 134px;
     grid-gap: 31px;
    justify-content: center;
 /*   align-items: center;*/
@@ -2870,7 +2870,7 @@ li.date_picker_week_day {
     box-sizing: border-box;
     z-index: 2;
     top: 20px !important;
-    left: -295px !important;
+    left: -99px !important;
     width: 300px !important;
     background-color: #2b3481;
     color: #fff;
@@ -2937,4 +2937,13 @@ fieldset .input{
 }
 #qoutedestination{
     width: 100px;
+}
+.checkbox input[type="checkbox"]{
+    height: 20px;
+}
+.family_lable{
+    font-size: 14px;
+}
+.justify-content-space-between{
+    justify-content: space-between;
 }

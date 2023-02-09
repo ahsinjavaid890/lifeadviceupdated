@@ -160,7 +160,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="row">
                               <div class="col-md-12 mt-3">
                                  <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
@@ -174,14 +174,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                     <div class="col-md-3 positionrelative">
-                                          <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
-                                             <option value="">Select Pre Existing Condition</option>
-                                             <option value="Yes">Yes</option>
-                                             <option value="Yes">No</option>
-                                           </select>
+                                       <label class="selectlabel">Pre Existing Condition</label>
+                                       <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
+                                          <option value="">Select Pre Existing Condition</option>
+                                          <option value="Yes">Yes</option>
+                                          <option value="Yes">No</option>
+                                       </select>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                    <div class="col-md-4 alert1 text-danger d-flex" style="position:relative;">
+                                       <label class="selectlabel">Do you Smoke</label>
+                                       <select name="do_you_smoke[]" class="do_you_smoke1 form-control">
+                                          <option value="">Select Do you Smoke</option>
+                                          <option value="Yes">Yes</option>
+                                          <option value="Yes">No</option>
+                                        </select>
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>
@@ -190,17 +196,26 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
                                           </div>
                                        </div>
+                                     </div>
                                     </div>
-                                 </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-5"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div><div class="col-md-4 alert1 text-danger d-flex" style="position:relative;"> <label class="selectlabel">Do you Smoke</label> <select name="do_you_smoke[]" class="do_you_smoke1 form-control"> <option value="">Select Do you Smoke{{ $i }}</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div>  </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
-                              <div class="col-md-12 mt-3">
+                              <div class="col-md-12 mt-3 d-flex justify-content-space-between">
                                  <div class="travelerinfo">
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
+                                 </div>
+                                 <div class="require_family">
+                                    <div class="form-group">
+                                        <label class="family_lable"> Do you require Family Plan ?</label>
+                                       <div class="checkbox d-flex">
+                                          <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label>
+                                           <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
                               <input type="hidden" value="5" id="numberoftraverls" name="">
@@ -219,124 +234,133 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             </div>
             <style type="text/css">
                .calendar-section {
-  margin-bottom: 20px;
-}
-.calendar, .calendar_weekdays,
-.calendar_content {
-  max-width: 585px;
-}
+                    margin-bottom: 20px;
+                  }
+                  .calendar, .calendar_weekdays,
+                  .calendar_content {
+                    max-width: 585px;
+                  }
 
-.calendar {
-  /*float: left;*/
-  margin: auto;
-  min-width: 320px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-}
+                  .calendar {
+                    /*float: left;*/
+                    margin: auto;
+                    min-width: 320px;
+                    font-family: 'Lato', sans-serif;
+                    font-weight: 400;
+                  }
 
-.calendar_weekdays {
-   color: #aaa;
-   font-weight: lighter;
-}
-.calendar_weekdays div {
-  display:inline-block;
-  vertical-align:top;
-}
-.calendar_content, .calendar_weekdays, .calendar_header {
-  position: relative;
-}
-.calendar_content:after, .calendar_weekdays:after, .calendar_header:after {
-   content: ' ';
-   display: table;
-   clear: both;
-}
-.calendar_weekdays div, .calendar_content div {
-/*  border: 1px dotted #999;*/
-  width: 14.28571%;
-  height: 44px;
-  line-height: 30px;  
-  overflow: hidden;
-  text-align: center;
-  background-color: transparent;
-  color: #2b3481;
-  padding: 7px;
-}
+                  .calendar_weekdays {
+                     color: #aaa;
+                     font-weight: lighter;
+                  }
+                  .calendar_weekdays div {
+                    display:inline-block;
+                    vertical-align:top;
+                  }
+                  .calendar_content, .calendar_weekdays, .calendar_header {
+                    position: relative;
+                  }
+                  .calendar_content:after, .calendar_weekdays:after, .calendar_header:after {
+                     content: ' ';
+                     display: table;
+                     clear: both;
+                  }
+                  .calendar_weekdays div, .calendar_content div {
+                  /*  border: 1px dotted #999;*/
+                    width: 14.28571%;
+                    height: 44px;
+                    line-height: 30px;  
+                    overflow: hidden;
+                    text-align: center;
+                    background-color: transparent;
+                    color: #2b3481;
+                    padding: 7px;
+                  }
 
-.calendar_content .today {
-   color: #12b48b;
-}
-.calendar_content div {
-  float: left;
-   margin-left: -1px;
-   margin-top: -1px;
-  border: 1px solid transparent;
-}
-.calendar_content div:hover {
-   cursor: pointer;
-   color: white;
-   border-radius: 10px;
-   background-color: #2b3481;
-}
+                  .calendar_content .today {
+                     color: #12b48b;
+                  }
+                  .calendar_content div {
+                    float: left;
+                     margin-left: -1px;
+                     margin-top: -1px;
+                    border: 1px solid transparent;
+                  }
+                  .calendar_content div:hover {
+                     cursor: pointer;
+                     color: white;
+                     border-radius: 10px;
+                     background-color: #2b3481;
+                  }
 
-.calendar_content div.blank:hover {
-  cursor: default;
-  border: none;
-}
+                  .calendar_content div.blank:hover {
+                    cursor: default;
+                    border: none;
+                  }
 
-.calendar_content div.past-date {
-   cursor: initial;
-  color: #d5d5d5;
-}
-.calendar_content div.today{
-  font-weight: bold;
-  font-size: 18px;
-  color: #12b48b;
-}
-.calendar_content div.selected {
-  background-color: rgba(153, 153, 161, .2); /*rgba(170, 170, 176, .5) #aaaab0*/
-  border: 1px solid white;
-}
-.calendar_header {
-  width: 100%;
-  text-align: center;
-}
+                  .calendar_content div.past-date {
+                     cursor: initial;
+                    color: #d5d5d5;
+                  }
+                  .calendar_content div.today{
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #12b48b;
+                  }
+                  .calendar_content div.selected {
+                    background-color: rgba(153, 153, 161, .2); /*rgba(170, 170, 176, .5) #aaaab0*/
+                    border: 1px solid white;
+                  }
+                  .calendar_header {
+                    width: 100%;
+                    text-align: center;
+                  }
 
-.calendar_header h2 {
-  float:left;
-  width:70%;
-  margin-top: 10px;
-  padding: 0 10px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
+                  .calendar_header h2 {
+                    float:left;
+                    width:70%;
+                    margin-top: 10px;
+                    padding: 0 10px;
+                    font-family: 'Lato', sans-serif;
+                    font-weight: 300;
+                    font-size: 1.2rem;
+                  }
 
-button.switch-month {
-  background-color: transparent;
-  padding: 0;
-  outline: none;
-  border: none;
-  line-height: 52px;
-  height: 55px;
-  float: left;
-  width:15%;
-  transition: color .2s;
+                  button.switch-month {
+                    background-color: transparent;
+                    padding: 0;
+                    outline: none;
+                    border: none;
+                    line-height: 52px;
+                    height: 55px;
+                    float: left;
+                    width:15%;
+                    transition: color .2s;
 
-   color: #2b3481;
-   font-size: 30px;
+                     color: #2b3481;
+                     font-size: 30px;
 
-}
+                  }
 
-button.switch-month:hover {
-  color: #12b48b;
-}
-button.switch-month:active {
-  color: #12b48b;
-}
-.calendar_header h2 {
-  color: #12b48b;
-  line-height: 1.7;
-}
+                  button.switch-month:hover {
+                    color: #12b48b;
+                  }
+                  button.switch-month:active {
+                    color: #12b48b;
+                  }
+                  .calendar_header h2 {
+                    color: #12b48b;
+                    line-height: 1.7;
+                  }
+                  .selectlabel {
+                      position: absolute;
+                      top: -10px;
+                      left: 21px !important;
+                      font-size: 10px !important;
+                   }
+                   .select2-container--default .select2-selection--single .select2-selection__rendered{
+                     padding: 3px 2px;
+                   }
             </style>
             <div class="modal zoom-in" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">

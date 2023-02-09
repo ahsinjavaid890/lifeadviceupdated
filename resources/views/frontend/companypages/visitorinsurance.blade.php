@@ -45,6 +45,7 @@ $(".pre_existing_condition1").select2({
     placeholder: "Pre Existing",
     allowClear: false
 });
+
 $(".pre_existing_condition2").select2({
     minimumResultsForSearch: -1,
     placeholder: "Pre Existing",
@@ -70,7 +71,36 @@ $(".pre_existing_condition6").select2({
     placeholder: "Pre Existing",
     allowClear: false
 });
-
+$(".do_you_smoke1").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
+$(".do_you_smoke2").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
+$(".do_you_smoke3").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
+$(".do_you_smoke4").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
+$(".do_you_smoke5").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
+$(".do_you_smoke6").select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Do you Smoke",
+    allowClear: false
+});
 $( document ).ready(function() {
 function c(passed_month, passed_year, calNum) {
 	var calendar = calNum == 0 ? calendars.cal1 : calendars.cal2;
