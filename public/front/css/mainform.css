@@ -215,7 +215,7 @@
    justify-content: unset;
    }
    .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 267px 272px 268px 127px;
+    grid-template-columns:125px 241px 260px 134px;
     grid-gap: 31px;
    justify-content: center;
 /*   align-items: center;*/
@@ -1467,7 +1467,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     bottom: -22px !important;
 }
 .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 166px 272px 268px 127px;
+    grid-template-columns: 200px 326px 326px 164px;
     grid-gap: 7px !important;
 }
 .super-hero {
@@ -1482,7 +1482,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
    }
    @media (min-width: 910px) and (max-width: 1090px){
     .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 204px 272px 234px 127px;
+    grid-template-columns: 138px 186px 262px 152pxx;
     grid-gap: 0px;
 }
 .qoute-card {
@@ -1493,26 +1493,45 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     margin: 0 auto -48px;
     width: 100%;
     bottom: -36px !important;
+    left: 1%;
 }
    }
+   @media screen and (min-width: 275px) and (max-width: 370px){
+        .d-grid {
+            display: block;
+        }
+        .qoute-card{
+            max-width: 400px;
+            left: 7px;
+            top: 0%;
+        }
+        .mean-container a.meanmenu-reveal span {
+            top: 0px;
+            margin-top: 5px;
+        }
+        .quotes-generator-bar .form-input {
+            width: -webkit-fill-available;
+        }
+    }
    @media (min-width: 780px) and (max-width: 910px){
     .quotes-generator-bar .generator-bar-row-wrap {
-    grid-template-columns: 197px 277px 148px 131px;
+    grid-template-columns: 137px 185px 266px 98px;
     grid-gap: 0px;
+    }
+    .qoute-card {
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+        position: relative;
+        max-width: 1096px;
+        margin: 0 auto -48px;
+        width: 100%;
+        bottom: -11px !important;
+        left: 1%;
+    }
+    .get-quotes-button {
+        width: 97px;
+    }
 }
-.qoute-card {
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    position: relative;
-    max-width: 1096px;
-    margin: 0 auto -48px;
-    width: 100%;
-    bottom: -11px !important;
-}
-.get-quotes-button {
-    width: 97px;
-}
-   }
    @media (min-width: 680px) and (max-width: 780px){
 
 .qoute-card {
@@ -2166,7 +2185,7 @@ input::-webkit-inner-spin-button {
 @media screen and (min-width:370px) and (max-width:400px) {
     .qoute-card{
         max-width: 350px;
-        left: 13px;
+        left: 1px;
         top: 0%;
     }
     .d-grid{
@@ -2176,6 +2195,7 @@ input::-webkit-inner-spin-button {
         margin-top: 80px;
     }
     .quotes-generator-bar .form-input {
+        margin-top: 19px;
         width: -webkit-fill-available;
     }
     .get-quotes-button {

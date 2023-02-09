@@ -390,11 +390,7 @@ button.switch-month:active {
                                     </div>            
 
                                   </div>
-
-
-
-                                 
-                                 @if(isset($fields['email']))
+                                 <!-- @if(isset($fields['email']))
                                  @if($fields['email'] == "on" )
                                    <div class="col-md-6 userdata-card mt-5">
                                       <div class="custom-form-control positionrelative">
@@ -404,7 +400,7 @@ button.switch-month:active {
                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
                                    </div>
                                  @endif
-                                 @endif
+                                 @endif -->
                               </div>
                            </div>
                         </div>

@@ -12112,9 +12112,9 @@ ul.tabs li.current {
         display: block !important;
     }
 
-    .card-section {
+/*    .card-section {
         display: none;
-    }
+    }*/
 
     .new-qoute {
         position: inherit !important;
@@ -12339,7 +12339,7 @@ ul.tabs li.current {
         width: 100%;
         background: #fff;
         position: absolute;
-        left: 50px !important;
+        left: -2px !important;
         top: -35px !important;
     }
 
