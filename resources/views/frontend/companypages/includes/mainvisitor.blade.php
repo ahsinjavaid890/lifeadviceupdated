@@ -160,7 +160,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="row">
                               <div class="col-md-12 mt-3">
                                  <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
@@ -173,34 +173,51 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 positionrelative">
-                                       <label class="selectlabel">Pre Existing Condition</label>
-                                       <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
-                                          <option value="">Select Pre Existing Condition</option>
-                                          <option value="Yes">Yes</option>
-                                          <option value="Yes">No</option>
-                                       </select>
-                                    </div>
-                                    <div class="col-md-4 alert1 text-danger d-flex" style="position:relative;">
-                                       <label class="selectlabel">Do you Smoke</label>
-                                       <select name="do_you_smoke[]" class="do_you_smoke1 form-control">
-                                          <option value="">Select Do you Smoke</option>
-                                          <option value="Yes">Yes</option>
-                                          <option value="Yes">No</option>
-                                        </select>
-                                       <span class="button button-help show-tooltip"></span>
-                                       <div class="tooltip-container tooltip--auto-height activehelpful">
-                                          <button class="button button-close-simplified close-tooltip"></button>
-                                          <h4 class="heading heading-5">Helpful Info</h4>
-                                          <div class="content">
-                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                    <div class="col-md-6 positionrelative">
+                                       <div class="d-flex">
+                                          <label class="form-input  has-arrow" id="additionaltraveler">
+                                          <input  type="text" placeholder="Additional Travel" required="required"  class="input-field"  disabled>
+                                          <span class="label-text">Coverage Amount</span>
+                                          <div class="dest-value"></div>
+                                          </label>
+                                          <span class="button button-help show-tooltip"></span>
+                                          <div class="tooltip-container tooltip--auto-height activehelpful">
+                                             <button class="button button-close-simplified close-tooltip"></button>
+                                             <h4 class="heading heading-5">Helpful Info</h4>
+                                             <div class="content">
+                                                <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                             </div>
                                           </div>
                                        </div>
-                                     </div>
+                                       <div class="row" >
+                                          <div class="col-md-12">
+                                             <div class="additional-card additional-cards" style="display: none;" >
+                                                <div class="row">
+                                                   <div class="col-md-5 positionrelative">
+                                                         <label class="selectlabel">Pre Existing Condition</label>
+                                                         <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
+                                                            <option value="">Select Pre Existing Condition</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="Yes">No</option>
+                                                          </select>
+                                                   </div>
+                                                   <div class="col-md-7 alert1 text-danger d-flex" style="position:relative;">
+                                                      <label class="selectlabel">Do you Smoke</label>
+                                                      <select name="do_you_smoke[]" class="do_you_smoke1 form-control">
+                                                         <option value="">Select Do you Smoke</option>
+                                                         <option value="Yes">Yes</option>
+                                                         <option value="Yes">No</option>
+                                                       </select>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
                                     </div>
+                                 </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-5"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div><div class="col-md-4 alert1 text-danger d-flex" style="position:relative;"> <label class="selectlabel">Do you Smoke</label> <select name="do_you_smoke[]" class="do_you_smoke1 form-control"> <option value="">Select Do you Smoke{{ $i }}</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div>  </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div><div class="col-md-6 positionrelative"> <div class="d-flex"><label class="form-input  has-arrow" id="additionaltraveler{{ $i }}"> <input  type="text" placeholder="Additional Travel" required="required"  class="input-field"  disabled> <span class="label-text">Coverage Amount</span> <div class="dest-value"></div> </label><div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div></div> <div class="row" > <div class="col-md-12"> <div class="additional-card{{$i}} additional-cards" style="display: none;" > <div class="row"> <div class="col-md-5 positionrelative"> <label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-7 alert1 text-danger d-flex" style="position:relative;"> <label class="selectlabel">Do you Smoke</label> <select name="do_you_smoke[]" class="do_you_smoke1 form-control"> <option value="">Select Do you Smoke</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> </div> </div> </div> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -212,8 +229,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="form-group">
                                         <label class="family_lable"> Do you require Family Plan ?</label>
                                        <div class="checkbox d-flex">
-                                          <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label>
-                                           <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                          <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                          <div class="handle"></div>
+                                          </button>
                                        </div>
                                     </div>
                                  </div>

@@ -516,4 +516,5 @@ function addChosenDates(firstClicked, secondClicked, selected) {
 }
 });
 </script>
+
 @endsection

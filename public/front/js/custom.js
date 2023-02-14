@@ -20,6 +20,24 @@ function secondnext()
         $('#secondnextorignal').click();
     }
 }
+$("#additionaltraveler").click(function(){
+    $(".additional-card").toggle();
+}); 
+$("#additionaltraveler2").click(function(){
+    $(".additional-card2").toggle();
+}); 
+$("#additionaltraveler3").click(function(){
+    $(".additional-card3").toggle();
+}); 
+$("#additionaltraveler4").click(function(){
+    $(".additional-card4").toggle();
+}); 
+$("#additionaltraveler5").click(function(){
+    $(".additional-card5").toggle();
+}); 
+$("#additionaltraveler6").click(function(){
+    $(".additional-card6").toggle();
+}); 
 
 $(".show-tooltip").click(function(){
     $(".activehelpful").slideToggle();

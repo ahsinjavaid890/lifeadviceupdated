@@ -2947,3 +2947,71 @@ fieldset .input{
 .justify-content-space-between{
     justify-content: space-between;
 }
+.additional-cards{
+    background-color: white;
+    box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+ .btn-toggle {
+     margin: 0 4rem;
+     padding: 0;
+     position: relative;
+     border: none;
+     height: 1.5rem;
+     width: 3rem;
+     border-radius: 1.5rem;
+     color: #6b7381;
+     background: #bdc1c8;
+}
+ .btn-toggle:focus, .btn-toggle:focus.active, .btn-toggle.focus, .btn-toggle.focus.active {
+     outline: none;
+}
+ .btn-toggle:before, .btn-toggle:after {
+     line-height: 1.5rem;
+     width: 4rem;
+     text-align: center;
+     font-weight: 600;
+     font-size: .75rem;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     position: absolute;
+     bottom: 0;
+     transition: opacity .25s;
+}
+ .btn-toggle:before {
+     content: 'Off';
+     left: -4rem;
+}
+ .btn-toggle:after {
+     content: 'On';
+     right: -4rem;
+     opacity: .5;
+}
+ .btn-toggle > .handle {
+     position: absolute;
+     top: 0.1875rem;
+     left: 0.1875rem;
+     width: 1.125rem;
+     height: 1.125rem;
+     border-radius: 1.125rem;
+     background: #fff;
+     transition: left .25s;
+}
+ .btn-toggle.active {
+     transition: background-color .25s;
+}
+ .btn-toggle.active {
+     background-color: #2b3481;
+}
+ .btn-toggle.active > .handle {
+     left: 1.6875rem;
+     transition: left .25s;
+}
+ .btn-toggle.active:before {
+     opacity: .5;
+}
+ .btn-toggle.active:after {
+     opacity: 1;
+}
