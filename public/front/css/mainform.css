@@ -2961,7 +2961,7 @@ fieldset .input{
     box-sizing: border-box;
     z-index: 2;
     top: -5px !important;
-    left: -14px !important;
+    left: 13px !important;
     /* width: 300px !important; */
     background-color: #2b3481;
     color: #fff;
@@ -2971,6 +2971,8 @@ fieldset .input{
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     border-radius: 10px;
     padding: 20px;
+    max-width: 89%;
+    margin: auto;
 }
 
  .btn-toggle {
@@ -3000,11 +3002,11 @@ fieldset .input{
      transition: opacity .25s;
 }
  .btn-toggle:before {
-     content: 'Off';
+     content: 'No';
      left: -4rem;
 }
  .btn-toggle:after {
-     content: 'On';
+     content: 'Yes';
      right: -4rem;
      opacity: .5;
 }
