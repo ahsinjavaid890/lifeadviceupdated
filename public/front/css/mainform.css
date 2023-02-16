@@ -2860,7 +2860,7 @@ li.date_picker_week_day {
    display: none;
     z-index: 100000;
     position: absolute;
-    left: -139px;
+    left: 131px;
     top: 49px;
     border-radius: 100%;
     overflow: hidden;
@@ -2942,12 +2942,31 @@ fieldset .input{
     height: 20px;
 }
 .family_lable{
-    font-size: 14px;
+    color: black;
+    font-size: 12px;
 }
 .justify-content-space-between{
     justify-content: space-between;
 }
 .additional-cards{
+    z-index: 100000;
+    position: absolute;
+    left: -14px;
+    top: 49px;
+    border-radius: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    /* border: 1px solid #2b3481; */
+    box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+    box-sizing: border-box;
+    z-index: 2;
+    top: -5px !important;
+    left: -14px !important;
+    /* width: 300px !important; */
+    background-color: #2b3481;
+    color: #fff;
+    transition-property: visibility,right,top,opacity,width,height,border-radius;
+    transition-duration: .3s;
     background-color: white;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
     border-radius: 10px;

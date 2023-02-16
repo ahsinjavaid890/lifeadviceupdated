@@ -21,22 +21,22 @@ function secondnext()
     }
 }
 $("#additionaltraveler").click(function(){
-    $(".additional-card").toggle();
+    $(".additional-card").slideToggle();
 }); 
 $("#additionaltraveler2").click(function(){
-    $(".additional-card2").toggle();
+    $(".additional-card2").slideToggle();
 }); 
 $("#additionaltraveler3").click(function(){
-    $(".additional-card3").toggle();
+    $(".additional-card3").slideToggle();
 }); 
 $("#additionaltraveler4").click(function(){
-    $(".additional-card4").toggle();
+    $(".additional-card4").slideToggle();
 }); 
 $("#additionaltraveler5").click(function(){
-    $(".additional-card5").toggle();
+    $(".additional-card5").slideToggle();
 }); 
 $("#additionaltraveler6").click(function(){
-    $(".additional-card6").toggle();
+    $(".additional-card6").slideToggle();
 }); 
 
 $(".show-tooltip").click(function(){
