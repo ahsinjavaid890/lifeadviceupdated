@@ -213,6 +213,16 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                                          </div>
                                                       </div>
                                                    </div>
+                                                   <div class="col-md-12">
+                                                      <div class="form-group">
+                                                          <label class="family_lable"> Do you require Family Plan ?</label>
+                                                         <div class="checkbox d-flex">
+                                                            <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                                            <div class="handle"></div>
+                                                            </button>
+                                                         </div>
+                                                      </div>
+                                                   </div>
                                                 </div>
                                              </div>
                                           </div>
@@ -228,16 +238,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div class="col-md-12 mt-3 d-flex justify-content-space-between">
                                  <div class="travelerinfo">
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                 </div>
-                                 <div class="require_family">
-                                    <div class="form-group">
-                                        <label class="family_lable"> Do you require Family Plan ?</label>
-                                       <div class="checkbox d-flex">
-                                          <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                          <div class="handle"></div>
-                                          </button>
-                                       </div>
-                                    </div>
                                  </div>
                               </div>
                               <input type="hidden" value="5" id="numberoftraverls" name="">
