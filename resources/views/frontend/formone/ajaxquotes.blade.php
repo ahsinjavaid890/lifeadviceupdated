@@ -623,7 +623,7 @@ if($show == '1' && $total_price > 0){
                     if(isset($exactplan)){
                                         ?>
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?></span></div>
-                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
+                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium ({{$exactplan}}): <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
                     <?php $single_person_rate = '';}} ?>
                     </div>
                     </div>
