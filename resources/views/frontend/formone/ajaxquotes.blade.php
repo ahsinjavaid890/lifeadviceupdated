@@ -533,13 +533,19 @@ if($show == '1' && $total_price > 0){
                             $searchplan = DB::table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('insurance_company',$insurance_company)->where('plan_name_for_result' , 'Plan-A')->first();
                             if($searchplan)
                             {
-                                $deductsq = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $searchplan->id)->where('deductible1' , $deductible)->first();
+                                $deductsq_sec_two = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $searchplan->id)->where('deductible1' , $deductible)->first();
 
-                                if($deductsq)
+                                if($deductsq_sec_two)
                                 {
-                                    $deduct = $deductsq->deductible1;
-                                      $deduct_rate = str_replace('-', '', $deductsq->deductible2);
-                                    $deduct_plan_id = $deductsq->plan_id;
+                                    $deduct = $deductsq_sec_two->deductible1;
+                                      $deduct_rate = str_replace('-', '', $deductsq_sec_two->deductible2);
+                                    $deduct_plan_id_sec_two = $deductsq_sec_two->plan_id;
+                                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id_sec_two' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                                    if(isset($p_planrates[0]->rate))
+                                    {
+                                        $single_person_rate = $p_planrates[0]->rate;
+                                    }
+                                    
                                 }
                             }else{
                                 echo "not string";
@@ -547,10 +553,7 @@ if($show == '1' && $total_price > 0){
                             
 
 
-                            // $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-
-
-                            // $single_person_rate = $p_planrates[0]->rate;
+                            
                                     
                             // if($family_plan == 'yes' && $elder_age != $person_age){
                             // $person_daily = 0;
