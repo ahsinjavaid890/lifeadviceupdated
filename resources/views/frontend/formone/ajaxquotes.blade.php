@@ -533,81 +533,81 @@ if($show == '1' && $total_price > 0){
                             $searchplan = DB::table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('insurance_company',$insurance_company)->where('plan_name_for_result' , 'Plan-A')->first();
                             if($searchplan)
                             {
-                                $deductsq = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $searchplan->id)->where('deductible1' , $deductible)->first();
+                                $deductsq_two = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id' , $searchplan->id)->where('deductible1' , $deductible)->first();
 
-                                if($deductsq)
+                                if($deductsq_two)
                                 {
-                                    $deduct = $deductsq->deductible1;
-                                      $deduct_rate = str_replace('-', '', $deductsq->deductible2);
-                                    $deduct_plan_id = $deductsq->plan_id;
+                                    $deduct = $deductsq_two->deductible1;
+                                      $deduct_rate = str_replace('-', '', $deductsq_two->deductible2);
+                                    $deduct_plan_id = $deductsq_two->plan_id;
+
+                                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                                    if(isset($p_planrates[0]->rate))
+                                    {
+                                        $single_person_rate = $p_planrates[0]->rate;
+                                        if($family_plan == 'yes' && $elder_age != $person_age){
+                                            $person_daily = 0;
+                                            } else if($family_plan == 'yes' && $elder_age == $person_age){
+                                            $person_daily = $single_person_rate * 2;
+                                            } else {
+                                            $person_daily = $single_person_rate;
+                                            }
+
+                                            if($rate_base == '0'){ // if daily rate
+                                            $person_price = $person_daily * $num_of_days;
+                                            } else if($rate_base == '1'){ //if monthly rate
+                                            $person_price = $person_daily * $num_months;
+                                            } else if($rate_base == '2'){ // if yearly rate
+                                            $person_price = $person_daily;
+                                            }
+                                            else if($rate_base == '3'){ // if multi days rate
+                                            $person_price = $person_daily;
+                                            }
+
+                                            if($flatrate_type == 'each'){
+                                            $p_flat_price = $flatrate;
+                                            }else if($flatrate_type == 'total'){
+                                            $p_flat_price = $flatrate  / $number_travelers;
+                                            } else {
+                                            $p_flat_price = 0;
+                                            }
+                                            //totaldaysprice
+                                            $ptotaldaysprice = $person_price;
+                                            //SALES TAX
+                                            if($salestax_dest == $post_dest){
+                                            //$salesequal = 'yes';
+                                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                                            } else {
+                                            $p_salestaxes = 0;
+                                            //$salesequal = 'no';
+                                            }
+
+                                            //SMOKE RATE
+                                            if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                                            if($smoke == '0'){
+                                            $p_smoke_price = $smoke_rate;
+                                            } else if($smoke == '1'){
+                                            $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
+                                            }
+                                            } else {
+                                            $p_smoke_price = 0; 
+                                            }
+
+                                            // OTHERS
+                                            $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+
+                                            //Deductible 
+                                            $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                                            $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                                            $p_discount = $p_deduct_discount + $p_cdiscount;
+                                            $person_price = ($person_price - $p_discount) + $p_others;
+                                    }else{
+                                        echo "Plan Rates Not Found";
+                                    }
                                 }
                             }else{
-                                echo "not string";
+                                $exactplan = 'not';
                             }
-                            
-
-
-                            // $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-
-
-                            // $single_person_rate = $p_planrates[0]->rate;
-                                    
-                            // if($family_plan == 'yes' && $elder_age != $person_age){
-                            // $person_daily = 0;
-                            // } else if($family_plan == 'yes' && $elder_age == $person_age){
-                            // $person_daily = $single_person_rate * 2;
-                            // } else {
-                            // $person_daily = $single_person_rate;
-                            // }
-
-                            // if($rate_base == '0'){ // if daily rate
-                            // $person_price = $person_daily * $num_of_days;
-                            // } else if($rate_base == '1'){ //if monthly rate
-                            // $person_price = $person_daily * $num_months;
-                            // } else if($rate_base == '2'){ // if yearly rate
-                            // $person_price = $person_daily;
-                            // }
-                            // else if($rate_base == '3'){ // if multi days rate
-                            // $person_price = $person_daily;
-                            // }
-
-                            // if($flatrate_type == 'each'){
-                            // $p_flat_price = $flatrate;
-                            // }else if($flatrate_type == 'total'){
-                            // $p_flat_price = $flatrate  / $number_travelers;
-                            // } else {
-                            // $p_flat_price = 0;
-                            // }
-                            // //totaldaysprice
-                            // $ptotaldaysprice = $person_price;
-                            // //SALES TAX
-                            // if($salestax_dest == $post_dest){
-                            // //$salesequal = 'yes';
-                            // $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                            // } else {
-                            // $p_salestaxes = 0;
-                            // //$salesequal = 'no';
-                            // }
-
-                            // //SMOKE RATE
-                            // if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-                            // if($smoke == '0'){
-                            // $p_smoke_price = $smoke_rate;
-                            // } else if($smoke == '1'){
-                            // $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
-                            // }
-                            // } else {
-                            // $p_smoke_price = 0; 
-                            // }
-
-                            // // OTHERS
-                            // $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
-
-                            // //Deductible 
-                            // $p_deduct_discount = ($person_price * $deduct_rate) / 100;
-                            // $p_cdiscount = ($person_price * $cdiscountrate) / 100;
-                            // $p_discount = $p_deduct_discount + $p_cdiscount;
-                            // $person_price = ($person_price - $p_discount) + $p_others;
                         }
                     }
 
@@ -620,11 +620,11 @@ if($show == '1' && $total_price > 0){
                     //$monthly_price = $person_price / $num_months;
 
 
-                    //if($single_person_rate > 0){
+                    if(isset($exactplan)){
                                         ?>
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?></span></div>
                     <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
-                    <?php $single_person_rate = '';}//} ?>
+                    <?php $single_person_rate = '';}} ?>
                     </div>
                     </div>
                     </div>
