@@ -199,9 +199,9 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 <?php
         $addinquery = '';
         $lessquery = '';
-        if($request->pre_existing == 'yes' || $request->pre_existing == '1'){
-            $addinquery .= "AND `premedical`='1'";
-        }
+        // if($request->pre_existing == 'yes' || $request->pre_existing == '1'){
+        //     $addinquery .= "AND `premedical`='1'";
+        // }
         if($family_plan == 'yes'){
             $addinquery .= "AND `family_plan`='1'";
         }
@@ -441,6 +441,25 @@ if($show == '1' && $total_price > 0){
                     $single_person_rate = 0;
                     foreach($ages_array as $person_age){
                     $per++;
+
+
+
+
+                    if($request->pre_existing[$per-1]=='yes')
+                    {
+
+                        $plan = DB::Table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('premedical' , 1)->orderby('id' , 'desc')->where('insurance_company',$insurance_company)->first();
+
+                        print_r($plan);
+                    }else{
+                        $plan = DB::Table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('premedical' , 0)->orderby('id' , 'desc')->where('insurance_company',$insurance_company)->first();
+                        print_r($plan);
+                    }
+
+
+                    
+
+
                     $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
                     $single_person_rate = $p_planrates[0]->rate;
                                     
