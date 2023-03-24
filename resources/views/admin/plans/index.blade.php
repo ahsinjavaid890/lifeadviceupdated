@@ -39,8 +39,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Plan Name</th>
+                                <th>plan_name_for_result</th>
                                 <th>Product Name</th>
-                                <th>Company</th>
+                                <th>Company Name</th>
+                                <th>Company Logo</th>
                                 <th>Last Updated By</th>
                                 <th>Action</th>
                             </tr>
@@ -54,7 +56,13 @@
                                         {{ $r->plan_name }}
                                     </td>
                                     <td>
+                                        {{ $r->plan_name_for_result }}
+                                    </td>
+                                    <td>
                                         {{$r->pro_name}}
+                                    </td>
+                                    <td>
+                                        {{$r->comp_name}}
                                     </td>
                                     <td>
                                         <img src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="120">

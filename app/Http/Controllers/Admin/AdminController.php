@@ -199,7 +199,7 @@ class AdminController extends Controller
     }
     public function allplans()
     {
-        $data = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id as plan_id','wp_dh_insurance_plans.plan_name','wp_dh_products.pro_name','wp_dh_companies.comp_logo')
+        $data = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id as plan_id','wp_dh_insurance_plans.plan_name','wp_dh_insurance_plans.plan_name_for_result','wp_dh_products.pro_name','wp_dh_companies.comp_logo','wp_dh_companies.comp_name')
         ->leftJoin('wp_dh_products','wp_dh_insurance_plans.product','=','wp_dh_products.pro_id')
         ->leftJoin('wp_dh_companies','wp_dh_insurance_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
         return view('admin.plans.index')->with(array('data'=>$data));

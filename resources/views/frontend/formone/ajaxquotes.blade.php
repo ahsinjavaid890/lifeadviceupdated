@@ -544,6 +544,62 @@ if($show == '1' && $total_price > 0){
                                     if(isset($p_planrates[0]->rate))
                                     {
                                         $single_person_rate = $p_planrates[0]->rate;
+                                        if($family_plan == 'yes' && $elder_age != $person_age){
+                                        $person_daily = 0;
+                                        } else if($family_plan == 'yes' && $elder_age == $person_age){
+                                        $person_daily = $single_person_rate * 2;
+                                        } else {
+                                        $person_daily = $single_person_rate;
+                                        }
+
+                                        if($rate_base == '0'){ // if daily rate
+                                        $person_price = $person_daily * $num_of_days;
+                                        } else if($rate_base == '1'){ //if monthly rate
+                                        $person_price = $person_daily * $num_months;
+                                        } else if($rate_base == '2'){ // if yearly rate
+                                        $person_price = $person_daily;
+                                        }
+                                        else if($rate_base == '3'){ // if multi days rate
+                                        $person_price = $person_daily;
+                                        }
+
+                                        if($flatrate_type == 'each'){
+                                        $p_flat_price = $flatrate;
+                                        }else if($flatrate_type == 'total'){
+                                        $p_flat_price = $flatrate  / $number_travelers;
+                                        } else {
+                                        $p_flat_price = 0;
+                                        }
+                                        //totaldaysprice
+                                        $ptotaldaysprice = $person_price;
+                                        //SALES TAX
+                                        if($salestax_dest == $post_dest){
+                                        //$salesequal = 'yes';
+                                        $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                                        } else {
+                                        $p_salestaxes = 0;
+                                        //$salesequal = 'no';
+                                        }
+
+                                        //SMOKE RATE
+                                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                                        if($smoke == '0'){
+                                        $p_smoke_price = $smoke_rate;
+                                        } else if($smoke == '1'){
+                                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
+                                        }
+                                        } else {
+                                        $p_smoke_price = 0; 
+                                        }
+
+                                        // OTHERS
+                                        $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+
+                                        //Deductible 
+                                        $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                                        $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                                        $p_discount = $p_deduct_discount + $p_cdiscount;
+                                        $person_price = ($person_price - $p_discount) + $p_others;
                                     }
                                     
                                 }
@@ -551,66 +607,6 @@ if($show == '1' && $total_price > 0){
                                 echo "not string";
                             }
                             
-
-
-                            
-                                    
-                            // if($family_plan == 'yes' && $elder_age != $person_age){
-                            // $person_daily = 0;
-                            // } else if($family_plan == 'yes' && $elder_age == $person_age){
-                            // $person_daily = $single_person_rate * 2;
-                            // } else {
-                            // $person_daily = $single_person_rate;
-                            // }
-
-                            // if($rate_base == '0'){ // if daily rate
-                            // $person_price = $person_daily * $num_of_days;
-                            // } else if($rate_base == '1'){ //if monthly rate
-                            // $person_price = $person_daily * $num_months;
-                            // } else if($rate_base == '2'){ // if yearly rate
-                            // $person_price = $person_daily;
-                            // }
-                            // else if($rate_base == '3'){ // if multi days rate
-                            // $person_price = $person_daily;
-                            // }
-
-                            // if($flatrate_type == 'each'){
-                            // $p_flat_price = $flatrate;
-                            // }else if($flatrate_type == 'total'){
-                            // $p_flat_price = $flatrate  / $number_travelers;
-                            // } else {
-                            // $p_flat_price = 0;
-                            // }
-                            // //totaldaysprice
-                            // $ptotaldaysprice = $person_price;
-                            // //SALES TAX
-                            // if($salestax_dest == $post_dest){
-                            // //$salesequal = 'yes';
-                            // $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                            // } else {
-                            // $p_salestaxes = 0;
-                            // //$salesequal = 'no';
-                            // }
-
-                            // //SMOKE RATE
-                            // if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-                            // if($smoke == '0'){
-                            // $p_smoke_price = $smoke_rate;
-                            // } else if($smoke == '1'){
-                            // $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
-                            // }
-                            // } else {
-                            // $p_smoke_price = 0; 
-                            // }
-
-                            // // OTHERS
-                            // $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
-
-                            // //Deductible 
-                            // $p_deduct_discount = ($person_price * $deduct_rate) / 100;
-                            // $p_cdiscount = ($person_price * $cdiscountrate) / 100;
-                            // $p_discount = $p_deduct_discount + $p_cdiscount;
-                            // $person_price = ($person_price - $p_discount) + $p_others;
                         }
                     }
 
