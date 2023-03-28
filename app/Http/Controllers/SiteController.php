@@ -25,6 +25,12 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function checkadditionaltravelers(Request $request)
+    {
+        foreach($request->ages as $r) {
+            echo $r;
+        }
+    }
     public function sendcompareemail(Request $request)
     {
         Mail::send('email.compare', array('request'=>$request), function($message) use ($request) {

@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
 	<script src="{{ asset('public/front/js/jquery-3.5.1.slim.min.js') }}"></script>
 	<script src="{{ asset('public/front/js/popper.min.js') }}"></script>
-	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
+	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	@yield('tittle')
   <input type="hidde" id="app_url" value="{{ url('') }}" name="">

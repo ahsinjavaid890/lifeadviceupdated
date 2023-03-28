@@ -45,6 +45,11 @@ Route::get('/terms-and-condition', [SiteController::class, 'termsandcondition'])
 Route::get('/term-life-insurance', [SiteController::class, 'termlifeinsurance']);
 
 
+Route::POST('slideadditionaltravelers', [SiteController::class, 'checkadditionaltravelers']);
+
+
+
+
 
 Route::get('/life-insurance', [SiteController::class, 'lifeinsurance']);
 Route::get('/desability', [SiteController::class, 'desability']);

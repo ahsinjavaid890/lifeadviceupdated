@@ -315,9 +315,10 @@ class AdminController extends Controller
                 $irateMax = $request->iratesMax[$i];
                 $irateSum = $request->iratesSum[$i];
                 $irateRate = $request->iratesRate[$i];
+                $iratesRatewithout = $request->iratesRatewithout[$i];
                 $cuser = Auth::user()->id;
                 $time = time();
-                $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate,created_on, created_by ) VALUES('$request->id','$irateMin','$irateMax','$irateSum','$irateRate', '$time', '$cuser')";
+                $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate_with_pre_existing,rate_without_pre_existing,created_on, created_by ) VALUES('$request->id','$irateMin','$irateMax','$irateSum','$irateRate','$iratesRatewithout', '$time', '$cuser')";
                 DB::statement($insertRates);
             }
         }

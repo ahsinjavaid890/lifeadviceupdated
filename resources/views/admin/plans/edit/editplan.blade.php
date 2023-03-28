@@ -306,13 +306,17 @@ form .row {
                             <label><strong>Max Age</strong></label>
                             <input id="iratesMax1" name="iratesMax[]" class="form-control" value="{{ $r->maxage }}" type="text" class="max_1">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="wrapup"><strong>Benefit Amount</strong></label>
                             <input id="iratesSum1" name="iratesSum[]" class="form-control" value="{{$r->sum_insured}}" type="text" class="sum_1">
                         </div>
                         <div class="col-md-2">
-                            <label><strong>Rate ($)</strong></label>
-                            <input id="iratesRate1" name="iratesRate[]" class="form-control" value="{{ $r->rate }}" type="text">
+                            <label><strong>Rate ($) With Pre Existing</strong></label>
+                            <input id="iratesRate1" name="iratesRate[]" class="form-control" value="{{ $r->rate_with_pre_existing }}" type="text">
+                        </div>
+                        <div class="col-md-2">
+                            <label><strong>Rate ($) Without Pre Existing</strong></label>
+                            <input id="iratesRate1" name="iratesRatewithout[]" class="form-control" value="{{ $r->rate_without_pre_existing }}" type="text">
                         </div>
                     </div>
                 </div>
@@ -338,14 +342,19 @@ form .row {
                                     <input type="text" id="iratesMax'+countRates+'" name="iratesMax[]" class="max_<?php echo date('his').$rand;?> form-control" value="{{ $r->maxage }}">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="input">
                                     <input type="text" id="iratesSum'+countRates+'" name="iratesSum[]" class="sum_<?php echo date('his').$rand;?> form-control" value="{{$r->sum_insured}}">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="input">
-                                    <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]" class="form-control" value="{{ $r->rate }}">
+                                    <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]" class="form-control" value="{{ $r->rate_with_pre_existing }}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesRatewithout'+countRates+'" name="iratesRatewithout[]" class="form-control" value="{{ $r->rate_without_pre_existing }}">
                                 </div>
                             </div>
                         </div>
@@ -776,11 +785,14 @@ function removemultirate() {
         '<div class="col-md-2">' +
         '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" class="max_'+ + new Date()+' form-control">' +
         '</div>' +
-        '<div class="col-md-3">' +
+        '<div class="col-md-2">' +
         '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" class="sum_'+ + new Date()+' form-control">' +
         '</div>' +
         '<div class="col-md-2">' +
         '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesRatewithout' + countRates + '" name="iratesRatewithout[]" class="form-control">' +
         '</div>'+
         '</div>');
    // alert(range);
