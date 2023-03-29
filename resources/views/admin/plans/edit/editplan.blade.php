@@ -852,11 +852,14 @@ jQuery('.copyRates').click(function(event) {
         '<div class="col-md-2 margin5">' +
         '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" value="'+iratesMax_value+'" class="form-control">' +
         '</div>' +
-        '<div class="col-md-3 margin5 nopad">' +
+        '<div class="col-md-2 margin5 nopad">' +
         '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" value="'+iratesSum_value+'" class="form-control">' +
         '</div>' +
-        '<div class="col-md-2 margin5">' +
+        '<div class="col-md-2">' +
         '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesRatewithout' + countRates + '" name="iratesRatewithout[]" class="form-control">' +
         '</div>'+
         '</div></div></div>');
     }
