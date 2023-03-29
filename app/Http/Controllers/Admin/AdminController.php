@@ -209,6 +209,11 @@ class AdminController extends Controller
         $data = wp_dh_insurance_plans::where('id' , $id)->first();
         return view('admin.plans.edit.editplan')->with(array('data'=>$data));
     }
+    public function deleteplan($id)
+    {
+        DB::table('wp_dh_insurance_plans')->where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'Plan Deleted Successfully');
+    }
     public function planupdate(Request $request)
     {
         $input = $request->all();

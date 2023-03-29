@@ -72,7 +72,7 @@
                                     </td>
                                    <td>
                                        <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->plan_id }}"><i class="fa fa-trash"></i>Delete</a>
+                                       <a  onClick="return confirm('Are you sure you want to delete ?');" class="btn btn-primary btn-sm" href="{{ url('admin/plans/deleteplan') }}/{{ $r->plan_id }}"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
 

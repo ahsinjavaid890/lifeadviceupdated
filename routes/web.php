@@ -283,6 +283,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::name('plans.')->prefix('plans')->group(function(){
         Route::get('/allplans','AdminController@allplans');
         Route::get('/editplan/{id}','AdminController@editplan');
+        Route::get('/deleteplan/{id}','AdminController@deleteplan');
         Route::post('updateplan','AdminController@planupdate');
         Route::get('/addnewplan','AdminController@addnewplan');
         Route::get('/addlifeplane','AdminController@addlifeplane');
