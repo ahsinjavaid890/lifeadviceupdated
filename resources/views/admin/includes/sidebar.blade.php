@@ -361,6 +361,11 @@
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/plans/planbenifitscategories') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Plan Benifit Categories</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/plans/lifeplans') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Life Plans</span>
                                 </a>

@@ -226,6 +226,8 @@ class AdminController extends Controller
 
         $updateplan = wp_dh_insurance_plans::find($request->id);
         $updateplan->plan_name = $request->iplan;
+        $updateplan->pre_existing_name = $request->pre_existing_name;
+        $updateplan->without_pre_existing_name = $request->without_pre_existing_name;
         $updateplan->product = $request->ipname;
         $updateplan->insurance_company = $request->icname;
         $updateplan->premedical = $request->imedical;
@@ -418,6 +420,10 @@ class AdminController extends Controller
         ->leftJoin('wp_dh_products','wp_dh_life_plans.product','=','wp_dh_products.pro_id')
         ->leftJoin('wp_dh_companies','wp_dh_life_plans.insurance_company','=','wp_dh_companies.comp_id')->get();
         return view('admin.plans.lifeplans')->with(array('data'=>$data));
+    }
+    public function planbenifitscategories()
+    {
+        
     }
     public function addlifeplanbenifit()
     {

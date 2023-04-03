@@ -65,8 +65,20 @@ form .row {
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label><strong>Name of the Plan</strong></label>
+                        <label><strong>Plan Full Name</strong></label>
                         <input id="iplan" value="{{ $data->plan_name }}" name="iplan" placeholder="Enter Plan Name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><strong>Pre Existing Name</strong></label>
+                        <input id="pre_existing_name" value="{{ $data->pre_existing_name }}" name="pre_existing_name" placeholder="Pre Existing Name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><strong>Without Pre Existing Name</strong></label>
+                        <input id="without_pre_existing_name" value="{{ $data->without_pre_existing_name }}" name="without_pre_existing_name" placeholder="Without Pre Existing Name" class="form-control" type="text">
                     </div>
                 </div>
                 <div class="row">

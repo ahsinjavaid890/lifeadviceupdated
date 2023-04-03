@@ -214,6 +214,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
         $plan_id = $plan->id;
         $plan_name = $plan->plan_name;
+        $pre_existing_name = $plan->pre_existing_name;
+        $without_pre_existing_name = $plan->without_pre_existing_name;
         $insurance_company = $plan->insurance_company;
         $plan_name_for_result = $plan->plan_name_for_result;
         $premedical = $plan->premedical;
@@ -362,13 +364,13 @@ $flat_price = 0;
 //totaldaysprice
 $totaldaysprice = $total_price;
 //SALES TAX
-if($salestax_dest == $post_dest){
+// if($salestax_dest == $post_dest){
 //$salesequal = 'yes';
-$salestaxes = ($salestax_rate * $totaldaysprice) / 100;
-} else {
-$salestaxes = 0;
+// $salestaxes = ($salestax_rate * $totaldaysprice) / 100;
+// } else {
+// $salestaxes = 0;
 //$salesequal = 'no';
-}
+// }
 
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
@@ -387,9 +389,12 @@ $smoke_price = ($totaldaysprice * $smoke_rate) / 100;
 $smoke_price = 0;
 }
 
-
+$salestaxes = 0;
 // OTHERS
 $others = ($flat_price + $salestaxes) + $smoke_price;
+
+
+
 
 //Deductible
 $deduct_discount = ($total_price * $deduct_rate) / 100;
@@ -466,10 +471,10 @@ if($show == '1' && $total_price > 0){
                         if($request->pre_existing[$per-1]=='yes')
                         {
                             $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                            $existingshow = "With Pre Existing";
+                            $existingshow = $pre_existing_name;
                         }else{
                             $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
-                            $existingshow = "With Out Pre Existing";
+                            $existingshow = $without_pre_existing_name;
                         }
 
                         
@@ -503,13 +508,13 @@ if($show == '1' && $total_price > 0){
                         //totaldaysprice
                         $ptotaldaysprice = $person_price;
                         //SALES TAX
-                        if($salestax_dest == $post_dest){
+                        // if($salestax_dest == $post_dest){
                         //$salesequal = 'yes';
-                        $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                        } else {
-                        $p_salestaxes = 0;
+                        // $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                        // } else {
+                        // $p_salestaxes = 0;
                         //$salesequal = 'no';
-                        }
+                        // }
 
                         //SMOKE RATE
                         if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
@@ -523,6 +528,7 @@ if($show == '1' && $total_price > 0){
                         }
 
                         // OTHERS
+                        $p_salestaxes = 0;
                         $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 
                         //Deductible 
@@ -545,7 +551,7 @@ if($show == '1' && $total_price > 0){
 
                     //if($single_person_rate > 0){
                                         ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> ({{$existingshow}})</span></div>
+                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif</span></div>
                     <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
                     <?php $single_person_rate = '';}//} ?>
                     </div>
