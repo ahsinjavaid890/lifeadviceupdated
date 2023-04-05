@@ -21,6 +21,7 @@ use App\Models\quotes;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
+use App\Models\plan_benifits_categories;
 use App\Models\sales;
 use Illuminate\Support\Facades\Hash;
 use Mail;
@@ -375,11 +376,12 @@ class AdminController extends Controller
         wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->delete();
         $planId = $request->plan_id;
         for($i=0;$i<count($request->ibenefitHead);$i++){
+            $benifitcategory = $request->benifitcategory[$i];
             $bene_head = $request->ibenefitHead[$i];
             $bene_desc = $request->ibenefitDesc[$i];
             $bene_time = date('Y-M-d');
             $current_user = Auth::user()->id;
-            DB::statement("INSERT INTO wp_dh_insurance_plans_benefits(plan_id, benefits_head, benefits_desc,created_on , created_by ) VALUES('$planId','$bene_head', '$bene_desc', '$bene_time' , '$current_user' )");
+            DB::statement("INSERT INTO wp_dh_insurance_plans_benefits(plan_id,benifitcategory, benefits_head, benefits_desc,created_on , created_by ) VALUES('$planId','$benifitcategory','$bene_head', '$bene_desc', '$bene_time' , '$current_user' )");
         }
         return redirect()->back()->with('message', 'Plan Benifit Updated Successfully');
     }
@@ -423,8 +425,32 @@ class AdminController extends Controller
     }
     public function planbenifitscategories()
     {
-        
+        $data = plan_benifits_categories::orderby('id' , 'desc')->get();
+        return view('admin.plans.planbenifitscategories')->with(array('data'=>$data));
     }
+    public function addnewbenifitcategory(Request $request)
+    {
+        $add = new plan_benifits_categories();
+        $add->name = $request->name;
+        $add->description = $request->description;
+        $add->icon = Cmf::sendimagetodirectory($request->icon);
+        $add->save();
+        return redirect()->back()->with('message', 'Category Added Successfully');
+    }
+    public function updatbenifitcategory(Request $request)
+    {
+        $add = plan_benifits_categories::find($request->id);
+        $add->name = $request->name;
+        $add->description = $request->description;
+        $add->order = $request->order;
+        if($request->icon)
+        {
+            $add->icon = Cmf::sendimagetodirectory($request->icon);
+        }
+        $add->save();
+        return redirect()->back()->with('message', 'Category Updated Successfully');
+    }
+
     public function addlifeplanbenifit()
     {
         return view('admin.plans.addlifeplanbenifit');

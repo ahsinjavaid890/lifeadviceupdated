@@ -49,6 +49,15 @@
                             <div class="appendBenefits">
                                 <div style="margin-top:20px;" class="row">
                                     <div class="col-md-12">
+                                       <select class="form-control" name="benifitcategory[]">
+                                        @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
+                                           <option @if($r->benifitcategory == $c->id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
+                                        @endforeach
+                                       </select>
+                                    </div>
+                                </div>
+                                <div style="margin-top:20px;" class="row">
+                                    <div class="col-md-12">
                                        <input value="{{ $r->benefits_head }}" required id="ibenefitHead1" name="ibenefitHead[]" class="form-control" placeholder="Enter Heading of Benefit" type="text">
                                     </div>
                                 </div>
@@ -96,6 +105,17 @@
     jQuery('#appendBenefits').append(
 
         '<div class="appendBenefits">' +
+
+        '<div class="row" style="margin-top:10px;">' +
+
+        '<div class="col-md-12">' +
+
+        '<select class="form-control" name="benifitcategory[]">@foreach(DB::table("plan_benifits_categories")->orderby("order" , "desc")->get() as $c)<option value="{{$c->id }}">{{ $c->name }}</option>@endforeach</select>' +
+
+        '</div>' +
+
+        '</div>' +
+        '<br>'  +
 
         '<div class="row" style="margin-top:10px;">' +
 

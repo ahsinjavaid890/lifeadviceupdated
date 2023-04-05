@@ -64,8 +64,20 @@ form .row {
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label><strong>Name of the Plan</strong></label>
-                        <input id="iplan" name="iplan" placeholder="Enter Plan Name" class="form-control" type="text">
+                        <label><strong>Plan Full Name</strong></label>
+                        <input id="iplan"  name="iplan" placeholder="Enter Plan Name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><strong>Pre Existing Name</strong></label>
+                        <input id="pre_existing_name"  name="pre_existing_name" placeholder="Pre Existing Name" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><strong>Without Pre Existing Name</strong></label>
+                        <input id="without_pre_existing_name" name="without_pre_existing_name" placeholder="Without Pre Existing Name" class="form-control" type="text">
                     </div>
                 </div>
                 <div class="row">
@@ -296,13 +308,17 @@ form .row {
                             <label><strong>Max Age</strong></label>
                             <input id="iratesMax1" name="iratesMax[]" class="form-control" type="text" class="max_1">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="wrapup"><strong>Benefit Amount</strong></label>
                             <input id="iratesSum1" name="iratesSum[]" class="form-control" type="text" class="sum_1">
                         </div>
                         <div class="col-md-2">
-                            <label><strong>Rate ($)</strong></label>
-                            <input id="iratesRate1" name="iratesRate[]" class="form-control" type="text">
+                            <label><strong>Rate ($) With Pre Existing</strong></label>
+                            <input id="iratesRate1" name="iratesRate[]" class="form-control"  type="text">
+                        </div>
+                        <div class="col-md-2">
+                            <label><strong>Rate ($) Without Pre Existing</strong></label>
+                            <input id="iratesRate1" name="iratesRatewithout[]" class="form-control" type="text">
                         </div>
                     </div>
                 </div>
@@ -615,11 +631,14 @@ function removemultirate() {
         '<div class="col-md-2">' +
         '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" class="max_'+ + new Date()+' form-control">' +
         '</div>' +
-        '<div class="col-md-3">' +
+        '<div class="col-md-2">' +
         '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" class="sum_'+ + new Date()+' form-control">' +
         '</div>' +
         '<div class="col-md-2">' +
         '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesRatewithout' + countRates + '" name="iratesRatewithout[]" class="form-control">' +
         '</div>'+
         '</div>');
    // alert(range);
@@ -679,11 +698,14 @@ jQuery('.copyRates').click(function(event) {
         '<div class="col-md-2 margin5">' +
         '<input type="text" id="iratesMax' + countRates + '" name="iratesMax[]" value="'+iratesMax_value+'" class="form-control">' +
         '</div>' +
-        '<div class="col-md-3 margin5 nopad">' +
+        '<div class="col-md-2 margin5 nopad">' +
         '<input type="text" id="iratesSum' + countRates + '" name="iratesSum[]" value="'+iratesSum_value+'" class="form-control">' +
         '</div>' +
-        '<div class="col-md-2 margin5">' +
+        '<div class="col-md-2">' +
         '<input type="text" id="iratesRate' + countRates + '" name="iratesRate[]" class="form-control">' +
+        '</div>'+
+        '<div class="col-md-2">' +
+        '<input type="text" id="iratesRatewithout' + countRates + '" name="iratesRatewithout[]" class="form-control">' +
         '</div>'+
         '</div></div></div>');
     }

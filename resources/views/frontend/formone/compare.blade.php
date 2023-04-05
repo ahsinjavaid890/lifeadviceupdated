@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/main.e400e25c.css">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/chunk-39e264fa.df1c4bac.css">
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
 <link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/chunk-676de1c8.17873b80.css">
 <main data-v-89c571b4="" class="LayoutDefaultMain">
 <?php
@@ -52,18 +52,64 @@ $rate=explode(",", rtrim($request->rate));
                         </div>
                      </div>
                      <p class="plan-subheading body-text-3 text-secondary-color">Coverage : </p>
-                     <!----><!---->
                      <div class="card-plan__pricing-row">
-                        <div class="plan-price subheading-2"><span><span class="price-value"><span style="font-size: 14px;">$ <?php echo number_format($rate[$i],2); ?></span></span><span class="price-currency text-secondary-color">USD</span></span></div>
-                        <div data-v-3ca452d8="" class="plan-card-cta-container">
-                           <a style="padding: 0px 41px;" data-v-3ca452d8="" href="/visitor-insurance/choiceamerica/?quote_id=7115057&amp;source=compare" class="button button-secondary button-rounded button-buy cta-buy-choiceamerica-img">
-                              <span data-v-3ca452d8="">Buy</span><!---->
+                        <div class="plan-price subheading-2"><span><span class="price-value"><span style="font-size: 14px;">$ <?php echo number_format($rate[$i],2); ?></span></span><span class="price-currency text-secondary-color">CAD</span></span></div>
+                        <div  class="plan-card-cta-container">
+                           <a style="padding: 0px 41px;"  href="javascript:void(0)" class="button button-secondary button-rounded button-buy cta-buy-choiceamerica-img">
+                              <span >Buy</span>
                            </a>
                         </div>
                      </div>
                   </div>
                </div>
                <?php } ?>
+            </div>
+         </div>
+      </section>
+      <section class="quote-compare__spec-content" data-v-89c571b4="">
+         <div class="grid-container">
+            <div  class="grid-row pt-3">
+               <div  class="grid-col highlight-diff">
+                  <!---->
+               </div>
+            </div>
+            <div  class="grid-row">
+               <div  class="grid-col-12">
+                  <div  class="spec-content__expansion-panels">
+                     @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
+                     <div onclick="showbenifitpanel({{$r->id}})" id="benefit-panel-{{ $r->id }}" class="expansion-panel mb-3">
+                        <div  class="expansion-panel__header">
+                           <div class="panel-header-icon"><img  src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview"></div>
+                           <div class="panel-header-text">
+                              <h3 class="header-title heading-4">{{ $r->name }}</h3>
+                              <!-- <h4 class="header-subtitle body-text-2 text-secondary-color"> {{ $r->description }} </h4> -->
+                           </div>
+                           <i  class="icon icon-chevron-down"></i>
+                        </div>
+                        <div class="expansion-panel__content" id="benifitpaneltoshow{{ $r->id }}">
+                           @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $r->id)->get() as $b)
+                           <div class="panel-content__table-row">
+                              <div  class="panel-content__table-cell panel-content-subheading">
+                                 <span  class="panel-content--heading--container">
+                                    <div class="panel-content--heading">{{ $b->benefits_head }}</div>
+                                 </span>
+                              </div>
+                              <?php 
+                                 for($i=0;$i<count($planid);$i++){
+                                    $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
+                                    $planname = $plan->plan_name;
+                                 ?>
+                              <div class="panel-content__table-cell">
+                                 <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $planid[$i])->where('benefits_head' , $b->benefits_head)->first()){{ DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $planid[$i])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc }} @else N/A @endif</div>
+                              </div>
+                              <?php } ?>
+                           </div>
+                           @endforeach
+                        </div>
+                     </div>
+                     @endforeach
+                  </div>
+               </div>
             </div>
          </div>
       </section>
@@ -82,3 +128,15 @@ $rate=explode(",", rtrim($request->rate));
       <!---->
    </div>
 </main>
+<style type="text/css">
+   .expandbenifitpanel{
+      max-height: 100% !important;
+      height: 100%;
+   }
+</style>
+<script type="text/javascript">
+   function showbenifitpanel(id) {
+      var element = document.getElementById("benifitpaneltoshow"+id);
+      element.classList.toggle("expandbenifitpanel");
+   }
+</script>

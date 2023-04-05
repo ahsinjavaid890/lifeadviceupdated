@@ -292,6 +292,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/planbenifitscategories','AdminController@planbenifitscategories');
+        Route::post('addnewbenifitcategory','AdminController@addnewbenifitcategory');
+        Route::post('updatbenifitcategory','AdminController@updatbenifitcategory');
         Route::get('/addlifeplanbenifit','AdminController@addlifeplanbenifit');
         Route::get('/editlifeplan/{id}','AdminController@editlifeplan');
         Route::get('/lifeplanbenifits','AdminController@lifeplanbenifits');
