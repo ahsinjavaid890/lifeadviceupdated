@@ -284,6 +284,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/allplans','AdminController@allplans');
         Route::get('/editplan/{id}','AdminController@editplan');
         Route::get('/deleteplan/{id}','AdminController@deleteplan');
+        Route::post('createnewplan','AdminController@createnewplan');
         Route::post('updateplan','AdminController@planupdate');
         Route::get('/addnewplan','AdminController@addnewplan');
         Route::get('/addlifeplane','AdminController@addlifeplane');

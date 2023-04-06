@@ -34,13 +34,13 @@ border: 2px solid #245580;
 }
 form .row {
     margin-bottom:5px !important;
-}
+} 
 </style>
 
 <script src="{{ asset('public/admin/assetstwo/js/jquery-1.12.4.js')}}"></script>
 <div id="content" class="padding-20">
     @include('alerts.index')
-<form action="{{ url('admin/plans/updateplan') }}" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
+<form action="{{ url('admin/plans/createnewplan') }}" method="post" class="web-form" id="itemPlan" novalidate="novalidate" enctype="multipart/form-data">
     @csrf
         <!-- Add Plan Details -->
         <div class="row">

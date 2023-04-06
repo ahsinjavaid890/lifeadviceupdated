@@ -215,6 +215,96 @@ class AdminController extends Controller
         DB::table('wp_dh_insurance_plans')->where('id' , $id)->delete();
         return redirect()->back()->with('message', 'Plan Deleted Successfully');
     }
+    public function createnewplan(Request $request)
+    {
+        $input = $request->all();
+        
+        $cdiscountrate = $request->cdiscountrate;
+        $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
+        $flat =  $request->iflat;
+        $iflatrateprice = $flat == 1 ? $request->iflatrateprice : "0";
+        $flatrate_type = $flat == 1 ? $request->flatrate_type : "";
+
+        $updateplan = new wp_dh_insurance_plans;
+        $updateplan->plan_name = $request->iplan;
+        $updateplan->pre_existing_name = $request->pre_existing_name;
+        $updateplan->without_pre_existing_name = $request->without_pre_existing_name;
+        $updateplan->product = $request->ipname;
+        $updateplan->insurance_company = $request->icname;
+        $updateplan->premedical = $request->imedical;
+        $updateplan->family_plan = $request->ifamily;
+        $updateplan->flatrate_type = $flatrate_type;
+        $updateplan->flatrate = $iflatrateprice;
+        $updateplan->rate_base = $request->irateCalculation;
+        $updateplan->monthly_two = $request->monthlytwo;
+        $updateplan->feature = $request->ifeature;
+        $updateplan->sales_tax = $request->sales_tax;
+        $updateplan->smoke_rate = $request->smokeprice;
+        $updateplan->smoke = $request->smoke;
+        $updateplan->cdiscountrate = $cdiscountprice;
+        $updateplan->directlink = $request->directlink;
+        $updateplan->discount = $request->discount;
+        $updateplan->discount_rate = $request->discount_rate;
+        $updateplan->created_by = Auth::user()->id;
+        $updateplan->last_updated_by = Auth::user()->id;
+        $updateplan->save();
+        if($request->ipdfPolicy)
+        {
+            $addnewplan = new wp_dh_insurance_plans_pdfpolicy();
+            $add->pdfpolicy =  Cmf::sendimagetodirectory($request->ipdfPolicy);
+            $add->created_by =  Auth::user()->id;
+            $add->save();
+        }
+        for($i=0;$i<count($request->ideductHash);$i++){
+            $deduct = $request->ideductHash[$i];
+            $ideductPer = $request->ideductPer[$i];
+            $add_deductibles = new wp_dh_insurance_plans_deductibles();
+            $add_deductibles->plan_id = $updateplan->id;
+            $add_deductibles->deductible1 = $deduct;
+            $add_deductibles->deductible2 = $ideductPer;
+            $add_deductibles->created_by = Auth::user()->id;
+            $add_deductibles->save();
+        }
+        $rateBase = $request->irateCalculation;
+        if($rateBase == '3')
+        {
+            DB::table('wp_dh_plan_day_rate')->where('plan_id' , $updateplan->id)->delete();
+            for($i=1;$i<=count($request->sr);$i++){
+                 $max = $request->iratesMax1[$i-1];
+                 $min = $request->iratesMin1[$i-1];
+                 $s = 0;
+                 foreach($request->days_rate_range1 as $dayrange){
+                  $range = $dayrange;
+                  $ranger = str_replace(' ', '', $range);
+                  $ranges = explode('-', $ranger);
+                  $min_range = $ranges[0];
+                  $max_range = $ranges[1];
+                  if($max_range == ''){
+                      $max_range = $min_range;
+                  }                 
+                  $price = $input['days_rate'.$i][$s];
+                  $s++;
+                  
+                   $insertRates1 =  "INSERT INTO wp_dh_plan_day_rate(plan_id,minage,maxage,sum_insured,min_range,max_range,range_rate,rate,created_on) VALUES('$updateplan->id','$min','$max','".$_POST['iratesSum1'][$i-1]."','$min_range','$max_range','$range','$price',now())";
+                    DB::statement($insertRates1);
+              }
+             }
+        } else {
+            for($i=0;$i<count($request->iratesMin);$i++){
+                $irateMin = $request->iratesMin[$i];
+                $irateMax = $request->iratesMax[$i];
+                $irateSum = $request->iratesSum[$i];
+                $irateRate = $request->iratesRate[$i];
+                $iratesRatewithout = $request->iratesRatewithout[$i];
+                $cuser = Auth::user()->id;
+                $time = time();
+                $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate_with_pre_existing,rate_without_pre_existing,created_on, created_by ) VALUES('$updateplan->id','$irateMin','$irateMax','$irateSum','$irateRate','$iratesRatewithout', '$time', '$cuser')";
+                
+                DB::statement($insertRates);
+            }
+        }
+        return redirect()->back()->with('message', 'Plan Added Successfully');
+    }
     public function planupdate(Request $request)
     {
         $input = $request->all();

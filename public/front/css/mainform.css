@@ -2944,6 +2944,7 @@ fieldset .input{
 }
 .family_lable{
     color: black;
+    width: 50%;
     font-size: 12px;
 }
 .justify-content-space-between{
