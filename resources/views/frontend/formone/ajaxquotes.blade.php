@@ -420,9 +420,8 @@ $discountonplan = ($plan_discount_rate * $total_price) / 100;
 $total_price = $total_price - $discountonplan;
 $monthly_price = $total_price / $num_months;
 if($monthly_two == '1'){
-$total_price = $total_price - $flat_price;
+    $total_price = $total_price - $flat_price;
 }
-
 if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
 
@@ -597,13 +596,16 @@ if($show == '1' && $total_price > 0){
             <div class="compare compare-check  justify-content-end d-flex">
                 <span class="">Compare</span>
                 <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
+
             </div>
               <div class="qoute-logo">
                   <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
               </div>
               <div class="total-price-traveller">
                   <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>CAD</span></h2>
-                  
+                  <?php if($monthly_two == '1'){?>
+                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;background: #F9F9F9;">$<?php echo number_format($monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
+                    <?php } ?>
               </div>
               <div class="buy_now"> 
                 <form method="POST" action="{{ url('apply') }}">
