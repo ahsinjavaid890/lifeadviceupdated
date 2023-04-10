@@ -173,59 +173,32 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-6 positionrelative">
-                                       <div class="d-flex">
-                                          <label class="form-input  has-arrow" id="additionaltraveler">
-                                          <input  type="text" placeholder="Additional Details" required="required"  class="input-field"  disabled>
-                                          <span class="label-text">Coverage Amount</span>
-                                          <div class="dest-value"></div>
-                                          </label>
-                                          <span class="button button-help show-tooltip"></span>
-                                          <div class="tooltip-container tooltip--auto-height activehelpful">
-                                             <button class="button button-close-simplified close-tooltip"></button>
-                                             <h4 class="heading heading-5">Helpful Info</h4>
-                                             <div class="content">
-                                                <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row" >
-                                          <div class="col-md-12">
-                                             <div class="additional-card additional-cards" style="display: none;" >
-                                                <div class="row">
-                                                   <div class="col-md-12 positionrelative">
-                                                      <div class="form-group d-flex">
-                                                          <label class="family_lable"> Pre Existing Condition ?</label>
-                                                         <div class="checkbox d-flex">
-                                                            <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="no">
-                                                            <div class="handle"></div>
-                                                            </button>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                   <div class="col-md-12 alert1 text-danger d-flex" style="position:relative;margin-top: 10px;">
-                                                      <div style="width: 100%;" class="form-group d-flex">
-                                                          <label class="family_lable"> Do you Smoke ?</label>
-                                                         <div class="checkbox d-flex">
-                                                            <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="no">
-                                                            <div class="handle"></div>
-                                                            </button>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
+                                    <div class="col-md-3 positionrelative">
+                                          <label class="selectlabel">Pre Existing Condition</label>
+                                          <select name="pre_existing[]" class="pre_existing_condition1 form-control">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                           </select>
+                                    </div>
+                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                       <span class="button button-help show-tooltip"></span>
+                                       <div class="tooltip-container tooltip--auto-height activehelpful">
+                                          <button class="button button-close-simplified close-tooltip"></button>
+                                          <h4 class="heading heading-5">Helpful Info</h4>
+                                          <div class="content">
+                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div><div class="col-md-6 positionrelative"> <div class="d-flex"><label class="form-input  has-arrow" id="additionaltraveler{{ $i }}"> <input  type="text" placeholder="Additional Details" required="required"  class="input-field"  disabled> <span class="label-text">Coverage Amount</span> <div class="dest-value"></div> </label><div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div></div> <div class="row" > <div class="col-md-12"> <div class="additional-card{{$i}} additional-cards" style="display: none;" > <div class="row"> <div class="col-md-12 positionrelative"> <div class="form-group d-flex"> <label class="family_lable"> Pre Existing Condition ?</label> <div class="checkbox d-flex"> <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="no"> <div class="handle"></div> </button> </div> </div> </div> <div class="col-md-12 alert1 text-danger d-flex" style="position:relative;margin-top: 10px;"> <div style="width: 100%;" class="form-group d-flex"> <label class="family_lable"> Do you Smoke ?</label> <div class="checkbox d-flex"> <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="no"> <div class="handle"></div> </button> </div> </div> </div> </div> </div> </div> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
-                              <div class="col-md-12 mt-3 d-flex justify-content-space-between">
+                              <div class="col-md-12 mt-3">
                                  <div class="travelerinfo">
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                  </div>
@@ -234,20 +207,86 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                         </div>
                      </div>
+                     <style type="text/css">
+                        .switch {
+                         position: relative;
+                         display: inline-block;
+                         width: 53px;
+                         height: 27px;
+                        }
+
+                        /* Hide default HTML checkbox */
+                        .switch input {
+                          opacity: 0;
+                          width: 0;
+                          height: 0;
+                        }
+
+                        /* The slider */
+                        .tooglecheckbox {
+                          position: absolute;
+                          cursor: pointer;
+                          top: 0;
+                          left: 0;
+                          right: 0;
+                          bottom: 0;
+                          background-color: #919192;
+                          -webkit-transition: .4s;
+                          transition: .4s;
+                        }
+
+                        .tooglecheckbox:before {
+                          position: absolute;
+                          content: "";
+                          height: 20px;
+                          width: 20px;
+                          left: 4px;
+                          bottom: 4px;
+                          background-color: white;
+                          -webkit-transition: .4s;
+                          transition: .4s;
+                        }
+
+                        input:checked + .tooglecheckbox {
+                          background-color: #2b3481;
+                        }
+
+                        input:focus + .tooglecheckbox {
+                          box-shadow: 0 0 1px #2196F3;
+                        }
+
+                        input:checked + .tooglecheckbox:before {
+                          -webkit-transform: translateX(26px);
+                          -ms-transform: translateX(26px);
+                          transform: translateX(26px);
+                        }
+
+                        /* Rounded sliders */
+                        .tooglecheckbox.round {
+                          border-radius: 34px;
+                        }
+
+                        .tooglecheckbox.round:before {
+                          border-radius: 50%;
+                        }
+                        .nextbtns{
+                           display: flex;
+                        }
+                        .toogleswithchdiv label{
+                           margin-bottom: 0px;
+                        }
+                     </style>
                      <div class="modal-footer">
-                        <div class="row">
-                           <div class="col-md-12 positionrelative">
-                              <div class="form-group d-flex">
-                                 <label style="color: #2b3481;font-size: 12px;font-weight: bold;" class="family_lable"> Do You Require Family Plan ?</label>
-                                 <div class="checkbox d-flex">
-                                    <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="no">
-                                    <div class="handle"></div>
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
                         <div class="nextbtns">
+                           <div class="toogleswithchdiv">
+                              <label style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do You Require Family Plan?</label>
+                              <label style="margin-right:10px;">No</label>
+                              <label style="margin-right:10px;" class="switch">
+                                <input type="checkbox">
+                                <p class="tooglecheckbox round"></p>
+                              </label>
+                              <label style="margin-right:20px;">Yes</label>
+                           </div>
                           <span class="btn btn-default btn-prev">Prev</span>
                           <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
                           <span id="secondnextorignal" style="display: none;"   class="btn btn-default btn-next">Next</span>
