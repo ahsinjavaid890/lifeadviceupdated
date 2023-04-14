@@ -71,12 +71,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="coveragedate"  class=" value"> Start Date 
+                                       <div id="startdatetoshowonshowfield"  class="value"> Start Date 
                                        </div>
                                     </div>
-                                    <div class="from ml-3">
-                                       
-                                       <div id="qoutedestination" class="value"></div>
+                                    <div class="ml-3 from">
+                                       <div id="enddatetoshowonenddatefield" class="value"></div>
                                     </div>
                                  </div>
                               </div>

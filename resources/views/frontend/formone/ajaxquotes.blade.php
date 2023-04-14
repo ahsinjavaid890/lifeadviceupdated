@@ -447,8 +447,17 @@ if($show == '1' && $total_price > 0){
                       <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
                   </ul>
-                <h3 onclick="slideadditionaltravelers(<?php echo $deductible.$plan_id;?>)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
-                <div style="display: none;" class="row hoverdetails_<?php echo $deductible.$plan_id;?>" >
+                  <?php 
+                    if($deductible == 0)
+                    {
+                        $newdeductibleforshow = 7896;
+                    }else{
+                        $newdeductibleforshow = $deductible;
+                    }
+
+                  ?>
+                <h3 onclick="slideadditionaltravelers(<?php echo $newdeductibleforshow.$plan_id;?>)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
+                <div style="display: none;" class="row hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>" >
                     <div class="col-md-12">
                     <div class="col-md-12" style="border:1px solid #333; text-align:left;">
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
