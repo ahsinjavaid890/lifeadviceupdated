@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
-<script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script> -->
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
