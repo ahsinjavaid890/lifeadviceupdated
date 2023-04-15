@@ -4,10 +4,6 @@ function removeappendvalue(id) {
   $('#removebutton'+id).addClass('hiderowstraveler');
   $('.dateofbirthclass'+id).val('')
 }
-
-function dateofbirth(id) {
-    $('#ageshow').val(id);
-}
 function secondnext() 
 {
     var value = $('.dateofbirthclass1').val()

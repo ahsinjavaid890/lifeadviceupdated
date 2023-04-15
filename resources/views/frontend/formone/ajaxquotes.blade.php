@@ -195,7 +195,18 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-
+<script type="text/javascript">
+    var numberoftravelers = '{{ $number_travelers }}';
+    var elderage = '{{ $elder_age }}';
+    if(numberoftravelers > 1)
+    {
+        $('#ageshow').val(numberoftravelers+', Ages '+ elderage+ ' and ....');
+    }else{
+        $('#ageshow').val(numberoftravelers+', '+ elderage+ ' Years');
+    }
+    
+    
+</script>
 <?php
         $addinquery = '';
         $lessquery = '';

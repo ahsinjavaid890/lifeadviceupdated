@@ -64,7 +64,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
-                              <input  id="ageshow" type="text" placeholder="Traveler Information" required="required" id="age" class="input-field" disabled>
+                              <input  id="ageshow" type="text" placeholder="Traveler Information" required="required" class="input-field" disabled>
                               <span  class="label-text">Traveler Information</span>
                               </label>
                               <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
@@ -144,9 +144,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+                        
                         <div class="card modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
