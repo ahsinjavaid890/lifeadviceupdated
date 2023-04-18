@@ -245,6 +245,7 @@ class AdminController extends Controller
         $updateplan->directlink = $request->directlink;
         $updateplan->discount = $request->discount;
         $updateplan->discount_rate = $request->discount_rate;
+        $updateplan->status = 1;
         $updateplan->created_by = Auth::user()->id;
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
