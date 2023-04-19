@@ -1540,8 +1540,9 @@ if($second_show == '1' && $second_total_price > 0){
   ?>
 
 <span id="dv_{{$second_total_price}}" class="coverage-amt coverage-amt-<?php echo $second_sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
-<div class="deductable card qoute-price-card mb-3 deductable-<?php echo $second_deductible; ?>" style="display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
+<div class="deductable card qoute-price-card mb-3 deductable-<?php echo $second_deductible; ?>" style="position: relative;display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
+    <div class="row" style=" position: absolute; top: -12px; margin: auto; width: 100%; left: 0;"> <div class="col-md-12"> <p style=" background-color: red; width: 180px; text-align: center; color: white; border-radius: 10px; ">This is Pre Eisting Plan</p> </div> </div>
       <div class="row">
           <div class="col-md-6">
               <div class="plan-label">
