@@ -106,7 +106,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div class="col-md-6 positionrelative">
                                     <label class="selectlabel">Coverage Ammount</label>
                                      <select name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
-                                       <option value="">Select Coverage Ammount</option>
+                                       <option value="">Select Coverage Amount</option>
                                        @foreach($sum_insured as $r)
                                           <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
                                        @endforeach

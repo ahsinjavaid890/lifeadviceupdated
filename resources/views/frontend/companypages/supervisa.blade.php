@@ -32,7 +32,7 @@
 <script>
 $(".sum_insured2").select2({
     minimumResultsForSearch: -1,
-    placeholder: "Select Coverage Ammount",
+    placeholder: "Select Coverage Amount",
     allowClear: false
 });
 $(".primarydestination").select2({
