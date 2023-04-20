@@ -1130,13 +1130,39 @@ if($show == '1' && $total_price > 0){
 
                     //if($single_person_rate > 0){
                                         ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif</span></div>
-                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
+                    <span class="person-additional-traveler">
+                        Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif
+                    </span>
+                    <div class="person-additional-traveler-insured">Insured: <span style="color: #2b3481;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #2b3481;">$<?php echo number_format($person_price,2);?></span></div>
                     <?php $single_person_rate = '';}//} ?>
                     </div>
-                    </div>
-                    </div>
+                    <br>
+                    @if($plan->plan_pdf_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->benifit_summary_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->plan_pdf_without_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->benifit_summary_without_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of {{ $existingshow }}
+                    </a>
+                    @endif
                 </div>
+
+                <h3 id="changeshowtoless<?php echo $newdeductibleforshow.$plan_id;?>" class="person-additional-traveler-h3" onclick="slideadditionaltravelers(<?php echo $newdeductibleforshow.$plan_id;?>)"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
           </div>
           <div class="col-md-3 price-limit">
               <div class="plan-coverage-limit">
