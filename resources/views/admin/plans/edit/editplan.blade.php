@@ -595,10 +595,22 @@ form .row {
       <div class="col-md-6">
          <div class="row">
             <div class="col-md-6">
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-file"></i> PDF Policy</h4>
-               <div class="">
-                  <label>Upload PDF Policy</label>
-                  <input type="file" class="form-control" name="ipdfPolicy">
+               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-file"></i> Upload PDFs</h4>
+               <div class="mt-3">
+                  <label>Plan PDF (Pre Eisting)</label>
+                  <input type="file" class="form-control" name="plan_pdf_pre_existing">
+               </div>
+               <div class="mt-3">
+                  <label>Benifits Summary (Pre Eisting)</label>
+                  <input type="file" class="form-control" name="benifit_summary_pre_existing">
+               </div>
+               <div class="mt-3">
+                  <label>Plan PDF (Without Pre Eisting)</label>
+                  <input type="file" class="form-control" name="plan_pdf_without_pre_existing">
+               </div>
+               <div class="mt-3">
+                  <label>Benifits Summary (Without Pre Eisting)</label>
+                  <input type="file" class="form-control" name="benifit_summary_without_pre_existing">
                </div>
                <div id="appendPDFpolicy"></div>
                <div class="clear"></div>
@@ -609,13 +621,37 @@ form .row {
                </div>
             </div>
             <div class="col-md-6">
-               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px;"><i class="fa fa-file"></i> Current PDF Policy</h4>
+               <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px;"><i class="fa fa-file"></i> View PDFs</h4>
+               <div class="mt-3">
+                   @if($data->plan_pdf_pre_existing)
+                   <a target="_blank" href="{{ url('public/images') }}/{{ $data->plan_pdf_pre_existing }}" class="btn btn-primary btn-sm">View Plan PDF Pre Exisitng</a>
+                   @else
+                   <b style="color:red;">No PDF</b>
+                   @endif
+               </div>
+               <div class="mt-3">
+                   @if($data->benifit_summary_pre_existing)
+                   <a target="_blank" href="{{ url('public/images') }}/{{ $data->benifit_summary_pre_existing }}" class="btn btn-primary btn-sm">View Benifit Summary Pre Exisitng</a>
+                   @else
+                   <b style="color:red;">No PDF</b>
+                   @endif
+               </div>
+               <div class="mt-3">
+                   @if($data->plan_pdf_without_pre_existing)
+                   <a target="_blank" href="{{ url('public/images') }}/{{ $data->plan_pdf_without_pre_existing }}" class="btn btn-primary btn-sm">View Plan PDF Without Pre Exisitng</a>
+                   @else
+                   <b style="color:red;">No PDF</b>
+                   @endif
+               </div>
 
-               @if(DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $data->id)->first())
-               <a target="_blank" href="{{ url('public/images') }}/{{ DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $data->id)->first()->pdfpolicy }}" class="btn btn-primary btn-sm">View PDF</a>
-               @else
-               <b style="color:red;">No PDF</b>
-               @endif
+
+               <div class="mt-3">
+                   @if($data->benifit_summary_without_pre_existing)
+                   <a target="_blank" href="{{ url('public/images') }}/{{ $data->benifit_summary_without_pre_existing }}" class="btn btn-primary btn-sm">View Benifit Summary Without Pre Exisitng</a>
+                   @else
+                   <b style="color:red;">No PDF</b>
+                   @endif
+               </div>
             </div>
             <div class="clear"></div>
             <hr>

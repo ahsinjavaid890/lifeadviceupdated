@@ -42,7 +42,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          $supervisa = 'no';   
          }
       @endphp
-      <div class="row card-section">
+      <div style="background-color: #f4f7fa;" class="row card-section">
          <div class="col-md-12">
             
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">

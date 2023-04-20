@@ -246,16 +246,27 @@ class AdminController extends Controller
         $updateplan->discount = $request->discount;
         $updateplan->discount_rate = $request->discount_rate;
         $updateplan->status = 1;
+        if($request->plan_pdf_pre_existing)
+        {
+
+            $updateplan->plan_pdf_pre_existing =  Cmf::sendimagetodirectory($request->plan_pdf_pre_existing);
+        }
+        if($request->benifit_summary_pre_existing)
+        {
+            $updateplan->benifit_summary_pre_existing =  Cmf::sendimagetodirectory($request->benifit_summary_pre_existing);
+        }
+        if($request->plan_pdf_without_pre_existing)
+        {
+            $updateplan->plan_pdf_without_pre_existing =  Cmf::sendimagetodirectory($request->plan_pdf_without_pre_existing);
+        }
+        if($request->benifit_summary_without_pre_existing)
+        {
+            $updateplan->benifit_summary_without_pre_existing =  Cmf::sendimagetodirectory($request->benifit_summary_without_pre_existing);
+        }
         $updateplan->created_by = Auth::user()->id;
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
-        if($request->ipdfPolicy)
-        {
-            $addnewplan = new wp_dh_insurance_plans_pdfpolicy();
-            $add->pdfpolicy =  Cmf::sendimagetodirectory($request->ipdfPolicy);
-            $add->created_by =  Auth::user()->id;
-            $add->save();
-        }
+        
         for($i=0;$i<count($request->ideductHash);$i++){
             $deduct = $request->ideductHash[$i];
             $ideductPer = $request->ideductPer[$i];
@@ -336,25 +347,26 @@ class AdminController extends Controller
         $updateplan->directlink = $request->directlink;
         $updateplan->discount = $request->discount;
         $updateplan->discount_rate = $request->discount_rate;
+        if($request->plan_pdf_pre_existing)
+        {
+            
+            $updateplan->plan_pdf_pre_existing =  Cmf::sendimagetodirectory($request->plan_pdf_pre_existing);
+        }
+        if($request->benifit_summary_pre_existing)
+        {
+            $updateplan->benifit_summary_pre_existing =  Cmf::sendimagetodirectory($request->benifit_summary_pre_existing);
+        }
+        if($request->plan_pdf_without_pre_existing)
+        {
+            $updateplan->plan_pdf_without_pre_existing =  Cmf::sendimagetodirectory($request->plan_pdf_without_pre_existing);
+        }
+        if($request->benifit_summary_without_pre_existing)
+        {
+            $updateplan->benifit_summary_without_pre_existing =  Cmf::sendimagetodirectory($request->benifit_summary_without_pre_existing);
+        }
         $updateplan->created_by = Auth::user()->id;
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
-        if($request->ipdfPolicy)
-        {
-            $pdf = wp_dh_insurance_plans_pdfpolicy::where('plan_id' , $request->id)->first();
-            if($pdf)
-            {
-                $update = wp_dh_insurance_plans_pdfpolicy::find($pdf->id);
-                $update->pdfpolicy =  Cmf::sendimagetodirectory($request->ipdfPolicy);
-                $update->created_by =  Auth::user()->id;
-                $update->save();
-            }else{
-                $addnewplan = new wp_dh_insurance_plans_pdfpolicy();
-                $add->pdfpolicy =  Cmf::sendimagetodirectory($request->ipdfPolicy);
-                $add->created_by =  Auth::user()->id;
-                $add->save();
-            }
-        }
         wp_dh_insurance_plans_deductibles::where('plan_id' , $request->id)->delete();
         for($i=0;$i<count($request->ideductHash);$i++){
             $deduct = $request->ideductHash[$i];

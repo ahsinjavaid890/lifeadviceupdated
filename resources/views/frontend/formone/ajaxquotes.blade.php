@@ -464,15 +464,8 @@ if($show == '1' && $total_price > 0){
                     }
 
                   ?>
-                <h3 onclick="slideadditionaltravelers(<?php echo $newdeductibleforshow.$plan_id;?>)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
-                <div style="display: none;" class="row hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>" >
-                    <div class="col-md-12">
-                    <div class="col-md-12" style="border:1px solid #333; text-align:left;">
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
-                    <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
-                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
-                    <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
-                        <div class="col-md-12 no-padding">
+                <div style="display: none;" class="hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>" >
+                    <div>
                     <?php
                     $per = 0;
                     $single_person_rate = 0;
@@ -567,13 +560,39 @@ if($show == '1' && $total_price > 0){
 
                     //if($single_person_rate > 0){
                                         ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif</span></div>
-                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
+                    <span class="person-additional-traveler">
+                        Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif
+                    </span>
+                    <div class="person-additional-traveler-insured">Insured: <span style="color: #2b3481;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #2b3481;">$<?php echo number_format($person_price,2);?></span></div>
                     <?php $single_person_rate = '';}//} ?>
                     </div>
-                    </div>
-                    </div>
+                    <br>
+                    @if($plan->plan_pdf_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->benifit_summary_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->plan_pdf_without_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }}
+                    </a>
+                    @endif
+                    <br>
+                    @if($plan->benifit_summary_without_pre_existing)
+                    <a href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}" class="pdf-additional-travelers">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of {{ $existingshow }}
+                    </a>
+                    @endif
                 </div>
+
+                <h3 id="changeshowtoless<?php echo $newdeductibleforshow.$plan_id;?>" class="person-additional-traveler-h3" onclick="slideadditionaltravelers(<?php echo $newdeductibleforshow.$plan_id;?>)"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
           </div>
           <div class="col-md-3 price-limit">
               <div class="plan-coverage-limit">
@@ -1013,11 +1032,10 @@ if($show == '1' && $total_price > 0){
                 <div style="display: none;" class="row hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>" >
                     <div class="col-md-12">
                     <div class="col-md-12" style="border:1px solid #333; text-align:left;">
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
-                    <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
-                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
-                    <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
-                        <div class="col-md-12 no-padding">
+                    
+                    
+                    
+                    <div>
                     <?php
                     $per = 0;
                     $single_person_rate = 0;
@@ -1569,13 +1587,10 @@ if($second_show == '1' && $second_total_price > 0){
                   ?>
                 <h3 onclick="slideadditionaltravelers(<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
                 <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" >
-                    <div class="col-md-12">
-                    <div class="col-md-12" style="border:1px solid #333; text-align:left;">
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $second_plan_name;?> - <?php echo $second_plan_id;?></span></span></div>
-                    <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $second_num_of_days;?> (<?php echo $second_startdate;?> - <?php echo $second_enddate;?>)</span></small>
-                    <small>Total: <span style="color: #f5821f;">$second_<?php echo number_format($second_total_price,2);?></span></small></div>
-                    <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $second_deductible;?> (included in premium))</span></small></div>
-                        <div class="col-md-12 no-padding">
+                    
+                    
+                    
+                    <div class="">
                     <?php
                     $second_per = 0;
                     $second_single_person_rate = 0;
@@ -1673,8 +1688,6 @@ if($second_show == '1' && $second_total_price > 0){
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $second_per;?> @if($second_existingshow)({{$second_existingshow}}) @endif</span></div>
                     <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $second_person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($second_person_price,2);?></span></small></div>
                     <?php $second_single_person_rate = '';}//} ?>
-                    </div>
-                    </div>
                     </div>
                 </div>
           </div>
@@ -1786,7 +1799,7 @@ $second_daily_rate = 0;
 <script>
 
     $( document ).ready(function() {
-        var main = document.getElementById( 'main' );
+        var main = document.getElementById('main');
         [].map.call( main.children, Object ).sort( function ( a, b ) {
             return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
         }).forEach( function ( elem ) {
@@ -1799,6 +1812,13 @@ $second_daily_rate = 0;
 
 
     function slideadditionaltravelers(id) {
+        var text = $('#changeshowtoless'+id).text();
+        if(text == ' Show Details')
+        {
+            $('#changeshowtoless'+id).html('<i class="fa fa-minus-circle colorblue"></i> Hide Details');
+        }else{
+            $('#changeshowtoless'+id).html('<i class="fa fa-plus-circle colorblue"></i> Show Details');
+        }
         $(".hoverdetails_"+id).slideToggle();
     }
     function comparetest(){

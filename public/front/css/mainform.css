@@ -2653,7 +2653,7 @@ li.date_picker_week_day {
     font-size: 20px;
 }
 .plan-coverage-limit{
-    margin-top: 37px;
+/*    margin-top: 37px;*/
 }
 .plan-coverage-limits{
     margin-top: 14px;
@@ -2689,7 +2689,6 @@ li.date_picker_week_day {
     border-radius: 33px;
 }
 .total-price-traveller{
-    margin-top: 21px;
     text-align: center;
 }
 .compare-checkbox {
@@ -2706,7 +2705,7 @@ li.date_picker_week_day {
     color: #67778f;
 }
 .qoute-logo{
-    margin-top: 30px;
+/*    margin-top: 30px;*/
 }
 .qoute-policy{
     font-size: 21px;
@@ -3045,3 +3044,35 @@ fieldset .input{
         margin: auto;
         margin-top: 42px;
     }
+
+.person-additional-traveler{
+    display:block;
+    margin-top: 10px;
+    color: #5ea047;
+    font-size: 14px;
+    font-weight: 800;
+    text-align:left;
+    border-bottom:1px dashed #333;
+}
+.person-additional-traveler-insured{
+    color: #5ea047;
+    font-size: 14px;
+    font-weight: 800;
+    text-align:left;
+}
+
+.pdf-additional-travelers{
+    color: #2b3481;
+    font-size: 14px;
+    font-weight: 800;
+}
+.person-additional-traveler-h3{
+    color: #5ea047;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;   
+}
+.colorblue{
+    color: #2b3481;
+}
