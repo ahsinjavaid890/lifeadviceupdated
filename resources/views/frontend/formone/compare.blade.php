@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/main.e400e25c.css">
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
 <link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/chunk-676de1c8.17873b80.css">
-<main data-v-89c571b4="" class="LayoutDefaultMain">
+<main  class="LayoutDefaultMain">
 <?php
 $startdate = $request->departure_date;
 $enddate = $request->return_date;
@@ -21,34 +21,39 @@ $rate=explode(",", rtrim($request->rate));
 <?php
       $planid=explode(",", rtrim($_REQUEST['ids']));
 ?>
-   <div data-v-89c571b4="" class="quote-compare__template">
-      <section data-v-7ed33357="" class="hero hero-quote-compare" data-v-89c571b4="">
-         <div data-v-7ed33357="" class="grid-container">
-            <div data-v-7ed33357="" class="grid-row mb-3">
-               <div data-v-7ed33357="" class="quote-compare__heading-row top-row">
-                  <div data-v-7ed33357="" class="breadCrumbs grid-container-lg-fluid">
+   <div  class="quote-compare__template">
+      <section  class="hero hero-quote-compare" >
+         <div  class="grid-container">
+            <div  class="grid-row mb-3">
+               <div  class="quote-compare__heading-row top-row">
+                  <div  class="breadCrumbs grid-container-lg-fluid">
                      <div class="page-breadcrumbs-wrapper">
                         <ul class="v-breadcrumbs theme--light">
                            <a href="javascript:void(0)" aria-current="page" class="v-breadcrumbs__item router-link-exact-active router-link-active"><span>Compare Plans</span></a>
                         </ul>
                      </div>
                   </div>
-                  <div data-v-7ed33357="" class="mail-btn-wrap d-flex"><a style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " href="javascript:void(0)" onclick="javascript:window.print()" class="button button-primary button-rounded">Print</a><a href="{{ url('sendcompareemail') }}?email={{$request->email}}&product_id={{$request->product_id}}&ids={{$request->ids}}&default_value={{$request->default_value}}&price_value={{$request->price_value}}&rate={{$request->rate}}" style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " class="button button-primary button-rounded"> Email Comparison </a></div>
+                  <div  class="mail-btn-wrap d-flex"><a style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " href="javascript:void(0)" onclick="javascript:window.print()" class="button button-primary button-rounded">Print</a><a href="{{ url('sendcompareemail') }}?email={{$request->email}}&product_id={{$request->product_id}}&ids={{$request->ids}}&default_value={{$request->default_value}}&price_value={{$request->price_value}}&rate={{$request->rate}}" style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " class="button button-primary button-rounded"> Email Comparison </a></div>
                </div>
             </div>
-            <div data-v-7ed33357="" class="grid-row quote-compare__cards-row">
+            <div  class="grid-row quote-compare__cards-row">
 
 
                <?php 
                for($i=0;$i<count($planid);$i++){
                   $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
                   $planname = $plan->plan_name;
+                  $insurance_company = $plan->insurance_company;
+
+                  $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
                ?>
-               <div data-v-7ed33357="" class="grid-col-4 col_card-plan">
-                  <div data-v-7ed33357="" class="card card-plan card-plan--compare" style="--data-color:#ff6600;">
+               <div  class="grid-col-4 col_card-plan">
+                  <div  class="card card-plan card-plan--compare" style="--data-color:#ff6600;">
                      <div class="plan-label heading-4">
                         <div class="d-flex">
-                           <span style="height:80px;"><?php echo $planname;?></span>
+                           <span style="height:80px;">
+                              <img src="{{ url('public/images') }}/{{ $company->comp_logo }}">
+                           </span>
                         </div>
                      </div>
                      <p class="plan-subheading body-text-3 text-secondary-color">Coverage : </p>
@@ -66,7 +71,7 @@ $rate=explode(",", rtrim($request->rate));
             </div>
          </div>
       </section>
-      <section class="quote-compare__spec-content" data-v-89c571b4="">
+      <section class="quote-compare__spec-content" >
          <div class="grid-container">
             <div  class="grid-row pt-3">
                <div  class="grid-col highlight-diff">
@@ -113,7 +118,7 @@ $rate=explode(",", rtrim($request->rate));
             </div>
          </div>
       </section>
-      <section class="quote-compare__disclaimer" style="padding-top:0;" data-v-89c571b4="">
+      <section class="quote-compare__disclaimer" style="padding-top:0;" >
          <div class="grid-container">
             <div class="grid-row">
                <div class="grid-col-12">
