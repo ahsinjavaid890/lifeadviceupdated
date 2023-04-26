@@ -127,8 +127,19 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->ages)){
-    $ages_array = array_filter($request->ages);
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
     $younger_age = min($ages_array);
     $elder_age = max($ages_array);
     $number_travelers = count($ages_array);
@@ -138,6 +149,8 @@ else {
     $elder_age = 0;
     $number_travelers = 1;
 }
+
+ 
 
 if($request->familyplan_temp == 'yes'){
     if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
@@ -213,6 +226,8 @@ if(displayvalue == '0'){
         $plan_name = $plan->plan_name;
         $insurance_company = $plan->insurance_company;
         $premedical = $plan->premedical;
+        $pre_existing_name = $plan->pre_existing_name;
+        $without_pre_existing_name = $plan->without_pre_existing_name;
         $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
         $monthly_two = $plan->monthly_two;
         $flatrate = $plan->flatrate;
@@ -227,7 +242,7 @@ if(displayvalue == '0'){
         $plan_discount_rate = $plan->discount_rate;
 
         $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
-        if($sales_tax)
+        if($sales_tax != 0)
         {
             $salestaxeplode = explode('%', $sales_tax);
             $salestax_rate = $salestaxeplode[0];
@@ -299,15 +314,31 @@ if(displayvalue == '0'){
 
                 if(!$daily_rate){ $display = '0'; }
             } else {
+                $perone = 0;
                 foreach($ages_array as $person_age){
+                    $perone++;
                    $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                   if($plan_rates)
+                   
+                   $countarray =  count($plan_rates);
+                   if($countarray > 0)
                    {
-                        $dailyrate = $plan_rates[0]->rate;
-                        $daily_rate += $dailyrate;
-                        if($dailyrate == ''){ $dailyrate = 0; }
-                        $display[] =  $dailyrate;
-                        $dailyrate = 0;
+
+                        if($request->pre_existing[$perone-1]=='yes')
+                        {
+                            $dailyrate = $plan_rates[0]->rate_with_pre_existing;
+                            $daily_rate += $dailyrate;
+                            if($dailyrate == ''){ $dailyrate = 0; }
+                            $display[] =  $dailyrate;
+                            $dailyrate = 0;
+                        }else{
+                            $dailyrate = $plan_rates[0]->rate_without_pre_existing;
+                            $daily_rate += $dailyrate;
+                            if($dailyrate == ''){ $dailyrate = 0; }
+                            $display[] =  $dailyrate;
+                            $dailyrate = 0;
+                        }
+
+ 
                    }
                     
                 }
@@ -341,13 +372,20 @@ $flat_price = 0;
 //totaldaysprice
 $totaldaysprice = $total_price;
 //SALES TAX
-if($salestax_dest == $post_dest){
-//$salesequal = 'yes';
-$salestaxes = ($salestax_rate * $totaldaysprice) / 100;
-} else {
-$salestaxes = 0;
-//$salesequal = 'no';
+
+if($sales_tax != 0)
+{
+    if($salestax_dest == $post_dest){
+    //$salesequal = 'yes';
+    $salestaxes = ($salestax_rate * $totaldaysprice) / 100;
+    } else {
+    $salestaxes = 0;
+    //$salesequal = 'no';
+    }
+}else{
+    $salestaxes = 0;
 }
+
 
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
@@ -469,91 +507,113 @@ font-weight:bold;
                                         Age: <?php echo $person_age; ?><br/>
                                         Coverage Amount: <?php echo $sum_insured; ?> <br/>
                                         Premium  <?php
-                    $p_plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+
+                    $countarraytwo =  count($p_planrates);
+
+                    if($countarraytwo > 0)
+
+                    {
+                        if($request->pre_existing[$per-1]=='yes')
+                        {
+                            $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
+                            $existingshow = $pre_existing_name;
+                        }else{
+                            $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
+                            $existingshow = $without_pre_existing_name;
+                        }
+                        if($family_plan == 'yes' && $elder_age != $person_age){
+                        $person_daily = 0;
+                        } else if($family_plan == 'yes' && $elder_age == $person_age){
+                        $person_daily = $single_person_rate * 2;
+                        } else {
+                        $person_daily = $single_person_rate;
+                        }
+
+                        if($rate_base == '0'){ // if daily rate
+                        $person_price = $person_daily * $num_of_days;
+                        } else if($rate_base == '1'){ //if monthly rate
+                        $person_price = $person_daily * $num_months;
+                        } else if($rate_base == '2'){ // if yearly rate
+                        $person_price = $person_daily;
+                        }
+                        else if($rate_base == '3'){ // if multi days rate
+                        $person_price = $person_daily;
+                        }
+
+                        if($flatrate_type == 'each'){
+                        $p_flat_price = $flatrate;
+                        }else if($flatrate_type == 'total'){
+                        $p_flat_price = $flatrate  / $number_travelers;
+                        } else {
+                        $p_flat_price = 0;
+                        }
+                        //totaldaysprice
+                        $ptotaldaysprice = $person_price;
+                        //SALES TAX
+
+                        if($sales_tax != 0)
+                        {
+                            if($salestax_dest == $post_dest){
+                            //$salesequal = 'yes';
+                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                            } else {
+                            $p_salestaxes = 0;
+                            //$salesequal = 'no';
+                            }
+                        }else{
+                            $p_salestaxes = 0;
+                        }
+
+                        
+
+                        //SMOKE RATE
+                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                        if($smoke == '0'){
+
+                            if($smoke_rate == 0)
+                            {
+                                $p_smoke_price = 0;
+                            }else{
+                               $p_smoke_price = $smoke_rate;
+                            }
 
 
-                    $single_person_rate = $p_plan_rates[0]->rate;
+                        } else if($smoke == '1'){
+                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
+                        }
+                        } else {
+                        $p_smoke_price = 0;
+                        }
 
-if($family_plan == 'yes' && $elder_age != $person_age){
-$person_daily = 0;
-} else if($family_plan == 'yes' && $elder_age == $person_age){
-$person_daily = $single_person_rate * 2;
-} else {
-$person_daily = $single_person_rate;
-}
+                        // OTHERS
+                        $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 
-if($rate_base == '0'){ // if daily rate
-$person_price = $person_daily * $num_of_days;
-} else if($rate_base == '1'){ //if monthly rate
-$person_price = $person_daily * $num_months;
-} else if($rate_base == '2'){ // if yearly rate
-$person_price = $person_daily;
-}
-else if($rate_base == '3'){ // if multi days rate
-$person_price = $person_daily;
-}
+                        //Deductible
+                        $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                        $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                        if (strpos($deductsq->deductible2, '-') !== false) {
+                        //if deductible is in minus
+                        $p_discount = $p_deduct_discount + $p_cdiscount;
+                        $p_adddeductible = 0;
+                        } else {
+                        //if deductible is in plus
+                        $p_discount = $p_cdiscount;
+                        $p_adddeductible = $p_deduct_discount;
+                        }
 
-if($flatrate_type == 'each'){
-$p_flat_price = $flatrate;
-}else if($flatrate_type == 'total'){
-$p_flat_price = $flatrate  / $number_travelers;
-} else {
-$p_flat_price = 0;
-}
-//totaldaysprice
-$ptotaldaysprice = $person_price;
-//SALES TAX
-if($salestax_dest == $post_dest){
-//$salesequal = 'yes';
-$p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-} else {
-$p_salestaxes = 0;
-//$salesequal = 'no';
-}
-
-//SMOKE RATE
-if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-if($smoke == '0'){
-
-    if($smoke_rate == 0)
-    {
-        $p_smoke_price = 0;
-    }else{
-       $p_smoke_price = $smoke_rate;
-    }
+                        $person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
+                        $p_discountonplan = 0;
+                        if($plan_discount == '1'){
+                        if($number_travelers > 1 && $family_plan == 'no'){
+                        $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
+                        }
+                        }
+                    }
 
 
-} else if($smoke == '1'){
-$p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
-}
-} else {
-$p_smoke_price = 0;
-}
 
-// OTHERS
-$p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 
-//Deductible
-$p_deduct_discount = ($person_price * $deduct_rate) / 100;
-$p_cdiscount = ($person_price * $cdiscountrate) / 100;
-if (strpos($deductsq->deductible2, '-') !== false) {
-//if deductible is in minus
-$p_discount = $p_deduct_discount + $p_cdiscount;
-$p_adddeductible = 0;
-} else {
-//if deductible is in plus
-$p_discount = $p_cdiscount;
-$p_adddeductible = $p_deduct_discount;
-}
-
-$person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
-$p_discountonplan = 0;
-if($plan_discount == '1'){
-if($number_travelers > 1 && $family_plan == 'no'){
-$p_discountonplan = ($plan_discount_rate * $person_price) / 100;
-}
-}
-$person_price = $person_price - $p_discountonplan;
                     ?>
                     <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> </span></div>
                     <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Coverage Amount: <span style="color: #f5821f;">$<?php echo $sum_insured;?></span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>

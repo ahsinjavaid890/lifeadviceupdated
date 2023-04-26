@@ -117,147 +117,24 @@
                      <div class="col-md-12 ageandcitizen" style="padding: 1px 15px; display: none;">
                         @if(isset($fields['dob']))
                         @if($fields['dob'] == 'on')
-                        <div class="col-md-12 no-padding">
-                           <h3><i class="fa fa-user"></i> Primary Traveler</h3>
-                        <div class="row yearsdiv">
-                           <div class="col-md-5">
-                              <small style="font-size: 12px;color: #999;">Age</small>
-                              <input type="text" name="ages[]" id="ages[]" value="" class="primaryage" maxlength="3" style="margin-top: -5px !important;display: block;" id="searchTxt">
+                           <div class="row"> 
+                                 <div class="col-md-6">
+                                    <label>Enter Date Of Bith</label>
+                                    <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                 </div>
+                                 <div class="col-md-6 positionrelative">
+                                       <label>Pre Existing Condition</label>
+                                       <select name="pre_existing[]" class="pre_existing_condition1 form-control">
+                                          <option value="">Pre Existing Condition</option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                 </div>
                            </div>
-                           <div class="col-md-2 text-center" style="padding-top: 10px;">
-                              or
-                           </div>
-                           <div class="col-md-5" style="padding-top: 10px;">
-                              <a style="cursor: pointer;" onclick="$('.dobdiv').show(); $('.yearsdiv').hide()">Enter Date of Birth</a>
-                           </div>
-                        </div>
-                        
-                        <div class="row dobdiv" style="display:none;">
-                           <div class="col-md-12">
-                              <div class="col-md-6 no-padding">
-                                 <div class="col-md-4" style="padding: 0 5px;">
-                                    <small style="font-size: 12px;color: #999;padding: 0;">Month</small>
-                                    <input type="text" id="ages[]" style="margin-top: -5px !important;display: block;"  maxlength="2">
-                                 </div>
-                                 <div class="col-md-4" id="ages[]" style="padding: 0 5px;">
-                                    <small style="font-size: 12px;color: #999;padding: 0;">Day</small>
-                                    <input type="text" style="margin-top: -5px !important;display: block;" maxlength="2">
-                                 </div>
-                                 <div class="col-md-4" id="ages[]" style="padding: 0 5px;">
-                                    <small style="font-size: 12px;color: #999;padding: 0;">Year</small>
-                                    <input type="text" id="dob_year" onchange="calprimaryage()" style="margin-top: -5px !important;display: block;"  maxlength="4">
-                                 </div>
-                              </div>
-                              <script>
-                                 function calprimaryage(){
-                                 var currentyear = new Date().getFullYear();
-                                 var dobyear = document.getElementById('dob_year').value;
-                                 var primaryage = currentyear - dobyear;
-                                 $('.primaryage').val(primaryage);
-                                 }
-                              </script>
-                              <div class="col-md-6" style="padding-top: 10px;">
-                                 <div style="padding: 0;" class="col-md-2 text-center">
-                                    or
-                                 </div>
-                                 <div style="padding: 0;text-align: center;" class="col-md-10">
-                                    <a style="cursor: pointer;" onclick="$('.dobdiv').hide(); $('.yearsdiv').show()">Enter Age</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        </div>
                         @endif
                         @endif
                         @if($fields['traveller'] == 'on')
-                        <div class="col-md-12 no-padding" style="margin-top:10px;">
-                           <div class="col-md-10 no-padding" style="padding-top: 1px;">
-                              <h3><i class="fa fa-list-ul"></i> Additional Travelers</h3>
-                           </div>
-                           <div class="col-md-2 personswitch" style="padding-top: 25px;padding-right: 0;padding-left: 0;">
-                              <input type="checkbox" id="switch" style="float:right;" onclick="checkadditionals();" maxlength="3"><label for="switch">Toggle</label>
-                              <input type="hidden" id="temp_addi" value="0">
-                              <script>
-                                 function checkadditionals(){
-                                 if(document.getElementById('switch').checked == true){
-                                 document.getElementById('temp_addi').value = 1;
-                                 $('.additionals').show();
-                                 } else {
-                                 document.getElementById('temp_addi').value = 0;
-                                 $('.additionals').hide();
-                                 $('.add_1').val('');
-                                 }
-                                 }
-                              </script>
-                           </div>
-                        </div>
-                        <div class="col-md-12 no-padding additionals" style=" display:none;">
-                           <div class="birthday">
-                              <div class="col-md-3 add_1" style="padding-left: 0;">
-                                 <small style="font-size: 12px;color: #999;">Age</small>
-                                 <input type="text" name="years[]" class="add_1" value="" style="margin-top: -5px !important;display: block;" maxlength="3">
-                              </div>
-                           </div>
-                           <input type="hidden" id="current_adds" value="1">
-                           <input type="hidden" id="number_travelers" name="number_travelers" value="1">
-                           <script>
-                              function addfunc_0(){
-                              $(".add_0").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
-                              function addfunc_1(){
-                              $(".add_1").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
-                              function addfunc_2(){
-                              $(".add_2").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
-                              function addfunc_3(){
-                              $(".add_3").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
-                              function addfunc_4(){
-                              $(".add_4").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
-                              function addfunc_5(){
-                              $(".add_5").remove();
-                              var minus_traveller = document.getElementById('current_adds').value;
-                              document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
-                              $('.addmoretraveler').show();	
-                              }
                               
-                              function addtravellers(){
-                              var number_of_traveller = '5';
-                              var current_travellers = document.getElementById('current_adds').value;
-                              var current_id = parseFloat(current_travellers) + 1;
-                              var aa = '';
-                              aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
-                              if(current_travellers < number_of_traveller){
-                              document.getElementById('current_adds').value = parseFloat(current_travellers) + 1;
-                              $('.addmoretraveler').fadeIn(300);	
-                              $(".birthday").append(aa);
-                              if(current_travellers == '4'){ $('.addmoretraveler').hide(); }
-                              } else {
-                              $('.addmoretraveler').fadeOut(300);	
-                              }
-                              }
-                           </script>
-                           <div class="col-md-2 text-center addmoretraveler" style="padding-top:20px;">
-                              <a class="addmorebtn" onclick="addtravellers();"><i class="fa fa-plus" style="position: relative;top: 0px;left: 0px;"></i></a>
-                           </div>
-                        </div>
                         @endif
                         @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
