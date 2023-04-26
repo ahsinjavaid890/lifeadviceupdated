@@ -7,34 +7,6 @@
     $('.selecttwo').select2();
 });
 </script>
-<script>
-    
-   var SliderValues = [100000, 150000, 200000, 250000, 300000];
-   
-   var iValue = SliderValues.indexOf(SliderValues[0]);
-   $(function () {
-       $("#sum_slider").slider({
-        range: "min",
-           min: 0,
-           max: SliderValues.length - 1,
-           step: 1,
-        value: iValue,
-           slide: function (event, ui) {
-               $('#coverage_amount').text(SliderValues[ui.value]);
-            //alert(SliderValues.length);
-   for (i = 0; i < SliderValues.length; i++) {
-   var group = SliderValues[i];
-   $('.coverage-amt-'+group).hide();
-   }
-            $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
-            $( "#sum_insured2").val(SliderValues[ui.value]);
-           }
-       });
-   
-   });
-     
-</script>
 <div class="container birthdate new-visa mt-5 mb-5">
    <div class="row" style="padding:40px 0;">
       <div class="col-md-4 hidden-xs">
@@ -44,23 +16,7 @@
          <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
             @csrf
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">               
-               @if(isset($fields['sum_insured']))
-               @if($fields['sum_insured'] == 'on')
-               <div id="sum_insured2">
-                  <div class="col-md-12 col-sm-12 col-xs-12 control-label mt-3" style="text-align: left; margin-top: -50px;">
-                     <h4 class="coverage">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$"></h4>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
-                     <div id="sum_slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                        <div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
-                     </div>
-                     <input type="hidden" id="sum_insured2" name="sum_insured2" value="100000">
-                     <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
-                  </div>
-               </div> 
-               @endif
-               @endif
+               
             <div class="row">
                 @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
@@ -122,7 +78,7 @@
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
                                  <label for="primary_destination" class="form-label">States In Canda</label>
@@ -133,7 +89,7 @@
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
                                  <label for="primary_destination" class="form-label">States In Canda</label>
@@ -146,7 +102,7 @@
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
                                  <label for="primary_destination" class="form-label">States In Canda</label>
@@ -199,22 +155,21 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                    <div style="padding-left: 0px;" class="col-md-4">
+                                    <div style="padding-left: 0px;" class="col-md-6">
                                        <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="day{{$i}}" class="form-input">
-                                          <label for="day{{$i}}" class="form-label">Day</label>
+                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                              
+                                    <div style="padding-right: 0px;" class="col-md-6">
                                        <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="month{{$i}}" class="form-input">
-                                          <label for="month{{$i}}" class="form-label">Month</label>
-                                       </div>
-                                    </div>
-                                    <div style="padding-right: 0px;" class="col-md-4">
-                                       <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="year{{$i}}" class="form-input">
-                                          <label for="year{{$i}}" class="form-label">Year</label>
+                                          <select name="pre_existing[]" class="form-input">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                           </select>
+                                          <label for="year{{$i}}" class="form-label">Select Pre Existing</label>
                                        </div>
                                     </div>
                                  </div>
@@ -225,7 +180,7 @@
                      @endif
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                     <div class="col-md-6">
+                     <div class="col-md-12">
                         <div class="custom-form-control">
                            <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
                            <label for="savers_email" class="form-label">Email</label>
@@ -300,20 +255,7 @@
                               $position_array[$i] = $key;
                            }
                         @endphp
-                        @if(isset($fields['pre_existing']))
-                           @if($fields['pre_existing'] == 'on')
-                              @php
-                                 $num = array_search("pre_existing", $position_array); 
-                                 $current_values[$num] = 'group_16'; 
-                              @endphp
-                              <div class="col-md-6 no-padding check_condtion">
-                                 <h3>Pre-existing Condition ?</h3>
-                                 <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                 </div>
-                              </div>
-                           @endif
-                        @endif
+                        
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
                               @php

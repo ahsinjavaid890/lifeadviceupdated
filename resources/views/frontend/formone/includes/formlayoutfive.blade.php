@@ -4,9 +4,9 @@
    <h2 style="margin-top: -10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
 <div class="container birthdate new-visa mb-5 mt-5" style="padding: 20px;">
-         <form method="POST" action="{{ url('') }}">
+         <form method="POST" action="{{ url('quotes') }}">
                   @csrf
-               
+                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
@@ -113,7 +113,7 @@
                                  <select required class="form-control selecttwo" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
                                  <label for="primary_destination" class="form-label">States In Canda</label>
@@ -123,13 +123,13 @@
 
                            <div class="col-md-6" >
                               <div class="custom-form-control">
-                                 <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
-                                    <option value="">Select Country</option>
-                                    @foreach(DB::table('countries')->get() as $r)
-                                       <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label">Primary Destination</label>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            @endif
@@ -166,22 +166,21 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                    <div style="padding-left: 0px;" class="col-md-4">
+                                    <div style="padding-left: 0px;" class="col-md-6">
                                        <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="day{{$i}}" class="form-input">
-                                          <label for="day{{$i}}" class="form-label">Day</label>
+                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                              
+                                    <div style="padding-right: 0px;" class="col-md-6">
                                        <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="month{{$i}}" class="form-input">
-                                          <label for="month{{$i}}" class="form-label">Month</label>
-                                       </div>
-                                    </div>
-                                    <div style="padding-right: 0px;" class="col-md-4">
-                                       <div class="custom-form-control">
-                                          <input type="text" name="fname" placeholder="firstname" id="year{{$i}}" class="form-input">
-                                          <label for="year{{$i}}" class="form-label">Year</label>
+                                          <select name="pre_existing[]" class="form-input">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                           </select>
+                                          <label for="year{{$i}}" class="form-label">Select Pre Existing</label>
                                        </div>
                                     </div>
                                  </div>
@@ -248,20 +247,7 @@
                               $position_array[$i] = $key;
                            }
                         @endphp
-                        @if(isset($fields['pre_existing']))
-                           @if($fields['pre_existing'] == 'on')
-                              @php
-                                 $num = array_search("pre_existing", $position_array); 
-                                 $current_values[$num] = 'group_16'; 
-                              @endphp
-                              <div class="col-md-6 no-padding check_condtion">
-                                 <h3>Pre-existing Condition ?</h3>
-                                 <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="pre_existing" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="pre_existing" value="no" checked="" style="width: auto !important;height: auto;"> No</label>
-                                 </div>
-                              </div>
-                           @endif
-                        @endif
+                        
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
                               @php
