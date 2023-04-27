@@ -124,17 +124,28 @@ $supervisa = 'no';
  
     $years = array();
 
-if (is_array($request->ages)){
-    $ages_array = array_filter($request->ages);
-    $younger_age = min($ages_array);
-    $elder_age = max($ages_array);
-    $number_travelers = count($ages_array);
-}
-else {
-    $younger_age = 0;
-    $elder_age = 0;
-    $number_travelers = 1;
-}
+    foreach ($request->years as $r) {
+        if($r)
+        {
+            $bday = new DateTime($r); // Your date of birth
+            $today = new Datetime(date('m.d.y'));
+            $diff = $today->diff($bday);
+            $years[] =  $diff->y;
+        }
+    }
+
+
+    if (is_array($years)){
+        $ages_array = array_filter($years);
+        $younger_age = min($ages_array);
+        $elder_age = max($ages_array);
+        $number_travelers = count($ages_array);
+    }
+    else {
+        $younger_age = 0;
+        $elder_age = 0;
+        $number_travelers = 1;
+    }
 
 if($request->familyplan_temp == 'yes'){
     if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
@@ -194,6 +205,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
         $plan_id = $plan->id;
         $plan_name = $plan->plan_name;
+        $pre_existing_name = $plan->pre_existing_name;
+        $without_pre_existing_name = $plan->without_pre_existing_name;
         $insurance_company = $plan->insurance_company;
         $premedical = $plan->premedical;
         $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
@@ -210,7 +223,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         $plan_discount_rate = $plan->discount_rate;
 
         $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
-        if($sales_tax)
+        if($sales_tax != 0)
         {
             $salestaxeplode = explode('%', $sales_tax);
             $salestax_rate = $salestaxeplode[0];
@@ -282,15 +295,31 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
                 if(!$daily_rate){ $display = '0'; }
             } else {
+                $perone = 0;
                 foreach($ages_array as $person_age){
+                    $perone++;
                    $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                   if($plan_rates)
+                   
+                   $countarray =  count($plan_rates);
+                   if($countarray > 0)
                    {
-                        $dailyrate = $plan_rates[0]->rate;
-                        $daily_rate += $dailyrate;
-                        if($dailyrate == ''){ $dailyrate = 0; }
-                        $display[] =  $dailyrate;
-                        $dailyrate = 0;
+
+                        if($request->pre_existing[$perone-1]=='yes')
+                        {
+                            $dailyrate = $plan_rates[0]->rate_with_pre_existing;
+                            $daily_rate += $dailyrate;
+                            if($dailyrate == ''){ $dailyrate = 0; }
+                            $display[] =  $dailyrate;
+                            $dailyrate = 0;
+                        }else{
+                            $dailyrate = $plan_rates[0]->rate_without_pre_existing;
+                            $daily_rate += $dailyrate;
+                            if($dailyrate == ''){ $dailyrate = 0; }
+                            $display[] =  $dailyrate;
+                            $dailyrate = 0;
+                        }
+
+ 
                    }
                     
                 }
@@ -324,12 +353,17 @@ $flat_price = 0;
 //totaldaysprice
 $totaldaysprice = $total_price;
 //SALES TAX
-if($salestax_dest == $post_dest){
-//$salesequal = 'yes';
-$salestaxes = ($salestax_rate * $totaldaysprice) / 100;
-} else {
-$salestaxes = 0;
-//$salesequal = 'no';
+if($sales_tax != 0)
+{
+    if($salestax_dest == $post_dest){
+    //$salesequal = 'yes';
+    $salestaxes = ($salestax_rate * $totaldaysprice) / 100;
+    } else {
+    $salestaxes = 0;
+    //$salesequal = 'no';
+    }
+}else{
+    $salestaxes = 0;
 }
 
 //SMOKE RATE
@@ -413,10 +447,21 @@ Summary & Info
                                         Age: <?php echo $person_age; ?><br/>
                                         Coverage Amount: <?php echo $sum_insured; ?> <br/>
                                         Premium  <?php
-                    $p_plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
+                    $countarraytwo =  count($p_planrates);
 
-                    $single_person_rate = $p_plan_rates[0]->rate;
+                    if($countarraytwo > 0)
+
+                    {
+                        if($request->pre_existing[$per-1]=='yes')
+                        {
+                            $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
+                            $existingshow = $pre_existing_name;
+                        }else{
+                            $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
+                            $existingshow = $without_pre_existing_name;
+                        }
 
 if($family_plan == 'yes' && $elder_age != $person_age){
 $person_daily = 0;
@@ -447,13 +492,18 @@ $p_flat_price = 0;
 //totaldaysprice
 $ptotaldaysprice = $person_price;
 //SALES TAX
-if($salestax_dest == $post_dest){
-//$salesequal = 'yes';
-$p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-} else {
-$p_salestaxes = 0;
-//$salesequal = 'no';
-}
+if($sales_tax != 0)
+                        {
+                            if($salestax_dest == $post_dest){
+                            //$salesequal = 'yes';
+                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                            } else {
+                            $p_salestaxes = 0;
+                            //$salesequal = 'no';
+                            }
+                        }else{
+                            $p_salestaxes = 0;
+                        }
 
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
@@ -492,7 +542,7 @@ $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
 $person_price = $person_price - $p_discountonplan;
 
                                         echo number_format($person_price,2); ?>
-                                        <?php } ?>
+                                        <?php } }?>
                                         </p>
                                         
                                              <p style="margin:0;"><b>Duration:</b> <?php echo $num_of_days; ?> days (<?php echo $startdate . " - " . $enddate; ?>)</p>
@@ -536,7 +586,6 @@ $person_price = $person_price - $p_discountonplan;
 $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
 $agent = $request->agent;
 $broker = $request->broker;
-$buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
 <div class="col-md-3 hidden-xs col-xs-12 text-center" style="padding-top: 15px;">
 <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
@@ -583,7 +632,39 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
                             
 <div style="clear:both;"></div>
 <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
-<form method="post" action="<?php echo $buynow_url;?>">
+<form method="post" action="{{ url('apply') }}">
+
+    @csrf
+    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+    <input type="hidden" value="{{ $request->fname }}" name="fname">
+    <input type="hidden" value="{{ $request->lname }}" name="lname">
+    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+    @foreach($request->years as $year)
+    <input type="hidden" name="years[]" value="{{ $year }}">
+    @endforeach
+    <input type="hidden" value="{{ $num_of_days }}" name="days">
+    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+    <input type="hidden" value="{{ $plan_name }}" name="planname">
+    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+    <input type="hidden" value="{{ $enddate }}" name="tripend">
+    <input type="hidden" value="{{ $total_price }}" name="premium">
+    <input type="hidden" value="{{ $request->destination }}" name="destination">
+    <input type="hidden" value="" name="cdestination">
+    <input type="hidden" value="{{ $product_name }}" name="product_name">
+    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+    <input type="hidden" value="{{ $dob }}" name="dob">
+    <input type="hidden" value="{{ $agent }}" name="agent">
+    <input type="hidden" value="{{ $broker }}" name="broker">
     <div class="row">
 <div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding: 10px;">
 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>

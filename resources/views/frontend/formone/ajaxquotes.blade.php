@@ -1211,39 +1211,39 @@ if($show == '1' && $total_price > 0){
               </div>
               <div class="buy_now"> 
                 <form method="POST" action="{{ url('apply') }}">
-                @csrf
-                <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                <input type="hidden" value="{{ $request->fname }}" name="fname">
-                <input type="hidden" value="{{ $request->lname }}" name="lname">
-                <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-                <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-                <input type="hidden" value="{{ $deductible }}" name="deductibles">
-                <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-                <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($years as $year)
-                <input type="hidden" name="years[]" value="{{ $year }}">
-                @endforeach
-                <input type="hidden" value="{{ $num_of_days }}" name="days">
-                <input type="hidden" value="{{ $comp_name }}" name="companyName">
-                <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-                <input type="hidden" value="{{ $plan_name }}" name="planname">
-                <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-                <input type="hidden" value="{{ $startdate }}" name="tripdate">
-                <input type="hidden" value="{{ $enddate }}" name="tripend">
-                <input type="hidden" value="{{ $total_price }}" name="premium">
-                <input type="hidden" value="{{ $request->destination }}" name="destination">
-                <input type="hidden" value="" name="cdestination">
-                <input type="hidden" value="{{ $product_name }}" name="product_name">
-                <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                <input type="hidden" value="{{ $request->primary_destination }}" name="country">
-                <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-                <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-                <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                <input type="hidden" value="{{ $dob }}" name="dob">
-                <input type="hidden" value="{{ $agent }}" name="agent">
-                <input type="hidden" value="{{ $broker }}" name="broker">
-                <button class="btn btn-block text-white" type="submit">Buy</button>
-              </form>
+                    @csrf
+                    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                    <input type="hidden" value="{{ $request->fname }}" name="fname">
+                    <input type="hidden" value="{{ $request->lname }}" name="lname">
+                    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                    @foreach($years as $year)
+                    <input type="hidden" name="years[]" value="{{ $year }}">
+                    @endforeach
+                    <input type="hidden" value="{{ $num_of_days }}" name="days">
+                    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                    <input type="hidden" value="{{ $plan_name }}" name="planname">
+                    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                    <input type="hidden" value="{{ $enddate }}" name="tripend">
+                    <input type="hidden" value="{{ $total_price }}" name="premium">
+                    <input type="hidden" value="{{ $request->destination }}" name="destination">
+                    <input type="hidden" value="" name="cdestination">
+                    <input type="hidden" value="{{ $product_name }}" name="product_name">
+                    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+                    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                    <input type="hidden" value="{{ $dob }}" name="dob">
+                    <input type="hidden" value="{{ $agent }}" name="agent">
+                    <input type="hidden" value="{{ $broker }}" name="broker">
+                    <button class="btn btn-block text-white" type="submit">Buy</button>
+                </form>
               </div>
           </div>
       </div>

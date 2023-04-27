@@ -252,7 +252,7 @@
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Street Number and Name</label>
 						                        <input class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
-												<div id="map-canvas" style="display: none;"></div>
+												<div id="map-canvas" ></div>
 						                    </div>
 										</div>
 										<div class="col-md-6 mt-3">

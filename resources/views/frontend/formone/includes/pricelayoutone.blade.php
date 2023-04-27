@@ -390,18 +390,17 @@ if($sales_tax != 0)
 //SMOKE RATE
 if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
 if($smoke == '0'){
-    if($smoke_rate == 0)
-    {
-        $smoke_price = 0;
-    }else{
-        $smoke_price = $smoke_rate;
+        if($smoke_rate == 0)
+        {
+            $smoke_price = 0;
+        }else{
+            $smoke_price = $smoke_rate;
+        }
+    } else if($smoke == '1'){
+    $smoke_price = ($totaldaysprice * $smoke_rate) / 100;
     }
-
-} else if($smoke == '1'){
-$smoke_price = ($totaldaysprice * $smoke_rate) / 100;
-}
-} else {
-$smoke_price = 0;
+    } else {
+    $smoke_price = 0;
 }
 
 
@@ -635,7 +634,6 @@ font-weight:bold;
 $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
 $agent = $request->agent;
 $broker = $request->broker;
-$buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
     <div class="compare col-md-3 col-xs-12 text-center"><a class="submit-btn col-md-12 col-xs-5 " onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 6px 10px;font-size: 16px;display: block;color: #FFF; margin-bottom:5px;margin-top: 10px;border-radius: 6px;border-bottom: 2px solid #999;box-shadow: none;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
     <div class="col-xs-2 visible-xs">&nbsp;</div>
@@ -647,33 +645,36 @@ $buynow_url = "".url('apply')."?email=$request->email&coverage=".$sum_insured."&
     <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
        <form method="POST" action="{{ url('apply') }}">
         @csrf
-        <input type="hidden" value="{{ $request->savers_email }}" name="email">
-        <input type="hidden" value="{{ $request->fname }}" name="fname">
-        <input type="hidden" value="{{ $request->lname }}" name="lname">
-        <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-        <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-        <input type="hidden" value="{{ $deductible }}" name="deductibles">
-        <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-        <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-        <input type="hidden" value="{{ $num_of_days }}" name="days">
-        <input type="hidden" value="{{ $comp_name }}" name="companyName">
-        <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-        <input type="hidden" value="{{ $plan_name }}" name="planname">
-        <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-        <input type="hidden" value="{{ $startdate }}" name="tripdate">
-        <input type="hidden" value="{{ $enddate }}" name="tripend">
-        <input type="hidden" value="{{ $total_price }}" name="premium">
-        <input type="hidden" value="{{ $request->destination }}" name="destination">
-        <input type="hidden" value="" name="cdestination">
-        <input type="hidden" value="{{ $product_name }}" name="product_name">
-        <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-        <input type="hidden" value="{{ $request->primary_destination }}" name="country">
-        <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-        <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-        <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-        <input type="hidden" value="{{ $dob }}" name="dob">
-        <input type="hidden" value="{{ $agent }}" name="agent">
-        <input type="hidden" value="{{ $broker }}" name="broker">
+    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+    <input type="hidden" value="{{ $request->fname }}" name="fname">
+    <input type="hidden" value="{{ $request->lname }}" name="lname">
+    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+    @foreach($request->years as $year)
+    <input type="hidden" name="years[]" value="{{ $year }}">
+    @endforeach
+    <input type="hidden" value="{{ $num_of_days }}" name="days">
+    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+    <input type="hidden" value="{{ $plan_name }}" name="planname">
+    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+    <input type="hidden" value="{{ $enddate }}" name="tripend">
+    <input type="hidden" value="{{ $total_price }}" name="premium">
+    <input type="hidden" value="{{ $request->destination }}" name="destination">
+    <input type="hidden" value="" name="cdestination">
+    <input type="hidden" value="{{ $product_name }}" name="product_name">
+    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+    <input type="hidden" value="{{ $dob }}" name="dob">
+    <input type="hidden" value="{{ $agent }}" name="agent">
+    <input type="hidden" value="{{ $broker }}" name="broker">
           <div class="row">
              <div class="col-md-6" style="background:#F9F9F9;">
                 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
