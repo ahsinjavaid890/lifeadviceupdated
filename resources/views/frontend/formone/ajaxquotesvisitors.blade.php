@@ -113,7 +113,7 @@ $('.coverage-amt-'+group).hide();
           </div>
         </div>     
     </div>
-    <div id="main" class="col-md-8">
+    <div id="main " class="col-md-8">
         
     
 <?php
@@ -425,7 +425,7 @@ if($monthly_two == '1'){
 if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
 
-if($show == '1' && $total_price > 0){
+if($show == '1' && $total_price > 0){}
 
   ?>
 

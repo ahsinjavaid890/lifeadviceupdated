@@ -100,7 +100,7 @@
     width: 100%;
     background: #fff;
     position: relative;
-    left: 21%;
+    /* left: 21%; */
     top: -31px;
 }
 .get-quotes-button{
@@ -1507,18 +1507,18 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
             top: 0%;
         }
         .mean-container a.meanmenu-reveal span {
-            /* top: 0px;
-            margin-top: 5px; */
+            top: 0px;
+            margin-top: 5px;
         }
         .quotes-generator-bar .form-input {
             width: -webkit-fill-available;
         }
     }
-    @media (min-width: 780px) and (max-width: 910px){
-     .quotes-generator-bar .generator-bar-row-wrap {
-     grid-template-columns: 137px 185px 266px 98px;
-     grid-gap: 0px;
-     }
+   @media (min-width: 780px) and (max-width: 910px){
+    .quotes-generator-bar .generator-bar-row-wrap {
+    grid-template-columns: 137px 185px 266px 98px;
+    grid-gap: 0px;
+    }
     .qoute-card {
         border-radius: 1rem;
         box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
@@ -2108,8 +2108,8 @@ input::-webkit-inner-spin-button {
 }
 @media screen and (min-width:300px) and (max-width:768px) {
     .mean-container a.meanmenu-reveal span {
-        /* top: 0px;
-        margin-top: 5px; */
+        top: 0px;
+        margin-top: 5px;
     }
 
 }
@@ -2254,27 +2254,23 @@ input::-webkit-inner-spin-button {
     margin-left: -15px;
 }
 }
-@media screen and (min-width:292px) and (max-width:468px) {
+@media screen and (min-width:400px) and (max-width:430px) {
     .qoute-card{
         max-width: 400px;
         left: 7px;
-        margin-top: 26px;
         top: 0%;
     }
     .d-grid{
         display: block;
     }
     .container-homepage{
-        margin-top: 70px;
+        margin-top: 80px;
     }
     .quotes-generator-bar .form-input {
         width: -webkit-fill-available;
     }
     .get-quotes-button {
         margin-top: 10px;
-    }
-    .get-quotes-button {
-        width: 100%;
     }
     .zoom-in{
         max-width: 410px !important;
@@ -3041,8 +3037,12 @@ fieldset .input{
  .btn-toggle.active:after {
      opacity: 1;
 }
-
-  @media (min-width: 1024px) and (max-width: 1439.98px){
+@media (min-width: 292px) and (max-width:499px ) {
+    .get-quotes-button {
+        width: 100%;
+    }
+}
+  @media (min-width: 1024px) and (max-width: 1439px){
     .quotationscards {
         max-width: 1500px;
         margin: auto;
@@ -3080,21 +3080,4 @@ fieldset .input{
 .colorblue{
     color: #2b3481;
 }}
-@media (min-width: 292px) and (max-width: 468px) {
-   #main 
-{
-    display: none;
-}
-#mobCard{
-  display: block;  
-}
-}
-@media (min-width: 469px) {
-   #main 
-{
-    display: block;
-}
-#mobCard{
-  display: none;  
-}
-}
+
