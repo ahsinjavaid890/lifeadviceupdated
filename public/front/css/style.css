@@ -8582,7 +8582,7 @@ section {
     cursor: pointer;
     filter: grayscale(100%);
     transition: all 0.5s ease-out;
-    height: 100px;
+    height: 70px;
     width: auto;
     padding-left: 15px;
 }
@@ -10883,10 +10883,10 @@ section {
         margin: auto;
     }
 
-    .herrotext {
+    /*.herrotext {
         max-width: 100%;
         margin-top: 260px !important;
-    }
+    }*/
     .blank-card{
         margin-bottom: 10px;
     }
@@ -15820,5 +15820,11 @@ ul .child-list li a {
   }
   .pricegurrantecard{
     display: none;
+  }
+  .clients .slick-slide{
+        background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
   }
 }
