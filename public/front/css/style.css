@@ -15772,3 +15772,43 @@ ul .child-list li a {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+@media only screen and (max-width: 600px) {
+  .card-for-mobile-device {
+    padding: 0 !important;
+  }
+
+  .card-for-mobile-device .card-for-mobile-device-row{
+    max-width: 100%;
+    margin: unset;
+    width: 100%;
+    margin-top: 0px !important;
+  }
+
+
+  .modal-footer .nextbtns{
+    padding-right: 25px !important;
+  }
+
+  .display-none-on-mobile{
+    display: none;
+  }
+  .margin-top-ten-on-mobile{
+    margin-top: 10px;
+  }
+  .margin-top-twenty-on-mobile{
+    margin-top: 20px;
+  }
+  .p-r-z-o-m{
+    padding-right: 0px;
+  }
+  .p-l-z-o-m{
+    padding-left: 0px;
+  }
+  .date_picker_header{
+    display: none !important;
+  }
+  .mobile-device-email-input{
+    margin-top: 10px !important;
+    margin-left: 15px;
+  }
+}
