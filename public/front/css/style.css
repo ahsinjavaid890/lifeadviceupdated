@@ -15818,4 +15818,7 @@ ul .child-list li a {
   .herrotext{
     text-align: center;
   }
+  .pricegurrantecard{
+    display: none;
+  }
 }
