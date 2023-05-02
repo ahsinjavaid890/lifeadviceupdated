@@ -95,12 +95,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card lg-wizard-card modal-card border-0">
+                        <div class="card card-for-mobile-device lg-wizard-card modal-card border-0">
                            <h2 class="heading-3 card-heading">Please Select Coverage Amount?</h2>
                            <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                           </div>
-                              <div class="row mt-3">
+                              <div class="row mt-3 card-for-mobile-device-row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
                                  <div class="col-md-6 positionrelative">
@@ -148,7 +148,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card modal-card lg-wizard-card border-0">
+                        <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
                            <div class="card-content d-flex">
@@ -158,14 +158,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-12 mt-3">
+                              <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
                                  <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                        <div class="row alignitembaseline">
-                                          <div class="col-md-6">
+                                          <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                           </div>
-                                          <div class="col-md-6 nopad">
+                                          <div class="col-md-6 nopad margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
                                                 <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
@@ -173,7 +173,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 positionrelative">
+                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
                                           <select name="pre_existing[]" class="pre_existing_condition1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
@@ -181,7 +181,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              <option value="no">No</option>
                                            </select>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                    <div class="col-md-3  alert1 text-danger display-none-on-mobile" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>
@@ -194,7 +194,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -224,7 +224,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card modal-card lg-wizard-card border-0">
+                        <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
                               <div class="date_picker_wrapper" id="date_picker_1">
                            <div class="card-content d-flex">
@@ -259,7 +259,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  @if(isset($fields['email']))
                                  @if($fields['email'] == "on" )
-                                   <div class="col-md-6 userdata-card mt-5">
+                                   <div class="col-md-6 userdata-card mt-5 mobile-device-email-input">
                                       <div class="custom-form-control positionrelative">
                                           <label class="selectlabeldateofbirth">Enter Your Email</label>
                                             <input class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
