@@ -15815,4 +15815,7 @@ ul .child-list li a {
   .price-limit{
     display: none;
   }
+  .herrotext{
+    text-align: center;
+  }
 }
