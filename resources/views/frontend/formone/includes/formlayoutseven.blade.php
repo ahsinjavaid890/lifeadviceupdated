@@ -168,7 +168,7 @@
                               <div class="row">
                                     <div style="padding-left: 0px;" class="col-md-6">
                                        <div class="custom-form-control">
-                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                           <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
