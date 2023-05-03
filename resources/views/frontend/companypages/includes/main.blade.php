@@ -43,7 +43,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          }
       @endphp
       <div style="background-color: #f4f7fa;" class="row card-section">
-         <div class="col-md-12">
+         <div class="col-md-12 p-r-z-o-m p-l-z-o-m">
             
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
@@ -103,7 +103,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               <div class="row mt-3 card-for-mobile-device-row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                 <div class="col-md-6 positionrelative">
+                                 <div class="col-md-6 positionrelative p-r-z-o-m p-l-z-o-m">
                                     <label class="selectlabel">Coverage Ammount</label>
                                      <select onchange="sum_insured(this.value)"  name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Amount</option>
@@ -117,7 +117,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['Country']))
                                    @if($fields['Country'] == "on" )
-                                    <div class="col-md-6 positionrelative">
+                                    <div class="col-md-6 positionrelative p-r-z-o-m p-l-z-o-m">
                                        <label class="selectlabel">Primary Destination</label>
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
