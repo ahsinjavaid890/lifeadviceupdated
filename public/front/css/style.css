@@ -15791,7 +15791,10 @@ ul .child-list li a {
   .modal-footer .nextbtns{
     padding-right: 25px !important;
   }
-
+  .herrotext.super-hero-text {
+        text-align: center;
+    }
+    
   .display-none-on-mobile{
     display: none;
   }
