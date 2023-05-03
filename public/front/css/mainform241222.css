@@ -238,10 +238,10 @@
    color: #67778f;
    }
    .form-input.date-range .input-field {
-   display: grid;
-   grid-template-columns: 119px 1px 1fr;
-   grid-column-gap: 16px;
-   }
+    display: grid;
+    grid-template-columns: 119px 1px 1fr;
+    grid-column-gap: 16px;
+}
    .form-input.date-range .from {
    position: relative;
    cursor: pointer;

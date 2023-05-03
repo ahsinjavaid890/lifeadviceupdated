@@ -814,7 +814,7 @@
 }
 .form-input.date-range .input-field {
     display: grid;
-    grid-template-columns: 119px 1px 1fr;
+    grid-template-columns: 119px 93px 1fr;
     grid-column-gap: 16px;
 }
 .form-input .input-field {
@@ -1410,9 +1410,9 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
     font-size: 40px;
     color: #2b3481;
    }
-   .modal-card{
+   /* .modal-card{
       height: 450px;
-   }
+   } */
    .nextbtns{
       padding-right: 40px;
    }
@@ -2257,8 +2257,8 @@ input::-webkit-inner-spin-button {
 @media screen and (min-width:292px) and (max-width:468px) {
     .qoute-card{
         max-width: 400px;
-        left: 7px;
-        margin-top: 26px;
+        left: 0px;
+        margin-top: 40px;
         top: 0%;
     }
     .d-grid{
@@ -2277,7 +2277,7 @@ input::-webkit-inner-spin-button {
         width: 100%;
     }
     .zoom-in{
-        max-width: 410px !important;
+        max-width: 386px  !important;
     }
     .zoom-in .card-heading{
         font-size: 15px;
