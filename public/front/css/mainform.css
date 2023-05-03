@@ -3083,7 +3083,7 @@ fieldset .input{
 @media (min-width: 292px) and (max-width: 468px) {
    #main 
 {
-    display: none;
+    display: block;
 }
 #mobCard{
   display: block;  
