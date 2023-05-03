@@ -8005,9 +8005,9 @@ section {
     box-shadow: 10px 10px 5px #aaaaaa;
 }
 
-/* .type-of-policies {
+.type-of-policies {
     background-color: #;
-} */
+}
 
 .advantages img {
     width: 100px;
@@ -8327,13 +8327,13 @@ section {
     padding: 40px 50px 40px 15px;
     margin-top: 70px;
     color: white;
-}
+} 
 
 .health-inssurance-hero-banners {
     /*padding: 40px 50px 40px 15px;*/
-    /* background-color: #2b3481;
+    background-color: #2b3481;
     margin-top: 70px;
-    color: white; */
+    color: white;
 }
 
 .benefits-heading h2 {
@@ -8582,7 +8582,7 @@ section {
     cursor: pointer;
     filter: grayscale(100%);
     transition: all 0.5s ease-out;
-    height: 100px;
+    height: 70px;
     width: auto;
     padding-left: 15px;
 }
@@ -10883,10 +10883,10 @@ section {
         margin: auto;
     }
 
-    .herrotext {
+    /*.herrotext {
         max-width: 100%;
         margin-top: 260px !important;
-    }
+    }*/
     .blank-card{
         margin-bottom: 10px;
     }
@@ -12390,23 +12390,6 @@ ul.tabs li.current {
 
 }
 
-@media (min-width: 292px) and (max-width: 368px) {
-    .super-images {
-        width: 100% !important;
-        position: absolute;
-        right: 0px !important;
-        height: 230px !important;
-        top:-468px;
-    }
-}
-@media only screen and (min-width: 300px) and (max-width: 450px) {
-    .super-images {
-        width: 551px !important;
-        position: absolute;
-        right: 0px !important;
-        height: 230px !important;
-    } 
-}
 @media only screen and (min-width: 300px) and (max-width: 450px) {
     .text-section .herrotext h2 {
         font-size: 12px !important;
@@ -12423,14 +12406,14 @@ ul.tabs li.current {
     .mean-container .mean-bar {
         height: 64px !important;
     }
-/* 
+
     .super-images {
         width: 551px !important;
         position: absolute;
         right: 0px !important;
         height: 230px !important;
-    } 
-*/
+    }
+
     .mobile-nav .logo {
         width: 140px !important;
     }
@@ -13438,8 +13421,7 @@ ul .child-list li a {
     margin-top: 8px;
 }
 .hero-texts h1{
-    margin-top: 2px !important;
-    margin-left: 65px;}
+    margin-top: -4px !important;
 }
 
 @media screen and (min-width:200px) and (max-width:767px) {
@@ -15793,4 +15775,43 @@ ul .child-list li a {
     .quotationscards{
         left: 0px;
     }
+@media only screen and (max-width: 600px) {
+  .card-for-mobile-device {
+    padding: 0 !important;
+  }
+
+  .card-for-mobile-device .card-for-mobile-device-row{
+    max-width: 100%;
+    margin: unset;
+    width: 100%;
+    margin-top: 0px !important;
+  }
+
+
+  .modal-footer .nextbtns{
+    padding-right: 25px !important;
+  }
+
+  .display-none-on-mobile{
+    display: none;
+  }
+  .margin-top-ten-on-mobile{
+    margin-top: 10px;
+  }
+  .margin-top-twenty-on-mobile{
+    margin-top: 20px;
+  }
+  .p-r-z-o-m{
+    padding-right: 0px;
+  }
+  .p-l-z-o-m{
+    padding-left: 0px;
+  }
+  .date_picker_header{
+    display: none !important;
+  }
+  .mobile-device-email-input{
+    margin-top: 10px !important;
+    margin-left: 15px;
+  }
 }
