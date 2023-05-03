@@ -1,19 +1,9 @@
-.form-one-layout{
-    padding: 1.3rem;
-    background-color: white;
-    border-radius: 14px;
-    margin-top: 20px; 
-    margin-bottom: 15px;
-    box-shadow: 0 0 7px rgb(0 0 0 / 10%);
-}
 
 .form-one-layout h1{
-    color: #262566;
+  color: #262566;
 }
-
-
 :root {
-   --color-black: #1a1a1a;
+  --color-black: #1a1a1a;
    --color-white: #fff;
    --color-light: #f3fafb;
    --color-red: #f53d3d;
@@ -26,8 +16,18 @@
    --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
- *, *::before, *::after {
+  }
+  .form-one-layout{
+      padding: 1.3rem;
+      background-color: white;
+      border-radius: 14px;
+      border: 2px solid #ddd;
+      margin-top: 20px; 
+      margin-bottom: 15px;
+      box-shadow: 0 0 7px rgb(0 0 0 / 10%);
+      background: var(--color-light);
+  }
+  *, *::before, *::after {
    padding: 0;
    margin: 0;
    box-sizing: border-box;
@@ -99,14 +99,14 @@
  .form-label {
    position: absolute;
    font-family: inherit;
-   font-size: 1rem;
+   color: #333 !important;
+   font-size: 15px !important; 
    font-weight: 400;
    line-height: 1.5;
    left: 0.75rem;
    top: 0.75rem;
    padding: 0 0.35rem;
-   color: var(--color-light-500);
-   background: var(--color-white);
+   /* background: var(--color-white); */
    transition: all 0.35s ease;
 }
  .form-input {
@@ -129,7 +129,7 @@
    border-color: var(--color-light-300);
    color: var(--color-black);
    background-clip: padding-box;
-   background-color: transparent;
+   background-color: #ffffff;
    transition: all 0.35s ease-in-out;
 }
  .form-input::placeholder {
@@ -197,17 +197,19 @@
  
 
  .custom-form-control{
-  margin-bottom: 30px;
- }
+  margin-bottom: 10px;
+}
  .imagesection{
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 10px;
  }
 
  .textsection{
-  padding-top: 20px;
-  height: 300px;
-  overflow: auto;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  padding: 15px 15px 10px 15px;
+  height: 400px;
+  overflow-y: auto;
  }
  .ui-slider .ui-slider-handle {
     border: 7px solid #1bbc9b !important;
@@ -269,7 +271,7 @@
   border-radius: 25px;
   padding-top: 10px;
   padding-bottom: 20px;
-  background:white;
+  background: rgba(0,0,0,0.7);
   padding-left: 0;
   padding-right: 0;
 }
@@ -286,6 +288,7 @@
 .check_condtion h3{
   font-size: 15px;
   color: #5a5a5a;
+  padding-left: 10px;
 }
 .check_condtion .col-md-12{
   margin-top: -15px;

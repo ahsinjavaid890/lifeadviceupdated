@@ -1,12 +1,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
 <div class="container">
+   <div class="row">
+      <div class="col-md-12 text-center mt-4 mb-0">
+         <h1>{{ $data->pro_name }}</h1>
+         <h2 class="mb-2">It's fast and easy using our secure online application.</h2>
+      </div>
+   </div>
    <div class="form-one-layout">
-         <div class="row">
-            <div class="col-md-12 text-center">
-               <h1>{{ $data->pro_name }}</h1>
-               <h2>It's fast and easy using our secure online application.</h2>
-            </div>
-         </div>
          <div class="row">
             <div class="col-md-7">
                <form method="POST" action="{{ url('quotes') }}">
@@ -15,31 +15,36 @@
                   <div class="row">
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
-                     <div class="col-md-6">
+                     <div class="col-md-5">
+                        <label for="firstname" class="form-label">First name</label>
+                     </div>
+                     <div class="col-md-7">
                         <div class="custom-form-control">
                            <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
-                           <label for="firstname" class="form-label">First name</label>
                         </div>
                      </div>
                      @endif
                      @endif
                      @if(isset($fields['lname']))
                      @if($fields['lname'] == 'on')
-                     <div class="col-md-6">
+                     <div class="col-md-5">
+                        <label for="lname" class="form-label">Last name</label>
+                     </div>
+                     <div class="col-md-7">
                         <div class="custom-form-control">
-                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">
-                           <label for="lname" class="form-label">Last name</label>
-                        </div>
+                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">                        </div>
                      </div>
                      @endif
                      @endif
                      
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
-                     <div class="col-md-12">
+                     <div class="col-md-5">
+                        <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
+                     </div>
+                     <div class="col-md-7">
                         <div class="custom-form-control">
                            <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input">
-                           <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
                         </div>
                      </div>
                      <script>
@@ -59,7 +64,10 @@
                      @endif
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
-                     <div class="col-md-12">
+                     <div class="col-md-5">
+                        <label for="coverageammount" class="form-label">Coverage Amount</label>
+                     </div>
+                     <div class="col-md-7">
                         <div class="custom-form-control">
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
@@ -67,7 +75,6 @@
                               <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
                               @endforeach
                            </select>
-                           <label for="coverageammount" class="form-label">Coverage Amount</label>
                         </div>
                      </div>
                      @endif
@@ -116,8 +123,10 @@
                               </div>
                            </div>
                            @else
-
-                           <div class="col-md-12" >
+                           <div class="col-md-5">
+                              <label for="primary_destination" class="form-label">Primary destination in Canada</label>
+                           </div>
+                           <div class="col-md-7" >
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -125,7 +134,6 @@
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label">Primary destination in Canada</label>
                               </div>
                            </div>
                            @endif
@@ -138,8 +146,10 @@
                            $number_of_travel = $fields['traveller_number'];
                         @endphp
                         @if($number_of_travel > 0)
-
-                        <div class="col-md-12">
+                        <div class="col-md-5">
+                              <label for="number_travelers" class="form-label">Number of Travellers</label>
+                        </div>
+                        <div class="col-md-7">
                            <div class="custom-form-control">
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
@@ -147,7 +157,6 @@
                                  <option value="{{ $i }}">{{ $i }}</option>
                                  @endfor
                               </select>
-                              <label for="number_travelers" class="form-label">Number of Travellers</label>
                            </div>
                         </div>
 
@@ -162,81 +171,102 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                    <div style="padding-left: 0px;" class="col-md-6">
+                                 <div class="col-md-5">
+                                    <label for="day" class="form-label" style="    margin-left: -11.5px;">Birth date of the oldest Traveller</label>
+                                 </div>
+                                    <div  class="col-md-7">
                                        <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
+                                          <input style="    width: 326px;" id="dateofbirthfull{{ $i }}" class="form-input " type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          {{-- <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label> --}}
                                        </div>
                                     </div>
-                              
-                                    <div style="padding-right: 0px;" class="col-md-6">
+                                    <div class="col-md-5">
+                                       <label for="day" class="form-label" style="    margin-left: -11.5px;">Select Pre Existing</label>
+                                    </div>
+                                    <div style="padding-right: 0px;" class="col-md-7">
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
                                            </select>
-                                          <label for="year{{$i}}" class="form-label">Select Pre Existing</label>
+                                          {{-- <label for="year{{$i}}" class="form-label">Select Pre Existing</label> --}}
                                        </div>
                                     </div>
                                  </div>
+               
+      
                            </div>
                            @endfor
                         @endif
                         @endif
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                     <div class="col-md-6">
-                        <div class="custom-form-control">
-                           <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">
-                           <label for="departure_date" class="form-label">Start Date of Coverage</label>
-                        </div>
+                     
+                     <div class="col-md-5">
+                        <label for="departure_date" class="form-label">Start Date of Coverage</label>
+
                      </div>
-                     <div class="col-md-6">
+                        <div class="col-md-7">
+                        <div class="custom-form-control">
+                           <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">                        </div>
+                     </div>
+                     <div class="col-md-5">
+                        <label for="departure_date" class="form-label">End Date of Coverage</label>
+
+                     </div>
+                     <div class="col-md-7">
                         <div class="custom-form-control">
                            <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
-                           <label for="return_date" class="form-label">End Date of Coverage</label>
+                           {{-- <label for="return_date" class="form-label">End Date of Coverage</label> --}}
                         </div>
                      </div>
                      @endif
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                           <div class="col-md-12">
+                        <div class="col-md-5">
+                           <label for="savers_email" class="form-label">Email</label>
+                        </div>
+                           <div class="col-md-7">
                               <div class="custom-form-control">
                                  <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
-                                 <label for="savers_email" class="form-label">Email</label>
+                                 {{-- <label for="savers_email" class="form-label">Email</label> --}}
                               </div>
                            </div>
                         @endif
                      @endif
                         @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                        <div class="col-md-12">
+                        <div class="col-md-5">
+                           <label for="gender" class="form-label">Primary Applicant`s Gender</label>
+                        </div>
+                        <div class="col-md-7">
                            <div class="custom-form-control">
                               <select required class="form-input" name="gender" id="gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
                               </select>
-                              <label for="gender" class="form-label">Primary Applicant`s Gender</label>
                            </div>
                         </div>
                         @endif
                         @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                        <div class="col-md-12">
+                        <div class="col-md-5">
+                           <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
+                        </div>
+                        <div class="col-md-7">
                            <div class="custom-form-control">
                               <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
                               </select>
-                              <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
                            </div>
                         </div>
                         @endif
                         <div class="row">
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-6 no-padding check_condtion">
+                           <div class="col-md-12 no-padding check_condtion">
                               <h3>Do you Smoke in last 12 months ?</h3>
                               <div class="col-md-12 no-padding">
                                  <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
@@ -245,6 +275,8 @@
                            </div>
                            @endif
                         @endif
+                        </div>
+                        <div class="row">
                         @php
                            $i = 0;
                            $position_array = array();
@@ -260,10 +292,12 @@
                                  $num = array_search("fplan", $position_array); 
                                  $current_values[$num] = 'group_15';  
                               @endphp
-                              <div class="col-md-6 no-padding check_condtion">
+                              <div class="col-md-12 no-padding check_condtion">
                                  <h3>Do you require Family Plan ?</h3>
                                  <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;">
+                                       <input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> 
+                                       <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
                                  </div>
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
@@ -291,7 +325,9 @@
             </div>
             <div class="col-md-5">
                   <div class="imagesection">
-                      <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
+                     <div>
+                        <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
+                     </div>
                       <div class="textsection">
                         <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.<br>
                         <strong>How to Apply for Super Visa Insurance</strong>
