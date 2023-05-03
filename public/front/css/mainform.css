@@ -3087,6 +3087,7 @@ fieldset .input{
 }
 #mobCard{
   display: block;  
+  display: none;  
 }
 }
 @media (min-width: 469px) {
