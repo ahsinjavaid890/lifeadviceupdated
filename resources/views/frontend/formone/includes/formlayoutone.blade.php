@@ -15,10 +15,11 @@
                   <div class="row">
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
-                     <div class="col-md-5">
-                        <label for="firstname" class="form-label">First name</label>
+                     <div class="col-md-5 ">
+                        <label for="firstname" class="form-label d-md-block lables">First name</label>
                      </div>
                      <div class="col-md-7">
+                        <label for="firstname" class="d-sm-none  ">First name</label>
                         <div class="custom-form-control">
                            <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
                         </div>
@@ -28,9 +29,10 @@
                      @if(isset($fields['lname']))
                      @if($fields['lname'] == 'on')
                      <div class="col-md-5">
-                        <label for="lname" class="form-label">Last name</label>
+                        <label for="lname" class="form-label lables" >Last name</label>
                      </div>
                      <div class="col-md-7">
+                        <label for="lname" class=" d-sm-none">Last name</label>
                         <div class="custom-form-control">
                            <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">                        </div>
                      </div>
@@ -40,9 +42,10 @@
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-5">
-                        <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
+                        <label for="phone" class="form-label lables" >Phone <b id="phone_error" class="text-danger"></b></label>
                      </div>
                      <div class="col-md-7">
+                        <label for="phone" class="d-sm-none" >Phone <b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
                            <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input">
                         </div>
@@ -65,9 +68,10 @@
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-5">
-                        <label for="coverageammount" class="form-label">Coverage Amount</label>
+                        <label for="coverageammount "  class="form-label lables ">Coverage Amount</label>
                      </div>
                      <div class="col-md-7">
+                        <label for="coverageammount" class="d-sm-none">Coverage Amount</label>
                         <div class="custom-form-control">
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
@@ -91,6 +95,7 @@
                                       $('#canadastate').fadeIn();
                                       $('#country').removeClass('col-md-12')
                                       $('#country').addClass('col-md-6')
+                                      $('#cnt').css("margin-left","7.8rem");
                                   }else 
                                   {
                                       $('#canadastate').hide();
@@ -101,32 +106,43 @@
                               }
                            </script>
                            <div id="country" class="col-md-12">
-                              <div class="custom-form-control">
-                                 <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                              <div class="col-sm-5">
+                                 <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables" >Primary Destination</label>
+                              </div>
+                              <div class="col-md-7 ">
+                                 <label  for="primary_destination" class="d-sm-none">Primary Destination</label>
+                              <div class="custom-form-control" id="cnt">
+                                 <select style=" width: 326px;" onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Select Country</option>
                                     @foreach(DB::table('countries')->get() as $r)
                                        <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label">Primary Destination</label>
+                              </div>
                               </div>
                            </div>
-                           <div id="canadastate" class="col-md-6" style="display:none;">
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                                 <label for="primary_destination" class="form-label">States In Canda</label>
+                           <div id="canadastate" class="col-md-12" style="display:none;">
+                              <div class="col-md-5">
+                                 <label for="primary_destination" class="form-label lables" id="">States In Canda</label>
+                              </div>
+                              <div class="col-md-7">
+                                 <label for="primary_destination" class="d-sm-none" >States In Canda</label>
+                                 <div class="custom-form-control">
+                                    <select style="width: 326px; " required class="form-input" name="primary_destination" id="primary_destination">
+                                       <option value="">Primary destination in Canada</option>
+                                       @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                          <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                       @endforeach
+                                    </select>
+                                 </div>
                               </div>
                            </div>
                            @else
                            <div class="col-md-5">
-                              <label for="primary_destination" class="form-label">Primary destination in Canada</label>
+                              <label for="primary_destination" class="form-label lables" id="">Primary destination in Canada</label>
                            </div>
                            <div class="col-md-7" >
+                              <label for="primary_destination" class="d-sm-none">Primary destination in Canada</label>
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -147,9 +163,10 @@
                         @endphp
                         @if($number_of_travel > 0)
                         <div class="col-md-5">
-                              <label for="number_travelers" class="form-label">Number of Travellers</label>
-                        </div>
-                        <div class="col-md-7">
+                              <label for="number_travelers" class="form-label lables" id="">Number of Travellers</label>
+                           </div>
+                           <div class="col-md-7">
+                           <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
                            <div class="custom-form-control">
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
@@ -172,18 +189,20 @@
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                  <div class="col-md-5">
-                                    <label for="day" class="form-label" style="    margin-left: -11.5px;">Birth date of the oldest Traveller</label>
+                                    <label for="day" class="form-label lables" id="" style="    margin-left: -11.5px;">Birth date of the oldest Traveller</label>
                                  </div>
-                                    <div  class="col-md-7">
+                                 <div  class="col-md-7">
+                                       <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
                                           <input style="    width: 326px;" id="dateofbirthfull{{ $i }}" class="form-input " type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                           {{-- <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label> --}}
                                        </div>
                                     </div>
                                     <div class="col-md-5">
-                                       <label for="day" class="form-label" style="    margin-left: -11.5px;">Select Pre Existing</label>
+                                       <label for="day" class="form-label lables" id="">Select Pre Existing</label>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-7">
+                                       <label for="day" class="d-sm-none" style="    margin-left: -11.5px;">Select Pre Existing</label>
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
@@ -204,18 +223,20 @@
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                      
                      <div class="col-md-5">
-                        <label for="departure_date" class="form-label">Start Date of Coverage</label>
-
+                        <label for="departure_date" class="form-label lables" id="">Start Date of Coverage</label>
+                        
                      </div>
-                        <div class="col-md-7">
+                     <div class="col-md-7">
+                           <label for="departure_date" class="d-sm-none">Start Date of Coverage</label>
                         <div class="custom-form-control">
                            <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">                        </div>
                      </div>
                      <div class="col-md-5">
-                        <label for="departure_date" class="form-label">End Date of Coverage</label>
-
+                        <label for="departure_date" class="form-label lables" id="">End Date of Coverage</label>
+                        
                      </div>
                      <div class="col-md-7">
+                        <label for="departure_date" class="d-sm-none">End Date of Coverage</label>
                         <div class="custom-form-control">
                            <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
                            {{-- <label for="return_date" class="form-label">End Date of Coverage</label> --}}
@@ -225,9 +246,10 @@
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
                         <div class="col-md-5">
-                           <label for="savers_email" class="form-label">Email</label>
+                           <label for="savers_email" class="form-label lables" id="">Email</label>
                         </div>
-                           <div class="col-md-7">
+                        <div class="col-md-7">
+                              <label for="savers_email" class="d-sm-none">Email</label>
                               <div class="custom-form-control">
                                  <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
                                  {{-- <label for="savers_email" class="form-label">Email</label> --}}
@@ -237,9 +259,10 @@
                      @endif
                         @if(isset($fields['gender']) && $fields['gender'] == "on" )
                         <div class="col-md-5">
-                           <label for="gender" class="form-label">Primary Applicant`s Gender</label>
+                           <label for="gender" class="form-label lables" id="">Primary Applicant`s Gender</label>
                         </div>
                         <div class="col-md-7">
+                           <label for="gender" class="d-sm-none">Primary Applicant`s Gender</label>
                            <div class="custom-form-control">
                               <select required class="form-input" name="gender" id="gender">
                                  <option value="">Select Gender</option>
@@ -251,9 +274,10 @@
                         @endif
                         @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
                         <div class="col-md-5">
-                           <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
+                           <label for="old_traveller_gender" class="form-label lables" id="">Gender of the Oldest traveller</label>
                         </div>
                         <div class="col-md-7">
+                           <label for="old_traveller_gender" class="d-sm-none">Gender of the Oldest traveller</label>
                            <div class="custom-form-control">
                               <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
                                  <option value="">Select Gender</option>

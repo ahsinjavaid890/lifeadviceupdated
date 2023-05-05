@@ -7,7 +7,7 @@
     $('.selecttwo').select2();
 });
 </script>
-<div class="container birthdate  mt-5 mb-5">
+<div class="container birthdate new-visa mt-5 mb-5">
    <div class="row" style="padding:40px 0;">
       <div class="col-md-4 hidden-xs">
          <img src="{{ asset('public/front/images/woman-4.jpg')}}" style="width: 100%;">
@@ -21,9 +21,9 @@
                 @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
                      <div class="col-md-6">
-                        <label for="firstname" class="">First name</label>
                         <div class="custom-form-control">
                            <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
+                           <label for="firstname" class="form-label">First name</label>
                         </div>
                      </div>
                      @endif
@@ -31,9 +31,9 @@
                      @if(isset($fields['lname']))
                      @if($fields['lname'] == 'on')
                      <div class="col-md-6">
-                        <label for="lname" class="">Last name</label>
                         <div class="custom-form-control">
                            <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">
+                           <label for="lname" class="form-label">Last name</label>
                         </div>
                      </div>
                      @endif
@@ -41,7 +41,6 @@
                       @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-12">
-                        <label for="coverageammount" class="">Coverage Amount</label>
                         <div class="custom-form-control">
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
@@ -49,6 +48,7 @@
                               <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
                               @endforeach
                            </select>
+                           <label for="coverageammount" class="form-label">Coverage Amount</label>
                         </div>
                      </div>
                      @endif
@@ -74,7 +74,6 @@
                               }
                            </script>
                            <div id="country" class="col-md-12">
-                              <label for="primary_destination" class="">States In Canda</label>
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -82,10 +81,10 @@
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            <div id="canadastate" class="col-md-6" style="display:none;">
-                              <label for="primary_destination" class="">States In Canda</label>
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -93,12 +92,12 @@
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            @else
 
                            <div class="col-md-12" >
-                              <label for="primary_destination" class="">States In Canda</label>
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -106,22 +105,23 @@
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
+                                 <label for="primary_destination" class="form-label">States In Canda</label>
                               </div>
                            </div>
                            @endif
                         @endif
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                     <div class="col-md-6">
-                              <label for="departure_date" class="">Start Date of Coverage</label>
+                           <div class="col-md-6">
                               <div class="custom-form-control">
                                  <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">
+                                 <label for="departure_date" class="form-label">Start Date of Coverage</label>
                               </div>
                            </div>
                            <div class="col-md-6">
-                              <label for="return_date" class="">End Date of Coverage</label>
                               <div class="custom-form-control">
                                  <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                                 <label for="return_date" class="form-label">End Date of Coverage</label>
                               </div>
                            </div>
                      @endif
@@ -133,7 +133,6 @@
                         @if($number_of_travel > 0)
 
                         <div class="col-md-12">
-                           <label for="number_travelers" class="">Number of Travellers</label>
                            <div class="custom-form-control">
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
@@ -141,6 +140,7 @@
                                  <option value="{{ $i }}">{{ $i }}</option>
                                  @endfor
                               </select>
+                              <label for="number_travelers" class="form-label">Number of Travellers</label>
                            </div>
                         </div>
 
@@ -156,20 +156,20 @@
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                     <div style="padding-left: 0px;" class="col-md-6">
-                                       <label for="day{{$i}}" class="">Age of the oldest Traveller</label>
                                        <div class="custom-form-control">
                                           <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
                               
                                     <div style="padding-right: 0px;" class="col-md-6">
-                                       <label for="year{{$i}}" class="">Select Pre Existing</label>
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
                                            </select>
+                                          <label for="year{{$i}}" class="form-label">Select Pre Existing</label>
                                        </div>
                                     </div>
                                  </div>
@@ -181,19 +181,19 @@
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
                      <div class="col-md-12">
-                        <label for="savers_email" class="">Email</label>
                         <div class="custom-form-control">
                            <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
+                           <label for="savers_email" class="form-label">Email</label>
                         </div>
                      </div>
                      @endif
                      @endif
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
-                     <div class="col-md-12">
-                        <label for="phone" class="">Phone <b id="phone_error" class="text-danger"></b></label>
+                     <div class="col-md-6">
                         <div class="custom-form-control">
                            <input onkeyup="validatephone()" type="text" name="phone" placeholder="firstname" required id="phone" class="form-input">
+                           <label for="phone" class="form-label">Phone <b id="phone_error" class="text-danger"></b></label>
                         </div>
                      </div>
                      <script>
@@ -213,25 +213,25 @@
                      @endif
                       @if(isset($fields['gender']) && $fields['gender'] == "on" )
                         <div class="col-md-12">
-                           <label for="gender" class="">Primary Applicant`s Gender</label>
                            <div class="custom-form-control">
                               <select required class="form-input" name="gender" id="gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
                               </select>
+                              <label for="gender" class="form-label">Primary Applicant`s Gender</label>
                            </div>
                         </div>
                         @endif
                         @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
                         <div class="col-md-12">
-                           <label for="old_traveller_gender" class="">Gender of the Oldest traveller</label>
                            <div class="custom-form-control">
                               <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
                               </select>
+                              <label for="old_traveller_gender" class="form-label">Gender of the Oldest traveller</label>
                            </div>
                         </div>
                         @endif

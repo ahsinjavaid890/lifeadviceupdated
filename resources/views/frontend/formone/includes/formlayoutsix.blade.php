@@ -32,7 +32,7 @@
 </div>
 <div class="clearfix"></div>
 <form action="sessions.php?action=info" method="post" id="dh-get-quote" class="form-horizontal form-layout2" role="form">
-   <div class="container" style="padding: 40px 0;" id="listprices">
+   <div class="container" style="padding: 20px 0;" id="listprices">
       <div class="col-md-12 control-label no-padding" style="display:none;">
          <h2 class="inputheading">Please Wait...</h2>
       </div>
@@ -42,8 +42,8 @@
          </div>
          @if($fields['sum_insured'] == 'on')
          <div class="col-md-12 no-padding oldest-travel">
-            <div class="form-group">
-               <select required class="form-control " name="sum_insured2" id="coverageammount">
+            <div class="form-group col-lg-12 col-md-6 ml-1">
+               <select required class="form-control " name="sum_insured2" id="coverageammount" style="border: 0.5px solid #333333">
                   <option value="">Coverage Amount</option>
                   @foreach($sum_insured as $r)
                   <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
@@ -77,9 +77,9 @@
          </div>
                   @if($fields['sdate'] == "on" && $fields['edate'] == "on")
 
-         <div class="col-md-12">
+         <div class=" form-group col-lg-12 col-md-6 ml-1">
             @if($data->pro_supervisa == 1)
-                  <input autocomplete="off" id="departure_date"  name="departure_date" class="form-control" type="text" required onchange="supervisayes()">
+                  <input autocomplete="off" id="departure_date"  name="departure_date" class="form-control" type="text" required onchange="supervisayes()" style="border: 0.5px solid #333333">
                   <i class="fa fa-calendar" onclick="$('#departure_date').focus();" style="position: absolute;top: 11px;right: 28px;font-size: 16px;color: #01a281;"></i>     
                   <script>
                      var today = new Date();
@@ -166,7 +166,7 @@
          </div>
          <div class="col-md-12 no-padding oldest-travel" id="birthday">
             <div class="col-md-12 agesdiv" id="agesdiv">
-               <button class="btn btn-default agesbtn form-control" type="button" onclick="$('.ageandcitizen').fadeIn(300);"> Years <i class="fa fa-caret-down"></i></button>
+               <button class="btn btn-default agesbtn form-control" type="button" onclick="$('.ageandcitizen').fadeIn(300);" style="border: 0.5px solid black"> Years <i class="fa fa-caret-down"></i></button>
                <div class="col-md-12 ageandcitizen" style="display:none; padding: 1px 15px;">
                   @if($fields['dob'] == 'on')
                   
@@ -297,7 +297,7 @@
                         }
                      </script>
                      <div class="col-md-2 text-center addmoretraveler" style="padding-top:20px;">
-                        <a class="addmorebtn" onclick="addtravellers();"><i class="fa fa-plus" style="position: relative;top: 4px;left: 0px;"></i></a>
+                        <a class="addmorebtn" onclick="addtravellers();"><i class="fa fa-plus" style="position: relative;top: 0px;left: 0px;"></i></a>
                      </div>
                   </div>
                   <div class="col-md-12 no-padding oldest-travel text-center">
@@ -334,7 +334,7 @@
             <h2 class="inputheading"><i class="fa fa-envelope"></i> What is your First Name ?</h2>
          </div>
          <div class="col-md-12 no-padding oldest-travel">
-         <input id="fname" name="fname" class="form-control" required type="text" placeholder="Your first name">
+         <input id="fname" name="fname" class="form-control" required type="text" placeholder="Your first name"  style="border: 0.5px solid black">
             <span></span>
          </div>
       </div>
@@ -347,7 +347,7 @@
                <h2 class="inputheading"><i class="fa fa-envelope"></i> What is your Last Name ?</h2>
             </div>
             <div class="col-md-12 no-padding oldest-travel">
-            <input  id="lname" name="lname" class="form-control" required type="text" placeholder="Your last name">
+            <input  id="lname" name="lname" class="form-control" required type="text" placeholder="Your last name" style="border: 0.5px solid black">
                <span></span>
             </div>
          </div>
@@ -360,7 +360,7 @@
             <h2 class="inputheading"><i class="fa fa-envelope"></i> What is your email address ?</h2>
          </div>
          <div class="col-md-12 no-padding oldest-travel">
-            <input id="savers_email" name="savers_email" class="form-control question" type="text" required="" placeholder="Enter your email">
+            <input id="savers_email" name="savers_email" class="form-control question" type="text" required="" placeholder="Enter your email" style="border: 0.5px solid black">
             <span></span>
          </div>
       </div>
@@ -391,7 +391,7 @@
                                  }
                               }
                            </script>
-                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="" >
                      @foreach(DB::table('countries')->get() as $r)
                               <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
                            @endforeach
@@ -417,7 +417,7 @@
                      </div>
                   </div>
                   @else
-                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="">
+                  <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required="" style="border: 0.5px solid #333333">
                         <option value=""> --- Primary destination in Canada ---</option>
                         @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                            <option value="{{ $r->name }}">{{ $r->name }}</option>

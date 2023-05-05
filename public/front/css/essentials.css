@@ -9843,4 +9843,9 @@ section.dark h2.owl-featured {
 .sky-form .checkbox.state-disabled:hover i,
 .sky-form .toggle.state-disabled:hover i {
 	border-color: #e5e5e5;
-}
+}@media (max-width:468px) and (min-width:292px) {
+  
+	.s-visa{
+	  width: 100% !important;
+	}
+  }

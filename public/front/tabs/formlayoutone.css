@@ -293,3 +293,12 @@
 .check_condtion .col-md-12{
   margin-top: -15px;
 }
+@media (max-width:468px) and (min-width:292px) {
+  #cnt{
+    margin-left: -10px !important;
+  }
+  .lables{
+    display: none !important ;
+  }
+  
+}

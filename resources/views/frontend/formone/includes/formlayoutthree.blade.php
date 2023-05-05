@@ -1,12 +1,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
 <div class="clearfix"></div>
-<section id="sectionbackground" style="background-size:cover;background-position:50% 50%;padding:100px 0px 200px 0px;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
-   <div class="container">
+<section id="sectionbackground" style="background-size:cover;background-position:50% 50%;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
+   <div class="container" style="padding: 55px 0px 200px 0px;">
       <div class="col-md-12">
          <h1 class="mainheading">
             <strong>{{ $data->pro_name }}</strong>
          </h1>
-         <h2 class="subheading">To start, we have a few quick questions to understand your needs.</h2>
+         <h2 class="subheading" style="margin: 0 0 39px 0;">To start, we have a few quick questions to understand your needs.</h2>
       </div>
       <div class="col-md-12 text-center">
          <div class="clearfix"></div>
@@ -118,17 +118,25 @@
                         @if(isset($fields['dob']))
                         @if($fields['dob'] == 'on')
                            <div class="row"> 
+                                 <div class="col-md-12 pt-2">
+                                 <div class="col-md-6 pl-0 pr-0 py-2">
+                                    <label class="p-0">Enter Date Of Bith</label>
+                                 </div>
                                  <div class="col-md-6">
-                                    <label>Enter Date Of Bith</label>
                                     <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                  </div>
-                                 <div class="col-md-6 positionrelative">
+                                 </div>
+                                 <div class="col-md-12 positionrelative" >
+                                    <div class="col-md-6 pl-0 pr-0 py-2">
                                        <label>Pre Existing Condition</label>
+                                    </div>
+                                    <div class="col-md-6">
                                        <select name="pre_existing[]" class="pre_existing_condition1 form-control">
                                           <option value="">Pre Existing Condition</option>
                                           <option value="yes">Yes</option>
                                           <option value="no">No</option>
                                         </select>
+                                    </div>
                                  </div>
                            </div>
                         @endif
@@ -138,8 +146,8 @@
                         @endif
                         @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-12 no-padding">
-                              <h3><i class="fa fa-fire"></i> Do you Smoke in last 12 months ?</h3>
+                           <div class="col-md-12 no-padding" >
+                              <h3 style="margin-top: -11px;"><i class="fa fa-fire" ></i> Do you Smoke in last 12 months ?</h3>
                               <div class="col-md-12 no-padding">
                                  <label class="text-dark" style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes"  checked=""  style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-dark">
                                  <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
@@ -234,7 +242,7 @@
                </div>
                <!-- PAGE ONE ENDED -->
                <div class="page_2" style="display:none;">
-                  <div class="row">
+                  <div class="row" style="margin-bottom: 12px">
                   @if(isset($fields['fname']))
                      @if($fields['fname'] == "on" )
                      <div class="col-md-4" style="margin-bottom:10px;">
@@ -257,7 +265,7 @@
                      @endif
                   @endif
                   </div>
-                  <div class="row">
+                  <div class="row" style="margin-bottom: 12px">
                      @if(isset($fields['phone']))
                         @if($fields['phone'] == "on" )
                            <div class="col-md-4" style="margin-bottom:10px;">
@@ -300,6 +308,8 @@
                            </div>
                         @endif
                      @endif
+                  </div>
+                  <div class="row" style="margin-bottom: 12px">
                      @if(isset($fields['smoked']))
                         @if($fields['smoked'] == "on" )
                            <div class="col-md-4" style="margin-bottom:10px;">

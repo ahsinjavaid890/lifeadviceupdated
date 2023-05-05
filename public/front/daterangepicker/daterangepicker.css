@@ -114,7 +114,7 @@
 }
 
 .daterangepicker .drp-calendar.left {
-  padding: 8px 0 8px 8px;
+  padding: 8px 0 8px 2px;
 }
 
 .daterangepicker .drp-calendar.right {
@@ -352,7 +352,7 @@ padding: 6px 20px;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0; }
       .daterangepicker.ltr .drp-calendar.left .calendar-table {
-        padding-right: 8px; }
+        padding-right: 0px; }
       .daterangepicker.ltr .ranges, .daterangepicker.ltr .drp-calendar {
         float: left; }
     .daterangepicker.rtl {
