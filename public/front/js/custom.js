@@ -3,6 +3,11 @@ function removeappendvalue(id) {
   $('#removebutton'+id).removeClass('showrowstraveler');
   $('#removebutton'+id).addClass('hiderowstraveler');
   $('.dateofbirthclass'+id).val('')
+
+  var number_travelers = $("#number_travelers").val();
+  var addtraveler = 1;
+  var totaltraveler = parseInt(number_travelers) - parseInt(addtraveler);
+  $("#number_travelers").val(totaltraveler);
 }
 function secondnext() 
 {
@@ -94,46 +99,62 @@ function addtravellers()
       $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
    }else{
 
-      const d  = new Date(value);
-      let year = d.getFullYear();
-      var CurrentDate = new Date();
-      var today = new Date();
-      var todayyear = today.getFullYear();
-      var getfourtyyear = todayyear-40;
-      var getlastdob = todayyear-100;
-      if(d > CurrentDate){
-          $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-          $('#errortravelr').show();
-          $('#errortravelr').html('Date of birth can not be a future date.');
+
+      var pre_existing_values_check = $('.pre_existing_values_check'+showrowstraveler).val();
+      if(pre_existing_values_check == '')
+      {
+        $('.select2-selection').css('border-color' , 'red');
+        $("#secondnextfake").css("pointer-events","none");
       }else{
-          if(year > getfourtyyear)
-          {
-            $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-            $('#errortravelr').show();
-            $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
-          }else{
+            $('.select2-selection').css('border-color' , '#cfd9e8');
+            const d  = new Date(value);
+              let year = d.getFullYear();
+              var CurrentDate = new Date();
+              var today = new Date();
+              var todayyear = today.getFullYear();
+              var getfourtyyear = todayyear-40;
+              var getlastdob = todayyear-100;
+              if(d > CurrentDate){
+                  $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                  $('#errortravelr').show();
+                  $('#errortravelr').html('Date of birth can not be a future date.');
+              }else{
+                  if(year > getfourtyyear)
+                  {
+                    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                    $('#errortravelr').show();
+                    $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
+                  }else{
 
-            if(year < getlastdob)
-            {
-               $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-               $('#errortravelr').show();
-               $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
-            }else{
-               $('#errortravelr').hide();
-               $('#errortravelr').html('');
-               var showmext = parseInt(showrowstraveler)+1;
-               $('#removebutton'+showmext).removeClass('hiderowstraveler');
-               $('#removebutton'+showmext).addClass('showrowstraveler');
-               var numberoftraverls = $('#numberoftraverls').val();
-               if(numberoftraverls == showrowstraveler)
-               {
-                  $('.button-add-another').fadeOut(300);
-               }
-            }
+                    if(year < getlastdob)
+                    {
+                       $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                       $('#errortravelr').show();
+                       $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
+                    }else{
+                       $('#errortravelr').hide();
+                       $('#errortravelr').html('');
+                       var showmext = parseInt(showrowstraveler)+1;
+                       $('#removebutton'+showmext).removeClass('hiderowstraveler');
+                       $('#removebutton'+showmext).addClass('showrowstraveler');
+                       var numberoftraverls = $('#numberoftraverls').val();
+                       if(numberoftraverls == showrowstraveler)
+                       {
+                          $('.button-add-another').fadeOut(300);
+                       }
+                    }
 
-            
-          }
+                    
+                  }
+              }
+
+            var number_travelers = $("#number_travelers").val();
+            var addtraveler = 1;
+            var totaltraveler = parseInt(number_travelers) + parseInt(addtraveler);
+            $("#number_travelers").val(totaltraveler);
       }
+
+      
    }
 }
 

@@ -191,10 +191,26 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             $display = array();
             if($family_plan == 'yes'){
                 $planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                print_r($planrates);exit;
-                $daily_rate = $planrates[0]->rate * 2;   //Multipling by 2 for family elder rate
+                $countarray =  count($planrates);
 
-                if(!$daily_rate){ $display = '0'; }
+
+                if($countarray > 0)
+                {
+                    if($request->pre_existing[0]=='yes')
+                    {
+                        $daily_rate = $planrates[0]->rate_with_pre_existing * 2;   //Multipling by 2 for family elder rate
+
+                    }else{
+                        $daily_rate = $planrates[0]->rate_without_pre_existing * 2;   //Multipling by 2 for family elder rate
+                     }
+                }
+                if(!$daily_rate)
+                { 
+                    $display = '0'; 
+                }else{
+                    $display[] =  $daily_rate;
+                }
+
             } else {
                 $perone = 0;
                 foreach($ages_array as $person_age){
@@ -208,7 +224,10 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                         {
                             $dailyrate = $plan_rates[0]->rate_with_pre_existing;
                             $daily_rate += $dailyrate;
-                            if($dailyrate == ''){ $dailyrate = 0; }
+                            if($dailyrate == '')
+                            { 
+                                $dailyrate = 0; 
+                            }
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }else{
@@ -218,13 +237,10 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }
-
- 
                    }
                     
                 }
             }
-
 
 //NUM OF MONTHS
 $num_months = $num_of_days / 30;
@@ -311,8 +327,16 @@ $monthly_price = $total_price / $num_months;
 if($monthly_two == '1'){
     $total_price = $total_price - $flat_price;
 }
-if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
+// if (in_array("0", $display))
+// { 
+//     $show = '0'; 
+// } 
+// else 
+// {
+//     $show = '1'; 
+// }
 
+$show = 1;
 
 if($show == '1' && $total_price > 0){
 

@@ -1417,6 +1417,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
       padding-right: 40px;
    }
    .nextbtns .btn-prev{
+    margin-right: 10px;
     background-color: #919192 !important;
    }
    .modal-footer{
@@ -3171,4 +3172,8 @@ fieldset .input{
     margin-top: 25px;
     border-radius: 10px;
 }
+}
+
+.person-additional-traveler-h3{
+    cursor: pointer;
 }

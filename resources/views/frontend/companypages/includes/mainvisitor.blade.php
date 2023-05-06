@@ -165,14 +165,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <div class="col-md-6 nopad">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-md-3 positionrelative">
                                           <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing[]" class="pre_existing_condition1 form-control">
+                                          <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -191,7 +191,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control pre_existing_values_check{{ $i }}"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -200,7 +200,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                  </div>
                               </div>
-                              <input type="hidden" value="5" id="numberoftraverls" name="">
+                              <input type="hidden" value="1" id="number_travelers" name="number_travelers">
                            </div>
                         </div>
                      </div>
@@ -276,10 +276,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                            <div class="toogleswithchdiv">
+
+                              <input type="hidden" value="no" id="familyplan_temp" name="familyplan_temp">
+
                               <label style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do You Require Family Plan?</label>
                               <label style="margin-right:10px;">No</label>
                               <label style="margin-right:10px;" class="switch">
-                                <input type="checkbox">
+                                <input id="familyplanyes" onclick="checkfamilyplan(this.value)" value="yes" type="checkbox">
                                 <p class="tooglecheckbox round"></p>
                               </label>
                               <label style="margin-right:20px;">Yes</label>
@@ -802,4 +805,64 @@ $("#outputText").text(outputDate);
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
+
+
+function checkfamilyplan(id){
+   checkBox = document.getElementById('familyplanyes');
+   if(checkBox.checked) {
+      $('#familyplan_temp').val('yes');
+      var titles = $('input[name^=years]').map(function(idx, elem) {
+       return $(elem).val();
+     }).get();
+      var ages = [];
+      for (var i = 0; i < titles.length; i++) {
+         if(titles[i])
+         {
+            dob = new Date(titles[i]);
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            ages.push(age);
+         }
+      }
+      Array.prototype.max = function() {
+        return Math.max.apply(null, this);
+      };
+      Array.prototype.min = function() {
+        return Math.min.apply(null, this);
+      };
+      var max_age = ages.max();
+      var min_age = ages.min();
+      if(document.getElementById('number_travelers').value >='2' && max_age <=59 && min_age <=21)
+      {
+         $('#errortravelr').hide();
+         $('#errortravelr').html('');
+         $("#secondnextfake").css("pointer-events","auto");
+         $("#secondnextfake").css("background-color","#2b3481");
+         $("#secondnextfake").css("color","#fff");
+      } 
+      else 
+      {
+         $("#secondnextfake").css("pointer-events","none");
+         $("#secondnextfake").css("background-color","#f2dede");
+         $("#secondnextfake").css("color","#b94a48");
+         if(document.getElementById('number_travelers').value <'2'){
+            $('#errortravelr').show();
+            $('#errortravelr').html('Minimum 2 travellers required for family plan.');
+         } else if(max_age > 59){
+            $('#errortravelr').show();
+            $('#errortravelr').html('Maximum age for family plan should be 59');
+         } else if(min_age > 21){
+            $('#errortravelr').show();
+            $('#errortravelr').html('For family plan the youngest traveller shouldn`t be elder than 21');
+         }
+      }
+   }else{
+      $('#familyplan_temp').val('no');
+      $('#errortravelr').hide();
+      $('#errortravelr').html('');
+      $("#secondnextfake").css("pointer-events","auto");
+      $("#secondnextfake").css("background-color","#2b3481");
+      $("#secondnextfake").css("color","#fff");
+   }   
+}
 </script>
