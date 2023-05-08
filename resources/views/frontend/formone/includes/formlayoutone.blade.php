@@ -2,13 +2,12 @@
 <div class="container">
    <div class="row">
       <div class="col-md-12 text-center mt-4 mb-0">
-         <h1>{{ $data->pro_name }}</h1>
-         <h2 class="mb-2">It's fast and easy using our secure online application.</h2>
+         <h1 style="font-weight:bold;margin: 0px;" class="text-danger">{{ $data->pro_name }}</h1>
+         <h2 class="mb-2" style="font-size: 30px;margin: 0; color: #000; margin: 0 0 30px 0; line-height: 1.5; -webkit-font-smoothing: antialiased;text-align: center; margin: 0px;">It's fast and easy using our secure online application.</h2>
       </div>
    </div>
-   <div class="form-one-layout">
-         <div class="row">
-            <div class="col-md-7">
+         <div class="row mainsection birthdate">
+            <div class="col-md-7 leftsection">
                <form method="POST" action="{{ url('quotes') }}">
                   @csrf
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -222,18 +221,24 @@
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                      
-                     <div class="col-md-5">
-                        <label for="departure_date" class="form-label lables" id="">Start Date of Coverage</label>
-                        
+                     <div class="col-md-5 col-xs-12 ">
+                        <label class="input-label preinfo">Start Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
+                                    <strong>Start Date</strong><br>
+                              The date of the coverage start from.
+                              </span></i>
+                        </label>
                      </div>
                      <div class="col-md-7">
                            <label for="departure_date" class="d-sm-none">Start Date of Coverage</label>
                         <div class="custom-form-control">
                            <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">                        </div>
                      </div>
-                     <div class="col-md-5">
-                        <label for="departure_date" class="form-label lables" id="">End Date of Coverage</label>
-                        
+                     <div class="col-md-5 col-xs-12 " style="padding-right:0px;">
+                           <label class="input-label preinfo">End Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
+                                    <strong>End Date</strong><br>
+                              This is the date when your coverage will expire.
+                              </span></i> </label>
+
                      </div>
                      <div class="col-md-7">
                         <label for="departure_date" class="d-sm-none">End Date of Coverage</label>
@@ -341,34 +346,39 @@
                      <div class="col-md-6">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
-                     <div class="col-md-6 text-right">
-                        <button type="submit" class="btn btn-primary get_qout">Get Quote <i class="fa fa-arrow-circle-right"></i></button>
+                     <div class="col-md-8 col-xs-6" style="padding: 0;">
+                     <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
+                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-warning pull-right" style="display: block;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
                      </div>
                   </div>
                </form>
             </div>
             <div class="col-md-5">
                   <div class="imagesection">
-                     <div>
-                        <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
-                     </div>
-                      <div class="textsection">
-                        <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.<br>
-                        <strong>How to Apply for Super Visa Insurance</strong>
-                        <ul>
-                           <li>Fill out the <a href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]</a>.</li>
-                           <li>Gather any required documentation.</li>
-                           <li>Submit your completed form and supporting documents to a visa office.</li>
-                           <li>Make sure to pay the <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.</li>
-                           <li>Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
-                        </ul>
-                        <p><strong>Super visa Requirements&nbsp;:&nbsp;</strong>To obtain a Parent or   Grandparent Super Visa for Canada, applicants must have valid Super Visa   Insurance. With Super Visa applications They need to provide a proof   that they have private medical insurance from a Canadian insurance   company valid for a minimum of 1 year from a Canadian insurance company   and that it:    &nbsp; <strong>Here’s the things you need to know before you buy Super Visa Insurance </strong> <strong>Pre-existing Conduction: </strong>A Pre-existing condition   depends on your health condition means the critical illness, injury,   symptom(s) that exists before and after effective date of insurance.   Sometimes a healthy applicant can be deemed to have a pre-existing   condition based on a past health problem or evidence of treatment for a   particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles.   The deductible is the amount of each claim that you will pay. A $0   deductible means the insurance company pays 100% of each eligible claim.   A $1000 deductible means you will pay up to $1000 of each eligible   claim and the insurance company will only pay amounts in excess of the   $1000. <strong>Multiple Entry</strong>: Multiple entry coverage provides   intermittent coverage that allows you to travel back and forth between   Canada and your home country. Your coverage will be interrupted when you   return to your home country, and then be automatically reinstated when   you return to Canada. Plans that do not offer Multiple Entry have   coverage that stops as soon as you return to your home country. <strong>Side Trip: Side</strong> trip coverage provides travel health   insurance for any trips you take outside Canada during your stay, i.e.   if you take vacations to the U.S. If you expect to spend some time   outside of Canada during the term of your super visa, you should choose a   plan that has side trip coverage. <strong>Refundable</strong>: The government requires that you purchase   coverage for a full year. If you’re planning on staying less than a year   a refundable plan will allow you to receive a refund of the unused   portion of the annual/yearly premiums. These refunds come with   conditions, so again it’s important that you read the policy.</p>
+                     <div class="row">
+                        <div class="">
+                           <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
+                        </div>
+                        <div class="col-md-12 text-center" style="padding-top:20px;text-align: justify !important;background: #f0f0f0;margin-top: 10px;max-height: 335px;overflow-y: auto;border: 1px solid #ddd;font-size: 14px;line-height: 1.42857143;color: #333;background-color: #fff;">
+                           <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.
+
+                           <h2>How to Apply for Super Visa Insurance</h2>
+                           <ul>
+                             <li>Fill out the <a href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]</a>.</li>
+                             <li>Gather any required documentation.</li>
+                             <li>Submit your completed form and supporting documents to a visa office.</li>
+                             <li>Make sure to pay the <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.</li>
+                             <li>Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
+                           </ul>
+
+                           <p><strong>Super visa Requirements&nbsp;:&nbsp;</strong>To obtain a Parent or   Grandparent Super Visa for Canada, applicants must have valid Super Visa   Insurance. With Super Visa applications They need to provide a proof   that they have private medical insurance from a Canadian insurance   company valid for a minimum of 1 year from a Canadian insurance company   and that it:    &nbsp; <strong>Here’s the things you need to know before you buy Super Visa Insurance </strong> <strong>Pre-existing Conduction: </strong>A Pre-existing condition   depends on your health condition means the critical illness, injury,   symptom(s) that exists before and after effective date of insurance.   Sometimes a healthy applicant can be deemed to have a pre-existing   condition based on a past health problem or evidence of treatment for a   particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles.   The deductible is the amount of each claim that you will pay. A $0   deductible means the insurance company pays 100% of each eligible claim.   A $1000 deductible means you will pay up to $1000 of each eligible   claim and the insurance company will only pay amounts in excess of the   $1000. <strong>Multiple Entry</strong>: Multiple entry coverage provides   intermittent coverage that allows you to travel back and forth between   Canada and your home country. Your coverage will be interrupted when you   return to your home country, and then be automatically reinstated when   you return to Canada. Plans that do not offer Multiple Entry have   coverage that stops as soon as you return to your home country. <strong>Side Trip: Side</strong> trip coverage provides travel health   insurance for any trips you take outside Canada during your stay, i.e.   if you take vacations to the U.S. If you expect to spend some time   outside of Canada during the term of your super visa, you should choose a   plan that has side trip coverage. <strong>Refundable</strong>: The government requires that you purchase   coverage for a full year. If you’re planning on staying less than a year   a refundable plan will allow you to receive a refund of the unused   portion of the annual/yearly premiums. These refunds come with   conditions, so again it’s important that you read the policy.</p>
+                           </div>
                      </div>
                   </div>
                   
             </div>
          </div>
-   </div>
+  
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">

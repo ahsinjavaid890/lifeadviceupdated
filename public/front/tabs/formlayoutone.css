@@ -1,6 +1,18 @@
-
+.tabscontent{
+  background-color: #f3f5f9;
+}
 .form-one-layout h1{
   color: #262566;
+}
+.mainsection {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.leftsection {
+    background: #F1F1F1;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-right: 0;
 }
 :root {
   --color-black: #1a1a1a; 
@@ -110,27 +122,46 @@
    transition: all 0.35s ease;
 }
  .form-input {
-   position: absolute;
-   display: block;
-   font-family: inherit;
-   font-size: 1rem;
-   font-weight: 400;
-   line-height: inherit;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 50px;
-   padding: 0.75rem 1rem !important;
-   z-index: 1;
-   outline: none;
-   border-radius: 0.25rem;
-   border-width: 1.75px;
-   border-style: solid;
-   border-color: var(--color-light-300);
-   color: var(--color-black);
-   background-clip: padding-box;
-   background-color: #ffffff;
-   transition: all 0.35s ease-in-out;
+  width: 100%;
+    border: 1px solid rgb(173, 173, 173) !important;
+    height: 38px !important;
+    padding: 1px 10px !important;
+    font-size: 13px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, .87) !important;
+    background: #FFF !important;
+}
+label.input-label {
+    padding: 10px 0px 0 !important;
+    color: #333 !important;
+    font-size: 15px !important;
+    margin-bottom: 0;
+    font-weight: normal !important;
+}
+.preinfo i {
+padding: 5px 9px;
+background: #0695BD;
+border-radius: 54%;
+font-size: 11px;
+color: #fff;
+cursor:pointer;
+}
+.preinfo i span {
+width: 200px;
+padding: 10px;
+background: rgba(0, 0, 0, 0.8);
+position: absolute;
+z-index: 100;
+top: 10px;
+left: 10px;
+font-family: arial;
+font-size: 12px;
+color: #fff;
+line-height: 20px;
+display: none;  
+}
+.preinfo > i:hover  span {
+  display:block;
 }
  .form-input::placeholder {
    display: none;
