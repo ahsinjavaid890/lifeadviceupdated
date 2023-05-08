@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayouttwo.css')}}">
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
@@ -6,20 +6,38 @@
     $('.selecttwo').select2();
 });
 </script>
-<section style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('public/front/bgs/5.jpg') }}'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
+
+<?php
+if($data->pro_id == '1'){
+$bgs = array(4, 6, 8, 11); //Super
+} else if($data->pro_id == '2'){
+$bgs = array(1, 2, 3, 7, 8, 11, 12, 15); //VTC
+} else if($data->pro_id == '3'){
+$bgs = array(5, 9, 10); //Student
+} else if($data->pro_id == '9'){
+$bgs = array(13, 14); //Student
+} else {
+$bgs = array(1, 2, 3, 7, 8, 11, 12); //VTC
+}
+
+$k = array_rand($bgs);
+$bg = $bgs[$k];
+
+?>
+<section style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('') }}public/front/bgs/<?php echo $bg;?>.jpg'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
    <div class="container">
       <div class="row birthdate">
          <div class="col-md-2 hidden-xs"></div>
-         <div class="col-md-8 visa-insurance new-visa">
+         <div class="col-md-8 visa-insurance new-visa" style="padding-top: 10px;padding-bottom: 20px;background:rgba(0,0,0,0.7);padding-left: 0;padding-right: 0;">
             <div class="clearfix"></div>
             <div class="col-md-12 text-center" style="padding: 20px 0;">
-               <h1 class="title-form" style="    color: #ffffff;"><strong>{{ $data->pro_name }}</strong></h1>
-               <h2 class="title_des">To start, we have a few quick questions to understand your needs.</h2>
+               <h1 class="title-form" style="font-weight:bold;margin: 0px;color: #FFF;font-size: 38px;"><strong>{{ $data->pro_name }}</strong></h1>
+               <h2 class="title_des" style="margin: 0px;font-size: 16px;line-height: normal;color:#FFF;">To start, we have a few quick questions to understand your needs.</h2>
             </div>
          <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
             @csrf
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">            
-            <div class="row">
+            <div class="row" style="margin-bottom:0px;">
                 @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
 
@@ -85,15 +103,57 @@
                            @else
                            @if(isset($fields['sum_insured']))
                               @if($fields['sum_insured'] == 'on')
-                              <div class="col-md-12">
-                                 <label for="coverageammount" class="text-white">Coverage Amount</label>
-                                 <div class="custom-form-control">
-                                    <select required class="form-input" name="sum_insured2" id="coverageammount">
-                                       <option value="">Coverage Amount</option>
-                                       @foreach($sum_insured as $r)
-                                       <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                                       @endforeach
-                                    </select>
+                              <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                              <script>
+                                 @php
+                                 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                                 @endphp
+                                 var SliderValues = [0,<?php
+                                  $s = 0;
+                                  foreach($sum as $r){
+                                  $s++;   
+                                  echo $sumamount = $r->sum_insured;
+                                  if($s < count($sum)){
+                                  echo ', ';
+                                  }
+                                  } ?>];
+
+                                 var iValue = SliderValues.indexOf(0);
+                                 $(function () {
+                                     $("#sum_slider").slider({
+                                         range: "min",
+                                         min: 0,
+                                         max: SliderValues.length - 1,
+                                         step: 1,
+                                         value: iValue,
+                                         slide: function (event, ui) {
+                                             $('#coverage_amount').text(SliderValues[ui.value]);
+                                                //alert(SliderValues.length);
+                                                for (i = 0; i < SliderValues.length; i++) {
+                                                var group = SliderValues[i];
+                                                $('.coverage-amt-'+group).hide();
+                                                }
+                                                $('.coverage-amt-'+SliderValues[ui.value]).show();
+                                                $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+                                                $( "#sum_insured2").val(SliderValues[ui.value]);
+                                         }
+                                     });
+
+                                 });
+                                   </script>
+
+
+                                 <div class="col-md-12">
+
+
+                                 <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
+                                 </div>
+                                 <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+                                    <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;"></div>
+                                    <input type="hidden" id="sum_insured2" name="sum_insured2" value="1000" />
+
+                                    <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
+                                 
                                  </div>
                               </div>
                               @endif
@@ -114,15 +174,15 @@
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                            <div class="col-md-6">
-                              <label for="departure_date" class="text-white">Start Date of Coverage</label>
+                              <label for="departure_date" class="text-white">Start Date</label>
                               <div class="custom-form-control">
-                                 <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">
+                                <input id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" autocomplete="off" type="date" placeholder="Start Date" required="" @if($data->pro_supervisa == 1) onchange="supervisayes()" @endif data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
                               </div>
                            </div>
                            <div class="col-md-6">
-                              <label for="return_date" class="text-white">End Date of Coverage</label>
+                              <label for="return_date" class="text-white">End Date</label>
                               <div class="custom-form-control">
-                                 <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                                 <input id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" type="<?php if($data->pro_supervisa == 1){echo 'text';}else{echo 'date';} ?>" placeholder="End Date" required value="" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false">
                               </div>
                            </div>
                      @endif
@@ -180,10 +240,13 @@
                      @endif
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                     <div class="col-md-12">
+                     <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
                         <label for="savers_email" class="text-white">Email</label>
                         <div class="custom-form-control">
-                           <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
+                           <input id="savers_email" name="savers_email" value="" class="form-control form-control" type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
+                           <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                              <i class="fa fa-envelope" aria-hidden="true"></i>
+                           </span>
                         </div>
                      </div>
                      @endif
@@ -282,11 +345,9 @@
                            @endif
                         @endif
                         </div>
-                     <div class="col-md-6">
-                        <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
-                     </div>
-                     <div class="col-md-6 text-right">
-                        <button type="submit" class="btn btn-primary get_qout">Get Quote <i class="fa fa-arrow-circle-right"></i></button>
+                     <div class="col-md-12" style="clear: both;">
+                     <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
+                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 7px 27px;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                      </div>
                </div>
             </form>

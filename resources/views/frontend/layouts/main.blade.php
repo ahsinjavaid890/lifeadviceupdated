@@ -22,8 +22,44 @@
 	<link rel="icon" type="image/png" href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}">    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	@yield('tittle')
+  	<style type="text/css">
+  		/*#loading {
+				  position: fixed;
+				  display: block;
+				  width: 100%;
+				  height: 100%;
+				  top: 0;
+				  left: 0;
+				  text-align: center;
+				  opacity: 1;
+				  background-color: #dddd;
+				  z-index: 99;
+				}
+				.loading-div{
+					position: absolute;
+			    left: 35%;
+			    top: 50%;
+			    z-index: 100;
+			    background-color: #3a5371;
+			    padding: 10px;
+			    border-radius: 15px;
+				}
+				.loading-image{
+					margin-bottom: 15px;
+			    background-color: white;
+			    border-radius: 10px;
+			    padding: 10px;
+				}*/
+  	</style>
 </head>
 	<body class="body-five">
+		<!-- <div id="loading">
+			<div class="loading-div">
+				<img id="loading-image" src="{{ url('public/images/118135255.png') }}" alt="Loading..." />
+				<h1>Finding the best plans for you</h1>
+			</div>
+		  
+		</div> -->
 		@include('frontend.includes.header')
 			@yield('content')
 		@include('frontend.includes.footer')

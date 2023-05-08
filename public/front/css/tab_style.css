@@ -180,8 +180,9 @@ select{
    	margin-left: -3px !important;
    }
    .tabshead{
-   	padding-top: 20px !important;
-   	background-color: #2b3481 !important;
+   	padding-top: 28px !important;
+/*   	background-color: #2b3481 !important;*/
+   	background: #222;
    }
    .tabs .active{
    	background-color: #1bbc9b !important;
