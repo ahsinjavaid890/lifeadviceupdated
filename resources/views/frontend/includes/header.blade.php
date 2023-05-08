@@ -40,19 +40,25 @@
                                             <a href="{{ url('student-insurance') }}" class="nav-link">Student Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link dropdown-toggle">
+                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle">
                                                 Insurance For Candians
                                                 <i class="bx bx-chevron-down"></i>
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li class="nav-item">
-                                                    <a href="#" class="nav-link">Single Trip</a>
+                                                    <a href="{{ url('single-trip-insurance') }}" class="nav-link">Single Trip</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#" class="nav-link">Multitrip</a>
+                                                    <a href="javascript:void(0)" class="nav-link">Multitrip
+
+                                                        <span style=" text-align: left; margin-left: 68px; background-color: red; border-radius: 15px; padding: 5px; color: white; ">Working</span>
+                                                    </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#" class="nav-link">All Inclusive</a>
+                                                    <a href="javascript:void(0)" class="nav-link">All Inclusive
+
+                                                        <span style=" text-align: left; margin-left: 50px; background-color: red; border-radius: 15px; padding: 5px; color: white; ">Working</span>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </li>

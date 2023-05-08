@@ -38,6 +38,7 @@ Route::get('/udashboard', [SiteController::class, 'udashboard']);
 Route::get('/qoutes-detail', [SiteController::class, 'qoutesdetail']);
 Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);
 Route::get('/travel-insurance', [SiteController::class, 'travel']);
+Route::get('/single-trip-insurance', [SiteController::class, 'singletripinsurance']);
 Route::get('/visitor-insurance', [SiteController::class, 'visitorinsurance']);
 Route::get('/student-insurance', [SiteController::class, 'studentinsurance']);
 Route::get('/sendcompareemail', [SiteController::class, 'sendcompareemail']);
