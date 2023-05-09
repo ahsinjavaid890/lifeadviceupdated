@@ -294,7 +294,7 @@ select{
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 form.form.form-layout1 .form-control, form.form.form-layout1 .select {
-    height: 42px;
+    height: 46px;
 }
 form.form.form-layout1 .form-control {
     padding: 5px 12px;
@@ -310,6 +310,14 @@ form.form.form-layout1 .form-control {
     direction: ltr;
 }
 .emailicon {
+    z-index: 999;
+    padding: 11px 8px !important;
+    position: absolute;
+    margin-top: -42px;
+    margin-left: 3px;
+    background: #F1F1F1;
+}
+.phoneicon {
     z-index: 999;
     padding: 11px 8px !important;
     position: absolute;

@@ -111,9 +111,9 @@
  .form-label {
    position: absolute;
    font-family: inherit;
-   color: #333 !important;
+   /* color: #333 !important; */
    font-size: 15px !important; 
-   font-weight: 400;
+   font-weight: normal !important;
    line-height: 1.5;
    left: 0.75rem;
    top: 0.75rem;
@@ -332,4 +332,16 @@ display: none;
     display: none !important ;
   }
   
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
 }
