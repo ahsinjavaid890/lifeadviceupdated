@@ -346,9 +346,9 @@
                      <div class="col-md-6">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
-                     <div class="col-md-8 col-xs-6" style="padding: 0;">
+                     <div class="col-md-6 col-xs-6" style="padding-right: 14px;">
                      <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
-                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-warning pull-right" style="display: block;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
+                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-warning pull-right" style="display: block;border-radius: 4px !important;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
                      </div>
                   </div>
                </form>
