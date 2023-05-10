@@ -34,12 +34,186 @@ $bg = $bgs[$k];
                <h1 class="title-form" style="font-weight:bold;margin: 0px;color: #FFF;font-size: 38px;"><strong>{{ $data->pro_name }}</strong></h1>
                <h2 class="title_des" style="margin: 0px;font-size: 16px;line-height: normal;color:#FFF;">To start, we have a few quick questions to understand your needs.</h2>
             </div>
-         <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
+            <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
             @csrf
-            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">            
+                  <input type="hidden" name="product_id" value="{{ $data->pro_id }}">  
+
+                  <div id="row">
+                     @for($orderi=1;$orderi<=17;$orderi++)
+
+                     @if(array_search("id_3",$orderdata) == $orderi)
+
+                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                        @php
+                           $number_of_travel = $fields['traveller_number'];
+                        @endphp
+                        @if($number_of_travel > 0)
+
+                        <div class="col-md-12 ">
+                           <label style="font-size: 16px;" for="number_travelers" class="text-white">Number of Travellers</label>
+                           <div class="custom-form-control">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers" style="    padding: 5px 12px !important;">
+                                 <option value="">Number of Travellers</option>
+                                 @for($i=1;$i<=$number_of_travel;$i++)
+                                 <option value="{{ $i }}">{{ $i }}</option>
+                                 @endfor
+                              </select>
+                           </div>
+                        </div>
+
+
+                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
+
+                           @php
+                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                              $c = 0;
+                           @endphp
+
+                           @for($i=1;$i<=$number_of_travel;$i++)
+                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                              <div class="row">
+                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 ">
+                                    <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the oldest Traveller</label>
+                                       <div class="custom-form-control">
+                                          <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
+                                       </div>
+                                    </div>
+                                    <div style="padding-right: 0px; margin-top: 26px;" class="col-md-6 ">
+                                       <div class="custom-form-control">
+                                          <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                           </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
+                           @endfor
+                        @endif
+                        @endif
+                     @endif
+                     @endif
+                     @if(array_search("id_8",$orderdata) == $orderi)
+                     @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
+                           <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+                           <div class="col-md-6 col-sm-6 col-xs-12 control-input">
+                              <label class="input-label"> Start Date</label>
+                           <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <script>
+                                 $('#departure_date').datepicker({
+                                 format: 'yyyy-mm-dd',
+                                 todayHighlight:'TRUE',
+                                 autoclose: true,
+                                 });
+                              </script>
+                              </div>
+                              <div class="col-md-6">
+                                 <label for="return_date" class="">End Date of Coverage</label>
+                                 <div class="custom-form-control">
+                                    <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                                 </div>
+                              </div>
+                              
+                           @if($data->pro_supervisa != 1)
+                           <script>
+                              $('#return_date').datepicker({
+                              format: 'yyyy-mm-dd',
+                              todayHighlight:'TRUE',
+                              autoclose: true,
+                              });
+                           </script>  
+                           @endif
+                     @endif
+                     @endif
+                     @if(array_search("id_6",$orderdata) == $orderi)
+                     @if(isset($fields['Country']))
+                        @if($fields['Country'] == "on" )
+                           @if($data->pro_travel_destination == 'worldwide')
+                            <script>
+                              function CountryState(id) {
+                                  if(id=="Canada")
+                                  {
+                                      $('#canadastate').fadeIn();
+                                      $('#country').removeClass('col-md-12')
+                                      $('#country').addClass('col-md-6')
+                                  }else 
+                                  {
+                                      $('#canadastate').hide();
+                                      $('#country').removeClass('col-md-6')
+                                      $('#country').addClass('col-md-12')
+                                      
+                                 }
+                              }
+                           </script>
+                           <div id="country" class="col-md-12 ">
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
+                              </div>
+                           </div>
+                           <div id="canadastate" class="col-md-6 " style="display:none;">
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
+                              </div>
+                           </div>
+                           @else
+                           <div class="col-md-12 " >
+                              <label style="font-size: 16px;" for="primary_destination" class="text-white">Primary destination in Canada</label>
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
+                              </div>
+                           </div>
+                           @endif
+                        @endif
+                     @endif
+                     @endif
+                     @if(array_search("id_1",$orderdata) == $orderi)
+                     @if(isset($fields['fname']))
+                     @if($fields['fname'] == 'on')
+
+                     <div class="col-md-6 ">
+                        <label for="firstname" class="text-white" style="    font-size: 16px;">First name</label>
+                        <div class="custom-form-control">
+                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-control">
+                        </div>
+                     </div>
+                     @endif
+                     @endif
+                      @if(isset($fields['lname']))
+                     @if($fields['lname'] == 'on')
+                     <div class="col-md-6 ">
+                        <label for="lname" class="text-white" style="font-size: 16px;">Last name</label>
+                        <div class="custom-form-control">
+                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-control">
+                        </div>
+                     </div>
+                     @endif
+                     @endif
+                     @endif
+                     @if(array_search("id_17",$orderdata) == $orderi)
+                     @if(isset($fields['sum_insured']))
+               @if($fields['sum_insured'] == 'on')          
             <div class="row" style="margin-bottom:0px;">
-               @if(isset($fields['sum_insured']))
-               @if($fields['sum_insured'] == 'on')
+               
                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                <script>
                   @php
@@ -92,203 +266,8 @@ $bg = $bgs[$k];
                </div>
                @endif
                @endif
-                @if(isset($fields['fname']))
-                     @if($fields['fname'] == 'on')
-
-                     <div class="col-md-6 ">
-                        <label for="firstname" class="text-white" style="    font-size: 16px;">First name</label>
-                        <div class="custom-form-control">
-                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-control">
-                        </div>
-                     </div>
-                     @endif
-                     @endif
-                     @if(isset($fields['lname']))
-                     @if($fields['lname'] == 'on')
-                     <div class="col-md-6 ">
-                        <label for="lname" class="text-white" style="font-size: 16px;">Last name</label>
-                        <div class="custom-form-control">
-                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-control">
-                        </div>
-                     </div>
-                     @endif
-                     @endif
-               @if(isset($fields['Country']))
-                        @if($fields['Country'] == "on" )
-                           @if($data->pro_travel_destination == 'worldwide')
-                            <script>
-                              function CountryState(id) {
-                                  if(id=="Canada")
-                                  {
-                                      $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                  }else 
-                                  {
-                                      $('#canadastate').hide();
-                                      $('#country').removeClass('col-md-6')
-                                      $('#country').addClass('col-md-12')
-                                      
-                                 }
-                              }
-                           </script>
-                           <div id="country" class="col-md-12 ">
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
-                              </div>
-                           </div>
-                           <div id="canadastate" class="col-md-6 " style="display:none;">
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
-                              </div>
-                           </div>
-                           @else
-                           {{-- @if(isset($fields['sum_insured']))
-                              @if($fields['sum_insured'] == 'on')
-                              <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                              <script>
-                                 @php
-                                 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
-                                 @endphp
-                                 var SliderValues = [0,<?php
-                                  $s = 0;
-                                  foreach($sum as $r){
-                                  $s++;   
-                                  echo $sumamount = $r->sum_insured;
-                                  if($s < count($sum)){
-                                  echo ', ';
-                                  }
-                                  } ?>];
-
-                                 var iValue = SliderValues.indexOf(0);
-                                 $(function () {
-                                     $("#sum_slider").slider({
-                                         range: "min",
-                                         min: 0,
-                                         max: SliderValues.length - 1,
-                                         step: 1,
-                                         value: iValue,
-                                         slide: function (event, ui) {
-                                             $('#coverage_amount').text(SliderValues[ui.value]);
-                                                //alert(SliderValues.length);
-                                                for (i = 0; i < SliderValues.length; i++) {
-                                                var group = SliderValues[i];
-                                                $('.coverage-amt-'+group).hide();
-                                                }
-                                                $('.coverage-amt-'+SliderValues[ui.value]).show();
-                                                $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
-                                                $( "#sum_insured2").val(SliderValues[ui.value]);
-                                         }
-                                     });
-
-                                 });
-                                   </script>
-
-                                <div class="col-md-12">
-                                 <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
-                                 </div>
-                                 <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
-                                    <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;"></div>
-                                    <input type="hidden" id="sum_insured2" name="sum_insured2" value="1000" />
-
-                                    <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
-                                 
-                                 </div>
-                              </div>
-                              @endif
-                              @endif --}}
-                           <div class="col-md-12 " >
-                              <label style="font-size: 16px;" for="primary_destination" class="text-white">Primary destination in Canada</label>
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </div>
-                           @endif
-                        @endif
-                     @endif
-                     @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                           <div class="col-md-6 ">
-                              <label style="font-size: 16px;" for="departure_date" class="text-white">Start Date</label>
-                              <div class="custom-form-control">
-                                <input id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" autocomplete="off" type="date" placeholder="Start Date" required="" @if($data->pro_supervisa == 1) onchange="supervisayes()" @endif data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
-                              </div>
-                           </div>
-                           <div class="col-md-6 ">
-                              <label style="font-size: 16px;" for="return_date" class="text-white">End Date</label>
-                              <div class="custom-form-control">
-                                 <input id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" type="<?php if($data->pro_supervisa == 1){echo 'text';}else{echo 'date';} ?>" placeholder="End Date" required value="" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false">
-                              </div>
-                           </div>
-                     @endif
-                      
-                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
-                        @php
-                           $number_of_travel = $fields['traveller_number'];
-                        @endphp
-                        @if($number_of_travel > 0)
-
-                        <div class="col-md-12 ">
-                           <label style="font-size: 16px;" for="number_travelers" class="text-white">Number of Travellers</label>
-                           <div class="custom-form-control">
-                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers" style="    padding: 5px 12px !important;">
-                                 <option value="">Number of Travellers</option>
-                                 @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option value="{{ $i }}">{{ $i }}</option>
-                                 @endfor
-                              </select>
-                           </div>
-                        </div>
-
-
-                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
-
-                           @php
-                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                              $c = 0;
-                           @endphp
-
-                           @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
-                              <div class="row">
-                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 ">
-                                    <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the oldest Traveller</label>
-                                       <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
-                                       </div>
-                                    </div>
-                                    <div style="padding-right: 0px; margin-top: 26px;" class="col-md-6 ">
-                                       <div class="custom-form-control">
-                                          <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
-                                             <option value="">Select Pre Existing Condition</option>
-                                             <option value="yes">Yes</option>
-                                             <option value="no">No</option>
-                                           </select>
-                                       </div>
-                                    </div>
-                                 </div>
-                           </div>
-                           @endfor
-                        @endif
-                        @endif
-                     @endif
+               @endif
+                    @if(array_search("id_4",$orderdata) == $orderi)
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
                      <div class="col-md-12  col-sm-12 col-xs-12 control-input email-main">
@@ -302,6 +281,8 @@ $bg = $bgs[$k];
                      </div>
                      @endif
                      @endif
+                     @endif
+                     @if(array_search("id_7",$orderdata) == $orderi)
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12 ">
@@ -309,8 +290,8 @@ $bg = $bgs[$k];
                         <div class="custom-form-control">
                            <input onkeyup="validatephone()" style="padding-left: 40px !important;" type="text" name="phone" placeholder="Enter Your Phone Number" required id="phone" class="form-control">
                            <span class="phoneicon" style="color:#1BBC9B;">
-								<i class="fa fa-phone" aria-hidden="true"></i>
-							</span>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                     </span>
                         </div>
                      </div>
                      <script>
@@ -328,62 +309,51 @@ $bg = $bgs[$k];
                      </script>
                      @endif
                      @endif
+                     @endif
+                     @if(array_search("id_14",$orderdata) == $orderi)
                       @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                     <div class="col-md-12 ">
-                        <label style="font-size: 16px;" for="gender" class="text-white">Primary Applicant`s Gender</label>
-                        <div class="custom-form-control">
-                           <select required class="form-input" name="gender" id="gender"     style="    padding: 5px 12px !important;"> 
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
+                     <div class="col-md-6 col-sm-6 col-xs-12 control-input">
+                           <label class="input-label">Gender</label>
+                           <button type="button" id="person_gender" class="form-control text-left" onclick="persongender();" style="padding: 0;font-size: 14px;font-weight: 500;"><i class="fa fa-male genderi"></i> Select Gender</button>
+                           <script>
+                              function persongender(){
+                                 if(document.getElementById('gender').value == 'male'){
+                                 document.getElementById('person_gender').innerHTML = '<i class="fa fa-female genderi"></i> Female';
+                                 document.getElementById('gender').value = 'female';
+                                 } else {
+                                 document.getElementById('person_gender').innerHTML = '<i class="fa fa-male genderi"></i> Male';
+                                 document.getElementById('gender').value = 'male';  
+                                 }
+                              }
+                           </script>
+                           <input type="hidden" name="gender" id="gender" value="">
                         </div>
-                     </div>
                      @endif
+                     @endif
+                        @if(array_search("id_12",$orderdata) == $orderi)
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                     <div class="col-md-12 ">
-                        <label style="font-size: 16px;" for="old_traveller_gender" class="text-white">Gender of the Oldest traveller</label>
-                        <div class="custom-form-control">
-                           <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender"    style="    padding: 5px 12px !important;">
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
-                        </div>
-                     </div>
-                     @endif
-                      <div class="row">
-                           @if(isset($fields['Smoke12']))
-                           @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-6">
-                              <label style="font-size: 16px; for="" class="text-white " id="">Do you Smoke in last 12 months?</label>
-                              <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="Smoke12" id=""      style="    padding: 5px 12px !important;">
-                                    <option value="">--- Please Choose ---</option>
-                                      <option value="yes" >Yes</option>
-                                      <option value="no" >No</option>
-                                 </select>
-                              </div>
-                           </div>
-                           @endif
-                        @endif
-                        @php
-                           $i = 0;
-                           $position_array = array();
-                           foreach($fields as $key => $value){
-                              $i ++;
-                              $position_array[$i] = $key;
+                     <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding input custom_traveller gender-main">
+                              <label class="input-label">Gender of the oldest traveller</label>
+                              <button type="button" id="oldest_gender" class="form-control text-left" onclick="oldergender();" style="padding: 0;font-size: 14px;font-weight: 500;"><i class="fa fa-male genderi"></i>Gender of the oldest traveller</button>
+                           <script>
+                           function oldergender(){
+                              if(document.getElementById('old_traveller_gender').value == 'male'){
+                              document.getElementById('oldest_gender').innerHTML = '<i class="fa fa-female genderi"></i> Female';
+                              document.getElementById('old_traveller_gender').value = 'female';
+                              } else {
+                              document.getElementById('oldest_gender').innerHTML = '<i class="fa fa-male genderi"></i> Male';
+                              document.getElementById('old_traveller_gender').value = 'male';   
+                              }
                            }
-                        @endphp
-                        
-                        @if(isset($fields['fplan']))
+                           </script>
+                        <input type="hidden" name="old_traveller_gender" id="old_traveller_gender" value="">       
+                        </div>
+                     @endif
+                     @endif
+                     @if(array_search("id_12",$orderdata) == $orderi)
+                      @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                              @php
-                                 $num = array_search("fplan", $position_array); 
-                                 $current_values[$num] = 'group_15';  
-                              @endphp
-                              
+                             
                                  <div class="col-md-6">
                                  <label style="font-size: 16px;  for="" class="text-white">Do you require Family Plan ?</label>
                                  <div class="custom-form-control">
@@ -408,12 +378,37 @@ $bg = $bgs[$k];
                               
                            @endif
                         @endif
-                        </div>
-                     <div class="col-md-12" style="clear: both;">
+                        @endif
+                        @if(array_search("id_5",$orderdata) == $orderi)
+                        @if(isset($fields['Smoke12']))
+                           @if($fields['Smoke12'] == 'on')
+                           <div class="col-md-6">
+                              <label style="font-size: 16px;" class="text-white" id="">Do you Smoke in last 12 months?</label>
+                              <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="Smoke12" id=""      style="    padding: 5px 12px !important;">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" >Yes</option>
+                                      <option value="no" >No</option>
+                                 </select>
+                              </div>
+                           </div>
+                           @endif
+                        @endif
+                         @endif
+                        @endfor 
+                  </div>
+                    
+                     
+               
+                     
+                    
+                     
+                  <div class="col-md-12" style="clear: both;">
                      <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
-                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
-                     </div>
-               </div>
+                     <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
+                  </div>
+               
             </form>
          </div>
       </div>

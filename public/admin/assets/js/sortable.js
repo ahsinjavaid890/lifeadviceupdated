@@ -18638,7 +18638,7 @@ var $sortable = $('.sortlist').sortable({
       $('li', $sortable).each(function() {
          $(this).attr('position', counter);
          var value = 'id_'+counter;
-          $(this).find("input[name='sort[]']").val(value);
+          // $(this).find("input[name='sort[]']").val(value);
          counter++;
       });
    }

@@ -53,12 +53,15 @@ class AdminController extends Controller
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
+        // print_r($request->sort);exit;
         foreach($request->sort as  $order)
         {
-            $sort_orders[$i] = $order ;
+            $sort_orders[$i] = $order;
             $i++;
         }
+        // print_r($sort_orders);exit;
         $sort_orders =  serialize($sort_orders);
+
 
 
         if($request->vector)
