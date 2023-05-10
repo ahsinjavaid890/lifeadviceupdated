@@ -215,7 +215,7 @@
                                        <label for="year{{$i}}" class="input-label">Select Pre Existing</label>
                                     </div>
                                        <div class="custom-form-control col-md-6">
-                                          <select name="pre_existing[]" class="form-input" style="width: 95%;  margin-left: 15px;">
+                                          <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -256,7 +256,7 @@
                         <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                      </div>
                         <div class="custom-form-control col-md-6">
-                              <select name="gender" id="gender" style="width: 95%;  margin-left: 15px;">
+                              <select class="form-input" name="gender" id="gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -270,7 +270,7 @@
                         <label for="old_traveller_gender" class="input-label">Gender of the Oldest traveller</label>
                      </div>
                         <div class="custom-form-control col-md-6">
-                           <select style="width: 95%;  margin-left: 15px;">
+                           <select class="form-input">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
