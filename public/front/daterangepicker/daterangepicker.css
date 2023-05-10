@@ -336,6 +336,8 @@ padding: 6px 20px;
     .daterangepicker.single.rtl .ranges, .daterangepicker.single.rtl .drp-calendar {
       float: right; }
     .daterangepicker.ltr {
+      top: 478.403px !important;
+      right: 527.111px !important;
       direction: ltr;
       text-align: left; }
       .daterangepicker.ltr .drp-calendar.left {
