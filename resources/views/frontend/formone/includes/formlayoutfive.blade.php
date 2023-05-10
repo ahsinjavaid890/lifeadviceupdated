@@ -1,23 +1,23 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutfive.css')}}">
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
-   <h1 style="font-weight:bold;margin: 0px; color: #2b3481" class=""><strong>{{ $data->pro_name }}</strong></h1>
-   <h2 style="margin-top: -3px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
+   <h1 style="font-weight:bold;margin: 0px; color: #b92c28 !important" class=""><strong>{{ $data->pro_name }}</strong></h1>
+   <h2 style="margin-top: -3px;font-size: 16px;font-weight: normal;line-height: normal;color: #000;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
 <div class="container birthdate new-visa mb-5 mt-2" style="padding: 20px; background: var(--color-light);">
          <form method="POST" action="{{ url('quotes') }}">
                   @csrf
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
+                     @for($orderi=1;$orderi<=17;$orderi++)
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right" >
-                           <label for="input-label"  class="input-label" style=" font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important" >First name</label>
+                           <label for="input-label"  class="input-label">First name</label>
                         </div>
                         <div class="col-md-6">
                            <div class="custom-form-control">
-                              <input type="text" name="fname" placeholder="First Name" required id="firstname" class="w-100 " style="    border: 1px solid #aaa !important;
-    height: 40px !important; padding: 12px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif;   font-size: 17px; ">
+                              <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
                            </div>
                         </div>
                      </div>
@@ -28,12 +28,11 @@
 
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                        <label for="lname" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Last name</label>
+                        <label for="lname" class="input-label">Last name</label>
                         </div>
                         <div class="col-md-6">
                            <div class="custom-form-control">
-                              <input type="text" name="lname" placeholder="Last Name" required id="lname" class="w-100"  style="    border: 1px solid #aaa !important;
-                              height: 40px !important;   padding: 12px;    font-size: 17px; " >
+                              <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
                            </div>
                      </div>
                      </div>
@@ -43,15 +42,11 @@
                         @if($fields['email'] == "on" )
                            <div class="col-md-12">
                               <div class="col-md-6 text-md-right" >
-                              <label for="savers_email" class="input-label"  style="">Email Address</label>
+                              <label for="savers_email" class="input-label">Email Address</label>
                               </div>
                               <div class="col-md-6">
-                                 <label class="icon-left" for="savers_email" style="color: rgb(41, 31, 245);font-size: 17px;height: 19px;line-height: 40px !important;opacity: .6;position: absolute;text-align: center;top: 0px;width: 42px;z-index: 2; left:14px;">
-                                    <i class="fa fa-envelope-o" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                                 </label>
                                  <div class="custom-form-control">
-                                    <input type="text" name="savers_email" placeholder="Email" required id="savers_email" class="w-100"  style="    border: 1px solid #aaa !important;
-                                    height: 40px !important;     font-size: 17px;    padding: 12px; padding-left: 40px !important "        >
+                                    <input type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
                                  </div>
                               </div>
                            </div>
@@ -61,15 +56,11 @@
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                        <label for="phone"  class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Phone Number <b id="phone_error" class="text-danger"></b></label>
+                        <label for="phone"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
                         </div>
                         <div class="col-md-6">
-                           <label class="icon-left" for="phone" style="color: rgb(41, 31, 245);font-size: 17px;height: 19px;line-height: 40px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
-                              <i class="fa fa-phone" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                           </label>
                            <div class="custom-form-control">
-                              <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="w-100"  style="    border: 1px solid #aaa !important;
-                              height: 40px !important;     font-size: 17px;   padding: 12px; padding-left: 40px !important">
+                              <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
                            </div>
                         </div>
                      </div>
@@ -92,13 +83,11 @@
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                           <label for="coverageammount"  class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Coverage Amount</label>
+                           <label for="coverageammount"  class="input-label">Coverage Amount</label>
                         </div>
                         <div class="col-md-6">
                            <div class="custom-form-control">
-                              <select required class="w-100" name="sum_insured2" id="coverageammount"  style="    border: 1px solid #aaa !important;
-                              height: 40px !important;     font-size: 17px;   padding: 8px !important; color: #959595;
-    padding: 6px !important;">
+                              <select required class="form-input" name="sum_insured2" id="coverageammount">
                                  <option value="">Coverage Amount</option>
                                  @foreach($sum_insured as $r)
                                  <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
@@ -131,13 +120,11 @@
                            </script>
                            <div class="col-md-12">
                               <div class="col-md-6 text-md-right">
-                                 <label for="primary_destination" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Primary Destination</label>
+                                 <label for="primary_destination" class="input-label">Primary Destination</label>
                               </div>
                               <div id="country" class="col-md-6">
                                  <div class="custom-form-control">
-                                    <select onchange="CountryState(this.value)" required class="w-100" name="primary_destination" id="primary_destination"  style="    border: 1px solid #aaa !important;
-                                    height: 40px !important;    font-size: 17px;     padding: 8px !important; color: #959595;
-    padding: 6px !important;">
+                                    <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Select Country</option>
                                        @foreach(DB::table('countries')->get() as $r)
                                           <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
@@ -149,11 +136,10 @@
                            <div class="col-md-12" id="canadastate" style="display:none;">
                            
                                  <div class="col-md-6 text-md-right">
-                                    <label for="primary_destination" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">States In Canda</label>
+                                    <label for="primary_destination" class="input-label">States In Canda</label>
                                  </div>
                                  <div class="form-group col-md-6 custom-form-control">
-                                    <select required class="form-control selecttwo w-100" name="primary_destination" id="primary_destination" style="    width: 94.3%;
-                                    margin-left: 17px;    font-size: 17px;  padding: 8px !important;  border: 1px solid #aaa !important;color: #959595; padding: 6px !important; height: 40px !important;  ">
+                                    <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                           <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -165,13 +151,11 @@
                            @else
                            <div class="col-md-12">
                               <div class="col-md-6 text-md-right">
-                                 <label for="primary_destination" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">States In Canda</label>
+                                 <label for="primary_destination" class="input-label">States In Canda</label>
                               </div>
                                  <div class="col-md-6" >
                                     <div class="custom-form-control">
-                                       <select required class="w-100" name="primary_destination" id="primary_destination"  style="    border: 1px solid #aaa !important;
-                                       height: 40px !important;     font-size: 17px; padding: 8px !important; color: #959595;
-    padding: 6px !important;  ">
+                                       <select required class="form-input" name="primary_destination" id="primary_destination">
                                           <option value="">Primary destination in Canada</option>
                                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                              <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -193,14 +177,12 @@
 
                         <div class="col-md-12">
                            <div class="col-md-6 text-md-right">
-                              <label for="number_travelers" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Number of Travellers</label>
+                              <label for="number_travelers" class="input-label">Number of Travellers</label>
                            </div>
                            
                            <div class="col-md-6">
                            <div class="custom-form-control">
-                              <select  style="    border: 1px solid #aaa !important;
-                              height: 40px !important;     font-size: 17px; padding: 8px !important; color: #959595;
-    padding: 6px !important;" onchange="checknumtravellers(this.value)" required class="w-100" name="number_travelers" id="number_travelers">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
                                  <option value="{{ $i }}">{{ $i }}</option>
@@ -226,18 +208,14 @@
                                  </div>
                                     
                                        <div class="custom-form-control col-md-6" >
-                                          <input  style="      font-size: 17px;  border: 1px solid #aaa !important;
-                                          height: 40px !important;  padding: 8px !important;  color: #959595;
-    padding: 6px !important;"    onchange="dateofbirth(this.value)" id="dateofbirthfull" class="w-100" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        
                                     </div>
                                     <div class="col-md-6 text-md-right">
-                                       <label for="year{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Select Pre Existing</label>
+                                       <label for="year{{$i}}" class="input-label">Select Pre Existing</label>
                                     </div>
                                        <div class="custom-form-control col-md-6">
-                                          <select  style="     font-size: 17px;   border: 1px solid #aaa !important;
-                                          height: 40px !important;  padding: 8px !important; color: #959595;
-    padding: 6px !important;" name="pre_existing[]" class="w-100" style="width: 95%;  margin-left: 15px;">
+                                          <select name="pre_existing[]" class="form-input" style="width: 95%;  margin-left: 15px;">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -252,30 +230,22 @@
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                           <label for="departure_date" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Start Date of Coverage</label>
+                           <label for="departure_date" class="input-label">Start Date of Coverage</label>
                        
                         </div>
                         <div class="col-md-6">
-                           <label  for="departure_date" style="color: rgb(41 31 245);font-size: 17px;height: 19px;line-height: 40px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
-                              <i class="fa fa-calendar" onclick="" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                           </label>
-                           <div class="custom-form-control">
-                              <input  style="     font-size: 17px;   border: 1px solid #aaa !important;
-                              height: 40px !important;padding-left: 40px !important;color: #959595;" onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="w-100" >
+                             <div class="custom-form-control">
+                              <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input" >
                            </div>
                         </div>
                      </div>
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                           <label for="departure_date" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">End Date of Coverage</label>
+                           <label for="departure_date" class="input-label">End Date of Coverage</label>
                         </div>
                         <div class="col-md-6">
-                           <label  for="departure_date" style="color: rgb(41 31 245);font-size: 17px;height: 19px;line-height: 40px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
-                              <i class="fa fa-calendar" onclick="" style="border-right: 1px solid #666;padding-right: 8px;"></i>
-                           </label>
                            <div class="custom-form-control">
-                              <input style="     font-size: 17px;   border: 1px solid #aaa !important;
-                              height: 40px !important; padding-left: 40px !important;color: #959595;" type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="w-100">
+                              <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
                            </div>
                         </div>
                      </div>
@@ -283,12 +253,10 @@
                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
                      <div class="col-md-12">
                      <div class="col-md-6 text-md-right">
-                        <label for="gender"  class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Primary Applicant`s Gender</label>
+                        <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                      </div>
                         <div class="custom-form-control col-md-6">
-                              <select style="     font-size: 17px;   border: 1px solid #aaa !important;
-                              height: 40px !important;  padding: 8px !important; color: #959595;
-    padding: 6px !important;" required class="w-100" name="gender" id="gender" style="width: 95%;  margin-left: 15px;">
+                              <select name="gender" id="gender" style="width: 95%;  margin-left: 15px;">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -299,12 +267,10 @@
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
                      <div class="col-md-12">
                      <div class="col-md-6 text-md-right">
-                        <label for="old_traveller_gender" class="input-label"  style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Gender of the Oldest traveller</label>
+                        <label for="old_traveller_gender" class="input-label">Gender of the Oldest traveller</label>
                      </div>
                         <div class="custom-form-control col-md-6">
-                           <select style="    border: 1px solid #aaa !important;
-                           height: 40px !important;  padding: 8px !important;color: #959595;
-    padding: 6px !important;    font-size: 17px;" required class="w-100" name="old_traveller_gender" id="old_traveller_gender" style="width: 95%;  margin-left: 15px;">
+                           <select style="width: 95%;  margin-left: 15px;">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
@@ -317,13 +283,12 @@
                            @if($fields['Smoke12'] == 'on')
                            <div class="col-md-12">
                               <div class="col-md-6  text-md-right">
-                                 <label style="font-size: 16px;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important" for="" class="  text-md-right" id="">Do you Smoke in last 12 months?</label>
+                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months?</label>
                               </div>
                               <div class="col-md-6">
-                                 <label for="" class="d-sm-none" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Do you Smoke in last 12 months?</label>
+                                 <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
                                  <div class="custom-form-control">
-                                    <select required class="w-100" name="Smoke12" id=""      style="color: #959595;
-                                    padding: 6px !important;    font-size: 17px;  padding: 8px !important;    border: 1px solid #aaa !important;  height:38px !important                                  ">
+                                    <select required class="form-input" name="Smoke12" id="">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes" >Yes</option>
                                          <option value="no" >No</option>
@@ -351,13 +316,12 @@
                               @endphp
                           <div class="col-md-12">
                              <div class="col-md-6 text-right">
-                                <label style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important " for="" class="">Do you require Family Plan ?</label>
+                                <label for="" class="">Do you require Family Plan ?</label>
                              </div>
                              <div class="col-md-6">
    
                               <div class="custom-form-control">
-                                 <select required class="w-100" name="fplan" id=""      style=" color: #959595;
-                                 padding: 6px !important;    font-size: 17px;   padding: 8px !important;    border: 1px solid #aaa !important; height:38px !important                                ">
+                                 <select required class="form-input" name="fplan" id="">
                                     <option value="">--- Please Choose ---</option>
                                       <option value="yes" onclick="changefamilyyes()">Yes</option>
                                       <option value="no"  onclick="changefamilyno()">No</option>
@@ -379,19 +343,13 @@
                            @endif
                         @endif
                         {{-- </div> --}}
+                     
+                     @endfor
                      <div class="col-md-12">
                      <div class="col-md-6">
                      </div>
                      <div class="col-md-6 d-flex justify-content-between" style="margin-top: 12px; ">
-                        <button type="submit" class="btn btn-primary get_qout" style="       background: #1BBC9B;
-                        color: #FFF;
-                        margin: 5px 0 5px 5px;
-                        font-size: 15px;
-                        width: 40%;
-                        padding: 10px 55px;
-                        height: 45px;
-                        margin-left: auto;
-                        border: 1px solid transparent;"><i class="fa fa-list-ul"></i>  Continue </button>
+                        <button type="submit" class="btn btn-primary get_qout" style="background: #1BBC9B; color: #FFF; margin: 5px 0 5px 5px; font-size: 15px; width: 40%; padding: 10px 55px; height: 45px; margin-left: auto; border: 1px solid transparent;"><i class="fa fa-list-ul"></i>  Continue </button>
                      </div>
                      </div>
                   </div>

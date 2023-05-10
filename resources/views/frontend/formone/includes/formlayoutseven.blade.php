@@ -1,9 +1,9 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutseven.css')}}">
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
    <h1 style="font-weight:bold;margin: 0px; color: #2b3481" class=""><strong>{{ $data->pro_name }}</strong></h1>
    <h2 style="margin-top: 10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
-<div class=" birthdate card mb-5 mt-5  s-visa" style="margin-left: 20.5rem;    width: 50%;
+<div class=" birthdate card mb-5 mt-5  s-visa" style="margin-left: auto;width: 50%;
 padding: 3em;
 box-shadow: 0 1px 2px 0 rgba(34,36,38,.22);
 border-radius: 0.25rem;
