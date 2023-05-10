@@ -1,6 +1,23 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
 <div class="clearfix"></div>
-<section id="sectionbackground" style="background-size:cover;background-position:50% 50%;background-image:url('{{ url('')}}/public/front/bgs/2.jpg')">
+<?php
+if($data->pro_id == '1'){
+$bgs = array(4, 6, 8, 11); //Super
+} else if($data->pro_id == '2'){
+$bgs = array(1, 2, 3, 7, 8, 11, 12, 15); //VTC
+} else if($data->pro_id == '3'){
+$bgs = array(5, 9, 10); //Student
+} else if($data->pro_id == '9'){
+$bgs = array(13, 14); //Student
+} else {
+$bgs = array(1, 2, 3, 7, 8, 11, 12); //VTC
+}
+
+$k = array_rand($bgs);
+$bg = $bgs[$k];
+
+?>
+<section id="sectionbackground" style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('') }}public/front/bgs/<?php echo $bg;?>.jpg'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
    <div class="container" style="padding: 55px 0px 200px 0px;">
       <div class="col-md-12">
          <h1 class="mainheading">

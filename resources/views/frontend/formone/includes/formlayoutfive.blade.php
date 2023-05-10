@@ -9,35 +9,38 @@
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
                      @for($orderi=1;$orderi<=17;$orderi++)
-                     @if(isset($fields['fname']))
-                     @if($fields['fname'] == 'on')
-                     <div class="col-md-12">
-                        <div class="col-md-6 text-md-right" >
-                           <label for="input-label"  class="input-label">First name</label>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="custom-form-control">
-                              <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
+                     @if(array_search("id_1",$orderdata) == $orderi)
+                        @if(isset($fields['fname']))
+                        @if($fields['fname'] == 'on')
+                        <div class="col-md-12">
+                           <div class="col-md-6 text-md-right" >
+                              <label for="input-label"  class="input-label">First name</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="custom-form-control">
+                                 <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
+                              </div>
                            </div>
                         </div>
-                     </div>
-                     @endif
-                     @endif
-                     @if(isset($fields['lname']))
-                     @if($fields['lname'] == 'on')
+                        @endif
+                        @endif
+                        @if(isset($fields['lname']))
+                        @if($fields['lname'] == 'on')
 
-                     <div class="col-md-12">
-                        <div class="col-md-6 text-md-right">
-                        <label for="lname" class="input-label">Last name</label>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="custom-form-control">
-                              <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
+                        <div class="col-md-12">
+                           <div class="col-md-6 text-md-right">
+                           <label for="lname" class="input-label">Last name</label>
                            </div>
-                     </div>
-                     </div>
+                           <div class="col-md-6">
+                              <div class="custom-form-control">
+                                 <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
+                              </div>
+                        </div>
+                        </div>
+                        @endif
+                        @endif
                      @endif
-                     @endif
+                     @if(array_search("id_4",$orderdata) == $orderi)
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
                            <div class="col-md-12">
@@ -52,6 +55,8 @@
                            </div>
                         @endif
                      @endif
+                     @endif
+                     @if(array_search("id_7",$orderdata) == $orderi)
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12">
@@ -79,6 +84,8 @@
                      </script>
                      @endif
                      @endif
+                     @endif
+                     @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-12">
@@ -98,7 +105,8 @@
                      </div>
                      @endif
                      @endif
-
+                     @endif
+                     @if(array_search("id_6",$orderdata) == $orderi)
                      @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
@@ -167,8 +175,8 @@
                            @endif
                         @endif
                      @endif
-
-
+                     @endif
+                     @if(array_search("id_3",$orderdata) == $orderi)
                      @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
                         @php
                            $number_of_travel = $fields['traveller_number'];
@@ -227,7 +235,12 @@
                         @endif
                         @endif
                      @endif
+                     @endif
+                     @if(array_search("id_8",$orderdata) == $orderi)
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
+                     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">Start Date of Coverage</label>
@@ -235,7 +248,14 @@
                         </div>
                         <div class="col-md-6">
                              <div class="custom-form-control">
-                              <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input" >
+                              <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <script>
+                           $('#departure_date').datepicker({
+                           format: 'yyyy-mm-dd',
+                           todayHighlight:'TRUE',
+                           autoclose: true,
+                           });
+                        </script>
                            </div>
                         </div>
                      </div>
@@ -245,30 +265,43 @@
                         </div>
                         <div class="col-md-6">
                            <div class="custom-form-control">
-                              <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                              <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                              @if($data->pro_supervisa != 1)
+                              <script>
+                                 $('#return_date').datepicker({
+                                 format: 'yyyy-mm-dd',
+                                 todayHighlight:'TRUE',
+                                 autoclose: true,
+                                 });
+                              </script>  
+                              @endif
                            </div>
                         </div>
                      </div>
                      @endif
+                     @endif
+                     @if(array_search("id_14",$orderdata) == $orderi)
                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
                      <div class="col-md-12">
-                     <div class="col-md-6 text-md-right">
-                        <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
-                     </div>
+                        <div class="col-md-6 text-md-right">
+                           <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
+                        </div>
                         <div class="custom-form-control col-md-6">
-                              <select class="form-input" name="gender" id="gender">
-                                 <option value="">Select Gender</option>
-                                   <option value="male" >Male</option>
-                                   <option value="female" >Female</option>
-                              </select>
-                           </div>
+                           <select class="form-input" name="gender" id="gender">
+                              <option value="">Select Gender</option>
+                                <option value="male" >Male</option>
+                                <option value="female" >Female</option>
+                           </select>
+                        </div>
                      </div>
                      @endif
+                     @endif
+                     @if(array_search("id_12",$orderdata) == $orderi)
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
                      <div class="col-md-12">
-                     <div class="col-md-6 text-md-right">
-                        <label for="old_traveller_gender" class="input-label">Gender of the Oldest traveller</label>
-                     </div>
+                        <div class="col-md-6 text-md-right">
+                           <label class="input-label">Gender of the Oldest traveller</label>
+                        </div>
                         <div class="custom-form-control col-md-6">
                            <select class="form-input">
                               <option value="">Select Gender</option>
@@ -278,7 +311,9 @@
                         </div>
                      </div>
                      @endif
-                     {{-- <div class="row"> --}}
+                     @endif
+                     <div class="row">
+                        @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
                            <div class="col-md-12">
@@ -299,21 +334,10 @@
                            </div>
                            @endif
                         @endif
-                        @php
-                           $i = 0;
-                           $position_array = array();
-                           foreach($fields as $key => $value){
-                              $i ++;
-                              $position_array[$i] = $key;
-                           }
-                        @endphp
+                        @endif
                         
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                              @php
-                                 $num = array_search("fplan", $position_array); 
-                                 $current_values[$num] = 'group_15';  
-                              @endphp
                           <div class="col-md-12">
                              <div class="col-md-6 text-right">
                                 <label for="" class="">Do you require Family Plan ?</label>
@@ -342,7 +366,7 @@
                            </script>
                            @endif
                         @endif
-                        {{-- </div> --}}
+                     </div> 
                      
                      @endfor
                      <div class="col-md-12">
