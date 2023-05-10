@@ -120,15 +120,17 @@
                            <div class="row"> 
                                  <div class="col-md-12 pt-2">
                                  <div class="col-md-6 pl-0 pr-0 py-2">
-                                    <label class="p-0">Enter Date Of Bith</label>
+                                 <h3>Enter Date Of Bith</h3>
                                  </div>
                                  <div class="col-md-6">
                                     <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                  </div>
                                  </div>
-                                 <div class="col-md-12 positionrelative" >
+                                 
+                                 <div class="col-md-12 positionrelative" style="    padding-top: 10px;
+                                 " >
                                     <div class="col-md-6 pl-0 pr-0 py-2">
-                                       <label>Pre Existing Condition</label>
+                                     <h3>Pre Existing Condition</label></h3>
                                     </div>
                                     <div class="col-md-6">
                                        <select name="pre_existing[]" class="pre_existing_condition1 form-control">
@@ -137,6 +139,111 @@
                                           <option value="no">No</option>
                                         </select>
                                     </div>
+                                 </div>
+                                 <div class="col-md-12 no-padding oldest-travel" style="margin-top:5px;">
+                                    <div class="col-md-10 no-padding" style="padding-top: 1px;">
+                                       <h3 style="    margin-top: 5px; margin-bottom:35px "><i class="fa fa-list-ul"></i> Additional Travelers</h3>
+                                    </div>
+                                    <div class="col-md-2 personswitch" style="padding-top: 10px;padding-right: 0;padding-left: 0; ">
+                                       <input type="checkbox" id="switch" style="float:right;" onclick="checkadditionals();"><label for="switch">Toggle</label>
+                                       <input type="hidden" id="temp_addi" value="0">
+                                       <script>
+                                          function checkadditionals(){
+                                          if(document.getElementById('switch').checked == true){
+                                          document.getElementById('temp_addi').value = 1;
+                                          $('.additionals').show();  
+                                          } else {
+                                          document.getElementById('temp_addi').value = 0;
+                                          $('.additionals').hide();  
+                                          }
+                                          }
+                                       </script>
+                                    </div>
+                                    <div class="col-md-12 no-padding oldest-travel additionals" style="display:none;     margin-top: -5px; margin-bottom: 10px;                                    ">
+                                       <div class="col-md-12 no-padding oldest-travel additionals" style="display:none;     margin-top: -5px; margin-bottom: 10px;                                       ">
+                                       
+                                             <div class="col-md-3 add_1" style="padding-left: 0;">
+                                                <small style="font-size: 12px;color: #999;">Age</small>
+                                                <input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3">
+                                             </div>
+                                          
+                                          <input type="hidden" id="current_adds" value="1">
+                                          <input type="hidden" id="number_travelers" name="number_travelers" value="0">
+                                          <script>
+                                             function addfunc_0(){
+                                             $(".add_0").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             function addfunc_1(){
+                                             $(".add_1").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             function addfunc_2(){
+                                             $(".add_2").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             function addfunc_3(){
+                                             $(".add_3").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             function addfunc_4(){
+                                             $(".add_4").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             function addfunc_5(){
+                                             $(".add_5").remove();
+                                             var minus_traveller = document.getElementById('current_adds').value;
+                                             document.getElementById('current_adds').value = parseFloat(minus_traveller) - 1;
+                                             $('.addmoretraveler').show(); 
+                                             }
+                                             
+                                             function addtravellers(){
+                                             var number_of_traveller = '5';
+                                             var current_travellers = document.getElementById('current_adds').value;
+                                             var current_id = parseFloat(current_travellers) + 1;
+                                             var aa = '';
+                                             aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
+                                             if(current_travellers < number_of_traveller){
+                                             document.getElementById('current_adds').value = parseFloat(current_travellers) + 1;
+                                             $('.addmoretraveler').fadeIn(300);  
+                                             $(".birthday").append(aa);
+                                             if(current_travellers == '4'){ $('.addmoretraveler').hide(); }
+                                             } else {
+                                             $('.addmoretraveler').fadeOut(300); 
+                                             }
+                                             }
+                                          </script>
+                                          <div class="col-md-2 text-center addmoretraveler" style="padding-top:20px;">
+                                             <a class="addmorebtn" onclick="addtravellers();"><i class="fa fa-plus" style="position: relative;top: 0px;left: 0px;"></i></a>
+                                          </div>
+                                        <script>
+                                          function addtravellers(){
+                                                 var number_of_traveller = '5';
+                                                 var current_travellers = document.getElementById('current_adds').value;
+                                                 var current_id = parseFloat(current_travellers) + 1;
+                                                 var aa = '';
+                                                 aa = aa + '<div class="col-md-3 add_'+current_id+'" style="padding-left: 0;"><small style="font-size: 12px;color: #999;">Age</small><input type="text" name="years[]" id="years[]" style="margin-top: -5px !important;display: block;" maxlength="3" /><i class="fa fa-close" onclick="addfunc_'+current_id+'()"></i></div>';
+                                                 if(current_travellers < number_of_traveller){
+                                                 document.getElementById('current_adds').value = parseFloat(current_travellers) + 1;
+                                                 $('.addmoretraveler').fadeIn(300);  
+                                                 $(".birthday").append(aa);
+                                                 if(current_travellers == '4'){ $('.addmoretraveler').hide(); }
+                                                } else {
+                                                $('.addmoretraveler').fadeOut(300); 
+                                         }
+                                       }
+                                                   </script>
+                                       </div>
                                  </div>
                            </div>
                         @endif
@@ -226,10 +333,10 @@
                         <div class="clear:both;"></div>
                      </div>
                   </div>
-                  <div class="clear:both;"></div>
-                  <div class="col-md-2 pull-right" style="margin: 30px 0;">
+                  <div class="col-md-2 pull-right" style="margin: 30px 130px;">
                      <button class="btn nextbtn" type="button" id="GET_QUOTES" onclick="$('.page_1').hide();$('.page_2').show('slow');" style="display: block;"> Next <i class="fa fa-arrow-circle-right"></i></button>
                   </div>
+                  <div class="clear:both;"></div>
                   <script>
                      $('html').click(function() {
                          $('.ageandcitizen').fadeOut(300);

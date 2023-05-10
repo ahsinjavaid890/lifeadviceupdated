@@ -43,10 +43,14 @@
                      <div class="col-md-5">
                         <label for="phone" class="form-label lables" >Phone <b id="phone_error" class="text-danger"></b></label>
                      </div>
+                     
                      <div class="col-md-7">
+                        <label class="icon-left" for="phone" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
+                           <i class="fa fa-phone" style="border-right: 1px solid #666;padding-right: 8px;"></i>
+                        </label>
                         <label for="phone" class="d-sm-none" >Phone <b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input">
+                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input" style="padding-left: 40px !important">
                         </div>
                      </div>
                      <script>
@@ -193,12 +197,12 @@
                                  <div  class="col-md-7">
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input style="    width: 326px;" id="dateofbirthfull{{ $i }}" class="form-input " type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                          {{-- <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label> --}}
+                                          <input style="    width: 342px;" id="dateofbirthfull{{ $i }}" class="form-input " type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                              
                                        </div>
                                     </div>
                                     <div class="col-md-5">
-                                       <label for="day" class="form-label lables" id="">Select Pre Existing</label>
+                                       <label for="day" class="form-label lables" id="" style="    left:0">Select Pre Existing</label>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-7">
                                        <label for="day" class="d-sm-none" style="    margin-left: -11.5px;">Select Pre Existing</label>
@@ -228,10 +232,16 @@
                               </span></i>
                         </label>
                      </div>
-                     <div class="col-md-7">
-                           <label for="departure_date" class="d-sm-none">Start Date of Coverage</label>
+                     {{-- <div class="input" style="position:relative;">
+                        <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control hasDatepicker" type="text" required="" onchange="supervisayes()" style="padding-left: 40px !important;">
+                    </div> --}}
+                     <div class="col-md-7 input">
+                           <label for="departure_date" class="d-none">Start Date of Coverage</label>
+                           <label  for="" onclick="(this.type='date')" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
+                        <i class="fa fa-calendar"   style="border-right: 1px solid #666;padding-right: 8px;"></i>
+                     </label>
                         <div class="custom-form-control">
-                           <input onchange="supervisayes()" type="date" name="departure_date" placeholder="firstname" required id="departure_date" class="form-input">                        </div>
+                           <input onchange="supervisayes()" type="date" name="departure_date"  placeholder="firstname" required id="departure_date" class="form-input" style="padding-left: 40px !important">                        </div>
                      </div>
                      <div class="col-md-5 col-xs-12 " style="padding-right:0px;">
                            <label class="input-label preinfo">End Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
@@ -241,9 +251,12 @@
 
                      </div>
                      <div class="col-md-7">
-                        <label for="departure_date" class="d-sm-none">End Date of Coverage</label>
+                        <label for="departure_date" class="d-none">End Date of Coverage</label>
+                        <label  for="departure_date" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
+                           <i class="fa fa-calendar" onclick="" style="border-right: 1px solid #666;padding-right: 8px;"></i>
+                        </label>
                         <div class="custom-form-control">
-                           <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input">
+                           <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="form-input" style="padding-left: 40px !important">
                            {{-- <label for="return_date" class="form-label">End Date of Coverage</label> --}}
                         </div>
                      </div>
@@ -255,8 +268,11 @@
                         </div>
                         <div class="col-md-7">
                               <label for="savers_email" class="d-sm-none">Email</label>
+                              <label class="icon-left" for="savers_email" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top: 0px;width: 42px;z-index: 2; left:14px;">
+                                 <i class="fa fa-envelope-o" style="border-right: 1px solid #666;padding-right: 8px;"></i>
+                              </label>
                               <div class="custom-form-control">
-                                 <input type="text" name="savers_email" placeholder="savers_email" required id="savers_email" class="form-input">
+                                 <input type="text" name="savers_email" placeholder="name@example.com" required id="savers_email" class="form-input" style="padding-left: 40px !important">
                                  {{-- <label for="savers_email" class="form-label">Email</label> --}}
                               </div>
                            </div>
@@ -292,20 +308,32 @@
                            </div>
                         </div>
                         @endif
-                        <div class="row">
+                      
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-12 no-padding check_condtion">
-                              <h3>Do you Smoke in last 12 months ?</h3>
+                           <div class="col-md-5">
+                              <label for="" class="form-label lables" id="">Do you Smoke in last 12 months?</label>
+                           </div>
+                           <div class="col-md-7">
+                              <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="Smoke12" id="">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" >Yes</option>
+                                      <option value="no" >No</option>
+                                 </select>
+                              </div>
+                           </div>
+                           {{-- <div class="col-md-12 no-padding check_condtion">
+                              <h3></h3>
                               <div class="col-md-12 no-padding">
                                  <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
                                  <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
                               </div>
-                           </div>
+                           </div> --}}
                            @endif
                         @endif
-                        </div>
-                        <div class="row">
+                     
                         @php
                            $i = 0;
                            $position_array = array();
@@ -321,13 +349,26 @@
                                  $num = array_search("fplan", $position_array); 
                                  $current_values[$num] = 'group_15';  
                               @endphp
-                              <div class="col-md-12 no-padding check_condtion">
-                                 <h3>Do you require Family Plan ?</h3>
+                               <div class="col-md-5">
+                                 <label for="gender" class="form-label lables" id="">Do you require Family Plan?</label>
+                              </div>
+                              <div class="col-md-7">
+                                 <label for="" class="d-sm-none">Do you require Family Plan ?</label>
+                                 <div class="custom-form-control">
+                                    <select required class="form-input" name="fplan" id="">
+                                       <option value="">--- Please Choose ---</option>
+                                         <option value="yes" onclick="changefamilyyes()">Yes</option>
+                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              {{-- <div class="col-md-12 no-padding check_condtion"> --}}
+                                 {{-- <h3>Do you require Family Plan ?</h3>
                                  <div class="col-md-12 no-padding">
                                     <label style="display: inline-block;margin-right: 10px;margin-left: 25px;">
                                        <input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> 
                                        <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                 </div>
+                                 </div> --}}
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
                                     function changefamilyyes(){
@@ -339,10 +380,10 @@
                                        checkfamilyplan();
                                     }
                                  </script>
-                              </div>
+                              {{-- </div> --}}
                            @endif
                         @endif
-                        </div>
+                       
                      <div class="col-md-6">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>

@@ -38,23 +38,77 @@ $bg = $bgs[$k];
             @csrf
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">            
             <div class="row" style="margin-bottom:0px;">
+               @if(isset($fields['sum_insured']))
+               @if($fields['sum_insured'] == 'on')
+               <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+               <script>
+                  @php
+                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                  @endphp
+                  var SliderValues = [0,<?php
+                   $s = 0;
+                   foreach($sum as $r){
+                   $s++;   
+                   echo $sumamount = $r->sum_insured;
+                   if($s < count($sum)){
+                   echo ', ';
+                   }
+                   } ?>];
+
+                  var iValue = SliderValues.indexOf(0);
+                  $(function () {
+                      $("#sum_slider").slider({
+                          range: "min",
+                          min: 0,
+                          max: SliderValues.length - 1,
+                          step: 1,
+                          value: iValue,
+                          slide: function (event, ui) {
+                              $('#coverage_amount').text(SliderValues[ui.value]);
+                                 //alert(SliderValues.length);
+                                 for (i = 0; i < SliderValues.length; i++) {
+                                 var group = SliderValues[i];
+                                 $('.coverage-amt-'+group).hide();
+                                 }
+                                 $('.coverage-amt-'+SliderValues[ui.value]).show();
+                                 $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+                                 $( "#sum_insured2").val(SliderValues[ui.value]);
+                          }
+                      });
+
+                  });
+                    </script>
+
+                 <div class="col-md-12">
+                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+                     <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;"></div>
+                     <input type="hidden" id="sum_insured2" name="sum_insured2" value="1000" />
+
+                     <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
+                  
+                  </div>
+               </div>
+               @endif
+               @endif
                 @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
 
-                     <div class="col-md-6">
-                        <label for="firstname" class="text-white">First name</label>
+                     <div class="col-md-6 ">
+                        <label for="firstname" class="text-white" style="    font-size: 16px;">First name</label>
                         <div class="custom-form-control">
-                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
+                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-control">
                         </div>
                      </div>
                      @endif
                      @endif
                      @if(isset($fields['lname']))
                      @if($fields['lname'] == 'on')
-                     <div class="col-md-6">
-                        <label for="lname" class="text-white">Last name</label>
+                     <div class="col-md-6 ">
+                        <label for="lname" class="text-white" style="font-size: 16px;">Last name</label>
                         <div class="custom-form-control">
-                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-input">
+                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-control">
                         </div>
                      </div>
                      @endif
@@ -78,30 +132,30 @@ $bg = $bgs[$k];
                                  }
                               }
                            </script>
-                           <div id="country" class="col-md-12">
+                           <div id="country" class="col-md-12 ">
                               <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label">States In Canda</label>
+                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
                               </div>
                            </div>
-                           <div id="canadastate" class="col-md-6" style="display:none;">
+                           <div id="canadastate" class="col-md-6 " style="display:none;">
                               <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label">States In Canda</label>
+                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
                               </div>
                            </div>
                            @else
-                           @if(isset($fields['sum_insured']))
+                           {{-- @if(isset($fields['sum_insured']))
                               @if($fields['sum_insured'] == 'on')
                               <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                               <script>
@@ -142,10 +196,7 @@ $bg = $bgs[$k];
                                  });
                                    </script>
 
-
-                                 <div class="col-md-12">
-
-
+                                <div class="col-md-12">
                                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
                                  </div>
                                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
@@ -157,11 +208,11 @@ $bg = $bgs[$k];
                                  </div>
                               </div>
                               @endif
-                              @endif
-                           <div class="col-md-12" >
-                              <label for="primary_destination" class="text-white">Primary destination in Canada</label>
+                              @endif --}}
+                           <div class="col-md-12 " >
+                              <label style="font-size: 16px;" for="primary_destination" class="text-white">Primary destination in Canada</label>
                               <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -173,14 +224,14 @@ $bg = $bgs[$k];
                         @endif
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
-                           <div class="col-md-6">
-                              <label for="departure_date" class="text-white">Start Date</label>
+                           <div class="col-md-6 ">
+                              <label style="font-size: 16px;" for="departure_date" class="text-white">Start Date</label>
                               <div class="custom-form-control">
                                 <input id="departure_date" name="departure_date" value="" class="form-control datepicker hasDatepicker" autocomplete="off" type="date" placeholder="Start Date" required="" @if($data->pro_supervisa == 1) onchange="supervisayes()" @endif data-format="yyyy-mm-dd" data-lang="en" data-rtl="false">
                               </div>
                            </div>
-                           <div class="col-md-6">
-                              <label for="return_date" class="text-white">End Date</label>
+                           <div class="col-md-6 ">
+                              <label style="font-size: 16px;" for="return_date" class="text-white">End Date</label>
                               <div class="custom-form-control">
                                  <input id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" type="<?php if($data->pro_supervisa == 1){echo 'text';}else{echo 'date';} ?>" placeholder="End Date" required value="" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false">
                               </div>
@@ -193,10 +244,10 @@ $bg = $bgs[$k];
                         @endphp
                         @if($number_of_travel > 0)
 
-                        <div class="col-md-12">
-                           <label for="number_travelers" class="text-white">Number of Travellers</label>
+                        <div class="col-md-12 ">
+                           <label style="font-size: 16px;" for="number_travelers" class="text-white">Number of Travellers</label>
                            <div class="custom-form-control">
-                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers" style="    padding: 5px 12px !important;">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
                                  <option value="{{ $i }}">{{ $i }}</option>
@@ -216,16 +267,16 @@ $bg = $bgs[$k];
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                 <div style="padding-left: 0px;" class="col-md-6">
-                                    <label for="year{{$i}}" class="text-white">Birth date of the oldest Traveller</label>
+                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 ">
+                                    <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                           <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
-                                    <div style="padding-right: 0px; margin-top: 31px;" class="col-md-6">
+                                    <div style="padding-right: 0px; margin-top: 26px;" class="col-md-6 ">
                                        <div class="custom-form-control">
-                                          <select name="pre_existing[]" class="form-input">
+                                          <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -240,8 +291,8 @@ $bg = $bgs[$k];
                      @endif
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                     <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
-                        <label for="savers_email" class="text-white">Email</label>
+                     <div class="col-md-12  col-sm-12 col-xs-12 control-input email-main">
+                        <label style="font-size: 16px;" for="savers_email" class="text-white">Email</label>
                         <div class="custom-form-control">
                            <input id="savers_email" name="savers_email" value="" class="form-control form-control" type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
                            <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -253,10 +304,13 @@ $bg = $bgs[$k];
                      @endif
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
-                     <div class="col-md-12">
-                        <label for="phone" class="text-white">Phone <b id="phone_error" class="text-danger"></b></label>
+                     <div class="col-md-12 ">
+                        <label style="font-size: 16px;" for="phone" class="text-white">Phone <b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="firstname" required id="phone" class="form-input">
+                           <input onkeyup="validatephone()" style="padding-left: 40px !important;" type="text" name="phone" placeholder="Enter Your Phone Number" required id="phone" class="form-control">
+                           <span class="phoneicon" style="color:#1BBC9B;">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</span>
                         </div>
                      </div>
                      <script>
@@ -275,10 +329,10 @@ $bg = $bgs[$k];
                      @endif
                      @endif
                       @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                     <div class="col-md-12">
-                        <label for="gender" class="text-white">Primary Applicant`s Gender</label>
+                     <div class="col-md-12 ">
+                        <label style="font-size: 16px;" for="gender" class="text-white">Primary Applicant`s Gender</label>
                         <div class="custom-form-control">
-                           <select required class="form-input" name="gender" id="gender">
+                           <select required class="form-input" name="gender" id="gender"     style="    padding: 5px 12px !important;"> 
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
@@ -287,10 +341,10 @@ $bg = $bgs[$k];
                      </div>
                      @endif
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                     <div class="col-md-12">
-                        <label for="old_traveller_gender" class="text-white">Gender of the Oldest traveller</label>
+                     <div class="col-md-12 ">
+                        <label style="font-size: 16px;" for="old_traveller_gender" class="text-white">Gender of the Oldest traveller</label>
                         <div class="custom-form-control">
-                           <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                           <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender"    style="    padding: 5px 12px !important;">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
                                 <option value="female" >Female</option>
@@ -301,11 +355,15 @@ $bg = $bgs[$k];
                       <div class="row">
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-12 no-padding check_condtion ">
-                              <h3 class="text-white col-md-6" >Do you Smoke in last 12 months ?</h3>
-                              <div class="col-md-6 no-padding">
-                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px;" class="text-white"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label class="text-white" style="display: inline-block;margin-right: 10px;">
-                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                           <div class="col-md-6">
+                              <label style="font-size: 16px; for="" class="text-white " id="">Do you Smoke in last 12 months?</label>
+                              <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="Smoke12" id=""      style="    padding: 5px 12px !important;">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" >Yes</option>
+                                      <option value="no" >No</option>
+                                 </select>
                               </div>
                            </div>
                            @endif
@@ -325,11 +383,17 @@ $bg = $bgs[$k];
                                  $num = array_search("fplan", $position_array); 
                                  $current_values[$num] = 'group_15';  
                               @endphp
-                              <div class="col-md-12 no-padding check_condtion">
-                                 <h3 class="text-white col-md-6">Do you require Family Plan ?</h3>
-                                 <div class="col-md-6 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;" class="text-white"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;" class="text-white"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                              
+                                 <div class="col-md-6">
+                                 <label style="font-size: 16px;  for="" class="text-white">Do you require Family Plan ?</label>
+                                 <div class="custom-form-control">
+                                    <select required class="form-input" name="fplan" id=""      style="    padding: 5px 12px !important;">
+                                       <option value="">--- Please Choose ---</option>
+                                         <option value="yes" onclick="changefamilyyes()">Yes</option>
+                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                    </select>
                                  </div>
+                              </div>
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
                                     function changefamilyyes(){
@@ -341,13 +405,13 @@ $bg = $bgs[$k];
                                        checkfamilyplan();
                                     }
                                  </script>
-                              </div>
+                              
                            @endif
                         @endif
                         </div>
                      <div class="col-md-12" style="clear: both;">
                      <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
-                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 7px 27px;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
+                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                      </div>
                </div>
             </form>
