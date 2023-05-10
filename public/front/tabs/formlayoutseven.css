@@ -36,3 +36,53 @@
    .year-holder{
    display: block !important;
    }
+   .label-style{
+      font-weight: bold;
+        font-size: 16px;
+        color: #4F596A;
+    }
+    .inputs-style{
+      border: #ddd 3px solid;
+      box-shadow: none;
+      display: block;
+      height: 40px;
+      padding: 6px 12px !important;
+      font-size: 14px;
+      line-height: 1.42857143;
+      background-color: #fff;
+      background-image: none;
+    }
+    .box-style{
+      padding: 3em;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.22);
+    border-radius: 0.25rem;
+    border: 1px solid rgba(34,36,38,.22);
+    width: 50%;
+    margin-left: 25%;
+    }
+    .get_qout{
+      background: #1BBC9B;
+      color: #FFF;
+      font-size: 18px;
+      line-height: 1.3333333;
+      border-radius: 6px !important;
+      padding: 10px 60px;
+    }
+    .get_qout:hover{
+      background: black;
+      color:white
+    }
+    .get_qout:hover i{
+      color: green;
+    
+    }
+    @media (max-width:468px) and (min-width: 292px){
+      .box-style{
+         width: 100%;
+         margin-left: 0%;
+      }
+    }
+
+    form .row {
+       margin-bottom: 0px !important; 
+  }

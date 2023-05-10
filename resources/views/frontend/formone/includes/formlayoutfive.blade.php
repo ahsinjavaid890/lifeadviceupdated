@@ -3,7 +3,7 @@
    <h1 style="font-weight:bold;margin: 0px; color: #b92c28 !important" class=""><strong>{{ $data->pro_name }}</strong></h1>
    <h2 style="margin-top: -3px;font-size: 16px;font-weight: normal;line-height: normal;color: #000;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>
-<div class="container birthdate new-visa mb-5 mt-2" style="padding: 20px; background: var(--color-light);">
+<div class="container birthdate new-visa mb-5  mt-2" style="padding: 20px; background: var(--color-light);">
          <form method="POST" action="{{ url('quotes') }}">
                   @csrf
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
