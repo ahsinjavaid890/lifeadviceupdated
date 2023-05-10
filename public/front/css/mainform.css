@@ -3201,3 +3201,7 @@ fieldset .input{
     font-size: 18px!important;
     line-height: 22px!important;
 }
+.disabledbutton{
+    cursor: unset !important;
+    background-color: #c2cad7 !important;
+}

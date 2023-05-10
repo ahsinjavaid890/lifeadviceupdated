@@ -9,18 +9,58 @@ function removeappendvalue(id) {
   var totaltraveler = parseInt(number_travelers) - parseInt(addtraveler);
   $("#number_travelers").val(totaltraveler);
 }
-function secondnext() 
+function dateofbirth(id , travelerid) 
 {
-    var value = $('.dateofbirthclass1').val()
-    if(value == '')
+    if(id == '')
     {
-        $('.dateofbirthclass1').addClass('errorinput')
+        $('.dateofbirthclass'+travelerid).addClass('errorinputtest')
+        $("#secondnextfake").css("pointer-events","none");
+        $("#secondnextfake").css("background-color","#f2dede");
+        $("#secondnextfake").css("color","#b94a48");
     }else{
+        $('#errortravelr').hide();
+        $('.dateofbirthclass'+travelerid).removeClass('errorinputtest')
+        $("#secondnextfake").css("pointer-events","auto");
+        $("#secondnextfake").css("background-color","#2b3481");
+        $("#secondnextfake").css("color","#fff");
+    }
+}
+
+function changepreexisting(id , travelerid) 
+{
+    if(id == '')
+    {
+        $('.pre_existing_values_check'+travelerid).addClass('errorinputtest')
+        $("#secondnextfake").css("pointer-events","none");
+        $("#secondnextfake").css("background-color","#f2dede");
+        $("#secondnextfake").css("color","#b94a48");
+    }else{
+        $('#errortravelr').hide();
+        $('.pre_existing_values_check'+travelerid).removeClass('errorinputtest')
+        $("#secondnextfake").css("pointer-events","auto");
+        $("#secondnextfake").css("background-color","#2b3481");
+        $("#secondnextfake").css("color","#fff");
+    }
+}
+
+
+function secondnext() 
+{   
+    var errorlength = $(".errorinputtest").length
+    if(errorlength == 0)
+    {
         $('#secondnextfake').hide();
         $('#secondnextorignal').show();
         $('#secondnextorignal').click();
+    }else{
+        $('#errortravelr').show();
+        $('#errortravelr').html('Please Fill All Fields');    
     }
 }
+
+
+
+
 $("#additionaltraveler").click(function(){
     $(".additional-card").slideToggle();
 }); 
@@ -89,74 +129,7 @@ function calprimaryage(id){
 
 
 
-function addtravellers() 
-{
-   var showrowstraveler = $('.showrowstraveler').length;
 
-   var value = $('.dateofbirthclass'+showrowstraveler).val();
-   if(value == '')
-   {
-      $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-   }else{
-
-
-      var pre_existing_values_check = $('.pre_existing_values_check'+showrowstraveler).val();
-      if(pre_existing_values_check == '')
-      {
-        $('.select2-selection').css('border-color' , 'red');
-        $("#secondnextfake").css("pointer-events","none");
-      }else{
-            $('.select2-selection').css('border-color' , '#cfd9e8');
-            const d  = new Date(value);
-              let year = d.getFullYear();
-              var CurrentDate = new Date();
-              var today = new Date();
-              var todayyear = today.getFullYear();
-              var getfourtyyear = todayyear-40;
-              var getlastdob = todayyear-100;
-              if(d > CurrentDate){
-                  $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                  $('#errortravelr').show();
-                  $('#errortravelr').html('Date of birth can not be a future date.');
-              }else{
-                  if(year > getfourtyyear)
-                  {
-                    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                    $('#errortravelr').show();
-                    $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
-                  }else{
-
-                    if(year < getlastdob)
-                    {
-                       $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                       $('#errortravelr').show();
-                       $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
-                    }else{
-                       $('#errortravelr').hide();
-                       $('#errortravelr').html('');
-                       var showmext = parseInt(showrowstraveler)+1;
-                       $('#removebutton'+showmext).removeClass('hiderowstraveler');
-                       $('#removebutton'+showmext).addClass('showrowstraveler');
-                       var numberoftraverls = $('#numberoftraverls').val();
-                       if(numberoftraverls == showrowstraveler)
-                       {
-                          $('.button-add-another').fadeOut(300);
-                       }
-                    }
-
-                    
-                  }
-              }
-
-            var number_travelers = $("#number_travelers").val();
-            var addtraveler = 1;
-            var totaltraveler = parseInt(number_travelers) + parseInt(addtraveler);
-            $("#number_travelers").val(totaltraveler);
-      }
-
-      
-   }
-}
 
 (function($) {
     'use strict';

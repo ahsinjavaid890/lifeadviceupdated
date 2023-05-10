@@ -159,7 +159,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                            <div class="row">
                               <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
-                                 <div class="row mt-3 showrowstraveler">
+                                 <div class="row mt-3 showrowstraveler" id="container">
                                     <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
@@ -168,14 +168,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <div class="col-md-6 nopad margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input onchange="dateofbirth(this.value , 1)" id="dateofbirthfull" class="errorinputtest input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing[]" class="pre_existing_condition1 form-control">
+                                          <select onchange="changepreexisting(this.value , 1)" name="pre_existing[]" class="errorinputtest pre_existing_condition1 pre_existing_values_check1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -194,7 +194,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input onchange="dateofbirth(this.value , {{ $i }})" class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m"><label class="selectlabel">Pre Existing Condition</label> <select onchange="changepreexisting(this.value)" name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control pre_existing_values_check{{ $i }}"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -203,7 +203,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
                                  </div>
                               </div>
-                              <input type="hidden" value="5" id="numberoftraverls" name="">
+                              <input type="hidden" value="1" id="number_travelers" name="number_travelers">
                            </div>
                         </div>
                      </div>
@@ -580,11 +580,83 @@ $("#outputText").text(outputDate);
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
-</script>
-<script>
   function maxLengthChecks(object)
   {
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
+
+
+
+
+
+
+function addtravellers() 
+{
+   var showrowstraveler = $('.showrowstraveler').length;
+   var value = $('.dateofbirthclass'+showrowstraveler).val();
+   if(value == '')
+   {
+      $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+   }else{
+      $("#secondnextfake").css("pointer-events","none");
+      $("#secondnextfake").css("background-color","#f2dede");
+      $("#secondnextfake").css("color","#b94a48");
+      var pre_existing_values_check = $('.pre_existing_values_check'+showrowstraveler).val();
+      if(pre_existing_values_check == '')
+      {
+        $('.select2-selection').css('border-color' , 'red');
+        $("#secondnextfake").css("pointer-events","none");
+      }else{
+            $('.select2-selection').css('border-color' , '#cfd9e8');
+              const d  = new Date(value);
+              let year = d.getFullYear();
+              var CurrentDate = new Date();
+              var today = new Date();
+              var todayyear = today.getFullYear();
+              var getfourtyyear = todayyear-40;
+              var getlastdob = todayyear-100;
+              if(d > CurrentDate){
+                  $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                  $('#errortravelr').show();
+                  $('#errortravelr').html('Date of birth can not be a future date.');
+              }else{
+                  if(year > getfourtyyear)
+                  {
+                    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                    $('#errortravelr').show();
+                    $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
+                  }else{
+
+                    if(year < getlastdob)
+                    {
+                       $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                       $('#errortravelr').show();
+                       $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
+                    }else{
+                       $('#errortravelr').hide();
+                       $('#errortravelr').html('');
+                       var showmext = parseInt(showrowstraveler)+1;
+                       $('#removebutton'+showmext).removeClass('hiderowstraveler');
+                       $('#removebutton'+showmext).addClass('showrowstraveler');
+                       var numberoftraverls = $('#numberoftraverls').val();
+                       if(numberoftraverls == showrowstraveler)
+                       {
+                          $('.button-add-another').fadeOut(300);
+                       }
+                    }
+
+                    
+                  }
+              }
+
+            var number_travelers = $("#number_travelers").val();
+            var addtraveler = 1;
+            var totaltraveler = parseInt(number_travelers) + parseInt(addtraveler);
+            $("#number_travelers").val(totaltraveler);
+      }
+
+      
+   }
+}
 </script>
