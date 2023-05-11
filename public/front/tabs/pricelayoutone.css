@@ -41,6 +41,9 @@ body {
 .tabscontent .row {
 /*    margin:0 !important;*/
 }
+.row{
+    margin-left: 0% !important;
+}
 .tabscontent h1 {
     color: #222;
     font-weight: bold;
@@ -139,9 +142,7 @@ input[type="text"], input[type="password"] {
        .main-content .container{
         width: 100%;
     }
-    .dh-listings {
 
-    }
 
     .dh-listings b {
         font-size: 10px;
@@ -153,7 +154,7 @@ input[type="text"], input[type="password"] {
     }
 
     .dh-listings ul {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .dh-listings tr td, .dh-listings tr th {
@@ -269,10 +270,46 @@ opacity: 0.1;
 }
 
 .submit-btn {
-background-color: #262566;
-}
-.submit-btn i{
+    background-color: #f5821f;
+    font-weight: bold;
+    padding: 13px 10px;
+    font-size: 17px;
+    display: block;
+    color: #FFF;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border-bottom: 3px solid #999;
+    box-shadow: none;
+    position: relative;
+    min-height: 1px;
+    outline: 0;
+    cursor: pointer;
     color:#FFF;
+}
+#compare{
+    font-weight: normal;
+    padding: 10px 10px;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #999;
+    background: #F9F9F9;
+    border-bottom: 3px solid #999;
+    cursor: pointer;
+        position: relative;
+    min-height: 1px;
+}
+#plan{
+    background: #0084c1;
+    color: #FFF;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 3px;
+    border-radius: 10px;
+    min-height: 1px;
 }
 
 .ui.checkbox.large.nopad label {
@@ -345,23 +382,22 @@ sup.superior {
 
 .ddd.agaya {
     display: block!important;
-}
-        
-        
-        
-        .row.plan-details {
-        display: block;
-        }
-        .ui.checkbox.large.nopad label{
-            padding:11px;
-        }
+} 
+ .row.plan-details {
+ display: block;
 
-        .hidden-md{
-            display: none;
-        }
-        
-        
-        button.buynow-btn {
+  }
+.ui.checkbox.large.nopad label{
+     padding:11px;
+ }
+
+ .hidden-md{
+     display: none;
+  }
+.coverage-amt{
+    line-height: 1.0 !important;
+}    
+ button.buynow-btn {
     float: right;
     min-width: 100%;
     background: #1fbd9d;
@@ -488,13 +524,12 @@ button.buynow-btn {
     position: absolute;
 }   
 .ui-slider-horizontal .ui-slider-range {
-    background: #262566 !important;
+    background:#1BBC9B  !important;
 }
 
 
 .benefit_padding {
-padding: 20px 0 10px !important;
-}
+padding: 20px 0px 10px !important;
 }
 
 @media only screen and (max-width: 600px) {

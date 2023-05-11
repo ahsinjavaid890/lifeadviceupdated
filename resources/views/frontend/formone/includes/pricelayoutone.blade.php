@@ -199,7 +199,7 @@ if(displayvalue == '0'){
    <div class="col-md-3 quote_reference" style="font-size:15px;">
       <h3 style="font-weight:bold; margin:0; padding:0;">Quote Reference</h3>
       <span style="color:#C00;"><?php echo $quoteNumber; ?></span><br/>
-      <small><i class="fa fa-calendar"></i> <?php echo $request->startdate . "-" . $request->enddate; ?></small>
+      <small style="font-size: 100%;font-weight: 600;"><i class="fa fa-calendar"></i> <?php echo $request->departure_date . "-" . $request->return_date; ?></small>
    </div>
 </div>
 
@@ -441,12 +441,12 @@ if($show == '1' && $total_price > 0){
 ?>
 
 <div class="listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-<div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+<div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="line-height:1.0; display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details mb-0 ml-1 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; margin-top:0; margin-left:1px; margin-right:0; margin-bottom 0px !important;border-bottom: 1px solid #0084c1;">
     <div class="col-md-3 col-xs-6 text-center" style="padding-top: 20px;padding-left: 0;padding-right: 0;">
     <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
     </div>
-    <div class="col-md-2 col-xs-6 text-center benefit_padding" style="font-size: 16px;color: #333;">$<?php 
+    <div class="col-md-2 col-xs-6 text-center benefit_padding" style="font-size: 18px;color: #333;">$<?php 
     if($sum_insured >= 1000000){
     $millions = $sum_insured/1000000;
     $txt = ' Million';
@@ -454,9 +454,11 @@ if($show == '1' && $total_price > 0){
     $millions = $sum_insured;
     $txt = '';
     }
-    echo number_format($millions).$txt; ?><br/>
+    echo number_format($millions).$txt;  ?><br>
     $<?php echo $deductible;?> Deductible</div>
-    <div class="col-md-4 col-xs-12 text-center" style="border:2px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
+    <div class="col-md-4 col-xs-12 text-center" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
+        <div class="row">
+       
         <div class="col-md-6 col-xs-6">
         <h1 style="padding: 0;margin: 0;line-height: normal; font-size:28px;">$<?php echo str_replace(',','', number_format($total_price,2));?></h1>
         <?php if($monthly_two == '1'){?>
@@ -467,7 +469,7 @@ if($show == '1' && $total_price > 0){
         <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
 <style>
 .hoverdetails_<?php echo $deductible.$plan_id;?> {
-    width: 400px;background: #fff;border: 1px solid #ccc;position: absolute;z-index: 100;box-shadow: 0 0 2px #999;border-radius: 2px;display:none;padding:10px 0;
+    width: 400px;background: #fff;border: 1px solid #ccc;position: absolute;z-index: 100;box-shadow: 0 0 2px #999;border-radius: 5px;display:none;padding:10px 0;
 }
 .hoverdetails_<?php echo $deductible.$plan_id;?> h2 {
 font: 400 14px Arial,Helvetica,sans-serif;line-height: normal;color: #ff8400;line-height: 30px;border-bottom: 1px solid #999;padding-bottom: 5px;margin: 0; 
@@ -483,29 +485,29 @@ font-weight:bold;
     display:block !important;
 }
 
-</style>        
-            <ul style="margin:0;">
-                <li style="list-style: none;" class="hover_<?php echo $deductible.$plan_id;?>"><a href="#"> Policy Details</a>
+</style>      
+            
+          <ul style="margin:0;">
+                <li style="list-style: none;" class="hover_<?php echo $deductible.$plan_id;?>"><a href="#" class="mb-2"> Policy Details</a>
                 
                 <div class="row hoverdetails_<?php echo $deductible.$plan_id;?>" >
                     <div class="col-md-12"><h2>Quote Details <?php echo $product_name;?></h2></div>
                     <div class="col-md-12"><h3>Totel Premium: <span>$<?php echo number_format($total_price,2);?></span></h3></div>
                     <div class="col-md-12">
-                    <div class="col-md-12" style="border:1px solid #333; text-align:left;">
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:13px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
-                    <div class="col-md-12 no-padding"><small>Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
-                    <small>Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
-                    <div class="col-md-12 no-padding"><small>Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
+                    <div class="col-md-12" style="border:1px solid #333; text-align:left;     padding: 10px 22px;">
+                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px 0px 5px; font-size:17px; text-align:left; border-bottom:1px dashed #333;">Plan: <span style="font-size:15px; color: #f5821f;"><?php echo $plan_name;?> - <?php echo $plan_id;?></span></span></div>
+                    <div class="col-md-12 no-padding pt-1"><small style="font-size: 85% !important;">Days: <span style="color: #f5821f;"><?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)</span></small>
+                    <small style="font-size: 85% !important;">Total: <span style="color: #f5821f;">$<?php echo number_format($total_price,2);?></span></small></div>
+                    <div class="col-md-12 no-padding"><small style="font-size: 85% !important;">Option: <span style="color: #f5821f;">Deductible Option ($<?php echo $deductible;?> (included in premium))</span></small></div>
                     <div class="col-md-12 no-padding">
                     <?php
                                         $per = 0;
                     foreach($ages_array as $person_age){
                     $per++;
                                         ?>
-                                        <br/><b>Person <?php echo $per;?></b><br/>
-                                        Age: <?php echo $person_age; ?><br/>
-                                        Coverage Amount: <?php echo $sum_insured; ?> <br/>
-                                        Premium  <?php
+                                        <br/><span style="display:block; padding:3px; font-size:17px; text-align:left; border-bottom:1px dashed #333; border-bottom:1px dashed #333;">Person <?php echo $per;?></span>
+                                     
+                                        <?php
                     $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
                     $countarraytwo =  count($p_planrates);
@@ -614,7 +616,6 @@ font-weight:bold;
 
 
                     ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $per;?> </span></div>
                     <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $person_age; ?>)</span> Coverage Amount: <span style="color: #f5821f;">$<?php echo $sum_insured;?></span> Premium: <span style="color: #f5821f;">$<?php echo number_format($person_price,2);?></span></small></div>
                     <?php $single_person_rate = '';}//} ?>
                     </div>
@@ -623,10 +624,10 @@ font-weight:bold;
                 </div>
                 </li>
                 <li style="list-style: none;"><a href="#"> Sample Policy</a></li>
-            </ul>
-            
+            </ul>  
         </div>
-        <div class="col-md-12 col-xs-12 text-center" style="background:#0084c1; color: #FFF; font-size:15px;padding: 5px;margin-top: 3px; border-radius:10px;">
+    </div>
+        <div class="col-md-12 col-xs-12 text-center" id="plan">
         <?php echo $plan_name;?>
         </div>
     </div>
@@ -635,9 +636,9 @@ $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
 $agent = $request->agent;
 $broker = $request->broker;
 ?>
-    <div class="compare col-md-3 col-xs-12 text-center"><a class="submit-btn col-md-12 col-xs-5 " onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 6px 10px;font-size: 16px;display: block;color: #FFF; margin-bottom:5px;margin-top: 10px;border-radius: 6px;border-bottom: 2px solid #999;box-shadow: none;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
+    <div class="compare col-md-3 col-xs-12 text-center"><a class="submit-btn col-md-12 col-xs-5 " onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"><i class="fa fa-shopping-cart"></i> Buy Now</a>
     <div class="col-xs-2 visible-xs">&nbsp;</div>
-    <label style="font-weight: normal;padding: 6px 10px;font-size: 15px;display: block; margin-bottom:5px;margin-top: 10px;border-radius: 6px;border: 1px solid #999;background: #F9F9F9;border-bottom: 2px solid #999;cursor: pointer;" class="col-md-12 col-xs-5"><input type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="height: auto;margin: 0; opacity:0; position:absolute;" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()"> <i class="fa fa-database"></i> Compare</label>
+    <label class="col-md-12 col-xs-5" id="compare"><input type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="height: auto;margin: 0; opacity:0; position:absolute;" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()"> <i class="fa fa-database"></i> Compare</label>
     
     
         <!--<small style="display:block"><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>-->
@@ -771,3 +772,7 @@ $daily_rate = 0;
     } );
 </script>
 </div>
+<br>
+<br>
+<br>
+<br>

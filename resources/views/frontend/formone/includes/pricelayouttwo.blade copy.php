@@ -196,7 +196,7 @@ if(displayvalue == '0'){
    <div class="col-md-3 quote_reference" style="font-size:15px;">
       <h3 style="font-weight:bold; margin:0; padding:0;">Quote Reference</h3>
       <span style="color:#C00;"><?php echo $quoteNumber; ?></span><br/>
-      <small style="font-size: 100%;font-weight: 600;"><i class="fa fa-calendar"></i> <?php echo $request->departure_date . "-" . $request->return_date; ?></small>
+      <small><i class="fa fa-calendar"></i> <?php echo $request->startdate . "-" . $request->enddate; ?></small>
    </div>
 </div>
 <div class="row">
@@ -430,7 +430,7 @@ if($show == '1' && $total_price > 0){
 
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
 <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
-<div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'block'; } else { echo 'none'; } ?>; padding: 0;     margin-bottom: 11px !important;">
+<div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'block'; } else { echo 'none'; } ?>; padding: 0;">
 
 <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
 <div class="row">
@@ -450,8 +450,8 @@ if($show == '1' && $total_price > 0){
 <h2>$<?php echo $deductible; ?></h2>
 </div> -->
 <div class="col-md-3 text-center">
-<strong >Coverage Amount</strong>
-<h2 style="color:#000;font-size: 25px;">$<?php echo $sum_insured; ?></h2>
+<strong>Coverage Amount</strong>
+<h2>$<?php echo $sum_insured; ?></h2>
 <strong>Deductible:<span> $<?php echo $deductible; ?></span></strong>
 </div>
 <div class="col-md-2 text-center">
@@ -468,12 +468,12 @@ $agent = $request->agent;
 $broker = $request->broker;
 $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
-<a class="submit-btn text-center" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #1BBC9B;border-radius: 0px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
+<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #2b3481;border-radius: 4px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
 </div>
 </div>
 <div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
 <div class="col-md-2 col-xs-6">
-<button type="button" class="btn btn-default dh-toggle"  onclick="$('.moredetails_<?php echo $deductible.$plan_id;?>').fadeToggle();"  data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
+<button type="button" class="btn btn-default dh-toggle"  onclick="$('.moredetails_<?php echo $deductible.$plan_id;?>').fadeToggle();"  data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 9px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
 </div>
 <!-- <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
 <strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?>
