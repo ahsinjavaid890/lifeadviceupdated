@@ -377,13 +377,6 @@
                                     </select>
                                  </div>
                               </div>
-                              {{-- <div class="col-md-12 no-padding check_condtion"> --}}
-                                 {{-- <h3>Do you require Family Plan ?</h3>
-                                 <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;">
-                                       <input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> 
-                                       <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
-                                 </div> --}}
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
                                     function changefamilyyes(){
@@ -395,7 +388,6 @@
                                        checkfamilyplan();
                                     }
                                  </script>
-                              {{-- </div> --}}
                            @endif
                         @endif
                         @endif
