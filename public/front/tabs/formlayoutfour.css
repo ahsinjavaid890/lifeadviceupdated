@@ -36,7 +36,13 @@ form.form.form-layout1 .form-control, form.form.form-layout1 .select {
     margin: 3px !important;
     background: #eee;
 }
-
+.calendericon{
+    padding: 10px 9px !important;
+    position: absolute;
+    margin-top: -41px;
+    margin-left: 1px;
+    background: #F1F1F1;
+}
     .rangeslider--horizontal {
         height: 15px !important;
     }
