@@ -45,12 +45,23 @@
                         @if($fields['email'] == "on" )
                            <div class="col-md-12">
                               <div class="col-md-6 text-md-right" >
-                              <label for="savers_email" class="input-label">Email Address</label>
+                                 <label for="savers_email" class="input-label">Email Address</label>
                               </div>
                               <div class="col-md-6">
                                  <div class="custom-form-control">
                                     <input type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
                                  </div>
+                              </div>
+                              <div class="form-group tooltip-box">
+                                    <div class="p-20px">
+                                       <span class="tooltip-close fa fa-times"></span>
+                                       <div class="tooltip-content"><b>Parent &amp; Grandparent Super Visa</b><br><br>
+                                 To apply for the Parent and Grandparent Super Visa, you must:
+                                 <ul>
+                                 <li>be the parent or grandparent of a Canadian citizen or a permanent resident of Canada;</li>
+                                 <li>be found admissible to Canada</li>
+                                 </ul></div>
+                                    </div>
                               </div>
                            </div>
                         @endif
