@@ -306,7 +306,6 @@ form.form.form-layout1 .form-control {
     direction: ltr;
 }
 .emailicon {
-    z-index: 999;
     padding: 12px 9px !important;
     position: absolute;
     margin-top: -46px;

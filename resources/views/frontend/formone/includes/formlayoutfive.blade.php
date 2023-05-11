@@ -312,30 +312,7 @@
                      </div>
                      @endif
                      @endif
-                     <div class="row">
-                        @if(array_search("id_5",$orderdata) == $orderi)
-                           @if(isset($fields['Smoke12']))
-                           @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-12">
-                              <div class="col-md-6  text-md-right">
-                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months?</label>
-                              </div>
-                              <div class="col-md-6">
-                                 <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
-                                 <div class="custom-form-control">
-                                    <select required class="form-input" name="Smoke12" id="">
-                                       <option value="">--- Please Choose ---</option>
-                                         <option value="yes" >Yes</option>
-                                         <option value="no" >No</option>
-                                    </select>
-                                 </div>
-                              </div>
-
-                           </div>
-                           @endif
-                        @endif
-                        @endif
-                        
+                     @if(array_search("id_12",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
                           <div class="col-md-12">
@@ -366,7 +343,31 @@
                            </script>
                            @endif
                         @endif
-                     </div> 
+                        @endif
+                        @if(array_search("id_5",$orderdata) == $orderi)
+                        @if(array_search("id_5",$orderdata) == $orderi)
+                           @if(isset($fields['Smoke12']))
+                           @if($fields['Smoke12'] == 'on')
+                           <div class="col-md-12">
+                              <div class="col-md-6  text-md-right">
+                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months?</label>
+                              </div>
+                              <div class="col-md-6">
+                                 <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
+                                 <div class="custom-form-control">
+                                    <select required class="form-input" name="Smoke12" id="">
+                                       <option value="">--- Please Choose ---</option>
+                                         <option value="yes" >Yes</option>
+                                         <option value="no" >No</option>
+                                    </select>
+                                 </div>
+                              </div>
+
+                           </div>
+                           @endif
+                        @endif
+                        @endif
+                        @endif
                      
                      @endfor
                      <div class="col-md-12">
