@@ -101,7 +101,10 @@ $bg = $bgs[$k];
 
                            <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                               <label class="input-label"> Start Date</label>
-                           <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                           <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                           <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                           </span>
                               <script>
                                  $('#departure_date').datepicker({
                                  format: 'yyyy-mm-dd',
@@ -113,7 +116,10 @@ $bg = $bgs[$k];
                               <div class="col-md-6">
                                  <label class="input-label">End Date of Coverage</label>
                                  <div class="custom-form-control">
-                                    <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                                    <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                                    <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                       <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
                                  </div>
                               </div>
                               
@@ -530,7 +536,7 @@ $bg = $bgs[$k];
     var dd = '0'+dd;    
     }
     //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = y + '/' + mm + '/' + dd;
+    var someFormattedDate = mm + '/' + dd + '/' + y;
     document.getElementById('return_date').value = someFormattedDate;
    }, 1000);
    }
@@ -601,30 +607,7 @@ $bg = $bgs[$k];
       });
 </script>
 <script>
-   function supervisayes(){
-   //window.setTimeout(function(){ 
-       var tt = document.getElementById('departure_date').value;
-       var date = new Date(tt);
-       var newdate = new Date(date);
-       newdate.setDate(newdate.getDate() + 364);
-       var dd = newdate.getDate();
-       var mm = newdate.getMonth() + 1;
-       var y = newdate.getFullYear();
-       if(mm <= 9){
-       var mm = '0'+mm;    
-       }
-       if(dd <= 9){
-       var dd = '0'+dd;    
-       }
-       //var someFormattedDate = mm + '/' + dd + '/' + y;
-       var someFormattedDate = y + '-' + mm + '-' + dd;
-       document.getElementById('return_date').value = someFormattedDate;
-       //alert(someFormattedDate);
-   //}, 1000);
-   
-   checknumtravellers();
-   }
-   
+
    function checktravellers(){
        //Number OF Traveller
        var number_of_traveller = $("#number_travelers").val();
