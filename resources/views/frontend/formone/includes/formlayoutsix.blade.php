@@ -1,32 +1,35 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutsix.css')}}"> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container">
+<div class="container"> 
    <div class="row">
-      <div class="col-md-12 text-center mt-4 mb-0">
+      <div class="col-md-12 text-center mt-5 mb-5">
          <h1 style="font-weight: 700;font-size: 28px;color: #3d4049 !important;margin-bottom: 20px;" class="text-danger">{{ $data->pro_name }}</h1>
       </div>
    </div>
+   <form method="POST" action="{{ url('quotes') }}">
+                  @csrf
          <div class="row">
             <div class="col-md-12">
-               <form method="POST" action="{{ url('quotes') }}">
-                  @csrf
+               
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
-                     
-                     @if(isset($fields['sum_insured']))
-                        @if($fields['sum_insured'] == 'on')
-                        <div class="col-sm-4 col-md-3">
-                           <div class="form-group">
-                              <label>Coverage Amount</label>
-                              <select required class="form-input" name="sum_insured2" id="coverageammount">
-                                 <option value="">Coverage Amount</option>
-                                 @foreach($sum_insured as $r)
-                                 <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                                 @endforeach
-                              </select>
-                           </div>
+                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                     @php
+                        $number_of_travel = $fields['traveller_number'];
+                     @endphp
+                     @if($number_of_travel > 0)
+                     <div class="col-sm-4 col-md-3">
+                        <div class="form-group">
+                           <label>Number Of Travelers</label>
+                           <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
+                              <option value="">Number of Travellers</option>
+                              @for($i=1;$i<=$number_of_travel;$i++)
+                              <option value="{{ $i }}">{{ $i }}</option>
+                              @endfor
+                           </select>
                         </div>
-                        @endif
+                     </div>
+                     @endif
                      @endif
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                         <div class="col-sm-4 col-md-3">
@@ -51,6 +54,21 @@
                               </div>
                            </div>
                         </div>
+                     @endif
+                     @if(isset($fields['sum_insured']))
+                        @if($fields['sum_insured'] == 'on')
+                        <div class="col-sm-4 col-md-3">
+                           <div class="form-group">
+                              <label>Coverage Amount</label>
+                              <select required class="form-input" name="sum_insured2" id="coverageammount">
+                                 <option value="">Coverage Amount</option>
+                                 @foreach($sum_insured as $r)
+                                 <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                 @endforeach
+                              </select>
+                           </div>
+                        </div>
+                        @endif
                      @endif
                      @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
@@ -141,27 +159,12 @@
 
 
 
-                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
-                        @php
-                           $number_of_travel = $fields['traveller_number'];
-                        @endphp
-                        @if($number_of_travel > 0)
-                        <div class="col-sm-4 col-md-3">
-                           <div class="form-group">
-                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
-                                 <option value="">Number of Travellers</option>
-                                 @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option value="{{ $i }}">{{ $i }}</option>
-                                 @endfor
-                              </select>
-                           </div>
-                        </div>
-                        @endif
-                        @endif
+                        
                         @if(isset($fields['phone']))
                            @if($fields['phone'] == 'on')
                            <div class="col-sm-4 col-md-3">
                               <div class="form-group ">
+                                 <label>Phone Number</label>
                                  <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input" style="padding-left: 40px !important">
                               </div>
                            </div>
@@ -181,44 +184,138 @@
                            @endif
                         @endif
                         
-
-
-                        @if(isset($fields['dob']) && $fields['dob'] == "on" )
-                           @php
-                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                              $c = 0;
-                           @endphp
-                           @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers">
-                              <div class="col-md-6">
-                                 <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                              </div>
-                              <div class="col-md-6">
-                                 <select name="pre_existing[]" class="form-input">
-                                    <option value="">Select Pre Existing Condition</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                  </select>
+                        @if(isset($fields['gender']) && $fields['gender'] == "on" )
+                        <div class="col-sm-4 col-md-3">
+                           <div class="form-group ">
+                              <label>Primary Applicant`s Gender</label>
+                              <select required class="form-input" name="gender" id="gender">
+                                 <option value="">Select Gender</option>
+                                   <option value="male" >Male</option>
+                                   <option value="female" >Female</option>
+                              </select>
+                           </div>
+                        </div>
+                        @endif
+                        @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
+                        <div class="col-sm-4 col-md-3">
+                           <div class="form-group ">
+                              <label>Gender of the Oldest traveller</label>
+                              <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                                 <option value="">Select Gender</option>
+                                   <option value="male" >Male</option>
+                                   <option value="female" >Female</option>
+                              </select>
+                           </div>
+                        </div>
+                        @endif
+                        @if(isset($fields['Smoke12']))
+                           @if($fields['Smoke12'] == 'on')
+                           <div class="col-sm-4 col-md-3">
+                              <div class="form-group ">
+                                 <label>Do you Smoke in last 12 months?</label>
+                                 <select required class="form-input" name="Smoke12" id="">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" >Yes</option>
+                                      <option value="no" >No</option>
+                                 </select>
                               </div>
                            </div>
-                           @endfor
+                           @endif
                         @endif
+                        @if(isset($fields['fplan']))
+                           @if($fields['fplan'] == 'on')
+                           <div class="col-sm-4 col-md-3">
+                              <div class="form-group ">
+                                 <label>Do you require Family Plan?</label>
+                                 <select required class="form-input" name="fplan" id="">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" onclick="changefamilyyes()">Yes</option>
+                                      <option value="no"  onclick="changefamilyno()">No</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                           <script>
+                              function changefamilyyes(){
+                                 document.getElementById('familyplan_temp').value = 'yes';   
+                                 checkfamilyplan();
+                              }
+                              function changefamilyno(){
+                                 document.getElementById('familyplan_temp').value = 'no'; 
+                                 checkfamilyplan();
+                              }
+                           </script>
+                           @endif
+                        @endif
+                        
                   </div>
-               </form>
+               
             </div>
          </div>
+
+         @if(isset($fields['dob']) && $fields['dob'] == "on" )
+            @php
+               $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+               $c = 0;
+            @endphp
+            @for($i=1;$i<=$number_of_travel;$i++)
+            <div style="display: none;" id="traveler{{ $i }}" class="row no_of_travelers">
+               <div class="col-sm-12">
+                  <h5 class="type-of-policy"><?php echo $ordinal_words[$i];?> Traveler</h5>
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group ">
+                     <label>Enter Date Of Birth</label>
+                     <input onchange="travelerdateofbirth(this.value , {{$i}})" id="dateofbirthfull{{ $i }}" class="form-input txtDate" type="date" name="years[]">
+                     <span class="errorshow" id="dateerror{{ $i }}"></span>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group">
+                     <label>Age</label>
+                     <div class="custom-form-control">
+                        <input id="age{{ $i }}" value=""  class="form-input"  type="text" placeholder="Age" readonly>
+                        <span class="errorshow" id="ageerror{{ $i }}"></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group ">
+                     <label>Select Pre Existing Condition</label>
+                     <select name="pre_existing[]" class="form-input">
+                        <option value="">Select Pre Existing Condition</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                  </div>
+               </div>
+            </div>
+            @endfor
+         @endif
+         <div class="row">
+            <div class="col-md-12 text-right">
+                  <button class="btn btn-quote">GET A QUOTE</button>
+            </div>
+         </div>
+      </form>
   
 </div>
-<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
-   $( document ).ready(function() {
-       $('#dateofbirthfull1').mask('00/00/0000');
-       $('#dateofbirthfull2').mask('00/00/0000');
-       $('#dateofbirthfull3').mask('00/00/0000');
-       $('#dateofbirthfull4').mask('00/00/0000');
-       $('#dateofbirthfull5').mask('00/00/0000');
-       $('#dateofbirthfull6').mask('00/00/0000');
-   });
+   function travelerdateofbirth(id , travelerid) {
+      var GivenDate = id;
+      var CurrentDate = new Date();
+      GivenDate = new Date(GivenDate);
+      if(GivenDate > CurrentDate){
+         $('#dateerror'+travelerid).html('You Can Not Add Future Date');
+      }else{
+         $('#dateerror'+travelerid).html('');
+         var startdate = document.getElementById('departure_date').value;
+         dob = new Date(id);
+         var today = new Date();
+         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+         $('#age'+travelerid).val(age+' Years Old');
+      }      
+   }
 </script>
 
 
@@ -289,108 +386,32 @@
 </script>
 
 <script>
-   var container = document.getElementsByClassName("birthdate")[0];
-   container.onkeyup = function(e) {
-       var target = e.srcElement || e.target;
-       var maxLength = parseInt(target.attributes["maxlength"].value, 10);
-       var myLength = target.value.length;
-       if (myLength >= maxLength) {
-           var next = target;
-           while (next = next.nextElementSibling) {
-               if (next == null)
-                   break;
-               if (next.tagName.toLowerCase() === "input") {
-                   next.focus();
-                   break;
-               }
+$('button[type="submit"]').click(function() {
+   if($("select[name=number_travelers]").val()>1  && $("select[name=familyplan]").val() == "1"){
+       var counter = 0;
+       var aged=[];
+       $("select[name=birth_month\\[\\]]").each(function(){
+           //alert( $("select[name=birth_month\\[\\]]").eq(counter).val() );
+           var d = new Date( $("select[name=birth_year\\[\\]]").eq(counter).val() ,   $("select[name=birth_month\\[\\]]").eq(counter).val()-1,  $("select[name=birth_day\\[\\]]").eq(counter).val() );
+           var tDate = new Date();
+           var age=tDate.getFullYear() - d.getFullYear();
+           aged.push(age);
+           var max=Math.max.apply(Math,aged);
+           var min=Math.min.apply(Math,aged);
+           //if((max>="21" && max<="58") && (min>="1" && min<"21")){
+           if((max < 58) && (min >0 && min < 21)){
+               $("#familymsg").hide();
+               return true;
+           }else{
+               $("#familymsg").show();
+               return false;
            }
-       }
-       // Move to previous field if empty (user pressed backspace)
-       else if (myLength === 0) {
-           var previous = target;
-           while (previous = previous.previousElementSibling) {
-               if (previous == null)
-                   break;
-               if (previous.tagName.toLowerCase() === "input") {
-                   previous.focus();
-                   break;
-               }
-           }
-       }
+           counter++;
+       })
+   }else{
+       $("#familymsg").hide();
    }
-   
-    window.onload = function() {
-        checktravellers();
-    }
-       jQuery('#gender:before').click(function() {
-           var text = jQuery(this).attr('data-on-text');
-   //        var text2 = jQuery(this).attr('data-off-text');
-   //        checkbox-6
-            console.log(text);
-   //         console.log(text2);
-       });
-       function subform(){
-           alert('submit form');
-           return false;
-       }
-       jQuery(document).ready(function($){
-        jQuery("#GET_QUOTES").on("click",function(){
-        });
-   /*
-           $("#number_travelers").on("change", function(){
-            //Number OF Traveller
-            var number_of_traveller = $("#number_travelers").val();
-            var aa = "";
-            for(var i=2; i<=number_of_traveller; i++){
-            var aa = aa + $("#birthday")[0].outerHTML;
-            }
-            $("#birthday_view").html(aa);
-           })
-   */
-           $("button[type=submit]").on("change", function(){
-               //function validateForm() {
-               //if($(this).val() > 1){
-               ///      alert('fsd');
-               //       return false;
-               //}
-               //}
-           });
-   
-           $('button[type="submit"]').click(function() {
-               if($("select[name=number_travelers]").val()>1  && $("select[name=familyplan]").val() == "1"){
-                   var counter = 0;
-                   var aged=[];
-                   $("select[name=birth_month\\[\\]]").each(function(){
-                       //alert( $("select[name=birth_month\\[\\]]").eq(counter).val() );
-                       var d = new Date( $("select[name=birth_year\\[\\]]").eq(counter).val() ,   $("select[name=birth_month\\[\\]]").eq(counter).val()-1,  $("select[name=birth_day\\[\\]]").eq(counter).val() );
-                       var tDate = new Date();
-                       var age=tDate.getFullYear() - d.getFullYear();
-                       aged.push(age);
-                       var max=Math.max.apply(Math,aged);
-                       var min=Math.min.apply(Math,aged);
-                       //if((max>="21" && max<="58") && (min>="1" && min<"21")){
-                       if((max < 58) && (min >0 && min < 21)){
-                           $("#familymsg").hide();
-                           return true;
-                       }else{
-                           $("#familymsg").show();
-                           return false;
-                       }
-                       counter++;
-                   })
-               }else{
-                   $("#familymsg").hide();
-               }
-           });
-   
-   /*       $('#GET_QUOTES').click(function(){
-            var deparature = $('#departure_date').val();
-            $('#departuredate').val(deparature);
-        var returndate = $('#return_date').val();
-            $('#returndate').val(returndate);
-        });
-   */
-       });
+});
 </script>
 <script>
    function calculatedays() 
