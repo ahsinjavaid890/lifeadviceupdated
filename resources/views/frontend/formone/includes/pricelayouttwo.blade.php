@@ -181,7 +181,7 @@ if(displayvalue == '0'){
 }
 }
 </script>
-<div class="row  filterdiv hidden-xs mt-3" style="border: 1px solid #ddd;text-align: center;padding-top: 10px;margin-bottom:20px; background:#FFF;">
+<div class="row  filterdiv hidden-xs mt-3" style="border: 1px solid #ddd;text-align: center;padding-top: 10px;margin-bottom:20px;border-top:4px solid #ddd; background:#FFF; ">
    <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
       <i class="fa fa-filter"></i> Filter Results
    </div>
