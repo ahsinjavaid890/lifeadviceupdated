@@ -111,9 +111,9 @@ $bg = $bgs[$k];
                               </script>
                               </div>
                               <div class="col-md-6">
-                                 <label for="return_date" class="">End Date of Coverage</label>
+                                 <label class="input-label">End Date of Coverage</label>
                                  <div class="custom-form-control">
-                                    <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                                    <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
                                  </div>
                               </div>
                               
@@ -150,13 +150,14 @@ $bg = $bgs[$k];
                            </script>
                            <div id="country" class="col-md-12 ">
                               <div class="custom-form-control">
+                                 <label for="firstname" class="text-white" style="font-size: 16px;">States In Canada</label>
                                  <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option value="{{ $r->name }}">{{ $r->name }}</option>
                                     @endforeach
                                  </select>
-                                 <label for="primary_destination" class="form-label" style="font-size: 16px;">States In Canda</label>
+                                 
                               </div>
                            </div>
                            <div id="canadastate" class="col-md-6 " style="display:none;">
@@ -191,9 +192,9 @@ $bg = $bgs[$k];
                      @if($fields['fname'] == 'on')
 
                      <div class="col-md-6 ">
-                        <label for="firstname" class="text-white" style="    font-size: 16px;">First name</label>
+                        <label for="firstname" class="text-white" style="font-size: 16px;">First name</label>
                         <div class="custom-form-control">
-                           <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-control">
+                           <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-control">
                         </div>
                      </div>
                      @endif
@@ -203,7 +204,7 @@ $bg = $bgs[$k];
                      <div class="col-md-6 ">
                         <label for="lname" class="text-white" style="font-size: 16px;">Last name</label>
                         <div class="custom-form-control">
-                           <input type="text" name="lname" placeholder="lastname" required id="lname" class="form-control">
+                           <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-control">
                         </div>
                      </div>
                      @endif
