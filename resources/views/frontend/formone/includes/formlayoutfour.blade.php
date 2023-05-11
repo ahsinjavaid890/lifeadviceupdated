@@ -86,7 +86,8 @@
                           </script>
 
                        <div class="col-md-12">
-                        <h4 class="coverage" style="color: black; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$0"></h4>
+                        <h4 class="coverage" style="color: black; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
+                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
@@ -168,8 +169,13 @@
 
                      <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                         <label class="input-label"> Start Date</label>
-                     <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
-                        <script>
+   
+                     <input style="padding-left: 40px !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                     <span class="hidden-xs calendericon" style="color:#01a281;">
+         
+                           <i class="fa fa-calendar" aria-hidden="true" ></i>
+                        </span> 
+                     <script>
                            $('#departure_date').datepicker({
                            format: 'yyyy-mm-dd',
                            todayHighlight:'TRUE',
@@ -180,8 +186,11 @@
                          <div class="col-md-6">
                               <label for="return_date" class="">End Date of Coverage</label>
                               <div class="custom-form-control">
-                                 <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
-                              </div>
+                                 <input style="padding-left: 40px !important;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                                 <span class="hidden-xs calendericon" style="color:#01a281;">
+                            <i class="fa fa-calendar" aria-hidden="true" ></i>
+                           </span>
+                     </div>
                            </div>
                            @if($data->pro_supervisa != 1)
                            <script>
@@ -257,7 +266,7 @@
 
                       <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
                         <label class="input-label">Email Address (Required)</label>
-                        <input id="savers_email" name="savers_email" value="" class="form-control form-control" type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
+                        <input id="savers_email" name="savers_email" value="" class="form-control " type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
                         <span class="hidden-xs emailicon" style="color:#01a281;">
                            <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
@@ -334,28 +343,37 @@
                         </div>
                         @endif
                         @endif
-                      <div class="row">
+               
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
                            <div class="col-md-6 no-padding check_condtion">
-                              <h3>Do you Smoke in last 12 months ?</h3>
-                              <div class="col-md-12 no-padding">
-                                 <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="Smoke12" value="yes" style="width: auto !important;height: auto;"> Yes</label> <label style="display: inline-block;margin-right: 10px;">
-                                 <input type="radio" name="Smoke12" value="no"  style="width: auto !important;height: auto;"> No</label>
+                              <div class="custom-form-control">
+                                 <label for="" class="input-label" >Do you Smoke in last 12 months?</label>
+                                 <select required class="form-control" name="Smoke12" id="">
+                                    <option value="">--- Please Choose ---</option>
+                                      <option value="yes" >Yes</option>
+                                      <option value="no" >No</option>
+                                 </select>
                               </div>
                            </div>
+                      
                            @endif
                         @endif
                         @endif
                         @if(array_search("id_12",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                               <div class="col-md-6 no-padding check_condtion">
-                                 <h3>Do you require Family Plan ?</h3>
-                                 <div class="col-md-12 no-padding">
-                                    <label style="display: inline-block;margin-right: 10px;margin-left: 25px;"><input type="radio" name="fplan" value="yes" style="width: auto !important;height: auto;" onclick="changefamilyyes()"> Yes</label> <label style="display: inline-block;margin-right: 10px;"><input type="radio" name="fplan" value="no" checked="" style="width: auto !important;height: auto;" onclick="changefamilyno()"> No</label>
+                           <div class="col-md-6">
+                                 <label for="" class="input-label">Do you require Family Plan ?</label>
+                                 <div class="custom-form-control">
+                                    <select required class="form-control" name="fplan" id="">
+                                       <option value="">--- Please Choose ---</option>
+                                         <option value="yes" onclick="changefamilyyes()">Yes</option>
+                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                    </select>
                                  </div>
+                              </div>
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
                                     function changefamilyyes(){
@@ -367,11 +385,10 @@
                                        checkfamilyplan();
                                     }
                                  </script>
-                              </div>
                            @endif
                         @endif
                         @endif
-                        </div>
+                     
                      
                      @endfor
                      <div class="col-md-12 mt-3"  style="clear:both;">

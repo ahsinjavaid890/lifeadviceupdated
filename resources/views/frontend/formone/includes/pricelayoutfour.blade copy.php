@@ -184,13 +184,12 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
 <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
    <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-    <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
-      <h4 class="coverage mt-3" style="padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-      <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;"></div>
+      <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+      <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
    </div>
    <div class="col-md-12 adjust-quoto">
       <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-      <div id="slider" class="mt-0" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+      <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
    </div>
 </div>
 
@@ -427,7 +426,7 @@ if($show == '1' && $total_price > 0){
                         <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>"
                              style="display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
                             <div class="row plan-details   deductable-<?php echo $deductible; ?>"
-                                 style=" display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
+                                 style="border:1px solid #c0c0c0; margin-bottom: 20px; display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
                                 <div class="col-md-2 col-sm-6 hidden-xs">
                                     <div class=" center aligned middle aligned column">
                                         <div class="compare col-md-12 text-center">
@@ -442,18 +441,17 @@ if($show == '1' && $total_price > 0){
 
                                 <div class="col-md-3 col-xs-6 logogd"
                                      style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
-                                    <img style="height:auto; width:auto; margin-left: 20px"
+                                    <img style="max-height:60px; width:auto; margin-left: 20px"
                                          src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
 
                                 </div>
                                 <div class="col-md-4 col-xs-6 text-center" id="price">
 
-                                    <h3 style="display:inline;color: #000;font-weight: bold;    font-size: 30px;">
+                                    <h3 style="display:inline;">
                                         $<?php $explode = explode('.',number_format($total_price,2));
                                         ?><span><?php echo str_replace(',', '',$explode[0]).'.';?><sup class="superior"><?php echo $explode[1];?></sup></span></h3>
                                         <?php if($monthly_two == '1'){?>
-                                           
-        <h2 style="display:inline;margin:0;font-size:30px;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
+        <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>  
                                     <p>
                                         $<?php echo $deductible; ?> Deductible <br/>

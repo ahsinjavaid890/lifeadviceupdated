@@ -190,13 +190,21 @@ input[type="text"], input[type="password"] {
     }
 
     .side-bar {
-        height: auto;
-        padding: 20px 0;
+        position: relative;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
+    box-shadow: 0 5px 5px 0 rgba(34, 36, 38, .22);
+    margin: 1rem 0;
+    padding: 1em;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(34, 36, 38, .22);
+ height: 35% !important;
+ padding: 24px 0;
     }
 
-    .adjust-quoto {
+    /* .adjust-quoto {
         border-top: 2px solid #ddd;
-    }
+    } */
 
     .adjust-quoto h2 {
         color: #464644;
@@ -206,13 +214,13 @@ input[type="text"], input[type="password"] {
 
     .adjust-quoto h4 {
         color: #8e939c;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 400;
     }
     .adjust-quoto span {
         font-size: 20px;
         border-radius: 50px !important;
-        border: 5px solid #262566 !important;
+        border: 5px solid #000 !important;
         background: #00c2a2 !important; 
         cursor: pointer !important;
     }
@@ -272,7 +280,10 @@ opacity: 0.1;
 }
 
 
-
+#listprices{
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
 
 .ui.checkbox.large.nopad label {
     height: 100%;
@@ -292,7 +303,7 @@ opacity: 0.1;
 .sub.header {
     text-align: center;
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 400;
 }
 .ui.checkbox.large.nopad input:checked+label:before {
     content: "\f00c";
@@ -458,7 +469,7 @@ button.buynow-btn {
         box-shadow: none !important;
         left: 0 !important;
         bottom: 0 !important;
-        top: 0px !important;
+        top: 11px !important;
         /*min-width: 355px;*/
 
         /*margin-top: -80px !important;*/
@@ -483,27 +494,28 @@ button.buynow-btn {
 }
 
 .submit-btn {
-background: #262566;
-border: none;
-box-shadow: none;
-color: #fff;
-font-family: arial;
-font-size: 15px;
-font-weight: bold;
-text-align: center;
-text-decoration: none;
-cursor: pointer;
-border-radius: 5px;
-text-transform: none;
-width: 100%;
-padding: 10px;
+    background: #00c2a2;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: none;
+    width: 100%;
+    padding: 10px;
+
 }
 .submit-btn:hover {
     background: #262566;
 }
 
 .ui-slider-horizontal .ui-slider-range {
-    background:#262566 !important;
+    background:#44bc9b!important;
 }
 .container {
     padding-right: 0 !important;
@@ -511,6 +523,14 @@ padding-left: 0 !important;
 }
 .row .plan-details{
     display: flex;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+    padding: 25px 10px;
+    position: relative;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
+    box-shadow: 0 5px 5px 0 rgba(34, 36, 38, .22);
+    border-radius: 0.25rem;
 }
    .row.plan-details {
     align-items: flex-start;
