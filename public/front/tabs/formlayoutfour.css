@@ -37,9 +37,9 @@ form.form.form-layout1 .form-control, form.form.form-layout1 .select {
     background: #eee;
 }
 .calendericon{
-    padding: 7px 9px !important;
+    padding: 6px 8px !important;
     position: absolute;
-    margin-top: -41px;
+    margin-top: -40px;
     margin-left: 1px;
     background: #F1F1F1;
 }
@@ -308,7 +308,7 @@ border: 1px solid #ccc !important;
     background: #F1F1F1;
 }
 .phoneicon {
-    padding: 10px 9px !important;
+    padding: 7px 9px !important;
     position: absolute;
     margin-top: -41px;
     margin-left: 1px;

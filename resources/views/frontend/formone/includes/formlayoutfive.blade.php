@@ -66,11 +66,11 @@
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-6 text-md-right">
-                        <label for="phone"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
+                        <label for="phonenumbermask"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
                      </div>
                      <div class="col-md-6 no-padding-right">
                         <div class="custom-form-control">
-                           <input style="padding-left:40px;" onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
+                           <input style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" onkeyup="validatephone()" type="text" name="phone" required id="phone" class="form-input">
                            <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>
@@ -421,6 +421,8 @@
        $('#dateofbirthfull4').mask('00/00/0000');
        $('#dateofbirthfull5').mask('00/00/0000');
        $('#dateofbirthfull6').mask('00/00/0000');
+       $('#phonenumbermask').mask('000-000-0000');
+
    });
 </script>
 <script type="text/javascript">
