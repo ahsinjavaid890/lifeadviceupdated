@@ -100,39 +100,43 @@ $bg = $bgs[$k];
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-                           <div class="col-md-6 col-sm-6 col-xs-12 control-input">
-                              <label class="input-label"> Start Date</label>
-                              <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
-                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
-                                 <i class="fa fa-calendar" aria-hidden="true"></i>
-                              </span>
-                              <script>
-                                 $('#departure_date').datepicker({
-                                 format: 'yyyy-mm-dd',
-                                 todayHighlight:'TRUE',
-                                 autoclose: true,
-                                 });
-                              </script>
-                           </div>
-                           <div class="col-md-6">
-                              <label class="input-label">End Date of Coverage</label>
-                              <div class="custom-form-control">
-                                 <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <label class="input-label"> Start Date</label>
+                                 <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                                  <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                  </span>
+                                 <script>
+                                    $('#departure_date').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    todayHighlight:'TRUE',
+                                    autoclose: true,
+                                    });
+                                 </script>
                               </div>
+                              <div class="col-md-6">
+                                    <label class="input-label">End Date of Coverage</label>
+                                    <div class="custom-form-control">
+                                       <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                                       <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                                       </span>
+                                    </div>
+                                 </div>
+                                    
+                                 @if($data->pro_supervisa != 1)
+                                 <script>
+                                    $('#return_date').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    todayHighlight:'TRUE',
+                                    autoclose: true,
+                                    });
+                                 </script>  
+                                 @endif
                            </div>
-                              
-                           @if($data->pro_supervisa != 1)
-                           <script>
-                              $('#return_date').datepicker({
-                              format: 'yyyy-mm-dd',
-                              todayHighlight:'TRUE',
-                              autoclose: true,
-                              });
-                           </script>  
-                           @endif
+                           
+                           
                      @endif
                      @endif
                      @if(array_search("id_6",$orderdata) == $orderi)
@@ -194,6 +198,7 @@ $bg = $bgs[$k];
                         @endif
                      @endif
                      @endif
+                     <div class="row">
                      @if(array_search("id_1",$orderdata) == $orderi)
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
@@ -217,6 +222,7 @@ $bg = $bgs[$k];
                      @endif
                      @endif
                      @endif
+                     </div>
                      @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                @if($fields['sum_insured'] == 'on')          
