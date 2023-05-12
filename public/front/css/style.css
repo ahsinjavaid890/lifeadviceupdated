@@ -12923,9 +12923,9 @@ ul.tabs li.current {
 }
 
 .login-btn {
-    width: 80px;
+/*    width: 80px;*/
     height: 35px;
-    padding: 3px !important;
+    padding: 5px !important;
     background-color: #2b3481;
     color: white !important;
 }

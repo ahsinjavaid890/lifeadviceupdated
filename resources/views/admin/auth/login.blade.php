@@ -43,7 +43,7 @@
                 <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
                     <!--begin::Login Header-->
                     <div class="d-flex flex-center mb-15">
-                        <a href="#">
+                        <a href="{{ url('') }}">
                             <img src="https://www.lifeadvice.ca/images/brand.png" class="max-h-75px" alt="" />
                         </a>
                     </div>

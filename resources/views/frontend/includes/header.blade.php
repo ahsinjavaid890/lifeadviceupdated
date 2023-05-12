@@ -119,35 +119,42 @@
                                 </li>
                                 
                                 @if(Auth::check()) 
-                                  <li class="dropdown ml-2">
-                                        <a class="rounded-circle " href="#" role="button" id="dropdownUser"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="avatar avatar-md avatar-indicators avatar-online" style="margin-top: 15px;">
 
-                                                @if(Auth::user()->profileimage)
-                                                <img width="30" alt="avatar" src="{{ url('public/images') }}/{{ Auth::user()->profileimage  }}" class="rounded-circle">
-                                               @else
-                                               <img width="30" alt="avatar" src="https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg" class="rounded-circle">
-                                               @endif
+                                    @if(Auth::user()->user_type == 'admin')
+                                        <li class="nav-item">
+                                            <a href="{{ url('admin/dashboard')}}" class="btn btn-lg login-btn">
+                                            Admin dashboard 
+                                            </a>
+                                        </li>
+                                    @else
+                                      <li class="dropdown ml-2">
+                                            <a class="rounded-circle " href="#" role="button" id="dropdownUser"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <div class="avatar avatar-md avatar-indicators avatar-online" style="margin-top: 15px;">
 
-                                                
+                                                    @if(Auth::user()->profileimage)
+                                                    <img width="30" alt="avatar" src="{{ url('public/images') }}/{{ Auth::user()->profileimage  }}" class="rounded-circle">
+                                                   @else
+                                                   <img width="30" alt="avatar" src="https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg" class="rounded-circle">
+                                                   @endif
+                                                </div>
+                                            </a>
+                                            <div class="dropdown-menu pb-2" aria-labelledby="dropdownUser">
+                                                <ul class="">
+                                                    <li class="nav-link active">
+                                                        <a class=" text-dark" href="#!">
+                                                    profile
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-link">
+                                                        <a class=" text-dark" href="{{ url('') }}">
+                                                    Logout
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </a>
-                                        <div class="dropdown-menu pb-2" aria-labelledby="dropdownUser">
-                                            <ul class="">
-                                                <li class="nav-link active">
-                                                    <a class=" text-dark" href="#!">
-                                                profile
-                                                    </a>
-                                                </li>
-                                                <li class="nav-link">
-                                                    <a class=" text-dark" href="#!">
-                                                Logout
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endif
                                 @else
                                 <li class="nav-item">
                                     <a href="{{ url('login')}}" class="btn btn-lg login-btn">
