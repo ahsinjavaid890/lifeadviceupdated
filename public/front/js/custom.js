@@ -1,3 +1,147 @@
+function checknumtravellers(id) {
+if(id == '')
+{
+ $('.no_of_travelers').hide();
+}
+if(id == 1)
+{
+ $('#dateofbirthfull1').attr('required' , true);
+ $('#pre_existing1').attr('required' , true);
+ $('#dateofbirthfull2').attr('required' , false);
+ $('#pre_existing2').attr('required' , false);
+ $('#dateofbirthfull3').attr('required' , false);
+ $('#pre_existing3').attr('required' , false);
+ $('#dateofbirthfull4').attr('required' , false);
+ $('#pre_existing4').attr('required' , false);
+ $('#dateofbirthfull5').attr('required' , false);
+ $('#pre_existing5').attr('required' , false);
+ $('#dateofbirthfull2').val('');
+ $('#pre_existing2').val('');
+ $('#dateofbirthfull3').val('');
+ $('#pre_existing3').val('');
+ $('#dateofbirthfull4').val('');
+ $('#pre_existing4').val('');
+ $('#dateofbirthfull5').val('');
+ $('#pre_existing5').val('');
+
+
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+}
+if(id == 2)
+{
+
+ $('#dateofbirthfull1').attr('required' , true);
+ $('#pre_existing1').attr('required' , true);
+ $('#dateofbirthfull2').attr('required' , true);
+ $('#pre_existing2').attr('required' , true);
+ $('#dateofbirthfull3').attr('required' , false);
+ $('#pre_existing3').attr('required' , false);
+ $('#dateofbirthfull4').attr('required' , false);
+ $('#pre_existing4').attr('required' , false);
+ $('#dateofbirthfull5').attr('required' , false);
+ $('#pre_existing5').attr('required' , false);
+ $('#dateofbirthfull3').val('');
+ $('#pre_existing3').val('');
+ $('#dateofbirthfull4').val('');
+ $('#pre_existing4').val('');
+ $('#dateofbirthfull5').val('');
+ $('#pre_existing5').val('');
+
+
+
+
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+}
+if(id == 3)
+{
+ $('#dateofbirthfull1').attr('required' , true);
+ $('#pre_existing1').attr('required' , true);
+ $('#dateofbirthfull2').attr('required' , true);
+ $('#pre_existing2').attr('required' , true);
+ $('#dateofbirthfull3').attr('required' , true);
+ $('#pre_existing3').attr('required' , true);
+ $('#dateofbirthfull4').attr('required' , false);
+ $('#pre_existing4').attr('required' , false);
+ $('#dateofbirthfull5').attr('required' , false);
+ $('#pre_existing5').attr('required' , false);
+ $('#dateofbirthfull4').val('');
+ $('#pre_existing4').val('');
+ $('#dateofbirthfull5').val('');
+ $('#pre_existing5').val('');
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+ $('#traveler3').show();
+}
+if(id == 4)
+{
+ $('#dateofbirthfull1').attr('required' , true);
+ $('#pre_existing1').attr('required' , true);
+ $('#dateofbirthfull2').attr('required' , true);
+ $('#pre_existing2').attr('required' , true);
+ $('#dateofbirthfull3').attr('required' , true);
+ $('#pre_existing3').attr('required' , true);
+ $('#dateofbirthfull4').attr('required' , true);
+ $('#pre_existing4').attr('required' , true);
+ $('#dateofbirthfull5').attr('required' , false);
+ $('#pre_existing5').attr('required' , false);
+ $('#dateofbirthfull5').val('');
+ $('#pre_existing5').val('');
+ $('.no_of_travelers').hide();
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+ $('#traveler3').show();
+ $('#traveler4').show();
+}
+if(id == 5)
+{
+ $('#dateofbirthfull1').attr('required' , true);
+ $('#pre_existing1').attr('required' , true);
+ $('#dateofbirthfull2').attr('required' , true);
+ $('#pre_existing2').attr('required' , true);
+ $('#dateofbirthfull3').attr('required' , true);
+ $('#pre_existing3').attr('required' , true);
+ $('#dateofbirthfull4').attr('required' , true);
+ $('#pre_existing4').attr('required' , true);
+ $('#dateofbirthfull5').attr('required' , true);
+ $('#pre_existing5').attr('required' , true);
+ $('#dateofbirthfull5').val('');
+ $('#pre_existing5').val('');
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+ $('#traveler3').show();
+ $('#traveler4').show();
+ $('#traveler5').show();
+}
+if(id == 6)
+{
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+ $('#traveler3').show();
+ $('#traveler4').show();
+ $('#traveler5').show();
+ $('#traveler6').show();
+}
+if(id == 7)
+{
+ $('.no_of_travelers').hide();
+ $('#traveler1').show();
+ $('#traveler2').show();
+ $('#traveler3').show();
+ $('#traveler4').show();
+ $('#traveler5').show();
+ $('#traveler6').show();
+ $('#traveler7').show();
+
+}
+checkfamilyplan();
+}
 function removeappendvalue(id) {
   $('.button-add-another').fadeIn(300);
   $('#removebutton'+id).removeClass('showrowstraveler');

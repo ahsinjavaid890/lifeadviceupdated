@@ -220,9 +220,9 @@
                                        <label for="day" class="form-label lables" id="" style="    left:0">Pre Existing of <?php echo $ordinal_words[$i];?></label>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-7">
-                                       <label for="day" class="d-sm-none" style="    margin-left: -11.5px;">Select Pre Existing</label>
+                                       <label for="day" class="d-sm-none" style="margin-left: -11.5px;">Select Pre Existing</label>
                                        <div class="custom-form-control">
-                                          <select name="pre_existing[]" class="form-input">
+                                          <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
                                              <option value="no">No</option>
@@ -377,22 +377,24 @@
                               <div class="col-md-7">
                                  <label for="" class="d-sm-none">Do you require Family Plan ?</label>
                                  <div class="custom-form-control">
-                                    <select required class="form-input" name="fplan" id="">
+                                    <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
                                        <option value="">--- Please Choose ---</option>
-                                         <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                         <option value="yes">Yes</option>
+                                         <option value="no">No</option>
                                     </select>
                                  </div>
                               </div>
                                  <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                                  <script>
-                                    function changefamilyyes(){
-                                       document.getElementById('familyplan_temp').value = 'yes';   
-                                       checkfamilyplan();
-                                    }
-                                    function changefamilyno(){
-                                       document.getElementById('familyplan_temp').value = 'no'; 
-                                       checkfamilyplan();
+                                    function changefamilyyes(id){
+                                       if(id == 'yes')
+                                       {
+                                          document.getElementById('familyplan_temp').value = 'yes';
+                                          checkfamilyplan();
+                                       }else{
+                                          document.getElementById('familyplan_temp').value = 'no';
+                                          checkfamilyplan();
+                                       }
                                     }
                                  </script>
                            @endif
@@ -454,78 +456,7 @@
        $('#phonenumbermask').mask('000-000-0000');
    });
 </script>
-
-
-<script type="text/javascript">
-   function checknumtravellers(id) {
-      if(id == '')
-      {
-         $('.no_of_travelers').hide();
-      }
-      if(id == 1)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-      }
-      if(id == 2)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-      }
-      if(id == 3)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-         $('#traveler3').show();
-      }
-      if(id == 4)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-         $('#traveler3').show();
-         $('#traveler4').show();
-      }
-      if(id == 5)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-         $('#traveler3').show();
-         $('#traveler4').show();
-         $('#traveler5').show();
-      }
-      if(id == 6)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-         $('#traveler3').show();
-         $('#traveler4').show();
-         $('#traveler5').show();
-         $('#traveler6').show();
-      }
-      if(id == 7)
-      {
-         $('.no_of_travelers').hide();
-         $('#traveler1').show();
-         $('#traveler2').show();
-         $('#traveler3').show();
-         $('#traveler4').show();
-         $('#traveler5').show();
-         $('#traveler6').show();
-         $('#traveler7').show();
-
-      }
-   }
-</script>
-
 <script>
-    window.onload = function() {
-        checktravellers();
-    }
        jQuery('#gender:before').click(function() {
            var text = jQuery(this).attr('data-on-text');
    //        var text2 = jQuery(this).attr('data-off-text');
@@ -596,56 +527,6 @@
    */
        });
 </script>
-<script>
-   function checkfamilyplan(){
-   //Eligibility
-   var inps = json_encode();
-   var ages = [];
-   for (var i = 0; i <inps.length; i++) {
-   var inp=inps[i];
-   if(inp.value > 0){
-    ages.push(inp.value);
-   }
-   }
-   
-   Array.prototype.max = function() {
-     return Math.max.apply(null, this);
-   };
-   
-   Array.prototype.min = function() {
-     return Math.min.apply(null, this);
-   };
-   
-   var max_age = ages.max();
-   var min_age = ages.min();
-   if(document.getElementById('familyplan_temp').value == 'yes'){
-   if(document.getElementById('number_travelers').value >='2' && max_age <=59 && min_age <=21){
-   document.getElementById('GET_QUOTES').style.display = 'block';
-   document.getElementById('family_error').innerHTML = '';
-   document.getElementById('family_error').style.display = 'none';
-   } else {
-   document.getElementById('GET_QUOTES').style.display = 'none';
-   if(document.getElementById('number_travelers').value <'2'){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.';
-   } else if(max_age > 59){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> Maximum age for family plan should be 59';    
-   } else if(min_age > 21){
-   document.getElementById('family_error').innerHTML = '<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21';   
-   }
-   document.getElementById('family_error').style.display = 'block'; 
-   }
-   
-   } else {
-    document.getElementById('GET_QUOTES').style.display = 'block';
-    document.getElementById('family_error').style.display = 'none'; 
-   }
-    
-   }
-   
-   window.onload = function() {
-     checktravellers();
-   };
-</script>
 <script src="{{ asset('public/front/js/jquery-1.12.4.min.js')}}"></script>
 <script>
    function supervisayes(){
@@ -669,7 +550,7 @@
        //alert(someFormattedDate);
    //}, 1000);
    
-   checknumtravellers();
+      checknumtravellers();
    }
    
    function checktravellers(){
@@ -690,42 +571,44 @@
        for(var a=num; a<8; a++){
            $('#add_'+a).val('');
            $('#add_'+a).prop('required', false);
-       }
-   
-       checkfamilyplan();
+      }
+      checkfamilyplan();
    }
    
    
    function checkfamilyplan(){
        //Eligibility
-       var inps = document.getElementsByName('ages[]');
-       var ages = [];
-       for (var i = 0; i <inps.length; i++) {
-           var inp=inps[i];
-           if(inp.value > 0){
-               ages.push(inp.value);
-           }
-       }
-       
-       Array.prototype.max = function() {
-         return Math.max.apply(null, this);
-       };
-       
-       Array.prototype.min = function() {
-         return Math.min.apply(null, this);
-       };
+       var titles = $('input[name^=years]').map(function(idx, elem) {
+          return $(elem).val();
+        }).get();
+         var ages = [];
+         for (var i = 0; i < titles.length; i++) {
+            if(titles[i])
+            {
+               dob = new Date(titles[i]);
+               var today = new Date();
+               var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+               ages.push(age);
+            }
+         }
+         Array.prototype.max = function() {
+           return Math.max.apply(null, this);
+         };
+         Array.prototype.min = function() {
+           return Math.min.apply(null, this);
+         };
    
        var max_age = ages.max();
        var min_age = ages.min();
        if($('#familyplan_temp').val() == 'yes'){
-           if($('#number_travelers').value >='2' && max_age <=59 && min_age <=21){
+           if($('#number_travelers').val() >='2' && max_age <=59 && min_age <=21){
                $('#GET_QUOTES').css('display', 'block');
                $('#family_error').html('');
                $('#family_error').css('display', 'none');
            } 
            else {
                $('#GET_QUOTES').css('display', 'none');
-               if($('#number_travelers').value <'2'){
+               if($('#number_travelers').val() <'2'){
                    $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
                } 
                else if(max_age > 59){
@@ -743,9 +626,4 @@
        }
        
    }
-   
-   window.onload = function() {
-     checktravellers();
-   };
-   
 </script>
