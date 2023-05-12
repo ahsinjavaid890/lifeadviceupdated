@@ -352,3 +352,44 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: 0;
   width: auto;
 }
+@media (max-width:468px) and (min-width:292px){
+  .icon-left{
+    top:30px !important;
+  }
+  #cnt select,#states select{
+    width: 276px !important;
+    margin-left: -2px;
+  }
+  #states select{
+    width: 278px !important;
+    margin-left: -13px;
+  }
+}
+.oldTraveler{
+      width: 100%;
+    border: 1px solid rgb(173, 173, 173) !important;
+    height: 38px !important;
+    padding: 1px 10px !important;
+    font-size: 13px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, .87) !important;
+    background: #FFF !important;
+}
+#GET_QUOTES{
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+#GET_QUOTES:hover{
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+#lowestprice{
+  margin-top: 18px;
+
+}
+ul li{
+  list-style: disc !important;
+  font-size: 15px;
+}

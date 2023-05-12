@@ -138,7 +138,7 @@ z-index: 99999999999 !important;
         border: 1px solid #dedede;
         padding: 5px 20px;
         height: 50px;
-        background;#FFF !important;
+        background:#FFF !important;
         color: #959595;
         font-size: 14px;
         line-height: 36px;
@@ -313,4 +313,9 @@ border: 1px solid #ccc !important;
     margin-top: -41px;
     margin-left: 1px;
     background: #F1F1F1;
+}
+#GET_QUOTES{
+    background-color: #FF4136 !important;
+    height: 44px;
+    font-weight: 400 !important;
 }

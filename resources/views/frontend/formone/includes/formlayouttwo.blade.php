@@ -423,7 +423,7 @@ $bg = $bgs[$k];
                     
                      
                   <div class="col-md-12" style="clear: both;">
-                     <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
+                     <span id="family_error" style="display: none; text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
                      <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 9px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                   </div>
                
