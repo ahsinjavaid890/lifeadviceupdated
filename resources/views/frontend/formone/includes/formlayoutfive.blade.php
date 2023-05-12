@@ -197,21 +197,19 @@
                         @endphp
                         @if($number_of_travel > 0)
 
-                        <div class="col-md-12">
-                           <div class="col-md-6 text-md-right">
-                              <label for="number_travelers" class="input-label">Number of Travellers</label>
-                           </div>
-                           
-                           <div class="col-md-6 no-padding-right">
-                           <div class="custom-form-control">
-                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
-                                 <option value="">Number of Travellers</option>
-                                 @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option value="{{ $i }}">{{ $i }}</option>
-                                 @endfor
-                              </select>
-                           </div>
-                           </div>
+                        <div class="col-md-6 text-md-right">
+                           <label for="number_travelers" class="input-label">Number of Travellers</label>
+                        </div>
+                        
+                        <div class="col-md-6 no-padding-right">
+                        <div class="custom-form-control">
+                           <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
+                              <option value="">Number of Travellers</option>
+                              @for($i=1;$i<=$number_of_travel;$i++)
+                              <option value="{{ $i }}">{{ $i }}</option>
+                              @endfor
+                           </select>
+                        </div>
                         </div>
 
 
@@ -223,7 +221,7 @@
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers">
                               <div class="row">
                                  <div class="col-md-6 text-md-right">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Oldest Traveller's Date of Birth</label>
@@ -261,7 +259,6 @@
                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-                     <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">Start Date of Coverage</label>
                        
@@ -281,8 +278,6 @@
                         </script>
                            </div>
                         </div>
-                     </div>
-                     <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">End Date of Coverage</label>
                         </div>
@@ -302,13 +297,11 @@
                               </script>  
                               @endif
                            </div>
-                        </div>
                      </div>
                      @endif
                      @endif
                      @if(array_search("id_14",$orderdata) == $orderi)
                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                     <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
                            <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                         </div>
@@ -319,12 +312,10 @@
                                 <option value="female" >Female</option>
                            </select>
                         </div>
-                     </div>
                      @endif
                      @endif
                      @if(array_search("id_12",$orderdata) == $orderi)
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                     <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
                            <label class="input-label">Gender of the Oldest traveller</label>
                         </div>
@@ -335,13 +326,11 @@
                                 <option value="female" >Female</option>
                            </select>
                         </div>
-                     </div>
                      @endif
                      @endif
                      @if(array_search("id_12",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                          <div class="col-md-12">
                              <div class="col-md-6 text-right">
                                 <label for="" class="">Do you require Family Plan ? <span onclick="slidequestion('family')"><i class="fa fa-question-circle"></i></span> </label>
                              </div>
@@ -364,7 +353,6 @@
                                     </div>
                                  </div>
                               </div>
-                          </div>
                            <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                            <script>
                               function changefamilyyes(){
@@ -383,7 +371,6 @@
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-12">
                               <div class="col-md-6  text-md-right">
                                  <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
                               </div>
@@ -408,19 +395,16 @@
                                  </div>
                               </div>
 
-                           </div>
                            @endif
                         @endif
                         @endif
                         @endif
                      
                      @endfor
-                     <div class="col-md-12">
                      <div class="col-md-6">
                      </div>
                      <div class="col-md-6 d-flex justify-content-between no-padding-right" style="margin-top: 12px; ">
                         <button type="submit" class="btn btn-primary get_qout" style="background: #1BBC9B; color: #FFF; margin: 5px 0 5px 5px; font-size: 15px; width: 40%; padding: 10px 55px; height: 45px; margin-left: auto; border: 1px solid transparent;"><i class="fa fa-list-ul"></i>  Continue </button>
-                     </div>
                      </div>
                   </div>
                </form>
