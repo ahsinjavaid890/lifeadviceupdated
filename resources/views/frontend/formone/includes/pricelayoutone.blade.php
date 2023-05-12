@@ -280,6 +280,8 @@ if(displayvalue == '0'){
           
             if($supervisa == 'yes'){
                 $addinbenefit = "AND CAST(`sum_insured` AS DECIMAL)>='100000'";
+            }else{
+                $addinbenefit = "";
             }
             $sum_insured= '';        
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");

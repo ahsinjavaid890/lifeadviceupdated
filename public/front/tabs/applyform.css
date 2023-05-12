@@ -1,4 +1,41 @@
-
+@media only screen and (max-width: 600px) {
+  .col-xs-4 {
+    width: 33%;
+    padding: 0 5px !important;
+  }
+  .container{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .input{
+    margin-bottom: 20px;
+  }
+  .hidden-xs{
+    display: none;
+  }
+  .f1-steps{
+    display: none;
+  }
+  .f1 fieldset{
+    margin-top: 0px !important;
+  }
+  .top-content{
+    padding: 0px  !important;
+  }
+  .col-md-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .f1{
+    padding: 0px !important;
+    border-radius: 0px !important;
+  }
+  .f1-buttons {
+        margin-top: 20px;
+        margin-right: 15px;
+        margin-bottom: 25px;
+    }
+}
 
 
 .field-container {
