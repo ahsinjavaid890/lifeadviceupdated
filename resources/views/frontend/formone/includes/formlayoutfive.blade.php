@@ -77,9 +77,7 @@
                         </div>
                      </div>
                      <script>
-                        function slidequestion(id) {
-                           $("#slide_"+id).slideToggle();
-                        }
+                        
                         function validatephone(){
                            var checkphone = document.getElementById('phone').value;
                            document.getElementById('phone').value = checkphone.replace(/\D/g,'');
@@ -411,6 +409,9 @@
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
+   function slidequestion(id) {
+      $("#slide_"+id).slideToggle();
+   }
    $( document ).ready(function() {
        $('#dateofbirthfull1').mask('00/00/0000');
        $('#dateofbirthfull2').mask('00/00/0000');
