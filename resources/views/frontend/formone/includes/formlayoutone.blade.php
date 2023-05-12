@@ -211,7 +211,7 @@
                                  <div  class="col-md-7" style="padding-right:0px !important" >
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input sid="dateofbirthfull{{ $i }}" class=" oldTraveler" type="text" placeholder="MM/DD/YYYY" name="years[]" >
+                                          <input id="dateofbirthfull{{ $i }}" class=" oldTraveler" type="text" placeholder="MM/DD/YYYY" name="years[]" >
                               
                                        </div>
                                     </div>
