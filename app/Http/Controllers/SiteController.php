@@ -115,7 +115,7 @@ class SiteController extends Controller
             $fields = unserialize($data->pro_fields);
             $sortfields = unserialize($data->pro_sort);
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
-            $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+            $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
             return view('frontend.formone.index')->with(array('data'=>$data,'orderdata'=>$sortfields,'fields'=>$fields,'sum_insured'=>$sum_insured));
         }
         else
