@@ -485,13 +485,12 @@ if($show == '1' && $total_price > 0){
                                 </div>
 
 
-                                <div class="col-md-3 col-xs-6" style="border:0px solid #000;text-align:center;">
-
-<?php
-$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
-$agent = $request->agent;
-$broker = $request->broker;
-?>
+                                <div class="col-md-3 col-xs-6" style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
+                                <?php
+                                $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+                                $agent = $request->agent;
+                                $broker = $request->broker;
+                                ?>
 
                                     <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn"
                                             data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"

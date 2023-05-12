@@ -178,7 +178,7 @@ input[type="text"], input[type="password"] {
         background: #fff;
         -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
         box-shadow: 0 5px 5px 0 rgba(34, 36, 38, .22);
-        margin: 1rem 0;
+        margin: 0.7rem 0;
         padding: 1em;
         border-radius: .25rem;
         border: 1px solid rgba(34, 36, 38, .22);
@@ -186,7 +186,7 @@ input[type="text"], input[type="password"] {
 
 
     .side-bar {
-        height: auto;
+        height: 35%;
         padding: 20px 0;
     }
 
@@ -196,13 +196,14 @@ input[type="text"], input[type="password"] {
 
     .adjust-quoto h2 {
         color: #464644;
-        font-size: 26px;
-        font-weight: 400;
+     font-size: 24px;
+     margin: 10px 0px 40px 0px !important;
+        font-weight: bold;
     }
 
     .adjust-quoto h4 {
         color: #8e939c;
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 400;
     }
     .adjust-quoto span {
@@ -217,7 +218,7 @@ input[type="text"], input[type="password"] {
         font-size: 20px;
     }
     #slider{
-        margin: 25px 0px;
+        margin:30px 0px;
     }
     .adjust-quoto{
         margin-bottom: 20px;
@@ -249,17 +250,22 @@ input[type="text"], input[type="password"] {
     }
 
 .checkbox-inline{
-border-radius: 4px;
-width: 181px;
-height: 40px;
-line-height: 32px;
-text-align: center;
-background: #1bbc9b;
-font-size: 17px;
-margin-top: 10px;
-border-radius: 3px;
-box-shadow: 0px 1px 1px 0px #ccc;
-padding-top: 2px;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 40px;
+    line-height: 32px;
+    text-align: center;
+    background: #F9F9F9;
+    font-size: 17px;
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 0px #ccc;
+    padding-top: 2px;
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
 }
 
 .rangeslider__fill {
@@ -285,4 +291,20 @@ padding-right: 0;
 }
 .row .plan-details{
     display: flex;
+    border: 1px solid #c0c0c0;
+    margin-bottom: 5px !important;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
 }   
+.submit-btn{
+    background-color: #47BA08 !important;
+    background-image: linear-gradient(to bottom,#47BA08,#3C910D);
+    border: 1px solid #3C910D;
+    color: #FFF;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 18px;
+    height: 42px; 
+}

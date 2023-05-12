@@ -165,22 +165,22 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 ?>
 <div class="row">
 	<div class="col-md-3 side-bar filterdiv hidden-xs">
-        <div class="col-md-12  quote_reference">
+        <div class="col-md-12 text-center quote_reference">
             <small><?php
             echo $request->startdate . " " . $request->enddate;
             ?></small>
-            <h1 style="margin:0;font-size:23px">Quote Reference:</h1> 
-            <h3 class="pt-3" style="margin: 0; font-size:22px;    color: #000;font-weight: 500; "><?php echo $quoteNumber; ?></h3>
+            <h1 style="margin: 0;">Quote Reference</h1> 
+            <h3 style="margin: 0; font-size:16px; color:#44bc9b;"><?php echo $quoteNumber; ?></h3>
         </div>
-        <div class="col-md-12 adjust-quoto" style="border-top: 0px solid #ddd !important"> 
-            <h2 >Adjust your quotes</h2>
-            <h4 class="deductible" style=";    margin: 0; padding: 0; font-weight: bold;margin-bottom: 0; border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
+        <div class="col-md-12 adjust-quoto"> 
+            <h2>Adjust your quotes</h2>
+            <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
             
             <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
         </div>
         <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
              <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $_REQUEST['sum_insured2'];?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-            <div id="sum_slider" style=" margin:30px 0px;border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
         </div>
     </div>
     <div class="col-md-9" id="listprices">
@@ -413,38 +413,38 @@ if($show == '1' && $total_price > 0){
  <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
                 <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>"   style="display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>; vertical-align: inherit; ">
                     <div class="row plan-details  deductable-<?php echo $deductible; ?>"  style="border:1px solid #c0c0c0;margin-bottom: 20px; display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-                        <div class="col-md-3" style="border:0px solid #000;  text-align:centerk;padding: 5px 0; ">
+                        <div class="col-md-4" style="border:0px solid #000;  text-align:centerk;padding: 5px 0; ">
                             
-                            <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails(<?php echo $plan_id; ?>)" style="cursor:pointer;position: absolute;top: 40%;left: 0;" aria-hidden="true"></i> 
+                            <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails(<?php echo $plan_id; ?>)" style="color: #2b3481;font-size: 21px;cursor:pointer;position: absolute;top: 43%;left: 0;" aria-hidden="true"></i> 
 
-                            <img  style="min-height:20px; margin-left: 41px;" width="170" height="60"  src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
+                            <img  style="min-height:20px; margin-left: 20px" width="170" height="60"  src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
                         </div>
 
-             <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 15px 0; text-align:center;">$<?php  echo $deductible; ?> Deductible</div>
+             <div class="col-md-2" style="border:0px solid #000;font-size: 20px;padding: 15px 0; text-align:center;">$<?php  echo $deductible; ?><br/> Deductible</div>
 
                         <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 10px 0;">
-                            <h2 style="    color: #223b74; font-size: 32px; font-weight: bold;">$<?php echo number_format($total_price,2); // $planID2->sum_insured + ?>
-                                <small style="font-size: 15px;margin-left: -10px;color: #777;!important"> <?php echo $number_travelers; ?> traveller(s) </small></h2>
+                            <h2 style="font-weight:normall;display:inline;font-size: 30px;line-height: 30px">$<?php echo number_format($total_price,2); // $planID2->sum_insured + ?></h2>
 <?php if($monthly_two == '1'){?>
         <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>  
-      
-                   </div>
-                        <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 5px; padding-left: 4px; ">
-                        <?php
-                        $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
-                        $agent = $request->agent;
-                        $broker = $request->broker;
-                        ?>
+                            <p> <?php echo $number_travelers; ?> traveller(s) </p>
 
-                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="btn submit-btn" data-value="<?php echo $plan_id; ?>"  name="buynow">Buy this plan</button>
+                   </div>
+                        <div class="col-md-3" style="border:0px solid #000;  text-align:center; ">
+<?php
+$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
+$agent = $request->agent;
+$broker = $request->broker;
+?>
+
+                            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn" data-value="<?php echo $plan_id; ?>" style="color: white;border-radius: 4px; background: #2b3481;font-size: 16px;width: 180px;padding: 10px 0 !important;border: 0;box-shadow: none !important;border:0;" class="btn btn-lg btn-danger" name="buynow">Buy this plan</button>
                             <div class="compare">
                                 <div class="ui center aligned header">
                                     <label  class="checkbox-inline">
                                         <input data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>"  style=" width: 16px;
-                                            height: 26px;
-                                            text-align: left;
-                                            margin-left: -25px;margin-right:8px" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" onclick="comparetest()">Add to Compare</label>
+        height: 26px;
+        text-align: left;
+        margin-left: -25px;" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" onclick="comparetest()">Add to Compare</label>
 
                                 </div>
                             </div>

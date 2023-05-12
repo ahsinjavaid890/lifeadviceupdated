@@ -469,7 +469,7 @@ button.buynow-btn {
         box-shadow: none !important;
         left: 0 !important;
         bottom: 0 !important;
-        top: 11px !important;
+        top: -5px !important;
         /*min-width: 355px;*/
 
         /*margin-top: -80px !important;*/
@@ -523,14 +523,15 @@ padding-left: 0 !important;
 }
 .row .plan-details{
     display: flex;
-    margin-top: 10px !important;
+    border: 1px solid #c0c0c0;
+    margin-top: -5px !important;
     margin-bottom: 15px !important;
     padding: 25px 10px;
     position: relative;
     background: #fff;
     -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .22);
     box-shadow: 0 5px 5px 0 rgba(34, 36, 38, .22);
-    border-radius: 0.25rem;
+    border-radius: 0.2rem;
 }
    .row.plan-details {
     align-items: flex-start;
