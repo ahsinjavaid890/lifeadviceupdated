@@ -38,7 +38,7 @@ $bg = $bgs[$k];
             @csrf
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">  
 
-                  <div id="row">
+                  <div class="row">
                      @for($orderi=1;$orderi<=17;$orderi++)
 
                      @if(array_search("id_3",$orderdata) == $orderi)
@@ -100,7 +100,6 @@ $bg = $bgs[$k];
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-                           <div class="row">
                               <div class="col-md-6">
                                  <label class="input-label"> Start Date</label>
                                  <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
@@ -134,7 +133,6 @@ $bg = $bgs[$k];
                                     });
                                  </script>  
                                  @endif
-                           </div>
                            
                            
                      @endif
@@ -198,7 +196,6 @@ $bg = $bgs[$k];
                         @endif
                      @endif
                      @endif
-                     <div class="row">
                      @if(array_search("id_1",$orderdata) == $orderi)
                      @if(isset($fields['fname']))
                      @if($fields['fname'] == 'on')
@@ -222,11 +219,9 @@ $bg = $bgs[$k];
                      @endif
                      @endif
                      @endif
-                     </div>
                      @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                @if($fields['sum_insured'] == 'on')          
-            <div class="row" style="margin-bottom:0px;">
                
 
                @php
@@ -287,7 +282,6 @@ $bg = $bgs[$k];
                      <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                   
                   </div>
-               </div>
                @endif
                @endif
                @endif
@@ -310,27 +304,14 @@ $bg = $bgs[$k];
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12 ">
-                        <label style="font-size: 16px;" for="phone" class="text-white">Phone <b id="phone_error" class="text-danger"></b></label>
+                        <label for="phonenumbermask" class="text-white">Enter Your Phone Number</label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" style="padding-left: 40px !important;" type="text" name="phone" placeholder="Enter Your Phone Number" required id="phone" class="form-control">
+                           <input style="padding-left: 40px !important;" type="text" name="phone" data-placeholder="000-000-0000" placeholder="000-000-0000" required id="phonenumbermask" class="form-control">
                            <span class="phoneicon" style="color:#1BBC9B;">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                     </span>
+                              <i class="fa fa-phone" aria-hidden="true"></i>
+                           </span>
                         </div>
                      </div>
-                     <script>
-                        function validatephone(){
-                           var checkphone = document.getElementById('phone').value;
-                           document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                           if (checkphone.length < 10) {
-                           document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                           document.getElementById('getquote').disabled = true;  
-                           } else {
-                           document.getElementById('getquote').disabled = false; 
-                           document.getElementById('phone_error').innerHTML = '';
-                           }
-                           }
-                     </script>
                      @endif
                      @endif
                      @endif
@@ -371,7 +352,7 @@ $bg = $bgs[$k];
                            }
                            </script>
                         <input type="hidden" name="old_traveller_gender" id="old_traveller_gender" value="">       
-                        </div>
+                     </div>
                      @endif
                      @endif
                      @if(array_search("id_12",$orderdata) == $orderi)
@@ -406,17 +387,25 @@ $bg = $bgs[$k];
                         @if(array_search("id_5",$orderdata) == $orderi)
                         @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-6">
-                              <label style="font-size: 16px;" class="text-white" id="">Do you Smoke in last 12 months?</label>
-                              <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="Smoke12" id=""      style="    padding: 5px 12px !important;">
-                                    <option value="">--- Please Choose ---</option>
-                                      <option value="yes" >Yes</option>
-                                      <option value="no" >No</option>
-                                 </select>
-                              </div>
-                           </div>
+                           <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+                           <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding input custom_traveller gender-main">
+                                 <label class="input-label">Do you Smoke in last 12 months?</label>
+                                 <button type="button" id="doyousmoke" class="form-control text-left" 
+                                 onclick="doyousmokeinlasttwelvedays();" style="padding: 0;font-size: 14px;font-weight: 500;"><i class="fas fa-smoking-ban genderi"></i>No</button>
+                              <script>
+                              function doyousmokeinlasttwelvedays(){
+                                 if(document.getElementById('Smoke12').value == 'no'){
+
+                                    document.getElementById('doyousmoke').innerHTML = '<i class="fas fa-smoking genderi"></i> Yes';
+                                    document.getElementById('Smoke12').value = 'yes';
+                                 } else {
+                                 document.getElementById('doyousmoke').innerHTML = '<i class="fa fa-smoking-ban  genderi"></i> No';
+                                 document.getElementById('Smoke12').value = 'no';   
+                                 }
+                              }
+                              </script>
+                           <input type="hidden" name="Smoke12" id="Smoke12" value="no">       
+                        </div>
                            @endif
                         @endif
                          @endif
@@ -711,5 +700,7 @@ $bg = $bgs[$k];
        $('#dateofbirthfull4').mask('00/00/0000');
        $('#dateofbirthfull5').mask('00/00/0000');
        $('#dateofbirthfull6').mask('00/00/0000');
+
+       $('#phonenumbermask').mask('000-000-0000');
    });
 </script>

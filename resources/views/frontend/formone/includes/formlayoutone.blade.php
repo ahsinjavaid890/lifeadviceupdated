@@ -596,31 +596,6 @@
        });
 </script>
 <script>
-   function supervisayes(){
-   //window.setTimeout(function(){  
-    var tt = document.getElementById('departure_date').value;
-    var date = new Date(tt);
-    var newdate = new Date(date);
-    newdate.setDate(newdate.getDate() + 364);
-    var dd = newdate.getDate();
-    var mm = newdate.getMonth() + 1;
-    var y = newdate.getFullYear();
-    if(mm <= 9){
-    var mm = '0'+mm;    
-    }
-    if(dd <= 9){
-    var dd = '0'+dd;    
-    }
-    //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = y + '-' + mm + '-' + dd;
-    document.getElementById('return_date').value = someFormattedDate;
-    //alert(someFormattedDate);
-   //}, 1000);
-   }
-   
-   
-   
-   
    function checkfamilyplan(){
    //Eligibility
    var inps = json_encode();
@@ -687,8 +662,8 @@
        if(dd <= 9){
        var dd = '0'+dd;    
        }
-       //var someFormattedDate = mm + '/' + dd + '/' + y;
-       var someFormattedDate = y + '-' + mm + '-' + dd;
+       var someFormattedDate = mm + '/' + dd + '/' + y;
+       // var someFormattedDate = y + '-' + mm + '-' + dd;
        document.getElementById('return_date').value = someFormattedDate;
        //alert(someFormattedDate);
    //}, 1000);
