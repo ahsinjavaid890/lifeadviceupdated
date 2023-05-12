@@ -44,7 +44,12 @@
                      @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
+                     @php
+                        $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                        $min = min($sum);
 
+                        $firstsuminsured = $min->sum_insured;
+                     @endphp
                      
                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                      <script>
@@ -61,7 +66,7 @@
                          }
                          } ?>];
 
-                        var iValue = SliderValues.indexOf(0);
+                        var iValue = SliderValues.indexOf({{$firstsuminsured}});
                         $(function () {
                             $("#sum_slider").slider({
                                 range: "min",
@@ -87,11 +92,11 @@
 
                        <div class="col-md-12">
                         <h4 class="coverage" style="color: black; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
-                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
+                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="${{$firstsuminsured}}"></h4>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-                           <input type="hidden" id="sum_insured2" name="sum_insured2" value="1000" />
+                           <input type="hidden" id="sum_insured2" name="sum_insured2" value="{{$firstsuminsured}}" />
 
                            <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                         
@@ -146,7 +151,7 @@
                            @else
 
                            <div class="col-md-12" >
-                              <label for="primary_destination" class="">States In Canda</label>
+                              <label for="primary_destination" class="">Primary destination in Canada</label>
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -238,7 +243,7 @@
                                     <div style="padding-left: 0px;" class="col-md-6">
                                        <label for="day{{$i}}" class="">Age of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
@@ -526,8 +531,8 @@
     if(dd <= 9){
     var dd = '0'+dd;    
     }
-    //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = y + '/' + mm + '/' + dd;
+    var someFormattedDate = mm + '/' + dd + '/' + y;
+    // var someFormattedDate = y + '/' + mm + '/' + dd;
     document.getElementById('return_date').value = someFormattedDate;
    }, 1000);
    }
@@ -659,29 +664,6 @@
       });
 </script>
 <script>
-   function supervisayes(){
-   //window.setTimeout(function(){ 
-       var tt = document.getElementById('departure_date').value;
-       var date = new Date(tt);
-       var newdate = new Date(date);
-       newdate.setDate(newdate.getDate() + 364);
-       var dd = newdate.getDate();
-       var mm = newdate.getMonth() + 1;
-       var y = newdate.getFullYear();
-       if(mm <= 9){
-       var mm = '0'+mm;    
-       }
-       if(dd <= 9){
-       var dd = '0'+dd;    
-       }
-       //var someFormattedDate = mm + '/' + dd + '/' + y;
-       var someFormattedDate = y + '-' + mm + '-' + dd;
-       document.getElementById('return_date').value = someFormattedDate;
-       //alert(someFormattedDate);
-   //}, 1000);
-   
-   checknumtravellers();
-   }
    
    function checktravellers(){
        //Number OF Traveller

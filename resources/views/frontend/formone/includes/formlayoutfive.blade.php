@@ -16,7 +16,7 @@
                            <div class="col-md-6 text-md-right" >
                               <label for="input-label"  class="input-label">First name</label>
                            </div>
-                           <div class="col-md-6">
+                           <div class="col-md-6 no-padding-right">
                               <div class="custom-form-control">
                                  <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
                               </div>
@@ -31,7 +31,7 @@
                            <div class="col-md-6 text-md-right">
                            <label for="lname" class="input-label">Last name</label>
                            </div>
-                           <div class="col-md-6">
+                           <div class="col-md-6 no-padding-right">
                               <div class="custom-form-control">
                                  <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
                               </div>
@@ -45,23 +45,25 @@
                         @if($fields['email'] == "on" )
                            <div class="col-md-12">
                               <div class="col-md-6 text-md-right" >
-                                 <label for="savers_email" class="input-label">Email Address</label>
+                                 <label for="savers_email" class="input-label">Email Address <span onclick="slidequestion('email')"><i class="fa fa-question-circle"></i></span> </label>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-6 no-padding-right">
                                  <div class="custom-form-control">
-                                    <input type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
+                                    <input style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
+                                    <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                       <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
                                  </div>
                               </div>
-                              <div class="form-group tooltip-box">
-                                    <div class="p-20px">
-                                       <span class="tooltip-close fa fa-times"></span>
-                                       <div class="tooltip-content"><b>Parent &amp; Grandparent Super Visa</b><br><br>
-                                 To apply for the Parent and Grandparent Super Visa, you must:
-                                 <ul>
-                                 <li>be the parent or grandparent of a Canadian citizen or a permanent resident of Canada;</li>
-                                 <li>be found admissible to Canada</li>
-                                 </ul></div>
+                              <div id="slide_email" class="form-group tooltip-box">
+                                 <div class="p-20px">
+                                    <span onclick="slidequestion('email')" class="tooltip-close fa fa-times"></span>
+                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                       <br><br>
+                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
                                     </div>
+                                 </div>
                               </div>
                            </div>
                         @endif
@@ -74,13 +76,19 @@
                         <div class="col-md-6 text-md-right">
                         <label for="phone"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 no-padding-right">
                            <div class="custom-form-control">
-                              <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
+                              <input style="padding-left:40px;" onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
+                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                 <i class="fa fa-phone" aria-hidden="true"></i>
+                              </span>
                            </div>
                         </div>
                      </div>
                      <script>
+                        function slidequestion(id) {
+                           $("#slide_"+id).slideToggle();
+                        }
                         function validatephone(){
                            var checkphone = document.getElementById('phone').value;
                            document.getElementById('phone').value = checkphone.replace(/\D/g,'');
@@ -101,9 +109,9 @@
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-12">
                         <div class="col-md-6 text-md-right">
-                           <label for="coverageammount"  class="input-label">Coverage Amount</label>
+                           <label for="coverageammount"  class="input-label">Coverage Amount <span onclick="slidequestion('coverage')"><i class="fa fa-question-circle"></i></span></label>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 no-padding-right">
                            <div class="custom-form-control">
                               <select required class="form-input" name="sum_insured2" id="coverageammount">
                                  <option value="">Coverage Amount</option>
@@ -111,6 +119,16 @@
                                  <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
                                  @endforeach
                               </select>
+                           </div>
+                        </div>
+                        <div id="slide_coverage" class="form-group tooltip-box">
+                           <div class="p-20px">
+                              <span onclick="slidequestion('coverage')" class="tooltip-close fa fa-times"></span>
+                              <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                                 In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                 <br><br>
+                                 We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -141,7 +159,7 @@
                               <div class="col-md-6 text-md-right">
                                  <label for="primary_destination" class="input-label">Primary Destination</label>
                               </div>
-                              <div id="country" class="col-md-6">
+                              <div id="country" class="col-md-6 no-padding-right">
                                  <div class="custom-form-control">
                                     <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Select Country</option>
@@ -157,7 +175,7 @@
                                  <div class="col-md-6 text-md-right">
                                     <label for="primary_destination" class="input-label">States In Canda</label>
                                  </div>
-                                 <div class="form-group col-md-6 custom-form-control">
+                                 <div class="form-group col-md-6 custom-form-control no-padding-right">
                                     <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
@@ -172,7 +190,7 @@
                               <div class="col-md-6 text-md-right">
                                  <label for="primary_destination" class="input-label">States In Canda</label>
                               </div>
-                                 <div class="col-md-6" >
+                                 <div class="col-md-6 no-padding-right" >
                                     <div class="custom-form-control">
                                        <select required class="form-input" name="primary_destination" id="primary_destination">
                                           <option value="">Primary destination in Canada</option>
@@ -199,7 +217,7 @@
                               <label for="number_travelers" class="input-label">Number of Travellers</label>
                            </div>
                            
-                           <div class="col-md-6">
+                           <div class="col-md-6 no-padding-right">
                            <div class="custom-form-control">
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
@@ -225,20 +243,26 @@
                                  <div class="col-md-6 text-md-right">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Oldest Traveller's Date of Birth</label>
                                  </div>
-                                    
-                                       <div class="custom-form-control col-md-6" >
-                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                       
+                                    <div class="custom-form-control col-md-6 no-padding-right" >
+                                       <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                     </div>
                                     <div class="col-md-6 text-md-right">
-                                       <label for="year{{$i}}" class="input-label">Select Pre Existing</label>
+                                       <label for="year{{$i}}" class="input-label">Select Pre Existing <span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
                                     </div>
-                                       <div class="custom-form-control col-md-6">
-                                          <select name="pre_existing[]" class="form-input">
-                                             <option value="">Select Pre Existing Condition</option>
-                                             <option value="yes">Yes</option>
-                                             <option value="no">No</option>
-                                          </select>
+                                    <div class="custom-form-control col-md-6 no-padding-right">
+                                       <select name="pre_existing[]" class="form-input">
+                                          <option value="">Select Pre Existing Condition</option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                       </select>
+                                    </div>
+                                    <div id="slide_preexisting{{ $i }}" style="margin-top: 10px;" class="form-group tooltip-box">
+                                       <div class="p-20px">
+                                          <span onclick="slidequestion('preexisting{{ $i }}')" class="tooltip-close fa fa-times"></span>
+                                          <div class="tooltip-content"><b>Pre-Existing Medical Conditions</b><br><br>
+                                             A pre-existing medical condition is an illness or injury that you know you already have (e.g. asthma, heart condition). Even if you are showing symptoms of an illness and have not yet seen a doctor, this is considered a "pre-existing" condition (e.g. you have felt chest pains but didn't seek any treatment).
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
                            </div>
@@ -257,9 +281,12 @@
                            <label for="departure_date" class="input-label">Start Date of Coverage</label>
                        
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 no-padding-right">
                              <div class="custom-form-control">
-                              <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <input style="padding-left:40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                 <i class="fa fa-calendar" aria-hidden="true"></i>
+                              </span>
                               <script>
                            $('#departure_date').datepicker({
                            format: 'yyyy-mm-dd',
@@ -274,9 +301,12 @@
                         <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">End Date of Coverage</label>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 no-padding-right">
                            <div class="custom-form-control">
-                              <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                              <input style="padding-left:40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                 <i class="fa fa-calendar" aria-hidden="true"></i>
+                              </span>
                               @if($data->pro_supervisa != 1)
                               <script>
                                  $('#return_date').datepicker({
@@ -297,7 +327,7 @@
                         <div class="col-md-6 text-md-right">
                            <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                         </div>
-                        <div class="custom-form-control col-md-6">
+                        <div class="custom-form-control col-md-6 no-padding-right">
                            <select class="form-input" name="gender" id="gender">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
@@ -313,7 +343,7 @@
                         <div class="col-md-6 text-md-right">
                            <label class="input-label">Gender of the Oldest traveller</label>
                         </div>
-                        <div class="custom-form-control col-md-6">
+                        <div class="custom-form-control col-md-6 no-padding-right">
                            <select class="form-input">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
@@ -328,18 +358,27 @@
                            @if($fields['fplan'] == 'on')
                           <div class="col-md-12">
                              <div class="col-md-6 text-right">
-                                <label for="" class="">Do you require Family Plan ?</label>
+                                <label for="" class="">Do you require Family Plan ? <span onclick="slidequestion('family')"><i class="fa fa-question-circle"></i></span> </label>
                              </div>
-                             <div class="col-md-6">
-   
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="fplan" id="">
-                                    <option value="">--- Please Choose ---</option>
-                                      <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                      <option value="no"  onclick="changefamilyno()">No</option>
-                                 </select>
+                             <div class="col-md-6 no-padding-right">
+                                 <div class="custom-form-control">
+                                    <select required class="form-input" name="fplan" id="">
+                                       <option value="">--- Please Choose ---</option>
+                                         <option value="yes" onclick="changefamilyyes()">Yes</option>
+                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                    </select>
+                                 </div>
                               </div>
-                           </div>
+                              <div id="slide_family" class="form-group tooltip-box">
+                                 <div class="p-20px">
+                                    <span onclick="slidequestion('family')" class="tooltip-close fa fa-times"></span>
+                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                       <br><br>
+                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                                    </div>
+                                 </div>
+                              </div>
                           </div>
                            <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                            <script>
@@ -361,9 +400,9 @@
                            @if($fields['Smoke12'] == 'on')
                            <div class="col-md-12">
                               <div class="col-md-6  text-md-right">
-                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months?</label>
+                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-6 no-padding-right">
                                  <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
                                  <div class="custom-form-control">
                                     <select required class="form-input" name="Smoke12" id="">
@@ -371,6 +410,16 @@
                                          <option value="yes" >Yes</option>
                                          <option value="no" >No</option>
                                     </select>
+                                 </div>
+                              </div>
+                              <div id="slide_smoke" class="form-group tooltip-box">
+                                 <div class="p-20px">
+                                    <span onclick="slidequestion('smoke')" class="tooltip-close fa fa-times"></span>
+                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                       <br><br>
+                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
+                                    </div>
                                  </div>
                               </div>
 
@@ -384,7 +433,7 @@
                      <div class="col-md-12">
                      <div class="col-md-6">
                      </div>
-                     <div class="col-md-6 d-flex justify-content-between" style="margin-top: 12px; ">
+                     <div class="col-md-6 d-flex justify-content-between no-padding-right" style="margin-top: 12px; ">
                         <button type="submit" class="btn btn-primary get_qout" style="background: #1BBC9B; color: #FFF; margin: 5px 0 5px 5px; font-size: 15px; width: 40%; padding: 10px 55px; height: 45px; margin-left: auto; border: 1px solid transparent;"><i class="fa fa-list-ul"></i>  Continue </button>
                      </div>
                      </div>
@@ -514,8 +563,8 @@
     if(dd <= 9){
     var dd = '0'+dd;    
     }
-    //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = y + '-' + mm + '-' + dd;
+    var someFormattedDate = mm + '/' + dd + '/' + y;
+    // var someFormattedDate = y + '-' + mm + '-' + dd;
     document.getElementById('return_date').value = someFormattedDate;
    }, 1000);
    }
@@ -728,30 +777,6 @@
    </table>
 </div>
 <script>
-   function supervisayes(){
-   //window.setTimeout(function(){ 
-       var tt = document.getElementById('departure_date').value;
-       var date = new Date(tt);
-       var newdate = new Date(date);
-       newdate.setDate(newdate.getDate() + 364);
-       var dd = newdate.getDate();
-       var mm = newdate.getMonth() + 1;
-       var y = newdate.getFullYear();
-       if(mm <= 9){
-       var mm = '0'+mm;    
-       }
-       if(dd <= 9){
-       var dd = '0'+dd;    
-       }
-       //var someFormattedDate = mm + '/' + dd + '/' + y;
-       var someFormattedDate = y + '-' + mm + '-' + dd;
-       document.getElementById('return_date').value = someFormattedDate;
-       //alert(someFormattedDate);
-   //}, 1000);
-   
-   checknumtravellers();
-   }
-   
    function checktravellers(){
        //Number OF Traveller
        var number_of_traveller = $("#number_travelers").val();

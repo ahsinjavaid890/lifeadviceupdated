@@ -138,10 +138,10 @@
                      
                      <div class="col-md-6" style="margin-bottom: 10px;">
                      <label>Start date of coverage</label>
-                     <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control  datepicker " type="text" placeholder="Start Date" required="" onchange="supervisayes()" fdprocessedid="escza">
-                           <label for="departure_date" style="z-index: 999;padding: 11px 11px !important;position: absolute;top: 28px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
-                              <i class="fa fa-calendar" aria-hidden="true"></i>
-                           </label>
+                        <input autocomplete="off" id="departure_date" name="departure_date" value="" class="form-control  datepicker " type="text" placeholder="Start Date" required="" onchange="supervisayes()" fdprocessedid="escza">
+                        <label for="departure_date" style="z-index: 999;padding: 8px 11px !important;position: absolute;top: 27px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                           <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </label>
                               
                         <script>
                            $('#departure_date').datepicker({
@@ -154,8 +154,20 @@
                      <div class="col-md-6 mb-3">
                         <label for="return_date" class="label-style">End Date of Coverage</label>
                         <div class="custom-form-control">
-                           <input type="date" name="return_date" readonly placeholder="return_date" required id="return_date" class="w-100 inputs-style">
+                          <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                          <label for="departure_date" style="z-index: 999;padding: 7px 11px !important;position: absolute;top: 30px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                           <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </label>
                         </div>
+                        @if($data->pro_supervisa != 1)
+                        <script>
+                           $('#return_date').datepicker({
+                           format: 'yyyy-mm-dd',
+                           todayHighlight:'TRUE',
+                           autoclose: true,
+                           });
+                        </script>  
+                        @endif
                      </div>
                      @endif
                      @endif
@@ -249,7 +261,7 @@
       @else
 
       <div class="col-md-12 mb-3" >
-         <label for="primary_destination" class="label-style">States In Canda</label>
+         <label for="primary_destination" class="label-style">Primary destination in Canada</label>
          <div class="custom-form-control">
             <select required class="w-100 inputs-style" name="primary_destination" id="primary_destination">
                <option value="">Primary destination in Canada</option>

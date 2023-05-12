@@ -73,14 +73,15 @@ $bg = $bgs[$k];
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                  <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 ">
-                                    <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the oldest Traveller</label>
+                                    <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                        <div class="custom-form-control">
                                           <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                           <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
-                                    <div style="padding-right: 0px; margin-top: 26px;" class="col-md-6 ">
+                                    <div style="padding-right: 0px;" class="col-md-6 ">
                                        <div class="custom-form-control">
+                                          <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Pre Existing of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                           <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
@@ -221,6 +222,16 @@ $bg = $bgs[$k];
                @if($fields['sum_insured'] == 'on')          
             <div class="row" style="margin-bottom:0px;">
                
+
+               @php
+                  $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+                  $min = min($sum);
+
+                  $firstsuminsured = $min->sum_insured;
+               @endphp
+               
+
+
                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                <script>
                   @php
@@ -236,7 +247,7 @@ $bg = $bgs[$k];
                    }
                    } ?>];
 
-                  var iValue = SliderValues.indexOf(0);
+                  var iValue = SliderValues.indexOf({{$firstsuminsured}});
                   $(function () {
                       $("#sum_slider").slider({
                           range: "min",
@@ -261,11 +272,11 @@ $bg = $bgs[$k];
                     </script>
 
                  <div class="col-md-12">
-                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="$1000"></h4>
+                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="${{$firstsuminsured}}"></h4>
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                      <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;"></div>
-                     <input type="hidden" id="sum_insured2" name="sum_insured2" value="1000" />
+                     <input type="hidden" id="sum_insured2" name="sum_insured2" value="{{ $firstsuminsured }}" />
 
                      <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                   
