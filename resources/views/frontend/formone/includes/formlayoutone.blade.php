@@ -84,8 +84,9 @@
                         <div class="custom-form-control">
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
-                              @foreach($sum_insured as $r)
-                              <option value="{{ $r->sum_insured }}" >${{ $r->sum_insured }}</option>
+                              @foreach($sum_insured as $key=> $r)
+                              <option value="{{ $r->sum_insured }}" @if($key == 0) selected
+                              @endif>${{ $r->sum_insured }}</option>
                               @endforeach
                            </select>
                         </div>
@@ -419,17 +420,17 @@
 
                            <h2 style="    color: #000;   margin: 0 0 30px 0;line-height: 1.5; -webkit-font-smoothing: antialiased;">How to Apply for Super Visa Insurance</h2>
                            <ul  style="padding-inline-start: 40px;margin-bottom: 30px;}">
-                             <li>
+                             <li class="liststyle">
                               Fill out the 
                               <a style="display:inline" href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]
                               </a>.
                            </li>
-                             <li>Gather any required documentation.</li>
-                             <li>Submit your completed form and supporting documents to a visa office.</li>
-                             <li>Make sure to pay the 
+                             <li class="liststyle">Gather any required documentation.</li>
+                             <li class="liststyle">Submit your completed form and supporting documents to a visa office.</li>
+                             <li class="liststyle">Make sure to pay the 
                               <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.
                            </li>
-                             <li>Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
+                             <li class="liststyle">Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
                            </ul>
 
                            <p><strong>Super visa Requirements&nbsp;:&nbsp;</strong>To obtain a Parent or   Grandparent Super Visa for Canada, applicants must have valid Super Visa   Insurance. With Super Visa applications They need to provide a proof   that they have private medical insurance from a Canadian insurance   company valid for a minimum of 1 year from a Canadian insurance company   and that it:    &nbsp; <strong>Here’s the things you need to know before you buy Super Visa Insurance </strong> <strong>Pre-existing Conduction: </strong>A Pre-existing condition   depends on your health condition means the critical illness, injury,   symptom(s) that exists before and after effective date of insurance.   Sometimes a healthy applicant can be deemed to have a pre-existing   condition based on a past health problem or evidence of treatment for a   particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles.   The deductible is the amount of each claim that you will pay. A $0   deductible means the insurance company pays 100% of each eligible claim.   A $1000 deductible means you will pay up to $1000 of each eligible   claim and the insurance company will only pay amounts in excess of the   $1000. <strong>Multiple Entry</strong>: Multiple entry coverage provides   intermittent coverage that allows you to travel back and forth between   Canada and your home country. Your coverage will be interrupted when you   return to your home country, and then be automatically reinstated when   you return to Canada. Plans that do not offer Multiple Entry have   coverage that stops as soon as you return to your home country. <strong>Side Trip: Side</strong> trip coverage provides travel health   insurance for any trips you take outside Canada during your stay, i.e.   if you take vacations to the U.S. If you expect to spend some time   outside of Canada during the term of your super visa, you should choose a   plan that has side trip coverage. <strong>Refundable</strong>: The government requires that you purchase   coverage for a full year. If you’re planning on staying less than a year   a refundable plan will allow you to receive a refund of the unused   portion of the annual/yearly premiums. These refunds come with   conditions, so again it’s important that you read the policy.</p>

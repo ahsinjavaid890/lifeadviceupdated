@@ -240,7 +240,7 @@
             }
          }
       </script>
-      <div id="country" class="col-md-6 mb-3">
+      <div id="country" class="col-md-12 mb-3">
          <label for="primary_destination" class="label-style" >Primary Destination</label>
          <div class="custom-form-control ">
             <select onchange="CountryState(this.value)" required class="w-100 inputs-style" name="primary_destination" id="primary_destination" >
@@ -253,8 +253,8 @@
       </div>
       <div id="canadastate" class="col-md-12" style="display:none;">
          <label for="primary_destination" class="label-style ">States In Canda</label>
-         <div class="form-group">
-            <select required class="custom-form-control  selecttwo p-2" name="primary_destination" id="primary_destination">
+         <div class="form-group ">
+            <select  required class="inputs-style w-100 selecttwo p-2" name="primary_destination" id="primary_destination">
                <option value="">Primary destination in Canada</option>
                @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                   <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -309,8 +309,9 @@
       <div class="custom-form-control ">
          <select required class="w-100 inputs-style" name="sum_insured2" id="coverageammount">
             <option value="">Coverage Amount</option>
-            @foreach($sum_insured as $r)
-            <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+            @foreach($sum_insured as $key=> $r)
+            <option value="{{ $r->sum_insured }}" @if($key == 0) selected
+               @endif>${{ $r->sum_insured }}</option>
             @endforeach
          </select>
       </div>

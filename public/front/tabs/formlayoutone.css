@@ -389,7 +389,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 18px;
 
 }
-ul li{
+.liststyle{
   list-style: disc !important;
   font-size: 15px;
 }
