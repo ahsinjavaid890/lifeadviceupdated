@@ -2814,7 +2814,7 @@ li.date_picker_week_day {
     background: linear-gradient(to right, transparent, #818078, transparent);
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 0%;
     width: 100%;
     height: 1px;
   }

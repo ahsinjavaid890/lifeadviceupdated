@@ -127,7 +127,7 @@
                     				$year = $request->years[$i];
                     			@endphp
 
-                    			<hr class="hr-text mt-5" data-content="Traveler {{ $i+1 }}">
+                    			<div class="hr-text mt-5" data-content="Traveler {{ $i+1 }}"></div>
                     			<div class="form-group mt-3">
 									<div class="row">
 										<div class="col-md-6 nopad">
