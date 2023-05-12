@@ -396,7 +396,7 @@
                      <div class="col-md-12 mt-3"  style="clear:both;">
                         <span id="family_error" style="display: none; font-size: 16px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
                         <div class="center m-t-30px">
-                           <button type="submit" name="GET QUOTES" id="GET_QUOTES"  class="btn btn-danger bg-red show-loading-popup" style="border: 1px solid rgb(1, 162, 129);padding: 7px 26px;margin-top: 0px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
+                           <button type="submit" name="GET QUOTES" id="GET_QUOTES"  class="btn btn-danger bg-red show-loading-popup" style="border: 1px solid rgb(1, 162, 129);padding: 7px 35px;margin-top: 0px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                         </div>
                      </div>
                   </div>

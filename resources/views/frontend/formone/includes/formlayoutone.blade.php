@@ -54,7 +54,7 @@
                         </label>
                         <label for="phone" class="d-sm-none" >Phone <b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input" style="padding-left: 40px !important">
+                           <input onkeyup="validatephone()" type="text" name="phone" placeholder="Enter Phone Number" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
                         </div>
                      </div>
                      <script>
@@ -85,7 +85,7 @@
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
                               @foreach($sum_insured as $r)
-                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              <option value="{{ $r->sum_insured }}" >${{ $r->sum_insured }}</option>
                               @endforeach
                            </select>
                         </div>
@@ -103,9 +103,9 @@
                                   if(id=="Canada")
                                   {
                                       $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                      $('#cnt').css("margin-left","7.8rem");
+                                    //   $('#country').removeClass('col-md-12')
+                                    //   $('#country').addClass('col-md-6')
+                                    //   $('#cnt').css("margin-left","7.8rem");
                                   }else 
                                   {
                                       $('#canadastate').hide();
@@ -115,14 +115,17 @@
                                  }
                               }
                            </script>
-                           <div id="country" class="col-md-12">
+                           <div id="country" class="col-md-12" >
+                              <div class="row">
+
+                         
                               <div class="col-sm-5">
                                  <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables" >Primary Destination</label>
                               </div>
-                              <div class="col-md-7 ">
+                              <div class="col-md-7 " style="margin-right:0 !important">
                                  <label  for="primary_destination" class="d-sm-none">Primary Destination</label>
-                              <div class="custom-form-control" id="cnt">
-                                 <select style=" width: 326px;" onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                              <div class="custom-form-control form-select" id="cnt">
+                                 <select style=" width: 386px;border-radius: 1px;" onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Select Country</option>
                                     @foreach(DB::table('countries')->get() as $r)
                                        <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
@@ -130,15 +133,17 @@
                                  </select>
                               </div>
                               </div>
-                           </div>
+                           </div>    
+                         </div>
                            <div id="canadastate" class="col-md-12" style="display:none;">
+                              <div class="row">
                               <div class="col-md-5">
-                                 <label for="primary_destination" class="form-label lables" id="">States In Canda</label>
+                                 <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables" id="">States In Canda</label>
                               </div>
                               <div class="col-md-7">
                                  <label for="primary_destination" class="d-sm-none" >States In Canda</label>
-                                 <div class="custom-form-control">
-                                    <select style="width: 326px; " required class="form-input" name="primary_destination" id="primary_destination">
+                                 <div class="custom-form-control" id="states">
+                                    <select style=" width: 386px;border-radius: 1px;"  required class="form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                           <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -147,6 +152,7 @@
                                  </div>
                               </div>
                            </div>
+                        </div>
                            @else
                            <div class="col-md-5">
                               <label for="primary_destination" class="form-label lables" id="">Primary destination in Canada</label>
@@ -202,10 +208,10 @@
                                  <div class="col-md-5">
                                     <label for="day" class="form-label lables" id="" style="    margin-left: -11.5px;">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                 <div  class="col-md-7">
+                                 <div  class="col-md-7" style="padding-right:0px !important" >
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input style="    width: 342px;" id="dateofbirthfull{{ $i }}" class="form-input " type="text" placeholder="MM/DD/YYYY" name="years[]" >
+                                          <input sid="dateofbirthfull{{ $i }}" class=" oldTraveler" type="text" placeholder="MM/DD/YYYY" name="years[]" >
                               
                                        </div>
                                     </div>
@@ -300,7 +306,7 @@
                                  <i class="fa fa-envelope-o" style="border-right: 1px solid #666;padding-right: 8px;"></i>
                               </label>
                               <div class="custom-form-control">
-                                 <input type="text" name="savers_email" placeholder="name@example.com" required id="savers_email" class="form-input" style="padding-left: 40px !important">
+                                 <input type="text" name="savers_email" placeholder="name@example.com" required id="savers_email" class="oldTraveler" style="padding-left: 40px !important">
                                  {{-- <label for="savers_email" class="form-label">Email</label> --}}
                               </div>
                            </div>
@@ -392,12 +398,12 @@
                         @endif
                         @endif
                      @endfor
-                     <div class="col-md-6">
+                     <div class="col-md-6" id="lowestprice">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
                      <div class="col-md-6 col-xs-6" style="padding-right: 14px;">
                      <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
-                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-warning pull-right" style="display: block;border-radius: 4px !important;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
+                        <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn  pull-right" style="display: block;border-radius: 4px !important;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
                      </div>
                   </div>
                </form>
@@ -408,15 +414,21 @@
                         <div class="">
                            <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
                         </div>
-                        <div class="col-md-12 text-center" style="padding-top:20px;text-align: justify !important;background: #f0f0f0;margin-top: 10px;max-height: 335px;overflow-y: auto;border: 1px solid #ddd;font-size: 14px;line-height: 1.42857143;color: #333;background-color: #fff;">
+                        <div class="col-md-12 text-center" style="padding-top:20px;text-align: justify !important;background: #f0f0f0;margin-top: 10px;max-height: 335px;overflow-y: auto;border: 1px solid #ddd;font-size: 14px;line-height: 1.42857143;color: #333;">
                            <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.
 
-                           <h2>How to Apply for Super Visa Insurance</h2>
-                           <ul>
-                             <li>Fill out the <a href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]</a>.</li>
+                           <h2 style="    color: #000;   margin: 0 0 30px 0;line-height: 1.5; -webkit-font-smoothing: antialiased;">How to Apply for Super Visa Insurance</h2>
+                           <ul  style="padding-inline-start: 40px;margin-bottom: 30px;}">
+                             <li>
+                              Fill out the 
+                              <a style="display:inline" href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]
+                              </a>.
+                           </li>
                              <li>Gather any required documentation.</li>
                              <li>Submit your completed form and supporting documents to a visa office.</li>
-                             <li>Make sure to pay the <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.</li>
+                             <li>Make sure to pay the 
+                              <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.
+                           </li>
                              <li>Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
                            </ul>
 

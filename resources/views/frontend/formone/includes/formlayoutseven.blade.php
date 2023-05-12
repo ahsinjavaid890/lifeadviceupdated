@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutseven.css')}}">
-<div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
-   <h1 style="font-weight:bold;margin: 0px; color: #2b3481" class=""><strong>{{ $data->pro_name }}</strong></h1>
-   <h2 style="margin-top: 10px;font-size: 16px;font-weight: normal;line-height: normal;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
+<div class="col-md-12 text-center" style="margin-top: 8px;margin-bottom: 30px;">
+   <h1 style="font-weight:bold;margin: 0px; color: #222;" class=""><strong>{{ $data->pro_name }}</strong></h1>
+   <h2 style="argin-bottom: 30px ;margin-top: 12px;font-weight: normal;font-size: 1.125em;line-height: 1.5em;letter-spacing: 1px;
+   color: #222;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
 </div>   
 <form method="POST" action="{{ url('quotes') }}">
    @csrf
@@ -137,11 +138,12 @@
                      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                      
                      <div class="col-md-6" style="margin-bottom: 10px;">
-                     <label>Start date of coverage</label>
+                     <label class="label-style">Start date of coverage</label>
                         
                         <input id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
 
-                        <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 35px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                        <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute; top: 39px;
+                        right: 17px ;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                            <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
                               
@@ -157,7 +159,7 @@
                         <label for="return_date" class="label-style">End Date of Coverage</label>
                         <div class="custom-form-control">
                           <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
-                          <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 38px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                          <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 39px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                            <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
                         </div>
@@ -249,9 +251,9 @@
             </select>
          </div>
       </div>
-      <div id="canadastate" class="col-md-12 mb-3" style="display:none;">
+      <div id="canadastate" class="col-md-12" style="display:none;">
+         <label for="primary_destination" class="label-style ">States In Canda</label>
          <div class="form-group">
-            <label for="primary_destination" class="label-style">States In Canda</label>
             <select required class="custom-form-control  selecttwo p-2" name="primary_destination" id="primary_destination">
                <option value="">Primary destination in Canada</option>
                @foreach(DB::table('primary_destination_in_canada')->get() as $r)
@@ -304,7 +306,7 @@
    @if($fields['sum_insured'] == 'on')
    <div class="col-md-12 mb-3">
       <label for="coverageammount"class="label-style" >Coverage Amount</label>
-      <div class="custom-form-control">
+      <div class="custom-form-control ">
          <select required class="w-100 inputs-style" name="sum_insured2" id="coverageammount">
             <option value="">Coverage Amount</option>
             @foreach($sum_insured as $r)

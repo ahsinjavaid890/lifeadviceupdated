@@ -319,3 +319,21 @@ form.form.form-layout1 .form-control {
     margin-left: 2px;
     background: #F1F1F1;
 }
+#GET_QUOTES{
+  height: 44px;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  border: 1px solid rgb(27, 188, 155);
+  padding: 1px 27px;
+  margin-top: 9px;
+  font-size: 16px !important;
+    font-weight: 400 !important;
+  display: block;
+  border-radius: 4px !important;
+}
+#GET_QUOTES:hover{
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutfive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayoutfive.css')}}">
 <div class="col-md-12 text-center" style="margin-top: 30px;margin-bottom: 30px;">
    <h1 style="font-weight:bold;margin: 0px; color: #b92c28 !important" class=""><strong>{{ $data->pro_name }}</strong></h1>
    <h2 style="margin-top: -3px;font-size: 16px;font-weight: normal;line-height: normal;color: #000;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
@@ -155,12 +155,12 @@
                                     </select>
                                  </div>
                               </div>
-                           <div class="col-md-12" id="canadastate" style="display:none;">
-                           
+                           <div class="col-md-12 " id="canadastate" style="display:none; padding-right:0px !important; padding-left:0px !important;">
+                              <div class="row">
                                  <div class="col-md-6 text-md-right">
                                     <label for="primary_destination" class="input-label">States In Canda</label>
                                  </div>
-                                 <div class="form-group col-md-6 custom-form-control no-padding-right">
+                                 <div class="form-group col-md-6 custom-form-control no-padding-right mb-0" >
                                     <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
@@ -168,7 +168,7 @@
                                        @endforeach
                                     </select>
                                  </div>
-                            
+                              </div>
                            </div>
                            @else
                            <div class="col-md-6 text-md-right">
@@ -219,7 +219,7 @@
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers">
+                           <div style="display: none; padding-right:0px !important;padding-left:0px !important" id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                               <div class="row">
                                  <div class="col-md-6 text-md-right">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Oldest Traveller's Date of Birth</label>
@@ -246,7 +246,9 @@
                                        </div>
                                     </div>
                                  </div>
-                           </div>
+                              </div>
+                              
+                        
                            @endfor
                         @endif
                         @endif
@@ -402,7 +404,7 @@
                      <div class="col-md-6">
                      </div>
                      <div class="col-md-6 d-flex justify-content-between no-padding-right" style="margin-top: 12px; ">
-                        <button type="submit" class="btn btn-primary get_qout" style="background: #1BBC9B; color: #FFF; margin: 5px 0 5px 5px; font-size: 15px; width: 40%; padding: 10px 55px; height: 45px; margin-left: auto; border: 1px solid transparent;"><i class="fa fa-list-ul"></i>  Continue </button>
+                        <button type="submit" class="btn get_qout" ><i class="fa fa-list-ul"></i>  Continue </button>
                      </div>
                   </div>
                </form>

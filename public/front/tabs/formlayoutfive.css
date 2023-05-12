@@ -185,7 +185,7 @@ z-index: 99999999999 !important;
 .emailicon {
     padding: 5px 9px !important;
     position: absolute;
-    margin-top: -46px;
+    margin-top: -47px;
     margin-left: 2px;
     background: #F1F1F1;
 }
@@ -196,4 +196,24 @@ z-index: 99999999999 !important;
     margin-top: -42px;
     margin-left: 3px;
     background: #F1F1F1;
+}
+
+.get_qout{
+    background: #1BBC9B; 
+    color: #FFF;
+     margin: 5px 0 5px 5px;
+      font-size: 15px; 
+      width: 36%;
+       padding: 10px 0px;
+        height: 44px; 
+        margin-left: auto;
+         border: 1px solid transparent; 
+         border-radius: 4px !important;}
+.get_qout:hover{
+    background: #040E1F;
+    color: #FFF;
+}
+.get_qout:hover i{
+    color: rgb(58, 112, 58);
+   
 }
