@@ -275,9 +275,6 @@
                         <span class="hidden-xs emailicon" style="color:#01a281;">
                            <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="visible-xs mobemailicon" style="color:#01a281;">
-                           <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
                      </div>  
                      @endif
                      @endif

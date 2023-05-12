@@ -12,57 +12,50 @@
                      @if(array_search("id_1",$orderdata) == $orderi)
                         @if(isset($fields['fname']))
                         @if($fields['fname'] == 'on')
-                        <div class="col-md-12">
-                           <div class="col-md-6 text-md-right" >
-                              <label for="input-label"  class="input-label">First name</label>
-                           </div>
-                           <div class="col-md-6 no-padding-right">
-                              <div class="custom-form-control">
-                                 <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
-                              </div>
+                        <div class="col-md-6 text-md-right" >
+                           <label for="input-label"  class="input-label">First name</label>
+                        </div>
+                        <div class="col-md-6 no-padding-right">
+                           <div class="custom-form-control">
+                              <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
                            </div>
                         </div>
                         @endif
                         @endif
                         @if(isset($fields['lname']))
                         @if($fields['lname'] == 'on')
-
-                        <div class="col-md-12">
                            <div class="col-md-6 text-md-right">
-                           <label for="lname" class="input-label">Last name</label>
+                              <label for="lname" class="input-label">Last name</label>
                            </div>
                            <div class="col-md-6 no-padding-right">
                               <div class="custom-form-control">
                                  <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
                               </div>
-                        </div>
-                        </div>
+                           </div>
                         @endif
                         @endif
                      @endif
                      @if(array_search("id_4",$orderdata) == $orderi)
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                           <div class="col-md-12">
-                              <div class="col-md-6 text-md-right" >
-                                 <label for="savers_email" class="input-label">Email Address <span onclick="slidequestion('email')"><i class="fa fa-question-circle"></i></span> </label>
+                           <div class="col-md-6 text-md-right" >
+                              <label for="savers_email" class="input-label">Email Address <span onclick="slidequestion('email')"><i class="fa fa-question-circle"></i></span> </label>
+                           </div>
+                           <div class="col-md-6 no-padding-right">
+                              <div class="custom-form-control">
+                                 <input style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
+                                 <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                 </span>
                               </div>
-                              <div class="col-md-6 no-padding-right">
-                                 <div class="custom-form-control">
-                                    <input style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
-                                    <span class="hidden-xs emailicon" style="color:#1BBC9B;">
-                                       <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    </span>
-                                 </div>
-                              </div>
-                              <div id="slide_email" class="form-group tooltip-box">
-                                 <div class="p-20px">
-                                    <span onclick="slidequestion('email')" class="tooltip-close fa fa-times"></span>
-                                    <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                                       In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                                       <br><br>
-                                       We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
-                                    </div>
+                           </div>
+                           <div id="slide_email" class="form-group tooltip-box">
+                              <div class="p-20px">
+                                 <span onclick="slidequestion('email')" class="tooltip-close fa fa-times"></span>
+                                 <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                                    In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                                    <br><br>
+                                    We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
                                  </div>
                               </div>
                            </div>
@@ -72,17 +65,15 @@
                      @if(array_search("id_7",$orderdata) == $orderi)
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
-                     <div class="col-md-12">
-                        <div class="col-md-6 text-md-right">
+                     <div class="col-md-6 text-md-right">
                         <label for="phone"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
-                        </div>
-                        <div class="col-md-6 no-padding-right">
-                           <div class="custom-form-control">
-                              <input style="padding-left:40px;" onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
-                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
-                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                              </span>
-                           </div>
+                     </div>
+                     <div class="col-md-6 no-padding-right">
+                        <div class="custom-form-control">
+                           <input style="padding-left:40px;" onkeyup="validatephone()" type="text" name="phone" placeholder="Phone" required id="phone" class="form-input">
+                           <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                              <i class="fa fa-phone" aria-hidden="true"></i>
+                           </span>
                         </div>
                      </div>
                      <script>
@@ -107,28 +98,26 @@
                      @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
-                     <div class="col-md-12">
-                        <div class="col-md-6 text-md-right">
-                           <label for="coverageammount"  class="input-label">Coverage Amount <span onclick="slidequestion('coverage')"><i class="fa fa-question-circle"></i></span></label>
+                     <div class="col-md-6 text-md-right">
+                        <label for="coverageammount"  class="input-label">Coverage Amount <span onclick="slidequestion('coverage')"><i class="fa fa-question-circle"></i></span></label>
+                     </div>
+                     <div class="col-md-6 no-padding-right">
+                        <div class="custom-form-control">
+                           <select required class="form-input" name="sum_insured2" id="coverageammount">
+                              <option value="">Coverage Amount</option>
+                              @foreach($sum_insured as $r)
+                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @endforeach
+                           </select>
                         </div>
-                        <div class="col-md-6 no-padding-right">
-                           <div class="custom-form-control">
-                              <select required class="form-input" name="sum_insured2" id="coverageammount">
-                                 <option value="">Coverage Amount</option>
-                                 @foreach($sum_insured as $r)
-                                 <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                                 @endforeach
-                              </select>
-                           </div>
-                        </div>
-                        <div id="slide_coverage" class="form-group tooltip-box">
-                           <div class="p-20px">
-                              <span onclick="slidequestion('coverage')" class="tooltip-close fa fa-times"></span>
-                              <div class="tooltip-content"><b>Your Email Address</b><br><br>
-                                 In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
-                                 <br><br>
-                                 We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
-                              </div>
+                     </div>
+                     <div id="slide_coverage" class="form-group tooltip-box">
+                        <div class="p-20px">
+                           <span onclick="slidequestion('coverage')" class="tooltip-close fa fa-times"></span>
+                           <div class="tooltip-content"><b>Your Email Address</b><br><br>
+                              In addition to providing your insurance quotes immediately, we will also email you a link to your quotes. That way, if you are not ready today to apply online or call us, you can easily access your quotes and proceed at a later, more convenient date.
+                              <br><br>
+                              We value your privacy. We will not trade or sell your name to third parties except when required to fulfill services you request. For details, please click on the Privacy link at the bottom of this page.
                            </div>
                         </div>
                      </div>
@@ -155,7 +144,6 @@
                                  }
                               }
                            </script>
-                           <div class="col-md-12">
                               <div class="col-md-6 text-md-right">
                                  <label for="primary_destination" class="input-label">Primary Destination</label>
                               </div>
@@ -169,7 +157,6 @@
                                     </select>
                                  </div>
                               </div>
-                           </div>
                            <div class="col-md-12" id="canadastate" style="display:none;">
                            
                                  <div class="col-md-6 text-md-right">
@@ -186,21 +173,19 @@
                             
                            </div>
                            @else
-                           <div class="col-md-12">
-                              <div class="col-md-6 text-md-right">
-                                 <label for="primary_destination" class="input-label">States In Canda</label>
+                           <div class="col-md-6 text-md-right">
+                              <label for="primary_destination" class="input-label">States In Canda</label>
+                           </div>
+                           <div class="col-md-6 no-padding-right" >
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                    <option value="">Primary destination in Canada</option>
+                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                    @endforeach
+                                 </select>
                               </div>
-                                 <div class="col-md-6 no-padding-right" >
-                                    <div class="custom-form-control">
-                                       <select required class="form-input" name="primary_destination" id="primary_destination">
-                                          <option value="">Primary destination in Canada</option>
-                                          @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                             <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                          @endforeach
-                                       </select>
-                                    </div>
-                                 </div>
-                              </div>
+                           </div>
                            @endif
                         @endif
                      @endif

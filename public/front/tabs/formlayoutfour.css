@@ -37,7 +37,7 @@ form.form.form-layout1 .form-control, form.form.form-layout1 .select {
     background: #eee;
 }
 .calendericon{
-    padding: 10px 9px !important;
+    padding: 7px 9px !important;
     position: absolute;
     margin-top: -41px;
     margin-left: 1px;
@@ -301,7 +301,7 @@ border: 1px solid #ccc !important;
 }
 
 .emailicon {
-    padding: 10px 8px !important;
+    padding: 7px 9px !important;
     position: absolute;
     margin-top: -41px;
     margin-left: 1px;

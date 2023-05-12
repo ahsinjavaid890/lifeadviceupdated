@@ -102,10 +102,10 @@ $bg = $bgs[$k];
 
                            <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                               <label class="input-label"> Start Date</label>
-                           <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
-                           <span class="hidden-xs emailicon" style="color:#1BBC9B;">
-                              <i class="fa fa-calendar" aria-hidden="true"></i>
-                           </span>
+                              <input style="padding-left: 40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                 <i class="fa fa-calendar" aria-hidden="true"></i>
+                              </span>
                               <script>
                                  $('#departure_date').datepicker({
                                  format: 'yyyy-mm-dd',
@@ -113,16 +113,16 @@ $bg = $bgs[$k];
                                  autoclose: true,
                                  });
                               </script>
+                           </div>
+                           <div class="col-md-6">
+                              <label class="input-label">End Date of Coverage</label>
+                              <div class="custom-form-control">
+                                 <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
+                                 <span class="hidden-xs emailicon" style="color:#1BBC9B;">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                 </span>
                               </div>
-                              <div class="col-md-6">
-                                 <label class="input-label">End Date of Coverage</label>
-                                 <div class="custom-form-control">
-                                    <input style="padding-left: 40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif >
-                                    <span class="hidden-xs emailicon" style="color:#1BBC9B;">
-                                       <i class="fa fa-calendar" aria-hidden="true"></i>
-                                    </span>
-                                 </div>
-                              </div>
+                           </div>
                               
                            @if($data->pro_supervisa != 1)
                            <script>

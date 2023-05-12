@@ -10,7 +10,7 @@
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js')}}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/daterangepicker/daterangepicker.css')}}" />
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/bootstraptwo.min.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/bootstraptwo.min.css')}}"> -->
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/essentials.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">

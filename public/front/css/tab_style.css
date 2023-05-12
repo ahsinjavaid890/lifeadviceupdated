@@ -180,15 +180,15 @@ select{
    	margin-left: -3px !important;
    }
    .tabshead{
-   	padding-top: 28px !important;
+   	padding-top: 15px !important;
 /*   	background-color: #2b3481 !important;*/
    	background: #222;
    }
    .tabs .active{
-   	background-color: #1bbc9b !important;
+   	background-color: #444 !important;
    }
    .tabs button:hover{
-   	background-color: #1bbc9b !important;
+   	background-color: #444 !important;
    }
    .price_qoutes{
    	max-width: 300px;

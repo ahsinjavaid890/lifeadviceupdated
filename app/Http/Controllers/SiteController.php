@@ -18,6 +18,7 @@ use App\Models\contactus_messages;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
+use Session;
 use Auth;
 class SiteController extends Controller
 {

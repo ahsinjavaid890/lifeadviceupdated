@@ -5,12 +5,12 @@
 	<div class="container">
 		<div class="row tabs">
 			<div class="col-md-4 col-xs-4 text-center information_qoutes">
-				<button class="btn">
+				<button onclick="history.back();" class="btn">
 					<i class="fa fa-user"></i> Information
 				</button>
 			</div>
 			<div class="col-md-4 col-xs-4 text-center price_qoutes">
-				<button class="btn active">
+				<button  class="btn active">
 					<i class="fa fa-shopping-cart"></i> Quotes
 				</button>
 			</div>
