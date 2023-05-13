@@ -50,7 +50,7 @@ $(function () {
 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
 //Sum Insured Slider
-var SliderValues = [<?php
+var SliderValues = [0,<?php
                 $s = 0;
                 foreach($sum as $r){
                 $s++;
