@@ -283,25 +283,12 @@
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12 col-sm-12 col-xs-12 control-input">
-                     <label class="input-label" for="phonenumbermask">Phone <small id="phone_error" class="text-danger"></small></label>
-                           <input   id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" id="phone" name="phone" size="" minlength="10" maxlength="10" value="" class="form-control " placeholder="Enter Phone Number" type="text" required="" onkeyup="validatephone()" style="padding-left: 40px !important;">
+                     <label class="input-label" for="phonenumbermask">Phone</label>
+                           <input   id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" id="phone" name="phone" size="" value="" class="form-control " type="text" required="" style="padding-left: 40px !important;">
                            <span class="phoneicon" style="color:#01a281;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>
                      </div>
-                     <script>
-                        function validatephone(){
-                           var checkphone = document.getElementById('phone').value;
-                           document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                           if (checkphone.length < 10) {
-                           document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                           document.getElementById('getquote').disabled = true;  
-                           } else {
-                           document.getElementById('getquote').disabled = false; 
-                           document.getElementById('phone_error').innerHTML = '';
-                           }
-                           }
-                     </script>
                      @endif
                      @endif
                      @endif
