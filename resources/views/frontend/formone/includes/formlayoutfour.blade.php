@@ -349,16 +349,24 @@
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                           <div class="col-md-6 no-padding check_condtion">
-                              <div class="custom-form-control">
-                                 <label for="" class="input-label" >Do you Smoke in last 12 months?</label>
-                                 <select required class="form-control" name="Smoke12" id="">
-                                    <option value="">--- Please Choose ---</option>
-                                      <option value="yes" >Yes</option>
-                                      <option value="no" >No</option>
-                                 </select>
-                              </div>
-                           </div>
+                           <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding input custom_traveller gender-main">
+                                 <label class="input-label">Do you Smoke in last 12 months?</label>
+                                 <button type="button" id="doyousmoke" class="form-control text-left" 
+                                 onclick="doyousmokeinlasttwelvedays();" style="padding: 0;font-size: 14px;font-weight: 500;"><img src="{{ url('public/front/bgs/no-smoking.svg') }}"> No</button>
+                              <script>
+                              function doyousmokeinlasttwelvedays(){
+                                 if(document.getElementById('Smoke12').value == 'no'){
+
+                                    document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/bgs/smoking.svg') }}"> Yes';
+                                    document.getElementById('Smoke12').value = 'yes';
+                                 } else {
+                                 document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/bgs/no-smoking.svg') }}"> No';
+                                 document.getElementById('Smoke12').value = 'no';   
+                                 }
+                              }
+                              </script>
+                           <input type="hidden" name="Smoke12" id="Smoke12" value="no">       
+                        </div>
                       
                            @endif
                         @endif

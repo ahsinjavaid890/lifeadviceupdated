@@ -319,3 +319,10 @@ border: 1px solid #ccc !important;
     height: 44px;
     font-weight: 400 !important;
 }
+
+#doyousmoke img{
+    background: #F1F1F1;
+    height: 100%;
+    margin-right: 7px;
+    padding: 10px 10px 10px 10px;
+}
