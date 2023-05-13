@@ -340,3 +340,10 @@ form.form.form-layout1 .form-control {
   background-color: #c9302c;
   border-color: #ac2925;
 }
+
+#doyousmoke img{
+    background: #F1F1F1;
+    height: 100%;
+    margin-right: 7px;
+    padding: 10px 10px 10px 10px;
+}
