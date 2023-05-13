@@ -164,8 +164,8 @@
                            @if($fields['phone'] == 'on')
                            <div class="col-sm-4 col-md-3">
                               <div class="form-group ">
-                                 <label>Phone Number</label>
-                                 <input onkeyup="validatephone()" type="text" name="phone" placeholder="Phone Number" required id="phone" class="form-input" style="padding-left: 40px !important">
+                                 <label for="phonenumbermask">Phone Number</label>
+                                 <input onkeyup="validatephone()" type="text"  id="phonenumbermask"  name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000"  required id="phone" class="form-input" style="padding-left: 40px !important">
                               </div>
                            </div>
                            <script>
@@ -317,7 +317,12 @@
       }      
    }
 </script>
-
+<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+<script type="text/javascript">
+   $( document ).ready(function() {
+       $('#phonenumbermask').mask('000-000-0000');
+   });
+</script>
 
 <script type="text/javascript">
    function checknumtravellers(id) {
