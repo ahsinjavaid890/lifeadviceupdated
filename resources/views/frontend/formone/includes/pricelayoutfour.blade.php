@@ -453,7 +453,7 @@ if($show == '1' && $total_price > 0){
                                         ?><span><?php echo str_replace(',', '',$explode[0]).'.';?><sup class="superior"><?php echo $explode[1];?></sup></span></h3>
                                         <?php if($monthly_two == '1'){?>
                                            
-        <h2 style="display:inline;margin:0;font-size:30px;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
+        <h2 style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 10px; width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>  
                                     <p>
                                         $<?php echo $deductible; ?> Deductible <br/>
