@@ -198,8 +198,8 @@ input[type="text"], input[type="password"] {
    .adjust-quoto span {
     font-size: 20px;
     border-radius: 50px !important;
-    border: 5px solid #262566 !important;
-    background: #1bbc9b !important;
+    border: 5px solid #F46D00 !important;;
+    background: white !important;
     cursor: pointer !important;
    }
    .quote_reference{
@@ -438,7 +438,7 @@ input[type="text"], input[type="password"] {
    position: absolute;
    }    
    .ui-slider-horizontal .ui-slider-range {
-   background:#262566 !important;
+    background: #F46D00 !important;
    }
    #listprices {
    padding-top: 10px;

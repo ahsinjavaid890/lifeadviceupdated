@@ -448,7 +448,8 @@ $<?php echo $deductible; ?> deductible
 
 <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
 <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
-<button class="btn" style="background-color: #2b3481 !important; color:#FFF; font-weight:bold;width: 100%;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+<button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
+font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
 </div>
 
 <?php

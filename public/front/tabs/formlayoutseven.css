@@ -69,12 +69,12 @@
       padding: 10px 60px;
     }
     .get_qout:hover{
-      background: black;
+      background: #515c68;
       color:white
     }
     .get_qout:hover i{
-      color: green;
-    
+      color: rgb(73, 134, 73);
+
     }
     @media (max-width:468px) and (min-width: 292px){
       .box-style{

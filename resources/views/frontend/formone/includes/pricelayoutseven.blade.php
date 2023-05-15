@@ -454,7 +454,7 @@ $broker = $request->broker;
 ?>
             <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="buynow-btn"
                     data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"
-                    name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now
+                    name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
             </button>
                         
                                 </div>
@@ -488,19 +488,20 @@ $broker = $request->broker;
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr/>
                                         <div style="font-size:12px;">
-                                            <p style="margin:0;"><b>Plan:</b> <?php echo $plan_name; ?></p>
-                                 <p style="margin:0;"><b>Plan Type:</b> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?></p>
-                                  <p style="margin:0;"><b>Travellers:</b> <?php echo $number_travelers; ?></p>
+                                            <p style="margin:0;"><b>Plan:</b> <small> <?php echo $plan_name; ?></small></p>
+                                 <p style="margin:0;"><b>Plan Type:</b> <small>       <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?> </small></p>
+                                  <p style="margin:0;"><b>Travellers:</b> <small><?php echo $number_travelers; ?></small></p>
                                   <p style="margin:0;">
                            <?php
                                         $per = 0;
                     foreach($ages_array as $person_age){
                     $per++;
                                         ?>
-                                        <br/><b>Person <?php echo $per;?></b><br/>
-                                        Age: <?php echo $person_age; ?><br/>
-                                        Coverage Amount: <?php echo $sum_insured; ?> <br/>
-                                        Premium  <?php
+                                        <b>Person:</b> <small><?php echo $per;?></small><br/>
+                                        Age: <small> <?php echo $person_age; ?></small><br/>
+                                        Coverage Amount: <small> <?php echo $sum_insured; ?> </small><br/>
+                                        Premium  <small> 
+                                        <?php
                     $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
                     $countarraytwo =  count($p_planrates);
@@ -595,13 +596,14 @@ $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
 }
 $person_price = $person_price - $p_discountonplan;
 
-                                        echo number_format($person_price,2); ?>
+                                        echo number_format($person_price,2); ?></small>
                                         <?php } 
                                     }?>
                               </p>
                                         
-                                             <p style="margin:0;"><b>Duration:</b> <?php echo $num_of_days; ?> days (<?php echo $startdate . " - " . $enddate; ?>)</p>
-                                            <p style="margin:0;"><b>Total Premium:</b> $<?php echo number_format($total_price,2); ?></p>
+                                             <p style="margin:0;"><b>Duration:</b>  <small><?php echo $num_of_days; ?> days 
+                                                </small><small>(<?php echo $startdate . " - " . $enddate; ?>)</small></p>
+                                            <p style="margin:0;"><b>Total Premium:</b> <small> $<?php echo number_format($total_price,2); ?></small></p>
                                     </div>
                                         </div>
                                     
@@ -612,11 +614,11 @@ $person_price = $person_price - $p_discountonplan;
                                         <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
                                         <hr/>
                                         <ul>
-                                            <li>$<?php echo $request->deductible1; ?> deductible</li>
+                                            <li><b> $<?php echo $request->deductible1; ?> deductible</b></li>
                                             <?php
                                                 if ($features->count() > 1 ) {
                                                     foreach($features as $feature) {
-                                                        echo "<li>".$feature->features."</li>";
+                                                        echo "<li> <b>".$feature->features."</b></li>";
                                                     }
                                                 }
                                                 ?>
@@ -671,10 +673,11 @@ $person_price = $person_price - $p_discountonplan;
     <input type="hidden" value="{{ $agent }}" name="agent">
     <input type="hidden" value="{{ $broker }}" name="broker">
     <div class="row">
-<div class="col-md-6 col-xs-12" style="background:#F9F9F9;  padding: 10px">
-<h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
+<div class="col-md-6 col-xs-12" style="background:#F9F9F9;     padding: 0px 4px;">
+<h3 style="border-bottom:1px solid #ccc;margin: 0px !mportant; color: #000 !important;font-size: 18px;font-weight: bold;">Buy Online</h3>
 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
-<p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
+<p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;">
+     I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
 <p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;font-weight: bold; display:block;background:#1bbc9b;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
@@ -723,76 +726,75 @@ $("#listprices").html(divList);
         var info_box = "";
 
         jQuery(".dh-toggle").click(function () {
-            
             if (info_box != "") {
                 jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
             }
-
+            
             if (jQuery(this).data('value') == info_box) {
                 info_box = "";
                 return false;
             }
-
+            
             if (buynow_selected != "") {
                 jQuery(".buynow-btn-" + buynow_selected).slideToggle();
                 buynow_selected = "";
             }
-
+            
             var id = jQuery(this).data('value');
             info_box = id;
             jQuery(".dh-toggle-show-hide-" + id).slideToggle();
             console.log(".dh-toggle-show-hide-" + id);
         });
-
-
+        
+        
         jQuery(".buynow-btn").click(function () {
             if (buynow_selected != "") {
                 jQuery(".buynow-btn-" + buynow_selected).slideToggle();
             }
-
+            
             if (jQuery(this).data('value') == buynow_selected) {
                 buynow_selected = "";
                 return false;
             }
-
+            
             if (info_box != "") {
                 jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
                 info_box = "";
             }
-
+            
             var id = jQuery(this).data('value');
             buynow_selected = id;
             jQuery(".buynow-btn-" + id).slideToggle();
         });
-
-    </script>
-
-    <script>
-       
-        jQuery( function() {
-
-            var visiblePlans = jQuery(".plan-details:visible").length;
-            var textToShow = "Great! We found "+visiblePlans+" for you.";
-            if(visiblePlans > 0){
-                // jQuery(".num-of-quotes").show();
-                jQuery(".num-of-quotes").text(textToShow);
-            }else{
-                jQuery(".num-of-quotes").hide();
-            }
+        
+        </script>
+        
+        <script>
+            
+            jQuery( function() {
+                
+                var visiblePlans = jQuery(".plan-details:visible").length;
+                var textToShow = "Great! We found "+visiblePlans+" for you.";
+                if(visiblePlans > 0){
+                    // jQuery(".num-of-quotes").show();
+                    jQuery(".num-of-quotes").text(textToShow);
+                }else{
+                    jQuery(".num-of-quotes").hide();
+                }
         } );      
-    </script>
-
+        </script>
+        
    <script>
-$(document).ready(function(){
-    $(".baaababa").click(function(){
-        $("#demo").toggleClass("agaya");
+    $(document).ready(function(){
+        $(".baaababa").click(function(){
+            $("#demo").toggleClass("agaya");
+        });
     });
-});
-
-function showdetails(id)
+    
+    function showdetails(id)
     {
         $('.dh-toggle-show-hide-'+id).slideToggle();
     }
-</script>
-
-</div>
+    </script>
+    
+    </div>
