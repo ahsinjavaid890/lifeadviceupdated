@@ -520,12 +520,12 @@ $broker = $request->broker;
     <input type="hidden" value="{{ $agent }}" name="agent">
     <input type="hidden" value="{{ $broker }}" name="broker">
     <div class="row" style="padding:5px !important">
-<div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;">
+<div class="col-md-6 col-xs-12 contact-details" style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;">
 <h3 style="border-bottom: 1px solid #ccc; margin: 0;font-size: 19px;font-weight: bold;color: #000;">Buy Online</h3>
-<p style="    font-weight: bold;-webkit-margin-before: 1em;margin-bottom: 30px;">In three simple steps you can purchase your policy, easily and securely, online.</p>
+<p style="    font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p style="margin-bottom: 30px;"> <input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
 <p></p>
-<p style="    margin-bottom: 30px;"><button type="submit" class="btn submit-btn" style="color: #FFF;
+<p style=" "><button type="submit" class="btn submit-btn" style="color: #FFF;
     border-radius: 5px;
     font-weight: bold;
     display: block;
@@ -534,11 +534,11 @@ $broker = $request->broker;
 </div>
 <div class="col-md-6 col-xs-12 text-center" style="font-size:16px;">
 <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
-<p style="-webkit-margin-before: 1em;">or</p>
-<p style="    margin-bottom: 30px
-px;font-size: 16px;-webkit-margin-before: 1.7em;
+<p style="">or</p>
+<p style="   
+px;font-size: 
 }">BY CALLING</p>
-<p><a href="tel:8555008999" style="font-size:24px; -webkit-margin-before: 1em;   margin-bottom: 20px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
+<p><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
 <p style=" font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
 <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
 </div>
@@ -562,7 +562,7 @@ px;font-size: 16px;-webkit-margin-before: 1.7em;
                                         ?>
                                         <b>Person:</b> <small><?php echo $per;?></small><br/>
                                         Age: <small> <?php echo $person_age; ?></small><br/>
-                                        Coverage Amount: <small> <?php echo $sum_insured; ?> </small><br/>
+                                        Coverage Amount: <small> $<?php echo $sum_insured; ?> </small><br/>
                                         Premium  <small> 
                                         <?php
                     $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");

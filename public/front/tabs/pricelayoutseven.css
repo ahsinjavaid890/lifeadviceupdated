@@ -460,3 +460,7 @@ input[type="text"], input[type="password"] {
    .row.plan-details {
     align-items: flex-start;
 }
+
+.contact-details p{
+    -webkit-margin-before: 1em;margin-bottom: 30px;
+}

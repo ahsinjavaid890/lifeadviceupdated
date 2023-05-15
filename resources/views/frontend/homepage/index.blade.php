@@ -61,11 +61,13 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/family.png') }}">
+                   <a href="http://localhost/lifeadviceupdated/life-insurance">  <img src="{{ asset('public/front/img/images/family.png') }}"> </a>
+                  
                   </div>
                   <div class="slider-heading">
-                     <h2><span>Life</span> Insurance</h2>
-                  </div>
+                     <a href="http://localhost/lifeadviceupdated/life-insurance">
+                        <h2><span>Life</span> Insurance</h2></a>
+                       </div>
                   <div class="slider-pargraph">
                      <p>Whether you want help covering final expenses or building a legacy, protect your family.</p>
                   </div>
@@ -76,10 +78,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/bed.png') }}">
-                  </div>
+                     <a href="http://localhost/lifeadviceupdated/critical-illness">  
+                           <img src="{{ asset('public/front/img/images/bed.png') }}">
+                     </a>
+                        </div>
                   <div class="slider-heading">
-                     <h2><span>Critical Illness</span> Insurance</h2>
+                   <a href="http://localhost/lifeadviceupdated/critical-illness">  <h2><span>Critical Illness</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>Critical illness insurance help to pay the costs associated with life-altering illnesses. If you become sick with an illness.</p>
@@ -91,10 +95,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/disability.png') }}">
-                  </div>
+                     <a href="http://localhost/lifeadviceupdated/desability">  
+                            <img src="{{ asset('public/front/img/images/disability.png') }}">
+                     </a>
+                           </div>
                   <div class="slider-heading">
-                     <h2><span>Disability</span> Insurance</h2>
+                  <a href="http://localhost/lifeadviceupdated/desability">   <h2><span>Disability</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>We protect you in more ways than you’d think. We’ll include many coverages that do more than protect your physical structure.</p>
@@ -106,10 +112,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/health.png') }}">
-                  </div>
+                     <a href="http://localhost/lifeadviceupdated/health-insurance">   
+                            <img src="{{ asset('public/front/img/images/health.png') }}">
+                     </a>
+                           </div>
                   <div class="slider-heading">
-                     <h2><span>Health</span> Insurance</h2>
+                  <a href="http://localhost/lifeadviceupdated/health-insurance">   <h2><span>Health</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>Health Coverage Insurance is the easy, affordable way to protect you and your family from the growing list of health care.</p>
@@ -181,10 +189,11 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/family.png') }}">
+                             
+                            <img src="{{ asset('public/front/img/images/family.png') }}">
                   </div>
                   <div class="slider-heading">
-                     <h2><span>Super Visa </span> Insurance</h2>
+                 <h2><span>Super Visa </span> Insurance</h2>
                   </div>
                   <div class="slider-pargraph">
                      <p>Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</p>
@@ -196,10 +205,11 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/bed.png') }}">
+                    
+                              <img src="{{ asset('public/front/img/images/bed.png') }}">
                   </div>
                   <div class="slider-heading">
-                     <h2><span>Visitors</span> Insurance</h2>
+                 <h2><span>Visitors</span> Insurance</h2>
                   </div>
                   <div class="slider-pargraph">
                      <p>Visitors Insurance travel insurance offers flexible, affordable emergency medical coverage to visitor.</p>
@@ -211,10 +221,11 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <img src="{{ asset('public/front/img/images/icon-student-super-visa-.png') }}">
+                
+                        <img src="{{ asset('public/front/img/images/icon-student-super-visa-.png') }}"> 
                   </div>
                   <div class="slider-heading">
-                     <h2><span>Students </span> Insurance</h2>
+                 <h2><span>Students </span> Insurance</h2>
                   </div>
                   <div class="slider-pargraph">
                      <p>Critical illness insurance help to pay the costs associated with life-altering illnesses. If you become sick with an illness.</p>
@@ -229,7 +240,7 @@
                      <img src="{{ asset('public/front/img/images/travel-icon.png') }}">
                   </div>
                   <div class="slider-heading">
-                     <h2><span>Travel</span> Insurance</h2>
+                 <h2><span>Travel</span> Insurance</h2>
                   </div>
                   <div class="slider-pargraph">
                      <p>Travel Insurance protects you and your luggage against many perils you may come across while traveling abroad.</p>
@@ -549,10 +560,11 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                               <img src="{{ asset('public/front/img/images/trip.png') }}">
+                              <a href="http://localhost/lifeadviceupdated/super-visa-insurance"> 
+                               <img src="{{ asset('public/front/img/images/trip.png') }}"></a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                               <h2>Super Visa Insurance</h2>
+                              <a href="http://localhost/lifeadviceupdated/super-visa-insurance">    <h2>Super Visa Insurance</h2></a>
                             </div>
                             <div class="transparent-card-paragraph">
                                <p>Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</p>
@@ -564,10 +576,14 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                               <img src="{{ asset('public/front/img/images/bed.png') }}">
+                              <a href="http://localhost/lifeadviceupdated/visitor-insurance">   
+                              <img src="{{ asset('public/front/img/images/bed.png') }}">
+                              </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                               <h2>Visitor Insurance</h2>
+                              <a href="http://localhost/lifeadviceupdated/visitor-insurance">     
+                                  <h2>Visitor Insurance</h2>
+                              </a>
                             </div>
                             <div class="transparent-card-paragraph">
                                <p>Visitors Insurance travel insurance offers flexible, affordable emergency medical coverage to visitor.</p>
@@ -582,11 +598,16 @@
                    <div class="col-md-12">
                       <div class="card transparent-card">
                          <div class="card-body text-center">
+                           
                             <div class="simple-online-transparent-slider">
-                               <img src="{{ asset('public/front/img/images/disability.png') }}">
+                              <a href="http://localhost/lifeadviceupdated/student-insurance">                           
+                              <img src="{{ asset('public/front/img/images/disability.png') }}">
+                              </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
+                              <a href="http://localhost/lifeadviceupdated/student-insurance">
                                <h2>Student Insurance</h2>
+                              </a>
                             </div>
                             <div class="transparent-card-paragraph">
                                <p>Student Insurance is for students who are studying abroad or international students coming to study in Canada.</p>
@@ -598,11 +619,15 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                               <img src="{{ asset('public/front/img/images/health.png') }}">
-                            </div>
+                              <a href="http://localhost/lifeadviceupdated/travel-insurance"> 
+                                    <img src="{{ asset('public/front/img/images/health.png') }}">
+                              </a>
+                                 </div>
                             <div class="transparent-card-heading mt-3">
-                               <h2>Travel Insurance</h2>
-                            </div>
+                              <a href="http://localhost/lifeadviceupdated/travel-insurance"> 
+                                 <h2>Travel Insurance</h2>
+                              </a>
+                              </div>
                             <div class="transparent-card-paragraph">
                                <p>Travel Insurance protects you and your luggage against many perils you may come across while traveling abroad.</p>
                             </div>

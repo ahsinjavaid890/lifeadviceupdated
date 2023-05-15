@@ -505,3 +505,6 @@ padding-right: 0;
 }
 
 }
+.contact-details p{
+    -webkit-margin-before: 1em;    margin-bottom: 30px;
+}
