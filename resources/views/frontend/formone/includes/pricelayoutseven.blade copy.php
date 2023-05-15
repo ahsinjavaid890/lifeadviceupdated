@@ -482,70 +482,7 @@ $broker = $request->broker;
                                 </div>
 
 
-                        
-
-
-                            </div>
-                            <div class="row buynow_<?php echo $deductible.$plan_id;?>" style="z-index: 1; clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
-<form method="post" action="{{ url('apply') }}">
-    @csrf
-    <input type="hidden" value="{{ $request->savers_email }}" name="email">
-    <input type="hidden" value="{{ $request->fname }}" name="fname">
-    <input type="hidden" value="{{ $request->lname }}" name="lname">
-    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-    <input type="hidden" value="{{ $deductible }}" name="deductibles">
-    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-    @foreach($request->years as $year)
-    <input type="hidden" name="years[]" value="{{ $year }}">
-    @endforeach
-    <input type="hidden" value="{{ $num_of_days }}" name="days">
-    <input type="hidden" value="{{ $comp_name }}" name="companyName">
-    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-    <input type="hidden" value="{{ $plan_name }}" name="planname">
-    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-    <input type="hidden" value="{{ $startdate }}" name="tripdate">
-    <input type="hidden" value="{{ $enddate }}" name="tripend">
-    <input type="hidden" value="{{ $total_price }}" name="premium">
-    <input type="hidden" value="{{ $request->destination }}" name="destination">
-    <input type="hidden" value="" name="cdestination">
-    <input type="hidden" value="{{ $product_name }}" name="product_name">
-    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
-    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-    <input type="hidden" value="{{ $dob }}" name="dob">
-    <input type="hidden" value="{{ $agent }}" name="agent">
-    <input type="hidden" value="{{ $broker }}" name="broker">
-    <div class="row" style="padding:5px !important">
-<div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;">
-<h3 style="border-bottom: 1px solid #ccc; margin: 0;font-size: 19px;font-weight: bold;color: #000;">Buy Online</h3>
-<p style="    font-weight: bold;-webkit-margin-before: 1em;margin-bottom: 30px;">In three simple steps you can purchase your policy, easily and securely, online.</p>
-<p style="margin-bottom: 30px;"> <input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
-<p></p>
-<p style="    margin-bottom: 30px;"><button type="submit" class="btn submit-btn" style="color: #FFF;
-    border-radius: 5px;
-    font-weight: bold;
-    display: block;
-    height: 44px;
-    background: #F46D00;;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
-</div>
-<div class="col-md-6 col-xs-12 text-center" style="font-size:16px;">
-<a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
-<p style="-webkit-margin-before: 1em;">or</p>
-<p style="    margin-bottom: 30px
-px;font-size: 16px;-webkit-margin-before: 1.7em;
-}">BY CALLING</p>
-<p><a href="tel:8555008999" style="font-size:24px; -webkit-margin-before: 1em;   margin-bottom: 20px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
-<p style=" font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
-<p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
-</div>
-</div>
-</form>
-</div>
-                            <div class="col-md-12 col-xs-12 summar_info_<?php echo $deductible.$plan_id;?> " style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
+                                <div class="col-md-12 col-xs-12 summar_info_<?php echo $deductible.$plan_id;?> " style="display:none; margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial;background: #FFF;padding-top: 10px;padding-bottom: 10px;">
                                     <div class="row">
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
@@ -688,7 +625,7 @@ $person_price = $person_price - $p_discountonplan;
                                         </ul>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mr-0">
                                         <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
                                         <span style="display: none;"><?// "SELECT * FROM {$wpdb->prefix}dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_SESSION['sum_insured2']."' limit 1000" ?></span>
                                         <hr/>
@@ -700,6 +637,62 @@ $person_price = $person_price - $p_discountonplan;
                                     </div>
                                 </div>
                                 </div>
+
+<div style="clear:both;"></div>
+<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="z-index: 1; clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
+<form method="post" action="{{ url('apply') }}">
+    @csrf
+    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+    <input type="hidden" value="{{ $request->fname }}" name="fname">
+    <input type="hidden" value="{{ $request->lname }}" name="lname">
+    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+    @foreach($request->years as $year)
+    <input type="hidden" name="years[]" value="{{ $year }}">
+    @endforeach
+    <input type="hidden" value="{{ $num_of_days }}" name="days">
+    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+    <input type="hidden" value="{{ $plan_name }}" name="planname">
+    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+    <input type="hidden" value="{{ $enddate }}" name="tripend">
+    <input type="hidden" value="{{ $total_price }}" name="premium">
+    <input type="hidden" value="{{ $request->destination }}" name="destination">
+    <input type="hidden" value="" name="cdestination">
+    <input type="hidden" value="{{ $product_name }}" name="product_name">
+    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+    <input type="hidden" value="{{ $dob }}" name="dob">
+    <input type="hidden" value="{{ $agent }}" name="agent">
+    <input type="hidden" value="{{ $broker }}" name="broker">
+    <div class="row">
+<div class="col-md-6 col-xs-12" style="background:#F9F9F9;  padding: 10px">
+<h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
+<p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
+<p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
+<p></p>
+<p><button type="submit" class="btn submit-btn" style="color:#FFF;border-radius: 5px;font-weight: bold; display:block;background:#1bbc9b;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+</div>
+<div class="col-md-6 col-xs-12 text-center" style="font-size:16px;">
+<a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+<p>or</p>
+<p>BY CALLING</p>
+<p><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
+<p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
+<p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+</div>
+</div>
+</form>
+</div>
+
+                            </div>
                      </div>
    
                          </div>
@@ -732,7 +725,6 @@ $("#listprices").html(divList);
         function slidetooglesummary(id)
         {
             $('.summar_info_'+id).slideToggle();
-            $('.buynow_'+id).hide();
         }
 
 
