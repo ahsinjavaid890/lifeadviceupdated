@@ -54,11 +54,11 @@ class SiteController extends Controller
 
         if($request->savers_email)
         {
-            // Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request), function($message) use ($request) {
-            //    $message->to($request->savers_email)->subject
-            //       ('Quote Suggestion');
-            //    $message->from('quote@lifeadvice.ca','LIFEADVICE');
-            // });
+            Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request), function($message) use ($request) {
+               $message->to($request->savers_email)->subject
+                  ('Quote Suggestion');
+               $message->from('quote@lifeadvice.ca','LIFEADVICE');
+            });
         }
 
         return response()->json(array('success' => true, 'html'=>$returnHTML));
