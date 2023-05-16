@@ -571,7 +571,7 @@ $person_price = $person_price - $p_discountonplan;
                                             <?php
                                                 if ($features->count() > 1 ) {
                                                     foreach($features as $feature) {
-                                                        echo "<li>".$feature->features."</li>";
+                                                        echo "<li> ".$feature->features."</li>";
                                                     }
                                                 }
                                                 ?>

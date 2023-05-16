@@ -681,14 +681,14 @@ $person_price = $person_price - $p_discountonplan;
                                             <?php
                                                 if ($features->count() > 1 ) {
                                                     foreach($features as $feature) {
-                                                        echo "<li> <b>".$feature->features."</b</li>";
+                                                        echo "<li> ".$feature->features."</li>";
                                                     }
                                                 }
                                                 ?>
                                         </ul>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 text-left">
                                         <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
                                         <span style="display: none;"><?// "SELECT * FROM {$wpdb->prefix}dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_SESSION['sum_insured2']."' limit 1000" ?></span>
                                         <hr/>

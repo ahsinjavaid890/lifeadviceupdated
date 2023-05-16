@@ -40,6 +40,7 @@
       font-weight: bold;
         font-size: 16px;
         color: #4F596A;
+        margin-bottom: 0rem !important;
     }
     .inputs-style{
       border: #ddd 2px solid;
