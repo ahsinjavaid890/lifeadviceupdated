@@ -19,6 +19,7 @@ $bg = $bgs[$k];
 ?>
 <section id="sectionbackground" style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('') }}public/front/bgs/<?php echo $bg;?>.jpg'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
    <div class="container" style="padding: 55px 0px 200px 0px;">
+
       <div class="col-md-12">
          <h1 class="mainheading">
             <strong>{{ $data->pro_name }}</strong>
@@ -32,104 +33,175 @@ $bg = $bgs[$k];
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
             <div id="listprices_">
                <div class="page_1">
+                  <div class="row">
                   @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-4">
                         <div class="form-group">
                            <select required class="form-control" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
-                              @foreach($sum_insured as $r)
-                              <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                              @foreach($sum_insured as $key=>$r)
+                              <option value="{{ $r->sum_insured }}" @if($key==0) selected
+                                 
+                              @endif>${{ $r->sum_insured }}</option>
                               @endforeach
                            </select>
                         </div>
                      </div>
                      @endif
                      @endif
-                  @if($fields['sdate'] == "on" && $fields['edate'] == "on")
-                  <div class="col-md-4" style="margin-bottom: 10px;">
-                  @if($data->pro_supervisa == 1)
-                  <input autocomplete="off" id="departure_date"  name="departure_date" class="form-control" type="text" required onchange="supervisayes()">
-                  <i class="fa fa-calendar" onclick="$('#departure_date').focus();" style="position: absolute;top: 11px;right: 28px;font-size: 16px;color: #01a281;"></i>     
-                  <script>
-                     var today = new Date();
-                     var dd = today.getDate();
-                     var mm = today.getMonth() + 1; //January is 0!
-                     var yyyy = today.getFullYear();
-                     if (dd < 10) {
-                        dd = '0' + dd;
-                     } 
-                     if (mm < 10) {
-                       mm = '0' + mm;
-                     } 
-                     var today = mm + '/' + dd + '/' + yyyy;
-                     $(function() {
-                       $('input[name="departure_date"]').daterangepicker({
-                         opens: 'left',
-                        minDate: today,
-                        singleDatePicker: true,
-                         showDropdowns: true,
-                       }, function(start, end, label) {
-
-                       });
-                     });
-                     function supervisayes(){
-                        var tt = document.getElementById('departure_date').value;
-                        var date = new Date(tt);
-                        var newdate = new Date(date);
-                        newdate.setDate(newdate.getDate() + 364);
-                        var dd = newdate.getDate();
-                        var mm = newdate.getMonth() + 1;
-                        var y = newdate.getFullYear();
-                        if(mm <= 9){
-                        var mm = '0'+mm;  
-                        }
-                        if(dd <= 9){
-                        var dd = '0'+dd;  
-                        }
-                        //var someFormattedDate = mm + '/' + dd + '/' + y;
-                        var someFormattedDate = y + '-' + mm + '-' + dd;
-                        document.getElementById('return_date').value = someFormattedDate;
-                     }
-                  </script>
-                  @else
-                  <input type="text" name="daterange" id="daterange" autocomplete="off" readonly="true" class="form-control" value="" placeholder="" />
-                  <i class="fa fa-calendar" onclick="$('#daterange').focus();" style="position: absolute;top: 11px;right: 28px;font-size: 16px;color: #01a281;"></i>
-                  <script>
-                     var today = new Date();
-                     var dd = today.getDate();
-                     var mm = today.getMonth() + 1; //January is 0!
-                     var yyyy = today.getFullYear();
-                     if (dd < 10) {
-                       dd = '0' + dd;
-                     } 
-                     if (mm < 10) {
-                       mm = '0' + mm;
-                     } 
-                     var today = mm + '/' + dd + '/' + yyyy;
-                     $(function() {
-                       $('input[name="daterange"]').daterangepicker({
-                         opens: 'left',
-                        minDate: today,
-                        autoApply: true,
-                       }, function(start, end, label) {
-                         document.getElementById('departure_date').value = start.format('YYYY-MM-DD');
-                         document.getElementById('return_date').value = end.format('YYYY-MM-DD');
-                         //Calculation of Duration:
-                         var date1 = new Date(start.format('YYYY-MM-DD'));
-                         var date2 = new Date(end.format('YYYY-MM-DD'));
-                         var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-                         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1); 
-                         $('.duration_days').html(diffDays+' Days');
-                       });
-                     });
-                  </script>
-                  <input type="hidden" name="departure_date" id="departure_date" value="">
-                  @endif
-                  <input type="hidden" name="return_date" id="return_date" value="">
+                      <!---Destination country -->
+                      @if(isset($fields['Country']))
+                      @if($fields['Country'] == "on" )
+                         @if($data->pro_travel_destination == 'worldwide')
+                         <script>
+                            function CountryState(evt) {
+                                if(evt.value=="Canada")
+                                {
+                                    jQuery("#primary_destination_State_div").show();
+                                    jQuery("#usa_stop_div").hide();
+                                }else if(evt.value=="United States")
+                                {
+                                    jQuery("#primary_destination_State_div").hide();
+                                    jQuery("#usa_stop_div").hide();
+                               }else
+                               {
+                                   jQuery("#primary_destination_State_div").hide();
+                                    jQuery("#usa_stop_div").show();
+                               }
+                            }
+                         </script>
+                         <div class="col-md-4">
+                            <select name="primary_destination" onchange="CountryState(this)" class="form-control form-select" id="primary_destination" aria-required="true" required>
+                               @foreach(DB::table('countries')->get() as $r)
+                               <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
+                               @endforeach
+                            </select>
+                         </div>
+                         <div id="primary_destination_State_div">
+                            <div class="col-md-4" style="text-align: left; float:left;">
+                               <select name="primary_destination_State" class="form-control form-select" id="primary_destination_State" autocomplete="off" required>
+                                  <option value=""> --- Primary destination in Canada ---</option>
+                                  @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                  <option value="{{ $r->name }}">{{ $r->name }}</option>
+                                  @endforeach
+                               </select>
+                            </div>
+                         </div>
+                         <div id="usa_stop_div" style="display:none;">
+                            <div class="col-md-4">
+                               <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
+                               <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
+                                  if($allow_input_field['us_stop_days'] == 0 ):
+                                   echo "<option selected='' value='0'>None</option>";
+                                   else:
+                                   echo  "<option value='$i'>$i days</option>";
+                                   endif;  
+                                  
+                                  endfor; ?>
+                               </select>
+                            </div>
+                         </div>
+                         @else
+                         <div class="col-md-4">
+                            <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required>
+                               <option value=""> --- Primary destination in Canada ---</option>
+                               @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                  <option value="{{ $r->name }}">{{ $r->name }}</option>
+                               @endforeach
+                            </select>
+                         </div>
+                         @endif
+                      @endif
+                   @endif
+                   <!-- Destination ends -->
+                  @if(isset($fields['email']))
+                  @if($fields['email'] == "on" )
+                  <div class="col-md-4" style="margin-bottom:10px;">
+                     <div class="form-group">
+                  <input  id="savers_email" name="savers_email" class="form-control" required type="email" placeholder="Your email address" style="float: none;padding: 0 10px !important;">
+                  </div>
                   </div>
                   @endif
-                  <div class="col-md-4 agesdiv" id="agesdiv">
+               @endif
+                  <div class="clear:both;"></div>
+                
+                  <script>
+                     $('html').click(function() {
+                         $('.ageandcitizen').fadeOut(300);
+                      })
+                     
+                      $('.agesdiv').click(function(e){
+                          e.stopPropagation();
+                      });
+                  </script>
+                     </div>
+                     <div class="col-md-2 pull-right" style="">
+                        <button class="btn nextbtn" type="button" id="GET_QUOTES" onclick="$('.page_1').hide();$('.page_2').show('slow');" style="display: block;"> Next <i class="fa fa-arrow-circle-right"></i></button>
+                     </div>
+            </div>
+               <!-- PAGE ONE ENDED -->
+               <div class="page_2" style="display:none;">
+                  <div class="row" style="margin-bottom: 12px">
+                     @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
+                     @php
+                        $number_of_travel = $fields['traveller_number'];
+                     @endphp
+                     @if($number_of_travel > 0)
+
+                     <div class="col-md-4 ">
+                        <div class="form-group">    
+                           <select onchange="checknumtravellers(this.value)" required class="form-control" name="number_travelers" id="number_travelers" style="    padding: 5px 12px !important;">
+                              <option value="">Number of Travellers</option>
+                              @for($i=1;$i<=$number_of_travel;$i++)
+                              <option value="{{ $i }}">{{ $i }}</option>
+                              @endfor
+                           </select>
+                        </div>
+                     </div>
+                     @if(isset($fields['dob']) && $fields['dob'] == "on" )
+                        @php
+                           $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                           $c = 0;
+                        @endphp
+                        @for($i=1;$i<=$number_of_travel;$i++)
+                        <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-4">
+                                    <div class="form-group">
+                                       <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                    </div>
+                                 <div style="padding-right: 0px;" class="col-md-4 ">
+                                    <div class="form-group">
+                                       <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
+                                          <option value="">Select Pre Existing Condition</option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                 </div>
+                              </div>
+                       
+                        @endfor
+                  @endif
+                  @endif
+                  @endif
+
+                  @if(isset($fields['fname']))
+                     @if($fields['fname'] == "on" )
+                     <div class="col-md-4" style="margin-bottom:10px;">
+                     <input id="fname" name="fname" class="form-control" required type="text" placeholder="Your first name">
+                     </div>
+                     @endif
+                  @endif
+                  @if(isset($fields['lname']))
+                     @if($fields['lname'] == "on" )
+                     <div class="col-md-4" style="margin-bottom:10px;">
+                     <input  id="lname" name="lname" class="form-control" required type="text" placeholder="Your last name">
+                     </div>
+                     @endif
+                  @endif
+                  
+                  </div>
+                  {{-- <div class="col-md-4 agesdiv" id="agesdiv">
                      <button class="btn btn-default agesbtn form-control" type="button" onclick="$('.ageandcitizen').fadeIn(300);">Ages and Details <i class="fa fa-caret-down"></i></button>
                      <div class="col-md-12 ageandcitizen" style="padding: 1px 15px; display: none;">
                         @if(isset($fields['dob']))
@@ -157,6 +229,90 @@ $bg = $bgs[$k];
                                  </div>
                            </div>
                         @endif
+                        @endif
+                        
+                        @if($fields['sdate'] == "on" && $fields['edate'] == "on")
+                        <div class="col-md-4" style="margin-bottom: 10px;">
+                        @if($data->pro_supervisa == 1)
+                        <input autocomplete="off" id="departure_date"  name="departure_date" class="form-control" type="text" required onchange="supervisayes()">
+                        <i class="fa fa-calendar" onclick="$('#departure_date').focus();" style="position: absolute;top: 11px;right: 28px;font-size: 16px;color: #01a281;"></i>     
+                        <script>
+                           var today = new Date();
+                           var dd = today.getDate();
+                           var mm = today.getMonth() + 1; //January is 0!
+                           var yyyy = today.getFullYear();
+                           if (dd < 10) {
+                              dd = '0' + dd;
+                           } 
+                           if (mm < 10) {
+                             mm = '0' + mm;
+                           } 
+                           var today = mm + '/' + dd + '/' + yyyy;
+                           $(function() {
+                             $('input[name="departure_date"]').daterangepicker({
+                               opens: 'left',
+                              minDate: today,
+                              singleDatePicker: true,
+                               showDropdowns: true,
+                             }, function(start, end, label) {
+      
+                             });
+                           });
+                           function supervisayes(){
+                              var tt = document.getElementById('departure_date').value;
+                              var date = new Date(tt);
+                              var newdate = new Date(date);
+                              newdate.setDate(newdate.getDate() + 364);
+                              var dd = newdate.getDate();
+                              var mm = newdate.getMonth() + 1;
+                              var y = newdate.getFullYear();
+                              if(mm <= 9){
+                              var mm = '0'+mm;  
+                              }
+                              if(dd <= 9){
+                              var dd = '0'+dd;  
+                              }
+                              //var someFormattedDate = mm + '/' + dd + '/' + y;
+                              var someFormattedDate = y + '-' + mm + '-' + dd;
+                              document.getElementById('return_date').value = someFormattedDate;
+                           }
+                        </script>
+                        @else
+                        <input type="text" name="daterange" id="daterange" autocomplete="off" readonly="true" class="form-control" value="" placeholder="" />
+                        <i class="fa fa-calendar" onclick="$('#daterange').focus();" style="position: absolute;top: 11px;right: 28px;font-size: 16px;color: #01a281;"></i>
+                        <script>
+                           var today = new Date();
+                           var dd = today.getDate();
+                           var mm = today.getMonth() + 1; //January is 0!
+                           var yyyy = today.getFullYear();
+                           if (dd < 10) {
+                             dd = '0' + dd;
+                           } 
+                           if (mm < 10) {
+                             mm = '0' + mm;
+                           } 
+                           var today = mm + '/' + dd + '/' + yyyy;
+                           $(function() {
+                             $('input[name="daterange"]').daterangepicker({
+                               opens: 'left',
+                              minDate: today,
+                              autoApply: true,
+                             }, function(start, end, label) {
+                               document.getElementById('departure_date').value = start.format('YYYY-MM-DD');
+                               document.getElementById('return_date').value = end.format('YYYY-MM-DD');
+                               //Calculation of Duration:
+                               var date1 = new Date(start.format('YYYY-MM-DD'));
+                               var date2 = new Date(end.format('YYYY-MM-DD'));
+                               var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                               var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1); 
+                               $('.duration_days').html(diffDays+' Days');
+                             });
+                           });
+                        </script>
+                        <input type="hidden" name="departure_date" id="departure_date" value="">
+                        @endif
+                        <input type="hidden" name="return_date" id="return_date" value="">
+                        </div>
                         @endif
                         @if($fields['traveller'] == 'on')
                               
@@ -194,7 +350,7 @@ $bg = $bgs[$k];
                               </div>
                            @endif
                         @endif
-
+                    
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
                               @php
@@ -239,49 +395,14 @@ $bg = $bgs[$k];
                               checkfamilyplan();
                               }
                            </script>
+                           
                         </div>
                         <div class="clear:both;"></div>
+                        
                      </div>
-                  </div>
-                  <div class="clear:both;"></div>
-                  <div class="col-md-2 pull-right" style="margin: 30px 0;">
-                     <button class="btn nextbtn" type="button" id="GET_QUOTES" onclick="$('.page_1').hide();$('.page_2').show('slow');" style="display: block;"> Next <i class="fa fa-arrow-circle-right"></i></button>
-                  </div>
-                  <script>
-                     $('html').click(function() {
-                         $('.ageandcitizen').fadeOut(300);
-                      })
-                     
-                      $('.agesdiv').click(function(e){
-                          e.stopPropagation();
-                      });
-                  </script>
-               </div>
-               <!-- PAGE ONE ENDED -->
-               <div class="page_2" style="display:none;">
-                  <div class="row" style="margin-bottom: 12px">
-                  @if(isset($fields['fname']))
-                     @if($fields['fname'] == "on" )
-                     <div class="col-md-4" style="margin-bottom:10px;">
-                     <input id="fname" name="fname" class="form-control" required type="text" placeholder="Your first name">
-                     </div>
-                     @endif
-                  @endif
-                  @if(isset($fields['lname']))
-                     @if($fields['lname'] == "on" )
-                     <div class="col-md-4" style="margin-bottom:10px;">
-                     <input  id="lname" name="lname" class="form-control" required type="text" placeholder="Your last name">
-                     </div>
-                     @endif
-                  @endif
-                  @if(isset($fields['email']))
-                     @if($fields['email'] == "on" )
-                     <div class="col-md-4" style="margin-bottom:10px;">
-                     <input  id="savers_email" name="savers_email" class="form-control" required type="email" placeholder="Your email address" style="float: none;padding: 0 10px !important;">
-                     </div>
-                     @endif
-                  @endif
-                  </div>
+               
+                  </div> --}}
+
                   <div class="row" style="margin-bottom: 12px">
                      @if(isset($fields['phone']))
                         @if($fields['phone'] == "on" )
@@ -338,71 +459,6 @@ $bg = $bgs[$k];
                            </div>
                         @endif
                      @endif
-                     <!---Destination country -->
-                     @if(isset($fields['Country']))
-                        @if($fields['Country'] == "on" )
-                           @if($data->pro_travel_destination == 'worldwide')
-                           <script>
-                              function CountryState(evt) {
-                                  if(evt.value=="Canada")
-                                  {
-                                      jQuery("#primary_destination_State_div").show();
-                                      jQuery("#usa_stop_div").hide();
-                                  }else if(evt.value=="United States")
-                                  {
-                                      jQuery("#primary_destination_State_div").hide();
-                                      jQuery("#usa_stop_div").hide();
-                                 }else
-                                 {
-                                     jQuery("#primary_destination_State_div").hide();
-                                      jQuery("#usa_stop_div").show();
-                                 }
-                              }
-                           </script>
-                           <div class="col-md-4">
-                              <select name="primary_destination" onchange="CountryState(this)" class="form-control form-select" id="primary_destination" aria-required="true" required>
-                                 @foreach(DB::table('countries')->get() as $r)
-                                 <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
-                                 @endforeach
-                              </select>
-                           </div>
-                           <div id="primary_destination_State_div">
-                              <div class="col-md-4" style="text-align: left; float:left;">
-                                 <select name="primary_destination_State" class="form-control form-select" id="primary_destination_State" autocomplete="off" required>
-                                    <option value=""> --- Primary destination in Canada ---</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                    <option value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </div>
-                           <div id="usa_stop_div" style="display:none;">
-                              <div class="col-md-4">
-                                 <select name="usa_stop" id="usa_stop" aria-invalid="false" class="form-control" required>
-                                 <?php  for($i=0;$i<=$allow_input_field['us_stop_days'];$i++): 
-                                    if($allow_input_field['us_stop_days'] == 0 ):
-                                     echo "<option selected='' value='0'>None</option>";
-                                     else:
-                                     echo  "<option value='$i'>$i days</option>";
-                                     endif;  
-                                    
-                                    endfor; ?>
-                                 </select>
-                              </div>
-                           </div>
-                           @else
-                           <div class="col-md-4">
-                              <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required>
-                                 <option value=""> --- Primary destination in Canada ---</option>
-                                 @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                    <option value="{{ $r->name }}">{{ $r->name }}</option>
-                                 @endforeach
-                              </select>
-                           </div>
-                           @endif
-                        @endif
-                     @endif
-                     <!-- Destination ends -->
                   </div>
                   <div class="clear:both;"></div>
                   <div class="col-md-12" style="margin: 50px 0;padding: 0;">

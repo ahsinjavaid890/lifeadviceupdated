@@ -61,11 +61,13 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                   <a href="http://localhost/lifeadviceupdated/life-insurance">  <img src="{{ asset('public/front/img/images/family.png') }}"> </a>
+                     <a href="{{url('life-insurance')}}">
+                       <img src="{{ asset('public/front/img/images/family.png') }}">
+                      </a>
                   
                   </div>
                   <div class="slider-heading">
-                     <a href="http://localhost/lifeadviceupdated/life-insurance">
+                     <a href="{{url('life-insurance')}}">
                         <h2><span>Life</span> Insurance</h2></a>
                        </div>
                   <div class="slider-pargraph">
@@ -78,12 +80,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <a href="http://localhost/lifeadviceupdated/critical-illness">  
+                     <a href="{{url('critical-illness')}}">
                            <img src="{{ asset('public/front/img/images/bed.png') }}">
                      </a>
                         </div>
                   <div class="slider-heading">
-                   <a href="http://localhost/lifeadviceupdated/critical-illness">  <h2><span>Critical Illness</span> Insurance</h2></a>
+                   <a href="{{url('critical-illness')}}">  <h2><span>Critical Illness</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>Critical illness insurance help to pay the costs associated with life-altering illnesses. If you become sick with an illness.</p>
@@ -95,12 +97,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <a href="http://localhost/lifeadviceupdated/desability">  
+                     <a href="{{url('desability')}}">
                             <img src="{{ asset('public/front/img/images/disability.png') }}">
                      </a>
                            </div>
                   <div class="slider-heading">
-                  <a href="http://localhost/lifeadviceupdated/desability">   <h2><span>Disability</span> Insurance</h2></a>
+                     <a href="{{url('desability')}}"><h2><span>Disability</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>We protect you in more ways than you’d think. We’ll include many coverages that do more than protect your physical structure.</p>
@@ -112,12 +114,12 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                     <a href="http://localhost/lifeadviceupdated/health-insurance">   
+                     <a href="{{url('health-insurance')}}">
                             <img src="{{ asset('public/front/img/images/health.png') }}">
                      </a>
                            </div>
                   <div class="slider-heading">
-                  <a href="http://localhost/lifeadviceupdated/health-insurance">   <h2><span>Health</span> Insurance</h2></a>
+                  <a href="{{url('health-insurance')}}">   <h2><span>Health</span> Insurance</h2></a>
                   </div>
                   <div class="slider-pargraph">
                      <p>Health Coverage Insurance is the easy, affordable way to protect you and your family from the growing list of health care.</p>
@@ -560,11 +562,12 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="http://localhost/lifeadviceupdated/super-visa-insurance"> 
+                              <a href="{{url('super-visa-insurance')}}">  
                                <img src="{{ asset('public/front/img/images/trip.png') }}"></a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="http://localhost/lifeadviceupdated/super-visa-insurance">    <h2>Super Visa Insurance</h2></a>
+                              <a href="{{url('super-visa-insurance')}}">   
+                                  <h2>Super Visa Insurance</h2></a>
                             </div>
                             <div class="transparent-card-paragraph">
                                <p>Super Visa Insurance is needed when you apply for a Super Visa for your family, parents or grand-parents.</p>
@@ -576,12 +579,12 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="http://localhost/lifeadviceupdated/visitor-insurance">   
+                              <a href="{{url('visitor-insurance')}}">       
                               <img src="{{ asset('public/front/img/images/bed.png') }}">
                               </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="http://localhost/lifeadviceupdated/visitor-insurance">     
+                              <a href="{{url('visitor-insurance')}}">     
                                   <h2>Visitor Insurance</h2>
                               </a>
                             </div>
@@ -600,12 +603,12 @@
                          <div class="card-body text-center">
                            
                             <div class="simple-online-transparent-slider">
-                              <a href="http://localhost/lifeadviceupdated/student-insurance">                           
+                              <a href="{{url('student-insurance')}}">                          
                               <img src="{{ asset('public/front/img/images/disability.png') }}">
                               </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="http://localhost/lifeadviceupdated/student-insurance">
+                              <a href="{{url('student-insurance')}}">
                                <h2>Student Insurance</h2>
                               </a>
                             </div>
@@ -619,12 +622,12 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="http://localhost/lifeadviceupdated/travel-insurance"> 
+                              <a href="{{url('travel-insurance')}}"> 
                                     <img src="{{ asset('public/front/img/images/health.png') }}">
                               </a>
                                  </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="http://localhost/lifeadviceupdated/travel-insurance"> 
+                              <a href="{{url('travel-insurance')}}"> 
                                  <h2>Travel Insurance</h2>
                               </a>
                               </div>
@@ -636,9 +639,9 @@
                    </div>
                    <div class="col-md-12">
                       <div class="find-all-products">
-                         <a href="product.php">
-                            <h3 class="d-flex"> Find all our products <img class="products-arrow" src="{{ asset('public/front/img/images/product-arrow.png') }}"> </h3>
-                         </a>
+                        
+                           <a href="{{url('product')}}">
+                            <h3 class="d-flex"> Find all our products <img class="products-arrow" src="{{ asset('public/front/img/images/product-arrow.png') }}"> </h3></a>
                       </div>
                    </div>
                 </div>

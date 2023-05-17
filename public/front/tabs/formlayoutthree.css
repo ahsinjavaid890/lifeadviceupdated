@@ -334,7 +334,7 @@ color: #4F596A;
 .nextbtn {
    background: #1BBC9B;
    color: #FFF;
-   padding: 10px 60px;
+   padding: 8px 47px;
 }
 .nextbtn:hover {
 background:#040E1F;
@@ -506,4 +506,12 @@ select{
    position: absolute;
    top: 80px;
    max-width: 60%;
+}
+#travelerheading{
+   color: #2b3481!important;
+   font-family: Open Sans,sans-serif!important;
+   font-size: 1rem;
+   line-height: 1.5rem;
+   font-weight: 800;
+   margin-top: 10px;
 }
