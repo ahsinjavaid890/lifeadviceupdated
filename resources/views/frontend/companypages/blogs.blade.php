@@ -3,11 +3,11 @@
 @section('content')
 @include('frontend.companypages.includes.mainblog')
 <style>
-    @media only screen and (min-width: 200px) and (max-width: 300px){
-  .mean-container a.meanmenu-reveal span {
-    top: 7px !important;
-    margin-top: -2px !important;
-}
+@media only screen and (min-width: 200px) and (max-width: 300px){
+      .mean-container a.meanmenu-reveal span {
+        top: 7px !important;
+        margin-top: -2px !important;
+    }
   }
   @media only screen and (min-width: 768px) and (max-width: 1000px){
 .mean-container a.meanmenu-reveal span {
@@ -20,7 +20,7 @@
 <div class="container-homepage">
     <div class="row">
         <div class="col-md-3 blogs-card">
-            <div class="card shadow " style="border-radius:16px;">
+            <div class="card shadow mobile-display-none" style="border-radius:16px;">
                 <div class="card-body p-0">
                     <div class="tabssidebar">
                         <style type="text/css">
@@ -53,7 +53,7 @@
                             <img src="{{ url('public/images') }}/{{ $r->image }}">
                          </div>
                          <div class="card-content">
-                            <h3>{{ $r->title }}</h3>
+                            <a href="{{ url('blog') }}/{{ $r->url}}"> <h3>{{ $r->title }}</h3></a>
                             @php
                              $blog_text = strip_tags($r->content);
                             @endphp

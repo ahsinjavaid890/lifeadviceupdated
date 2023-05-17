@@ -7435,6 +7435,16 @@ p {
     margin-top: 195px;
 }
 
+.product-arrow-div{
+    margin-top: 8px;
+    margin-right: 10px;
+}
+.tabssidebar{
+    padding-bottom: 20px;
+}
+.card-list-heading{
+    padding-bottom: 0px !important;
+}
 .glance-images {
     padding: 10px;
     background: #3c4e56;
@@ -13207,7 +13217,65 @@ a:hover {
 
 .blog_section {
     margin-top: 88px;
+    position: relative;
 }
+.blog_section .hero-content{
+    position: absolute;
+    left: 7%;
+    top: 20%;
+}
+.blog_section .hero-content .hero-heading{
+    color: #fff;
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+
+
+.blog_section .hero-content .hero-heading-info{
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer-subscribe-form{
+    display: flex;
+}
+.subscribe-input input{
+    padding: 10px;
+    color: white;
+    width: 500px;
+    background-color: #2b3481;
+    font-size: 14px;
+    border-color: white;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+
+.footer-subscribe-form .button-subscribe{
+    height: 40px px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    color: #2b3481;
+    border: 0;
+    transition: .3s ease-in-out;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    border-radius: 50px;
+    width: 120px;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-display-none{
+    display: none;
+  }
+}
+
+
 
 .coverage-amt form .row {
     padding: 10px;
@@ -15817,4 +15885,7 @@ ul .child-list li a {
     margin-top: 10px !important;
     margin-left: 15px;
   }
+}
+.product-arrow-div{
+    margin-top: 8px;
 }

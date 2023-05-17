@@ -3,17 +3,36 @@
 @php
     $firstsection = DB::table('travelpages')->where('url' , 'blogs')->first();
 @endphp
-<div class="health-inssurance-hero-banners super-hero">          
-    <div class="container-homepage">
-        <div class="row mb-3">
-            <div class="col-md-12 hero-images">
-                <div class="hero-image super-images" style=" background-image: url('{{ url('') }}/public/images/{{ $firstsection->main_image  }}');
-                    background-position: 50% 70%;
-                    background-size: 100%;
-                    background-repeat: no-repeat;">
-                </div>
-            </div>
-        </div>
+<style type="text/css">
+.step {
+    height: 100%;
+    background-color: #ffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+    width: 47%;
+    margin-top: 36px !important;
+    padding: 20px 30px;
+    text-align: left;
+}
+.health-inssurance-hero-banner {
+    background-color: #2b3481;
+}
+.ageandcitizen input:focus-visible {
+    outline: none;
+    border-bottom: 1px solid #bbb !important;
+}
+.ageandcitizen input {
+    border: 0 !important;
+    border-bottom: 1px solid #bbb !important;
+    width: 100% !important;
+    height: 20px;
+    padding: 0px;
+}
+</style>
+<div class="blog_section">
+    <div class="blo-img">
+        <img src="{{ url('public/images/1950687292.png') }}" class="blog_img">
     </div>
 </div>
 <section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
@@ -39,7 +58,7 @@
                         <ul class="parent-list nav  nav-tabs d-block" role="tablist">
                             @foreach(DB::table('blogcategories')->get() as $r)
                                 <li class="nav-item">
-                                    <a  class="nav-link @if($loop->first) active @endif" data-toggle="tab-{{$r->id}}" role="tab"href="{{ url('category') }}/{{ $r->url }}">{{ $r->name }}</a>
+                                    <a class="nav-link @if($category->url == $r->url) active @endif" data-toggle="tab-{{$r->id}}" role="tab"href="{{ url('category') }}/{{ $r->url }}">{{ $r->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -57,7 +76,7 @@
                                <img src="{{ url('public/images') }}/{{ $r->image }}">
                             </div>
                             <div class="card-content">
-                               <h3>{{ $r->title }}</h3>
+                               <a href="{{ url('blog') }}/{{ $r->url}}"> <h3>{{ $r->title }}</h3></a>
                                @php
                                 $blog_text = strip_tags($r->content);
                                @endphp
