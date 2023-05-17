@@ -82,7 +82,7 @@ $bg = $bgs[$k];
                             <div class="col-md-4" style="text-align: left; float:left;">
                                <select name="primary_destination_State" class="form-control form-select" id="primary_destination_State" autocomplete="off" required>
                                   <option value=""> --- Primary destination in Canada ---</option>
-                                  @foreach(DB::table('primary_destination_in_canada')->get() as $r)
+                                  @foreach(DB::table('primary_destination_in_canada')->get() as  $key=>$r)
                                   <option value="{{ $r->name }}">{{ $r->name }}</option>
                                   @endforeach
                                </select>
@@ -105,9 +105,12 @@ $bg = $bgs[$k];
                          @else
                          <div class="col-md-4">
                             <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required>
-                               <option value=""> --- Primary destination in Canada ---</option>
-                               @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                  <option value="{{ $r->name }}">{{ $r->name }}</option>
+                               <option value="" > --- Primary destination in Canada ---</option>
+                               @foreach(DB::table('primary_destination_in_canada')->get() as 
+                               $key => $r )
+                                  <option value="{{ $r->name }}" @if($key == 0) selected
+                                    
+                                  @endif>{{ $r->name }}</option>
                                @endforeach
                             </select>
                          </div>
@@ -173,32 +176,76 @@ $bg = $bgs[$k];
                      </div>
                      @endif
                   @endif
+          
+                     @if(isset($fields['smoked']))
+                        @if($fields['smoked'] == "on" )
+                           <div class="col-md-4" style="margin-bottom:10px;">
+                              <select class="form-control" name="traveller_Smoke" id="traveller_Smoke" required="">
+                                 <option value="">Traveller Smoke ?</option>
+                                 <option value="yes">Yes</option>
+                                 <option value="no">No</option>
+                              </select>
+                           </div>
+                        @endif
+                     @endif
+                     @if(isset($fields['phone']))
+                        @if($fields['phone'] == "on" )
+                           <div class="col-md-4" style="margin-bottom:10px;">
+                              <input id="phone" name="phone" size="" minlength="10" maxlength="10" class="form-control" placeholder="Your phone number" type="text" required  onkeyup="validatephone()">
+                           </div>
+                           <script>
+                              function validatephone(){
+                              var checkphone = document.getElementById('phone').value;
+                              document.getElementById('phone').value = checkphone.replace(/\D/g,'');
+                              if (checkphone.length < 10) {
+                              document.getElementById('phone_error').innerHTML = 'Must be 10 digits';
+                              document.getElementById('GET_QUOTES').disabled = true;   
+                              } else {
+                              document.getElementById('GET_QUOTES').disabled = false;  
+                              document.getElementById('phone_error').innerHTML = '';
+                              }
+                              }
+                           </script>
+                        @endif
+                     @endif
+                     @if(isset($fields['traveller_gender']))
+                        @if($fields['traveller_gender'] == "on" )
+                           <div class="col-md-4" style="margin-bottom:10px;">
+                              <select class="form-control" name="old_traveller_gender" id="old_traveller_gender" required="">
+                                 <option value="">Gender of Oldest Traveler</option>
+                                 <option value="male">Male</option>
+                                 <option value="female">Female</option>
+                              </select>
+                           </div>
+                        @endif
+                     @endif
+                     @if(isset($fields['gender']))
+                        @if($fields['gender'] == "on" )
+                           <div class="col-md-4" style="margin-bottom:10px;">
+                              <select class="form-control" name="gender" id="gender" required="" style="float:none;">
+                                 <option value="">Gender</option>
+                                 <option value="male">Male</option>
+                                 <option value="female">Female</option>
+                              </select>
+                           </div>
+                        @endif
+                     @endif
+                 
                      @if(isset($fields['dob']) && $fields['dob'] == "on" )
                         @php
                            $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
                            $c = 0;
                         @endphp
                         @for($i=1;$i<=$number_of_travel;$i++)
-                        <div style="display: none; padding:0px !important" id="traveler{{ $i }}" class="no_of_travelers col-md-12 ">
-                           <div class="row" style="">
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label style="font-size: 16px;" for="year{{$i}}" class="text-white form-control">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
-                           </div>
-                        </div>
-                              <div class="col-md-4">
+                        <div style="display: none; " id="traveler{{ $i }}" class="no_of_travelers col-md-12 ">
+                           <div class="row" >
+                              <div class="col-md-6" style="padding:0px !important">
                               <div class="form-group ">
-                                 <input id="dateofbirthfull{{$i}}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" onchange="birthdate()">
-                                 <script>
-                                    $('#dateofbirthfull').datepicker({
-                                    format: 'yyyy-mm-dd',
-                                    todayHighlight:'TRUE',
-                                    autoclose: true,
-                                    });
-                                 </script>
+                                 <input id="dateofbirthfull{{$i}}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" >
+                  
                               </div>
                            </div>
-                                 <div style="padding-right: 0px;" class="col-md-4 ">
+                                 <div style="padding-right: 0px;" class="col-md-6 ">
                                     <div class="form-group">
                                        <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
                                           <option value="">Select Pre Existing Condition</option>
@@ -416,63 +463,7 @@ $bg = $bgs[$k];
                
                   </div> --}}
 
-                  <div class="row" style="margin-bottom: 12px">
-                     @if(isset($fields['phone']))
-                        @if($fields['phone'] == "on" )
-                           <div class="col-md-4" style="margin-bottom:10px;">
-                              <input id="phone" name="phone" size="" minlength="10" maxlength="10" class="form-control" placeholder="Your phone number" type="text" required  onkeyup="validatephone()">
-                           </div>
-                           <script>
-                              function validatephone(){
-                              var checkphone = document.getElementById('phone').value;
-                              document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                              if (checkphone.length < 10) {
-                              document.getElementById('phone_error').innerHTML = 'Must be 10 digits';
-                              document.getElementById('GET_QUOTES').disabled = true;   
-                              } else {
-                              document.getElementById('GET_QUOTES').disabled = false;  
-                              document.getElementById('phone_error').innerHTML = '';
-                              }
-                              }
-                           </script>
-                        @endif
-                     @endif
-                     @if(isset($fields['traveller_gender']))
-                        @if($fields['traveller_gender'] == "on" )
-                           <div class="col-md-4" style="margin-bottom:10px;">
-                              <select class="form-control" name="old_traveller_gender" id="old_traveller_gender" required="">
-                                 <option value="">Gender of Oldest Traveler</option>
-                                 <option value="male">Male</option>
-                                 <option value="female">Female</option>
-                              </select>
-                           </div>
-                        @endif
-                     @endif
-                     @if(isset($fields['gender']))
-                        @if($fields['gender'] == "on" )
-                           <div class="col-md-4" style="margin-bottom:10px;">
-                              <select class="form-control" name="gender" id="gender" required="" style="float:none;">
-                                 <option value="">Gender</option>
-                                 <option value="male">Male</option>
-                                 <option value="female">Female</option>
-                              </select>
-                           </div>
-                        @endif
-                     @endif
-                  </div>
-                  <div class="row" style="margin-bottom: 12px">
-                     @if(isset($fields['smoked']))
-                        @if($fields['smoked'] == "on" )
-                           <div class="col-md-4" style="margin-bottom:10px;">
-                              <select class="form-control" name="traveller_Smoke" id="traveller_Smoke" required="">
-                                 <option value="">Traveller Smoke ?</option>
-                                 <option value="yes">Yes</option>
-                                 <option value="no">No</option>
-                              </select>
-                           </div>
-                        @endif
-                     @endif
-                  </div>
+          
                   <div class="clear:both;"></div>
                   <div class="col-md-12" style="margin: 50px 0;padding: 0;">
                      <div class="row">
@@ -570,25 +561,6 @@ $("#birthday_view").html(aa);
 
 </script>
 <script type="text/javascript">
- function birthdate(){
-   window.setTimeout(function(){    
-    var tt = document.getElementById('dateofbirthfull').value;
-    var date = new Date(tt);
-    var newdate = new Date(date);
-    newdate.setDate(newdate.getDate() + 364);
-    var dd = newdate.getDate();
-    var mm = newdate.getMonth() + 1;
-    var y = newdate.getFullYear();
-    if(mm <= 9){
-    var mm = '0'+mm;    
-    }
-    if(dd <= 9){
-    var dd = '0'+dd;    
-    }
-    //var someFormattedDate = mm + '/' + dd + '/' + y;
-    var someFormattedDate = mm + '/' + dd + '/' + y;
-   }, 1000);
-   }
    function supervisayes(){
 //window.setTimeout(function(){  
    var tt = document.getElementById('departure_date').value;
