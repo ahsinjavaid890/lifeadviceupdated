@@ -17,7 +17,7 @@
 }
   }
 </style>
-<section class="products ptb-100">
+<section class="products ptb-30">
     <div class="container">
       <div class="row align-items-center">
         @if($r->show_on == 'Left')
