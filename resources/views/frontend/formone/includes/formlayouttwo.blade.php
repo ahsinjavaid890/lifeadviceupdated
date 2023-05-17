@@ -358,7 +358,7 @@ $bg = $bgs[$k];
                      @if(array_search("id_12",$orderdata) == $orderi)
                       @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                             
+            
                                  <div class="col-md-6">
                                  <label style="font-size: 16px;  for="" class="text-white">Do you require Family Plan ?</label>
                                  <div class="custom-form-control">
@@ -410,11 +410,7 @@ $bg = $bgs[$k];
                          @endif
                         @endfor 
                   </div>
-                    
-                     
-               
-                     
-                    
+      
                      
                   <div class="col-md-12" style="clear: both;">
                      <span id="family_error" style="display: none; text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>

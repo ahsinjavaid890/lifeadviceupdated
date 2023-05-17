@@ -159,33 +159,7 @@ $bg = $bgs[$k];
                            </select>
                         </div>
                      </div>
-                     @if(isset($fields['dob']) && $fields['dob'] == "on" )
-                        @php
-                           $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-                           $c = 0;
-                        @endphp
-                        @for($i=1;$i<=$number_of_travel;$i++)
-                        <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-4">
-                                    <div class="form-group">
-                                       <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                    </div>
-                                 <div style="padding-right: 0px;" class="col-md-4 ">
-                                    <div class="form-group">
-                                       <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
-                                          <option value="">Select Pre Existing Condition</option>
-                                          <option value="yes">Yes</option>
-                                          <option value="no">No</option>
-                                        </select>
-                                    </div>
-                                 </div>
-                              </div>
-                       
-                        @endfor
-                  @endif
-                  @endif
-                  @endif
-
-                  @if(isset($fields['fname']))
+                     @if(isset($fields['fname']))
                      @if($fields['fname'] == "on" )
                      <div class="col-md-4" style="margin-bottom:10px;">
                      <input id="fname" name="fname" class="form-control" required type="text" placeholder="Your first name">
@@ -199,6 +173,48 @@ $bg = $bgs[$k];
                      </div>
                      @endif
                   @endif
+                     @if(isset($fields['dob']) && $fields['dob'] == "on" )
+                        @php
+                           $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                           $c = 0;
+                        @endphp
+                        @for($i=1;$i<=$number_of_travel;$i++)
+                        <div style="display: none; padding:0px !important" id="traveler{{ $i }}" class="no_of_travelers col-md-12 ">
+                           <div class="row" style="">
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label style="font-size: 16px;" for="year{{$i}}" class="text-white form-control">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
+                           </div>
+                        </div>
+                              <div class="col-md-4">
+                              <div class="form-group ">
+                                 <input id="dateofbirthfull{{$i}}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" onchange="birthdate()">
+                                 <script>
+                                    $('#dateofbirthfull').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    todayHighlight:'TRUE',
+                                    autoclose: true,
+                                    });
+                                 </script>
+                              </div>
+                           </div>
+                                 <div style="padding-right: 0px;" class="col-md-4 ">
+                                    <div class="form-group">
+                                       <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
+                                          <option value="">Select Pre Existing Condition</option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        @endfor
+                  @endif
+                  @endif
+                  @endif
+
+       
                   
                   </div>
                   {{-- <div class="col-md-4 agesdiv" id="agesdiv">
@@ -555,6 +571,25 @@ $("#birthday_view").html(aa);
 
 </script>
 <script type="text/javascript">
+ function birthdate(){
+   window.setTimeout(function(){    
+    var tt = document.getElementById('dateofbirthfull').value;
+    var date = new Date(tt);
+    var newdate = new Date(date);
+    newdate.setDate(newdate.getDate() + 364);
+    var dd = newdate.getDate();
+    var mm = newdate.getMonth() + 1;
+    var y = newdate.getFullYear();
+    if(mm <= 9){
+    var mm = '0'+mm;    
+    }
+    if(dd <= 9){
+    var dd = '0'+dd;    
+    }
+    //var someFormattedDate = mm + '/' + dd + '/' + y;
+    var someFormattedDate = mm + '/' + dd + '/' + y;
+   }, 1000);
+   }
    function supervisayes(){
 //window.setTimeout(function(){  
    var tt = document.getElementById('departure_date').value;
