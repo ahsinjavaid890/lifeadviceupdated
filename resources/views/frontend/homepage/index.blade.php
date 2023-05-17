@@ -11,7 +11,7 @@
     <h2 class="wow fadeInUp" data-wow-delay=".4s">Life insurance made easy</h2>
     <h5 class="nerdy-pen__text mt-4"><span  class="txt-rotate" data-period="2000"data-rotate='[ "Pay Off Any Debts.", "Add Financial Security.", "Plan a Sweet Home.", "Make your Kids Future Bright." ]'> </span></h5>
     <div class="homepage-hero-btn mt-4">
-       <a href= "#" class="btn btn-lg">Get Instant Quote</a>
+       <a href="{{ url('life-insurance') }}" class="btn btn-lg get-instant-quote">Get Instant Quote</a>
     </div>
  </div>
 </div>
@@ -51,7 +51,7 @@
 <section class="card-slide">
    <div class="container-homepage">
    <div class="section-title section-title-five">
-      <h2 class="text-dark">Simple. Online. Transparent.</h2>
+      <h2 class="text-dark">Simple Online Transparent</h2>
       <h5 style="font-weight: 400;">Buying insurance has never been this simple (and enjoyable)!</h5>
    </div>
    <div class="wrapper">
@@ -562,11 +562,11 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="{{url('super-visa-insurance')}}">  
+                              <a href="{{url('product/super-visa-insurance')}}">  
                                <img src="{{ asset('public/front/img/images/trip.png') }}"></a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="{{url('super-visa-insurance')}}">   
+                              <a href="{{url('product/super-visa-insurance')}}">   
                                   <h2>Super Visa Insurance</h2></a>
                             </div>
                             <div class="transparent-card-paragraph">
@@ -579,12 +579,12 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="{{url('visitor-insurance')}}">       
+                              <a href="{{url('product/visitor-insurance')}}">       
                               <img src="{{ asset('public/front/img/images/bed.png') }}">
                               </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="{{url('visitor-insurance')}}">     
+                              <a href="{{url('product/visitor-insurance')}}">     
                                   <h2>Visitor Insurance</h2>
                               </a>
                             </div>
@@ -603,12 +603,12 @@
                          <div class="card-body text-center">
                            
                             <div class="simple-online-transparent-slider">
-                              <a href="{{url('student-insurance')}}">                          
+                              <a href="{{url('product/student-insurance')}}">                          
                               <img src="{{ asset('public/front/img/images/disability.png') }}">
                               </a>
                             </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="{{url('student-insurance')}}">
+                              <a href="{{url('product/student-insurance')}}">
                                <h2>Student Insurance</h2>
                               </a>
                             </div>
@@ -622,12 +622,12 @@
                       <div class="card transparent-card">
                          <div class="card-body text-center">
                             <div class="simple-online-transparent-slider">
-                              <a href="{{url('travel-insurance')}}"> 
+                              <a href="{{url('product/travel-insurance')}}"> 
                                     <img src="{{ asset('public/front/img/images/health.png') }}">
                               </a>
                                  </div>
                             <div class="transparent-card-heading mt-3">
-                              <a href="{{url('travel-insurance')}}"> 
+                              <a href="{{url('product/travel-insurance')}}"> 
                                  <h2>Travel Insurance</h2>
                               </a>
                               </div>
@@ -641,7 +641,12 @@
                       <div class="find-all-products">
                         
                            <a href="{{url('product')}}">
-                            <h3 class="d-flex"> Find all our products <img class="products-arrow" src="{{ asset('public/front/img/images/product-arrow.png') }}"> </h3></a>
+                            <h3 class="d-flex"> 
+                              <div class="product-arrow-div">
+                                 Find all our products 
+                              </div>
+                              <img class="products-arrow" src="{{ asset('public/front/img/images/product-arrow-two.png') }}"> </h3>
+                           </a>
                       </div>
                    </div>
                 </div>

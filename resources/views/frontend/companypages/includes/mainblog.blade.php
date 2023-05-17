@@ -30,6 +30,20 @@
     $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
 <div class="blog_section">
+    <div  class="hero-content">
+       <h1  class="heading-2 hero-heading">Expert Tips</h1>
+       <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration. </p>
+       <div  class="hero-subscribe">
+          <form novalidate="novalidate" class="v-form footer-subscribe-form">
+             <div class="subscribe-input">
+                 <input type="text" name="">
+             </div>
+             <button class="button button-rounded button-white button-subscribe">
+                <!----><span>Subscribe</span>
+             </button>
+          </form>
+       </div>
+    </div>
     <div class="blo-img">
         <img src="{{ url('') }}/public/images/{{ $firstsection->main_image  }}" class="blog_img">
     </div>
