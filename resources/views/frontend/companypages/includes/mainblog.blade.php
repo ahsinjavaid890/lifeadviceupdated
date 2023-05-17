@@ -30,7 +30,8 @@
     $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
 <div class="blog_section">
-    <div  class="hero-content">
+    @if($url == 'blogs')
+    <div class="hero-content">
        <h1  class="heading-2 hero-heading">Expert Tips</h1>
        <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration. </p>
        <div  class="hero-subscribe">
@@ -53,11 +54,21 @@
              @enderror
              </div>
              <button class="button button-rounded button-white button-subscribe">
-                <!----><span>Subscribe</span>
+                <span>Subscribe</span>
              </button>
           </form>
        </div>
     </div>
+    @endif
+    @if($url == 'product')
+    <style type="text/css">
+        
+    </style>
+    <div class="hero-content">
+       <h1  class="heading-2 hero-heading">Our Insurance <br> Products</h1>
+       <p  class="hero-heading-info">No matter where your next adventure takes you, make sure you’re covered for<br> the unexpected. With VisitorsCoverage, you’ll find the right insurance<br> for the way you travel.</p>
+    </div>
+    @endif
     <div class="blo-img">
         <img src="{{ url('') }}/public/images/{{ $firstsection->main_image  }}" class="blog_img">
     </div>
