@@ -15,6 +15,7 @@ use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\blogcategories;
 use App\Models\contactus_messages; 
+use App\Models\newsletter; 
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
@@ -412,4 +413,33 @@ class SiteController extends Controller
         $company = companies::where('id' , $jobs->company_id)->get()->first();
         return view('frontend.jobs.index')->with(array('data'=>$jobs,'company'=>$company,'hirring'=>$hirring));
     }
+    public function newsletter(Request $request)
+{
+
+       $validated = $request->validate([
+        'email' => 'required|email|max:255,',
+        ]);
+        $email = DB::table('news_letters')->where('email','=',$request->email)->first();
+       if($email == null)
+       {
+           $data  = new NewsLetter();
+           $data->email = $request->email;
+           $data->save();
+           return back()->with('message','Email saved succesfully');
+       }
+       return back()->with('error','Email Already Exist');
 }
+    public function viewLetters()
+{   
+    $users = DB::table('news_letters')->select('id','email')->get();
+    return view('admin/contact/newsletter',compact('users'));
+      
+}
+public function deleteletters($id)
+{
+    DB::table('news_letters')->where('id' , $id)->delete();
+    return redirect()->back()->with('message', 'Letter Deleted Successfully');
+}
+}
+
+

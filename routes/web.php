@@ -70,7 +70,9 @@ Route::get('/privacypolicy', [SiteController::class, 'privacypolicy']);
 Route::get('/blogs', [SiteController::class, 'blogs']);
 Route::get('/faq', [SiteController::class, 'faq']);
 Route::get('/login', [SiteController::class, 'login']);
-
+Route::post('/expertip',[SiteController::class , 'newsletter'])->name('news_letter');
+Route::get('/all/newsletters',[SiteController::class , 'viewLetters'])->name('view_news');
+Route::get('/delete/letters/{id}',[SiteController::class , 'deleteLetters'])->name('deletenews');
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
 Route::get('/compareplans', [SiteController::class, 'compareplans']);

@@ -34,9 +34,23 @@
        <h1  class="heading-2 hero-heading">Expert Tips</h1>
        <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration. </p>
        <div  class="hero-subscribe">
-          <form novalidate="novalidate" class="v-form footer-subscribe-form">
-             <div class="subscribe-input">
-                 <input type="text" name="">
+          <form novalidate="novalidate" action="{{route('news_letter')}}" class="v-form footer-subscribe-form" method="POST">
+            @csrf
+            <div class="subscribe-input">
+                 <input type="text" name="email" >
+                 @if(Session::Has('message'))
+                    <div class="text-success">
+                        {{  Session::get('message')}}
+                    </div>
+                 @endif
+                 @if(Session::Has('error'))
+                    <div class="text-danger">
+                        {{  Session::get('error')}}
+                    </div>
+                 @endif
+                 @error('email')
+                 <div class="text-danger">{{ $message }}</div>
+             @enderror
              </div>
              <button class="button button-rounded button-white button-subscribe">
                 <!----><span>Subscribe</span>
