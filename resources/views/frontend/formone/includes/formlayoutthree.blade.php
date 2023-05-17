@@ -213,9 +213,6 @@ $bg = $bgs[$k];
                   @endif
                   @endif
                   @endif
-
-       
-                  
                   </div>
                   {{-- <div class="col-md-4 agesdiv" id="agesdiv">
                      <button class="btn btn-default agesbtn form-control" type="button" onclick="$('.ageandcitizen').fadeIn(300);">Ages and Details <i class="fa fa-caret-down"></i></button>
@@ -478,13 +475,15 @@ $bg = $bgs[$k];
                   </div>
                   <div class="clear:both;"></div>
                   <div class="col-md-12" style="margin: 50px 0;padding: 0;">
+                     <div class="row">
                      <div class="col-md-5 col-xs-12" style="padding: 0;">
                         <button class="btn btn-default" style="padding: 5px 40px; font-weight: bold; font-size: 16px; display: block;border-radius: 50px;  color:#333 !important;background: #FFF !important;box-shadow: none !important; margin-bottom:10px;" id="backbtn" type="button" onclick="$('.page_1').show();$('.page_2').hide('slow');"><i class="fa fa-arrow-circle-left"></i> Back</button>
                      </div>
                      <div class="col-md-7 col-xs-12" style="padding: 0;">
-                        <button type="submit" id="getquote" style="font-size:16px;" class="btn nextbtn pull-right"> Continue <i class="fa fa-arrow-circle-right"></i></button>
+                        <button type="submit" id="getquote" style="font-size:16px;" class="btn nextbtn float-right"> Continue <i class="fa fa-arrow-circle-right"></i></button>
                      </div>
-                  </div>
+                  </div> 
+               </div>
                </div>
                <span id="family_error" class="col-md-12" style="display: none; font-size: 16px;font-weight: bold;text-align: left;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span><br>
                <input type="hidden" name="broker" value="">     
