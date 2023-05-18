@@ -43,7 +43,7 @@
                         </div>
                         <div class="product-btn text-right mt-3">
                            <a href="{{ url('') }}/{{ $p->redirect_from_url }}">
-                              <button class="btn btn-sm">Learn More</button>
+                              <button class="btn btn-sm learn-more">Learn More</button>
                            </a>
                         </div>
                      </div>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="product-btn text-right mt-3">
                            <a href="{{ url('') }}/{{ $p->redirect_from_url }}">
-                              <button class="btn btn-sm">Learn More</button>
+                              <button class="btn btn-sm learn-more">Learn More</button>
                            </a>
                         </div>
                      </div>

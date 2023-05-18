@@ -52,11 +52,6 @@
               @error('email')
               <div class="text-danger">{{ $message }}</div>
           @enderror
-             </div>
-             <button class="button button-rounded button-white button-subscribe">
-                <span>Subscribe</span>
-             </button>
-          </form>
        </div>
     </div>
     @endif
