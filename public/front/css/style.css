@@ -10953,6 +10953,7 @@ section {
         padding-left: 0;
         margin-right: 0;
         margin-left: 0;
+        padding-top: 40px;
     }
 
     .fixed-top {
@@ -12416,7 +12417,9 @@ ul.tabs li.current {
     .text-section .herrotext h2 {
         font-size: 12px !important;
     }
-
+    .slider-card{
+        height: 100%;
+    }
     .mobile-nav.mean-container .mean-nav {
         margin-top: 60px !important;
     }
@@ -12469,7 +12472,7 @@ ul.tabs li.current {
     }
 
     .slider-heading h2 span {
-        font-size: 22px !important;
+        font-size: 17px !important;
     }
 
     .calculate-heading h2 span {
@@ -15903,9 +15906,6 @@ ul .child-list li a {
     margin-top: 8px;
 }
 @media only screen and (min-width:250px) and (max-width:760px) {
-    .container-blog {
-        padding-top: 40px;
-    }
     .company-container{
         padding-top: 200px;
     }
@@ -15930,6 +15930,9 @@ ul .child-list li a {
     .card-content h3 {
         font-size: 15px;
     }
+    .blank-card {
+        height: 100%;
+     }
     }
     @media only screen and (min-width:901px) and (max-width:1000px) {
         .blank-card {
@@ -15950,3 +15953,4 @@ ul .child-list li a {
             
         }
     }}}
+    
