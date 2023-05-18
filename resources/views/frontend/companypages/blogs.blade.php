@@ -17,7 +17,7 @@
   }
 </style>
 <section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
-<div class="container-homepage">
+<div class="container-homepage container-blog">
     <div class="row">
         <div class="col-md-3 blogs-card">
             <div class="card shadow mobile-display-none" style="border-radius:16px;">
