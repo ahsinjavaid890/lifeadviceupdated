@@ -24,7 +24,7 @@
         height: 20px;
         padding: 0px;
     }
-    / responsive /
+    /* / responsive / */
     @media only screen and (min-width: 350px) and (max-width:379px){
         .subscribe-input input {
             padding: 0 12px;
@@ -61,6 +61,9 @@
             padding: 0 12px;
             width: 100%;
         }
+        .footer-subscribe-form .button-subscribe {
+            height: 28px;
+        }
     }
     @media only screen and (min-width: 761px) and (max-width:800px){
         .blog_section .hero-content .hero-heading-info {
@@ -80,6 +83,9 @@
         .subscribe-input input {
             padding: 0 12px;
             width: 300px;
+        }
+        .footer-subscribe-form .button-subscribe {
+            height: 29px;
         }
     }
     @media only screen and (min-width: 801px) and (max-width:901px){

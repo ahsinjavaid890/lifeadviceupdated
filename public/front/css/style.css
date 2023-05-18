@@ -10953,6 +10953,7 @@ section {
         padding-left: 0;
         margin-right: 0;
         margin-left: 0;
+        padding-top: 40px;
     }
 
     .fixed-top {
@@ -15903,9 +15904,6 @@ ul .child-list li a {
     margin-top: 8px;
 }
 @media only screen and (min-width:250px) and (max-width:760px) {
-    .container-blog {
-        padding-top: 40px;
-    }
     .company-container{
         padding-top: 200px;
     }
@@ -15930,6 +15928,9 @@ ul .child-list li a {
     .card-content h3 {
         font-size: 15px;
     }
+    .blank-card {
+        height: 100%;
+     }
     }
     @media only screen and (min-width:901px) and (max-width:1000px) {
         .blank-card {
@@ -15950,3 +15951,4 @@ ul .child-list li a {
             
         }
     }}}
+    
