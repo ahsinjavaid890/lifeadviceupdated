@@ -15,8 +15,61 @@
     margin-top: -2px !important;
 }
   }
+  @media only screen and (min-width:1000px) and (max-width:1100px) {
+.card-responsive {
+    height: 100% !important;
+ }
+}
+@media only screen and (min-width:1200px) and (max-width:1300px) {
+    .card-responsive{
+        height: 470px;
+     }
+    }
+    @media only screen and (min-width:761px) and (max-width:900px) {
+    .card-responsive p {
+    font-size: 12px ; 
+    }
+    .card-responsive .card-content h3 {
+        font-size: 15px;
+    }
+    .chooses-blogs-responsive {
+    margin-top: 0px !important;
+}
+    }
+    @media only screen and (min-width:901px) and (max-width:1000px) {
+        .card-responsive {
+            height: 460px;
+        }
+        .chooses-blogs-responsive {
+    margin-top: 0px !important;
+}
+    }
+    @media only screen and (min-width: 2000px) and (max-width:2100px){
+        .card-responsive .card-content h3 {
+            font-size: 23px;
+        }
+        .card-responsive p {
+            font-size: 17px;
+        }
+    }
+    @media only screen and (min-width:201px) and (max-width:300px) {
+        .card-responsive {
+            height: 100% ;
+        }
+        .blog-responsive{
+            margin-top: 72px;
+        }
+    }
+    @media only screen and (max-width: 700px){
+.chooses-blogs-responsive {
+    margin-top: 90px !important;
+}
+}
+    .card-responsive{
+        height: 100%;
+    }
 </style>
-<section class="chooses-blogs choose-us-area-five pb-70" style="background-color:#f4f7fa;">
+<section class="chooses-blogs chooses-blogs-responsive choose-us-area-five pb-70" style="background-color:#f4f7fa;">
 <div class="container-homepage container-blog">
     <div class="row">
         <div class="col-md-3 blogs-card">
@@ -47,7 +100,7 @@
             <div class="row">
                @foreach($data as $r)
                 <div class="col-md-4 mb-3 @if($loop->first) active @endif">
-                 <div class="card blank-card">
+                 <div class="card blank-card card-responsive">
                       <div class="card-body">
                          <div class="blog-image-card">
                             <img src="{{ url('public/images') }}/{{ $r->image }}">

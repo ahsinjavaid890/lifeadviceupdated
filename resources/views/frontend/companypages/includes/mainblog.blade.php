@@ -46,13 +46,16 @@
     @media only screen and (min-width: 270px) and (max-width:760px){
         .blog_section .hero-content {
             left: 0%;
-            top: 100% ;
+            top: 95% ;
             background-color: #2b3481;
-            padding:20px 10px 20px 10px;
+            padding:0 10px 20px 10px;
             width: 100%;
         }
         .blog_section .hero-content .hero-heading {
             font-size: 1.5rem;
+            position: absolute;
+            bottom: 110px;
+            line-height: 30px;
         }
         .blog_section .hero-content .hero-heading-info {
             font-size: 12px;
@@ -87,6 +90,9 @@
         .footer-subscribe-form .button-subscribe {
             height: 29px;
         }
+        .blog-responsive{
+            margin-top: 70px;
+        }
     }
     @media only screen and (min-width: 801px) and (max-width:901px){
         .blog_section .hero-content .hero-heading-info {
@@ -113,6 +119,9 @@
     .subscribe-input input {
             padding: 0 12px;
             width: 350px;
+        }
+        .blog-responsive{
+            margin-top: 70px;
         }
     }
     @media only screen and (min-width: 1000px) and (max-width:1050px){
@@ -237,7 +246,7 @@
     $url = request()->segment(count(request()->segments()));
     $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
-<div class="blog_section">
+<div class="blog_section blog-responsive">
     @if($url == 'blogs')
     <div class="hero-content">
        <h1  class="heading-2 hero-heading">Expert Tips</h1>

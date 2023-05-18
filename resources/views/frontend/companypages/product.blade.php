@@ -16,8 +16,13 @@
     margin-top: -2px !important;
 }
   }
+  @media only screen and (min-width: 200px) and (max-width: 760px){
+ .section-padding{
+    padding-top: 110px !important;
+}
+  }
 </style>
-<section class="products ptb-30">
+<section class="products ptb-30 section-padding">
     <div class="container">
       <div class="row align-items-center">
         @if($r->show_on == 'Left')
