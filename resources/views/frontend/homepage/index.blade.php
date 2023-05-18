@@ -775,13 +775,14 @@
     <div class="row">
        <div class="col-md-4" style="margin-top: 230px;">
           <div class="buyer-heading">
-             <h2><span>Protect What  </span>Matters Most</h2>
+             <h2><span>Expert Tips </span></h2>
           </div>
           <div class="buyer-paragraph">
-             <p>Get expert advice on your insurance questions. Our blog answers common FAQs that help you keep informed about insurance and what you need to stay covered.</p>
+             <p>Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration.
+             </p>
           </div>
           <div class="buyer-link">
-             <a href="blogs.php" style="color: #55cbb3;">Find out more <i class="fa fa-arrow-right"></i></a>
+             <a href="{{url('/blogs')}}" style="color: #55cbb3;">Find out more <i class="fa fa-arrow-right"></i></a>
           </div>
        </div>
        <div class="col-md-8">
