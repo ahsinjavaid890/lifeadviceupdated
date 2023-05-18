@@ -13262,7 +13262,8 @@ a:hover {
 
 
 .footer-subscribe-form .button-subscribe{
-    height: 40px px;
+    height: 54px;
+    max-height: 60px;
     font-size: 14px;
     font-weight: 700;
     line-height: 18px;

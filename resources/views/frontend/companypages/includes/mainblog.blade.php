@@ -40,18 +40,18 @@
             <div class="subscribe-input">
                  <input type="text" name="email" >
                  @if(Session::Has('message'))
-                    <div class="text-success">
-                        {{  Session::get('message')}}
-                    </div>
-                 @endif
-                 @if(Session::Has('error'))
-                    <div class="text-danger">
-                        {{  Session::get('error')}}
-                    </div>
-                 @endif
-                 @error('email')
-                 <div class="text-danger">{{ $message }}</div>
-             @enderror
+                 <div class="text-success" id="success-message">
+                     {{  Session::get('message')}}
+                 </div>
+              @endif
+              @if(Session::Has('error'))
+                 <div class="text-danger">
+                     {{  Session::get('error')}}
+                 </div>
+              @endif
+              @error('email')
+              <div class="text-danger">{{ $message }}</div>
+          @enderror
              </div>
              <button class="button button-rounded button-white button-subscribe">
                 <span>Subscribe</span>

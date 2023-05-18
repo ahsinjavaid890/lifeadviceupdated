@@ -35,7 +35,7 @@
                                 </td>
 
                                <td>
-                                   <a class="btn btn-danger btn-sm" href="{{ url('delete/letters') }}/{{ $r->id }}"><i class="fa fa-trash"></i> Delete Message</a>
+                                   <a class="btn btn-danger btn-sm" href="{{ url('delete/letters') }}/{{ $r->id }}"><i class="fa fa-trash"></i> Delete</a>
                                </td>
                             </tr>
                         @endforeach
