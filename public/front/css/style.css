@@ -10953,7 +10953,7 @@ section {
         padding-left: 0;
         margin-right: 0;
         margin-left: 0;
-        padding-top: 40px;
+        /* padding-top: 10px; */
     }
 
     .fixed-top {
@@ -15907,7 +15907,6 @@ ul .child-list li a {
 .product-arrow-div{
     margin-top: 8px;
 }
-
 
 
 

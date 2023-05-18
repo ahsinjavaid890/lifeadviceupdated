@@ -18,7 +18,7 @@
   }
   @media only screen and (min-width: 200px) and (max-width: 760px){
  .section-padding{
-    padding-top: 265px !important;
+    padding-top: 110px !important;
 }
   }
 </style>
