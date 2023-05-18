@@ -1733,4 +1733,13 @@
     }
 }
 
+@media (max-width:496px) and (min-width:292px) {
+ #card-details-reverse{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 5px;
+ }
+
+}
+
 /*# sourceMappingURL=responsive.css.map */

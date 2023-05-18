@@ -130,11 +130,6 @@ $('.coverage-amt-'+group).hide();
         });
         $("#main").html(divList);
     });
-
-
-
-
-
     function slideadditionaltravelers(id) {
         var text = $('#changeshowtoless'+id).text();
         if(text == ' Show Details')
