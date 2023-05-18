@@ -354,7 +354,7 @@
                             <fieldset>
                             	<div class="row">
 									<div class="col-md-4">
-										<div class="container preload">
+										<div class="form-container preload">
 									        <div class="creditcard">
 									            <div class="front">
 									                <div id="ccsingle"></div>
@@ -457,13 +457,13 @@
 								    	<div class="form-container">
 											<div class="row mt-5">
 												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
+													<div class="custom-form-control positionrelative mb-3">
 								                    	<label class="selectlabeldateofbirth">Name</label>
 								                        <input onkeydown="return /[a-z]/i.test(event.key)" name="cardholdername" id="name" maxlength="20" type="text" class="input" >
 								                    </div>
 												</div>
 												<div class="col-md-6">
-													<div class="custom-form-control positionrelative">
+													<div class="custom-form-control positionrelative mb-3">
 								                    	<label class="selectlabeldateofbirth" id="generatecard">Card Number</label>
 								                        <input class="input"  name="cardholdernumber" id="cardnumber"  type="text" inputmode="numeric" >
 										           	 <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -471,8 +471,8 @@
 										            </svg>
 								                    </div>
 												</div>
-											</div>
-											<div class="row mt-5">
+											
+										
 												<div class="col-md-6">
 													<div class="custom-form-control positionrelative">
 								                    	<label class="selectlabeldateofbirth">Expiration (mm/yy)</label>
@@ -489,7 +489,7 @@
 								    	</div>
 								    </div>
 								</div>
-                                <div class="f1-buttons">
+                                <div class="f1-buttons  custom-form-control positionrelative" id="detail-page-btn">
                                     <button type="button" class="btn btn-previous">Previous</button>
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>

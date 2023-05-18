@@ -355,13 +355,6 @@ input {
     padding: 5px;
 }
 
-
-
-
-
-
-
-
 /***** Top content *****/
 .nextbtn{
     padding: .375rem .75rem !important;
@@ -430,8 +423,14 @@ input {
 .f1 fieldset { margin-top: 40px; display: none; text-align: left; }
 
 .f1-buttons { text-align: right; }
-
 .f1 .input-error { border-color: red !important; }
+
+@media  (max-width:496px) and (min-width:292px){
+    #detail-page-btn{
+        margin-top: 80px !important;
+    }
+}
+
 .f1-buttons button {
     background: #262566;
     color: white;
