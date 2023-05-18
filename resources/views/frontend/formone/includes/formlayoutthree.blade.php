@@ -104,7 +104,7 @@ $bg = $bgs[$k];
                          </div>
                          @else
                          <div class="col-md-4">
-                            <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required>
+                            <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required style="margin-bottom:10px;>
                                <option value="" > --- Primary destination in Canada ---</option>
                                @foreach(DB::table('primary_destination_in_canada')->get() as 
                                $key => $r )
@@ -120,8 +120,8 @@ $bg = $bgs[$k];
                    <!-- Destination ends -->
                   @if(isset($fields['email']))
                   @if($fields['email'] == "on" )
-                  <div class="col-md-4" style="margin-bottom:10px;">
-                     <div class="form-group">
+                  <div class="col-md-4" >
+                     <div class="form-group" >
                   <input  id="savers_email" name="savers_email" class="form-control" required type="email" placeholder="Your email address" style="float: none;padding: 0 10px !important;">
                   </div>
                   </div>

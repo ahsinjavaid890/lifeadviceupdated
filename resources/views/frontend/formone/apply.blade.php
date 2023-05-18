@@ -176,7 +176,7 @@
 										</div>
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
-								              	<label class="selectlabeldateofbirth">Phone Number</label>
+								              	<label class="selectlabeldateofbirth">Email</label>
 								                <input class="input" type="email" placeholder=" " value="{{ $request->email }}" name="email" data-placeholder="Email" required>
 								            </div>
 										</div>
