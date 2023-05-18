@@ -515,3 +515,15 @@ select{
    font-weight: 800;
    margin-top: 10px;
 }
+#dob{
+   padding:0px !important
+}
+#specail{
+   padding-right: 0px;
+}
+@media (max-width:768px) and (min-width:292px) {
+   #specail{
+      padding: 0px;
+   }
+  
+  }

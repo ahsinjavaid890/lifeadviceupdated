@@ -104,7 +104,7 @@ $bg = $bgs[$k];
                          </div>
                          @else
                          <div class="col-md-4">
-                            <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required style="margin-bottom:10px;>
+                            <select name="primary_destination" class="form-control" id="primary_destination" autocomplete="off" required style="margin-bottom:10px;">
                                <option value="" > --- Primary destination in Canada ---</option>
                                @foreach(DB::table('primary_destination_in_canada')->get() as 
                                $key => $r )
@@ -239,13 +239,13 @@ $bg = $bgs[$k];
                         @for($i=1;$i<=$number_of_travel;$i++)
                         <div style="display: none; " id="traveler{{ $i }}" class="no_of_travelers col-md-12 ">
                            <div class="row" >
-                              <div class="col-md-6" style="padding:0px !important">
+                              <div class="col-md-6" id="dob" style="">
                               <div class="form-group ">
                                  <input id="dateofbirthfull{{$i}}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" >
                   
                               </div>
                            </div>
-                                 <div style="padding-right: 0px;" class="col-md-6 ">
+                                 <div style="" id="specail" class="col-md-6 ">
                                     <div class="form-group">
                                        <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
                                           <option value="">Select Pre Existing Condition</option>
