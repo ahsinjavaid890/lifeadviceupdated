@@ -454,175 +454,59 @@
              <p>Get expert advice on your insurance questions. Our blog answers common FAQs that help you keep informed about insurance and what you need to stay covered.</p>
           </div>
           <div class="buyer-link">
-             <a href="blogs.php" style="color: #55cbb3;">Find out more <i class="fa fa-arrow-right"></i></a>
+             <a href="{{ url('blogs') }}" style="color: #55cbb3;">Find out more <i class="fa fa-arrow-right"></i></a>
           </div>
        </div>
        <div class="col-md-8">
           <div class="row online-row">
              <div class="col-md-6">
                 <div class="row">
+                  @foreach (DB::table('blogs')->limit(2)->orderby('id' , 'desc')->get() as $r)
                    <div class="col-md-12 mt-3">
                       <div class="card blank-card">
                          <div class="card-body">
                             <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/calculator.jpg') }}">
+                               <img alt="{{ $r->title }}" src="{{ url('public/images') }}/{{ $r->image }}">
                             </div>
                             <div class="card-content">
-                               <h3>Best Online Life Insurance With Living Benefits</h3>
-                               <p>One of the most common reasons people buy life insurance is so that their beneficiaries can have some financial protection after they pass away. Traditional life insurance, on the other hand, does not always cover all financial obligations, particularly while the policyholder is still alive.</p>
+                              <a href="{{ url('blog') }}/{{ $r->url}}"> <h3>{{ $r->title }}</h3></a>
+                               @php
+                                 $blog_text = strip_tags($r->content);
+                                 @endphp
+                                <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                             </div>
                             <div class="blogbutton">
-                               <a href="">Read More..</a>
+                               <a href="{{ url('blog') }}/{{ $r->url}}">Read More..</a>
                             </div>
                          </div>
                       </div>
                    </div>
-                   <div class="col-md-12 mt-3">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/calculator.jpg') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Best Online Life Insurance With Living Benefits</h3>
-                               <p>One of the most common reasons people buy life insurance is so that their beneficiaries can have some financial protection after they pass away. Traditional life insurance, on the other hand, does not always cover all financial obligations, particularly while the policyholder is still alive.</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
+                   @endforeach
                 </div>
              </div>
              <div class="col-md-6 simple-card">
                 <div class="row">
+                  @foreach (DB::table('blogs')->orderby('id', 'asc')->limit(2)->get() as $r)
                    <div class="col-md-12">
                       <div class="card blank-card">
                          <div class="card-body">
                             <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/people.jfif') }}">
+                              <img alt="{{ $r->title }}" src="{{ url('public/images') }}/{{ $r->image }}">
                             </div>
                             <div class="card-content">
-                               <h3>Why choose an Independent Insurance Broker in Ontario?</h3>
-                               <p>Independent Insurance Brokers in Ontario work as a customerâ€™s personal advisor on matters of insurance by bridging the gap between any insurance company and a customer. They work on behalf of their customerâ€™s requirements and not the insurance company, which allows them to choose a trustworthy firm amidst an array of insurance companies looking for potential clients. </p>
-                            </div>
+                             <a href="{{ url('blog') }}/{{ $r->url}}"> <h3>{{ $r->title }}</h3></a>
+                                 @php
+                                    $blog_text = strip_tags($r->content);
+                                 @endphp
+                              <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
+                              </div>
                             <div class="blogbutton">
-                               <a href="">Read More..</a>
+                               <a href="{{ url('blog') }}/{{ $r->url}}">Read More..</a>
                             </div>
                          </div>
                       </div>
                    </div>
-                   <div class="col-md-12 mt-3">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/pen.jpg') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Why Should Your Opt For The Best Online Life Insurance?</h3>
-                               <p>If you're in your 20s or 30s, you might recall insurance brokers knocking on your door and attempting to persuade your parents to purchase a policy that they were selling. Your parents may have also agreed, unaware that the so-called scheme that was being pushed as the best for them was really the best for the agent because it netted him the highest commission! Those days, though, are long go...</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
-</section>
-<section class="blog-news">
- <div class="container-homepage">
-    <div class="row">
-       <div class="col-md-4" style="margin-top: 230px;">
-          <div class="buyer-heading">
-             <h2><span>Expert Tips </span></h2>
-          </div>
-          <div class="buyer-paragraph">
-             <p>Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration.
-             </p>
-          </div>
-          <div class="buyer-link">
-             <a href="{{url('/blogs')}}" style="color: #55cbb3;">Find out more <i class="fa fa-arrow-right"></i></a>
-          </div>
-       </div>
-       <div class="col-md-8">
-          <div class="row online-row">
-             <div class="col-md-6">
-                <div class="row">
-                   <div class="col-md-12 mt-3">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/calculator.jpg') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Best Online Life Insurance With Living Benefits</h3>
-                               <p>One of the most common reasons people buy life insurance is so that their beneficiaries can have some financial protection after they pass away. Traditional life insurance, on the other hand, does not always cover all financial obligations, particularly while the policyholder is still alive.</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="col-md-12 mt-3">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/calculator.jpg') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Best Online Life Insurance With Living Benefits</h3>
-                               <p>One of the most common reasons people buy life insurance is so that their beneficiaries can have some financial protection after they pass away. Traditional life insurance, on the other hand, does not always cover all financial obligations, particularly while the policyholder is still alive.</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-md-6 simple-card">
-                <div class="row">
-                   <div class="col-md-12">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/people.jfif') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Why choose an Independent Insurance Broker in Ontario?</h3>
-                               <p>Independent Insurance Brokers in Ontario work as a customerâ€™s personal advisor on matters of insurance by bridging the gap between any insurance company and a customer. They work on behalf of their customerâ€™s requirements and not the insurance company, which allows them to choose a trustworthy firm amidst an array of insurance companies looking for potential clients. </p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="col-md-12 mt-3">
-                      <div class="card blank-card">
-                         <div class="card-body">
-                            <div class="blog-image-card">
-                               <img src="{{ asset('public/front/img/images/pen.jpg') }}">
-                            </div>
-                            <div class="card-content">
-                               <h3>Why Should Your Opt For The Best Online Life Insurance?</h3>
-                               <p>If you're in your 20s or 30s, you might recall insurance brokers knocking on your door and attempting to persuade your parents to purchase a policy that they were selling. Your parents may have also agreed, unaware that the so-called scheme that was being pushed as the best for them was really the best for the agent because it netted him the highest commission! Those days, though, are long go...</p>
-                            </div>
-                            <div class="blogbutton">
-                               <a href="">Read More..</a>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
+                   @endforeach
                 </div>
              </div>
           </div>
