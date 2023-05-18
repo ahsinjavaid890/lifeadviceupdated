@@ -12417,7 +12417,9 @@ ul.tabs li.current {
     .text-section .herrotext h2 {
         font-size: 12px !important;
     }
-
+    .slider-card{
+        height: 100%;
+    }
     .mobile-nav.mean-container .mean-nav {
         margin-top: 60px !important;
     }
@@ -12470,7 +12472,7 @@ ul.tabs li.current {
     }
 
     .slider-heading h2 span {
-        font-size: 22px !important;
+        font-size: 17px !important;
     }
 
     .calculate-heading h2 span {
