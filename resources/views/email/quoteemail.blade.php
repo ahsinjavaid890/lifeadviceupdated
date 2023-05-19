@@ -85,9 +85,6 @@ function object_to_array($object)
                 <?php endif;
              endforeach; ?>
         </div>
-
-
-
         <div style="width:100%; margin-bottom:10px;">
             <h2 style="font:bold 16px Arial, Helvetica, sans-serif; color:#333; line-height:50px; margin:0 0 0 20px;">Dear Customer,</h2>
              <p style="font:normal 14px Arial, Helvetica, sans-serif; color:#333; line-height:24px; margin:0 0 0 20px;">Quote # <?php echo $quoteNumber; ?></p>
@@ -137,7 +134,7 @@ function object_to_array($object)
           <?= sprintf('%.2f',$totalPrice1,2);  } else { ?>  <?= sprintf('%.2f',round($key['price'],2));} ?></h4>
                     </div>
                     <div style="width:30%; display:inline-block;text-align:center;float: left">
-                        <img src="https://lifeadvice.ca/quote/admin/uploads/<? echo $key['logo']?>" style="max-width: 100%;max-height:72px" >
+                        <img src="https://lifeadvice.ca/public/images/<? echo $key['logo']?>" style="max-width: 100%;max-height:72px" >
                     </div>
                <div style="width:30%; display:inline-block;text-align:center;float: left; padding-top:15px;">
                    <h4 style="font:bold 18px Arial, Helvetica, sans-serif; color:#333; text-align:center;display: block;vertical-align: middle;margin:0;">$<?=$key['sum_insured']?></h4> Benefits Maximum
@@ -151,96 +148,6 @@ function object_to_array($object)
                 <?php }
             }
         } ?>
-
-
-
-
-
-         <div style="max-width: 90%;margin: auto; margin-bottom: 10px !important;">
-            @if($request->fname)
-            <h6>Hey {{ $request->fname }} {{ $request->lname }},</h6>
-            @endif
-            <p>To take your travel insurance. Click on buy now us a call at <span style="font-weight: 800;color: red;">+1-855-500-8999</span></p>
-         </div>
-         <div style="max-width: 100%;text-align: center; padding: 1px;background-color: #ffa500;color: white;">
-            <p>Your Visitor Insurance Qoute</p>
-         </div>
-         <table style="width: 100%;">
-         <thead>
-            <tr>
-               <th style="padding: 10px; font-size: 45px; width: 100%;">$0</th>
-            </tr>
-            <tr>
-               <th style="display: flex; justify-content: space-around;">
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-                     <tr>
-                        <th style="padding: 30px;">$50.17</th>
-                     </tr>
-                  </table>
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-            <tr>
-               <th>
-                  <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-               </th>
-            </tr>
-            </table style="width: 50%;border: 1px solid #dddddd;">
-            <table  style="width: 50%;border: 1px solid #dddddd;">
-               <tr>
-                  <th>
-                     <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
-                  </th>
-               </tr>
-            </table>
-            </th>
-            </tr>
-            <tr>
-               <th style="display: flex; justify-content: space-around;">
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-                     <tr>
-                        <th  style="padding: 30px;">$50.17</th>
-                     </tr>
-                  </table>
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-            <tr>
-               <th>
-                  <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-               </th>
-            </tr>
-            </table style="width: 50%;border: 1px solid #dddddd;">
-            <table style="width: 50%;border: 1px solid #dddddd;">
-               <tr>
-                  <th >
-                     <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
-                  </th>
-               </tr>
-            </table>
-            </th>
-            </tr>
-            <tr>
-               <th style="display: flex; justify-content: space-around;">
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-                     <tr>
-                        <th style="padding: 30px;">$50.17</th>
-                     </tr>
-                  </table>
-                  <table style="width: 50%;border: 1px solid #dddddd;">
-                     <tr>
-                        <th>
-                           <img src="http://localhost/lifeadvicelaravel/public/images/191020200955_21_century_log.jpg">
-                        </th>
-                     </tr>
-                     </table style="width: 50%;border: 1px solid #dddddd;">
-                     <table style="width: 50%;border: 1px solid #dddddd;">
-                        <tr>
-                           <th>
-                              <a href="#"><button style="cursor: pointer;background-color: #2b3481; color: white; border: 0; padding: 10px; border-radius: 4px; width: 102px;">Buy Now</button></a>
-                           </th>
-                        </tr>
-                     </table>
-                     </th>
-                     </tr>
-                     </thead>
-                  </table>
       </div>
    </body>
 </html>
