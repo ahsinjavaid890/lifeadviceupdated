@@ -163,7 +163,7 @@ class CmsController extends Controller
 
     public function allfaq()
     {
-        $data = frequesntlyaskquestions::all();
+        $data = frequesntlyaskquestions::orderby('category_id' , 'desc')->paginate(15);
         $categories = frequesntlyaskquest_categories::all();
         return view('admin.faq.allfaq')->with(array('data'=>$data,'categories'=>$categories));
     }

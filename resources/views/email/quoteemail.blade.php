@@ -1,3 +1,13 @@
+<?php
+
+$arrr = $request->mailitem;
+
+function object_to_array($object)
+{
+   return (array) $object;
+}
+$buynowurl = $arrr[0]['url'];
+?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
    <head>
@@ -61,15 +71,27 @@
    <body style="background-color:#2b3481; font-family: 'Open Sans', sans-serif;padding: 50px;">
       <div style="max-width: 70%;margin-top: 70px !important; margin: auto;background-color: white;">
          <div style="text-align: center;">
-            <img style="width: 200px;" src="https://lifeadvice.ca/lifeadvice.ca/lifeadvicelaravel/public/images/118135255.png">
+            <img style="width: 200px;" src="https://lifeadvice.ca/public/images/118135255.png">
          </div>
-         <div style="max-width: 100%;text-align: center; padding: 10px;background-color: #31c3a4;color: white;">
-            <h2>Your Visitor Insurance Qoute</h2>
-         </div>
+         <div style="width:100%; background:#41c3bb">
+            <h1 style="font:bold 28px Arial, Helvetica, sans-serif; color:#fff; text-align:center; line-height:80px;">Here's Your Quotes
+            <?php
+            $countertop = 0;
+            $dumy = 1 ;
+            foreach ($arrr as $key):
+               $key=object_to_array($key);
+                if($key['deductible']==$countertop && $dumy<2):
+              $dumy++;
+             ?>
+                  <?=$key['planproduct'];?></h1>
+                <?php endif;
+             endforeach; ?>
+        </div>
          <div style="max-width: 90%;margin: auto; margin-bottom: 10px !important;">
-            <h6>Hey Sevvy Shopper,</h6>
-            <p>Thanks for comparing Qoutes</p>
-            <p>To take your travel insurance. Click on buy now us a call at <span style="font-weight: 800;color: red;">1855-500-5041</span></p>
+            @if($request->fname)
+            <h6>Hey {{ $request->fname }} {{ $request->lname }},</h6>
+            @endif
+            <p>To take your travel insurance. Click on buy now us a call at <span style="font-weight: 800;color: red;">+1-855-500-8999</span></p>
          </div>
          <div style="max-width: 100%;text-align: center; padding: 1px;background-color: #ffa500;color: white;">
             <p>Your Visitor Insurance Qoute</p>

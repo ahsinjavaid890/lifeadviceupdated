@@ -52,16 +52,6 @@ class SiteController extends Controller
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
         $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
-
-        if($request->savers_email)
-        {
-            // Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request), function($message) use ($request) {
-            //    $message->to($request->savers_email)->subject
-            //       ('Quote Suggestion');
-            //    $message->from('quote@lifeadvice.ca','LIFEADVICE');
-            // });
-        }
-
         return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
     public function confermquote()

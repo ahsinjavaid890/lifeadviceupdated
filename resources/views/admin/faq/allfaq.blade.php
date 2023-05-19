@@ -6,7 +6,7 @@
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
-        <div class=" container ">
+        <div class=" container-fluid ">
             <!--begin::Card-->
             @include('alerts.index')
             <div class="card card-custom mt-5">
@@ -32,9 +32,9 @@
                         </a>
                         <!--end::Button-->
                     </div>
-                </div>
+                </div> 
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered table-head-custom table-checkable">
                         <thead>
                             <tr>
                                 <th>FAQ Question</th>
@@ -145,6 +145,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="margin-top:10px;" class="row">
+                        {!! $data->links('frontend.pagination') !!}
+                    </div>
                 </div>
             </div>
             <!--end::Card-->

@@ -345,7 +345,7 @@ if($show == '1' && $total_price > 0){
 <span id="dv_{{$total_price}}" data-listing-price="{{$total_price}}" class="listing-item coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
-      <div class="row" id="card-details-reverse">
+      <div class="row">
           <div class="col-md-6">
                 <p class="plan-subheading display-none-on-mobile">
                   Deductible Option ($<?php echo $deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
@@ -462,7 +462,7 @@ if($show == '1' && $total_price > 0){
 
                     //if($single_person_rate > 0){
                                         ?>
-                    <span class="person-additional-travele" >
+                    <span class="person-additional-traveler">
                         Person <?php echo $per;?> @if($existingshow)({{$existingshow}}) @endif
                     </span>
                     <div class="person-additional-traveler-insured">Insured: <span style="color: #2b3481;"> (Age: <?php echo $person_age; ?>)</span> Premium: <span style="color: #2b3481;">$<?php echo number_format($person_price,2);?></span></div>
@@ -575,17 +575,42 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $broker }}" name="broker">
                 <button class="btn btn-block text-white" type="submit">Buy</button>
               </form>
-            </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
 </span>
 <?php
-
-$daily_rate = 0;
-
-
+    $mailitem[] = array(
+        "deductible"  => $deductible,
+        "sum_insured" => $sum_insured,
+        "planproduct" => $product_name,
+        "price"       => $total_price,
+        "quote"       => $quoteNumber,
+        "logo"        => $comp_logo,
+        "url"         => 'test',
+        "buynow"      => 'test'
+    );
+    $price[] = $total_price;
 ?>
+
 
         <?php 
         $display = '';
         }}}} ?>
+
+
+<?php
+$counter = 0;
+if (isset( $request->savers_email)){
+    $content = json_encode( $mailitem );
+    array_multisort( $price, SORT_ASC, $mailitem);
+    $content = json_encode( $mailitem );
+    $subject    = "Your Quote - $product_name";
+    Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+               $message->to($request->savers_email)->subject($subject);
+               $message->from('quote@lifeadvice.ca','LIFEADVICE');
+            });
+}
+?>
