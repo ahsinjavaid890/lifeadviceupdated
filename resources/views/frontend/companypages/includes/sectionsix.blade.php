@@ -3,7 +3,7 @@
     $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get();
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
 @endphp
-<section class="claim-process bg-white pb-5 pt-5" style="background-color: #f9fafc !important;">
+<section class="claim-process  bg-white pb-5 pt-5" style="background-color: #f9fafc !important;">
        <div class="container-homepage">
            <div class="row">
                <div class="col-md-6">
