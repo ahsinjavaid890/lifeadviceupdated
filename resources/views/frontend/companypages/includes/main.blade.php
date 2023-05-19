@@ -557,7 +557,7 @@ $("#outputText").text(outputDate);
 
    $('#quoteform').on('submit',(function(e) {
        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
-       // e.preventDefault();
+       e.preventDefault();
        var formData = new FormData(this);
        $.ajax({
            type:'POST',
