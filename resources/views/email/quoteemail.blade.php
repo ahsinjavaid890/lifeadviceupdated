@@ -1,7 +1,4 @@
 <?php
-
-$arrr = $request->mailitem;
-
 function object_to_array($object)
 {
    return (array) $object;
@@ -77,7 +74,7 @@ function object_to_array($object)
             <?php
             $countertop = 0;
             $dumy = 1 ;
-            foreach ($arrr as $key):
+            foreach ($mailitem as $key):
                $key=object_to_array($key);
                 if($key['deductible']==$countertop && $dumy<2):
               $dumy++;

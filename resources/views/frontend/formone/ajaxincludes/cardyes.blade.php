@@ -604,9 +604,7 @@ if($show == '1' && $total_price > 0){
 <?php
 $counter = 0;
 if (isset( $request->savers_email)){
-    $content = json_encode( $mailitem );
     array_multisort( $price, SORT_ASC, $mailitem);
-    $content = json_encode( $mailitem );
     $subject    = "Your Quote - $product_name";
     Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
                $message->to($request->savers_email)->subject($subject);
