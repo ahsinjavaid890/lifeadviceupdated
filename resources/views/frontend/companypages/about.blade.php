@@ -1,5 +1,4 @@
 @extends('frontend.layouts.main')
-
 @php
     $url = request()->segment(count(request()->segments()));
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
@@ -7,6 +6,7 @@
 @endphp
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
+<link rel="stylesheet" href="{{ url('public/front/css/aboutus.css') }}">
 <section class="about_us_banner" style="background-image: url('{{ url('public/front/images/about/about_us_main.png') }}'); background-repeat: no-repeat; background-size: cover;">
     <div class="container-homepage">
         <div class="about_main_text">

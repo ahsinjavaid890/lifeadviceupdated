@@ -2,7 +2,7 @@
     $url = request()->segment(count(request()->segments()));
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
 @endphp
-<section class="third-section">
+<section class="third-section ">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">
             {!! $page->section_four_heading !!}

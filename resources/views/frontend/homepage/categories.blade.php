@@ -92,7 +92,7 @@
                   </div>
                   <div class="slider-heading">
                      <a href="{{url('life-insurance')}}">
-                        <h2><span>Life</span> Insurance</h2></a>
+                        <h2><span>Life</span><br> Insurance</h2></a>
                        </div>
                   <div class="slider-pargraph">
                      <p>Whether you want help covering final expenses or building a legacy, protect your family.</p>
