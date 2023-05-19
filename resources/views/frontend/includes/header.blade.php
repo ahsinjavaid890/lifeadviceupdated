@@ -1,4 +1,7 @@
 
+@php
+    $url = request()->segment(count(request()->segments()));
+@endphp
 <header class="header-area header-area-five fixed-top">
     <!-- Start Navbar Area -->
     <div class="nav-area nev-style-five">
@@ -19,25 +22,25 @@
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">
                                 <li class="nav-item">
-                                    <a href="{{ url('') }}" class="nav-link active">Home</a>
+                                    <a href="{{ url('') }}" class="nav-link @if($url) @else active @endif">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('travel-insurance') }}" class="nav-link dropdown-toggle">
+                                    <a href="{{ url('travel-insurance') }}" class="nav-link dropdown-toggle @if($url == 'travel-insurance') active @endif @if($url == 'super-visa-insurance') active @endif @if($url == 'visitor-insurance') active @endif @if($url == 'student-insurance') active @endif">
                                          Travel Insurance
                                         <i class="bx bx-chevron-down"></i>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="{{ url('travel-insurance') }}" class="nav-link">Travel Insurance</a>
+                                            <a href="{{ url('travel-insurance') }}" class="nav-link @if($url == 'travel-insurance') activesubnav @endif">Travel Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('super-visa-insurance') }}" class="nav-link">Super Visa Insurance</a>
+                                            <a href="{{ url('super-visa-insurance') }}" class="nav-link @if($url == 'super-visa-insurance') activesubnav @endif">Super Visa Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('visitor-insurance') }}" class="nav-link">Visitor Insurance</a>
+                                            <a href="{{ url('visitor-insurance') }}" class="nav-link @if($url == 'visitor-insurance') activesubnav @endif">Visitor Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('student-insurance') }}" class="nav-link">Student Insurance</a>
+                                            <a href="{{ url('student-insurance') }}" class="nav-link @if($url == 'student-insurance') activesubnav @endif">Student Insurance</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="javascript:void(0)" class="nav-link dropdown-toggle">
@@ -105,17 +108,17 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('aboutus') }}" class="nav-link dropdown-toggle">
+                                    <a href="{{ url('aboutus') }}" class="nav-link dropdown-toggle @if($url == 'aboutus') active @endif" >
                                             About Us
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('product') }}" class="nav-link dropdown-toggle">
+                                    <a href="{{ url('product') }}" class="nav-link dropdown-toggle @if($url == 'product') active @endif">
                                             Products
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('blogs') }}" class="nav-link">Blogs</a>
+                                    <a href="{{ url('blogs') }}" class="nav-link @if($url == 'blogs') active @endif">Blogs</a>
                                 </li>
                                 
                                 @if(Auth::check()) 

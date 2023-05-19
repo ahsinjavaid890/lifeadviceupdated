@@ -196,6 +196,15 @@ textarea.form-control {
     margin-left: 30px;
 }
 
+.activesubnav{
+    background-color: #2b3481;
+    color: white !important;
+}
+.product-arrow-div{
+    font-size: 17px;
+    margin-top: 8px;
+    margin-right: 10px;
+}
 /*
 Default Btn Area Style*/
 
@@ -7447,10 +7456,7 @@ p {
     margin-top: 195px;
 }
 
-.product-arrow-div{
-    margin-top: 8px;
-    margin-right: 10px;
-}
+
 .tabssidebar{
     padding-bottom: 20px;
 }
@@ -12290,7 +12296,7 @@ ul.tabs li.current {
     }
 
     .slider-heading h2 span {
-        font-size: 29px !important;
+        font-size: 20px !important;
     }
 
     .board-image {
@@ -15904,13 +15910,10 @@ ul .child-list li a {
   }
 }
 
-.product-arrow-div{
-    margin-top: 8px;
-}
+
 
 @media screen and (min-width: 200px) and (max-width: 760px) {
     .herrotext {
         margin-top: 70px;   
     }
 }
-
