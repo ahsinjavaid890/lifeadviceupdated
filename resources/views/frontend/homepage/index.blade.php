@@ -363,9 +363,9 @@
                                  @endphp
                                 <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                             </div>
-                            <div class=" product-btn">
+                            <div class=" product-btn text-right">
                                <a href="{{ url('blog') }}/{{ $r->url}}">
-                                 <button class="btn btn-sm learn-more">Learn More</button>
+                                 <button class="btn btn-sm   learn-more">Learn More</button>
                                 </a>
                             </div>
                          </div>
@@ -390,7 +390,7 @@
                                  @endphp
                               <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                               </div>
-                            <div class=" product-btn">
+                            <div class=" product-btn text-right">
                                <a href="{{ url('blog') }}/{{ $r->url}}">
                                  <button class="btn btn-sm learn-more">Learn More</button>
                               </a>

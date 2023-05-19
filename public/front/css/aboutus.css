@@ -312,30 +312,31 @@
         font-size: 14px;
     }
     .circle_two {
-        padding-top: 132px;
+        padding-top: 90px;
     }
     .circle_two .circle_text {
         position: absolute;
-        top: 230px;
-        left: 480px;
+        top: 196px;
+        left: 486px;
         text-align: center;
     }
     .circle_three .circle_text {
         position: absolute;
-        top: 265px;
-        left: 750px;
+        top: 241px;
+        left: 761px;
         text-align: center;
     }
     .circle_three {
-        padding-top: 163px;
+        padding-top: 135px;
     }
     .circle_four {
-        padding-top: 115px;
+        padding-right: 16px;
+        padding-top: 96px;
     }
     .circle_four .circle_text {
         position: absolute;
-        top: 218px;
-        left: 1020px;
+        top: 205px;
+        left: 1036px;
         text-align: center;
     }
     .online_support_qoute p {
@@ -362,25 +363,25 @@
         position: absolute;
         left: 16px;
         width: 271px;
-        top: -118px;
+        top: -160px;
     }
     .offer_circle_two {
         position: absolute;
-        left: 324px;
-        width: 274px;
-        top: -57px;
+        left: 332px;
+        width: 286px;
+        top: -90px;
     }
     .offer_circle_three {
         position: absolute;
-        left: 618px;
-        width: 280px;
-        top: -160px;
+        left: 641px;
+        width: 278px;
+        top: -184px;
     }
     .offer_circle_four {
         position: absolute;
-        left: 944px;
-        width: 245px;
-        top: -230px;
+        left: 971px;
+        width: 255px;
+        top: -264px;
     }
     .about_sec_vector_top img {
         width: 410px;
@@ -410,7 +411,7 @@
 
 @media only screen and (min-width: 1365px) and (max-width: 1515px) {
     .circle_one {
-        padding-top: 328px !important;
+        padding-top: 358px !important;
         padding-left: 137px !important;
     }
     .about_three_circle_vector {
@@ -419,7 +420,7 @@
     }
     .circle_one .circle_text {
         position: absolute;
-        top: 400px;
+        top: 437px;
         left: 158px;
         text-align: center;
     }
@@ -432,30 +433,30 @@
         font-size: 14px;
     }
     .circle_two {
-        padding-top: 117px;
+        padding-top: 130px;
     }
     .circle_two .circle_text {
         position: absolute;
-        top: 239px;
-        left: 546px;
+        top: 256px;
+        left: 557px;
         text-align: center;
     }
     .circle_three .circle_text {
         position: absolute;
-        top: 283px;
-        left: 860px;
+        top: 305px;
+        left: 882px;
         text-align: center;
     }
     .circle_three {
-        padding-top: 160px;
+        padding-top: 180px;
     }
     .circle_four {
         padding-top: 115px;
     }
     .circle_four .circle_text {
         position: absolute;
-        top: 239px;
-        left: 1174px;
+        top: 248px;
+        left: 1205px;
         text-align: center;
     }
     .online_support_qoute p {
@@ -479,26 +480,26 @@
     .offer_circle_one {
         position: absolute;
         left: 17px;
-        width: 295px;
-        top: -59px;
+        width: 315px;
+        top: 7px;
     }
     .offer_circle_two {
         position: absolute;
-        left: 358px;
-        width: 295px;
-        top: 15px;
+        left: 392px;
+        width: 297px;
+        top: 88px;
     }
     .offer_circle_three {
         position: absolute;
-        left: 694px;
-        width: 274px;
-        top: -87px;
+        left: 750px;
+        width: 290px;
+        top: -25px;
     }
     .offer_circle_four {
         position: absolute;
-        left: 1027px;
-        width: 290px;
-        top: -179px;
+        left: 1107px;
+        width: 291px;
+        top: -132px;
     }
     .about_sec_vector_top img {
         width: 410px;
