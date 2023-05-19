@@ -66,24 +66,13 @@ function object_to_array($object)
          }
       </style>
    </head>
-   <body style="background-color:#2b3481; font-family: 'Open Sans', sans-serif;padding: 50px;">
+   <body style="background-color:#f4f7fa; font-family: 'Open Sans', sans-serif;padding: 50px;">
       <div style="max-width: 70%;margin-top: 70px !important; margin: auto;background-color: white;">
-         <div style="text-align: center;">
+         <div style="text-align: left; margin-left:30px;">
             <img style="width: 200px;" src="https://lifeadvice.ca/public/images/118135255.png">
          </div>
          <div style="width:100%; background:#41c3bb">
-            <h1 style="font:bold 28px Arial, Helvetica, sans-serif; color:#fff; text-align:center; line-height:80px;">Here's Your Quotes
-            <?php
-            $countertop = 0;
-            $dumy = 1 ;
-            foreach ($mailitem as $key):
-               $key=object_to_array($key);
-                if($key['deductible']==$countertop && $dumy<2):
-              $dumy++;
-             ?>
-                  <?=$key['planproduct'];?></h1>
-                <?php endif;
-             endforeach; ?>
+            <img src="https://lifeadvice.ca/public/images/emailimage.png" style="width:100%">
         </div>
         <div style="width:100%; margin-bottom:10px;">
             <h2 style="font:bold 16px Arial, Helvetica, sans-serif; color:#333; line-height:50px; margin:0 0 0 20px;">Dear Customer,</h2>
