@@ -582,20 +582,17 @@ if($show == '1' && $total_price > 0){
 </div>
 </span>
 <?php
-
-        $mailitem[] = array(
-            "deductible"  => $deductible,
-            "sum_insured" => $sum_insured,
-            "planproduct" => $product_name,
-            "price"       => $total_price,
-            "quote"       => $quoteNumber,
-            "logo"        => $comp_logo,
-            "url"         => 'test',
-            "buynow"      => 'test'
-        );
-
-        $price[] = $total_price;
-    
+    $mailitem[] = array(
+        "deductible"  => $deductible,
+        "sum_insured" => $sum_insured,
+        "planproduct" => $product_name,
+        "price"       => $total_price,
+        "quote"       => $quoteNumber,
+        "logo"        => $comp_logo,
+        "url"         => 'test',
+        "buynow"      => 'test'
+    );
+    $price[] = $total_price;
 ?>
 
 
@@ -605,32 +602,15 @@ if($show == '1' && $total_price > 0){
 
 
 <?php
-
 $counter = 0;
 if (isset( $request->savers_email)){
-
     $content = json_encode( $mailitem );
     array_multisort( $price, SORT_ASC, $mailitem );
     $content = json_encode( $mailitem );
     $subject    = "Your Quote - $product_name";
-
-    Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request), function($message) use ($request) {
-               $message->to($request->savers_email)->subject
-                  ('Quote Suggestion');
+    Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request), function($message) use ($request,$subject) {
+               $message->to($request->savers_email)->subject($subject);
                $message->from('quote@lifeadvice.ca','LIFEADVICE');
             });
-
-
-
-    // $email = $_SESSION['savers_email'];
-    // if($email == ''){
-    //     $email = $_SESSION['email'];
-    // }
-    
-    // ob_start();
-    // include(dirname(dirname(__FILE__)) .'/emailtemplate.php'); 
-    // $message = ob_get_clean(); 
-    // mailQuote($email, $subject, $message);
 }
-
 ?>
