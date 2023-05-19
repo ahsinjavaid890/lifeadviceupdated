@@ -12,7 +12,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       <div class="row mb-3">
          <div class="col-md-6 hero-texts">
             <div class="herrotext super-hero-text">
-               <h2 class="wow fadeInUp" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
+               <h2 class="wow fadeInUp text-responsive" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
                <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
                @if($firstsection->main_button_text)
                <div class="btns d-flex">

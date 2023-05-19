@@ -12489,9 +12489,9 @@ ul.tabs li.current {
         font-size: 20px !important;
     }
 
-    .card.transparent-card {
+    /* .card.transparent-card {
         padding: 30px 0 0 0 !important;
-    }
+    } */
 }
 
 @media only screen and (min-width: 570px) and (max-width: 670px) {
@@ -13511,7 +13511,7 @@ ul .child-list li a {
     margin-top: 8px;
 }
 .hero-texts h1{
-    margin-top: -4px !important;
+    margin-top: -7px !important;
 }
 
 @media screen and (min-width:200px) and (max-width:767px) {
@@ -13532,6 +13532,8 @@ ul .child-list li a {
     }
     .herrotext h2 {
         font-size: 18px !important;
+        
+        
     }
 }
 
@@ -14806,8 +14808,21 @@ ul .child-list li a {
     }
     .ages-12{
         padding-left: 0px;
+        padding-right: 0px;
     }
     .text-section{
         top: 55px;
     }
-}
+    .glance-paragraph2 {
+        padding: 0px 20px;
+    }
+    .text-responsive{
+       padding-top: 5px !important;
+    }
+    .transparents-card-responsive{
+        padding: 30px 0 190px 0 !important;
+    }
+    .claim-process-responsive{
+        padding-top: 0px !important;
+    }
+ }
