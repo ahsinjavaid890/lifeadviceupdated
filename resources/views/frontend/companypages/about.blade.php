@@ -106,21 +106,21 @@
                 <img src="{{ url('public/front/images/about/icon2.png')}}">
                 <div class="circle_text">
                     <h2>35</h2>
-                    <p class="mt-3">Insurance Product</p>
+                    <p class="mt-2">Insurance Product</p>
                 </div>
             </div>
             <div class="circle_three">
                 <img src="{{ url('public/front/images/about/icon3.png')}}">
                 <div class="circle_text">
                     <h2>10</h2>
-                    <p class="mt-3">Years of Experience</p>
+                    <p class="mt-2">Years of Experience</p>
                 </div>
             </div>
             <div class="circle_four">
                 <img src="{{ url('public/front/images/about/icon4.png')}}">
                 <div class="circle_text">
                     <h2>196</h2>
-                    <p class="mt-3">Professional Agents</p>
+                    <p class="mt-2">Professional Agents</p>
                 </div>
             </div>
         </div>

@@ -437,14 +437,14 @@
     }
     .circle_two .circle_text {
         position: absolute;
-        top: 230px;
-        left: 527px;
+        top: 239px;
+        left: 546px;
         text-align: center;
     }
     .circle_three .circle_text {
         position: absolute;
-        top: 272px;
-        left: 825px;
+        top: 283px;
+        left: 860px;
         text-align: center;
     }
     .circle_three{
@@ -455,8 +455,8 @@
     }
     .circle_four .circle_text {
         position: absolute;
-        top: 231px;
-        left: 1127px;
+        top: 239px;
+        left: 1174px;
         text-align: center;
     }
     .online_support_qoute p {
@@ -1104,3 +1104,41 @@
         top: 1120px;
     }
 }
+@media only screen and (min-width: 292px) and (max-width: 468px){
+
+    .main_description_about{
+        max-width: 81%;
+        font-size: 20px;
+    }
+    .online_support_heading h2{
+        font-size: 40px;
+    }.main_subheading_about {
+        line-height: 32px;
+        font-size: 27px;
+        font-weight: 500;
+    }
+    .about_sec_heading h2 {
+        padding-left: 14px;
+        font-size: 28px;
+    }
+    .about_sec_description p{
+        text-align: center;
+        padding: 0px 26px 1px 24px;
+    }
+.about_sec_vector_bottom {
+    top: 1693px;
+}
+.about_three_cards {
+    width: 100%;
+    top: 1920px;
+}
+.about_three_main_vector{
+    padding-top: 650px;
+}
+.offer_heading h2 {
+    font-size: 35px;
+    margin-top: 10px;
+}
+}
+ 
+    

@@ -363,8 +363,10 @@
                                  @endphp
                                 <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                             </div>
-                            <div class="blogbutton">
-                               <a href="{{ url('blog') }}/{{ $r->url}}">Read More..</a>
+                            <div class=" product-btn">
+                               <a href="{{ url('blog') }}/{{ $r->url}}">
+                                 <button class="btn btn-sm learn-more">Learn More</button>
+                                </a>
                             </div>
                          </div>
                       </div>
@@ -375,8 +377,8 @@
              <div class="col-md-6 simple-card">
                 <div class="row">
                   @foreach (DB::table('blogs')->orderby('id', 'asc')->limit(2)->get() as $r)
-                   <div class="col-md-12">
-                      <div class="card blank-card">
+                   <div class="col-md-12 mt-3">
+                      <div class="card blank-card ">
                          <div class="card-body">
                             <div class="blog-image-card">
                               <img alt="{{ $r->title }}" src="{{ url('public/images') }}/{{ $r->image }}">
@@ -388,8 +390,10 @@
                                  @endphp
                               <p>{{ \Illuminate\Support\Str::limit($blog_text, 80, $end='...') }}</p>
                               </div>
-                            <div class="blogbutton">
-                               <a href="{{ url('blog') }}/{{ $r->url}}">Read More..</a>
+                            <div class=" product-btn">
+                               <a href="{{ url('blog') }}/{{ $r->url}}">
+                                 <button class="btn btn-sm learn-more">Learn More</button>
+                              </a>
                             </div>
                          </div>
                       </div>
