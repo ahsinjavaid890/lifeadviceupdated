@@ -1,38 +1,15 @@
 @extends('frontend.layouts.main')
-
+@include('frontend.companypages.includes.mettatittle')
 @php
     $url = request()->segment(count(request()->segments()));
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
     $secondsection = DB::table('section_three_elements')->where('type' , 'sectiontwoquestion')->where('page' , $url)->get(); 
 @endphp 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/faq.css')}}">
-
 @section('content')
 @include('frontend.companypages.includes.mainblog')
    <section class="first-section-of-page">
       <div id="faq" class="container py-5">
-            <style type="text/css">
-               .faqlinks li:after{
-                  content: none;
-               }
-               /*ul.tabs li.current {
-                  background: #3D4B5D;
-               }*/
-               /*.faqlinks li.active {
-                  background: #3D4B5D;
-                  color: #3D4B5D !important;
-               }
-               .faqlinks li.current{
-                  color: #3D4B5D;
-               }*/
-               .tab-content{
-                  display: none;
-                  background: white;
-               }
-               .tab-content.current{
-                  display: inherit;
-               }
-            </style>
          <div class="row faq">
             <div class="col-md-3 pb-4 mb-4 faqlinks">
                <div class="">

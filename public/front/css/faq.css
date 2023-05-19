@@ -401,3 +401,13 @@ ul.pagination li.page-item.disabled a {
     background-color: #6c757d;
     color: #FFFFFF;
 }
+.faqlinks li:after{
+  content: none;
+}
+.tab-content{
+  display: none;
+  background: white;
+}
+.tab-content.current{
+  display: inherit;
+}

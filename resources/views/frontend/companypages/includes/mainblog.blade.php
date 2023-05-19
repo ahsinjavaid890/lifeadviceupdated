@@ -247,6 +247,12 @@
     $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
 <div class="blog_section blog-responsive">
+    @if($url == 'faq')
+    <div class="hero-content">
+       <h1  class="heading-2 hero-heading">Frequently Asked <br> Questions</h1>
+       <p  class="hero-heading-info"> Learn more about trip and travel medical insurance plans, trip cancellations,<br> medical evacuations, and other FAQs.</p>
+    </div>
+    @endif
     @if($url == 'blogs')
     <div class="hero-content">
        <h1  class="heading-2 hero-heading">Expert Tips</h1>
