@@ -69,41 +69,41 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('life-insurance') }}" class="nav-link dropdown-toggle">
+                                    <a href="{{ url('life-insurance') }}" class="nav-link dropdown-toggle  @if($url == 'life-insurance') active @endif @if($url == 'term-life-insurance') active @endif @if($url == 'desability') active @endif @if($url == 'critical-illness') active @endif  @if($url == 'health-insurance') active @endif  @if($url == 'nonmedical') active @endif  @if($url == 'rrsp') active @endif  @if($url == 'resp') active @endif  @if($url == 'mortgage') active @endif  @if($url == 'tfsa') active @endif">
                                             Insurance 
                                             <i class="bx bx-chevron-down"></i>
                                         </a>
 
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="{{ url('life-insurance') }}" class="nav-link">Whole Life Insurance</a>
+                                            <a href="{{ url('life-insurance') }}" class="nav-link @if($url == 'life-insurance') activesubnav @endif">Whole Life Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('term-life-insurance') }}" class="nav-link">Term Life Insurance</a>
+                                            <a href="{{ url('term-life-insurance') }}" class="nav-link @if($url == 'term-life-insurance') activesubnav @endif">Term Life Insurance</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="{{ url('desability') }} " class="nav-link @if($url == 'desability') activesubnav @endif">Desability</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('desability') }}" class="nav-link">Desability</a>
+                                            <a href="{{ url('critical-illness') }}" class="nav-link @if($url == 'critical-illness') activesubnav @endif">Critical Illness Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('critical-illness') }}" class="nav-link">Critical Illness Insurance</a>
+                                            <a href="{{ url('health-insurance') }}" class="nav-link @if($url == 'health-insurance') activesubnav @endif">Health Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('health-insurance') }}" class="nav-link">Health Insurance</a>
+                                            <a href="{{ url('nonmedical') }}" class="nav-link @if($url == 'nonmedical') activesubnav @endif">Non Medical Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('nonmedical') }}" class="nav-link">Non Medical Insurance</a>
+                                            <a href="{{ url('rrsp') }}" class="nav-link @if($url == 'rrsp') activesubnav @endif">RRSP Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('rrsp') }}" class="nav-link">RRSP Insurance</a>
+                                            <a href="{{ url('resp') }}" class="nav-link @if($url == 'resp') activesubnav @endif">RESP Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('resp') }}" class="nav-link">RESP Insurance</a>
+                                            <a href="{{ url('mortgage') }}" class="nav-link @if($url == 'mortgage') activesubnav @endif">Mortgage Insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ url('mortgage') }}" class="nav-link">Mortgage Insurance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ url('tfsa') }}" class="nav-link">TFSA Insurance</a>
+                                            <a href="{{ url('tfsa') }}" class="nav-link @if($url == 'tfsa') activesubnav @endif">TFSA Insurance</a>
                                         </li>
                                     </ul>
                                 </li>
