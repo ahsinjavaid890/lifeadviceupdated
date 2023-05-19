@@ -573,7 +573,7 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $dob }}" name="dob">
                 <input type="hidden" value="{{ $agent }}" name="agent">
                 <input type="hidden" value="{{ $broker }}" name="broker">
-                <button class="btn btn-block text-white mb-3" type="submit">Buy</button>
+                <button class="btn btn-block text-white" type="submit">Buy</button>
               </form>
             </div>
   </div>
