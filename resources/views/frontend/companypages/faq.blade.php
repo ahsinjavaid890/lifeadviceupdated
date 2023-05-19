@@ -38,7 +38,7 @@
                      <div id="tab-{{ $r->id }}" class="tab-content @if($loop->first) current @endif">
                         <div class="accordion" id="accordionExample{{ $r->id }}" style="background: #f4f7fa;">
                            @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $r->id)->orderby('order' , 'asc')->get() as $f)
-                           <div class="card faqquestion" style="border-radius: 16px !important;margin-top: 13px;">
+                           <div class="card faqquestion {{ $f->order }}" style="border-radius: 16px !important;margin-top: 13px;">
                               <div class="card-header" id="faq{{ $f->id }}" style="background-color: #ffffffff;">
                                  <h5 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq_content{{ $f->id }}" aria-expanded="false" aria-controls="collapseOne">
