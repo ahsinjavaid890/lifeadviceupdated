@@ -1,3 +1,13 @@
+<?php
+
+$arrr = $request->mailitem;
+
+function object_to_array($object)
+{
+   return (array) $object;
+}
+$buynowurl = $arrr[0]['url'];
+?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
    <head>
@@ -63,9 +73,20 @@
          <div style="text-align: center;">
             <img style="width: 200px;" src="https://lifeadvice.ca/public/images/118135255.png">
          </div>
-         <div style="max-width: 100%;text-align: center; padding: 10px;background-color: #31c3a4;color: white;">
-            <h2>Your Visitor Insurance Qoute</h2>
-         </div>
+         <div style="width:100%; background:#41c3bb">
+            <h1 style="font:bold 28px Arial, Helvetica, sans-serif; color:#fff; text-align:center; line-height:80px;">Here's Your Quotes
+            <?php
+            $countertop = 0;
+            $dumy = 1 ;
+            foreach ($arrr as $key):
+               $key=object_to_array($key);
+                if($key['deductible']==$countertop && $dumy<2):
+              $dumy++;
+             ?>
+                  <?=$key['planproduct'];?></h1>
+                <?php endif;
+             endforeach; ?>
+        </div>
          <div style="max-width: 90%;margin: auto; margin-bottom: 10px !important;">
             @if($request->fname)
             <h6>Hey {{ $request->fname }} {{ $request->lname }},</h6>
