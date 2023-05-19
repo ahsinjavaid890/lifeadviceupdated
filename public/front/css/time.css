@@ -4126,3 +4126,9 @@ select {
   margin: 0;
   padding: 0 5px;
 }
+
+@media screen and (min-width: 200px) and (max-width: 760px) {
+  .partner_block{
+    padding: 0px;
+  }
+}

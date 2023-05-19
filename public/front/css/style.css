@@ -12893,7 +12893,7 @@ ul.tabs li.current {
     }
 
     .heroSlider-fixed .slick-slide {
-        width: 130px !important;
+        width: 91px !important;
     }
 
     .super-images {
@@ -12912,7 +12912,7 @@ ul.tabs li.current {
     }
 
     .super-hero-text {
-        margin-top: 249px;
+        margin-top: 250px;
     }
 
     .hero-texts {
@@ -15910,10 +15910,27 @@ ul .child-list li a {
   }
 }
 
-
+.product-arrow-div{
+    margin-top: 8px;
+}
 
 @media screen and (min-width: 200px) and (max-width: 760px) {
-    .herrotext {
-        margin-top: 70px;   
+    /* .herrotext {
+        margin-top: 74px;   
+    } */
+    .product-cards{
+        margin-bottom: 36px;
+    }
+    .check-product{
+        padding-top: 0px !important;
+    }
+    .four-section{
+        padding-top: 0px;
+    }
+    .ages-12{
+        padding-left: 0px;
+    }
+    .text-section{
+        top: 55px;
     }
 }
