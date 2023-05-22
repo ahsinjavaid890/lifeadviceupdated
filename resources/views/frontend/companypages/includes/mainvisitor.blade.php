@@ -90,7 +90,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
-                     <div class="modal-body" style="padding:0px;">
+                     <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>

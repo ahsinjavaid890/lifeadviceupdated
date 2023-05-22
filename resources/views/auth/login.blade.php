@@ -309,11 +309,6 @@ a.ssolink {
                 <div class="field padding-bottom--24">
                   <label for="email">Email</label>
                   <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus>
-                    @if($_GET['error'])
-                        <span class="invalid-feedback" role="alert">
-                            <strong>User Not Found</strong>
-                        </span>
-                    @endif
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

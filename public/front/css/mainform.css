@@ -2257,7 +2257,7 @@ input::-webkit-inner-spin-button {
 }
 @media screen and (min-width:292px) and (max-width:468px) {
     .qoute-card{
-        max-width: 400px;
+/*        max-width: 400px;*/
         left: 0px;
         margin-top: 40px;
         top: 0%;
@@ -2278,7 +2278,7 @@ input::-webkit-inner-spin-button {
         width: 100%;
     }
     .zoom-in{
-        max-width: 386px  !important;
+/*        max-width: 386px  !important;*/
     }
     .zoom-in .card-heading{
         font-size: 15px;
