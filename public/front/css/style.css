@@ -14756,6 +14756,9 @@ ul .child-list li a {
     width: 100%;
     margin-top: 0px !important;
   }
+  #dateofbirthfull{
+    margin-top: 10px;
+  }
   .herrotext.super-hero-text {
         text-align: center;
     }
