@@ -32,6 +32,6 @@ return [
     'google' => [
         'client_id' => '874927845773-h23h1v4udq2hctk7kr6om8b8hl98iqcc.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'https://lifeadvice.ca//auth/google/callback',
+        'redirect' => 'https://lifeadvice.ca/auth/google/callback',
     ],
 ];
