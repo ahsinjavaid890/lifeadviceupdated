@@ -551,8 +551,10 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $deductible }}" name="deductibles">
                 <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
                 <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($years as $year)
+                @foreach($request->years as $year)
+                @if($year)
                 <input type="hidden" name="years[]" value="{{ $year }}">
+                @endif
                 @endforeach
                 <input type="hidden" value="{{ $num_of_days }}" name="days">
                 <input type="hidden" value="{{ $comp_name }}" name="companyName">
@@ -562,7 +564,7 @@ if($show == '1' && $total_price > 0){
                 <input type="hidden" value="{{ $startdate }}" name="tripdate">
                 <input type="hidden" value="{{ $enddate }}" name="tripend">
                 <input type="hidden" value="{{ $total_price }}" name="premium">
-                <input type="hidden" value="{{ $request->destination }}" name="destination">
+                <input type="hidden" value="{{ $request->primarydestination }}" name="destination">
                 <input type="hidden" value="" name="cdestination">
                 <input type="hidden" value="{{ $product_name }}" name="product_name">
                 <input type="hidden" value="{{ $data->pro_id }}" name="product_id">

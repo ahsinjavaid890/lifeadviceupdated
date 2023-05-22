@@ -80,26 +80,51 @@
     </style>
 </head>
 
-<body style="background-color:#2b3481;">
-    <div style="background-color:#2b3481;">
+<body style="background-color:#f4f7fa;">
+    <div style="background-color:#f4f7fa">
         <div style="background:#f9f9f9;background-color:#f9f9f9;Margin:0px auto;max-width:600px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f9f9f9;background-color:#f9f9f9;width:100%;">
                 <tbody>
                     <tr>
-                        <td style="border-bottom:#1bbc9b solid 5px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top; background: #252666;">
+                        <td style="border-bottom: #dddddd solid 1px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;background: #f4f7fa;">
                         </td>
                     </tr>
                 </tbody>
             </table>
 
         </div>
-        <div style="background: #2b3481;background-color: #2b3481;Margin:0px auto;max-width:600px;">
+        @php
+            if($sale->product == 1){
+                $policytype = 'SVI';
+            } else if($sale->product == 2){
+                $policytype = 'VTC';
+            } else if($sale->product == 3){
+                $policytype = 'SI';
+            } else if($sale->product == 4){
+                $policytype = 'IFC';
+            } else if($sale->product == 5){
+                $policytype = 'ST';
+            } else if($sale->product == 6){
+                $policytype = 'MT';
+            } else if($sale->product == 7){
+                $policytype = 'AI';
+            } else if($sale->product == 8){
+                $policytype = 'TII';
+            } else if($sale->product == 9){
+                $policytype = 'BC';
+            }else{
+                $policytype = '';
+            }
+            $policy_number_temp = 10000000 + $sale->sales_id;
+            $policy_number = $policytype.$policy_number_temp;
+        @endphp
+        <div style="background: #2b3481;background-color: #2b3481;Margin:0px auto;max-width:700px;">
 
             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;">
                 <tbody>
                     <tr>
-                        <td style="border:#dddddd solid 1px;border-top:0px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">
+                        <td style="border:#dddddd solid 1px;border-top:0px;direction:ltr;font-size:0px;padding:0px 0;text-align:center;vertical-align:top;">
                                <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;">
 
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:bottom;" width="100%">
@@ -107,7 +132,7 @@
                                     <tr>
                                         <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
-                                            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                            <table align="left" style="padding-left: 30px;" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                                 <tbody>
                                                     <tr>
                                                         <td style="width:200px;">
@@ -120,10 +145,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                        <td align="center" style="font-size:0px;/* padding:10px 25px; */word-break:break-word;">
 
-                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;font-weight:bold;line-height:22px;text-align:center;color:#2b3481;">
-                                                Thank you for Purchasing Plan
+                                            <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;font-weight:bold;line-height:22px;text-align:center;color:white;height: 200px;background-color: #2b3481;">
+                                                <div style=" text-align: left; padding-top: 50px; padding-left: 20px; color: #ffffff;  font-weight: 800; font-size: 30px; line-height: 41px; ">Policy Confirmation</div>
+                                                <div style="font-family:inherit;text-align:inherit;text-align: left;padding-left: 20px;"><span style="color:#ffffff;font-size:18px;line-height:40px;font-weight:700;text-align: left;">Thank you for your purchase!</span></div>
+                                                <div style="font-family:inherit;text-align:inherit;text-align: left;padding-left: 20px;"><span style="color:#ffffff;font-size:18px;line-height:40px;font-weight:700;text-align: left;">Policy ID =  {{ $policy_number }}</span></div>
                                             </div>
 
                                         </td>
@@ -146,31 +173,7 @@
                                                     <th style="padding: 0 15px 10px 0; border: 0;"><h3>Policy Details</h3> </th>
                                                 </tr>
                                                 <tr style="border-bottom:1px solid #ecedee;text-align:left;">
-                                                    @php
-                                                        if($sale->product == 1){
-                                                            $policytype = 'SVI';
-                                                        } else if($sale->product == 2){
-                                                            $policytype = 'VTC';
-                                                        } else if($sale->product == 3){
-                                                            $policytype = 'SI';
-                                                        } else if($sale->product == 4){
-                                                            $policytype = 'IFC';
-                                                        } else if($sale->product == 5){
-                                                            $policytype = 'ST';
-                                                        } else if($sale->product == 6){
-                                                            $policytype = 'MT';
-                                                        } else if($sale->product == 7){
-                                                            $policytype = 'AI';
-                                                        } else if($sale->product == 8){
-                                                            $policytype = 'TII';
-                                                        } else if($sale->product == 9){
-                                                            $policytype = 'BC';
-                                                        }else{
-                                                            $policytype = '';
-                                                        }
-                                                        $policy_number_temp = 10000000 + $sale->sales_id;
-                                                        $policy_number = $policytype.$policy_number_temp;
-                                                    @endphp
+                                                    
                                                     <th style="padding: 0 15px 10px 0;">Policy Number: </th>
                                                     <td style="padding: 5px 15px 5px 0;">{{ $policy_number }}</td>
                                                     <th style="padding: 0 15px 10px 0;">Purchase Date:</th>

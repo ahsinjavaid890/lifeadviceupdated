@@ -5,8 +5,8 @@
 @section('content')
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <script src="js/mobiscroll.jquery.min.js"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css')}}">
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
@@ -149,7 +149,7 @@
 										<div class="col-md-6 nopad">
 						                    <div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
-						                        <input class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
+						                        <input readonly="" class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
 						                    </div>
 										</div>
 										<div class="col-md-6 nopad">
@@ -187,61 +187,6 @@
 										
 									</div>
 								</div>
-								<!-- <div class="card-header" style="display: none;">
-									<div class="toggle active " onclick="information()">
-										<div class="row">
-										<div class="col-md-6">
-											<label style="background: no-repeat;padding-left: 0;"><h2 style="font-size: 22px;font-weight: bold;margin: 0;color:#1BBC9B;">Beneficiary Information</h2></label>
-
-										</div>
-										<div class="col-md-6 text-right">
-											<i class="fa fa-angle-down" style="font-size: 35px;"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card-body"  id="benefiaciary" style="display: none;">
-									<div class="toggle toggle-transparent toggle-noicon" >
-											<div class="toggle-content"style="display: block;">
-												<div class="form-group">
-												<div class="row">
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>First Name (optional) <small class="text-danger">*</small>
-														</label></div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficialfname" class="form-control" name="beneficialfname" type="text">
-															</div>
-														</div>
-													</div>	
-													
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>Last Name (optional) <small class="text-danger">*</small>
-														</label></div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficiallname" class="form-control" name="beneficiallname" type="text">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="col-md-12 nopad">
-															<label>E-mail (optional) <small class="text-danger">*</small>
-															</label>
-														</div>
-														<div class="col-md-12 nopad">
-															<div class="input">
-																<input id="beneficialemail" class="form-control" name="beneficialemail" value="" type="email">
-															</div>
-														</div>
-													</div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</div> -->
                                 <div class="f1-buttons">
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
@@ -295,54 +240,32 @@
                             	<div class="row">
 										<div class="col-md-6 mt-3">
 											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Visitor</label>
+						                    	<label class="selectlabeldateofbirth">Insurance Type</label>
 						                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
 						                    </div>
 										</div>
 											<div class="col-md-6 mt-3">
 												<div class="custom-form-control positionrelative">
 							                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
-							                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
+							                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
 							                    </div>
 											</div>
 											<div class="col-md-6" style="margin-top: 23px;">
 							                    <div class=" positionrelative">
 					                               <label class="selectlabel">Primary Destination</label>
-					                                <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
-					                                  @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-					                                     <option @if ($r->name = 'ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-		                                         @endforeach
-		                                         <script type="text/javascript">
-		                                             function selectcoverageammount(id) {
-		                                                 $('#sum_insured2').val(id);
-		                                                 $('#coverageprice').val(id);
-		                                                 $('#covergaeerror').hide();
-		                                               }
-		                                               function firstnext() {
-		                                                  if($('#sum_insured2').val() == '')
-		                                                  {
-		                                                     $('#covergaeerror').show();
-		                                                     $('#covergaeerror').html('Please Select Covergae Ammount');
-		                                                  }else{
-		                                                     $('#firstnextfake').hide();
-		                                                     $('#firstnextorignal').show();
-		                                                     $('#firstnextorignal').click();
-		                                                  }
-		                                               }
-		                                         </script>
-		                                        </select>
+					                               <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['destination'])? $_REQUEST['destination'] : ""; ?>" data-placeholder="Country" readonly="">
 		                                      </div>
 											</div>
 											<div class="col-md-6 mt-3">
 												<div class="custom-form-control positionrelative">
 							                    	<label class="selectlabeldateofbirth">Trip End date</label>
-							                        <input class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
+							                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
 							                    </div>
 											</div>
 											<div class="col-md-6 mt-3">
 												<div class="custom-form-control positionrelative">
 							                    	<label class="selectlabeldateofbirth">Trip Duration(days)</label>
-							                        <input class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration">
+							                        <input readonly class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration">
 							                    </div>
 											</div>
 									</div>
