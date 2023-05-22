@@ -15,4 +15,20 @@ class HomeController extends Controller
     {
         return view('frontend.user.dashboard');
     }
+    public function securitysettings()
+    {
+        return view('frontend.companypages.security-settings');
+    }
+    public function qoutes()
+    {
+        return view('frontend.companypages.qoutes');
+    }
+    public function qoutesdetail()
+    {
+        return view('frontend.companypages.qoutes-detail');
+    }
+    public function udashboard()
+    {
+        return view('frontend.companypages.udashboard');
+    }
 }

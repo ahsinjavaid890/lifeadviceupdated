@@ -29,5 +29,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'google' => [
+        'client_id' => '874927845773-h23h1v4udq2hctk7kr6om8b8hl98iqcc.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost/lifeadvicelaravel/auth/google/callback',
+    ],
 ];

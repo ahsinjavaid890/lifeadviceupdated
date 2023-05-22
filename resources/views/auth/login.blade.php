@@ -225,6 +225,70 @@ a.ssolink {
     margin-top: -2px !important;
 }
   }
+
+  .social-button {
+      background-position: 25px 0px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+      line-height: 50px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+      border-radius: 3px;
+    margin: 10px auto;
+    outline: rgb(255, 255, 255) none 0px;
+    padding-left: 20%;
+    transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+      -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+#google-connect {
+    background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+    border: 1px solid rgb(220, 74, 61);
+}
+
+#google-connect:hover {
+      border-color: rgb(220, 74, 61);
+      background: rgb(220, 74, 61) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+      -webkit-transition: all .8s ease-out;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease-out;
+}
+
+#google-connect span {
+      box-sizing: border-box;
+    color: rgb(220, 74, 61);
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0px none rgb(220, 74, 61);
+    outline: rgb(255, 255, 255) none 0px;
+      -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    line-height: 50px;
+}
+
+#google-connect:hover span {
+      color: #FFF;
+      -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
 </style>
 <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="flex-grow: 1;">
@@ -233,6 +297,10 @@ a.ssolink {
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Sign in to your account</span>
+
+                <a href="{{ url('auth/google') }}" class="social-button" id="google-connect"> <span>Connect with Google</span></a>
+
+
                 @if(session()->has('warning'))
                     <div style="text-align: center;color: red;" id="result">{{ session()->get('warning') }}</div>
                 @endif
@@ -241,6 +309,11 @@ a.ssolink {
                 <div class="field padding-bottom--24">
                   <label for="email">Email</label>
                   <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus>
+                    @if($_GET['error'])
+                        <span class="invalid-feedback" role="alert">
+                            <strong>User Not Found</strong>
+                        </span>
+                    @endif
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

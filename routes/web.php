@@ -8,6 +8,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StaffPermissionController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\JobController; 
+use App\Http\Controllers\GoogleController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,19 +22,18 @@ use App\Http\Controllers\JobController;
 
 Auth::routes(['verify' => true]);
 Route::POST('/attemptlogin', [SiteController::class, 'attemptlogin']);
-
-
 Route::name('user.')->prefix('user')->group(function(){
     Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
     
 });
-
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);
-Route::get('/profile', [SiteController::class, 'profile']);
+Route::get('/profile', [HomeController::class, 'dashboard']);
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
-Route::get('/qoutes', [SiteController::class, 'qoutes']);
+Route::get('/qoutes', [HomeController::class, 'qoutes']);
 Route::get('/udashboard', [SiteController::class, 'udashboard']);
 Route::get('/qoutes-detail', [SiteController::class, 'qoutesdetail']);
 Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);

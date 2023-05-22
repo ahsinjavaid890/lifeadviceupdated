@@ -12954,11 +12954,22 @@ ul.tabs li.current {
 }
 
 .login-btn {
-/*    width: 80px;*/
+    font-weight: 700 !important;
     height: 35px;
-    padding: 5px !important;
-    background-color: #2b3481;
-    color: white !important;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    color: #2b3481 !important;
+    border: 0;
+    transition: .3s ease-in-out;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px !important;
+    border-radius: 20px;
+    color: #2b3481;
+    background-color: #edf5fc;
 }
 
 .sign-up {

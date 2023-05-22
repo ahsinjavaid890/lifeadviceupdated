@@ -125,26 +125,6 @@ class SiteController extends Controller
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
         return view('frontend.formone.quote')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request));
     }
-    public function profile()
-    {
-        return view('frontend.companypages.profile');
-    }
-    public function securitysettings()
-    {
-        return view('frontend.companypages.security-settings');
-    }
-    public function qoutes()
-    {
-        return view('frontend.companypages.qoutes');
-    }
-    public function qoutesdetail()
-    {
-        return view('frontend.companypages.qoutes-detail');
-    }
-    public function udashboard()
-    {
-        return view('frontend.companypages.udashboard');
-    }
     public function blogdetail($id)
     {
         $data = blogs::where('url' , $id)->first();
