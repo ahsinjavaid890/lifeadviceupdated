@@ -168,7 +168,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           <div class="col-md-6 nopad margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input onchange="dateofbirth(this.value , 1)" id="dateofbirthfull" class="errorinputtest input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input inputmode="numeric" onchange="dateofbirth(this.value , 1)" id="dateofbirthfull" class="errorinputtest input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
