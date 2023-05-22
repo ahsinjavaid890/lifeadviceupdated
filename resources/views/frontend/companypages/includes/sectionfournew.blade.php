@@ -9,7 +9,7 @@
                    <img src="{{ url('public/images') }}/{{ $page->section_four_vector }}">
                </div>
                <div class="col-md-6">
-                        {!! $page->section_four_description !!}
+                    {!! $page->section_four_description !!}
                </div>
            </div>
        </div>

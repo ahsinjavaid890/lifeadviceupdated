@@ -3101,30 +3101,22 @@ fieldset .input{
 }
 
 @media only screen and (max-width: 600px) {
-
     h2.heading-3.card-heading {
         font-size: 1.5rem;
         line-height: 1.35;
     }
-    .card-for-mobile-device {
+  .card-for-mobile-device {
     padding: 0 !important;
   }
-
   .card-for-mobile-device .card-for-mobile-device-row{
     max-width: 100%;
     margin: unset;
     width: 100%;
     margin-top: 0px !important;
   }
-
-
-  .modal-footer .nextbtns{
-    padding-right: 25px !important;
-  }
   .herrotext.super-hero-text {
         text-align: center;
-    }
-    
+  }
   .display-none-on-mobile{
     display: none;
   }
@@ -3147,7 +3139,6 @@ fieldset .input{
     margin-top: 10px !important;
     margin-left: 15px;
   }
-
   .modal-open .modal{
     background-color: white;
   }
@@ -3204,4 +3195,23 @@ fieldset .input{
 .disabledbutton{
     cursor: unset !important;
     background-color: #c2cad7 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .nextbtns{
+    display: block !important;
+    padding-right: 0px !important;
+  }
+  .modal-footer{
+    padding: 12px 10px 10px 0px !important;
+  }
+  .toogleswithchdiv{
+    display: flex;
+  }
+  .card-content{
+    display: block !important;
+  }
+  #errortravelr{
+    width: 100% !important;
+  }
 }
