@@ -805,4 +805,10 @@ class AdminController extends Controller
     {
         return view('admin.website.settings');
     }
+    public function updatecompanyinfo(Request $request)
+    {
+        $data = wp_dh_companies::find($request->id);
+
+        print_r($data);
+    }
 }

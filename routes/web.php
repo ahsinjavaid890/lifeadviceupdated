@@ -111,46 +111,7 @@ Route::get('/dashboard', [CarrierController::class, 'index']);
 
 
 
-// carrier-profile
-Route::get('/carrier-profile', [CarrierController::class, 'carrierprofile']);
-Route::POST('/updatecarrierlogo', [CarrierController::class, 'updatecarrierlogo']);
-Route::POST('/changecoverphoto', [CarrierController::class, 'changecoverphoto']);
-Route::POST('/updatecarrierprofile', [CarrierController::class, 'updatecarrierprofile']);
-Route::get('/profile-settings', [CarrierController::class, 'profilesettings']);
-Route::POST('/updateprofilepicture', [CarrierController::class, 'updateprofilepicture']);
-Route::POST('/updateuserprofile', [CarrierController::class, 'updateuserprofile']);
-Route::POST('/securetycredentials', [CarrierController::class, 'securetycredentials']);
-Route::POST('/updatepetpolicy', [CarrierController::class, 'updatepetpolicy']);
-Route::POST('/updateriderpolicy', [CarrierController::class, 'updateriderpolicy']);
-Route::get('/companyinfo/{id}', [CarrierController::class, 'companyinfo']);
-Route::POST('/updatecompanyinfo', [CarrierController::class, 'updatecompanyinfo']);
-Route::get('/help', [CarrierController::class, 'carrierhelp']);
-Route::get('/add-new-post', [CarrierController::class, 'addnewpost']);
-Route::get('/all-posts', [CarrierController::class, 'allposts']);
-Route::get('/editpost/{id}', [CarrierController::class, 'editpost']);
-Route::post('/addneweducationarticle', [CarrierController::class, 'addneweducationarticle']);
-Route::get('/education-center', [CarrierController::class, 'educationcenter']);
-Route::post('/updateeducationarticle', [CarrierController::class, 'updateeducationarticle']);
-Route::get('/detail/{id}', [CarrierController::class, 'detailpost']);
-Route::get('/map/add-new', [CarrierController::class, 'addnewmap']);
-Route::get('/savemaplocations/{one}/{two}/{three}/{four}', [CarrierController::class, 'savemaplocations']);
-Route::post('/addnewhiringmap', [CarrierController::class, 'addnewhiringmap']);
-Route::get('/hirig-maps', [CarrierController::class, 'hiringmaps']);
-Route::get('/deletemap/{id}', [CarrierController::class, 'deletemap']);
-Route::get('/changestatusofmap/{id}', [CarrierController::class, 'changestatusofmap']);
-Route::get('/editmap/{id}', [CarrierController::class, 'editmap']);
-Route::post('/updatehiringmap', [CarrierController::class, 'updatehiringmap']);
 
-
-
-// Staff Permissions
-Route::get('/staff-permissions', [StaffPermissionController::class, 'allpermissions']);
-Route::get('/edit-staff-permission/{id}', [StaffPermissionController::class, 'editstaffpermission']);
-Route::get('/add-staff-permission', [StaffPermissionController::class, 'addstaffpermission']);
-Route::POST('/addnewstaffpermission', [StaffPermissionController::class, 'addnewstaffpermission']);
-Route::POST('/updatestaffpermission', [StaffPermissionController::class, 'updatestaffpermission']);
-Route::get('/members', [StaffPermissionController::class, 'allmembers']);
-Route::POST('/addnewcarrierstaff', [StaffPermissionController::class, 'addnewcarrierstaff']);
 
 
 
@@ -163,79 +124,12 @@ Route::get('/carrier-profile/reviews', function () {
 
 
 
-// Jobs Routes
-Route::get('/jobs', [JobController::class, 'allcarrierjobs']);
-Route::get('/searchjobs', [JobController::class, 'searchjobs']);
-Route::get('/job/add', [JobController::class, 'addnewjob']);
-Route::get('/job/published', [JobController::class, 'publishedjobstatus']);
-Route::post('/job/submitone', [JobController::class, 'submitone']);
-Route::post('/job/adddadvancedetails', [JobController::class, 'adddadvancedetails']);
-Route::post('/job/addpayoutschedule', [JobController::class, 'addpayoutschedule']);
-Route::post('/job/addadvancepayoutdetails', [JobController::class, 'addadvancepayoutdetails']);
-Route::post('/job/hiringreq', [JobController::class, 'hiringreq']);
-Route::post('/job/addnewcompanyemal', [JobController::class, 'addnewcompanyemal']);
-Route::post('/job/routingandtrans', [JobController::class, 'routingandtrans']);
-Route::post('/job/subscription', [JobController::class, 'subscription']);
-Route::post('/job/jobsubmitlast', [JobController::class, 'jobsubmitlast']);
-Route::post('/job/advanceequipment', [JobController::class, 'advanceequipment']);
-Route::get('/deletejob/{id}', [JobController::class, 'deletejob']);
-Route::get('/jobedit/{id}', [JobController::class, 'jobedit']);
-Route::get('/carrierjobdetail/{id}', [JobController::class, 'carrierjobdetail']);
-Route::get('/hiring-templates', [JobController::class, 'hiringtemplates']);
-Route::get('/deletehiringtemplate/{id}', [JobController::class, 'deletehiringtemplate']);
-
 
 
 
 
 
 // Hiring Maps
-
-
-
-
-
-// Staff
-
-
-
-
-
-Route::get('/integrations', function () {
-    return view('carrier/integrations/index');
-});
-
-
-
-
-
-
-Route::get('/advertise', function () {
-    return view('carrier/advertise/index');
-});
-
-
-
-Route::get('/billing', function () {
-    return view('carrier/billing/index');
-});
-
-
-
-
-Route::get('/change-password', function () {
-    return view('carrier/profile-settings/change-password');
-});
-
-
-
-
-
-
-
-
-
-
 Route::name('admin.')->prefix('admin')->group(function(){
     Route::get('/login',[LoginController::class, 'login'])->name('login');
     Route::post('/login-process',[LoginController::class, 'login_process'])->name('login_process');
@@ -266,6 +160,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');
+        Route::post('/updatecompanyinfo','AdminController@updatecompanyinfo');
     });
     Route::name('products.')->prefix('products')->group(function(){
         Route::get('/allproducts','AdminController@allproducts');

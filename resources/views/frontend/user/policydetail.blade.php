@@ -72,6 +72,9 @@
        font-weight: 600;
        line-height: 24px;
    }
+   h5#exampleModalLabel {
+       color: white;
+   }
    .policyid a{
        padding: 4px 7px;
        color: #2b3481;
@@ -81,6 +84,28 @@
        font-size: 14px;
        font-weight: 600;
        line-height: 24px;
+   }
+   .form-control{
+      height: 42px !important;
+      border-radius: 10px;
+   }
+   .iftext{
+      color: #2b3481!important;
+      font-weight: 900;
+      font-size: 16px;
+   }
+   .readtext{
+      color: #2b3481!important;
+      font-weight: 900;
+      font-size: 14px;
+      margin-left: 10px;
+   }
+   #iconferm{
+      height: 22px;
+      width: 22px;
+   }
+   .modal-header{
+      background-color: #2b3481;
    }
 </style>
 <div class="container mb-5" style="margin-top: 8rem;">
@@ -100,12 +125,9 @@
                   <div class="col-md-6">
                      <div class="policy d-flex">
                         <p class="policyid">
-                           <span class="text-dark">Policy ID :</span>
+                           <span class="text-dark">Reffrence ID :</span>
                            10000{{ $data->sales_id }}
                         </p>
-                     </div>
-                     <div class="light mt-2">
-                        <p class="communication"><i class="fa fa-lightbulb mr-2"></i>This is your Policy ID. Please use this for all communication with us.</p>
                      </div>
                      <div class="row mt-5">
                         <div class="col-md-6">
@@ -162,16 +184,9 @@
                      <div class="row">
                         <div class="col-md-12">
                            <div class="claim_inforamtion text-right">
-                              <button class="claim_button" data-toggle="modal" data-target="#cancelpolicy">Cancel Policy</button>
-                              <button class="claim_button">Track Claims</button>
-                              <button class="claim_button extend"><i class="fa fa-refresh mr-2"></i>Extend</button>
-                           </div>
-                           <div class="claim_info mt-5">
-                              <h3>Claims Information</h3>
-                              <p>Life Advice believes filing travel insurance claims should be a straightforward, stress-free process. Whether you need to file, update, or appeal a claim, we’ve got you covered. We care about keeping our travelers safe and secure because we're travelers too.</p>
-                              <h3>How to File Claims</h3>
-                              <p>All claims must be submitted in writing to WorldTrips along with supporting documents and receipts. Supporting documents include the insured’s ID, copy of passport, copies of all receipts, bills, itemized services, and a claim form.</p>
-                              <button class="view_claim">File/View Claim</button>
+                              <button class="claim_button" data-toggle="modal" data-target="#changepolicy">Change Request</button>
+                              <button class="claim_button" data-toggle="modal" data-target="#cancelpolicy">Refund Request</button>
+                              <button class="claim_button extend" data-toggle="modal" data-target="#extendpolicy"><i class="fa fa-refresh mr-2"></i>Extend</button>
                            </div>
                         </div>
                      </div>
@@ -197,31 +212,253 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="cancelpolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="changepolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style=" border-left: 5px solid #2b3481; border-radius: 20px; ">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cancle Policy</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Change Request</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-         <h2>Claims Information</h2>
-         <p>
-            Life Advice believes filing travel insurance claims should be a straightforward, stress-free process. Whether you need to file, update, or appeal a claim, we’ve got you covered. We care about keeping our travelers safe and secure because we're travelers too.
-         </p>
+         <form method="POST" action="{{ url('') }}">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Reffrence ID</label>
+                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Policy Number</label>
+                     <input type="text" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Efective Date</label>
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Return Date</label>
+                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            @php
+               $startdate = strtotime($data->start_date);
+               $enddate = strtotime($data->end_date);
+               $datediff = $enddate - $startdate;
+               $numberofdays =  round($datediff / (60 * 60 * 24));
+            @endphp
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>New Efective Date</label>
+                     <input onchange="getdate(this.value)" type="date" class="form-control" name="">
+                  </div>
+               </div>
+               <script>
+                  function getdate(id) {
+                    var someDate = new Date(id);
+                    var numberOfDaysToAdd = {{ $numberofdays }};
+                    someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+                    var date = someDate.getMonth() + '/' + someDate.getDate() + '/' + someDate.getFullYear();
+                    $('#newreturndate').val(date);
+                  }
+               </script>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>New Return Date</label>
+                     <input readonly id="newreturndate" type="text" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label>Upload Document</label>
+                     <input type="file" style="height:50px !important;" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <span class="iftext">The start date of the policy will only be changed if:</span><br><br>
+                     <ul style="list-style:unset;margin-left: 15px;">
+                        <li>The policy has not expired.</li>
+                        <li>The insured has not travelled to Canada during the current policy period.</li>
+                        <li>Proof of the changed itinerary such as a flight ticket, boarding pass, or stamp on the passport is provided. If the policy has been in effect for more than six months, we require a copy of all passport pages as well.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <input type="checkbox" id="iconferm" required > <label class="readtext" for="iconferm">I Read all the Points and i Confirm all Information is Correct</label>
+                  </div>
+               </div>
+            </div>
+            
+         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="claim_button">Send Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="cancelpolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style=" border-left: 5px solid #2b3481; border-radius: 20px; ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Refund Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form method="POST" action="{{ url('') }}">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Reffrence ID</label>
+                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Policy Number</label>
+                     <input type="text" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Efective Date</label>
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Return Date</label>
+                     <input type="date" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Refund Form</label>
+                     <input type="file" style="height:50px;" class="form-control" name="">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Proof Of Return</label>
+                     <input type="file" style="height:50px;" class="form-control" name="">
+                  </div>
+               </div>
+            </div>
+            
+            
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="claim_button">Send Request</button>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
+<!-- Modal -->
+<div class="modal fade" id="extendpolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style=" border-left: 5px solid #2b3481; border-radius: 20px; ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Extend Policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="{{ url('extendpolicy') }}">
+            @csrf
+      <div class="modal-body">
+         
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Reffrence ID</label>
+                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="reffrence_id">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Policy Number</label>
+                     <input required placeholder="Enter Policy Number" type="text" class="form-control" name="policy_number">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Efective Date</label>
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="efective_date">
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>Return Date</label>
+                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="return_date">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label>New Return Date</label>
+                     <input type="date" class="form-control" name="new_return_date">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <span class="iftext">This policy will only be extended if:</span><br><br>
+                     <ul style="list-style:unset;margin-left: 15px;">
+                        <li>The insured(s) has/have not incurred a claim under this policy</li>
+                        <li>The insured(s) agree that expenses related to medical conditions present on the date of application for an extension will not be covered by this policy</li>
+                        <li>Coverage under this policy is in force at the time the request for an extension is received</li>
+                        <li>The insured(s) pay any additional required premium for such extension</li>
+                        <li>The extension period applied for, plus the original policy period do not exceed the maximum number of days allowable for the selected plan.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <input type="checkbox" id="iconferm" required > <label class="readtext" for="iconferm">I Read all the Points and i Confirm all Information is Correct</label>
+                  </div>
+               </div>
+            </div>
+         
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="claim_button">Send Request</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection

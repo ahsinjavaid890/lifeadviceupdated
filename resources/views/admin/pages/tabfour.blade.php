@@ -1,7 +1,6 @@
 <div class="tab-pane fade" id="tab4">
     <div class="row">
         <div class="col-md-12">
-
            @if($data->url == 'homepage')
             <div class="form-group">
                 <label>Homepage Description</label>
@@ -108,8 +107,8 @@
         </div>
        @endif
             @if($data->url == 'claim')
-            <div class="form-group">
-                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Questions</a>
+            <!-- <div class="form-group">
+                <a href="javascript:void(0)" class="btn btn-sm btn-primary"data-toggle="modal" data-target="#questions"><i class="fa fa-plus"></i>Add New Claim Form</a>
             </div>
             <table class="table table-bordered">
             <thead>
@@ -130,7 +129,7 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> -->
             @endif
              @if($data->url == 'health-insurance')
                 <div class="form-group">
