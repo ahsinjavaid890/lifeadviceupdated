@@ -29,8 +29,9 @@ class HomeController extends Controller
     {
         return view('frontend.companypages.qoutes-detail');
     }
-    public function udashboard()
+    public function policydetail($id)
     {
-        return view('frontend.companypages.udashboard');
+        $sales = DB::table('sales')->where('sales_id' , $id)->first();
+        return view('frontend.user.policydetail')->with(array('data'=>$sales));
     }
 }

@@ -28,14 +28,10 @@
    .justify-content{
       justify-content: space-between;
    }
-
-
-
    .col-md-9 .card .card-footer{
       background-color: white;
       border-top: none;
    }
-
    .justify-content .badge{
        height: 19px;
        padding: 0 9px;
@@ -46,7 +42,6 @@
        line-height: 23px;
        text-transform: capitalize;
        color: #fff;
-       
    }
    .justify-content .badge-danger{
       background: #fff;
@@ -121,7 +116,7 @@
             </div>
             <div class="d-flex policyid justify-content">
                <span>Policy Id: 10000{{$r->sales_id}} </span>
-               <a href="">View Details</a>
+               <a href="{{ url('policydetail') }}/{{ $r->sales_id }}">View Details</a>
             </div>
          </div>
          @endforeach

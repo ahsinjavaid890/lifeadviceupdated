@@ -33,7 +33,7 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [HomeController::class, 'dashboard']);
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
-Route::get('/qoutes', [HomeController::class, 'qoutes']);
+Route::get('/policydetail/{id}', [HomeController::class, 'policydetail']);
 Route::get('/udashboard', [SiteController::class, 'udashboard']);
 Route::get('/qoutes-detail', [SiteController::class, 'qoutesdetail']);
 Route::get('/super-visa-insurance', [SiteController::class, 'supervisa']);
