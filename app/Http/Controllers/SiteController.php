@@ -71,10 +71,6 @@ class SiteController extends Controller
         DB::statement($sql2);
         $sql3 = "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$saleid', 'payment', 'Policy Purchase Payment', '$request->premium')";
         DB::statement($sql3);
-        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request){
-              $message->to($request->email);
-              $message->subject('New Purchase');
-        });
         if($sales->product == 1){
             $policytype = 'SVI';
         } else if($sales->product == 2){
