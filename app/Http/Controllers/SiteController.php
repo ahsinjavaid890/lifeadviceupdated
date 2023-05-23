@@ -75,19 +75,57 @@ class SiteController extends Controller
               $message->to($request->email);
               $message->subject('New Purchase');
         });
-        $password = 10000000+$sales->sales_id;
-        $newuser = new User();
-        $newuser->name = $request->fname.' '.$request->lname;
-        $newuser->email = $request->email;
-        $newuser->phone = $request->phone;
-        $newuser->dob = $request->dob;
-        $newuser->address = $request->streetname;
-        $newuser->country = 'CA';
-        $newuser->postal = $request->postalcode; 
-        $newuser->password = Hash::make($password);
-        $newuser->user_type = 'customer';
-        $newuser->status = 'active';
-        $newuser->save();
+        if($sales->product == 1){
+            $policytype = 'SVI';
+        } else if($sales->product == 2){
+            $policytype = 'VTC';
+        } else if($sales->product == 3){
+            $policytype = 'SI';
+        } else if($sales->product == 4){
+            $policytype = 'IFC';
+        } else if($sales->product == 5){
+            $policytype = 'ST';
+        } else if($sales->product == 6){
+            $policytype = 'MT';
+        } else if($sales->product == 7){
+            $policytype = 'AI';
+        } else if($sales->product == 8){
+            $policytype = 'TII';
+        } else if($sales->product == 9){
+            $policytype = 'BC';
+        }else{
+            $policytype = '';
+        }
+        $policy_number_temp = 10000000 + $sales->sales_id;
+        $policy_number = $policytype.$policy_number_temp;
+        $checkuser = User::where('email' , $request->email)->count();
+        if($checkuser == 0)
+        {
+            $password = $policy_number;
+            $newuser = new User();
+            $newuser->name = $request->fname.' '.$request->lname;
+            $newuser->email = $request->email;
+            $newuser->phone = $request->phone;
+            $newuser->dob = $request->dob;
+            $newuser->address = $request->streetname;
+            $newuser->country = 'CA';
+            $newuser->postal = $request->postalcode; 
+            $newuser->password = Hash::make($password);
+            $newuser->user_type = 'customer';
+            $newuser->status = 'active';
+            $newuser->save();
+        }else{
+            $user = User::where('email' , $request->email)->first();
+            $password = $policy_number;
+            $newuser = User::find($user->id);
+            $newuser->password = Hash::make($password);
+            $newuser->save();
+        }
+        $subject = 'Your Life Advice Policy Confirmation | '.$policy_number;
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request , $subject){
+              $message->to($request->email);
+              $message->subject($subject);
+        });
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)

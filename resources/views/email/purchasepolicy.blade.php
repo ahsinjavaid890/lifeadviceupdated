@@ -247,9 +247,27 @@
                                     </tr>
                                     <tr>
                                         <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                            <table 0="[object Object]" 1="[object Object]" 2="[object Object]" border="0" class="table table-bordered invoice" style="cellspacing:0;color:#2b3481;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;background: #f9fafc;width: 100%;border: 1px solid #dae5ee;border-radius: 10px;">
+                                                <tr style="border-bottom:1px solid #ecedee;text-align:left;">
+                                                    <th style="padding: 0 15px 10px 0; border: 0;"><h3 style=" white-space: pre-wrap; color: #2b3481;  font-size: 20px; font-weight: 800; ">Login Details</h3> </th>
+                                                </tr>
+                                                <tr style="text-align:left;">
+                                                    <th style="padding: 0 15px 10px 0;">Email:</th>
+                                                    <td style="padding: 5px 15px 5px 0;">{{ $request->email }}</td>
+                                                    
+                                                </tr>
+                                                <tr style="text-align:left;">
+                                                    <th style="padding: 0 15px 10px 0;">Password:</th>
+                                                    <td style="padding: 5px 15px 5px 0;">{{ $policy_number }}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                             <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:20px;text-align:left;color:#2b3481;">We look forward to a long and rewarding relationship with you. Thank you once again for trusting Life Advice Insurance Inc. We're here to support you every step of the way.<br>Best Regards,
                                                 <br>
-                                                <a href="{{ url('') }}" style="color:#2F67F6">{{ url('') }}</a>
+                                                <a href="{{ url('login') }}" style="color:#2F67F6">{{ url('login') }}</a>
                                             </div>
                                         </td>
                                     </tr>
