@@ -819,8 +819,14 @@ class AdminController extends Controller
     }
     public function updatecompanyinfo(Request $request)
     {
-        $data = wp_dh_companies::find($request->id);
-
-        print_r($data);
+        if($request->claimform)
+        {
+            $claimform = Cmf::sendimagetodirectory($request->claimform);
+            $update = array('claimform' => $claimform,'comp_name' => $request->name);
+        }else{
+            $update = array('comp_name' => $request->name);
+        }
+        DB::table('wp_dh_companies')->where('comp_id' , $request->id)->update($update);
+        return redirect()->back()->with('message', 'Company Updated Successfully');
     }
 }

@@ -56,7 +56,7 @@
                                 </td>
                                 <td>
                                     @if($r->claimform)
-
+                                    <a download="" href="{{ url('public/images') }}/{{ $r->claimform }}" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Claim Form</a>
                                     @else
                                     <a href="javascript:void(0)" class="btn btn-default btn-xs">No Claim Form</a>
                                     @endif
@@ -104,7 +104,7 @@
                                                 <i aria-hidden="true" class="ki ki-close"></i>
                                             </button>
                                         </div>
-                                        <form method="POST" action="{{ url('admin/companies/updatecompanyinfo') }}">
+                                        <form enctype="multipart/form-data" method="POST" action="{{ url('admin/companies/updatecompanyinfo') }}">
                                             @csrf
                                             <input type="hidden" value="{{ $r->comp_id }}" name="id">
                                             <div class="modal-body">
@@ -129,22 +129,6 @@
                                                         <div class="form-group">
                                                             <label class="lable-control">Claim Form</label>
                                                             <input name="claimform" type="file" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="lable-control">Student PDF Policy</label>
-                                                            <input name="comp_studentpdf" type="file" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="lable-control">Canada PDF Policy</label>
-                                                            <input name="comp_canadapdf" type="file" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>

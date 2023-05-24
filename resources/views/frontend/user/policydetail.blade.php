@@ -244,7 +244,15 @@
                            <a class="purchaseconfermationdownload" download="" href="{{ url('public/images') }}/{{ $data->policydocument }}"><i class="fa fa-download"></i> Download Purchase Confirmation </a>
                         </div>
                      </div>
+                     <hr>
                      @endif
+                     <h3 style="color: #2b3481!important">Claims Information</h3>
+                     <p>Life Advice Insurance Inc believes that submitting life insurance claims should be a seamless, hassle-free process. We have got you covered. We are devoted to ensuring the peace of mind of our policyholders because we too understand the value of life's security.</p>
+                     <h3 style="color: #2b3481!important">How to File Claims</h3>
+                     <p>All claims must be sent in writing to Life Advice Insurance Inc, along with necessary supporting documentation and receipts. These supporting documents should include the insured’s ID, copies of all relevant bills, detailed descriptions of services used, and a completed claim form</p>
+                     <h3 style="color: #2b3481!important">Claim form</h3>                      
+                     <p>Our dedicated claims team is always available to provide guidance and assistance throughout the process, ensuring that your claim is handled swiftly and sympathetically.</p>
+                     <p>At Life Advice Insurance Inc, we're more than just an insurance provider; we're here to support you every step of the way.</p>
                   </div>
                </div>
       </div>
