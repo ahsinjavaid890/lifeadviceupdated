@@ -118,7 +118,7 @@
          @foreach($sales as $r)
          <div class="card mb-3">
             <div class="d-flex justify-content">
-               <h3>{{ $r->fname }} {{ $r->lname }} @if($r->policy_title) | {{ $r->policy_title }} @endif</h3>
+               <h3>{{ $r->fname }} {{ $r->lname }}</h3>
                @if($r->policy_status == 'pending')
                <span class="badge badge-warning">{{ $r->policy_status }}</span>
                @endif
@@ -129,6 +129,7 @@
                <span class="badge badge-success">{{ $r->policy_status }}</span>
                @endif
             </div>
+            <div>{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</div>
             <div class="d-flex">
                <div class="date">
                  <span> Effective : </span>{{ Cmf::date_format($r->start_date) }}

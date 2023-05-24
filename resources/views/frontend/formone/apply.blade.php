@@ -138,7 +138,7 @@
 										</div>
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
-						                    	<label class="selectlabeldateofbirth">Second Name Traveler {{ $i+1 }}</label>
+						                    	<label class="selectlabeldateofbirth">Last Name Traveler {{ $i+1 }}</label>
 						                        <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
 						                    </div>
 										</div>
