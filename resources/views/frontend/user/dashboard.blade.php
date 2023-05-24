@@ -129,7 +129,8 @@
                <span class="badge badge-success">{{ $r->policy_status }}</span>
                @endif
             </div>
-            <div>{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</div>
+            <div style="color: #3f3e81;
+    font-weight: 900;">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</div>
             <div class="d-flex">
                <div class="date">
                  <span> Effective : </span>{{ Cmf::date_format($r->start_date) }}
