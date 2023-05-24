@@ -107,6 +107,51 @@
    .modal-header{
       background-color: #2b3481;
    }
+   .divider{
+          border-top: 1px solid #cfd9e8;
+    margin: 20px -24px;
+   }
+   .hthreeforextralinks{
+      display: block;
+    margin-bottom: 24px;
+    line-height: 20px;
+    color: #2b3481 !important;
+   }
+   .helpfulllinks{
+      font-size: 15px;
+    line-height: 19px;
+    color: #1b8fe4;
+    font-weight: 700;
+    margin-bottom: 1rem!important;
+   }
+   .purchaseconfermationdownload{
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: left;
+    border-radius: 20px;
+    line-height: 18px;
+    color: #2b3481;
+    color: #fff;
+    background-color: #2b3481;
+    padding: 0 24px;
+    border: 1px solid #2b3481;
+    background: #2b3481;
+    transition: .3s ease-in-out;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+   }
+   .purchaseconfermationdownload:hover{
+      border: 1px solid #2b3481;
+      color: #2b3481;
+      background-color: white;
+   }
+   .purchaseconfermationdownload i{
+      margin-right: 10px;
+   }
 </style>
 <div class="container mb-5" style="margin-top: 8rem;">
    <div class="row mt-5">
@@ -133,76 +178,97 @@
                         <div class="col-md-6">
                            <div class="user_data">
                               <label>Policy Name</label>
-                              <h5>VisitorSecure</h5>
+                              <h5>{{ $data->policy_title }}</h5>
                            </div>
                            <div class="user_data">
                               <label>Purchase Date</label>
-                              <h5>Nov 22, 2022</h5>
+                              <h5>{{ Cmf::date_format($data->purchase_date) }}</h5>
                            </div>
                            <div class="user_data">
-                              <label>Premium Paid</label>
-                              <h5>$5.40</h5>
+                              <label>Deductible</label>
+                              <h5>${{ $data->deductible }}</h5>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="user_data">
                               <label>Destination</label>
-                              <h5>Canada</h5>
+                              <h5>Ontario</h5>
+                           </div>
+                           <div class="user_data">
+                              <label>Duration</label>
+                              <h5>{{ $data->duration }} Days</h5>
                            </div>
                            <div class="user_data">
                               <label>Policy Maximum</label>
-                              <h5>$50,000</h5>
-                           </div>
-                           <div class="user_data">
-                              <label>Deductible</label>
-                              <h5>$100</h5>
+                              <h5>${{ $data->benefit }}</h5>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="coverage">
-                        <h3>Coverage Duration</h3>
-                        <p class="condition">Upcoming</p>
+                        <h3 style="color:white;">Coverage Duration</h3>
                         <div class="row">
                            <div class="col-md-6">
                               <div class="effiate_date">
                                  <label>Effective Date</label>
-                                 <h6>Effective Date</h6>
+                                 <h6 style="color:white;">{{ Cmf::date_format($data->start_date) }}</h6>
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="expire_date">
-                                 <label>Expire On <span class="days">in 5 days</span></label>
-                                 <h6 class="text-danger">Nov 27, 2022</h6>
+                                 <label>Expire On</label>
+                                 <h6 class="text-danger">{{ Cmf::date_format($data->end_date) }}</h6>
                               </div>
                            </div>
                         </div>
                      </div>
                      </div>
-                  </div><hr>
+                     </div><hr>
                      <div class="row">
                         <div class="col-md-12">
                            <div class="claim_inforamtion text-right">
                               <button class="claim_button" data-toggle="modal" data-target="#changepolicy">Change Request</button>
                               <button class="claim_button" data-toggle="modal" data-target="#cancelpolicy">Refund Request</button>
-                              <button class="claim_button extend" data-toggle="modal" data-target="#extendpolicy"><i class="fa fa-refresh mr-2"></i>Extend</button>
+                              <button style=" margin-right: -12px; " class="claim_button extend" data-toggle="modal" data-target="#extendpolicy"><i class="fa fa-refresh mr-2"></i>Extend</button>
                            </div>
                         </div>
                      </div>
+                     <hr>
+                     @if($data->policydocument)
+                     <div class="d-flex justify-content">
+                        <div class="purchasedocument">
+                           <h3 style="color: #2b3481!important">Purchase Confirmation Document</h3>
+                        </div>
+                        <div>
+                           <a class="purchaseconfermationdownload" download="" href="{{ url('public/images') }}/{{ $data->policydocument }}"><i class="fa fa-download"></i> Download Purchase Confirmation </a>
+                        </div>
+                     </div>
+                     @endif
                   </div>
                </div>
       </div>
       <div class="col-md-3">
          <div class="card">
             <div class="card-body p-0">
-               <ul class="nav nav-tabs " role="tablist" style="display: block;">
+               <ul class="nav nav-tabs" role="tablist" style="display: block;border-bottom: unset;">
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url('profile')}}">Purchased Policies</a>
+                     <a class="nav-link activenav" href="{{ url('profile')}}">Purchased Policies</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url('requests')}}">Requests</a>
+                  </li>
+                  <li class="nav-item">
                      <a class="nav-link" href="{{ url('logout')}}">Sign Out</a>
                   </li>
+               </ul>
+               <div class="divider"></div>
+               <h3 class="hthreeforextralinks">Helpfull Links</h3>
+               <ul>
+                  <li><a href="{{ url('faq') }}" class="helpfulllinks"> Frequently Asked Questions </a></li>
+                  <li><a href="{{ url('privacypolicy') }}" class="helpfulllinks"> Privacy Policy </a></li>
+                  <li><a href="{{ url('contactus') }}" class="helpfulllinks"> Contact Us </a></li>
+                  <li><a href="{{ url('claim') }}" class="helpfulllinks"> Claim Form </a></li>
                </ul>
             </div>
          </div>

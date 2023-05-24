@@ -326,13 +326,13 @@ if($second_show == '1' && $second_total_price > 0){
               <div class="plan-label">
                   <!-- <h2><?php echo $second_plan_name;?></h2> -->
               </div>
-                <p class="plan-subheading">
+                <p class="plan-subheading display-none-on-mobile">
                   Deductible Option ($<?php echo $second_deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
                   <br>
                   Days: <?php echo $second_num_of_days;?> (<?php echo $second_startdate;?> - <?php echo $second_enddate;?>)
                 </p>
-                <h2 class="qoute-policy">Policy Details</h2>
-                  <ul class="plan-highlights text-dark ml-3">
+                <h2 class="qoute-policy display-none-on-mobile">Policy Details</h2>
+                  <ul class="plan-highlights text-dark ml-3 display-none-on-mobile">
                       <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $second_product_name;?></span></span></li>
                   </ul>
@@ -345,7 +345,7 @@ if($second_show == '1' && $second_total_price > 0){
                     }
 
                   ?>
-                <h3 onclick="slideadditionaltravelers(<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345)"  style="font-size:15px;cursor: pointer;color: #2b3481 !important;" class="qoute-policy">Additional Travelers <i class="fa fa-plus"></i> </h3>
+                
                 <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" >
                     
                     
@@ -450,8 +450,9 @@ if($second_show == '1' && $second_total_price > 0){
                     <?php $second_single_person_rate = '';}//} ?>
                     </div>
                 </div>
+                <h3 id="changeshowtoless<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="person-additional-traveler-h3" onclick="slideadditionaltravelers(<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345)"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
           </div>
-          <div class="col-md-3 price-limit">
+          <div class="col-md-3 price-limit display-none-on-mobile">
               <div class="plan-coverage-limit">
                   <div class="limit-lable mb-3">
                       <span>Coverage Limit</span>

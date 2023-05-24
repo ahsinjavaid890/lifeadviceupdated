@@ -12,6 +12,10 @@ class HomeController extends Controller
     {
         $this->middleware(['auth']);
     }
+    public function index()
+    {
+        return redirect()->route('userprofile');
+    }
     public function dashboard()
     {
         $sales = DB::table('sales')->where('email' , Auth::user()->email)->orderby('sales_id' , 'desc')->get();

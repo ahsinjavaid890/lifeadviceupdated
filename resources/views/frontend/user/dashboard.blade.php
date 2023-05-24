@@ -80,6 +80,29 @@
        font-weight: 600;
        line-height: 24px;
    }
+   .activenav{
+          background-color: #2b3481;
+       color: white;
+       border-bottom-right-radius: 4px;
+       border-bottom-left-radius: 5px;
+   }
+   .divider{
+          border-top: 1px solid #cfd9e8;
+    margin: 20px -24px;
+   }
+   .hthreeforextralinks{
+      display: block;
+    margin-bottom: 24px;
+    line-height: 20px;
+    color: #2b3481 !important;
+   }
+   .helpfulllinks{
+      font-size: 15px;
+    line-height: 19px;
+    color: #1b8fe4;
+    font-weight: 700;
+    margin-bottom: 1rem!important;
+   }
 </style>
 <div class="container mb-5" style="margin-top: 8rem;">
    <div class="row mt-5">
@@ -102,7 +125,7 @@
                @if($r->policy_status == 'rejected')
                <span class="badge badge-danger">{{ $r->policy_status }}</span>
                @endif
-               @if($r->policy_status == 'approved')
+               @if($r->policy_status == 'Approved')
                <span class="badge badge-success">{{ $r->policy_status }}</span>
                @endif
             </div>
@@ -124,13 +147,24 @@
       <div class="col-md-3">
          <div class="card">
             <div class="card-body p-0">
-               <ul class="nav nav-tabs " role="tablist" style="display: block;">
+               <ul class="nav nav-tabs" role="tablist" style="display: block;border-bottom: unset;">
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url('profile')}}">Purchased Policies</a>
+                     <a class="nav-link activenav" href="{{ url('profile')}}">Purchased Policies</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url('requests')}}">Requests</a>
+                  </li>
+                  <li class="nav-item">
                      <a class="nav-link" href="{{ url('logout')}}">Sign Out</a>
                   </li>
+               </ul>
+               <div class="divider"></div>
+               <h3 class="hthreeforextralinks">Helpfull Links</h3>
+               <ul>
+                  <li><a href="{{ url('faq') }}" class="helpfulllinks"> Frequently Asked Questions </a></li>
+                  <li><a href="{{ url('privacypolicy') }}" class="helpfulllinks"> Privacy Policy </a></li>
+                  <li><a href="{{ url('contactus') }}" class="helpfulllinks"> Contact Us </a></li>
+                  <li><a href="{{ url('claim') }}" class="helpfulllinks"> Claim Form </a></li>
                </ul>
             </div>
          </div>

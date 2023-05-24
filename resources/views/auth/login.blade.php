@@ -319,7 +319,7 @@ a.ssolink {
                   <div class="grid--50-50">
                     <label for="password">Password</label>
                     <div class="reset-pass">
-                      <a href="{{ url('forgot-password') }}">Forgot your password?</a>
+                      <a href="{{ url('password/reset') }}">Forgot your password?</a>
                     </div>
                   </div>
                   <input id="password" type="password" name="password" required autocomplete="current-password">

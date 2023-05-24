@@ -7,14 +7,16 @@ $st_date = strtotime($data->start_date);
                                                 
 //checking policy status
 if($today >= $st_date && $data->policy_status == 'paid'){
-//echo '>';
-$status = 'active';
-$class = 'success'; 
-} else {
-if($data->policy_status == 'paid'){
-$status = 'paid';
-$class = 'info';    
-}   
+        $status = 'active';
+        $class = 'success'; 
+    } else 
+    {
+        if($data->policy_status == 'paid'){
+        $status = 'paid';
+        $class = 'info';    
+    }else{
+        $status = $data->policy_status;
+    }   
 }
 
 
@@ -58,30 +60,94 @@ else if($data->policy_status == 'pending'){
         <div class=" container-fluid ">
             <!--begin::Card-->
             <div class="card">
-                <div class="card-body">
-                    <div style="text-align:center;"><img src="{{ url('public/images') }}/{{ $company->comp_logo }}" width="280"><br />
-                    <h1 style="font-size:24px; display:inline-block;"><strong>{{ $data->policy_title }}</strong></h1>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-2">
+                             <h4><a type="button" class="btn btn-xs btn-primary form-control" href="{{ url('admin/sales/editsale')}}/{{$data->sales_id}}"><i class="fa fa-edit"></i> Edit Sale</a></h4>
+                        </div>
+                        <div class="col-md-2">
+                             <h4><a type="button" data-toggle="modal" data-target="#addpolicyconfermation" class="btn btn-xs btn-primary form-control" href="javascript:void(0)"><i class="fa fa-plus"></i>Add Policy Confermation</a></h4>
+                        </div>
                     </div>
-                    <div style="clear:both; height:40px;"><hr/></div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="addpolicyconfermation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content" style=" border-left: 5px solid #2b3481; border-radius: 20px; ">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Policy Confermation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form enctype="multipart/form-data" method="POST" action="{{ url('admin/sales/policyconfermation') }}">
+                        @csrf
+                        <input type="hidden" value="{{ $data->sales_id }}" name="id">
+                      <div class="modal-body">
+                         
+                            <div class="row">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <label>Select Policy Status</label>
+                                     <select required class="form-control" name="policy_status">
+                                         <option value="">Select Status</option>
+                                         <option value="Pending">Pending</option>
+                                         <option value="Approved">Approved</option>
+                                     </select>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <label>Policy Number</label>
+                                     <input required type="text" class="form-control" name="policy_number">
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="row">
+                               <div class="col-md-12">
+                                  <div class="form-group">
+                                     <label>Upload Document</label>
+                                     <input type="file" style="height:50px !important;" class="form-control" name="policydocument">
+                                  </div>
+                               </div>
+                            </div>                            
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                       </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
                     <h4><strong>Policy Details</strong></h4>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td bgcolor="#F6F6F6"><strong>Policy Number:</strong></td>
+                                    <td bgcolor="#F6F6F6"><strong>Company:</strong></td>
+                                    <td>
+                                        <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $company->comp_logo }}" width="100">
+                                    </td>
+                                    <td bgcolor="#F6F6F6"><strong>Policy tittle:</strong></td>
+                                    <td>{{ $data->policy_title }}</td>  
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#F6F6F6"><strong>Reffrence Number:</strong></td>
                                     <td>{{ $policy_number }}</td>
                                     <td bgcolor="#F6F6F6"><strong>Purchase Date:</strong></td>
-                                    <td>{{ $data->purchase_date }}</td>  
+                                    <td>{{ Cmf::date_format($data->purchase_date) }}</td>  
                                 </tr>
                                 <tr>
                                     <td bgcolor="#F6F6F6"><strong>Policy Status:</strong></td>
-                                    <td style="color:red"><strong><?php echo ucwords(strtolower($status));?></strong></td>
+                                    <td style="color:red"><strong>{{ ucwords(strtolower($status)) }}</strong></td>
                                     <td bgcolor="#F6F6F6"><strong>Cancel Date:</strong></td>
-                                    <td style="color:#c00;"><?php echo $data->cancel_date;?></td>  
+                                    <td style="color:#c00;">{{ Cmf::date_format($data->end_date) }}</td>  
                                 </tr>
                                 <tr>
                                     <td bgcolor="#F6F6F6"><strong>Duration:</strong></td>
-                                    <td><?php echo $data->duration;?> Days (<?php echo $data->start_date;?> - <?php echo $data->end_date; ?>)</td>
+                                    <td><?php echo $data->duration;?> Days (<?php echo Cmf::date_format($data->start_date);?> - <?php echo Cmf::date_format($data->end_date); ?>)</td>
                                     <td bgcolor="#F6F6F6"><strong>Total Price:</strong></td>
                                     <td>$<?php echo number_format($data->price_total,2);?></td>  
                                 </tr>
@@ -95,7 +161,7 @@ else if($data->policy_status == 'pending'){
                            
                         </table>
                     </div>
-                    <h4><strong>Primary Insured Details:</strong> <a type="button" class="btn btn-xs btn-primary" href="{{ url('admin/sales/editsale')}}/{{$data->sales_id}}"><i class="fa fa-pencil"></i> Edit Details</a></h4>
+                    <h4><strong>Primary Insured Details:</strong> </h4>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>

@@ -122,6 +122,14 @@ class SiteController extends Controller
               $message->to($request->email);
               $message->subject($subject);
         });
+
+
+        Mail::send('email.review', ['request' => $request,'sale' => $sales], function($message) use($request , $subject){
+              $message->to($request->email);
+              $message->subject('Tell Us How We Did?');
+        });
+
+
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)

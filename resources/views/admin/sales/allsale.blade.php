@@ -77,9 +77,9 @@
                                     <td>
                                         {{ $r->fname }} {{ $r->lname }} <br>
                                     </td>
-                                    <td>{{ $r->purchase_date }}</td>
+                                    <td>{{ Cmf::date_format($r->purchase_date) }}</td>
                                     <td>
-                                        {{ $r->start_date }} / {{ $r->end_date }}
+                                        {{ Cmf::date_format($r->start_date) }} / {{ Cmf::date_format($r->end_date) }}
                                     </td>
                                    <td>
                                        @if($r->policy_status == 'cancel')

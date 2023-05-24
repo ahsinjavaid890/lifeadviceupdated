@@ -31,7 +31,7 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);
-Route::get('/profile', [HomeController::class, 'dashboard']);
+Route::get('/profile', [HomeController::class, 'dashboard'])->name('userprofile');
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
 Route::get('/policydetail/{id}', [HomeController::class, 'policydetail']);
 Route::get('/udashboard', [SiteController::class, 'udashboard']);
@@ -244,6 +244,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/editsale/{id}','AdminController@editsale');
         Route::post('/editsale','AdminController@editsales');
         Route::get('/viewsale/{id}','AdminController@viewsale');
+        Route::post('/policyconfermation','AdminController@policyconfermation');
+
+        
     });
 
     Route::name('faq.')->prefix('faq')->group(function(){
