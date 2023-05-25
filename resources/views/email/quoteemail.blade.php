@@ -70,7 +70,7 @@ function object_to_array($object)
                                                           <p style="font:normal 14px Arial, Helvetica, sans-serif; color:#333; line-height:24px; margin:0 0 0 20px;">Quote # <?php echo $quoteNumber; ?></p>
                                                          <p style="font:normal 14px Arial, Helvetica, sans-serif; color:#333; line-height:24px; margin:0 0 0 20px;">Thank you for visiting our website</p>
                                                          <p style="font:normal 14px Arial, Helvetica, sans-serif; color:#333; line-height:24px;  margin:0 0 0 20px;">
-                                                            to comparing Quote on our website to buy the policy click <a href="https://lifeadvice.ca" style="font:bold 14px Arial, Helvetica, sans-serif; color:#eb342b; text-decoration:none;"> Buy Now</a> or Call Us at
+                                                            to comparing Quote on our website to buy the policy click <a href="{{ url('getquote') }}/<?php echo $quoteNumber; ?>" style="font:bold 14px Arial, Helvetica, sans-serif; color:#eb342b; text-decoration:none;"> Buy Now</a> or Call Us at
                                                              <a href="tel:8555005041" style="font:bold 14px Arial, Helvetica, sans-serif; color:#eb342b; text-decoration:none;"><br>1855-500-5041</a></p>
                                                      </div>
                                                          
@@ -122,7 +122,7 @@ function object_to_array($object)
                                                                    <h4 style="font:bold 18px Arial, Helvetica, sans-serif; color:#333; text-align:center;display: block;vertical-align: middle;margin:0;">$<?=$key['sum_insured']?></h4> Benefits Maximum
                                                                </div>
                                                                <div style="width:10%; display:inline-block;text-align:center;float: left; padding-top:15px;">
-                                                                   <a href="https://lifeadvice.ca" class="buynow-btn" class="btn btn-lg btn-danger" name="buynow" style="padding:10px;float:right;min-width:100%;background: #2b3481;color:#fff;width:100%;border-radius:5px;font-weight:bold;text-decoration: none;">Buy Now
+                                                                   <a href="{{ url('getquote') }}/<?php echo $quoteNumber; ?>" class="buynow-btn" class="btn btn-lg btn-danger" name="buynow" style="padding:10px;float:right;min-width:100%;background: #2b3481;color:#fff;width:100%;border-radius:5px;font-weight:bold;text-decoration: none;">Buy Now
                                                                         </a>
                                                                </div>
                                                                     <div style="clear:both;"></div>

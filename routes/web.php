@@ -85,6 +85,10 @@ Route::get('/conferm', [SiteController::class, 'confermquote']);
 Route::get('/product/{id}', [SiteController::class, 'productdetail']);
 
 
+Route::get('/getquote/{id}', [SiteController::class, 'getquote']);
+
+
+
 Route::POST('/quotes', [SiteController::class, 'quotes'])->name('quotes');
 Route::POST('/ajaxquotes', [SiteController::class, 'ajaxquotes'])->name('ajaxquotes');
 

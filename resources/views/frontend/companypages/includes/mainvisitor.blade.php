@@ -479,8 +479,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div>            
 
                                   </div>
-                                 <!-- @if(isset($fields['email']))
-                                 @if($fields['email'] == "on" )
                                    <div class="col-md-6 userdata-card mt-5">
                                       <div class="custom-form-control positionrelative">
                                           <label class="selectlabeldateofbirth">Enter Your Email</label>
@@ -488,8 +486,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       </div>
                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
                                    </div>
-                                 @endif
-                                 @endif -->
                               </div>
                            </div>
                         </div>

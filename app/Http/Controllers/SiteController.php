@@ -16,6 +16,8 @@ use App\Models\blogs;
 use App\Models\blogcategories;
 use App\Models\contactus_messages; 
 use App\Models\newsletter; 
+use App\Models\temproaryquote; 
+
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
@@ -42,6 +44,12 @@ class SiteController extends Controller
         });
         return redirect()->back()->with('message', 'success');
     }
+    public function getquote($id)
+    {
+        $val = temproaryquote::where('quote_id' , $id)->first();
+        $quotedata =  json_decode($val->data, true);
+        return view('frontend.formone.getquote')->with(array('quotedata'=>$quotedata,'id'=>$id));
+    }
     public function ajaxquotes(Request $request)
     {
         $quoteNumber = rand();
@@ -52,6 +60,11 @@ class SiteController extends Controller
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
         $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        $data = json_encode($request->all(), true);
+        $quotesave = new temproaryquote();
+        $quotesave->quote_id = $quoteNumber;
+        $quotesave->data = $data;
+        $quotesave->save();
         return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
     public function confermquote()
@@ -118,7 +131,7 @@ class SiteController extends Controller
             $newuser->save();
         }
         $subject = 'Your Life Advice Policy Confirmation | '.$policy_number;
-        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales], function($message) use($request , $subject){
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales,'policy_number' => $policy_number], function($message) use($request , $subject){
               $message->to($request->email);
               $message->subject($subject);
         });
