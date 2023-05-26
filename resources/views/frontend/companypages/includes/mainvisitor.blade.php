@@ -60,8 +60,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-               <input type="hidden" @if($_GET['departure_date']) value="{{ $_GET['departure_date'] }}" @endif id="departure_date" name="departure_date">
-               <input type="hidden" @if($_GET['return_date']) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
+               <input type="hidden" @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif id="departure_date" name="departure_date">
+               <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
                <!-- <input type="hidden" name="ages[]" id="selectage"> -->
                <!-- <input type="hidden" name="years[]" id="selectage"> -->
             <div class="qoute-card" style="margin-top:6px !important;">
@@ -71,8 +71,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">
                               <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="@if($_GET['sum_insured2']) ${{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif" required="required" id="coverageprice" class="input-field" disabled>
-                                 <span  class="label-text">@if($_GET['sum_insured2']) {{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif</span>
+                                 <input  type="text" placeholder="@if(isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif" required="required" id="coverageprice" class="input-field" disabled>
+                                 <span  class="label-text">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif</span>
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
@@ -83,11 +83,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="startdatetoshowonshowfield"  class="value"> @if($_GET['departure_date']) {{ $_GET['departure_date'] }} @else Start Date @endif 
+                                       <div id="startdatetoshowonshowfield"  class="value"> @if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else Start Date @endif 
                                        </div>
                                     </div>
                                     <div class="ml-3 from">
-                                       <div id="enddatetoshowonenddatefield" class="value">@if($_GET['departure_date']) {{ $_GET['return_date'] }} @else End Date @endif </div>
+                                       <div id="enddatetoshowonenddatefield" class="value">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
                                     </div>
                                  </div>
                               </div>
@@ -119,7 +119,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                      <select onchange="sum_insured(this.value)" name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Amount</option>
                                        @foreach($sum_insured as $r)
-                                          <option @if($_GET['sum_insured2']) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif  @endif  value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
+                                          <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif  @endif  value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
                                        @endforeach
                                      </select>
                                      <div class="text-danger mt-2 mb-3" id="covergaeerror"></div>
@@ -133,7 +133,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
                                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                             <option @if($_GET['primarydestination']) @if($_GET['primarydestination'] == $r->name) selected @endif @endif @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                             <option @if(isset($_GET['primarydestination'])) @if($_GET['primarydestination'] == $r->name) selected @endif @endif @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                           @endforeach
                                         </select>
                                         <div class="text-danger mt-4" id="primarydestinationerror"></div>
@@ -170,7 +170,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                            <div class="row">
                               <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
-                                 @if($_GET['years'])
+                                 @if(isset($_GET['years']))
                                  @foreach($_GET['years'] as $key=> $year)
                                  @if($year)
                                  <div class="row mt-3 showrowstraveler">
@@ -492,9 +492,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            <div class="card-content d-flex">
                               <p class="card-info">Please Select Date When You Start and End Coverage</p>
                                 <div class="date_picker_header">
-                                  <h2 @if($_GET['departure_date'])  @else  style="display:none;" @endif class="date_picker_month_day">@if($_GET['departure_date']) {{ $_GET['departure_date'] }} @else 12 June 2023 @endif</h2>
-                                  <h2  @if($_GET['departure_date'])  @else  style="display:none;margin-left:10px;" @endif class="linebar">-</h2>
-                                  <h2 @if($_GET['return_date'])  @else  style="display:none;" @endif class="date_picker_year ml-2">@if($_GET['return_date']) {{ $_GET['return_date'] }} @else 12 June 2023 @endif</h2>
+                                  <h2 @if(isset($_GET['departure_date']))  @else  style="display:none;" @endif class="date_picker_month_day">@if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else 12 June 2023 @endif</h2>
+                                  <h2  @if(isset($_GET['departure_date']))  @else  style="display:none;margin-left:10px;" @endif class="linebar">-</h2>
+                                  <h2 @if(isset($_GET['return_date']))  @else  style="display:none;" @endif class="date_picker_year ml-2">@if(isset($_GET['return_date'])) {{ $_GET['return_date'] }} @else 12 June 2023 @endif</h2>
                                 </div>
                             </div>
                               @if($mobile == 'yes')
@@ -545,7 +545,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                    <div class="col-md-6 userdata-card @if($mobile == 'yes') mt-1 @else mt-3 @endif">
                                       <div class="custom-form-control positionrelative">
                                           <label class="selectlabeldateofbirth">Enter Your Email</label>
-                                            <input @if($_GET['savers_email']) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                            <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
                                       </div>
                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
                                    </div>
@@ -833,7 +833,7 @@ $("#outputText").text(outputDate);
       $('#quoteform').submit();
    }
 
-   @if($_GET['sum_insured2']) 
+   @if(isset($_GET['sum_insured2'])) 
 
       $( document ).ready(function() {
             $('#quoteform').submit();
