@@ -2207,34 +2207,7 @@ input::-webkit-inner-spin-button {
         margin-top: 10px;
     }
 
-    .date_mobile{
-        width: 50%;
-        height: 48px;
-        
-        padding-left: 16px;
-        border-radius: 10px;
-        border: 1px solid #cfd9e8;
-        color: #2b3481;
-        font-weight: 600;
-        font-size: .875rem;
-        line-height: 1.5;
-        background-color: #fff;
-        display: flex;
-        align-items: center;
-        transition-duration: .18s;
-        transition-property: border-color;
-        transition-delay: .06s;
-    }
-
-
-    .start_date_mobile{
-        border-top-right-radius: 0px !important;
-        border-bottom-right-radius: 0px !important;
-    }
-    .end_date_mobile{
-        border-top-left-radius: 0px !important;
-        border-bottom-left-radius: 0px !important;
-    }
+   
 
     .zoom-in{
 /*        max-width: 380px !important;*/
@@ -3247,3 +3220,33 @@ fieldset .input{
     width: 100% !important;
   }
 }
+
+
+ .date_mobile{
+        width: 50%;
+        height: 48px;
+        
+        padding-left: 16px;
+        border-radius: 10px;
+        border: 1px solid #cfd9e8;
+        color: #2b3481;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.5;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        transition-duration: .18s;
+        transition-property: border-color;
+        transition-delay: .06s;
+    }
+
+
+    .start_date_mobile{
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+    .end_date_mobile{
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+    }
