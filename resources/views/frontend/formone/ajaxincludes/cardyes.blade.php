@@ -604,13 +604,17 @@ if($show == '1' && $total_price > 0){
 
 
 <?php
-$counter = 0;
-if (isset( $request->savers_email)){
-    array_multisort( $price, SORT_ASC, $mailitem);
-    $subject    = "Your Quote - $product_name";
-    Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-               $message->to($request->savers_email)->subject($subject);
-               $message->from('quote@lifeadvice.ca','LIFEADVICE');
-            });
+if(isset($_GET['departure_date']))
+{
+    $counter = 0;
+    if (isset( $request->savers_email)){
+        array_multisort( $price, SORT_ASC, $mailitem);
+        $subject    = "Your Quote - $product_name";
+        Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+                   $message->to($request->savers_email)->subject($subject);
+                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
+                });
+    }
 }
+
 ?>
