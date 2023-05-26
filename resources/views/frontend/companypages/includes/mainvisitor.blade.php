@@ -467,10 +467,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                               </div>
                               @endif
-                              <div class="row userdate-coverage">
+                              <div class="row userdate-coverage mt-2">
                                  
 
-                                 <div class="col-sm-6 firstcalenderfordateshow">
+                                 <div class="col-sm-6 p-r-z-o-m p-l-z-o-m firstcalenderfordateshow">
                                     <div class="calendar calendar-first" id="calendar_first">
                                       <div class="calendar_header">
                                         <button class="switch-month switch-left">
@@ -485,7 +485,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       <div class="calendar_content"></div>
                                     </div>
                                   </div>
-                                  <div class="col-sm-6 secondcalenderfordateshow" @if($mobile == 'yes') style="display:none;"@endif>
+                                  <div class="col-sm-6 p-r-z-o-m p-l-z-o-m secondcalenderfordateshow" @if($mobile == 'yes') style="display:none;"@endif>
 
                                     <div class="calendar calendar-second" id="calendar_second">
                                       <div class="calendar_header">

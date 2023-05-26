@@ -2330,9 +2330,6 @@ input::-webkit-inner-spin-button {
 .traveler-question .user-answer{
     margin-left: -50px;
 }
-.zoom-in .userdate-coverage{
-    margin-left: -15px;
-}
 
 }
 @media screen and (min-width:431px) and (max-width:768px) {
