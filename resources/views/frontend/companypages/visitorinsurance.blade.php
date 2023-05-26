@@ -2,6 +2,11 @@
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
 @include('frontend.companypages.includes.mainvisitor')
+
+
+
+
+
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -206,6 +211,12 @@ function c(passed_month, passed_year, calNum) {
 			firstClicked = getClickedInfo(clicked, calendar);
 			selected[firstClicked.year] = {};
 			selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
+			$('.start_date_mobile').html(firstClicked.date+'-'+firstClicked.month+'-'+firstClicked.year);
+
+			$('.firstcalenderfordateshow').hide();
+			$('.secondcalenderfordateshow').show();
+
+
 		} else {
 			console.log('second click');
 			secondClick = true;
@@ -437,11 +448,14 @@ function addChosenDates(firstClicked, secondClicked, selected) {
 		var finalenddate = secondClicked.date+'-'+finalendmonth+'-'+secondClicked.year;
 
 
-
+		$('.start_date_mobile').html(finalstartdate);
 		$('.date_picker_month_day').html(finalstartdate)
 		$('.date_picker_year').html(finalenddate)
         $('#startdatetoshowonshowfield').html(finalstartdate)
         $('#enddatetoshowonenddatefield').html(finalenddate)
+
+
+        $('.end_date_mobile').html(finalenddate);
 		$('.date_picker_month_day').show()
 		$('.linebar').show()
 		$('.date_picker_year').show()
