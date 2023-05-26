@@ -302,8 +302,21 @@ a.ssolink {
                   <i class="fa fa-spin fa-spinner" style="font-size:40px"></i>
               </div>
               
+              @php
+                $productid = $quotedata['product_id'];
+                $geturl = DB::table('wp_dh_products')->where('pro_id' , $productid)->first();
+                $url = $geturl->url;
+
+                $actionurl  = url('').'/'.$url;
+              @endphp
+
+
+              @if($val->type == 'ajax')
+              <form id="quoteformget" method="GET" action="{{ $actionurl }}">
+              @else
               <form id="quoteformget" method="POST" action="{{ url('quotes') }}">
                 @csrf
+              @endif
                     @foreach ($quotedata as $key=>$dt)
                         @if(is_array($dt))
 

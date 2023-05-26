@@ -2274,6 +2274,7 @@ input::-webkit-inner-spin-button {
         margin-top: 70px;
     }
     .quotes-generator-bar .form-input {
+        margin-bottom: 18px;
         width: -webkit-fill-available;
     }
     .get-quotes-button {
@@ -3162,7 +3163,7 @@ fieldset .input{
         border-radius: 0px;
     }
 .get-quotes-button {
-    margin-top: 25px;
+/*    margin-top: 25px;*/
     border-radius: 10px;
 }
 }

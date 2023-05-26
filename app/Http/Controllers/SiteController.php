@@ -17,10 +17,10 @@ use App\Models\blogcategories;
 use App\Models\contactus_messages; 
 use App\Models\newsletter; 
 use App\Models\temproaryquote; 
-
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Mail;
+use Redirect;
 use Session;
 use Auth;
 class SiteController extends Controller
@@ -48,7 +48,7 @@ class SiteController extends Controller
     {
         $val = temproaryquote::where('quote_id' , $id)->first();
         $quotedata =  json_decode($val->data, true);
-        return view('frontend.formone.getquote')->with(array('quotedata'=>$quotedata,'id'=>$id));
+        return view('frontend.formone.getquote')->with(array('quotedata'=>$quotedata,'id'=>$id,'val'=>$val));
     }
     public function ajaxquotes(Request $request)
     {
@@ -64,6 +64,7 @@ class SiteController extends Controller
         $quotesave = new temproaryquote();
         $quotesave->quote_id = $quoteNumber;
         $quotesave->data = $data;
+        $quotesave->type = 'ajax';
         $quotesave->save();
         return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
