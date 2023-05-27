@@ -6,7 +6,7 @@
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <script src="js/mobiscroll.jquery.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYUTCpyRfNY8Und6oYaKi5Vkqip7OIWEU&libraries=geometry,places&v=weekly"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css')}}">
 <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
@@ -937,101 +937,7 @@ dropDown.prototype = {
   }
 }
 </script>
-<script type="text/javascript">
-	var overlay;
 
-testOverlay.prototype = new google.maps.OverlayView();
-
-function initialize() {
-  var map = new google.maps.Map(document.getElementById("map-canvas"), {
-    zoom: 15,
-    center: {
-      lat: 37.323,
-      lng: -122.0322
-    },
-    mapTypeId: "terrain",
-    draggableCursor: "crosshair"
-  });
-  map.addListener("click", (event) => {
-    map.setCenter(event.latLng);
-    console.log(event.latLng.toString());
-  });
-
-  overlay = new testOverlay(map);
-
-  var input =
-    /** @type {HTMLInputElement} */
-    (document.getElementById("pac-input"));
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  var searchBox = new google.maps.places.SearchBox(
-    /** @type {HTMLInputElement} */ (input)
-  );
-
-  google.maps.event.addListener(searchBox, "places_changed", function () {
-    var places = searchBox.getPlaces();
-    if (places.length == 0) {
-      return;
-    }
-    map.setCenter(places[0].geometry.location);
-  });
-}
-
-function testOverlay(map) {
-  this.map_ = map;
-  this.div_ = null;
-  this.setMap(map);
-}
-
-testOverlay.prototype.onAdd = function () {
-  var div = document.createElement("div");
-  this.div_ = div;
-  div.style.borderStyle = "none";
-  div.style.borderWidth = "0px";
-  div.style.position = "absolute";
-  div.style.left = -window.innerWidth / 2 + "px";
-  div.style.top = -window.innerHeight / 2 + "px";
-  div.width = window.innerWidth;
-  div.height = window.innerHeight;
-
-  const canvas = document.createElement("canvas");
-  canvas.style.position = "absolute";
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  div.appendChild(canvas);
-
-  const panes = this.getPanes();
-  panes.overlayLayer.appendChild(div);
-
-  var ctx = canvas.getContext("2d");
-  this.drawLine(ctx, 0, "rgba(0, 0, 0, 0.2)");
-  this.drawLine(ctx, 90, "rgba(0, 0, 0, 0.2)");
-  this.drawLine(ctx, 37.5, "rgba(255, 0, 0, 0.4)");
-  this.drawLine(ctx, 67.5, "rgba(255, 0, 0, 0.4)");
-};
-
-testOverlay.prototype.drawLine = function (ctx, degrees, style) {
-  // 0 north, growing clockwise
-  const w = window.innerWidth / 2;
-  const h = window.innerHeight / 2;
-  const radians = ((90 - degrees) * Math.PI) / 180;
-  const hlen = Math.min(w, h);
-  const x = Math.cos(radians) * hlen;
-  const y = -Math.sin(radians) * hlen;
-  ctx.beginPath();
-  ctx.strokeStyle = style;
-  ctx.moveTo(w - x, h - y);
-  ctx.lineTo(w + x, h + y);
-  ctx.stroke();
-};
-
-testOverlay.prototype.onRemove = function () {
-  this.div_.parentNode.removeChild(this.div_);
-  this.div_ = null;
-};
-
-google.maps.event.addDomListener(window, "load", initialize);
-</script>
 <script>
   function maxLengthChecks(object)
   {
@@ -1053,4 +959,59 @@ google.maps.event.addDomListener(window, "load", initialize);
 		allowClear: false
 	});
 </script>
+<script type="text/javascript">
+var searchInput = 'pac-input';
+
+$(document).ready(function () {
+    var autocomplete;
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+    	fields: ["address_components", "geometry", "icon", "name"],
+        types: ['establishment'],
+    });
+	
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+
+        var lat = near_place.geometry.location.lat();
+		var lng = near_place.geometry.location.lng();
+		displayLocation(lat , lng)
+    });
+});
+
+function displayLocation(latitude,longitude){
+    var geocoder;
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(latitude, longitude);
+
+    geocoder.geocode(
+        {'latLng': latlng}, 
+        function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var add = results[0].formatted_address ;
+                    var  value=add.split(",");
+
+                    count=value.length;
+                    country=value[count-1];
+                    state=value[count-2];
+                    city=value[count-3];
+
+                    $('#city').val(city);
+                    $('#province').val(state);
+                    $('#country').val(country);
+                }
+                else  {
+                    x.innerHTML = "address not found";
+                }
+            }
+            else {
+                x.innerHTML = "Geocoder failed due to: " + status;
+            }
+        }
+    );
+}
+</script>
+
+
+
 @endsection

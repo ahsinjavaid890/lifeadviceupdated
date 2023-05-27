@@ -17,7 +17,10 @@ class CustomLoginController extends Controller
 {
     public function customlogin(Request $request)
     {
-        print_r($request->all());
+        $this->validate($request, [
+            'reffrence_id' => 'required',
+            'date_of_birth' => 'required',
+        ]);
     }
 
     public function sendsecurelink(Request $request)

@@ -30,7 +30,7 @@ Route::name('user.')->prefix('user')->group(function(){
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('customlogin', [CustomLoginController::class, 'customlogin']);
+Route::POST('customlogin', [CustomLoginController::class, 'customlogin']);
 
 Route::POST('sendsecurelink', [CustomLoginController::class, 'sendsecurelink']);
 

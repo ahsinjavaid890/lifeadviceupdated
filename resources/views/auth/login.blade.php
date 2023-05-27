@@ -31,6 +31,9 @@
     .invalid-feedback{
         display: block !important;
     }
+    strong{
+        text-transform: capitalize;
+    }
     section{
         padding-top: 100px;
     }
@@ -101,13 +104,23 @@
                         <div class="col-md-6 nopad">
                             <div class="custom-form-control positionrelative">
                                 <label class="selectlabeldateofbirth">Policy Reffrence ID</label>
-                                <input class="input" type="text" placeholder="Policy Reffrence ID" name="fname" data-placeholder="First Name" required>
+                                <input class="input" type="text" placeholder="Policy Reffrence ID" name="reffrence_id">
+                                @error('reffrence_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 nopad">
                             <div class="custom-form-control positionrelative">
                                 <label class="selectlabeldateofbirth">Date of Birth</label>
-                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="years[]" >
+                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="date_of_birth">
+                                @error('date_of_birth')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mt-3">
