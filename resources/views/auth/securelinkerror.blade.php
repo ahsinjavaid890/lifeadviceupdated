@@ -90,45 +90,16 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
             <div  class="sign-in--header">
-                <h1  class="heading-4">Sign in to your account</h1>
-                <p  class="subheader text-secondary-color"> Sign in with your Policy ID and Date of Birth below and get easy, 24/7 access to manage your policy details, documents, and more! </p>
+                <h1  class="heading-4">Sign in to your account Via Secure Link</h1>
+                <p  class="subheader text-secondary-color" style="color:red"> Secure Link is Invalid or you Open One Time Already (Because you can Login One Time Only Via Secure Link)</p>
             </div>
             <div class="customized-login-card">
                 <div class="card-body">
-                    <form method="POST" action="{{ url('customlogin') }}">
-                        @csrf
-                    <div class="row">
-                        <div class="col-md-6 nopad">
-                            <div class="custom-form-control positionrelative">
-                                <label class="selectlabeldateofbirth">Policy Reffrence ID</label>
-                                <input class="input" type="text" placeholder="Policy Reffrence ID" name="fname" data-placeholder="First Name" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 nopad">
-                            <div class="custom-form-control positionrelative">
-                                <label class="selectlabeldateofbirth">Date of Birth</label>
-                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="years[]" >
-                            </div>
-                        </div>
-                        <div class="col-md-12 mt-3">
-                            <a style="color: #1b8fe4; font-weight: 600;font-size: .875rem;line-height: 1.5rem;" href="javascript:void(0)">Where's my Policy ID?</a>
-                        </div>
-                        <div class="col-md-9 mt-3">
-                            <div  style=" font-size: .875rem; line-height: 1.5rem; color: #67778f; font-weight: 600; "><strong>Note:</strong> If you previously created an account with your Email Address, you can now simply login with your Policy ID and Date of Birth. </div>
-                        </div>
-                        <div class="col-md-3 mt-3">
-                            <button class="loginsigninbutton">Sign In</button>
-                        </div>
-                    </div> 
-                    </form>
-                    <div class="mt-5 mb-3">
-                        <hr>
-                    </div>
                     <form method="POST" action="{{ url('sendsecurelink') }}">
                         @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <label style="color: #2b3481; font-size: 16px; line-height: 24px; font-weight: 800;">Don’t remember your Policy ID?</label>
+                            <label style="color: #2b3481; font-size: 16px; line-height: 24px; font-weight: 800;">Please Enter Your Email</label>
                             <div style=" color: #67778f; font-size: 14px; line-height: 24px; font-weight: 600; ">Enter the email you provided when you purchased the policy and we will send you a one-time-use Secure Link to sign in.</div>
                         </div>
                         <div class="col-md-5"></div>

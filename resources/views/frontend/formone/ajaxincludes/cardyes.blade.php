@@ -537,7 +537,7 @@ if($show == '1' && $total_price > 0){
               <div class="total-price-traveller">
                   <h2 id="traveler-price">$<?php echo number_format($total_price,2);?><span>CAD</span></h2>
                   <?php if($monthly_two == '1'){?>
-                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;background: #F9F9F9;">$<?php echo number_format($monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
+                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">$<?php echo number_format($monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
                     <?php } ?>
               </div>
               <div class="buy_now"> 
@@ -606,14 +606,16 @@ if($show == '1' && $total_price > 0){
 <?php
 if(isset($_GET['departure_date']))
 {
+    
+}else{
     $counter = 0;
     if (isset( $request->savers_email)){
         array_multisort( $price, SORT_ASC, $mailitem);
         $subject    = "Your Quote - $product_name";
-        Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
+        // Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+        //            $message->to($request->savers_email)->subject($subject);
+        //            $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        //         });
     }
 }
 

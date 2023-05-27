@@ -9,6 +9,7 @@ use App\Http\Controllers\StaffPermissionController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\JobController; 
 use App\Http\Controllers\GoogleController; 
+use App\Http\Controllers\CustomLoginController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,14 @@ Route::name('user.')->prefix('user')->group(function(){
 });
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('customlogin', [CustomLoginController::class, 'customlogin']);
+
+Route::POST('sendsecurelink', [CustomLoginController::class, 'sendsecurelink']);
+
+Route::get('securelogin/{id}', [CustomLoginController::class, 'securelogin']);
+
+
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);

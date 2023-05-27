@@ -48,10 +48,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-               <input type="hidden" id="departure_date" name="departure_date">
-               <input type="hidden" id="return_date" name="return_date">
-               <!-- <input type="hidden" name="ages[]" id="selectage"> -->
-               <!-- <input type="hidden" name="years[]" id="selectage"> -->
+
+               <input type="hidden" @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif id="departure_date" name="departure_date">
+               <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
             <div class="qoute-card">
                <div class="card-body">
                   <div  data-v-67adc629="" class="quotes-generator-bar fixed">
@@ -59,8 +58,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">
                               <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="Coverage Amount" required="required" id="coverageprice" class="input-field" disabled>
-                                 <span  class="label-text">Coverage Amount</span>
+                                 <input  type="text" placeholder="@if(isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif" required="required" id="coverageprice" class="input-field" disabled>
+                                 <span  class="label-text">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }}  @else Coverage Ammount @endif</span>
                                  <div  class="dest-value"></div>
                               </label>
                               <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
@@ -71,12 +70,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="coveragedate"  class=" value"> Start Date 
+                                       <div id="coveragedate"  class="value"> @if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else Start Date @endif 
                                        </div>
                                     </div>
-                                    <div class="from ml-3">
-                                       
-                                       <div id="qoutedestination" class="value"></div>
+                                    <div class="ml-3 from">
+                                       <div id="qoutedestination" class="value">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
                                     </div>
                                  </div>
                               </div>
@@ -108,7 +106,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                      <select onchange="sum_insured(this.value)"  name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Amount</option>
                                        @foreach($sum_insured as $r)
-                                          <option value="{{ $r->sum_insured }}" >${{ $r->sum_insured }}</option>
+                                          <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif  @endif  value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
                                        @endforeach
                                      </select>
                                      <div class="text-danger mt-4" id="covergaeerror"></div>
@@ -122,7 +120,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
                                           @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                             <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
+                                             <option @if(isset($_GET['primarydestination'])) @if($_GET['primarydestination'] == $r->name) selected @endif @endif @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
                                           @endforeach
                                         </select>
                                         <div class="text-danger mt-4" id="primarydestinationerror"></div>
@@ -159,29 +157,32 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                            </div>
                            <div class="row">
                               <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
-                                 <div class="row mt-3 showrowstraveler" id="container">
+                                 @if(isset($_GET['years']))
+                                 @foreach($_GET['years'] as $key=> $year)
+                                 @if($year)
+                                 <div class="row mt-3 showrowstraveler">
                                     <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                        <div class="row alignitembaseline">
-                                          <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                          <div class="col-md-6">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                           </div>
-                                          <div class="col-md-6 nopad margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
+                                          <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input inputmode="numeric" onchange="dateofbirth(this.value , 1)" id="dateofbirthfull" class="errorinputtest input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                <input value="{{ $year }}" inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
-                                          <select onchange="changepreexisting(this.value , 1)" name="pre_existing[]" class="errorinputtest pre_existing_condition1 pre_existing_values_check1 form-control">
+                                          <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
-                                             <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                             <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
                                            </select>
                                     </div>
-                                    <div class="col-md-3  alert1 text-danger display-none-on-mobile" style="position:relative;">
+                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>
@@ -192,6 +193,43 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                        </div>
                                     </div>
                                  </div>
+                                 @endif
+                                 @endforeach
+                                 @else
+                                 <div class="row mt-3 showrowstraveler">
+                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                       <div class="row alignitembaseline">
+                                          <div class="col-md-6">
+                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                                          </div>
+                                          <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
+                                             <div class="input-wrapper positionrelative">
+                                                <label class="selectlabeldateofbirth">Date Of Birth</label>
+                                                <input inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
+                                          <label class="selectlabel">Pre Existing Condition</label>
+                                          <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option value="yes">Yes</option>
+                                             <option value="no">No</option>
+                                           </select>
+                                    </div>
+                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                       <span class="button button-help show-tooltip"></span>
+                                       <div class="tooltip-container tooltip--auto-height activehelpful">
+                                          <button class="button button-close-simplified close-tooltip"></button>
+                                          <h4 class="heading heading-5">Helpful Info</h4>
+                                          <div class="content">
+                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 @endif
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
                                     <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input inputmode="numeric" onchange="dateofbirth(this.value , {{ $i }})" class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m"><label class="selectlabel">Pre Existing Condition</label> <select onchange="changepreexisting(this.value)" name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control pre_existing_values_check{{ $i }}"> <option value="">Select Pre Existing Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
@@ -227,13 +265,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                         <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
                               <div class="date_picker_wrapper" id="date_picker_1">
-                           <div class="card-content d-flex">
-                              <p class="card-info">Please Select Date When You Start Coverage</p>
-                                <div class="date_picker_header">
-                                  <h2 class="date_picker_month_day"></h2>
-                                  <h2 class="date_picker_year ml-2"></h2>
-                                </div>
-                            </div>
+                              <div class="card-content d-flex">
+                                 <p class="card-info">Please Select Date When You Start Coverage</p>
+                                   <div class="date_picker_header">
+                                     <h2 @if(isset($_GET['departure_date']))  @else  style="display:none;" @endif class="date_picker_month_day">@if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else 12 June 2023 @endif</h2>
+                                     <h2  @if(isset($_GET['departure_date']))  @else  style="display:none;margin-left:10px;" @endif class="linebar">-</h2>
+                                     <h2 @if(isset($_GET['return_date']))  @else  style="display:none;" @endif class="date_picker_year ml-2">@if(isset($_GET['return_date'])) {{ $_GET['return_date'] }} @else 12 June 2023 @endif</h2>
+                                   </div>
+                               </div>
                               <div class="row userdate-coverage">
                                  <div class="col-md-6 birthdateinput">
                                         <div class="date_picker_body">
@@ -262,7 +301,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                    <div class="col-md-6 userdata-card mt-5 mobile-device-email-input">
                                       <div class="custom-form-control positionrelative">
                                           <label class="selectlabeldateofbirth">Enter Your Email</label>
-                                            <input class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                          <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
                                       </div>
                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
                                    </div>
@@ -554,7 +593,11 @@ $("#outputText").text(outputDate);
       $('#quoteform').submit();
    }
 
-
+   @if(isset($_GET['sum_insured2'])) 
+      $( document ).ready(function() {
+            $('#doneoriginal').click();
+      });
+   @endif
    $('#quoteform').on('submit',(function(e) {
        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
        e.preventDefault();

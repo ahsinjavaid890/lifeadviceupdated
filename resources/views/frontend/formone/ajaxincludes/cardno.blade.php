@@ -494,7 +494,7 @@ if($second_show == '1' && $second_total_price > 0){
               <div class="total-price-traveller">
                   <h2 id="traveler-price">$<?php echo number_format($second_total_price,2);?><span>CAD</span></h2>
                   <?php if($second_monthly_two == '1'){?>
-                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;background: #F9F9F9;">$<?php echo number_format($second_monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?></small></h2>
+                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">$<?php echo number_format($second_monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?></small></h2>
                     <?php } ?>
               </div>
               <div class="buy_now"> 

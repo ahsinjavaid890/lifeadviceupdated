@@ -157,8 +157,12 @@
                      <a class="nav-link" href="{{ url('requests')}}">Requests</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ url('logout')}}">Sign Out</a>
+                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign Out</a>
                   </li>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
                </ul>
                <div class="divider"></div>
                <h3 class="hthreeforextralinks">Helpfull Links</h3>
