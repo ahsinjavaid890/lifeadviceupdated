@@ -14840,7 +14840,7 @@ ul .child-list li a {
 
 
     /*------------Ahmad Code-------------------*/
-    @media (max-width: 425px){
+    @media (max-width: 450px){
         .ahmSupperBanner .super-images {
             height: 262px !important;
             background-position: 60% 0% !important;
