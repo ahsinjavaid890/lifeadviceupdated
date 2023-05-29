@@ -21,6 +21,10 @@ class CustomLoginController extends Controller
             'reffrence_id' => 'required',
             'date_of_birth' => 'required',
         ]);
+
+
+        
+        
     }
 
     public function sendsecurelink(Request $request)

@@ -68,23 +68,13 @@
                     <div class="col-md-12">
 			        	<form action="{{ url('applyqoute') }}" method="post" class="f1">
 							@csrf
-
-							<input type="hidden" name="coverage" value="{{ $request->coverage }}">
-							<input type="hidden" name="deductibles" value="{{$request->deductibles}}">
 							<input type="hidden" name="deductible_rate" value="{{ $request->deductible_rate }}">
-							<input type="hidden" name="premium" value="{{ $request->premium }}">
 							<input type="hidden" name="plan_name" value="{{ $request->planname }}">
 							<input type="hidden" name="plan_id" value="{{ $request->plan_id }}">
 							<input type="hidden" name="comp_id" value="{{ $request->comp_id }}">
 							<input type="hidden" name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}">
 							<input type="hidden" name="product_id" value="{{ $request->product_id }}">
 							<input type="hidden" name="traveller" value="{{ $request->traveller }}">
-							<input type="hidden" name="age" value="{{ $request->age }}">
-							<input type="hidden" name="broker" value="{{ $request->broker }}">     
-							<input type="hidden" name="agent" value="{{ $request->agent }}">
-
-
-
                     		<div class="f1-steps">
                     			<div class="f1-progress">
                     			    <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
@@ -125,6 +115,7 @@
                     			@for($i=0; $i < $request->traveller; $i++)
                     			@php
                     				$year = $request->years[$i];
+                    				$preexisting = $request->preexisting[$i];
                     			@endphp
 
                     			<div class="hr-text mt-5" data-content="Traveler {{ $i+1 }}"></div>
@@ -133,13 +124,13 @@
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
 							                  	<label class="selectlabeldateofbirth">First Name Traveler {{ $i+1 }}</label>
-							                 	<input class="input" type="text" placeholder=" " name="fname" data-placeholder="First Name" required>
+							                 	<input class="input" type="text" placeholder=" " name="fname[]" data-placeholder="First Name" required>
 							              	</div>
 										</div>
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Last Name Traveler {{ $i+1 }}</label>
-						                        <input class="input" type="text" placeholder=" " name="lname" data-placeholder="Last Name" required>
+						                        <input class="input" type="text" placeholder=" " name="lname[]" data-placeholder="Last Name" required>
 						                    </div>
 										</div>
 									</div>
@@ -149,13 +140,13 @@
 										<div class="col-md-6 nopad">
 						                    <div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
-						                        <input readonly="" class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob" data-placeholder="Date OF Birth" required>
+						                        <input readonly="" class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
 						                    </div>
 										</div>
 										<div class="col-md-6 nopad">
 						                    <div class=" positionrelative">
 						                    	<label class="selectlabel">Select Gender</label>
-					                            <select name="gender" class="gender form-control">
+					                            <select name="gender[]" class="gender form-control">
 					                               	<option value="">Select Gender</option>
 													<option value="Male">Male</option>
 													<option value="Female">Female</option>
@@ -164,6 +155,7 @@
 										</div>
 									</div>
 								</div>
+								<input value="{{ $preexisting }}" name="preexisting[]" type="hidden">
 								@endfor
 								<hr>
 								<div class="form-group mt-3">
@@ -192,7 +184,7 @@
                                 </div>
                             </fieldset>
                             <fieldset>
-                            	<div class="row">
+                            	<div class="row" style="margin-right:0px !important;">
 										<div class="col-md-6 mt-3">
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Street Number and Name</label>
@@ -237,37 +229,55 @@
                                 </div>
                             </fieldset>
                             <fieldset>
-                            	<div class="row">
+                            	<div class="row" style="margin-right:0px !important;">
 										<div class="col-md-6 mt-3">
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Insurance Type</label>
-						                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
+						                        <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="producttype" value="<?php echo isset($_REQUEST['visitor_visa_type'])? $_REQUEST['visitor_visa_type'] : ""; ?>" data-placeholder="Country" readonly="">
 						                    </div>
 										</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
-							                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
-							                    </div>
-											</div>
-											<div class="col-md-6" style="margin-top: 23px;">
-							                    <div class=" positionrelative">
-					                               <label class="selectlabel">Primary Destination</label>
-					                               <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['destination'])? $_REQUEST['destination'] : ""; ?>" data-placeholder="Country" readonly="">
-		                                      </div>
-											</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip End date</label>
-							                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
-							                    </div>
-											</div>
-											<div class="col-md-6 mt-3">
-												<div class="custom-form-control positionrelative">
-							                    	<label class="selectlabeldateofbirth">Trip Duration(days)</label>
-							                        <input readonly class="input" type="text" placeholder=" " value="{{ $request->tripduration }}" id="tripduration" name="tripduration">
-							                    </div>
-											</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
+						                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
+						                    </div>
+										</div>
+										<div class="col-md-6" style="margin-top: 23px;">
+						                    <div class=" positionrelative">
+						                    	<label class="selectlabeldateofbirth">Primary Destination</label>
+				                               <input class="input" type="text" placeholder=" " id="visitor_visa_type" name="visitor_visa_type" value="<?php echo isset($_REQUEST['destination'])? $_REQUEST['destination'] : ""; ?>" data-placeholder="Country" readonly="">
+	                                      </div>
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Trip End date</label>
+						                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
+						                    </div>
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Trip Duration(days)</label>
+						                        <input readonly class="input" type="text" placeholder=" " value="{{ $request->tripduration }} Days" id="tripduration" name="tripduration">
+						                    </div>
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Total Premium</label>
+						                        <input readonly class="input" type="text" placeholder=" " value="${{ $request->premium }}" id="tripduration" name="premium">
+						                    </div>
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Coverage Ammount</label>
+						                        <input readonly class="input" type="text" placeholder=" " value="{{ $request->coverage }}" id="tripduration" name="coverage_ammount">
+						                    </div>
+										</div>
+										<div class="col-md-6 mt-3">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Deductible</label>
+						                        <input readonly class="input" type="text" placeholder=" " value="${{ $request->deductibles }}" id="tripduration" name="deductibles">
+						                    </div>
+										</div>
 									</div>
                                 <div class="f1-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>

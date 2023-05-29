@@ -53,7 +53,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
             <div class="qoute-card">
                <div class="card-body">
-                  <div  data-v-67adc629="" class="quotes-generator-bar fixed">
+                  <div  class="quotes-generator-bar fixed">
                      <div  class="grid-container">
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">

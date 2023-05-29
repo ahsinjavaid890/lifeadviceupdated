@@ -540,43 +540,88 @@ if($show == '1' && $total_price > 0){
                     <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">$<?php echo number_format($monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
                     <?php } ?>
               </div>
+
+              <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal fade" role="dialog">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">
+                    <!-- Modal content-->
+                    <div class="modal-content" style="border: 5px solid #2b3481;">
+                     <form method="POST" action="{{ url('apply') }}">
+                    @csrf
+                      <div class="modal-body">
+
+                        <div class="row"> 
+                            <div class="col-md-5">
+                                <p>BY CALLING</p>
+                                <p><a href="tel:+18555005041" style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a></p>
+                                <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
+                                <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+                            </div>
+                            <div class="col-md-1">
+                                <div style="position: relative;border-left: 1px solid #2b3481;height: 100%;">
+                                    <div style="position: absolute; top: 40%; left: -20px; background-color: #2b3481; padding: 10px; font-size: 14px; color: white; border-radius: 50%;">OR</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="display: flex;position: relative;">
+                                    <input required type="checkbox" id="applycheckbox<?php echo $newdeductibleforshow.$plan_id;?>" name="agree" style="height: auto;margin: 0;top: 6px;position: absolute;">
+                                    <label style="margin-left: 18px;" for="applycheckbox<?php echo $newdeductibleforshow.$plan_id;?>"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a> </label>
+                                </div>
+                                 
+                            </div>
+                        </div>
+
+                        
+                        
+                            <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                            <input type="hidden" value="{{ $request->fname }}" name="fname">
+                            <input type="hidden" value="{{ $request->lname }}" name="lname">
+                            <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                            <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                            <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                            <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                            <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                            @foreach($request->years as $year)
+                            @if($year)
+                            <input type="hidden" name="years[]" value="{{ $year }}">
+                            @endif
+                            @endforeach
+                            @foreach($request->pre_existing as $preexisting)
+                            <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+                            @endforeach
+                            <input type="hidden" value="{{ $num_of_days }}" name="days">
+                            <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                            <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                            <input type="hidden" value="{{ $plan_name }}" name="planname">
+                            <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                            <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                            <input type="hidden" value="{{ $enddate }}" name="tripend">
+                            <input type="hidden" value="{{ $total_price }}" name="premium">
+                            <input type="hidden" value="{{ $request->primarydestination }}" name="destination">
+                            <input type="hidden" value="" name="cdestination">
+                            <input type="hidden" value="{{ $product_name }}" name="product_name">
+                            <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                            <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+                            <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                            <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                            <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                            <input type="hidden" value="{{ $dob }}" name="dob">
+                            <input type="hidden" value="{{ $agent }}" name="agent">
+                            <input type="hidden" value="{{ $broker }}" name="broker">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-lg login-btn" style="padding: 20px !important;border-radius: 16px !important;"data-dismiss="modal">Cancel</button>
+                        <button type="submit" style="color: white; border-radius: 16px; padding: 20px;" class="button button-primary">Purchase Policy</button>
+                      </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
               <div class="buy_now"> 
-                <form method="POST" action="{{ url('apply') }}">
-                @csrf
-                <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                <input type="hidden" value="{{ $request->fname }}" name="fname">
-                <input type="hidden" value="{{ $request->lname }}" name="lname">
-                <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-                <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-                <input type="hidden" value="{{ $deductible }}" name="deductibles">
-                <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-                <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                @foreach($request->years as $year)
-                @if($year)
-                <input type="hidden" name="years[]" value="{{ $year }}">
-                @endif
-                @endforeach
-                <input type="hidden" value="{{ $num_of_days }}" name="days">
-                <input type="hidden" value="{{ $comp_name }}" name="companyName">
-                <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-                <input type="hidden" value="{{ $plan_name }}" name="planname">
-                <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-                <input type="hidden" value="{{ $startdate }}" name="tripdate">
-                <input type="hidden" value="{{ $enddate }}" name="tripend">
-                <input type="hidden" value="{{ $total_price }}" name="premium">
-                <input type="hidden" value="{{ $request->primarydestination }}" name="destination">
-                <input type="hidden" value="" name="cdestination">
-                <input type="hidden" value="{{ $product_name }}" name="product_name">
-                <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                <input type="hidden" value="{{ $request->primary_destination }}" name="country">
-                <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-                <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-                <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                <input type="hidden" value="{{ $dob }}" name="dob">
-                <input type="hidden" value="{{ $agent }}" name="agent">
-                <input type="hidden" value="{{ $broker }}" name="broker">
-                <button class="btn btn-block text-white" type="submit">Buy</button>
-              </form>
+                
+                
+                <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="btn btn-block text-white">Buy</span>
+              
               </div>
           </div>
       </div>

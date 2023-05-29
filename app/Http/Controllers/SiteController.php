@@ -13,6 +13,9 @@ use App\Models\wp_dh_products;
 use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
+use App\Models\sales;
+use App\Models\sales_cards;
+use App\Models\traveler_sale_informations;
 use App\Models\blogcategories;
 use App\Models\contactus_messages; 
 use App\Models\newsletter; 
@@ -74,76 +77,109 @@ class SiteController extends Controller
     }
     public function applyqoute(Request $request)
     {
-       $sql =  "INSERT INTO `sales`(`policy_id`, `policy_title`, `fname`, `lname`, `email`, `phone`, `address`, `address_2`, `city`, `postcode`, `country`, `billing_province`, `deductible`, `deductible_rate`, `benefit`, `duration`, `age`, `product`, `plan`, `dob`, `start_date`, `end_date`, `departure_date`, `arrival_date`, `return_date`, `additional_travellers`, `price_total`, `price_payable`, `broker`, `agent`, `user_id`) VALUES ('$request->plan_id','$request->plan_name','$request->fname','$request->lname','$request->email','$request->phone','$request->streetname','$request->suit','$request->city','$request->postalcode','CA','$request->province','$request->deductibles','$request->deductible_rate','$request->coverage','$request->tripduration','$request->age','$request->product_id','$request->plan_name','$request->dob','$request->tripdate','$request->tripend','$request->tripdate','$request->tripdate','$request->tripend','$request->traveller','$request->premium','$request->premium','$request->broker','$request->agent','0')";
-        DB::statement($sql);
-        $sales = DB::Table('sales')->limit(1)->orderBy('sales_id' , 'DESC')->first();
-        $saleid = $sales->sales_id;
-        $card_expiry = explode('/', $request->expirationdate);
-        $card_month = $card_expiry[0];
-        $card_year = $card_expiry[1];
-        $sql2 = "INSERT INTO `sales_cards`(`card_name`, `card_number`, `card_month`, `card_year`, `card_cvc`, `sales_id`) VALUES ('$request->cardholdername','$request->cardholdernumber','$card_month','$card_year','$request->card_cvc','$saleid')";
-        DB::statement($sql2);
-        $sql3 = "INSERT INTO `sales_transactions`(`sales_id`, `payment_type`, `description`, `amount`) VALUES ('$saleid', 'payment', 'Policy Purchase Payment', '$request->premium')";
-        DB::statement($sql3);
-        if($sales->product == 1){
+        if($request->product_id == 1){
             $policytype = 'SVI';
-        } else if($sales->product == 2){
+        } else if($request->product_id == 2){
             $policytype = 'VTC';
-        } else if($sales->product == 3){
+        } else if($request->product_id == 3){
             $policytype = 'SI';
-        } else if($sales->product == 4){
+        } else if($request->product_id == 4){
             $policytype = 'IFC';
-        } else if($sales->product == 5){
+        } else if($request->product_id == 5){
             $policytype = 'ST';
-        } else if($sales->product == 6){
+        } else if($request->product_id == 6){
             $policytype = 'MT';
-        } else if($sales->product == 7){
+        } else if($request->product_id == 7){
             $policytype = 'AI';
-        } else if($sales->product == 8){
+        } else if($request->product_id == 8){
             $policytype = 'TII';
-        } else if($sales->product == 9){
+        } else if($request->product_id == 9){
             $policytype = 'BC';
         }else{
             $policytype = '';
         }
-        $policy_number_temp = 10000000 + $sales->sales_id;
-        $policy_number = $policytype.$policy_number_temp;
+        $policy_number_temp = rand(10000 , 50000);
+        $reffrence_number = $policytype.$policy_number_temp;
+
+        $newsale = new sales();
+        $newsale->reffrence_number = $reffrence_number;
+        $newsale->email = $request->email;
+        $newsale->phonenumber = $request->phone;
+        $newsale->address = $request->streetname;
+        $newsale->appartment = $request->suit;
+        $newsale->city = $request->city;
+        $newsale->province = $request->province;
+        $newsale->postalcode = $request->postalcode;
+        $newsale->country = $request->country;
+        $newsale->product_name = $request->producttype;
+        $newsale->product_id = $request->product_id;
+        $newsale->start_date = $request->tripdate;
+        $newsale->end_date = $request->tripend;
+        $newsale->primary_destination = $request->visitor_visa_type;
+        $newsale->duration = $request->tripduration;
+        $newsale->premium = $request->premium;
+        $newsale->coverage_ammount = $request->coverage_ammount;
+        $newsale->deductibles = $request->deductibles;
+        $newsale->deductible_rate = $request->deductible_rate;
+        $newsale->company_name = $request->comp_name;
+        $newsale->comp_id = $request->comp_id;
+        $newsale->plan_id = $request->plan_id;
+        $newsale->status = 'Pending';
+        $newsale->save();
+
+
+
+        foreach ($request->dob as $key => $value) {
+            $traveler = new traveler_sale_informations();
+            $traveler->sale_id = $newsale->id;
+            $traveler->f_name = $request->fname[$key];
+            $traveler->l_name = $request->lname[$key];
+            $traveler->gender = $request->gender[$key];
+            $traveler->pre_existing_condition = $request->preexisting[$key];
+            $traveler->date_of_birth = $value;
+            $traveler->save();
+        }
+
+        
+
+
+
+
+
+        $card_expiry = explode('/', $request->expirationdate);
+        $card_month = $card_expiry[0];
+        $card_year = $card_expiry[1];
+
+        $salecard = new sales_cards();
+        $salecard->sale_id = $newsale->id;
+        $salecard->card_name = $request->cardholdername;
+        $salecard->card_number = $request->cardholdernumber;
+        $salecard->card_month = $card_month;
+        $salecard->card_year = $card_year;
+        $salecard->card_cvc = $request->cvc;
+        $salecard->save();
         $checkuser = User::where('email' , $request->email)->count();
         if($checkuser == 0)
         {
-            $password = $policy_number;
+            $password = $reffrence_number;
             $newuser = new User();
-            $newuser->name = $request->fname.' '.$request->lname;
             $newuser->email = $request->email;
             $newuser->phone = $request->phone;
-            $newuser->dob = $request->dob;
             $newuser->address = $request->streetname;
-            $newuser->country = 'CA';
-            $newuser->postal = $request->postalcode; 
             $newuser->password = Hash::make($password);
             $newuser->user_type = 'customer';
             $newuser->status = 'active';
             $newuser->save();
-        }else{
-            $user = User::where('email' , $request->email)->first();
-            $password = $policy_number;
-            $newuser = User::find($user->id);
-            $newuser->password = Hash::make($password);
-            $newuser->save();
         }
-        $subject = 'Your Life Advice Policy Confirmation | '.$policy_number;
-        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $sales,'policy_number' => $policy_number], function($message) use($request , $subject){
+        $subject = 'Your Life Advice Policy Confirmation | '.$reffrence_number;
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
               $message->to($request->email);
               $message->subject($subject);
         });
-
-
-        Mail::send('email.review', ['request' => $request,'sale' => $sales], function($message) use($request , $subject){
+        Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
               $message->to($request->email);
               $message->subject('Tell Us How We Did?');
         });
-
-
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
     public function applyplan(Request $request)

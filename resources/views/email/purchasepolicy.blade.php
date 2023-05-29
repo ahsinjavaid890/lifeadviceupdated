@@ -1,28 +1,3 @@
-@php
-if($sale->product == 1){
-$policytype = 'SVI';
-} else if($sale->product == 2){
-$policytype = 'VTC';
-} else if($sale->product == 3){
-$policytype = 'SI';
-} else if($sale->product == 4){
-$policytype = 'IFC';
-} else if($sale->product == 5){
-$policytype = 'ST';
-} else if($sale->product == 6){
-$policytype = 'MT';
-} else if($sale->product == 7){
-$policytype = 'AI';
-} else if($sale->product == 8){
-$policytype = 'TII';
-} else if($sale->product == 9){
-$policytype = 'BC';
-}else{
-$policytype = '';
-}
-$policy_number_temp = 10000000 + $sale->sales_id;
-$policy_number = $policytype.$policy_number_temp;
-@endphp
 <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#F4F7FA">
    <tbody>
       <tr>
@@ -93,7 +68,6 @@ $policy_number = $policytype.$policy_number_temp;
                                                       <tr>
                                                          <td style="padding:25px 30px 0px 30px;line-height:28px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                                                             <div>
-                                                               <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-size:16px;font-weight:600">Dear {{ $request->name }},</span></div>
                                                                <div style="font-family:inherit;text-align:inherit;line-height:24px"><br></div>
                                                                <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:500;font-size:14px">We truly appreciate your trust in our services and your decision to purchase an insurance policy with us. Your policy details and documentation will be emailed to you shortly. Please take the time to read them carefully and familiarize yourself with the terms and conditions. If you have any questions or need any assistance in understanding the specifics, don't hesitate to get in touch with us.</span>
                                                                </div>
@@ -262,7 +236,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->policy_status }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->status }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -382,7 +356,47 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $request->coverage }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->coverage_ammount }}</span></div>
+                           <div></div>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<table width="180" style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
+   <tbody>
+      <tr>
+         <td style="padding:0px;margin:0px;border-spacing:0">
+            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+               <tbody>
+                  <tr>
+                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                        <div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Deductibles</span></div>
+                           <div></div>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<table width="260" style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
+   <tbody>
+      <tr>
+         <td style="padding:0px;margin:0px;border-spacing:0">
+            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+               <tbody>
+                  <tr>
+                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                        <div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->deductibles }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -414,46 +428,47 @@ $policy_number = $policytype.$policy_number_temp;
                                                       </tr>
                                                    </tbody>
                                                 </table>
-                                                <table style="padding:24px 30px;width:100%">
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" bgcolor="#fff" style="background:#f9fafc;width:100%;border:1px solid #dae5ee;border-radius:10px">
-                                                               <tbody>
-                                                                  <tr>
-                                                                     <td>
-                                                                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module">
-                                                                           <tbody>
-                                                                              <tr role="module-content">
-                                                                                 <td height="100%" valign="top">
-                                                                                    <table width="500" style="width:500px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-                                                                                       <tbody>
-                                                                                          <tr>
-                                                                                             <td style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-                                                                                                   <tbody>
-                                                                                                      <tr>
-                                                                                                         <td style="padding:18px 30px 18px 30px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                                                                                                            <div>
-                                                                                                               <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:20px;font-weight:800;line-height:24px">Traveler Information</span></div>
-                                                                                                               <div></div>
-                                                                                                            </div>
-                                                                                                         </td>
-                                                                                                      </tr>
-                                                                                                   </tbody>
-                                                                                                </table>
-                                                                                             </td>
-                                                                                          </tr>
-                                                                                       </tbody>
-                                                                                    </table>
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" style="padding:0px 30px 0px 30px">
-                                                                           <tbody>
-                                                                              <tr role="module-content">
-                                                                                 <td height="100%" valign="top">
+@foreach(DB::table('traveler_sale_informations')->where('sale_id' , $sale->id)->get() as $key => $r)
+<table style="padding:24px 30px;width:100%">
+<tbody>
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" bgcolor="#fff" style="background:#f9fafc;width:100%;border:1px solid #dae5ee;border-radius:10px">
+<tbody>
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module">
+<tbody>
+<tr role="module-content">
+   <td height="100%" valign="top">
+      <table width="500" style="width:500px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
+         <tbody>
+            <tr>
+               <td style="padding:0px;margin:0px;border-spacing:0">
+                  <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                     <tbody>
+                        <tr>
+                           <td style="padding:18px 30px 18px 30px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                              <div>
+                                 <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:20px;font-weight:800;line-height:24px">Traveler Information {{ $key+1 }}</span></div>
+                                 <div></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" style="padding:0px 30px 0px 30px">
+<tbody>
+<tr role="module-content">
+   <td height="100%" valign="top">
 <table width="180" style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
    <tbody>
       <tr>
@@ -463,7 +478,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Insured Name</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Name</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -483,7 +498,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->fname }} {{ $sale->lname }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->f_name }} {{ $r->l_name }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -503,7 +518,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Email</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Gender</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -523,7 +538,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->email }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -543,7 +558,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Phonenumber</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Pre Existing Condition</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -563,7 +578,7 @@ $policy_number = $policytype.$policy_number_temp;
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->phone }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->pre_existing_condition }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -574,27 +589,68 @@ $policy_number = $policytype.$policy_number_temp;
       </tr>
    </tbody>
 </table>
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                        
-                                                                        <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-                                                                           <tbody>
-                                                                              <tr>
-                                                                                 <td style="padding:0px 0px 10px 0px" role="module-content" bgcolor="">
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                     </td>
-                                                                  </tr>
-                                                               </tbody>
-                                                            </table>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+<table width="180" style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
+   <tbody>
+      <tr>
+         <td style="padding:0px;margin:0px;border-spacing:0">
+            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+               <tbody>
+                  <tr>
+                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                        <div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Date of Birth</span></div>
+                           <div></div>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<table width="260" style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
+   <tbody>
+      <tr>
+         <td style="padding:0px;margin:0px;border-spacing:0">
+            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+               <tbody>
+                  <tr>
+                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                        <div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->date_of_birth }}</span></div>
+                           <div></div>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+<table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+<tbody>
+<tr>
+<td style="padding:0px 0px 10px 0px" role="module-content" bgcolor="">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+@endforeach
                                                 <table style="padding:24px 30px;width:100%">
                                                    <tbody>
                                                       <tr>
