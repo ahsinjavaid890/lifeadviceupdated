@@ -171,36 +171,36 @@
                      <div class="policy d-flex">
                         <p class="policyid">
                            <span class="text-dark">Reffrence ID :</span>
-                           10000{{ $data->sales_id }}
+                           {{ $data->reffrence_number }}
                         </p>
                      </div>
                      <div class="row mt-5">
                         <div class="col-md-6">
                            <div class="user_data">
                               <label>Policy Name</label>
-                              <h5>{{ $data->policy_title }}</h5>
+                              <h5>{{ DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first()->plan_name }}</h5>
                            </div>
                            <div class="user_data">
                               <label>Purchase Date</label>
-                              <h5>{{ Cmf::date_format($data->purchase_date) }}</h5>
+                              <h5>{{ Cmf::date_format($data->created_at) }}</h5>
                            </div>
                            <div class="user_data">
                               <label>Deductible</label>
-                              <h5>${{ $data->deductible }}</h5>
+                              <h5>{{ $data->deductibles }}</h5>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="user_data">
                               <label>Destination</label>
-                              <h5>Ontario</h5>
+                              <h5>{{ $data->primary_destination }}</h5>
                            </div>
                            <div class="user_data">
                               <label>Duration</label>
-                              <h5>{{ $data->duration }} Days</h5>
+                              <h5>{{ $data->duration }}</h5>
                            </div>
                            <div class="user_data">
                               <label>Policy Maximum</label>
-                              <h5>${{ $data->benefit }}</h5>
+                              <h5>${{ $data->coverage_ammount }}</h5>
                            </div>
                         </div>
                      </div>
@@ -296,12 +296,13 @@
         </button>
       </div>
       <div class="modal-body">
-         <form method="POST" action="{{ url('') }}">
+         <form method="POST" action="{{ url('changerequest') }}">
+            @csrf
             <div class="row">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="">
                   </div>
                </div>
                <div class="col-md-6">
@@ -381,11 +382,15 @@
                   </div>
                </div>
             </div>
+            <div class="row">
+               <div class="col-md-12 text-right">
+                  <div class="form-group">
+                     <button type="button" class="claim_button">Send Request</button>
+                  </div>
+               </div>
+            </div>
             
          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="claim_button">Send Request</button>
       </div>
     </div>
   </div>
@@ -406,7 +411,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="">
                   </div>
                </div>
                <div class="col-md-6">
@@ -473,7 +478,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="1000{{ $data->sales_id }}" class="form-control" name="reffrence_id">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="reffrence_id">
                   </div>
                </div>
                <div class="col-md-6">

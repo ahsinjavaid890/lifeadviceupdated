@@ -981,6 +981,18 @@ $(document).ready(function () {
 	
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
         var near_place = autocomplete.getPlace();
+        // console.log(near_place.address_components);
+
+
+        for(var i=0; i < near_place.address_components.length; i++)
+		{
+		    var component = near_place.address_components[i];
+		    if(component.types[0] == "postal_code")
+		    {
+		    	$('#postalcode').val(component.long_name);
+		    }
+		}
+
 
         var lat = near_place.geometry.location.lat();
 		var lng = near_place.geometry.location.lng();

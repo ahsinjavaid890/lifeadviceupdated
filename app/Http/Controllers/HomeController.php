@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        $sales = DB::table('sales')->where('email' , Auth::user()->email)->orderby('sales_id' , 'desc')->get();
+        $sales = DB::table('sales')->where('email' , Auth::user()->email)->orderby('id' , 'desc')->get();
         return view('frontend.user.dashboard')->with(array('sales'=>$sales));
     }
     public function securitysettings()
@@ -35,7 +35,7 @@ class HomeController extends Controller
     }
     public function policydetail($id)
     {
-        $sales = DB::table('sales')->where('sales_id' , $id)->first();
+        $sales = DB::table('sales')->where('id' , $id)->first();
         return view('frontend.user.policydetail')->with(array('data'=>$sales));
     }
 }

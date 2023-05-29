@@ -118,19 +118,19 @@
          @foreach($sales as $r)
          <div class="card mb-3">
             <div class="d-flex justify-content">
-               <h3>{{ $r->fname }} {{ $r->lname }}</h3>
-               @if($r->policy_status == 'pending')
-               <span class="badge badge-warning">{{ $r->policy_status }}</span>
+               <h3>{{ DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->f_name }} {{  DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->l_name }}</h3>
+               @if($r->status == 'pending')
+               <span class="badge badge-warning">{{ $r->status }}</span>
                @endif
-               @if($r->policy_status == 'rejected')
-               <span class="badge badge-danger">{{ $r->policy_status }}</span>
+               @if($r->status == 'rejected')
+               <span class="badge badge-danger">{{ $r->status }}</span>
                @endif
-               @if($r->policy_status == 'Approved')
-               <span class="badge badge-success">{{ $r->policy_status }}</span>
+               @if($r->status == 'Approved')
+               <span class="badge badge-success">{{ $r->status }}</span>
                @endif
             </div>
             <div style="color: #3f3e81;
-    font-weight: 900;">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</div>
+    font-weight: 900;">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product_id)->first()->pro_name }}</div>
             <div class="d-flex">
                <div class="date">
                  <span> Effective : </span>{{ Cmf::date_format($r->start_date) }}
@@ -140,8 +140,8 @@
                </div>
             </div>
             <div class="d-flex policyid justify-content">
-               <span>Policy Id: 10000{{$r->sales_id}} </span>
-               <a href="{{ url('policydetail') }}/{{ $r->sales_id }}">View Details</a>
+               <span>Reffrence Id: {{$r->reffrence_number}} </span>
+               <a href="{{ url('policydetail') }}/{{ $r->id }}">View Details</a>
             </div>
          </div>
          @endforeach

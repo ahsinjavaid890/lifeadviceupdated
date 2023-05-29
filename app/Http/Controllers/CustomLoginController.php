@@ -8,8 +8,9 @@ use Exception;
 use App\Models\User;
 use App\Models\productgallerimages;
 use App\Models\secure_links;
-
-
+use App\Models\sales;
+use App\Models\traveler_sale_informations;
+use Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -21,9 +22,33 @@ class CustomLoginController extends Controller
             'reffrence_id' => 'required',
             'date_of_birth' => 'required',
         ]);
+        $check = sales::where('reffrence_number' , $request->reffrence_id);
 
+        if($check->count() == 1)
+        {
 
-        
+            $dateof_birthwith_format = date('Y-m-d', strtotime($request->date_of_birth));
+            $checktraveler = traveler_sale_informations::where('date_of_birth' , $dateof_birthwith_format)->where('sale_id' , $check->first()->id)->count();
+            if($checktraveler > 0)
+            {
+                $getemail = $check->first()->email;
+
+                $finduser = User::where('email', $getemail)->first();
+                if($finduser){
+                    Auth::login($finduser);
+                    return redirect()->intended('profile');
+                }else{
+                    return redirect()->intended('login?error="User is not Registerd"');
+                }
+            }else{
+                return redirect()->back()->with(array('dateofbirthwrongwrong' => 'Please Enter Correct Date of Birth' ,'reffrence_id' => $request->reffrence_id,'date_of_birth' => $request->date_of_birth));
+            }
+
+            
+
+        }else{
+            return redirect()->back()->with(array('policynumberwrong' => 'Please Enter Correct Reffrence ID' ,'reffrence_id' => $request->reffrence_id,'date_of_birth' => $request->date_of_birth));
+        }
         
     }
 

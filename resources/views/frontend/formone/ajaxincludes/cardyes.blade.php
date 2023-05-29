@@ -541,6 +541,10 @@ if($show == '1' && $total_price > 0){
                     <?php } ?>
               </div>
 
+              
+              <div class="buy_now">
+                <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="btn btn-block text-white">Buy</span>
+              </div>
               <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal fade" role="dialog">
                   <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">
                     <!-- Modal content-->
@@ -616,12 +620,6 @@ if($show == '1' && $total_price > 0){
                     </div>
 
                   </div>
-                </div>
-              <div class="buy_now"> 
-                
-                
-                <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="btn btn-block text-white">Buy</span>
-              
               </div>
           </div>
       </div>

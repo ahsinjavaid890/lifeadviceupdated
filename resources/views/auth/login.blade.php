@@ -88,6 +88,7 @@
         border-top: 3px solid rgba(0, 0, 0, .1) !important;
     }
 </style>
+
 <section class="chooses-blogs chooses-blogs-responsive choose-us-area-five pb-70" style="background-color:#f4f7fa;">
 <div class="container-homepage container-blog">
     <div class="row justify-content-center mt-5">
@@ -104,27 +105,51 @@
                         <div class="col-md-6 nopad">
                             <div class="custom-form-control positionrelative">
                                 <label class="selectlabeldateofbirth">Policy Reffrence ID</label>
-                                <input class="input" type="text" placeholder="Policy Reffrence ID" name="reffrence_id">
+                                <input 
+                                @if(session()->has('reffrence_id'))
+                                    value="{{ session()->get('reffrence_id') }}"
+                                @else
+
+                                 value="{{ old('reffrence_id') }}" @endif class="input" type="text" placeholder="Policy Reffrence ID" name="reffrence_id">
                                 @error('reffrence_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+
+                                @if(session()->has('policynumberwrong'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ session()->get('policynumberwrong') }}</strong>
+                                </span>
+
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6 nopad">
                             <div class="custom-form-control positionrelative">
                                 <label class="selectlabeldateofbirth">Date of Birth</label>
-                                <input id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="date_of_birth">
+                                <input @if(session()->has('date_of_birth'))
+                                    value="{{ session()->get('date_of_birth') }}"
+                                @else
+
+                                 value="{{ old('date_of_birth') }}" @endif id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY" name="date_of_birth">
                                 @error('date_of_birth')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+
+                                @if(session()->has('dateofbirthwrongwrong'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ session()->get('dateofbirthwrongwrong') }}</strong>
+                                </span>
+
+                                @endif
+                                
                             </div>
                         </div>
                         <div class="col-md-12 mt-3">
-                            <a style="color: #1b8fe4; font-weight: 600;font-size: .875rem;line-height: 1.5rem;" href="javascript:void(0)">Where's my Policy ID?</a>
+                            <a style="color: #1b8fe4; font-weight: 600;font-size: .875rem;line-height: 1.5rem;" data-toggle="modal" data-target="#whereismypolicyid" href="javascript:void(0)">Where's my Policy Reffrence ID?</a>
                         </div>
                         <div class="col-md-9 mt-3">
                             <div  style=" font-size: .875rem; line-height: 1.5rem; color: #67778f; font-weight: 600; "><strong>Note:</strong> If you previously created an account with your Email Address, you can now simply login with your Policy ID and Date of Birth. </div>
@@ -173,6 +198,28 @@
            </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="whereismypolicyid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered" role="document">
+    <div class="modal-content" style="max-width: 700px !important; border-left: 5px solid #2b3481; border-radius: 20px; ">
+      <div class="modal-header" style="border-bottom: 0px;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <h1 style="text-align: center; font-size: 2rem; line-height: 2.5rem; color: #2b3481; ">Where's my Policy Reffrence ID?</h1>
+
+         <div class="mt-5" style="max-width: 70%;
+    margin: auto;
+    border: 1px solid #c2cad7;
+    box-shadow: 0 4px 16px rgba(87,106,134,.15);
+    border-radius: 8px;" class="main-image">
+             <img style="box-shadow: 0 4px 16px rgba(87,106,134,.15); border-radius: 8px; " src="{{ url('public/images/policyreffrenceid.png') }}"> 
+         </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
