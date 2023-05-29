@@ -4405,11 +4405,11 @@ Get Quat Area Style
     background-color: #2b3481;
 }
 
-/*==================================================== 
+/*====================================================
 INNER PAGE STYLE
 ======================================================*/
 
-/* 
+/*
 Page Title Area Style
 =====================================================*/
 
@@ -4648,7 +4648,7 @@ Sign In & Log In  Area Style
     font-weight: 600;
 }
 
-/* 
+/*
 Coming Soon Area Style
 =====================================================*/
 
@@ -6350,7 +6350,7 @@ Contact Area Style
     margin-bottom: -8px;
 }
 
-/* 
+/*
 FAQ Area Style
 =====================================================*/
 
@@ -7632,8 +7632,8 @@ section {
 } */
 
 */ .left-image img {
-    width: 155px;
-}
+       width: 155px;
+   }
 
 .left-image {
     position: absolute;
@@ -8357,7 +8357,7 @@ section {
     padding: 40px 50px 40px 15px;
     margin-top: 70px;
     color: white;
-} 
+}
 
 .health-inssurance-hero-banners {
     /*padding: 40px 50px 40px 15px;*/
@@ -8823,7 +8823,7 @@ section {
 {
     .herrotext {
         max-width: 100%;
-       margin-top: -35px !important;
+        margin-top: -35px !important;
         margin-left: 15px;
     }
     .super-hero-text .wow{
@@ -8845,13 +8845,13 @@ section {
     .super-hero-text h5 {
         padding-right: 77px;
         font-size: 10px;
-       
+
     }
     .policy-heading {
         text-align: center;
     }
 
-      .chooses-blogs {
+    .chooses-blogs {
         margin-top: 140px;
     }
 
@@ -9693,7 +9693,7 @@ section {
     padding: 15px;
     margin: auto !important;*/
         width: 1013px !important;
-        /* 
+        /*
     position: relative;
     border-radius: 4px;
     box-sizing: border-box;
@@ -10197,7 +10197,7 @@ section {
     color: #ffffff;
     padding: 15px;
     margin: auto !important;
-     width: auto !important; 
+     width: auto !important;
     position: relative;
     border-radius: 4px;
     box-sizing: border-box;
@@ -10344,7 +10344,7 @@ section {
     color: #ffffff;
     padding: 15px;
     margin: auto !important;
-     width: auto !important; 
+     width: auto !important;
     position: relative;
     border-radius: 4px;
     box-sizing: border-box;
@@ -10367,7 +10367,7 @@ section {
     color: #ffffff;
     padding: 15px;
     margin: auto !important;
-     width: auto !important; 
+     width: auto !important;
     position: relative;
     border-radius: 4px;
     box-sizing: border-box;
@@ -10504,7 +10504,7 @@ section {
     color: #ffffff;
     padding: 15px;
     margin: auto !important;
-     width: auto !important; 
+     width: auto !important;
     position: relative;
     border-radius: 4px;
     box-sizing: border-box;
@@ -11512,25 +11512,25 @@ time {
 
 .timeline-star ul li::after {
     clip-path: polygon(50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%);
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%);
 }
 
 .timeline-heptagon ul li::after {
     clip-path: polygon(50% 0%,
-            90% 20%,
-            100% 60%,
-            75% 100%,
-            25% 100%,
-            0% 60%,
-            10% 20%);
+    90% 20%,
+    100% 60%,
+    75% 100%,
+    25% 100%,
+    0% 60%,
+    10% 20%);
 }
 
 .timeline-infinite ul li::after {
@@ -12143,9 +12143,9 @@ ul.tabs li.current {
         display: block !important;
     }
 
-/*    .card-section {
-        display: none;
-    }*/
+    /*    .card-section {
+            display: none;
+        }*/
 
     .new-qoute {
         position: inherit !important;
@@ -13305,9 +13305,9 @@ a:hover {
 }
 
 @media only screen and (max-width: 600px) {
-  .mobile-display-none{
-    display: none;
-  }
+    .mobile-display-none{
+        display: none;
+    }
 }
 
 
@@ -13383,7 +13383,7 @@ ul .child-list li a {
     .blog_section {
         margin-top: 70px;
     }
-    
+
     .life-heading h2{
         font-size: 1.5rem !important;
     }
@@ -13487,7 +13487,7 @@ ul .child-list li a {
 
 }
 
- @media screen and (min-width:774px) and (max-width:1100px) {
+@media screen and (min-width:774px) and (max-width:1100px) {
     .slider__item {
         width: 247px !important;
     }
@@ -13507,481 +13507,481 @@ ul .child-list li a {
     }
 }
 @media screen and (min-width:376px) and (max-width:400px){
-      #contact-form label{
+    #contact-form label{
         font-size: 10px !important;
-      }
+    }
 }
 @media screen and (min-width:300px) and (max-width:375px){
     .hero-texts h1{
         margin-top: -20px !important;
-      }
-      #contact-form label{
+    }
+    #contact-form label{
         font-size: 10px !important;
-      }
+    }
 }
 @media screen and (min-width:376px) and (max-width:500px){
-.hero-texts{
-    margin-top: 8px;
-}
-.hero-texts h1{
-    margin-top: -7px !important;
-}
-
-@media screen and (min-width:200px) and (max-width:767px) {
-    .blogs-card {
-        margin-bottom: 10px !important;
-    }
-    .whloelife-card{
-        margin-bottom: 10px;
-    }
-    .trans-card{
-        margin-bottom: 10px;
-    }
-    .herrotext h2 span{
-        font-size: 18px !important;
-    }
-    .herrotext h2 span font{
-        font-size: 18px !important;
-    }
-    .herrotext h2 {
-        font-size: 18px !important;
-        
-        
-    }
-}
-
-@media screen and (min-width:200px) and (max-width:299px) {
-    .privacy-heading{
-        font-size: 1rem !important;
-    }
-    .mission-card{
-        margin-bottom: 10px;
-    }
-    .choice-card-paragraph p{
-        font-size: 10px;
-    }
-    .slider-heading h2 span {
-        font-size: 10px !important;
-    }
-    .whole{
-        font-size: 20px  !important;
-    }
-    .advant{
-        font-size: 20px !important;
-    }
-    .slider-heading h2 {
-        font-size: 10px !important;
-    }
-
-    .slider-pargraph p {
-        font-size: 8px !important;
-    }
-
-    .slider-card {
-        height: 250px !important;
-    }
-    .blog_section {
-        margin-top: 70px;
-    }
-
-    .life-heading h2{
-        font-size: 1rem !important;
-    }
-    .life-heading h2 span{
-        font-size: 1rem !important;
-    }
-    .product-card-images img {
-        width: 54px;
-        height: 53px;
-        position: absolute;
-        left: -35px;
-        top: 80px !important;
-    }
-    .herrotext h5 {
-        display: none !important;
-    }
-    .herrotext .details {
-        display: none !important;
-    }
-    .herrotext h2 span font{
-        font-size: 12px !important;
-    }
-    .herrotext h2 font{
-        font-size: 12px !important;
-    }
-    .hero-image{
-        margin-top: 150px !important;
-    }
-    .policy-paragraph{
-        margin-bottom: 15px !important;
-    }
-    .super-images {
-        top: -867px;
-        width: 415px;
-        position: absolute;
-        right: -1px;
-        height: 691px;
-    }
-    .super-hero{
-        height: 270px;
-    }
     .hero-texts{
-        margin-top: -75px;
+        margin-top: 8px;
     }
-    .list-checkmark li{
-        font-size: 9px !important;
-    }
-    .lists-checkmark{
-        height: 770px ;
-    }
-}
-@media screen and (min-width:800px) and (max-width:1000px)
-{
-    .life-product{
-        padding-left: 50px ;
-    }
-    .blogsproducts{
-        font-size: 15px !important;
-    }
-}
-@media screen and (min-width:800px) and (max-width:1199px) {
-    .slider-heading h2 span {
-        font-size: 15px !important;
+    .hero-texts h1{
+        margin-top: -7px !important;
     }
 
-    .slider-heading h2 {
-        font-size: 15px !important;
+    @media screen and (min-width:200px) and (max-width:767px) {
+        .blogs-card {
+            margin-bottom: 10px !important;
+        }
+        .whloelife-card{
+            margin-bottom: 10px;
+        }
+        .trans-card{
+            margin-bottom: 10px;
+        }
+        .herrotext h2 span{
+            font-size: 18px !important;
+        }
+        .herrotext h2 span font{
+            font-size: 18px !important;
+        }
+        .herrotext h2 {
+            font-size: 18px !important;
+
+
+        }
     }
 
-    .slider-pargraph p {
-        font-size: 8px !important;
+    @media screen and (min-width:200px) and (max-width:299px) {
+        .privacy-heading{
+            font-size: 1rem !important;
+        }
+        .mission-card{
+            margin-bottom: 10px;
+        }
+        .choice-card-paragraph p{
+            font-size: 10px;
+        }
+        .slider-heading h2 span {
+            font-size: 10px !important;
+        }
+        .whole{
+            font-size: 20px  !important;
+        }
+        .advant{
+            font-size: 20px !important;
+        }
+        .slider-heading h2 {
+            font-size: 10px !important;
+        }
+
+        .slider-pargraph p {
+            font-size: 8px !important;
+        }
+
+        .slider-card {
+            height: 250px !important;
+        }
+        .blog_section {
+            margin-top: 70px;
+        }
+
+        .life-heading h2{
+            font-size: 1rem !important;
+        }
+        .life-heading h2 span{
+            font-size: 1rem !important;
+        }
+        .product-card-images img {
+            width: 54px;
+            height: 53px;
+            position: absolute;
+            left: -35px;
+            top: 80px !important;
+        }
+        .herrotext h5 {
+            display: none !important;
+        }
+        .herrotext .details {
+            display: none !important;
+        }
+        .herrotext h2 span font{
+            font-size: 12px !important;
+        }
+        .herrotext h2 font{
+            font-size: 12px !important;
+        }
+        .hero-image{
+            margin-top: 150px !important;
+        }
+        .policy-paragraph{
+            margin-bottom: 15px !important;
+        }
+        .super-images {
+            top: -867px;
+            width: 415px;
+            position: absolute;
+            right: -1px;
+            height: 691px;
+        }
+        .super-hero{
+            height: 270px;
+        }
+        .hero-texts{
+            margin-top: -75px;
+        }
+        .list-checkmark li{
+            font-size: 9px !important;
+        }
+        .lists-checkmark{
+            height: 770px ;
+        }
+    }
+    @media screen and (min-width:800px) and (max-width:1000px)
+    {
+        .life-product{
+            padding-left: 50px ;
+        }
+        .blogsproducts{
+            font-size: 15px !important;
+        }
+    }
+    @media screen and (min-width:800px) and (max-width:1199px) {
+        .slider-heading h2 span {
+            font-size: 15px !important;
+        }
+
+        .slider-heading h2 {
+            font-size: 15px !important;
+        }
+
+        .slider-pargraph p {
+            font-size: 8px !important;
+        }
+
+        .slider-card {
+            height: 300px !important;
+        }
+        .blog_section {
+            margin-top: 72px !important;
+        }
+        .policy-headings{
+            margin-left: 30px !important;
+        }
+        .policy-paragraph{
+            margin-left: 30px !important;
+        }
     }
 
-    .slider-card {
-        height: 300px !important;
-    }
-    .blog_section {
-        margin-top: 72px !important;
-    } 
-    .policy-headings{
-        margin-left: 30px !important;
-    } 
-    .policy-paragraph{
-        margin-left: 30px !important;
-    }
-}
+    @media screen and (min-width:1200px) and (max-width:1299px) {
+        .policy-headings{
+            margin-left: 28px !important;
+        }
+        .policy-paragraph{
+            margin-left: 28px !important;
+        }
+        .slider-heading h2 span {
+            font-size: 18px !important;
+        }
+        .our-mission p {
+            font-size: 13px !important;
+        }
+        .heading-our-mission-section h1 {
+            font-size: 25px !important;
+        }
+        .slider-heading h2 {
+            font-size: 18px !important;
+        }
 
-@media screen and (min-width:1200px) and (max-width:1299px) {
-    .policy-headings{
-        margin-left: 28px !important;
-    } 
-    .policy-paragraph{
-        margin-left: 28px !important;
-    }
-    .slider-heading h2 span {
-        font-size: 18px !important;
-    }
-    .our-mission p {
-        font-size: 13px !important;
-    }
-    .heading-our-mission-section h1 {
-        font-size: 25px !important;
-    }
-    .slider-heading h2 {
-        font-size: 18px !important;
-    }
+        .slider-pargraph p {
+            font-size: 10px !important;
+        }
 
-    .slider-pargraph p {
-        font-size: 10px !important;
-    }
+        .slider-card {
+            height: 280px !important;
+        }
 
-    .slider-card {
-        height: 280px !important;
-    }
+        .blank-card {
+            height: 400px !important;
+            width: 240px;
+        }
 
-    .blank-card {
-        height: 400px !important;
-        width: 240px;
+        .blank-card .card-content h3 {
+            font-size: 14px !important;
+        }
+
+        .blank-card .card-content p {
+            font-size: 12px !important;
+        }
+        .choice-card-heading h2{
+            font-size: 20px;
+        }
     }
 
-    .blank-card .card-content h3 {
-        font-size: 14px !important;
+    @media screen and (min-width:1300px) and (max-width:1400px) {
+        .slider-heading h2 span {
+            font-size: 18px !important;
+        }
+
+        .slider-heading h2 {
+            font-size: 18px !important;
+        }
+
+        .slider-pargraph p {
+            font-size: 10px !important;
+        }
+
+        .slider-card {
+            height: 280px !important;
+        }
+
+        .blank-card {
+            height: 400px !important;
+            width: 270px;
+        }
+
+        .blank-card .card-content h3 {
+            font-size: 14px !important;
+        }
+
+        .blank-card .card-content p {
+            font-size: 12px !important;
+        }
     }
 
-    .blank-card .card-content p {
-        font-size: 12px !important;
-    }
-    .choice-card-heading h2{
-        font-size: 20px;
-    }
-}
+    @media screen and (min-width:1500px) and (max-width:1699px) {
+        .slider-heading h2 span {
+            font-size: 18px !important;
+        }
 
-@media screen and (min-width:1300px) and (max-width:1400px) {
-    .slider-heading h2 span {
-        font-size: 18px !important;
-    }
+        .slider-heading h2 {
+            font-size: 18px !important;
+        }
 
-    .slider-heading h2 {
-        font-size: 18px !important;
-    }
+        .slider-pargraph p {
+            font-size: 12px !important;
+        }
 
-    .slider-pargraph p {
-        font-size: 10px !important;
-    }
+        .slider-card {
+            height: 280px !important;
+        }
 
-    .slider-card {
-        height: 280px !important;
-    }
+        .blank-card {
+            height: 390px !important;
+            width: 310px;
+        }
 
-    .blank-card {
-        height: 400px !important;
-        width: 270px;
-    }
+        .blank-card .card-content h3 {
+            font-size: 15px !important;
+        }
 
-    .blank-card .card-content h3 {
-        font-size: 14px !important;
+        .blank-card .card-content p {
+            font-size: 12px !important;
+        }
     }
 
-    .blank-card .card-content p {
-        font-size: 12px !important;
-    }
-}
+    @media screen and (min-width:1700px) and (max-width:1800px) {
+        .slider-heading h2 span {
+            font-size: 18px !important;
+        }
 
-@media screen and (min-width:1500px) and (max-width:1699px) {
-    .slider-heading h2 span {
-        font-size: 18px !important;
-    }
+        .slider-heading h2 {
+            font-size: 18px !important;
+        }
 
-    .slider-heading h2 {
-        font-size: 18px !important;
-    }
+        .slider-pargraph p {
+            font-size: 12px !important;
+        }
 
-    .slider-pargraph p {
-        font-size: 12px !important;
-    }
+        .slider-card {
+            height: 300px !important;
+        }
+        .herrotext{
+            padding-right: 40px;
+        }
+        .blank-card {
+            height: 410px !important;
+            width: 350px;
+        }
 
-    .slider-card {
-        height: 280px !important;
-    }
+        .blank-card .card-content h3 {
+            font-size: 18px !important;
+        }
 
-    .blank-card {
-        height: 390px !important;
-        width: 310px;
-    }
-
-    .blank-card .card-content h3 {
-        font-size: 15px !important;
-    }
-
-    .blank-card .card-content p {
-        font-size: 12px !important;
-    }
-}
-
-@media screen and (min-width:1700px) and (max-width:1800px) {
-    .slider-heading h2 span {
-        font-size: 18px !important;
+        .blank-card .card-content p {
+            font-size: 14px !important;
+        }
     }
 
-    .slider-heading h2 {
-        font-size: 18px !important;
-    }
+    @media screen and (min-width:1800px) and (max-width:2000px) {
+        .slider-heading h2 span {
+            font-size: 18px !important;
+        }
 
-    .slider-pargraph p {
-        font-size: 12px !important;
-    }
+        .slider-heading h2 {
+            font-size: 18px !important;
+        }
 
-    .slider-card {
-        height: 300px !important;
-    }
-    .herrotext{
-        padding-right: 40px;
-    }
-    .blank-card {
-        height: 410px !important;
-        width: 350px;
-    }
+        .slider-pargraph p {
+            font-size: 12px !important;
+        }
 
-    .blank-card .card-content h3 {
-        font-size: 18px !important;
-    }
+        .slider-card {
+            height: 315px !important;
+        }
 
-    .blank-card .card-content p {
-        font-size: 14px !important;
-    }
-}
+        .blank-card {
+            height: 410px !important;
+            width: 370px;
+        }
 
-@media screen and (min-width:1800px) and (max-width:2000px) {
-    .slider-heading h2 span {
-        font-size: 18px !important;
-    }
+        .blank-card .card-content h3 {
+            font-size: 18px !important;
+        }
 
-    .slider-heading h2 {
-        font-size: 18px !important;
-    }
+        .blank-card .card-content p {
+            font-size: 14px !important;
 
-    .slider-pargraph p {
-        font-size: 12px !important;
+        }
     }
-
-    .slider-card {
-        height: 315px !important;
+    #quoteform{
+        background-color: #f4f7fa;
     }
-
-    .blank-card {
-        height: 410px !important;
-        width: 370px;
+    .card-body .n-collapse__content{
+        padding: 0rem !important;
     }
-
-    .blank-card .card-content h3 {
-        font-size: 18px !important;
+    @media screen and (min-width:1090px) and (max-width:1100px) {
+        .choice-card-heading h2{
+            font-size: 18px;
+        }
+        .blank-card{
+            width: 210px;
+            height: 370px;
+        }
+        .blank-card .card-content h3{
+            font-size: 10px;
+            line-height: 20px;
+        }
+        .blank-card .card-content p{
+            font-size: 10px;
+        }
     }
-
-    .blank-card .card-content p {
-        font-size: 14px !important;
-      
+    @media screen and (min-width:768px) and (max-width:773px){
+        .claim-btn{
+            font-size: 10px;
+        }
+        .policy-btn{
+            font-size: 10px;
+        }
+        .claim-download h2{
+            font-size: 10px;
+        }
+        .claim-download h2 span{
+            font-size: 10px;
+        }
+        .herrotext h2 span{
+            font-size: 18px !important;
+        }
+        .herrotext h2 span font{
+            font-size: 18px !important;
+        }
+        .herrotext h2 {
+            font-size: 18px !important;
+        }
+        .life-product{
+            padding-left: 50px;
+        }
+        .herrotext {
+            max-width: 100%;
+            margin-top: 66px !important;
+        }
+        .blogsproducts{
+            font-size: 15px !important;
+        }
+        .slider-heading h2 span{
+            font-size: 13px !important;
+        }
+        .slider-heading h2{
+            font-size: 13px !important;
+        }
+        .slider-pargraph p {
+            font-size: 9px !important;
+        }
     }
-}
-#quoteform{
-    background-color: #f4f7fa;
-}
-.card-body .n-collapse__content{
-    padding: 0rem !important;
-}
-@media screen and (min-width:1090px) and (max-width:1100px) {
-    .choice-card-heading h2{
-        font-size: 18px;
+    @media screen and (min-width:2700px) and (max-width:2800px){
+        .herrotext{
+            padding-right: 100px;
+        }
     }
-    .blank-card{
-        width: 210px;
-        height: 370px;
+    @media screen and (min-width:1000px) and (max-width:1049px){
+        .herrotext{
+            /* padding-right: 10px; */
+            margin-top: -10px !important;
+        }
+        .claim-btn{
+            font-size: 12px;
+        }
+        .policy-btn{
+            font-size: 12px;
+        }
+        .claim-download h2{
+            font-size: 12px;
+        }
+        .claim-download h2 span{
+            font-size: 12px;
+        }
     }
-    .blank-card .card-content h3{
-        font-size: 10px;
-        line-height: 20px;
+    @media screen and (min-width:1050px) and (max-width:1099px){
+        .herrotext{
+            margin-top: -10px !important;
+        }
+        .list-checkmark li{
+            font-size: 10px;
+        }
+        .universal-image {
+            width: 430px;
+        }
+        .counter-image{
+            width: 360px !important;
+        }
+        .permanent-team-subsection {
+            position: absolute;
+            width: 97%;
+        }
+        .claim-btn{
+            font-size: 15px;
+        }
+        .policy-btn{
+            font-size: 15px;
+        }
     }
-    .blank-card .card-content p{
-        font-size: 10px;
+    @media screen and (min-width:1200px) and (max-width:1299px){
+        .list-checkmark li{
+            font-size: 12px;
+        }
+        .permanent-team-subsection {
+            position: absolute;
+            width: 97% !important;
+        }
     }
-}
-@media screen and (min-width:768px) and (max-width:773px){
-    .claim-btn{
-        font-size: 10px;
-       }
-       .policy-btn{
-        font-size: 10px;
-       }
-       .claim-download h2{
-        font-size: 10px;
-       }
-       .claim-download h2 span{
-        font-size: 10px;
-       }
-    .herrotext h2 span{
-        font-size: 18px !important;
+    @media screen and (min-width:200px) and (max-width:768px){
+        .herrotext h5{
+            display: none !important;
+        }
     }
-    .herrotext h2 span font{
-        font-size: 18px !important;
+    @media screen and (min-width:800px) and (max-width:999px){
+        .claim-btn{
+            font-size: 12px;
+        }
+        .policy-btn{
+            font-size: 12px;
+        }
+        .claim-download h2{
+            font-size: 12px;
+        }
+        .claim-download h2 span{
+            font-size: 12px;
+        }
     }
-    .herrotext h2 {
-        font-size: 18px !important;
-    }
-    .life-product{
-        padding-left: 50px;
-    }
-    .herrotext {
-        max-width: 100%;
-        margin-top: 66px !important;
-    }
-    .blogsproducts{
-        font-size: 15px !important;
-    }
-    .slider-heading h2 span{
-        font-size: 13px !important;
-    }
-    .slider-heading h2{
-        font-size: 13px !important;
-    }
-    .slider-pargraph p {
-        font-size: 9px !important;
-    }
-}
-@media screen and (min-width:2700px) and (max-width:2800px){
-  .herrotext{
-    padding-right: 100px;
-  }
-}
-@media screen and (min-width:1000px) and (max-width:1049px){
-    .herrotext{
-      /* padding-right: 10px; */
-      margin-top: -10px !important;
-    }
-    .claim-btn{
-        font-size: 12px;
-       }
-       .policy-btn{
-        font-size: 12px;
-       }
-       .claim-download h2{
-        font-size: 12px;
-       }
-       .claim-download h2 span{
-        font-size: 12px;
-       }
-  }
-  @media screen and (min-width:1050px) and (max-width:1099px){
-    .herrotext{
-     margin-top: -10px !important;
-    }
-    .list-checkmark li{
-        font-size: 10px;
-    }
-    .universal-image {
-        width: 430px;
-    }
-    .counter-image{
-        width: 360px !important;
-    }
-    .permanent-team-subsection {
-        position: absolute;
-        width: 97%;
-  }
-  .claim-btn{
-    font-size: 15px;
-  }
-  .policy-btn{
-    font-size: 15px;
-  }
-}
-  @media screen and (min-width:1200px) and (max-width:1299px){
-    .list-checkmark li{
-        font-size: 12px;
-    }
-    .permanent-team-subsection {
-        position: absolute;
-        width: 97% !important;
-  }
-  }
-  @media screen and (min-width:200px) and (max-width:768px){
-  .herrotext h5{
-    display: none !important;
-  }  
-}
-@media screen and (min-width:800px) and (max-width:999px){
-   .claim-btn{
-    font-size: 12px;
-   }
-   .policy-btn{
-    font-size: 12px;
-   }
-   .claim-download h2{
-    font-size: 12px;
-   }
-   .claim-download h2 span{
-    font-size: 12px;
-   }
-  }
-                        /*    Extar querys*/
+    /*    Extar querys*/
     @media only screen and (min-width: 1800px) and (max-width: 1850px){
         .circle_one {
             padding-top: 492px !important;
@@ -14365,7 +14365,7 @@ ul .child-list li a {
         .about_three_cards {
             width: 100%;
             top: 1530px;
-            position: inherit; 
+            position: inherit;
         }
         .second-vector{
             top: 10px !important;
@@ -14445,25 +14445,25 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #2b3481;
-            font-size: 13px;
-            max-width: 52%;
-            margin: auto;
-        }
-        .offer_circle_description p{
-            max-width: 83%;
-            margin: auto;
-            font-size: 10px;
-        }
-        .offer_circle_one{
-            position: inherit;
-            left: 22px;
-            width: auto;
-            top: -251px;
-            padding: 28px;
-            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
-            border-radius: 101px;
-            /* background-color: wheat; */
+            /*            color: #2b3481;
+                        font-size: 13px;
+                        max-width: 52%;
+                        margin: auto;
+                    }
+                    .offer_circle_description p{
+                        max-width: 83%;
+                        margin: auto;
+                        font-size: 10px;
+                    }
+                    .offer_circle_one{
+                        position: inherit;
+                        left: 22px;
+                        width: auto;
+                        top: -251px;
+                        padding: 28px;
+                        box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+                        border-radius: 101px;
+                        /* background-color: wheat; */
             max-width: 100%;
             margin: auto;
         }
@@ -14548,7 +14548,7 @@ ul .child-list li a {
         .about_three_cards {
             width: 100%;
             top: 1530px;
-            position: inherit; 
+            position: inherit;
         }
         .second-vector{
             top: 10px !important;
@@ -14628,25 +14628,25 @@ ul .child-list li a {
             top: 2980px;
         }
         .offer_circle_heading h2{
-/*            color: #2b3481;
-            font-size: 13px;
-            max-width: 52%;
-            margin: auto;
-        }
-        .offer_circle_description p{
-            max-width: 83%;
-            margin: auto;
-            font-size: 10px;
-        }
-        .offer_circle_one{
-            position: inherit;
-            left: 22px;
-            width: auto;
-            top: -251px;
-            padding: 28px;
-            box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
-            border-radius: 101px;
-            /* background-color: wheat; */
+            /*            color: #2b3481;
+                        font-size: 13px;
+                        max-width: 52%;
+                        margin: auto;
+                    }
+                    .offer_circle_description p{
+                        max-width: 83%;
+                        margin: auto;
+                        font-size: 10px;
+                    }
+                    .offer_circle_one{
+                        position: inherit;
+                        left: 22px;
+                        width: auto;
+                        top: -251px;
+                        padding: 28px;
+                        box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
+                        border-radius: 101px;
+                        /* background-color: wheat; */
             max-width: 100%;
             margin: auto;
         }
@@ -14727,113 +14727,171 @@ ul .child-list li a {
             font-size: 15px;
         }
     }
-.pricegurrantecard .card-widget .icon-price-match {
-    height: 48px;
-    margin-right: 14px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDBMMCA4LjcyN3YxMy4wOTFDMCAzMy45MjggOC41MzMgNDUuMjUxIDIwIDQ4YzExLjQ2Ny0yLjc1IDIwLTE0LjA3MyAyMC0yNi4xODJWOC43MjhMMjAgMHoiIGZpbGw9IiNGOUIyMUIiLz48cGF0aCBkPSJNMjEuMTgyIDIyLjU0NmMtMy41OS0uODMzLTQuNDQxLTEuNDU2LTQuNDQxLTIuODU4di0uMDU0YzAtMS4xOTUgMS4xMTctMi4xNTUgMy4wMzMtMi4xNTUgMS40NjMgMCAyLjg0NS40NjggNC4yODIgMS4zNzUuMjY2LjE1Ny41My4yMzYuODUuMjM2YTEuNTUzIDEuNTUzIDAgMDAxLjA5LS40MjcgMS40NTggMS40NTggMCAwMC40NTUtMS4wNTYgMS40MTIgMS40MTIgMCAwMC0uMTg0LS43MyAxLjQ1NSAxLjQ1NSAwIDAwLS41MzYtLjU0MSAxMC4xMTggMTAuMTE4IDAgMDAtNC4wMzMtMS41MzZjLjAzOC0uMTQzLjA5MS0uMjgzLjA5MS0uNDM4di00LjE0NGMwLS40NjMtLjE4OC0uOTA4LS41MjQtMS4yMzZBMS44MSAxLjgxIDAgMDAyMCA4LjQ3MWMtLjQ3NCAwLS45My4xODQtMS4yNjUuNTExYTEuNzI3IDEuNzI3IDAgMDAtLjUyNCAxLjIzNnY0LjE0NGMwIC4xNTIuMDUxLjI4Ny4wOS40MjktMi44NzguNTEtNC44MzEgMi40NjQtNC44MzEgNS4xM3YuMDUzYzAgMy4zNSAyLjIzNCA0LjQ5NCA2LjE5OCA1LjQzIDMuNDU2Ljc3OCA0LjIwMiAxLjQ4MiA0LjIwMiAyLjc4di4wNTJjMCAxLjM1LTEuMjc2IDIuMjg2LTMuMjk5IDIuMjg2LTIuMDIyIDAtMy42NzEtLjY3NS01LjIxNC0xLjg3YTEuNTQzIDEuNTQzIDAgMDAtLjk1Ny0uMjg2IDEuNTU0IDEuNTU0IDAgMDAtMS4wODguNDI2IDEuNDg0IDEuNDg0IDAgMDAtLjQ1NSAxLjA1NWMwIC4yMzkuMDU4LjQ3NC4xNjkuNjg3LjExMS4yMTIuMjczLjM5Ni40NzEuNTM1YTExLjgxOCAxMS44MTggMCAwMDQuODE4IDIuMDY2Yy0uMDUxLjE2MS0uMTA0LjMyNS0uMTA0LjUwNHY0LjE0NGMwIC40NjMuMTg4LjkwNy41MjQgMS4yMzUuMzM1LjMyNy43OS41MTEgMS4yNjQuNTExcy45My0uMTg0IDEuMjY1LS41MTFjLjMzNS0uMzI4LjUyMy0uNzcyLjUyMy0xLjIzNXYtNC4xNDRjMC0uMTMtLjA0Ny0uMjQ1LS4wNzUtLjM2NiAzLjI0NC0uMzg0IDUuNDMtMi4zMTMgNS40My01LjM1di0uMDUxYzAtMy4wMTMtMi4wMjEtNC4zOTItNS45Ni01LjMyNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
-}
-.card-widget .card-header__label{
-    font-size: 18px!important;
-    line-height: 22px!important;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 800;
-    position: relative;
-    padding: 6px 0;
-    color: #2b3481!important;
-    font-family: Open Sans,sans-serif!important;
-    border-bottom: 3px solid #f9b21b;
-}
-.pricegurrantecard .card-widget .card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 14px;
-    background-color: white;
-    border-bottom: none;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-@media (min-width: 600px ) and (max-width: 300px){
-    .quotationscards{
-        left: 0px;
+    .pricegurrantecard .card-widget .icon-price-match {
+        height: 48px;
+        margin-right: 14px;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDBMMCA4LjcyN3YxMy4wOTFDMCAzMy45MjggOC41MzMgNDUuMjUxIDIwIDQ4YzExLjQ2Ny0yLjc1IDIwLTE0LjA3MyAyMC0yNi4xODJWOC43MjhMMjAgMHoiIGZpbGw9IiNGOUIyMUIiLz48cGF0aCBkPSJNMjEuMTgyIDIyLjU0NmMtMy41OS0uODMzLTQuNDQxLTEuNDU2LTQuNDQxLTIuODU4di0uMDU0YzAtMS4xOTUgMS4xMTctMi4xNTUgMy4wMzMtMi4xNTUgMS40NjMgMCAyLjg0NS40NjggNC4yODIgMS4zNzUuMjY2LjE1Ny41My4yMzYuODUuMjM2YTEuNTUzIDEuNTUzIDAgMDAxLjA5LS40MjcgMS40NTggMS40NTggMCAwMC40NTUtMS4wNTYgMS40MTIgMS40MTIgMCAwMC0uMTg0LS43MyAxLjQ1NSAxLjQ1NSAwIDAwLS41MzYtLjU0MSAxMC4xMTggMTAuMTE4IDAgMDAtNC4wMzMtMS41MzZjLjAzOC0uMTQzLjA5MS0uMjgzLjA5MS0uNDM4di00LjE0NGMwLS40NjMtLjE4OC0uOTA4LS41MjQtMS4yMzZBMS44MSAxLjgxIDAgMDAyMCA4LjQ3MWMtLjQ3NCAwLS45My4xODQtMS4yNjUuNTExYTEuNzI3IDEuNzI3IDAgMDAtLjUyNCAxLjIzNnY0LjE0NGMwIC4xNTIuMDUxLjI4Ny4wOS40MjktMi44NzguNTEtNC44MzEgMi40NjQtNC44MzEgNS4xM3YuMDUzYzAgMy4zNSAyLjIzNCA0LjQ5NCA2LjE5OCA1LjQzIDMuNDU2Ljc3OCA0LjIwMiAxLjQ4MiA0LjIwMiAyLjc4di4wNTJjMCAxLjM1LTEuMjc2IDIuMjg2LTMuMjk5IDIuMjg2LTIuMDIyIDAtMy42NzEtLjY3NS01LjIxNC0xLjg3YTEuNTQzIDEuNTQzIDAgMDAtLjk1Ny0uMjg2IDEuNTU0IDEuNTU0IDAgMDAtMS4wODguNDI2IDEuNDg0IDEuNDg0IDAgMDAtLjQ1NSAxLjA1NWMwIC4yMzkuMDU4LjQ3NC4xNjkuNjg3LjExMS4yMTIuMjczLjM5Ni40NzEuNTM1YTExLjgxOCAxMS44MTggMCAwMDQuODE4IDIuMDY2Yy0uMDUxLjE2MS0uMTA0LjMyNS0uMTA0LjUwNHY0LjE0NGMwIC40NjMuMTg4LjkwNy41MjQgMS4yMzUuMzM1LjMyNy43OS41MTEgMS4yNjQuNTExcy45My0uMTg0IDEuMjY1LS41MTFjLjMzNS0uMzI4LjUyMy0uNzcyLjUyMy0xLjIzNXYtNC4xNDRjMC0uMTMtLjA0Ny0uMjQ1LS4wNzUtLjM2NiAzLjI0NC0uMzg0IDUuNDMtMi4zMTMgNS40My01LjM1di0uMDUxYzAtMy4wMTMtMi4wMjEtNC4zOTItNS45Ni01LjMyNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
     }
-}
-@media only screen and (max-width: 600px) {
-  .card-for-mobile-device {
-    padding: 0 !important;
-  }
+    .card-widget .card-header__label{
+        font-size: 18px!important;
+        line-height: 22px!important;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 800;
+        position: relative;
+        padding: 6px 0;
+        color: #2b3481!important;
+        font-family: Open Sans,sans-serif!important;
+        border-bottom: 3px solid #f9b21b;
+    }
+    .pricegurrantecard .card-widget .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+        background-color: white;
+        border-bottom: none;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    @media (min-width: 600px ) and (max-width: 300px){
+        .quotationscards{
+            left: 0px;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .card-for-mobile-device {
+            padding: 0 !important;
+        }
 
-  .card-for-mobile-device .card-for-mobile-device-row{
-    max-width: 100%;
-    margin: unset;
-    width: 100%;
-    margin-top: 0px !important;
-  }
-  #dateofbirthfull{
-    margin-top: 10px;
-  }
-  .herrotext.super-hero-text {
-        text-align: center;
-    }
-    
-  .display-none-on-mobile{
-    display: none;
-  }
-  .margin-top-ten-on-mobile{
-    margin-top: 10px;
-  }
-  .margin-top-twenty-on-mobile{
-    margin-top: 20px;
-  }
-  .p-r-z-o-m{
-    padding-right: 0px;
-  }
-  .p-l-z-o-m{
-    padding-left: 0px;
-  }
-  .date_picker_header{
-    display: none !important;
-  }
-  .mobile-device-email-input{
-    margin-top: 10px !important;
-    margin-left: 15px;
-  }
-}
+        .card-for-mobile-device .card-for-mobile-device-row{
+            max-width: 100%;
+            margin: unset;
+            width: 100%;
+            margin-top: 0px !important;
+        }
+        #dateofbirthfull{
+            margin-top: 10px;
+        }
+        .herrotext.super-hero-text {
+            text-align: center;
+        }
 
-.product-arrow-div{
-    margin-top: 8px;
-}
+        .display-none-on-mobile{
+            display: none;
+        }
+        .margin-top-ten-on-mobile{
+            margin-top: 10px;
+        }
+        .margin-top-twenty-on-mobile{
+            margin-top: 20px;
+        }
+        .p-r-z-o-m{
+            padding-right: 0px;
+        }
+        .p-l-z-o-m{
+            padding-left: 0px;
+        }
+        .date_picker_header{
+            display: none !important;
+        }
+        .mobile-device-email-input{
+            margin-top: 10px !important;
+            margin-left: 15px;
+        }
+    }
 
-@media screen and (min-width: 200px) and (max-width: 760px) {
-    /* .herrotext {
-        margin-top: 74px;   
-    } */
-    .product-cards{
-        margin-bottom: 36px;
+    .product-arrow-div{
+        margin-top: 8px;
     }
-    .check-product{
-        padding-top: 0px !important;
+
+    @media screen and (min-width: 200px) and (max-width: 760px) {
+        /* .herrotext {
+            margin-top: 74px;
+        } */
+        .product-cards{
+            margin-bottom: 36px;
+        }
+        .check-product{
+            padding-top: 0px !important;
+        }
+        .four-section{
+            padding-top: 0px;
+        }
+        .ages-12{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .text-section{
+            top: 55px;
+        }
+        .glance-paragraph2 {
+            padding: 0px 20px;
+        }
+        .text-responsive{
+            padding-top: 5px !important;
+        }
+        .transparents-card-responsive{
+            padding: 30px 0 190px 0 !important;
+        }
+        .claim-process-responsive{
+            padding-top: 0px !important;
+        }
     }
-    .four-section{
-        padding-top: 0px;
+
+
+    /*------------Ahmad Code-------------------*/
+    @media (max-width: 425px){
+        .ahmSupperBanner .super-images {
+            height: 262px !important;
+            background-position: 60% 0% !important;
+            background-size: cover !important;
+        }
+        .super-hero.ahmSupperBanner {
+            height: 322px !important;
+        }
+        .ahm-form-wrap .quotes-generator-bar .form-input{
+            margin-top: 0 !important;
+        }
+
+        .ahModelStyle .nextbtns {
+            width: 100%;
+            padding: 0 12px !important;
+        }
+        .ahModelStyle .nextbtns span {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .ahModelStyle .tooltip-container{
+            left: 0 !important;
+        }
+        .ahModelStyle  .date_picker_body {
+            border: 1px solid #e5e5e5;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .ahModelStyle .text-danger {
+            margin-top: 5px !important;
+            margin-bottom: 15px !important;
+        }
     }
-    .ages-12{
-        padding-left: 0px;
-        padding-right: 0px;
+    @media (max-width:375px){
+        .ahmSupperBanner .hero-texts h1{
+            margin-top: 0 !Important;
+        }
+        .ahmSupperBanner .super-hero-text {
+            margin-top: 234px;
+        }
     }
-    .text-section{
-        top: 55px;
+    @media (max-width:349px){
+        .ahmSupperBanner .hero-texts {
+            padding: 0;
+        }
+        .ahmSupperBanner .super-hero-text {
+            padding: 0 10px;
+        }
+        .ahmSupperBanner .container-homepage .row{
+            flex-direction: column-reverse;
+        }
     }
-    .glance-paragraph2 {
-        padding: 0px 20px;
-    }
-    .text-responsive{
-       padding-top: 5px !important;
-    }
-    .transparents-card-responsive{
-        padding: 30px 0 190px 0 !important;
-    }
-    .claim-process-responsive{
-        padding-top: 0px !important;
-    }
- }
+
