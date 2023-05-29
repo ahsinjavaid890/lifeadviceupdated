@@ -160,7 +160,17 @@
             <h1 class="heading-2 text-md-center">Policy Detail</h1>
          </div>
       </div>
-      
+   </div>
+   @if(session()->has('message'))
+   <div class="alert alert-success alert-dismissible">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <strong>Success!</strong> {{ session()->get('message') }}
+     </div>
+   @endif 
+   <div class="row">
+      <div class="col-md-12"> 
+         
+      </div>
    </div>
    <div class="row mt-5">
       <div class="col-md-9">
@@ -296,19 +306,19 @@
         </button>
       </div>
       <div class="modal-body">
-         <form method="POST" action="{{ url('changerequest') }}">
+         <form enctype="multipart/form-data" method="POST" action="{{ url('changerequest') }}">
             @csrf
             <div class="row">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="reffrence_number">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="">
+                     <input type="text" class="form-control" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -316,13 +326,13 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Efective Date</label>
-                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="">
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="start_date">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Return Date</label>
-                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="">
+                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="end_date">
                   </div>
                </div>
             </div>
@@ -336,7 +346,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Efective Date</label>
-                     <input onchange="getdate(this.value)" type="date" class="form-control" name="">
+                     <input onchange="getdate(this.value)" type="date" class="form-control" name="new_effective_date">
                   </div>
                </div>
                <script>
@@ -351,7 +361,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Return Date</label>
-                     <input readonly id="newreturndate" type="text" class="form-control" name="">
+                     <input readonly id="newreturndate" type="text" class="form-control" name="new_return_date">
                   </div>
                </div>
             </div>
@@ -359,7 +369,7 @@
                <div class="col-md-12">
                   <div class="form-group">
                      <label>Upload Document</label>
-                     <input type="file" style="height:50px !important;" class="form-control" name="">
+                     <input type="file" style="height:50px !important;" class="form-control" name="document">
                   </div>
                </div>
             </div>
@@ -385,7 +395,7 @@
             <div class="row">
                <div class="col-md-12 text-right">
                   <div class="form-group">
-                     <button type="button" class="claim_button">Send Request</button>
+                     <button type="submit" class="claim_button">Send Request</button>
                   </div>
                </div>
             </div>
@@ -406,18 +416,19 @@
         </button>
       </div>
       <div class="modal-body">
-         <form method="POST" action="{{ url('') }}">
+         <form enctype="multipart/form-data" method="POST" action="{{ url('refundrequests') }}">
+            @csrf
             <div class="row">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="reffrence_number">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="">
+                     <input type="text" class="form-control" name="policy_number">
                   </div>
                </div>
             </div>
@@ -425,13 +436,13 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Efective Date</label>
-                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="">
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="start_date">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Return Date</label>
-                     <input type="date" class="form-control" name="">
+                     <input type="date" class="form-control" name="return_date">
                   </div>
                </div>
             </div>
@@ -439,22 +450,25 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Refund Form</label>
-                     <input type="file" style="height:50px;" class="form-control" name="">
+                     <input type="file" style="height:50px;" class="form-control" name="refund_form">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Proof Of Return</label>
-                     <input type="file" style="height:50px;" class="form-control" name="">
+                     <input type="file" style="height:50px;" class="form-control" name="proof_of_return">
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 text-right">
+                  <div class="form-group">
+                     <button type="submit" class="claim_button">Send Request</button>
                   </div>
                </div>
             </div>
             
-            
          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="claim_button">Send Request</button>
       </div>
     </div>
   </div>
@@ -470,15 +484,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{{ url('extendpolicy') }}">
-            @csrf
       <div class="modal-body">
-         
+         <form method="POST" action="{{ url('extendpolicy') }}">
+            @csrf
             <div class="row">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reffrence ID</label>
-                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="reffrence_id">
+                     <input readonly type="text" value="{{ $data->reffrence_number }}" class="form-control" name="reffrence_number">
                   </div>
                </div>
                <div class="col-md-6">
@@ -492,13 +505,13 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Efective Date</label>
-                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="efective_date">
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="start_date">
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Return Date</label>
-                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="return_date">
+                     <input readonly value="{{ $data->end_date }}" type="text" class="form-control" name="end_date">
                   </div>
                </div>
             </div>
@@ -531,12 +544,16 @@
                   </div>
                </div>
             </div>
-         
+            <div class="row">
+               <div class="col-md-12 text-right">
+                  <div class="form-group">
+                     <button type="submit" class="claim_button">Send Request</button>
+                  </div>
+               </div>
+            </div>
+            </form>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="claim_button">Send Request</button>
-      </div>
-      </form>
+      
     </div>
   </div>
 </div>
