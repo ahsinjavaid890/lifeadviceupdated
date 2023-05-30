@@ -63,12 +63,6 @@ class HomeController extends Controller
               $message->to(Auth::user()->email);
               $message->subject($subject);
         });
-
-
-
-        
-
-
         return redirect()->back()->with('message', 'Your Request Submited Successfully.');
     }
     public function refundrequests(Request $request)

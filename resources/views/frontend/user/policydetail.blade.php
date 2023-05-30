@@ -346,7 +346,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Efective Date</label>
-                     <input onchange="getdate(this.value)" type="date" class="form-control" name="new_effective_date">
+                     <input required onchange="getdate(this.value)" type="date" class="form-control" name="new_effective_date">
                   </div>
                </div>
                <script>
@@ -361,7 +361,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Return Date</label>
-                     <input readonly id="newreturndate" type="text" class="form-control" name="new_return_date">
+                     <input readonly required id="newreturndate" type="text" class="form-control" name="new_return_date">
                   </div>
                </div>
             </div>
