@@ -493,10 +493,10 @@
 												</div>
 											</div>
 										</div>
-										<div class="form-group" style="margin:0;">
+										<div class="form-group" style="margin:20px;">
 											<p>Please read and indicate your agreement with the <a data-toggle="modal" data-target=".bs-example-modal-lg" class="text-danger" style="cursor: pointer;">Terms and Conditions</a> of this insurance policy.</p>
 					  						<label class="radio padtop0 d-flex">
-												<input name="accept" value="mastercard" type="checkbox">
+												<input style="width:30px;" name="accept" value="mastercard" type="checkbox">
 												<i></i>
 												<p style="margin:0;">I have read the Travel Insurance Policy, and agree to all terms, conditions &amp; exclusions. I understand that coverage under this Policy is subject to certain limitations and exclusions.</p>
 											</label>
