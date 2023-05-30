@@ -7,12 +7,12 @@
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 @endphp
-<div class="health-inssurance-hero-banners super-hero">
+<div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
    <div class="container-homepage">
       <div class="row mb-3">
          <div class="col-md-6 hero-texts">
             <div class="herrotext super-hero-text">
-               <h2 class="wow fadeInUp" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
+               <h2 class="wow fadeInUp text-responsive" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
                <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
                @if($firstsection->main_button_text)
                <div class="btns d-flex">
@@ -39,12 +39,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          if($prosupervisa == '1'){
          $supervisa = 'yes';
          } else {
-         $supervisa = 'no';   
+         $supervisa = 'no';
          }
       @endphp
-      <div class="row card-section">
+      <div class="row card-section ahm-form-wrap">
          <div class="col-md-12">
-            
+
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -71,11 +71,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="coveragedate"  class=" value"> Start Date 
+                                       <div id="coveragedate"  class=" value"> Start Date
                                        </div>
                                     </div>
                                     <div class="from ml-3">
-                                       
+
                                        <div id="qoutedestination" class="value"></div>
                                     </div>
                                  </div>
@@ -87,23 +87,23 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-            
-            <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+
+            <div class="modal zoom-in ahModelStyle" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
                      <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card lg-wizard-card modal-card border-0">
+                        <div class="card card-for-mobile-device lg-wizard-card modal-card border-0">
                            <h2 class="heading-3 card-heading">Please Select Coverage Amount?</h2>
                            <div class="card-content coverage mb-3 pb-3">
                               <p class="card-info">Coverage amount, your insurance limit is the maximum amount your insurer may pay out for a claim, as stated in your policy.</p>
                           </div>
-                              <div class="row mt-3">
+                              <div class="row mt-3 card-for-mobile-device-row">
                                 @if(isset($fields['sum_insured']))
                                 @if($fields['sum_insured'] == 'on')
-                                 <div class="col-md-6 positionrelative">
+                                 <div class="col-md-6 positionrelative p-r-z-o-m p-l-z-o-m">
                                     <label class="selectlabel">Coverage Ammount</label>
                                      <select onchange="sum_insured(this.value)" name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Amount</option>
@@ -117,7 +117,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  @endif
                                  @if(isset($fields['Country']))
                                    @if($fields['Country'] == "on" )
-                                    <div class="col-md-6 positionrelative">
+                                    <div class="col-md-6 positionrelative p-r-z-o-m p-l-z-o-m">
                                        <label class="selectlabel">Primary Destination</label>
                                         <select name="primarydestination" id="primarydestination" class="primarydestination form-control">
                                           <option value="">Select Primary Destination</option>
@@ -141,14 +141,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-            <div class="modal zoom-in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal zoom-in ahModelStyle" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card modal-card lg-wizard-card border-0">
+                        <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">How many travelers?</h2>
                            <!----><!----><!----><!---->
                            <div class="card-content d-flex">
@@ -158,14 +158,14 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-12 mt-3">
+                              <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
                                  <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                        <div class="row alignitembaseline">
                                           <div class="col-md-6">
                                              <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                           </div>
-                                          <div class="col-md-6 nopad">
+                                          <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
                                              <div class="input-wrapper positionrelative">
                                                 <label class="selectlabeldateofbirth">Date Of Birth</label>
                                                 <input onchange="dateofbirth(this.value)" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
@@ -173,7 +173,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-3 positionrelative">
+                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
                                           <select name="pre_existing_condition[]" class="pre_existing_condition1 form-control">
                                              <option value="">Select Pre Existing Condition</option>
@@ -254,7 +254,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 /*  border: 1px dotted #999;*/
   width: 14.28571%;
   height: 44px;
-  line-height: 30px;  
+  line-height: 30px;
   overflow: hidden;
   text-align: center;
   background-color: transparent;
@@ -338,14 +338,14 @@ button.switch-month:active {
   line-height: 1.7;
 }
             </style>
-            <div class="modal zoom-in" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal zoom-in ahModelStyle" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body">
                         <div class="close-btn">
                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="card modal-card lg-wizard-card border-0">
+                        <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                            <h2 class="heading-3 card-heading">Start Date Of Coverage and End date of coverage</h2>
                               <div class="date_picker_wrapper" id="date_picker_1">
                            <div class="card-content d-flex">
@@ -387,7 +387,7 @@ button.switch-month:active {
                                       </div>
                                       <div class="calendar_weekdays"></div>
                                       <div class="calendar_content"></div>
-                                    </div>            
+                                    </div>
                                   </div>
                               </div>
                            </div>
@@ -415,16 +415,25 @@ button.switch-month:active {
    </div>
 </div>
 <script>
+    $(document).on('click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
+
+        setTimeout(function(){
+            $(".ahModelStyle select").select2("destroy");
+            $(".ahModelStyle select").select2();
+        }, 100);
+    });
+
+
    var today = new Date();
    var dd = today.getDate();
    var mm = today.getMonth() + 1; //January is 0!
    var yyyy = today.getFullYear();
    if (dd < 10) {
       dd = '0' + dd;
-   } 
+   }
    if (mm < 10) {
      mm = '0' + mm;
-   } 
+   }
    var today = mm + '/' + dd + '/' + yyyy;
    function supervisayes(){
       var tt = document.getElementById('departure_date').value;
@@ -435,10 +444,10 @@ button.switch-month:active {
       var mm = newdate.getMonth() + 1;
       var y = newdate.getFullYear();
       if(mm <= 9){
-      var mm = '0'+mm;  
+      var mm = '0'+mm;
       }
       if(dd <= 9){
-      var dd = '0'+dd;  
+      var dd = '0'+dd;
       }
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
@@ -458,10 +467,10 @@ button.switch-month:active {
    var yyyy = today.getFullYear();
    if (dd < 10) {
       dd = '0' + dd;
-   } 
+   }
    if (mm < 10) {
      mm = '0' + mm;
-   } 
+   }
    var today = mm + '/' + dd + '/' + yyyy;
    $(function() {
      $('input[name="departure_dates"]').daterangepicker({
@@ -482,10 +491,10 @@ button.switch-month:active {
       var mm = newdate.getMonth() + 1;
       var y = newdate.getFullYear();
       if(mm <= 9){
-      var mm = '0'+mm;  
+      var mm = '0'+mm;
       }
       if(dd <= 9){
-      var dd = '0'+dd;  
+      var dd = '0'+dd;
       }
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
@@ -494,43 +503,43 @@ button.switch-month:active {
 </script>
 <script type="text/javascript">
    $("div[id^='myModal']").each(function(){
-   
+
    var currentModal = $(this);
-   
+
    //click next
    currentModal.find('.btn-next').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    //click prev
    currentModal.find('.btn-prev').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    });
-   
+
 </script>
 <script type="text/javascript">
    $("div[id^='myModal']").each(function(){
-   
+
    var currentModal = $(this);
-   
+
    //click next
    currentModal.find('.btn-nexts').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    //click prev
    currentModal.find('.btn-prevs').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    });
-   
+
 </script>
 <script type="text/javascript">
   //----------variables----------//

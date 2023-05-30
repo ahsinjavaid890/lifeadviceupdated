@@ -1,8 +1,8 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}"> 
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
-<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script> 
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -19,12 +19,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       $mobile = 'no';
    @endphp
 @endif
-<div class="health-inssurance-hero-banners super-hero">
+<div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
    <div class="container-homepage">
       <div class="row mb-3">
          <div class="col-md-6 hero-texts">
             <div class="herrotext super-hero-text">
-               <h2 class="wow fadeInUp" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
+               <h2 class="wow fadeInUp text-responsive" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
                <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
                @if($firstsection->main_button_text)
                <div class="btns d-flex">
@@ -51,12 +51,12 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
          if($prosupervisa == '1'){
          $supervisa = 'yes';
          } else {
-         $supervisa = 'no';   
+         $supervisa = 'no';
          }
       @endphp
-      <div class="row card-section">
+      <div class="row card-section ahm-form-wrap">
          <div class="col-md-12 p-r-z-o-m p-l-z-o-m">
-            
+
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -83,7 +83,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div  class="input-field">
                                     <div  class="from">
                                        <i  class="icon icon-calendar"></i>
-                                       <div id="startdatetoshowonshowfield"  class="value"> @if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else Start Date @endif 
+                                       <div id="startdatetoshowonshowfield"  class="value"> @if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else Start Date @endif
                                        </div>
                                     </div>
                                     <div class="ml-3 from">
@@ -98,8 +98,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-            
-            <div class="modal zoom-in" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+
+            <div class="modal zoom-in ahModelStyle" aria-hidden="true" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content rounded-3">
                      <div class="modal-body">
@@ -152,7 +152,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-            <div class="modal zoom-in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal zoom-in ahModelStyle" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body">
@@ -386,7 +386,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   /*  border: 1px dotted #999;*/
                     width: 14.28571%;
                     height: 44px;
-                    line-height: 30px;  
+                    line-height: 30px;
                     overflow: hidden;
                     text-align: center;
                     background-color: transparent;
@@ -478,8 +478,11 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                    .select2-container--default .select2-selection--single .select2-selection__rendered{
                      padding: 3px 2px;
                    }
+               /*.select2-container{*/
+               /*width: 100% !important;*/
+               /*}*/
             </style>
-            <div class="modal zoom-in" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal zoom-in ahModelStyle" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
                      <div class="modal-body" style="padding:0px;">
@@ -508,7 +511,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               </div>
                               @endif
                               <div class="row userdate-coverage mt-2">
-                                 
+
 
                                  <div class="col-sm-6 p-r-z-o-m p-l-z-o-m firstcalenderfordateshow">
                                     <div class="calendar calendar-first" id="calendar_first">
@@ -539,7 +542,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                       </div>
                                       <div class="calendar_weekdays"></div>
                                       <div class="calendar_content"></div>
-                                    </div>            
+                                    </div>
 
                                   </div>
                                    <div class="col-md-6 userdata-card @if($mobile == 'yes') mt-1 @else mt-3 @endif">
@@ -575,16 +578,26 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    </div>
 </div>
 <script>
+    $(document).on('click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
+
+        setTimeout(function(){
+            $(".ahModelStyle select").select2("destroy");
+            $(".ahModelStyle select").select2();
+        }, 100);
+    });
+
+
+
    var today = new Date();
    var dd = today.getDate();
    var mm = today.getMonth() + 1; //January is 0!
    var yyyy = today.getFullYear();
    if (dd < 10) {
       dd = '0' + dd;
-   } 
+   }
    if (mm < 10) {
      mm = '0' + mm;
-   } 
+   }
    var today = mm + '/' + dd + '/' + yyyy;
    function supervisayes(){
       var tt = document.getElementById('departure_date').value;
@@ -595,10 +608,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       var mm = newdate.getMonth() + 1;
       var y = newdate.getFullYear();
       if(mm <= 9){
-      var mm = '0'+mm;  
+      var mm = '0'+mm;
       }
       if(dd <= 9){
-      var dd = '0'+dd;  
+      var dd = '0'+dd;
       }
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
@@ -618,10 +631,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    var yyyy = today.getFullYear();
    if (dd < 10) {
       dd = '0' + dd;
-   } 
+   }
    if (mm < 10) {
      mm = '0' + mm;
-   } 
+   }
    var today = mm + '/' + dd + '/' + yyyy;
    $(function() {
      $('input[name="departure_dates"]').daterangepicker({
@@ -642,10 +655,10 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       var mm = newdate.getMonth() + 1;
       var y = newdate.getFullYear();
       if(mm <= 9){
-      var mm = '0'+mm;  
+      var mm = '0'+mm;
       }
       if(dd <= 9){
-      var dd = '0'+dd;  
+      var dd = '0'+dd;
       }
       //var someFormattedDate = mm + '/' + dd + '/' + y;
       var someFormattedDate = y + '-' + mm + '-' + dd;
@@ -654,43 +667,43 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 </script>
 <script type="text/javascript">
    $("div[id^='myModal']").each(function(){
-   
+
    var currentModal = $(this);
-   
+
    //click next
    currentModal.find('.btn-next').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    //click prev
    currentModal.find('.btn-prev').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    });
-   
+
 </script>
 <script type="text/javascript">
    $("div[id^='myModal']").each(function(){
-   
+
    var currentModal = $(this);
-   
+
    //click next
    currentModal.find('.btn-nexts').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    //click prev
    currentModal.find('.btn-prevs').click(function(){
    currentModal.modal('hide');
-   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
    });
-   
+
    });
-   
+
 </script>
 <script type="text/javascript">
   //----------variables----------//
@@ -833,7 +846,7 @@ $("#outputText").text(outputDate);
       $('#quoteform').submit();
    }
 
-   @if(isset($_GET['sum_insured2'])) 
+   @if(isset($_GET['sum_insured2']))
 
       $( document ).ready(function() {
             $('#quoteform').submit();
@@ -907,8 +920,8 @@ function checkfamilyplan(id){
          $("#secondnextfake").css("pointer-events","auto");
          $("#secondnextfake").css("background-color","#2b3481");
          $("#secondnextfake").css("color","#fff");
-      } 
-      else 
+      }
+      else
       {
          $("#secondnextfake").css("pointer-events","none");
          $("#secondnextfake").css("background-color","#f2dede");
@@ -931,9 +944,9 @@ function checkfamilyplan(id){
       $("#secondnextfake").css("pointer-events","auto");
       $("#secondnextfake").css("background-color","#2b3481");
       $("#secondnextfake").css("color","#fff");
-   }   
+   }
 }
-function addtravellers() 
+function addtravellers()
 {
    var showrowstraveler = $('.showrowstraveler').length;
    var value = $('.dateofbirthclass'+showrowstraveler).val();
@@ -988,7 +1001,7 @@ function addtravellers()
                        }
                     }
 
-                    
+
                   }
               }
 
@@ -998,7 +1011,10 @@ function addtravellers()
             $("#number_travelers").val(totaltraveler);
       }
 
-      
+
    }
 }
+
+
+
 </script>

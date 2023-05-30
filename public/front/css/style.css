@@ -14864,7 +14864,7 @@ ul .child-list li a {
         .ahModelStyle .tooltip-container{
             left: 0 !important;
         }
-        .ahModelStyle  .date_picker_body {
+        .ahModelStyle  .date_picker_body, .ahModelStyle .calendar {
             border: 1px solid #e5e5e5;
             margin: 10px 0;
             padding: 10px;
@@ -14874,6 +14874,22 @@ ul .child-list li a {
             margin-top: 5px !important;
             margin-bottom: 15px !important;
         }
+        .ahModelStyle .userdate-coverage {
+            margin: 0;
+        }
+        .ahModelStyle .userdate-coverage .col-md-6 {
+            padding: 0;
+        }
+        .ahModelStyle  .mobile-device-email-input{
+           margin-left: 0;
+        }
+        .ahModelStyle .select2-container {
+            display: block !important;
+        }
+        .ahModelStyle .toogleswithchdiv {
+            margin-bottom: 15px;
+        }
+
     }
     @media (max-width:375px){
         .ahmSupperBanner .hero-texts h1{
@@ -14882,6 +14898,7 @@ ul .child-list li a {
         .ahmSupperBanner .super-hero-text {
             margin-top: 234px;
         }
+
     }
     @media (max-width:349px){
         .ahmSupperBanner .hero-texts {

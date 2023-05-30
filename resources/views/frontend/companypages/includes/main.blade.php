@@ -334,6 +334,13 @@
     </div>
     </div>
     <script>
+        $(document).on('Click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
+            $(".ahModelStyle select").select2("destroy");
+            $(".ahModelStyle select").select2();
+        });
+
+
+
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth() + 1; //January is 0!
@@ -703,4 +710,7 @@
 
             }
         }
+
+
+
     </script>
