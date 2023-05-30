@@ -3227,7 +3227,7 @@ fieldset .input{
     text-align: center;
 }
 .qoute-card {
-        margin-top: 0px;
+        margin-top: 0px !important;
         border-radius: 0px;
     }
 .get-quotes-button {
