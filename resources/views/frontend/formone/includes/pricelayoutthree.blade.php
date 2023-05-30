@@ -630,6 +630,9 @@ background: #F9F9F9; box-shadow: 0px 0px 1px 0px #CCC inset; border-radius: 3px;
     @foreach($request->years as $year)
     <input type="hidden" name="years[]" value="{{ $year }}">
     @endforeach
+    @foreach($request->pre_existing as $preexisting)
+    <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+    @endforeach
     <input type="hidden" value="{{ $num_of_days }}" name="days">
     <input type="hidden" value="{{ $comp_name }}" name="companyName">
     <input type="hidden" value="{{ $comp_id }}" name="comp_id">
@@ -638,11 +641,10 @@ background: #F9F9F9; box-shadow: 0px 0px 1px 0px #CCC inset; border-radius: 3px;
     <input type="hidden" value="{{ $startdate }}" name="tripdate">
     <input type="hidden" value="{{ $enddate }}" name="tripend">
     <input type="hidden" value="{{ $total_price }}" name="premium">
-    <input type="hidden" value="{{ $request->destination }}" name="destination">
     <input type="hidden" value="" name="cdestination">
     <input type="hidden" value="{{ $product_name }}" name="product_name">
     <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-    <input type="hidden" value="{{ $request->primary_destination }}" name="country">
+    <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
     <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
     <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
     <input type="hidden" value="{{ $ages_array[0] }}" name="age">

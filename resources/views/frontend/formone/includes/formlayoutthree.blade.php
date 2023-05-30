@@ -243,7 +243,7 @@ $bg = $bgs[$k];
                               <div class="form-group ">
                                  <input id="dateofbirthfull{{$i}}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" >
                   
-                              </div>
+                              </div> 
                            </div>
                                  <div style="" id="specail" class="col-md-6 ">
                                     <div class="form-group">
