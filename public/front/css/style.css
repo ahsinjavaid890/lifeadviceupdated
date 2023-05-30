@@ -14889,6 +14889,9 @@ ul .child-list li a {
         .ahModelStyle .toogleswithchdiv {
             margin-bottom: 15px;
         }
+        .ahModelStyle .coverage {
+            margin-bottom: 25px !important;
+        }
 
     }
     @media (max-width:375px){
@@ -14900,6 +14903,8 @@ ul .child-list li a {
         }
 
     }
+
+
     @media (max-width:349px){
         .ahmSupperBanner .hero-texts {
             padding: 0;

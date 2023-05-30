@@ -335,8 +335,10 @@
     </div>
     <script>
         $(document).on('Click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
-            $(".ahModelStyle select").select2("destroy");
-            $(".ahModelStyle select").select2();
+            setTimeout(function(){
+                $(".ahModelStyle select").select2("destroy");
+                $(".ahModelStyle select").select2();
+            }, 100);
         });
 
 
