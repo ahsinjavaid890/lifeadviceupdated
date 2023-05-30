@@ -221,6 +221,11 @@
            width: 100% !important;
        }
    }
+@media (max-width: 360px){
+    .select2-container{
+        width: 100% !important;
+    }
+}
 
    .select2-container--default .select2-search--dropdown .select2-search__field:focus-visible{
    border: 0px !important;
