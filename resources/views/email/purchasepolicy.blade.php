@@ -356,7 +356,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->coverage_ammount }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">${{ $sale->coverage_ammount }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -651,148 +651,7 @@
 </tbody>
 </table>
 @endforeach
-                                                <table style="padding:24px 30px;width:100%">
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" bgcolor="#fff" style="background:#f9fafc;width:100%;border:1px solid #dae5ee;border-radius:10px">
-                                                               <tbody>
-                                                                  <tr>
-                                                                     <td>
-                                                                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module">
-                                                                           <tbody>
-                                                                              <tr role="module-content">
-                                                                                 <td height="100%" valign="top">
-                                                                                    <table width="500" style="width:500px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-                                                                                       <tbody>
-                                                                                          <tr>
-                                                                                             <td style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-                                                                                                   <tbody>
-                                                                                                      <tr>
-                                                                                                         <td style="padding:18px 30px 18px 30px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                                                                                                            <div>
-                                                                                                               <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:20px;font-weight:800;line-height:24px">Customer Panel Credentials</span></div>
-                                                                                                               <div></div>
-                                                                                                            </div>
-                                                                                                         </td>
-                                                                                                      </tr>
-                                                                                                   </tbody>
-                                                                                                </table>
-                                                                                             </td>
-                                                                                          </tr>
-                                                                                       </tbody>
-                                                                                    </table>
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" style="padding:0px 30px 0px 30px">
-                                                                           <tbody>
-                                                                              <tr role="module-content">
-                                                                                 <td height="100%" valign="top">
-<table width="180" style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-   <tbody>
-      <tr>
-         <td style="padding:0px;margin:0px;border-spacing:0">
-            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-               <tbody>
-                  <tr>
-                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                        <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Email</span></div>
-                           <div></div>
-                        </div>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<table width="260" style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-   <tbody>
-      <tr>
-         <td style="padding:0px;margin:0px;border-spacing:0">
-            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-               <tbody>
-                  <tr>
-                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                        <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->email }}</span></div>
-                           <div></div>
-                        </div>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<table width="180" style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-   <tbody>
-      <tr>
-         <td style="padding:0px;margin:0px;border-spacing:0">
-            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-               <tbody>
-                  <tr>
-                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                        <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Password</span></div>
-                           <div></div>
-                        </div>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-<table width="260" style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-   <tbody>
-      <tr>
-         <td style="padding:0px;margin:0px;border-spacing:0">
-            <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-               <tbody>
-                  <tr>
-                     <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
-                        <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $policy_number }}</span></div>
-                           <div></div>
-                        </div>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
-
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                        
-                                                                        <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
-                                                                           <tbody>
-                                                                              <tr>
-                                                                                 <td style="padding:0px 0px 10px 0px" role="module-content" bgcolor="">
-                                                                                 </td>
-                                                                              </tr>
-                                                                           </tbody>
-                                                                        </table>
-                                                                     </td>
-                                                                  </tr>
-                                                               </tbody>
-                                                            </table>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                
                                                 <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
                                                    <tbody>
                                                       <tr>

@@ -41,6 +41,10 @@ Route::get('securelogin/{id}', [CustomLoginController::class, 'securelogin']);
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [HomeController::class, 'dashboard'])->name('userprofile');
+Route::get('/requests', [HomeController::class, 'requests'])->name('requests');
+
+
+
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
 Route::get('/policydetail/{id}', [HomeController::class, 'policydetail']);
 Route::POST('changerequest', [HomeController::class, 'changerequest']);

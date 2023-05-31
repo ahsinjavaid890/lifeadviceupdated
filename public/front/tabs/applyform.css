@@ -491,14 +491,14 @@ input {
   position: relative;
 }
 .input {
-  height: 50px;
-  font-size: 16px;
-  padding: 11px 15px;
-  border-radius: 4px;
-  border: 1px solid #CBD8E3;
-  width: 560px;
-  outline: none;
-  box-sizing: border-box;
+    height: 50px;
+    font-size: 16px;
+    padding: 11px 15px;
+    border: 1px solid #CBD8E3;
+    width: 560px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 .placeholder {
   pointer-events: none;

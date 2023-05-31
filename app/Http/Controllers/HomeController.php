@@ -19,6 +19,10 @@ class HomeController extends Controller
     {
         return redirect()->route('userprofile');
     }
+    public function requests()
+    {
+        return view('frontend.user.requests');
+    }
     public function dashboard()
     {
         $sales = DB::table('sales')->where('email' , Auth::user()->email)->orderby('id' , 'desc')->get();
@@ -63,6 +67,15 @@ class HomeController extends Controller
               $message->to(Auth::user()->email);
               $message->subject($subject);
         });
+
+
+
+        $subject = 'New Policy Change Request | '.$request->reffrence_number;
+        Mail::send('email.sendrequestuser', ['data' => $change_request,'requesttype' => 'change'], function($message) use($request , $subject){
+              $message->to('admin@lifeadvice.ca');
+              $message->subject($subject);
+        });
+
         return redirect()->back()->with('message', 'Your Request Submited Successfully.');
     }
     public function refundrequests(Request $request)
@@ -72,7 +85,7 @@ class HomeController extends Controller
         $change_request->reffrence_number = $request->reffrence_number;
         $change_request->policy_number = $request->policy_number;
         $change_request->start_date = $request->start_date;
-        $change_request->return_date = $request->end_date;
+        $change_request->return_date = $request->return_date;
         if($request->refund_form)
         {
             $change_request->refund_form = Cmf::sendimagetodirectory($request->refund_form);
@@ -82,6 +95,17 @@ class HomeController extends Controller
             $change_request->proof_of_return = Cmf::sendimagetodirectory($request->proof_of_return);
         }
         $change_request->save();
+        $subject = 'Policy Refund Request | '.$request->reffrence_number;
+        Mail::send('email.sendrequestuser', ['data' => $change_request,'requesttype' => 'refund'], function($message) use($request , $subject){
+              $message->to(Auth::user()->email);
+              $message->subject($subject);
+        });
+
+        $subject = 'New Policy Refund Request | '.$request->reffrence_number;
+        Mail::send('email.sendrequestuser', ['data' => $change_request,'requesttype' => 'refund'], function($message) use($request , $subject){
+              $message->to('admin@lifeadvice.ca');
+              $message->subject($subject);
+        });
         return redirect()->back()->with('message', 'Your Request Submited Successfully.');
     }
     public function extendpolicy(Request $request)
@@ -94,6 +118,19 @@ class HomeController extends Controller
         $change_request->end_date = $request->end_date;
         $change_request->new_return_date = $request->new_return_date;
         $change_request->save();
+
+        $subject = 'Extend Policy Request | '.$request->reffrence_number;
+        Mail::send('email.sendrequestuser', ['data' => $change_request,'requesttype' => 'extend'], function($message) use($request , $subject){
+              $message->to(Auth::user()->email);
+              $message->subject($subject);
+        });
+
+        $subject = 'New Extend Policy Request | '.$request->reffrence_number;
+        Mail::send('email.sendrequestuser', ['data' => $change_request,'requesttype' => 'extend'], function($message) use($request , $subject){
+              $message->to('admin@lifeadvice.ca');
+              $message->subject($subject);
+        });
+
         return redirect()->back()->with('message', 'Your Request Submited Successfully.');
     }
 }
