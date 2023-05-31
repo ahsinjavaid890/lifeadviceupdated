@@ -1,7 +1,7 @@
 <?php
   
 namespace App\Http\Controllers;
-  
+use App\Helpers\Cmf;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
@@ -27,7 +27,7 @@ class CustomLoginController extends Controller
         if($check->count() == 1)
         {
 
-            $dateof_birthwith_format = date('Y-m-d', strtotime($request->date_of_birth));
+            $dateof_birthwith_format = Cmf::date_format($request->date_of_birth);
             $checktraveler = traveler_sale_informations::where('date_of_birth' , $dateof_birthwith_format)->where('sale_id' , $check->first()->id)->count();
             if($checktraveler > 0)
             {

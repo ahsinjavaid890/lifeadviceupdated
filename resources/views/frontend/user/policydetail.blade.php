@@ -346,7 +346,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Efective Date</label>
-                     <input onchange="getdate(this.value)" type="date" class="form-control" name="new_effective_date">
+                     <input required onchange="getdate(this.value)" type="date" class="form-control" name="new_effective_date">
                   </div>
                </div>
                <script>
@@ -361,7 +361,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>New Return Date</label>
-                     <input readonly id="newreturndate" type="text" class="form-control" name="new_return_date">
+                     <input readonly required id="newreturndate" type="text" class="form-control" name="new_return_date">
                   </div>
                </div>
             </div>
@@ -428,7 +428,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number">
+                     <input type="text" class="form-control" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -436,13 +436,13 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Efective Date</label>
-                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="start_date">
+                     <input readonly value="{{ $data->start_date }}" type="text" class="form-control" name="start_date" required>
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Return Date</label>
-                     <input type="date" class="form-control" name="return_date">
+                     <input type="date" class="form-control" name="return_date" required>
                   </div>
                </div>
             </div>
@@ -450,13 +450,13 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Refund Form</label>
-                     <input type="file" style="height:50px;" class="form-control" name="refund_form">
+                     <input type="file" style="height:50px;" class="form-control" name="refund_form" required>
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Proof Of Return</label>
-                     <input type="file" style="height:50px;" class="form-control" name="proof_of_return">
+                     <input type="file" style="height:50px;" class="form-control" name="proof_of_return" required>
                   </div>
                </div>
             </div>

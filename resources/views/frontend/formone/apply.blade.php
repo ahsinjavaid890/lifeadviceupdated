@@ -140,10 +140,10 @@
 										<div class="col-md-6 nopad">
 						                    <div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Date OF Birth {{ $i+1 }}</label>
-						                        <input readonly="" class="input" value="{{ date('Y-m-d',strtotime($year)) }}" type="date" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
+						                        <input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
 						                    </div>
 										</div>
-										<div class="col-md-6 nopad">
+										<div class="col-md-6 nopad" style=" margin-top: 5px; ">
 						                    <div class=" positionrelative">
 						                    	<label class="selectlabel">Select Gender</label>
 					                            <select name="gender[]" class="gender form-control">
@@ -239,7 +239,7 @@
 										<div class="col-md-6 mt-3">
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Trip Arrival date</label>
-						                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripdate)) ?>" id="tripdate" name="tripdate">
+						                        <input readonly class="input" type="text" placeholder=" " value="{{ Cmf::date_format($request->tripdate) }}" id="tripdate" name="tripdate">
 						                    </div>
 										</div>
 										<div class="col-md-6" style="margin-top: 23px;">
@@ -251,7 +251,7 @@
 										<div class="col-md-6 mt-3">
 											<div class="custom-form-control positionrelative">
 						                    	<label class="selectlabeldateofbirth">Trip End date</label>
-						                        <input readonly class="input" type="date" placeholder=" " value="<?php echo date('Y-m-d',strtotime($request->tripend)) ?>" id="tripend" name="tripend" >
+						                        <input readonly class="input" type="text" placeholder=" " value="{{ Cmf::date_format($request->tripend) }}" id="tripend" name="tripend" >
 						                    </div>
 										</div>
 										<div class="col-md-6 mt-3">
@@ -472,7 +472,7 @@
 																<label>Coverage Dates</label>
 															</div>
 															<div class="col-md-7 nopad">
-																{{ $request->tripdate }} / {{ $request->tripend }}						
+																{{ Cmf::date_format($request->tripdate) }} / {{ Cmf::date_format($request->tripend) }}						
 															</div>
 															<div class="clearfix"></div>
 															<div class="col-md-5 nopad">
