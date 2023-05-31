@@ -13519,13 +13519,15 @@ ul .child-list li a {
         font-size: 10px !important;
     }
 }
-@media screen and (min-width:376px) and (max-width:500px){
-    .hero-texts{
+@media screen and (min-width:376px) and (max-width:500px) {
+    .hero-texts {
         margin-top: 8px;
     }
-    .hero-texts h1{
+
+    .hero-texts h1 {
         margin-top: -7px !important;
     }
+}
 
     @media screen and (min-width:200px) and (max-width:767px) {
         .blogs-card {
@@ -13635,8 +13637,7 @@ ul .child-list li a {
             height: 770px ;
         }
     }
-    @media screen and (min-width:800px) and (max-width:1000px)
-    {
+    @media screen and (min-width:800px) and (max-width:1000px){
         .life-product{
             padding-left: 50px ;
         }
@@ -14840,6 +14841,11 @@ ul .child-list li a {
 
 
     /*------------Ahmad Code-------------------*/
+.modal.ah-show {
+    display: block;
+}
+
+
     @media (max-width: 450px){
         .ahmSupperBanner .super-images {
             height: 262px !important;

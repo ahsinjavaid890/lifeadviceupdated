@@ -37,7 +37,7 @@
 
     $second_oldest_traveller = 0;
     $second_family_plan      = false;
- 
+
     $second_years = array();
 
 
@@ -82,12 +82,12 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
     var elderage = '{{ $second_elder_age }}';
     if(numberoftravelers > 1)
     {
-        $second_('#ageshow').val(numberoftravelers+', Ages '+ elderage+ ' and ....');
+        $('#ageshow').val(numberoftravelers+', Ages '+ elderage+ ' and ....');
     }else{
-        $second_('#ageshow').val(numberoftravelers+', '+ elderage+ ' Years');
+        $('#ageshow').val(numberoftravelers+', '+ elderage+ ' Years');
     }
-    
-    
+
+
 </script>
 <?php
         $second_addinquery = '';
@@ -132,7 +132,7 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             $second_salestax_rate = $second_salestaxeplode[0];
             $second_salestax_dest = str_replace(' ', '', $second_salestaxeplode[1]);
         }
-        
+
 
 
         //COMPANY Details
@@ -148,7 +148,7 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             {
                 $second_deductible = $second_deductsloop_f->deductible1;
             }
-            
+
             $second_deduct = '';
             $second_deduct_rate = '';
             $second_deduct_plan_id = '';
@@ -165,7 +165,7 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             }else{
                 $second_addinbenefit = '';
             }
-            $second_sum_insured= '';        
+            $second_sum_insured= '';
             $second_sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$second_deduct_plan_id' $second_addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
         foreach($second_sumin as $second_suminsu){
         $second_sum_insured = $second_suminsu->sum_insured;
@@ -218,9 +218,9 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
                             $second_dailyrate = 0;
                         }
 
- 
+
                    }
-                    
+
                 }
             }
 
@@ -336,7 +336,7 @@ if($second_show == '1' && $second_total_price > 0){
                       <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $second_product_name;?></span></span></li>
                   </ul>
-                  <?php 
+                  <?php
                     if($second_deductible == 0)
                     {
                         $second_newdeductibleforshow = 7896;
@@ -345,11 +345,11 @@ if($second_show == '1' && $second_total_price > 0){
                     }
 
                   ?>
-                
+
                 <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" >
-                    
-                    
-                    
+
+
+
                     <div class="">
                     <?php
                     $second_per = 0;
@@ -371,8 +371,8 @@ if($second_show == '1' && $second_total_price > 0){
                             $second_existingshow = $second_pre_existing_name;
                         }
 
-                        
-                                
+
+
                         if($second_family_plan == 'yes' && $second_elder_age != $second_person_age){
                         $second_person_daily = 0;
                         } else if($second_family_plan == 'yes' && $second_elder_age == $second_person_age){
@@ -415,31 +415,31 @@ if($second_show == '1' && $second_total_price > 0){
                         if($second_smoke == '0'){
                         $second_p_smoke_price = $second_smoke_rate;
                         } else if($second_smoke == '1'){
-                        $second_p_smoke_price = ($second_ptotaldaysprice * $second_smoke_rate) / 100;    
+                        $second_p_smoke_price = ($second_ptotaldaysprice * $second_smoke_rate) / 100;
                         }
                         } else {
-                        $second_p_smoke_price = 0; 
+                        $second_p_smoke_price = 0;
                         }
 
                         // OTHERS
                         $second_p_salestaxes = 0;
                         $second_p_others = ($second_p_flat_price + $second_p_salestaxes) + $second_p_smoke_price;
 
-                        //Deductible 
+                        //Deductible
                         $second_p_deduct_discount = ($second_person_price * $second_deduct_rate) / 100;
                         $second_p_cdiscount = ($second_person_price * $second_cdiscountrate) / 100;
                         $second_p_discount = $second_p_deduct_discount + $second_p_cdiscount;
                         $second_person_price = ($second_person_price - $second_p_discount) + $second_p_others;
                     }
 
-                    
 
 
-                            
 
 
-                    
-                    
+
+
+
+
                     //$second_monthly_price = $second_person_price / $second_num_months;
 
 
@@ -458,7 +458,7 @@ if($second_show == '1' && $second_total_price > 0){
                       <span>Coverage Limit</span>
                   </div>
                   <div class="qoute-price-select">
-                    <h2>$<?php 
+                    <h2>$<?php
                         if($second_sum_insured >= 1000000){
                         $second_millions = $second_sum_insured/1000000;
                         $second_txt = ' Million';
@@ -469,7 +469,7 @@ if($second_show == '1' && $second_total_price > 0){
                         echo number_format($second_millions).$second_txt;
                         $second_dob = $second_years[0].'-'.$request->month.''.$request->dob_day;
                         $second_agent = $request->agent;
-                        $second_broker = $request->broker;?>        
+                        $second_broker = $request->broker;?>
                     </h2>
                   </div>
               </div>
@@ -497,7 +497,7 @@ if($second_show == '1' && $second_total_price > 0){
                     <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">$<?php echo number_format($second_monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?></small></h2>
                     <?php } ?>
               </div>
-              <div class="buy_now"> 
+              <div class="buy_now">
                 <form method="POST" action="{{ url('apply') }}">
                 @csrf
                 <input type="hidden" value="{{ $request->savers_email }}" name="email">
@@ -545,6 +545,6 @@ $second_daily_rate = 0;
 
 ?>
 
-        <?php 
+        <?php
         $second_display = '';
         }}}} ?>

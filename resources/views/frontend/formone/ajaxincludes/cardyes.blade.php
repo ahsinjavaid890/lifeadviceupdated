@@ -37,7 +37,7 @@
 
     $oldest_traveller = 0;
     $family_plan      = false;
- 
+
     $years = array();
 
 
@@ -86,8 +86,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
     }else{
         $('#ageshow').val(numberoftravelers+', '+ elderage+ ' Years');
     }
-    
-    
+
+
 </script>
 <?php
         $addinquery = '';
@@ -132,7 +132,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             $salestax_rate = $salestaxeplode[0];
             $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
         }
-        
+
 
 
         //COMPANY Details
@@ -148,7 +148,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             {
                 $deductible = $deductsloop_f->deductible1;
             }
-            
+
             $deduct = '';
             $deduct_rate = '';
             $deduct_plan_id = '';
@@ -165,7 +165,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             }else{
                 $addinbenefit = '';
             }
-            $sum_insured= '';        
+            $sum_insured= '';
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
         foreach($sumin as $suminsu){
         $sum_insured = $suminsu->sum_insured;
@@ -205,8 +205,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                      }
                 }
                 if(!$daily_rate)
-                { 
-                    $display = '0'; 
+                {
+                    $display = '0';
                 }else{
                     $display[] =  $daily_rate;
                 }
@@ -225,8 +225,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                             $dailyrate = $plan_rates[0]->rate_with_pre_existing;
                             $daily_rate += $dailyrate;
                             if($dailyrate == '')
-                            { 
-                                $dailyrate = 0; 
+                            {
+                                $dailyrate = 0;
                             }
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
@@ -238,7 +238,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                             $dailyrate = 0;
                         }
                    }
-                    
+
                 }
             }
 
@@ -328,12 +328,12 @@ if($monthly_two == '1'){
     $total_price = $total_price - $flat_price;
 }
 // if (in_array("0", $display))
-// { 
-//     $show = '0'; 
-// } 
-// else 
 // {
-//     $show = '1'; 
+//     $show = '0';
+// }
+// else
+// {
+//     $show = '1';
 // }
 
 $show = 1;
@@ -357,7 +357,7 @@ if($show == '1' && $total_price > 0){
                       <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers;?> Traveller(s)</span></span></li>
                       <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name;?></span></span></li>
                   </ul>
-                  <?php 
+                  <?php
                     if($deductible == 0)
                     {
                         $newdeductibleforshow = 7896;
@@ -388,8 +388,8 @@ if($show == '1' && $total_price > 0){
                             $existingshow = $without_pre_existing_name;
                         }
 
-                        
-                                
+
+
                         if($family_plan == 'yes' && $elder_age != $person_age){
                         $person_daily = 0;
                         } else if($family_plan == 'yes' && $elder_age == $person_age){
@@ -432,31 +432,31 @@ if($show == '1' && $total_price > 0){
                         if($smoke == '0'){
                         $p_smoke_price = $smoke_rate;
                         } else if($smoke == '1'){
-                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;    
+                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
                         }
                         } else {
-                        $p_smoke_price = 0; 
+                        $p_smoke_price = 0;
                         }
 
                         // OTHERS
                         $p_salestaxes = 0;
                         $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 
-                        //Deductible 
+                        //Deductible
                         $p_deduct_discount = ($person_price * $deduct_rate) / 100;
                         $p_cdiscount = ($person_price * $cdiscountrate) / 100;
                         $p_discount = $p_deduct_discount + $p_cdiscount;
                         $person_price = ($person_price - $p_discount) + $p_others;
                     }
 
-                    
 
 
-                            
 
 
-                    
-                    
+
+
+
+
                     //$monthly_price = $person_price / $num_months;
 
 
@@ -501,7 +501,7 @@ if($show == '1' && $total_price > 0){
                       <span>Coverage Limit</span>
                   </div>
                   <div class="qoute-price-select">
-                    <h2>$<?php 
+                    <h2>$<?php
                         if($sum_insured >= 1000000){
                         $millions = $sum_insured/1000000;
                         $txt = ' Million';
@@ -512,7 +512,7 @@ if($show == '1' && $total_price > 0){
                         echo number_format($millions).$txt;
                         $dob = $years[0].'-'.$request->month.''.$request->dob_day;
                         $agent = $request->agent;
-                        $broker = $request->broker;?>        
+                        $broker = $request->broker;?>
                     </h2>
                   </div>
               </div>
@@ -541,11 +541,11 @@ if($show == '1' && $total_price > 0){
                     <?php } ?>
               </div>
 
-              
+
               <div class="buy_now">
                 <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="btn btn-block text-white">Buy</span>
               </div>
-              <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal fade" role="dialog">
+              <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal zoom-in" role="dialog" aria-labelledby="myModalLabel" aria-modal="false">
                   <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">
                     <!-- Modal content-->
                     <div class="modal-content" style="border: 5px solid #2b3481;">
@@ -553,7 +553,7 @@ if($show == '1' && $total_price > 0){
                     @csrf
                       <div class="modal-body">
 
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-md-5">
                                 <p>BY CALLING</p>
                                 <p><a href="tel:+18555005041" style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a></p>
@@ -570,12 +570,12 @@ if($show == '1' && $total_price > 0){
                                     <input required type="checkbox" id="applycheckbox<?php echo $newdeductibleforshow.$plan_id;?>" name="agree" style="height: auto;margin: 0;top: 6px;position: absolute;">
                                     <label style="margin-left: 18px;" for="applycheckbox<?php echo $newdeductibleforshow.$plan_id;?>"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a> </label>
                                 </div>
-                                 
+
                             </div>
                         </div>
 
-                        
-                        
+
+
                             <input type="hidden" value="{{ $request->savers_email }}" name="email">
                             <input type="hidden" value="{{ $request->fname }}" name="fname">
                             <input type="hidden" value="{{ $request->lname }}" name="lname">
@@ -641,7 +641,7 @@ if($show == '1' && $total_price > 0){
 ?>
 
 
-        <?php 
+        <?php
         $display = '';
         }}}} ?>
 
@@ -649,7 +649,7 @@ if($show == '1' && $total_price > 0){
 <?php
 if(isset($_GET['departure_date']))
 {
-    
+
 }else{
     $counter = 0;
     if (isset( $request->savers_email)){
@@ -663,3 +663,18 @@ if(isset($_GET['departure_date']))
 }
 
 ?>
+
+<script>
+    $(document).on('click', ".buy_now .btn", function(){
+        var modalId = $(this).attr("data-target");
+        $(this).closest('.card-body').find('.modal').addClass("ah-show");
+    })
+    $(document).on('click', ".ah-show [data-dismiss='modal']", function(){
+        var modalId = $(this).closest(".modal");
+        $(modalId).removeClass("ah-show");
+        $('.modal-backdrop').removeClass("show")
+        $('.modal-backdrop').hide()
+        $('body').removeClass("modal-open")
+    })
+</script>
+

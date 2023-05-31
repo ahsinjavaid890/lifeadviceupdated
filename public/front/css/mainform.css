@@ -2256,9 +2256,9 @@ input::-webkit-inner-spin-button {
 .traveler-question .user-answer{
     margin-left: -50px;
 }
-.zoom-in .userdate-coverage{
-    margin-left: -15px;
-}
+/*.zoom-in .userdate-coverage{*/
+/*    margin-left: -15px;*/
+/*}*/
 }
 @media screen and (min-width:370px) and (max-width:400px) {
     .qoute-card{
