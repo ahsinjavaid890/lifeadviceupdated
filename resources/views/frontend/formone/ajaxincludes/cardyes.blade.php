@@ -668,13 +668,16 @@ if(isset($_GET['departure_date']))
     $(document).on('click', ".buy_now .btn", function(){
         var modalId = $(this).attr("data-target");
         $(this).closest('.card-body').find('.modal').addClass("ah-show");
+        $('body').addClass("modal-open");
+        $('.modal-backdrop').remove();
+        $('body').append("<div class='modal-backdrop show'></div>");
     })
     $(document).on('click', ".ah-show [data-dismiss='modal']", function(){
         var modalId = $(this).closest(".modal");
         $(modalId).removeClass("ah-show");
-        $('.modal-backdrop').removeClass("show")
-        $('.modal-backdrop').hide()
-        $('body').removeClass("modal-open")
+        $('.modal-backdrop').removeClass("show");
+        $('.modal-backdrop').remove();
+        $('body').removeClass("modal-open");
     })
 </script>
 
