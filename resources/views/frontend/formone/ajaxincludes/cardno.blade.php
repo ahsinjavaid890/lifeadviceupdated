@@ -321,7 +321,7 @@ if($second_show == '1' && $second_total_price > 0){
 <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $second_deductible; ?>" style="position: relative;display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
     <div class="row" style=" position: absolute; top: -12px; margin: auto; width: 100%; left: 0;"> <div class="col-md-12"> <p style=" background-color: red; width: 180px; text-align: center; color: white; border-radius: 10px; ">This is Pre Eisting Plan</p> </div> </div>
-      <div class="row">
+      <div class="row ahBuyInsuranceCard">
           <div class="col-md-6">
               <div class="plan-label">
                   <!-- <h2><?php echo $second_plan_name;?></h2> -->
@@ -346,7 +346,7 @@ if($second_show == '1' && $second_total_price > 0){
 
                   ?>
 
-                <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" >
+                <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345 hiddenInsuranceDt" >
 
 
 

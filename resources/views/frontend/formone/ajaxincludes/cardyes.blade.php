@@ -345,7 +345,7 @@ if($show == '1' && $total_price > 0){
 <span id="dv_{{$total_price}}" data-listing-price="{{$total_price}}" class="listing-item coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
   <div class="card-body">
-      <div class="row">
+      <div class="row ahBuyInsuranceCard">
           <div class="col-md-6">
                 <p class="plan-subheading display-none-on-mobile">
                   Deductible Option ($<?php echo $deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
@@ -366,7 +366,7 @@ if($show == '1' && $total_price > 0){
                     }
 
                   ?>
-                <div style="display: none;" class="hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>" >
+                <div style="display: none;" class="hoverdetails_<?php echo $newdeductibleforshow.$plan_id;?>  hiddenInsuranceDt" >
                     <div>
                     <?php
                     $per = 0;
@@ -545,7 +545,7 @@ if($show == '1' && $total_price > 0){
               <div class="buy_now">
                 <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="btn btn-block text-white">Buy</span>
               </div>
-              <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal zoom-in" role="dialog" aria-labelledby="myModalLabel" aria-modal="false">
+              <div id="myModal<?php echo $newdeductibleforshow.$plan_id;?>" class="modal zoom-in ahByNowbtn" role="dialog" aria-labelledby="myModalLabel" aria-modal="false">
                   <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">
                     <!-- Modal content-->
                     <div class="modal-content" style="border: 5px solid #2b3481;">

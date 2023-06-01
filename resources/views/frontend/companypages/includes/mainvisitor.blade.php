@@ -195,7 +195,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
                                            </select>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                    <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>
@@ -231,7 +231,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              <option value="no">No</option>
                                            </select>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                    <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>

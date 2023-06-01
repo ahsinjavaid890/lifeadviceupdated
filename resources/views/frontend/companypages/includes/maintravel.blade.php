@@ -181,7 +181,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                              <option value="Yes">No</option>
                                            </select>
                                     </div>
-                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                    <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
                                        <span class="button button-help show-tooltip"></span>
                                        <div class="tooltip-container tooltip--auto-height activehelpful">
                                           <button class="button button-close-simplified close-tooltip"></button>
@@ -194,7 +194,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  </div>
                                  <div class="additionaltraveler">
                                     @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler"> <div class="col-md-6"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 nopad"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
+                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing_condition[]" class="pre_existing_condition{{ $i }} form-control"> <option value="">Select Pre Existing Condition</option> <option value="Yes">Yes</option> <option value="Yes">No</option> </select> </div> <div class="col-md-3"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
                                     @endfor
                                  </div>
                               </div>
@@ -357,7 +357,7 @@ button.switch-month:active {
                                 </div>
                             </div>
                               <div class="row userdate-coverage">
-                                 <div class="col-sm-6">
+                                 <div class="col-md-6">
                                     <div class="calendar calendar-first" id="calendar_first">
                                       <div class="calendar_header">
                                         <button class="switch-month switch-left">
@@ -373,7 +373,7 @@ button.switch-month:active {
                                     </div>
 
                                   </div>
-                                  <div class="col-sm-6">
+                                  <div class="col-md-6">
 
                                     <div class="calendar calendar-second" id="calendar_second">
                                       <div class="calendar_header">
