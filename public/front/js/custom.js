@@ -1,3 +1,16 @@
+function secondnext() 
+{   
+    var errorlength = $(".errorinputtest").length
+    if(errorlength == 0)
+    {
+        $('#secondnextfake').hide();
+        $('#secondnextorignal').show();
+        $('#secondnextorignal').click();
+    }else{
+        $('#errortravelr').show();
+        $('#errortravelr').html('Please Fill All Fields');    
+    }
+}
 function checknumtravellers(id) {
 if(id == '')
 {
@@ -188,19 +201,7 @@ function changepreexisting(id , travelerid)
 }
 
 
-function secondnext() 
-{   
-    var errorlength = $(".errorinputtest").length
-    if(errorlength == 0)
-    {
-        $('#secondnextfake').hide();
-        $('#secondnextorignal').show();
-        $('#secondnextorignal').click();
-    }else{
-        $('#errortravelr').show();
-        $('#errortravelr').html('Please Fill All Fields');    
-    }
-}
+
 
 
 

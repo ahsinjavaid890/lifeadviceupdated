@@ -110,7 +110,7 @@
                                                             <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif  @endif  value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <div class="text-danger mt-4" id="covergaeerror"></div>
+                                                    <div class="text-danger mt-2 pl-1" id="covergaeerror"></div>
                                                 </div>
                                             @endif
                                         @endif
@@ -183,7 +183,7 @@
                                                                     <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-md-3 alert1 text-danger" style="position:relative;">
+                                                            <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
                                                                 <span class="button button-help show-tooltip"></span>
                                                                 <div class="tooltip-container tooltip--auto-height activehelpful">
                                                                     <button class="button button-close-simplified close-tooltip"></button>
@@ -197,39 +197,39 @@
                                                     @endif
                                                 @endforeach
                                             @else
-                                                <div class="row mt-3 showrowstraveler">
-                                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
-                                                        <div class="row alignitembaseline">
-                                                            <div class="col-md-6">
-                                                                <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                                            </div>
-                                                            <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
-                                                                <div class="input-wrapper positionrelative">
-                                                                    <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                                    <input inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                                                </div>
-                                                            </div>
+                                            <div class="row mt-3 showrowstraveler">
+                                                <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                                    <div class="row alignitembaseline">
+                                                        <div class="col-md-6">
+                                                            <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
-                                                        <label class="selectlabel">Pre Existing Condition</label>
-                                                        <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-                                                            <option value="">Select Pre Existing Condition</option>
-                                                            <option value="yes">Yes</option>
-                                                            <option value="no">No</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-3 alert1 text-danger" style="position:relative;">
-                                                        <span class="button button-help show-tooltip"></span>
-                                                        <div class="tooltip-container tooltip--auto-height activehelpful">
-                                                            <button class="button button-close-simplified close-tooltip"></button>
-                                                            <h4 class="heading heading-5">Helpful Info</h4>
-                                                            <div class="content">
-                                                                <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                                        <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
+                                                            <div class="input-wrapper positionrelative">
+                                                                <label class="selectlabeldateofbirth">Date Of Birth</label>
+                                                                <input inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
+                                                    <label class="selectlabel">Pre Existing Condition</label>
+                                                    <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
+                                                        <option value="">Select Pre Existing Condition</option>
+                                                        <option value="yes">Yes</option>
+                                                        <option value="no">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
+                                                    <span class="button button-help show-tooltip"></span>
+                                                    <div class="tooltip-container tooltip--auto-height activehelpful">
+                                                        <button class="button button-close-simplified close-tooltip"></button>
+                                                        <h4 class="heading heading-5">Helpful Info</h4>
+                                                        <div class="content">
+                                                            <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             @endif
                                             <div class="additionaltraveler">
                                                 @for ($i=2; $i < 7; $i++)
@@ -640,7 +640,7 @@
         }
 
 
-
+        
 
 
 
