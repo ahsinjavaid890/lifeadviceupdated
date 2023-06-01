@@ -473,85 +473,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
       @endif
    </div>
 </div>
-<script>
-   var today = new Date();
-   var dd = today.getDate();
-   var mm = today.getMonth() + 1; //January is 0!
-   var yyyy = today.getFullYear();
-   if (dd < 10) {
-      dd = '0' + dd;
-   } 
-   if (mm < 10) {
-     mm = '0' + mm;
-   } 
-   var today = mm + '/' + dd + '/' + yyyy;
-   function supervisayes(){
-      var tt = document.getElementById('departure_date').value;
-      var date = new Date(tt);
-      var newdate = new Date(date);
-      newdate.setDate(newdate.getDate() + 364);
-      var dd = newdate.getDate();
-      var mm = newdate.getMonth() + 1;
-      var y = newdate.getFullYear();
-      if(mm <= 9){
-      var mm = '0'+mm;  
-      }
-      if(dd <= 9){
-      var dd = '0'+dd;  
-      }
-      //var someFormattedDate = mm + '/' + dd + '/' + y;
-      var someFormattedDate = y + '-' + mm + '-' + dd;
-      document.getElementById('return_date').value = someFormattedDate;
-   }
-   function setdeparuredate(month, date, day, year) {
-      var setmonth = +month + 1;
-      $('#departure_date').val(year+'-'+setmonth+'-'+date)
-      $('#coveragedate').html(year+'-'+setmonth+'-'+date)
-      supervisayes();
-   }
-</script>
-<script>
-   var today = new Date();
-   var dd = today.getDate();
-   var mm = today.getMonth() + 1; //January is 0!
-   var yyyy = today.getFullYear();
-   if (dd < 10) {
-      dd = '0' + dd;
-   } 
-   if (mm < 10) {
-     mm = '0' + mm;
-   } 
-   var today = mm + '/' + dd + '/' + yyyy;
-   $(function() {
-     $('input[name="departure_dates"]').daterangepicker({
-       opens: 'left',
-      minDate: today,
-      singleDatePicker: true,
-       showDropdowns: true,
-     }, function(start, end, label) {
-
-     });
-   });
-   function supervisayess(){
-      var tt = document.getElementById('departure_dates').value;
-      var date = new Date(tt);
-      var newdate = new Date(date);
-      newdate.setDate(newdate.getDate() + 364);
-      var dd = newdate.getDate();
-      var mm = newdate.getMonth() + 1;
-      var y = newdate.getFullYear();
-      if(mm <= 9){
-      var mm = '0'+mm;  
-      }
-      if(dd <= 9){
-      var dd = '0'+dd;  
-      }
-      //var someFormattedDate = mm + '/' + dd + '/' + y;
-      var someFormattedDate = y + '-' + mm + '-' + dd;
-      document.getElementById('return_date').value = someFormattedDate;
-   }
-</script>
 <script type="text/javascript">
+   $(document).on('click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
+
+        setTimeout(function(){
+            $(".ahModelStyle select").select2("destroy");
+            $(".ahModelStyle select").select2();
+        }, 100);
+    });
+
+
+
+   
    $("div[id^='myModal']").each(function(){
    
    var currentModal = $(this);
@@ -591,147 +524,19 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
    });
    
 </script>
-<script type="text/javascript">
-  //----------variables----------//
-
-var day = "";
-var month = "";
-var year = "";
-var currentDate = "";
-var monthStartDay = "";
-
-var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-//----------functions----------//
-
-function getMonthInfo(year, month) {
-
-  //use current month to find number of days in month
-  //i dont know why i have to add 1 to month
-  var startDate = new Date(year, month + 1, 0);
-  var monthLength = startDate.getDate();
-
-  var startDate = new Date(year, month, 1);
-  var monthStartDay = startDate.getDay();
-
-  return [monthLength, monthStartDay];
-
-}
-
-function drawCal(monthInfo) {
-
-  var daysInMonth = monthInfo[0];
-  var monthStartDays = monthInfo[1];
-
-  //clear cal tbody
-  $("#cal").empty();
-  $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
-
-  //create empty row, append to to tbody
-  var $rowOut = $("<tr></tr>");
-  $("#cal").append($rowOut);
-
-  //shift first row by month start date
-  for (var i = 1; i <= monthStartDays; i++) {
-    var $day = "<td></td>";
-    $("#cal tr:last").append($day);
-  }
-
-  //for each day, append a td to the row
-  for (var i = 1; i <= daysInMonth; i++) {
-    var $day = "<td><a>" + (i) + "</a></td>";
-    $("#cal tr:last").append($day);
-
-    //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
-    if ((i + monthStartDays) % 7 == 0 & i != 0) {
-      $("#cal").append($rowOut);
-      $rowOut = "<tr></tr>";
-      $("#cal").append($rowOut);
-    }
-  }
-}
-
-//----------wiring----------//
-
-$(".button_left").click(function() {
-
-  month--;
-
-  if (month < 0) {
-    year--;
-    month = 11;
-  }
-
-  //left button click
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
-
-});
-
-//right button click
-$(".button_right").click(function() {
-
-  month++;
-
-  if (month > 11) {
-    year++;
-    month = 0;
-  }
-
-  $(".cal_head span").text(monthTextArray[month] + " " + year);
-  drawCal(getMonthInfo(year, month));
-
-});
-
-$("#cal").on("click", "td", function(e) {
-
-  e.preventDefault();
-  $("#cal td").removeClass("circle");
-  $(this).addClass("circle");
-  var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
-  console.log(outputDate);
-  $("#outputText").text(outputDate);
-  $("#coveragedate").text(outputDate);
-
-});
-
-//----------run----------//
-
-//get current month and year
-currentDate = new Date();
-year = currentDate.getFullYear();
-month = currentDate.getMonth();
-day = currentDate.getDate();
-
-//get text month name from month number and write to span
-$(".cal_head span").text(monthTextArray[month] + " " + year);
-
-//inital calander draw based on current month
-drawCal(getMonthInfo(year, month));
-
-//var selector = ("td a:contains(" + day + ")");
-var selector = $("td a").filter(function(){
- return $(this).text() === day.toString();
-});
-
-//var selector = $("#cal").find("a="+day+"");
-
-
-$(selector.parent()).addClass("circle");
-
-var outputDate = monthTextArray[month] + " " + day + ", " + year;
-
-
-$("#outputText").text(outputDate);
-</script>
 <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
 <script type="text/javascript">
    function getquotesubmitform() {
       $('#quoteform').submit();
    }
 
+   @if(isset($_GET['sum_insured2']))
+
+      $( document ).ready(function() {
+            $('#quoteform').submit();
+        });
+
+   @endif
 
    $('#quoteform').on('submit',(function(e) {
        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -751,18 +556,4 @@ $("#outputText").text(outputDate);
            }
        });
    }));
-</script>
-<script>
-  function maxLengthCheck(object)
-  {
-    if (object.value.length > object.maxLength)
-      object.value = object.value.slice(0, object.maxLength)
-  }
-</script>
-<script>
-  function maxLengthChecks(object)
-  {
-    if (object.value.length > object.maxLength)
-      object.value = object.value.slice(0, object.maxLength)
-  }
 </script>
