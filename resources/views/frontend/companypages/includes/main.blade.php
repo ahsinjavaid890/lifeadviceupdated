@@ -80,7 +80,7 @@
                                                 </div>
                                                 <div class="ml-3 from">
                                                     <div id="supervisadateshowinhtml" class="value">
-                                                        @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else {{ $todate }} @endif
+                                                        @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else  @endif
 
 
                                                     </div>
@@ -349,6 +349,12 @@
             }, 100);
         });
         function setdeparuredate(month, date, day, year) {
+
+            alert(month)
+            alert(date)
+            alert(day)
+            alert(year)
+
             var setmonth = +month + 1;
             $('#departure_date').val(year+'-'+setmonth+'-'+date)
             $('#coveragedate').html(year+'-'+setmonth+'-'+date)
