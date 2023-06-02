@@ -71,7 +71,7 @@
                                             <div  class="input-field">
                                                 @php
                                                     $date = date('Y-m-d');
-                                                    $todate =  date('Y-m-d', strtotime($date. ' + 365 days'));
+                                                    $todate =  date('Y-m-d', strtotime($date. ' + 364 days'));
                                                 @endphp
                                                 <div  class="from">
                                                     <i  class="icon icon-calendar"></i>
