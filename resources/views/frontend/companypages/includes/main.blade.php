@@ -401,7 +401,6 @@
             });
 
         });
-
     </script>
     <script type="text/javascript">
         $("div[id^='myModal']").each(function(){
