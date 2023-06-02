@@ -84,6 +84,7 @@
 
 
                                                     </div>
+                                                    <input type="hidden" id="hiddenSuperViseEnd">
                                                 </div>
                                             </div>
                                         </div>
@@ -661,4 +662,49 @@
             }
         }
 
+
+        $(document).ready(function(){
+            // Get the start date from an input field
+            var startDateString = $('#coveragedate').text();
+            var startDate = new Date(startDateString);
+
+            // Add 365 days to the start date
+            var endDate = new Date(startDate.getTime());
+            endDate.setDate(endDate.getDate() + 364);
+
+            // Get the year, month, and day of the end date
+            var endYear = endDate.getFullYear();
+            var endMonth = endDate.getMonth() + 1;
+            var endDay = endDate.getDate();
+
+            // Format the end date as "YYYY-MM-DD"
+            var formattedEndDate = endYear + '-' + endMonth.toString().padStart(2, '0') + '-' + endDay.toString().padStart(2, '0');
+
+            // Set the formatted end date as the value of an input field
+                        $('#hiddenSuperViseEnd').val(formattedEndDate);
+                        $('#supervisadateshowinhtml').text(formattedEndDate);
+            // alert(formattedEndDate);
+        });
+        $(document).click(function(){
+            // Get the start date from an input field
+            var startDateString = $('#coveragedate').text();
+            var startDate = new Date(startDateString);
+
+            // Add 365 days to the start date
+            var endDate = new Date(startDate.getTime());
+            endDate.setDate(endDate.getDate() + 364);
+
+            // Get the year, month, and day of the end date
+            var endYear = endDate.getFullYear();
+            var endMonth = endDate.getMonth() + 1;
+            var endDay = endDate.getDate();
+
+            // Format the end date as "YYYY-MM-DD"
+            var formattedEndDate = endYear + '-' + endMonth.toString().padStart(2, '0') + '-' + endDay.toString().padStart(2, '0');
+
+            // Set the formatted end date as the value of an input field
+                        $('#hiddenSuperViseEnd').val(formattedEndDate);
+                        $('#supervisadateshowinhtml').text(formattedEndDate);
+            // alert(formattedEndDate);
+        });
     </script>
