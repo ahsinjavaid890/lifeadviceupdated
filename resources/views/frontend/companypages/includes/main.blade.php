@@ -75,7 +75,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="ml-3 from">
-                                                    <div id="qoutedestination" class="value">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
+                                                    <div id="qoutedestination" class="value" style="display: none">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
+                                                    <div id="ahqoutedestination" class="value"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -683,7 +684,7 @@ $(document).ready(function(){
     var t = output.split(/[- :]/);
     var actiondate = d.getFullYear() + '-' + month + '-' + day;
     console.log(actiondate);
-    $('#qoutedestination').text(actiondate);
+    $('#ahqoutedestination').text(actiondate);
 
 });
 $(document).click(function(){
@@ -695,7 +696,7 @@ $(document).click(function(){
     var formattedDate = new Date(year, month - 1, day);
     var formattedDateString = formattedDate.toLocaleDateString();
     console.log(formattedDateString);
-    $('#qoutedestination').text(formattedDateString);
+    $('#ahqoutedestination').text(formattedDateString);
 });
 
     </script>
