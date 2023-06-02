@@ -671,6 +671,31 @@
             }
         }
 
+$(document).ready(function(){
+    var someDate = new Date($('#coveragedate').text());
+    var numberOfDaysToAdd = 364;
+    var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
 
+    var d = new Date(result);
+
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+
+    var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
+    $('#qoutedestination').text(output);
+});
+$(document).click(function(){
+    var someDate = new Date($('#coveragedate').text());
+    var numberOfDaysToAdd = 364;
+    var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+
+    var d = new Date(result);
+
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+
+    var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
+    $('#qoutedestination').text(output)
+});
 
     </script>
