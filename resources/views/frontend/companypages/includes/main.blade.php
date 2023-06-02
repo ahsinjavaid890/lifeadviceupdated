@@ -686,25 +686,26 @@
             // alert(formattedEndDate);
         });
         $(document).click(function(){
-            // Get the start date from an input field
+            
+
+
             var startDateString = $('#coveragedate').text();
             var startDate = new Date(startDateString);
 
-            // Add 365 days to the start date
-            var endDate = new Date(startDate.getTime());
-            endDate.setDate(endDate.getDate() + 364);
+            if (!isNaN(startDate.getTime())) {
+                var endDate = new Date(startDate.getTime());
+                endDate.setDate(endDate.getDate() + 365);
 
-            // Get the year, month, and day of the end date
-            var endYear = endDate.getFullYear();
-            var endMonth = endDate.getMonth() + 1;
-            var endDay = endDate.getDate();
+                var endYear = endDate.getFullYear();
+                var endMonth = endDate.getMonth() + 1;
+                var endDay = endDate.getDate();
 
-            // Format the end date as "YYYY-MM-DD"
-            var formattedEndDate = endYear + '-' + endMonth.toString().padStart(2, '0') + '-' + endDay.toString().padStart(2, '0');
+                var formattedEndDate = endYear + '-' + ('0' + endMonth).slice(-2) + '-' + ('0' + endDay).slice(-2);
 
-            // Set the formatted end date as the value of an input field
-                        $('#hiddenSuperViseEnd').val(formattedEndDate);
-                        $('#supervisadateshowinhtml').text(formattedEndDate);
-            // alert(formattedEndDate);
+                $('#supervisadateshowinhtml').text(formattedEndDate);
+            } else {
+                console.log("Invalid start date");
+            }
+
         });
     </script>
