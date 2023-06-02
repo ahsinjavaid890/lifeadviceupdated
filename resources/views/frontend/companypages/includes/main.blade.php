@@ -299,7 +299,7 @@
                                             </div>
                                             @if(isset($fields['email']))
                                                 @if($fields['email'] == "on" )
-                                                    <div class="col-md-6 userdata-card mt-5 mobile-device-email-input">
+                                                    <div class="col-md-6 userdata-card mt-3 mobile-device-email-input">
                                                         <div class="custom-form-control positionrelative">
                                                             <label class="selectlabeldateofbirth">Enter Your Email</label>
                                                             <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
