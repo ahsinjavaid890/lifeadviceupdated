@@ -687,18 +687,31 @@ $(document).ready(function(){
 
 });
 $(document).click(function(){
-    var someDate = new Date($('#coveragedate').text());
-    var numberOfDaysToAdd = 364;
-    var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-    var d = new Date(result);
-    var month = d.getMonth()+1;
-    var day = d.getDate();
-    var year = d.getFullYear();
-    var actiondate = year+'-'+month+'-'+day;
-    var t = actiondate.split(/[- :]/);
-    var t = t[0]+'-'+t[1]+'-'+t[2];
-    console.log(t);
-    $('#qoutedestination').text(t);
+    // var someDate = new Date($('#coveragedate').text());
+    // var numberOfDaysToAdd = 364;
+    // var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+    // var d = new Date(result);
+    // var month =  d.getMonth() +1;
+    // var day = d.getDate();
+    // var year = d.getFullYear();
+    // var actiondate = year+'-'+month+'-'+day;
+    // var t = actiondate.split(/[- :]/);
+    // var t = t[0]+'-'+t[1]+'-'+t[2];
+    // console.log(t);
+    // $('#qoutedestination').text(t);
+
+    var givenDate = new Date($('#coveragedate').text());
+
+// Add 364 days
+    givenDate.setDate(givenDate.getDate() + 364);
+
+// Format the date to YYYY-M-D
+    var year = givenDate.getFullYear();
+    var month = givenDate.getMonth() + 1;
+    var day = givenDate.getDate();
+    var formattedDate = year + '-' + month + '-' + day;
+
+    console.log(formattedDate);
 });
 
     </script>
