@@ -69,6 +69,10 @@
                                         </label>
                                         <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
                                             <div  class="input-field">
+                                                @php
+                                                    $date = date('Y-m-d');
+                                                    $todate =  date('Y-m-d', strtotime($date. ' + 365 days'));
+                                                @endphp
                                                 <div  class="from">
                                                     <i  class="icon icon-calendar"></i>
                                                     <div id="coveragedate"  class="value"> @if(isset($_GET['departure_date'])) {{ $_GET['departure_date'] }} @else Start Date @endif
@@ -76,7 +80,7 @@
                                                 </div>
                                                 <div class="ml-3 from">
                                                     <div id="qoutedestination" class="value" style="display: none">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
-                                                    <div id="ahqoutedestination" class="value"></div>
+                                                    <div id="" class="value">{{ $todate }}</div>
                                                 </div>
                                             </div>
                                         </div>
