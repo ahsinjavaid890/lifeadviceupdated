@@ -383,47 +383,6 @@
             supervisayes();
         }
     </script>
-    <script>
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-        var today = mm + '/' + dd + '/' + yyyy;
-        $(function() {
-            $('input[name="departure_dates"]').daterangepicker({
-                opens: 'left',
-                minDate: today,
-                singleDatePicker: true,
-                showDropdowns: true,
-            }, function(start, end, label) {
-
-            });
-        });
-        function supervisayess(){
-            var tt = document.getElementById('departure_dates').value;
-            var date = new Date(tt);
-            var newdate = new Date(date);
-            newdate.setDate(newdate.getDate() + 364);
-            var dd = newdate.getDate();
-            var mm = newdate.getMonth() + 1;
-            var y = newdate.getFullYear();
-            if(mm <= 9){
-                var mm = '0'+mm;
-            }
-            if(dd <= 9){
-                var dd = '0'+dd;
-            }
-            //var someFormattedDate = mm + '/' + dd + '/' + y;
-            var someFormattedDate = y + '-' + mm + '-' + dd;
-            document.getElementById('return_date').value = someFormattedDate;
-        }
-    </script>
     <script type="text/javascript">
         $("div[id^='myModal']").each(function(){
 
@@ -442,7 +401,6 @@
             });
 
         });
-
     </script>
     <script type="text/javascript">
         $("div[id^='myModal']").each(function(){
@@ -566,7 +524,7 @@
             var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
             console.log(outputDate);
             $("#outputText").text(outputDate);
-            $("#coveragedate").text(outputDate);
+            // $("#coveragedate").text(outputDate);
 
         });
 
