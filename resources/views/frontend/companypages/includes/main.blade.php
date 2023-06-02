@@ -79,8 +79,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="ml-3 from">
-                                                    <div id="qoutedestination" class="value" style="display: none">@if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else End Date @endif </div>
-                                                    <div id="" class="value">{{ $todate }}</div>
+                                                    <div id="qoutedestination" class="value">
+                                                        @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else {{ $todate }} @endif
+
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -675,32 +678,5 @@
 
             }
         }
-
-$(document).ready(function(){
-    var someDate = new Date($('#coveragedate').text());
-    var numberOfDaysToAdd = 364;
-    var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-    var d = new Date(result);
-    var month = d.getMonth()+1;
-    var day = d.getDate();
-    var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-
-    var t = output.split(/[- :]/);
-    var actiondate = d.getFullYear() + '-' + month + '-' + day;
-    console.log(actiondate);
-    $('#ahqoutedestination').text(actiondate);
-
-});
-$(document).click(function(){
-    var givenDate = new Date($('#coveragedate').text());
-    givenDate.setDate(givenDate.getDate() + 364);
-    var year = givenDate.getFullYear();
-    var month = givenDate.getMonth() + 1;
-    var day = givenDate.getDate();
-    var formattedDate = new Date(year, month - 1, day);
-    var formattedDateString = formattedDate.toLocaleDateString();
-    console.log(formattedDateString);
-    $('#ahqoutedestination').text(formattedDateString);
-});
 
     </script>
