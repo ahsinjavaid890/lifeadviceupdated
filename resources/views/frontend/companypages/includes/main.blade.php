@@ -675,30 +675,29 @@ $(document).ready(function(){
     var someDate = new Date($('#coveragedate').text());
     var numberOfDaysToAdd = 364;
     var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-
     var d = new Date(result);
-
     var month = d.getMonth()+1;
     var day = d.getDate();
-
     var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-    var t = output.split(/[, : T]/);
-    $('#qoutedestination').text(t);
+
+    var t = output.split(/[- :]/);
+    var actiondate = d.getFullYear() + '-' + month + '-' + day;
+    console.log(actiondate);
+    $('#qoutedestination').text(actiondate);
 
 });
 $(document).click(function(){
     var someDate = new Date($('#coveragedate').text());
     var numberOfDaysToAdd = 364;
     var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-
     var d = new Date(result);
-
     var month = d.getMonth()+1;
     var day = d.getDate();
-
     var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-    var t = output.split(/[, : T]/);
-    $('#qoutedestination').text(t);
+
+    var t = output.split(/[- :]/);
+    var actiondate = d.getFullYear() + '-' + month + '-' + day;
+    $('#qoutedestination').text(actiondate);
 });
 
     </script>
