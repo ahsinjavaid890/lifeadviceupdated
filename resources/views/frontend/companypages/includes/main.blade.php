@@ -79,12 +79,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="ml-3 from">
-                                                    <div id="supervisadateshowinhtml" class="value" style="display: none">
-                                                        @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else  @endif
+                                                    <div id="supervisadateshowinhtml" class="value" >
+                                                        @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else 
+
+                                                        {{ $todate }}
+
+                                                         @endif
 
 
                                                     </div>
-                                                    <input type="text" id="hiddenSuperViseEnd" disabled class="value" style="width: auto;min-width: auto;color: #67778f;">
                                                 </div>
                                             </div>
                                         </div>
@@ -270,7 +273,7 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="close-btn">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <button onclick="enddateinsupervisainsurance()" type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                                     <h2 class="heading-3 card-heading">Start Date Of Coverage and Some Other Details</h2>
@@ -342,370 +345,302 @@
     @endif
     </div>
     </div>
-    <script>
-        $(document).on('Click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
-            setTimeout(function(){
-                $(".ahModelStyle select").select2("destroy");
-                $(".ahModelStyle select").select2();
-            }, 100);
-        });
-        function setdeparuredate(month, date, day, year) {
-            var setmonth = +month + 1;
-            $('#departure_date').val(year+'-'+setmonth+'-'+date)
-            $('#coveragedate').html(year+'-'+setmonth+'-'+date)
+<script>
+    $(document).on('Click', '.ahm-form-wrap .generator-bar-row-wrap > .form-input, .ahModelStyle .nextbtns .btn', function(){
+        setTimeout(function(){
+            $(".ahModelStyle select").select2("destroy");
+            $(".ahModelStyle select").select2();
+        }, 100);
+    });
+    function setdeparuredate(month, date, day, year) {
+        var setmonth = +month + 1;
+        $('#departure_date').val(year+'-'+setmonth+'-'+date)
+        $('#coveragedate').html(year+'-'+setmonth+'-'+date)
+    }
+</script>
+<script type="text/javascript">
+    $("div[id^='myModal']").each(function(){
 
-            var tt = year+'-'+setmonth+'-'+date;
-            var date = new Date(tt);
-            var newdate = new Date(date);
-            newdate.setDate(newdate.getDate() + 364);
-            var dd = newdate.getDate();
-            var mm = newdate.getMonth() + 1;
-            var y = newdate.getFullYear();
-            if(mm <= 9){
-                var mm = '0'+mm;
-            }
-            if(dd <= 9){
-                var dd = '0'+dd;
-            }
-            // var someFormattedDate = mm + '/' + dd + '/' + y;
-            var someFormattedDate = y + '-' + mm + '-' + dd;
-            document.getElementById('return_date').value = someFormattedDate;
-            $('#supervisadateshowinhtml').text(someFormattedDate)
-        }
-    </script>
-    <script type="text/javascript">
-        $("div[id^='myModal']").each(function(){
+        var currentModal = $(this);
 
-            var currentModal = $(this);
-
-            //click next
-            currentModal.find('.btn-next').click(function(){
-                currentModal.modal('hide');
-                currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
-            });
-
-            //click prev
-            currentModal.find('.btn-prev').click(function(){
-                currentModal.modal('hide');
-                currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
-            });
-
-        });
-    </script>
-    <script type="text/javascript">
-        $("div[id^='myModal']").each(function(){
-
-            var currentModal = $(this);
-
-            //click next
-            currentModal.find('.btn-nexts').click(function(){
-                currentModal.modal('hide');
-                currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
-            });
-
-            //click prev
-            currentModal.find('.btn-prevs').click(function(){
-                currentModal.modal('hide');
-                currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
-            });
-
+        //click next
+        currentModal.find('.btn-next').click(function(){
+            currentModal.modal('hide');
+            currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
         });
 
-    </script>
-    <script type="text/javascript">
-        //----------variables----------//
+        //click prev
+        currentModal.find('.btn-prev').click(function(){
+            currentModal.modal('hide');
+            currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
+        });
 
-        var day = "";
-        var month = "";
-        var year = "";
-        var currentDate = "";
-        var monthStartDay = "";
+    });
+</script>
+<script type="text/javascript">
+    $("div[id^='myModal']").each(function(){
 
-        var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var currentModal = $(this);
 
-        var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        //click next
+        currentModal.find('.btn-nexts').click(function(){
+            currentModal.modal('hide');
+            currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
+        });
 
-        //----------functions----------//
+        //click prev
+        currentModal.find('.btn-prevs').click(function(){
+            currentModal.modal('hide');
+            currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
+        });
 
-        function getMonthInfo(year, month) {
+    });
 
-            //use current month to find number of days in month
-            //i dont know why i have to add 1 to month
-            var startDate = new Date(year, month + 1, 0);
-            var monthLength = startDate.getDate();
+</script>
+<script type="text/javascript">
+    //----------variables----------//
 
-            var startDate = new Date(year, month, 1);
-            var monthStartDay = startDate.getDay();
+    var day = "";
+    var month = "";
+    var year = "";
+    var currentDate = "";
+    var monthStartDay = "";
 
-            return [monthLength, monthStartDay];
+    var monthTextArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        }
+    var dayTextArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-        function drawCal(monthInfo) {
+    //----------functions----------//
 
-            var daysInMonth = monthInfo[0];
-            var monthStartDays = monthInfo[1];
+    function getMonthInfo(year, month) {
 
-            //clear cal tbody
-            $("#cal").empty();
-            $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
+        //use current month to find number of days in month
+        //i dont know why i have to add 1 to month
+        var startDate = new Date(year, month + 1, 0);
+        var monthLength = startDate.getDate();
 
-            //create empty row, append to to tbody
-            var $rowOut = $("<tr></tr>");
-            $("#cal").append($rowOut);
+        var startDate = new Date(year, month, 1);
+        var monthStartDay = startDate.getDay();
 
-            //shift first row by month start date
-            for (var i = 1; i <= monthStartDays; i++) {
-                var $day = "<td></td>";
-                $("#cal tr:last").append($day);
-            }
+        return [monthLength, monthStartDay];
 
-            //for each day, append a td to the row
-            for (var i = 1; i <= daysInMonth; i++) {
-                var $day = "<td><a>" + (i) + "</a></td>";
-                $("#cal tr:last").append($day);
+    }
 
-                //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
-                if ((i + monthStartDays) % 7 == 0 & i != 0) {
-                    $("#cal").append($rowOut);
-                    $rowOut = "<tr></tr>";
-                    $("#cal").append($rowOut);
-                }
-            }
+    function drawCal(monthInfo) {
+
+        var daysInMonth = monthInfo[0];
+        var monthStartDays = monthInfo[1];
+
+        //clear cal tbody
+        $("#cal").empty();
+        $("#cal").append("<tr class=days><td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thur</td><td>fri</td><td>sat</td>");
+
+        //create empty row, append to to tbody
+        var $rowOut = $("<tr></tr>");
+        $("#cal").append($rowOut);
+
+        //shift first row by month start date
+        for (var i = 1; i <= monthStartDays; i++) {
+            var $day = "<td></td>";
+            $("#cal tr:last").append($day);
         }
 
-        //----------wiring----------//
+        //for each day, append a td to the row
+        for (var i = 1; i <= daysInMonth; i++) {
+            var $day = "<td><a>" + (i) + "</a></td>";
+            $("#cal tr:last").append($day);
 
-        $(".button_left").click(function() {
-
-            month--;
-
-            if (month < 0) {
-                year--;
-                month = 11;
+            //if day 7 (w/shift), append row contaning 7 days to tbody and clear row
+            if ((i + monthStartDays) % 7 == 0 & i != 0) {
+                $("#cal").append($rowOut);
+                $rowOut = "<tr></tr>";
+                $("#cal").append($rowOut);
             }
+        }
+    }
 
-            //left button click
-            $(".cal_head span").text(monthTextArray[month] + " " + year);
-            drawCal(getMonthInfo(year, month));
+    //----------wiring----------//
 
-        });
+    $(".button_left").click(function() {
 
-        //right button click
-        $(".button_right").click(function() {
+        month--;
 
-            month++;
+        if (month < 0) {
+            year--;
+            month = 11;
+        }
 
-            if (month > 11) {
-                year++;
-                month = 0;
-            }
-
-            $(".cal_head span").text(monthTextArray[month] + " " + year);
-            drawCal(getMonthInfo(year, month));
-
-        });
-
-        $("#cal").on("click", "td", function(e) {
-
-            e.preventDefault();
-            $("#cal td").removeClass("circle");
-            $(this).addClass("circle");
-            var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
-            console.log(outputDate);
-            $("#outputText").text(outputDate);
-
-        });
-
-        //----------run----------//
-
-        //get current month and year
-        currentDate = new Date();
-        year = currentDate.getFullYear();
-        month = currentDate.getMonth();
-        day = currentDate.getDate();
-
-        //get text month name from month number and write to span
+        //left button click
         $(".cal_head span").text(monthTextArray[month] + " " + year);
-
-        //inital calander draw based on current month
         drawCal(getMonthInfo(year, month));
 
-        //var selector = ("td a:contains(" + day + ")");
-        var selector = $("td a").filter(function(){
-            return $(this).text() === day.toString();
-        });
+    });
 
-        //var selector = $("#cal").find("a="+day+"");
+    //right button click
+    $(".button_right").click(function() {
 
+        month++;
 
-        $(selector.parent()).addClass("circle");
+        if (month > 11) {
+            year++;
+            month = 0;
+        }
 
-        var outputDate = monthTextArray[month] + " " + day + ", " + year;
+        $(".cal_head span").text(monthTextArray[month] + " " + year);
+        drawCal(getMonthInfo(year, month));
 
+    });
 
+    $("#cal").on("click", "td", function(e) {
+
+        e.preventDefault();
+        $("#cal td").removeClass("circle");
+        $(this).addClass("circle");
+        var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
+        console.log(outputDate);
         $("#outputText").text(outputDate);
-    </script>
-    <script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
-    <script type="text/javascript">
-        function getquotesubmitform() {
-            $('#quoteform').submit();
-        }
 
-        @if(isset($_GET['sum_insured2']))
-        $( document ).ready(function() {
-            $('#doneoriginal').click();
+    });
+
+    //----------run----------//
+
+    //get current month and year
+    currentDate = new Date();
+    year = currentDate.getFullYear();
+    month = currentDate.getMonth();
+    day = currentDate.getDate();
+
+    //get text month name from month number and write to span
+    $(".cal_head span").text(monthTextArray[month] + " " + year);
+
+    //inital calander draw based on current month
+    drawCal(getMonthInfo(year, month));
+
+    //var selector = ("td a:contains(" + day + ")");
+    var selector = $("td a").filter(function(){
+        return $(this).text() === day.toString();
+    });
+
+    //var selector = $("#cal").find("a="+day+"");
+
+
+    $(selector.parent()).addClass("circle");
+
+    var outputDate = monthTextArray[month] + " " + day + ", " + year;
+
+
+    $("#outputText").text(outputDate);
+</script>
+<script type="text/javascript" src="{{ url('public/front/formqoute/datepiker.js')}}"></script>
+<script type="text/javascript">
+    function getquotesubmitform() {
+        enddateinsupervisainsurance();
+        $('#quoteform').submit();
+    }
+
+    @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#doneoriginal').click();
+    });
+    @endif
+    $('#quoteform').on('submit',(function(e) {
+        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                // console.log(data.html)
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                $('.quotationscards').html(data.html);
+            }
         });
-        @endif
-        $('#quoteform').on('submit',(function(e) {
-            $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type:'POST',
-                url: $(this).attr('action'),
-                data:formData,
-                cache:false,
-                contentType: false,
-                processData: false,
-                success: function(data){
-                    // console.log(data.html)
-                    $('#getqoutesubmitbutton').html('Get Quotes');
-                    $('.quotationscards').html(data.html);
-                }
-            });
-        }));
-    </script>
-    <script>
-        function maxLengthCheck(object)
-        {
-            if (object.value.length > object.maxLength)
-                object.value = object.value.slice(0, object.maxLength)
-        }
-        function maxLengthChecks(object)
-        {
-            if (object.value.length > object.maxLength)
-                object.value = object.value.slice(0, object.maxLength)
-        }
-
-
-
-
-
-
-        function addtravellers()
-        {
-            var showrowstraveler = $('.showrowstraveler').length;
-            var value = $('.dateofbirthclass'+showrowstraveler).val();
-            if(value == '')
+    }));
+</script>
+<script>
+function addtravellers()
+{
+var showrowstraveler = $('.showrowstraveler').length;
+var value = $('.dateofbirthclass'+showrowstraveler).val();
+if(value == '')
+{
+    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+}else{
+    $("#secondnextfake").css("pointer-events","none");
+    $("#secondnextfake").css("background-color","#f2dede");
+    $("#secondnextfake").css("color","#b94a48");
+    var pre_existing_values_check = $('.pre_existing_values_check'+showrowstraveler).val();
+    if(pre_existing_values_check == '')
+    {
+        $('.select2-selection').css('border-color' , 'red');
+        $("#secondnextfake").css("pointer-events","none");
+    }else{
+        $('.select2-selection').css('border-color' , '#cfd9e8');
+        const d  = new Date(value);
+        let year = d.getFullYear();
+        var CurrentDate = new Date();
+        var today = new Date();
+        var todayyear = today.getFullYear();
+        var getfourtyyear = todayyear-40;
+        var getlastdob = todayyear-100;
+        if(d > CurrentDate){
+            $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+            $('#errortravelr').show();
+            $('#errortravelr').html('Date of birth can not be a future date.');
+        }else{
+            if(year > getfourtyyear)
             {
                 $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                $('#errortravelr').show();
+                $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
             }else{
-                $("#secondnextfake").css("pointer-events","none");
-                $("#secondnextfake").css("background-color","#f2dede");
-                $("#secondnextfake").css("color","#b94a48");
-                var pre_existing_values_check = $('.pre_existing_values_check'+showrowstraveler).val();
-                if(pre_existing_values_check == '')
+
+                if(year < getlastdob)
                 {
-                    $('.select2-selection').css('border-color' , 'red');
-                    $("#secondnextfake").css("pointer-events","none");
+                    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
+                    $('#errortravelr').show();
+                    $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
                 }else{
-                    $('.select2-selection').css('border-color' , '#cfd9e8');
-                    const d  = new Date(value);
-                    let year = d.getFullYear();
-                    var CurrentDate = new Date();
-                    var today = new Date();
-                    var todayyear = today.getFullYear();
-                    var getfourtyyear = todayyear-40;
-                    var getlastdob = todayyear-100;
-                    if(d > CurrentDate){
-                        $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                        $('#errortravelr').show();
-                        $('#errortravelr').html('Date of birth can not be a future date.');
-                    }else{
-                        if(year > getfourtyyear)
-                        {
-                            $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                            $('#errortravelr').show();
-                            $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
-                        }else{
-
-                            if(year < getlastdob)
-                            {
-                                $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                                $('#errortravelr').show();
-                                $('#errortravelr').html('Super Visa Is Eligible 99 Year Old Peoples');
-                            }else{
-                                $('#errortravelr').hide();
-                                $('#errortravelr').html('');
-                                var showmext = parseInt(showrowstraveler)+1;
-                                $('#removebutton'+showmext).removeClass('hiderowstraveler');
-                                $('#removebutton'+showmext).addClass('showrowstraveler');
-                                var numberoftraverls = $('#numberoftraverls').val();
-                                if(numberoftraverls == showrowstraveler)
-                                {
-                                    $('.button-add-another').fadeOut(300);
-                                }
-                            }
-
-
-                        }
+                    $('#errortravelr').hide();
+                    $('#errortravelr').html('');
+                    var showmext = parseInt(showrowstraveler)+1;
+                    $('#removebutton'+showmext).removeClass('hiderowstraveler');
+                    $('#removebutton'+showmext).addClass('showrowstraveler');
+                    var numberoftraverls = $('#numberoftraverls').val();
+                    if(numberoftraverls == showrowstraveler)
+                    {
+                        $('.button-add-another').fadeOut(300);
                     }
-
-                    var number_travelers = $("#number_travelers").val();
-                    var addtraveler = 1;
-                    var totaltraveler = parseInt(number_travelers) + parseInt(addtraveler);
-                    $("#number_travelers").val(totaltraveler);
                 }
 
 
             }
         }
 
-
-        $(document).ready(function(){
-            // Get the start date from an input field
-            var startDateString = $('#coveragedate').text();
-            var startDate = new Date(startDateString);
-
-            // Add 365 days to the start date
-            var endDate = new Date(startDate.getTime());
-            endDate.setDate(endDate.getDate() + 364);
-
-            // Get the year, month, and day of the end date
-            var endYear = endDate.getFullYear();
-            var endMonth = endDate.getMonth() + 1;
-            var endDay = endDate.getDate();
-
-            // Format the end date as "YYYY-MM-DD"
-            var formattedEndDate = endYear + '-' + endMonth.toString().padStart(2, '0') + '-' + endDay.toString().padStart(2, '0');
-
-            // Set the formatted end date as the value of an input field
-                        $('#hiddenSuperViseEnd').val(formattedEndDate);
-                        $('#supervisadateshowinhtml').text(formattedEndDate);
-            // alert(formattedEndDate);
-        });
-        $(document).click(function(){
+        var number_travelers = $("#number_travelers").val();
+        var addtraveler = 1;
+        var totaltraveler = parseInt(number_travelers) + parseInt(addtraveler);
+        $("#number_travelers").val(totaltraveler);
+    }
 
 
+}
+}
 
-            var startDateString = $('#coveragedate').text();
-            var startDate = new Date(startDateString);
-
-            if (!isNaN(startDate.getTime())) {
-                var endDate = new Date(startDate.getTime());
-                endDate.setDate(endDate.getDate() + 365);
-
-                var endYear = endDate.getFullYear();
-                var endMonth = endDate.getMonth() + 1;
-                var endDay = endDate.getDate();
-
-                var formattedEndDate = endYear + '-' + ('0' + endMonth).slice(-2) + '-' + ('0' + endDay).slice(-2);
-
-                $('#hiddenSuperViseEnd').val(formattedEndDate);
-            } else {
-                console.log("Invalid start date");
-            }
-
-        });
-    </script>
+function enddateinsupervisainsurance() {
+    var newDate = $('#coveragedate').text();
+    var startDate = new Date(newDate);
+    var endDate = new Date(startDate.getTime());
+    endDate.setDate(endDate.getDate() + 364);
+    var endYear = endDate.getFullYear();
+    var endMonth = endDate.getMonth() + 1;
+    var endDay = endDate.getDate();
+    var formattedEndDate = endYear + '-' + endMonth.toString().padStart(2, '0') + '-' + endDay.toString().padStart(2, '0');
+    $('#supervisadateshowinhtml').html(formattedEndDate);
+}
+</script>
