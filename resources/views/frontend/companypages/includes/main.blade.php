@@ -370,8 +370,8 @@
             if(dd <= 9){
                 var dd = '0'+dd;
             }
-            var someFormattedDate = mm + '/' + dd + '/' + y;
-            // var someFormattedDate = y + '-' + mm + '-' + dd;
+            // var someFormattedDate = mm + '/' + dd + '/' + y;
+            var someFormattedDate = y + '-' + mm + '-' + dd;
             document.getElementById('return_date').value = someFormattedDate;
             $('#qoutedestination').text(someFormattedDate)
 
