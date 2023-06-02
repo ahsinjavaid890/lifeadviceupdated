@@ -682,7 +682,9 @@ $(document).ready(function(){
     var day = d.getDate();
 
     var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-    $('#qoutedestination').text(output);
+    var t = output.split(/[, : T]/);
+    $('#qoutedestination').text(t);
+
 });
 $(document).click(function(){
     var someDate = new Date($('#coveragedate').text());
@@ -695,7 +697,8 @@ $(document).click(function(){
     var day = d.getDate();
 
     var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-    $('#qoutedestination').text(output)
+    var t = output.split(/[, : T]/);
+    $('#qoutedestination').text(t);
 });
 
     </script>
