@@ -178,7 +178,6 @@
                                                             <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                                                 <label class="selectlabel">Pre Existing Condition</label>
                                                                 <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-{{--                                                                    <option value="">Select Pre Existing Condition</option>--}}
                                                                     <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
                                                                     <option @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
 
@@ -215,7 +214,6 @@
                                                 <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                                     <label class="selectlabel">Pre Existing Condition</label>
                                                     <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-{{--                                                        <option value="">Select Pre Existing Condition</option>--}}
                                                         <option value="no">No</option>
                                                         <option value="yes">Yes</option>
 
@@ -280,13 +278,13 @@
                                             <div class="col-md-6 birthdateinput">
                                                 <div class="date_picker_body">
                                                     <div class="date_picker_month_navigation">
-                                                        <button class="date_picker_prev_month date_picker_month_nav_btn">
+                                                        <span class="date_picker_prev_month date_picker_month_nav_btn">
                                                             <ion-icon name="caret-back-circle-outline"></ion-icon>
-                                                        </button>
+                                                        </span>
                                                         <h2 class="date_picker_month_name"></h2>
-                                                        <button class="date_picker_next_month date_picker_month_nav_btn">
+                                                        <span class="date_picker_next_month date_picker_month_nav_btn">
                                                             <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                                        </button>
+                                                        </span>
                                                     </div>
                                                     <ul class="date_picker_month_days">
                                                         <li>Sun</li>

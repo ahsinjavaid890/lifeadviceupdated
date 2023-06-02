@@ -2580,14 +2580,18 @@ input::-webkit-inner-spin-button {
 }
 
 .date_picker_body {
-  padding: 1.5rem;
+  border: 1px solid #e5e5e5;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  height: 350px;
 }
 
 .date_picker_month_navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.4rem;
+  margin-bottom: 3.4rem;
 }
 
 .date_picker_prev_month {
@@ -2610,6 +2614,7 @@ input::-webkit-inner-spin-button {
   display: block;
   position: relative;
   font-size: 30px;
+  cursor: pointer;
 }
 .modal-dialog{
     max-width: 1050px !important;
