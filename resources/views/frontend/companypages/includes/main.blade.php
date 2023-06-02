@@ -349,12 +349,6 @@
             }, 100);
         });
         function setdeparuredate(month, date, day, year) {
-
-            alert(month)
-            alert(date)
-            alert(day)
-            alert(year)
-
             var setmonth = +month + 1;
             $('#departure_date').val(year+'-'+setmonth+'-'+date)
             $('#coveragedate').html(year+'-'+setmonth+'-'+date)
@@ -375,7 +369,7 @@
             // var someFormattedDate = mm + '/' + dd + '/' + y;
             var someFormattedDate = y + '-' + mm + '-' + dd;
             document.getElementById('return_date').value = someFormattedDate;
-            $('#supervisadateshowinhtml').text(someFormattedDate)   
+            $('#supervisadateshowinhtml').text(someFormattedDate)
         }
     </script>
     <script type="text/javascript">
