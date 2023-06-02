@@ -79,7 +79,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="ml-3 from">
-                                                    <div id="qoutedestination" class="value">
+                                                    <div id="supervisadateshowinhtml" class="value">
                                                         @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else {{ $todate }} @endif
 
 
