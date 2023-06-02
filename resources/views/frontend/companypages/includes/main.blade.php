@@ -348,22 +348,12 @@
                 $(".ahModelStyle select").select2();
             }, 100);
         });
+        function setdeparuredate(month, date, day, year) {
+            var setmonth = +month + 1;
+            $('#departure_date').val(year+'-'+setmonth+'-'+date)
+            $('#coveragedate').html(year+'-'+setmonth+'-'+date)
 
-
-
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-        var today = mm + '/' + dd + '/' + yyyy;
-        function supervisayes(){
-            var tt = document.getElementById('departure_date').value;
+            var tt = year+'-'+setmonth+'-'+date;
             var date = new Date(tt);
             var newdate = new Date(date);
             newdate.setDate(newdate.getDate() + 364);
@@ -379,14 +369,7 @@
             // var someFormattedDate = mm + '/' + dd + '/' + y;
             var someFormattedDate = y + '-' + mm + '-' + dd;
             document.getElementById('return_date').value = someFormattedDate;
-            $('#qoutedestination').text(someFormattedDate)
-
-        }
-        function setdeparuredate(month, date, day, year) {
-            var setmonth = +month + 1;
-            $('#departure_date').val(year+'-'+setmonth+'-'+date)
-            $('#coveragedate').html(year+'-'+setmonth+'-'+date)
-            supervisayes();
+            $('#supervisadateshowinhtml').text(someFormattedDate)   
         }
     </script>
     <script type="text/javascript">
@@ -530,7 +513,6 @@
             var outputDate = monthTextArray[month] + " " + $(this).children("a").html() + ", " + year;
             console.log(outputDate);
             $("#outputText").text(outputDate);
-            // $("#coveragedate").text(outputDate);
 
         });
 
