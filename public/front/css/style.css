@@ -14845,6 +14845,10 @@ ul .child-list li a {
     display: block;
 }
 
+.select2-search--dropdown {
+    display: none !important;
+}
+
 
     @media (max-width: 450px){
         .ahmSupperBanner .super-images {
@@ -14950,7 +14954,9 @@ ul .child-list li a {
         .hiddenInsuranceDt {
             margin-top: 10px;
         }
-
+        .ahModelStyle .showrowstraveler .select2 {
+            width: 100% !important;
+        }
     }
     @media (max-width:375px){
         .ahmSupperBanner .hero-texts h1{
