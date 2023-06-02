@@ -710,7 +710,7 @@ $(document).click(function(){
     var month = givenDate.getMonth() + 1;
     var day = givenDate.getDate();
     var formattedDate = new Date(year + '-' + month + '-' + day);
-    var formattedDate = formattedDate.toLocaleDateString();
+    // var formattedDate = formattedDate.toLocaleDateString();
 
     console.log(formattedDate);
     $('#qoutedestination').text(formattedDate);
