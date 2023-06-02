@@ -693,10 +693,9 @@ $(document).click(function(){
     var d = new Date(result);
     var month = d.getMonth()+1;
     var day = d.getDate();
-    var output = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' +  (day<10 ? '0' : '') + day;
-
-    var t = output.split(/[- :]/);
-    var actiondate = d.getFullYear() + '-' + month + '-' + day;
+    var year = d.getFullYear();
+    var actiondate = year+'-'+month+'-'+day;
+    console.log(actiondate);
     $('#qoutedestination').text(actiondate);
 });
 
