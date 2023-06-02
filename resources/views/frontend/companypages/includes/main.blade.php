@@ -709,9 +709,11 @@ $(document).click(function(){
     var year = givenDate.getFullYear();
     var month = givenDate.getMonth() + 1;
     var day = givenDate.getDate();
-    var formattedDate = year + '-' + month + '-' + day;
+    var formattedDate = new Date(year + '-' + month + '-' + day);
+    var formattedDate = formattedDate.toLocaleDateString();
 
     console.log(formattedDate);
+    $('#qoutedestination').text(formattedDate);
 });
 
     </script>
