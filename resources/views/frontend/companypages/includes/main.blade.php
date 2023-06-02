@@ -79,12 +79,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="ml-3 from">
-                                                    <div id="supervisadateshowinhtml" class="value">
+                                                    <div id="supervisadateshowinhtml" class="value" style="display: none">
                                                         @if(isset($_GET['departure_date'])) {{ $_GET['return_date'] }} @else  @endif
 
 
                                                     </div>
-                                                    <input type="hidden" id="hiddenSuperViseEnd">
+                                                    <input type="text" id="hiddenSuperViseEnd" disabled class="value" style="width: auto;min-width: auto;color: #67778f;">
                                                 </div>
                                             </div>
                                         </div>
@@ -686,7 +686,7 @@
             // alert(formattedEndDate);
         });
         $(document).click(function(){
-            
+
 
 
             var startDateString = $('#coveragedate').text();
@@ -702,7 +702,7 @@
 
                 var formattedEndDate = endYear + '-' + ('0' + endMonth).slice(-2) + '-' + ('0' + endDay).slice(-2);
 
-                $('#supervisadateshowinhtml').text(formattedEndDate);
+                $('#hiddenSuperViseEnd').val(formattedEndDate);
             } else {
                 console.log("Invalid start date");
             }
