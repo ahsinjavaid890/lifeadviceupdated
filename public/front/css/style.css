@@ -14867,6 +14867,9 @@ ul .child-list li a {
             width: 100%;
             padding: 0 12px !important;
         }
+        .ahModelStyle .date_picker_month_days li button {
+            white-space: nowrap;
+        }
         .ahModelStyle .nextbtns span {
             width: 100%;
             margin-bottom: 10px;
