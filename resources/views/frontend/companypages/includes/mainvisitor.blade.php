@@ -332,9 +332,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div class="modal-footer">
                         <div class="nextbtns">
                            <div class="toogleswithchdiv">
-
                               <input type="hidden" value="no" id="familyplan_temp" name="familyplan_temp">
-
                               <label style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do You Require Family Plan?</label>
                               <label style="margin-right:10px;">No</label>
                               <label style="margin-right:10px;" class="switch">
@@ -445,7 +443,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                     font-size: 1.2rem;
                   }
 
-                  button.switch-month {
+                  span.switch-month {
                     background-color: transparent;
                     padding: 0;
                     outline: none;
@@ -455,16 +453,16 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                     float: left;
                     width:15%;
                     transition: color .2s;
-
+                    cursor: pointer;
                      color: #2b3481;
                      font-size: 30px;
 
                   }
 
-                  button.switch-month:hover {
+                  span.switch-month:hover {
                     color: #12b48b;
                   }
-                  button.switch-month:active {
+                  span.switch-month:active {
                     color: #12b48b;
                   }
                   .calendar_header h2 {
@@ -518,13 +516,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                  <div class="col-sm-6 p-r-z-o-m p-l-z-o-m firstcalenderfordateshow">
                                     <div class="calendar calendar-first" id="calendar_first">
                                       <div class="calendar_header">
-                                        <button class="switch-month switch-left">
+                                        <span class="switch-month switch-left">
                                           <ion-icon name="caret-back-circle-outline"></ion-icon>
-                                        </button>
+                                        </span>
                                         <h2></h2>
-                                        <button class="switch-month switch-right">
+                                        <span class="switch-month switch-right">
                                           <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                        </button>
+                                        </span>
                                       </div>
                                       <div class="calendar_weekdays"></div>
                                       <div class="calendar_content"></div>
@@ -534,13 +532,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 
                                     <div class="calendar calendar-second" id="calendar_second">
                                       <div class="calendar_header">
-                                        <button class="switch-month switch-left">
+                                        <span class="switch-month switch-left">
                                           <ion-icon name="caret-back-circle-outline"></ion-icon>
-                                        </button>
+                                        </span>
                                         <h2></h2>
-                                        <button class="switch-month switch-right">
+                                        <span class="switch-month switch-right">
                                           <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                        </button>
+                                        </span>
                                       </div>
                                       <div class="calendar_weekdays"></div>
                                       <div class="calendar_content"></div>
