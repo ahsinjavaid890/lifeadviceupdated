@@ -695,8 +695,10 @@ $(document).click(function(){
     var day = d.getDate();
     var year = d.getFullYear();
     var actiondate = year+'-'+month+'-'+day;
-    console.log(actiondate);
-    $('#qoutedestination').text(actiondate);
+    var t = actiondate.split(/[- :]/);
+    var t = t[0]+'-'+t[1]+'-'+t[2];
+    console.log(t);
+    $('#qoutedestination').text(t);
 });
 
     </script>
