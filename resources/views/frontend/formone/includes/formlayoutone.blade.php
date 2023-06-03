@@ -3,8 +3,8 @@
 <div class="container">
    <div class="row">
       <div class="col-md-12 text-center mt-4 mb-0">
-         <h1 style="font-weight:bold;margin: 0px;" class="text-danger">{{ $data->pro_name }}</h1>
-         <h2 class="mb-2" style="font-size: 30px;margin: 0; color: #000; margin: 0 0 30px 0; line-height: 1.5; -webkit-font-smoothing: antialiased;text-align: center; margin: 0px;">It's fast and easy using our secure online application.</h2>
+         <h1 class="form-one-heading text-danger">{{ $data->pro_name }}</h1>
+         <h2 class="mb-2 heading-description mobile-deisply-none">It's fast and easy using our secure online application.</h2>
       </div>
    </div>
          <div class="row mainsection birthdate">
@@ -411,7 +411,7 @@
                   </div>
                </form>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 mobile-deisply-none">
                   <div class="imagesection">
                      <div class="row">
                         <div class="">

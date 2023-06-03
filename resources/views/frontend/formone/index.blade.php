@@ -6,6 +6,22 @@
 		border-radius: 10px !important;
 	}
 </style>
+<style type="text/css">
+	.tabshead{
+		margin-top: 67px;
+	}
+	.wrapper-dropdown{
+		top: 22px !important;
+		width: 94% !important;
+	}
+	@media only screen and (max-width: 600px)
+	{
+		.col-xs-4 {
+		    width: 33%;
+		    padding: 0 5px !important;
+		}
+	}
+</style>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js')}}"></script>
@@ -22,7 +38,7 @@
 				</button>
 			</div>
 			<div class="col-md-4 col-xs-4 text-center price_qoutes">
-				<button class="btn">
+				<button class="btn ">
 					<i class="fa fa-shopping-cart"></i> Quotes
 				</button>
 			</div>
@@ -34,6 +50,7 @@
 		</div>
 	</div>
 </section>
+
 <section class="tabscontent">
 	@if($fields['form_layout'] == 'layout_1')
 		@include('frontend.formone.includes.formlayoutone')
