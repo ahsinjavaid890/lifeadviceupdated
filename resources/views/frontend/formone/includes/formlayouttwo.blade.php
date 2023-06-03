@@ -72,14 +72,13 @@ $bg = $bgs[$k];
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 ">
+                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 padding-right-zero-on-mobile">
                                     <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
-                                       <div class="custom-form-control">
+                                       <div class="custom-form-control mb-2">
                                           <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                          <label for="day{{$i}}" class="form-label">MM/DD/YYYY</label>
                                        </div>
                                     </div>
-                                    <div style="padding-right: 0px;" class="col-md-6 ">
+                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
                                        <div class="custom-form-control">
                                           <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Pre Existing of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                           <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
@@ -273,7 +272,7 @@ $bg = $bgs[$k];
                     </script>
 
                  <div class="col-md-12">
-                  <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left; color:#FFF;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="${{$firstsuminsured}}"></h4>
+                  <h4 class="coverage coverageheading">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="${{$firstsuminsured}}"></h4>
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                      <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;"></div>

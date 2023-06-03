@@ -1,16 +1,32 @@
 @extends('frontend.layouts.main')
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
+<style type="text/css">
+	.tabshead{
+		margin-top: 67px;
+	}
+	.wrapper-dropdown{
+		top: 22px !important;
+		width: 94% !important;
+	}
+	@media only screen and (max-width: 600px)
+	{
+		.col-xs-4 {
+		    width: 33%;
+		    padding: 0 5px !important;
+		}
+	}
+</style>
 <section class="tabshead">
 	<div class="container">
 		<div class="row tabs">
 			<div class="col-md-4 col-xs-4 text-center information_qoutes">
-				<button onclick="history.back();" class="btn">
+				<button onclick="history.back();"  class="btn ">
 					<i class="fa fa-user"></i> Information
 				</button>
 			</div>
 			<div class="col-md-4 col-xs-4 text-center price_qoutes">
-				<button  class="btn active">
+				<button class="btn active">
 					<i class="fa fa-shopping-cart"></i> Quotes
 				</button>
 			</div>
