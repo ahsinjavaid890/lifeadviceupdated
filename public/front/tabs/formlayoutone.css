@@ -428,6 +428,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     #lowestprice{
       margin-top: 8px !important;
     }
+    .padding-left-eight-on-mobile{
+      padding-left: 2px !important; 
+    }
   }
 
 .heading-description{

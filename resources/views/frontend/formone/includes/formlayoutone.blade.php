@@ -209,18 +209,17 @@
                                  <div class="col-md-5">
                                     <label for="day" class="form-label lables" id="" style="    margin-left: -11.5px;">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                 <div  class="col-md-7" style="padding-right:0px !important" >
+                                 <div class="col-md-7 padding-left-eight-on-mobile" style="padding-right:0px !important">
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
                                           <input id="dateofbirthfull{{ $i }}" class=" oldTraveler" type="text" placeholder="MM/DD/YYYY" name="years[]" >
-                              
                                        </div>
                                     </div>
                                     <div class="col-md-5">
                                        <label for="day" class="form-label lables" id="" style="    left:0">Pre Existing of <?php echo $ordinal_words[$i];?></label>
                                     </div>
-                                    <div style="padding-right: 0px;" class="col-md-7">
-                                       <label for="day" class="d-sm-none" style="margin-left: -11.5px;">Select Pre Existing</label>
+                                    <div style="padding-right: 0px;" class="col-md-7 padding-left-eight-on-mobile">
+                                       <label for="day" class="d-sm-none">Select Pre Existing</label>
                                        <div class="custom-form-control">
                                           <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
@@ -254,7 +253,7 @@
                            <i class="fa fa-calendar"   style="border-right: 1px solid #666;padding-right: 8px;"></i>
                      </label>
                         <div class="custom-form-control">
-                           <input style="padding-left:40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                           <input style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                            <script>
                            $('#departure_date').datepicker({
                            format: 'yyyy-mm-dd',
@@ -279,7 +278,7 @@
                         <div class="custom-form-control">
 
 
-                           <input style="padding-left:40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                           <input style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
 
                            @if($data->pro_supervisa != 1)
                            <script>
