@@ -1,3 +1,6 @@
+.display-show-on-mobile{
+  display: none;
+}
 .buynowmodalmodal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -3204,6 +3207,18 @@ fieldset .input{
   .display-none-on-mobile{
     display: none;
   }
+  .display-show-on-mobile{
+    display: flex !important;
+  }
+  .qoute-logo{
+    width: 50% !important;
+  }
+  .qoute-logo img{
+    width: 100px !important;
+  }
+  .compare-check{
+    width: 50%;
+  }
   .margin-top-ten-on-mobile{
     margin-top: 10px;
   }
@@ -3237,7 +3252,7 @@ fieldset .input{
 }
 .qoute-logo {
      margin-bottom: 10px;
-    text-align: center;
+/*    text-align: center;*/
 }
 .qoute-card {
         margin-top: 0px !important;

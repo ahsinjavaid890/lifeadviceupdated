@@ -482,15 +482,34 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
               </div>
           </div>
-          <div class="col-md-3">
-            <div class="compare compare-check  justify-content-end d-flex">
+          <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
+
+
+
+            <div class="compare compare-check  justify-content-end display-none-on-mobile">
                 <span class="">Compare</span>
                 <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $second_plan_id; ?>" price="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" value="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" onclick="comparetest()">
 
             </div>
-              <div class="qoute-logo">
-                  <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
-              </div>
+            <div class="qoute-logo display-none-on-mobile">
+                <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
+            </div>
+
+
+            <div class="display-show-on-mobile" style="display:none;">
+                <div class="qoute-logo">
+                    <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
+                </div>
+                <div class="compare compare-check  justify-content-end d-flex">
+                    <span class="">Compare</span>
+                    <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $second_plan_id; ?>" price="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" value="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" onclick="comparetest()">
+
+                </div>
+            </div>
+
+
+
+
               <div class="total-price-traveller">
                   <h2 id="traveler-price">$<?php echo number_format($second_total_price,2);?><span>CAD</span></h2>
                   <?php if($second_monthly_two == '1'){?>
