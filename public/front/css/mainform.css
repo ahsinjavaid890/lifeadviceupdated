@@ -3214,10 +3214,11 @@ fieldset .input{
     width: 50% !important;
   }
   .qoute-logo img{
-    width: 100px !important;
+    width: 140px !important;
   }
   .compare-check{
     width: 50%;
+    margin-top: 15px;
   }
   .margin-top-ten-on-mobile{
     margin-top: 10px;
