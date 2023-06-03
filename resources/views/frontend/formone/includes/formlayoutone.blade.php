@@ -401,10 +401,13 @@
                         @endif
                         @endif
                      @endfor
-                     <div class="col-md-6" id="lowestprice">
+                     
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 width-50-percent" id="lowestprice">
                         <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
                      </div>
-                     <div class="col-md-6 col-xs-6" style="padding-right: 14px;">
+                     <div class="col-md-6 col-xs-6 width-50-percent" style="padding-right: 14px;">
                      <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
                         <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn  pull-right" style="display: block;border-radius: 4px !important;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
                      </div>
