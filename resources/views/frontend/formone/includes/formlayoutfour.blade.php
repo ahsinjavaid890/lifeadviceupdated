@@ -6,9 +6,9 @@
     $('.selecttwo').select2();
 });
 </script>
-<div class="container birthdate  mt-5 mb-5">
+<div class="container birthdate">
    <div class="row" style="padding:40px 0;">
-      <div class="col-md-4 hidden-xs">
+      <div class="col-md-4 hidden-xs mobile-deisply-none">
          <img src="{{ asset('public/front/images/woman-4.jpg')}}" style="width: 100%;">
       </div>
       <div class="col-md-8 visa-insurance" style="padding: 0;">
@@ -240,14 +240,14 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                    <div style="padding-left: 0px;" class="col-md-6">
+                                    <div style="padding-left: 0px;" class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                        <label for="day{{$i}}" class="">Age of the oldest Traveller</label>
                                        <div class="custom-form-control">
                                           <input onchange="dateofbirth(this.value)" id="dateofbirthfull{{ $i }}" class="form-input" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
-                                    <div style="padding-right: 0px;" class="col-md-6">
+                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
                                        <label for="year{{$i}}" class="">Select Pre Existing</label>
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">
