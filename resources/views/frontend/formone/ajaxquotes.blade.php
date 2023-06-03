@@ -86,7 +86,7 @@ $('.coverage-amt-'+group).hide();
         <div class="card qoute-price-card mb-3 left_qoute_card">
           <div class="card-body">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 display-none-on-mobile">
                     <h4>Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                 </div>
                   <div class="col-md-12 adjust-quoto" style="border:none;">
