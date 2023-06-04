@@ -155,12 +155,13 @@ $('.coverage-amt-'+group).hide();
     }
     function comparetest(){
         var pids = [];
+        var coverageammounts = [];
         var price = [];
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
-            console.log('ok');
             var pid =  jQuery(this).attr('data-pid');
             var product_id =  jQuery(this).attr('data-productid');
+            var coverage_ammount =  jQuery(this).attr('data-coverage');
             var price_plan = jQuery(this).val();
             $checkboxes.attr("disabled", false);
             var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
@@ -169,11 +170,11 @@ $('.coverage-amt-'+group).hide();
                 jQuery('.compare_header_top').show();
                 jQuery('.two_select').hide();
                 jQuery('.one_select').show();
-            }else if(countCheckedCheckboxes == 2 || countCheckedCheckboxes == 3){
+            }else if(countCheckedCheckboxes == 2){
                 jQuery('.compare_header_top').show();
                 jQuery('.two_select').show();
                 jQuery('.one_select').hide();
-            }else if(countCheckedCheckboxes >= 4){
+            }else if(countCheckedCheckboxes >= 3){
                 jQuery('.compare_header_top').show();
                 jQuery('.two_select').show();
                 jQuery('.one_select').hide();
@@ -189,6 +190,7 @@ $('.coverage-amt-'+group).hide();
             }else{
                 pids.push(pid);
                 price.push(price_plan);
+                coverageammounts.push(coverage_ammount);
            }
             var url = window.location.href; 
             var arr=url.split('?')[1];
@@ -196,33 +198,19 @@ $('.coverage-amt-'+group).hide();
             var slider2 = localStorage.getItem("price_value");
             
             jQuery("#new_window").click(function(){
-                var planId = jQuery.unique(pids); 
+                var planId = jQuery.unique(pids);
+                var coverage_ammount = jQuery.unique(coverageammounts);
                 var main_price = jQuery.unique(price);
-                var compareUrl = "{{ url('compareplans') }}?email={{$request->savers_email}}&product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
+                var compareUrl = "{{ url('') }}/compareplans?product_id=" + product_id + '&coverage_ammount=' + coverage_ammount + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
                 if (compareUrl.indexOf("#") > -1) {
                     var myUrl = compareUrl.replace(/\#/g, '');
                     var newUrl = jQuery(".two_select a").prop("href",myUrl);
                 }else{
                     var newUrl = jQuery(".two_select a").prop("href",compareUrl);
                 }
-                var newwindow = window.open($(this).prop("href"), '', 'height=800,width=1024');
+                var newwindow = window.open($(this).prop("href"), "_blank");
                 if (window.focus) {newwindow.focus()}
                 return false;   
-            });
-
-
-            jQuery("#previus_window").click(function(){
-                var planId = jQuery.unique(pids); 
-                var main_price = jQuery.unique(price);
-                var compareUrl = "{{ url('compareplans') }}?email={{$request->savers_email}}&product_id=" + product_id + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
-                if (compareUrl.indexOf("#") > -1) {
-                    var myUrl = compareUrl.replace(/\#/g, '');
-                    var newUrl = jQuery(".two_select a").prop("href",myUrl);
-                }else{
-                    var newUrl = jQuery(".two_select a").prop("href",compareUrl);
-                }
-
-                window.location.replace($(this).prop("href"));
             });
 
         });
@@ -268,13 +256,8 @@ $('.coverage-amt-'+group).hide();
                    <i class="fa fa-warning text-warning"></i> Select one more plan to compare
                 </div>
                 <div class="two_select">
-                    @if($mobile = 'yes')
-                    <a href="#" class="btn btn-primary" id="previus_window"><i class="fa fa-server"></i> Compare</a>
-                    <i class="icon"></i>
-                    @else
                     <a href="#" class="btn btn-primary" id="new_window"><i class="fa fa-server"></i> Compare</a>
                     <i class="icon"></i>
-                    @endif
                     <a href="#"  class="btn btn-default" id="clear"><i class="fa fa-refresh"></i> Clear all</a>
                 </div>
             </div>

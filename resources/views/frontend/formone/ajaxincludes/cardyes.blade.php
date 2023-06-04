@@ -529,7 +529,18 @@ if($show == '1' && $total_price > 0){
 
             <div class="compare compare-check  justify-content-end display-none-on-mobile">
                 <span class="">Compare</span>
-                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
+                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>" data-coverage="<?php
+                        if($sum_insured >= 1000000){
+                        $millions = $sum_insured/1000000;
+                        $txt = ' Million';
+                        } else {
+                        $millions = $sum_insured;
+                        $txt = '';
+                        }
+                        echo $millions.$txt;
+                        $dob = $years[0].'-'.$request->month.''.$request->dob_day;
+                        $agent = $request->agent;
+                        $broker = $request->broker;?>"   data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()">
             </div>
             <div class="qoute-logo display-none-on-mobile">
                 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">

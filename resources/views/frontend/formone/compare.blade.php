@@ -1,7 +1,7 @@
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/main.e400e25c.css">
+@extends('frontend.layouts.main')
+
+@section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
-<link rel="stylesheet" type="text/css" href="https://assets.visitorscoverage.com/production/app/vue-builds/25/css/chunk-676de1c8.17873b80.css">
-<main  class="LayoutDefaultMain">
 <?php
 $startdate = $request->departure_date;
 $enddate = $request->return_date;
@@ -20,57 +20,97 @@ $rate=explode(",", rtrim($request->rate));
 ?>
 <?php
       $planid=explode(",", rtrim($_REQUEST['ids']));
+      $coverage_ammount=explode(",", rtrim($_REQUEST['coverage_ammount']));
 ?>
-   <div  class="quote-compare__template">
-      <section  class="hero hero-quote-compare" >
-         <div  class="grid-container">
-            <div  class="grid-row mb-3">
-               <div  class="quote-compare__heading-row top-row">
-                  <div  class="breadCrumbs grid-container-lg-fluid">
-                     <div class="page-breadcrumbs-wrapper">
-                        <ul class="v-breadcrumbs theme--light">
-                           <a href="javascript:void(0)" aria-current="page" class="v-breadcrumbs__item router-link-exact-active router-link-active"><span>Compare Plans</span></a>
-                        </ul>
-                     </div>
-                  </div>
-                  <div  class="mail-btn-wrap d-flex"><a style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " href="javascript:void(0)" onclick="javascript:window.print()" class="button button-primary button-rounded">Print</a><a href="{{ url('sendcompareemail') }}?email={{$request->email}}&product_id={{$request->product_id}}&ids={{$request->ids}}&default_value={{$request->default_value}}&price_value={{$request->price_value}}&rate={{$request->rate}}" style=" width: 100%; font-size: 13px; text-align: center; padding: 0; " class="button button-primary button-rounded"> Email Comparison </a></div>
+
+<section class="copareheading">
+    <div class="container">
+       <div class="row">
+         <div class="col-md-6">
+            <h1>Compare Plans</h1>
+         </div>
+          <div class="col-md-6 text-right">
+             <div class="d-flex">
+               <div style="width: 80%;">
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
                </div>
-            </div>
-            <div  class="grid-row quote-compare__cards-row">
+                <div style="width: 50%;">
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}?email={{$request->email}}&product_id={{$request->product_id}}&ids={{$request->ids}}&default_value={{$request->default_value}}&price_value={{$request->price_value}}&rate={{$request->rate}}" class="btn btn-success"> Email Comparison </a>
+               </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</section>
 
 
-               <?php 
-               for($i=0;$i<count($planid);$i++){
-                  $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
-                  $planname = $plan->plan_name;
-                  $insurance_company = $plan->insurance_company;
+<section class="card-slide">
+   <div class="container-homepage">
+   <div class="wrapper">
+      <!-- Контент -->
+      <div class="slider">
+         <?php 
+         for($i=0;$i<count($planid);$i++){
+            $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
+            $planname = $plan->plan_name;
+            $insurance_company = $plan->insurance_company;
 
-                  $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
-               ?>
-               <div  class="grid-col-4 col_card-plan">
-                  <div  class="card card-plan card-plan--compare" style="--data-color:#ff6600;">
-                     <div class="plan-label heading-4">
-                        <div class="d-flex">
-                           <span style="height:80px;">
-                              <img src="{{ url('public/images') }}/{{ $company->comp_logo }}">
-                           </span>
-                        </div>
-                     </div>
-                     <p class="plan-subheading body-text-3 text-secondary-color">Coverage : </p>
-                     <div class="card-plan__pricing-row">
-                        <div class="plan-price subheading-2"><span><span class="price-value"><span style="font-size: 14px;">$ <?php echo number_format($rate[$i],2); ?></span></span><span class="price-currency text-secondary-color">CAD</span></span></div>
-                        <div  class="plan-card-cta-container">
-                           <a style="padding: 0px 41px;"  href="javascript:void(0)" class="button button-secondary button-rounded button-buy cta-buy-choiceamerica-img">
-                              <span >Buy</span>
-                           </a>
-                        </div>
-                     </div>
+            $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
+         ?>
+         <div class="slider__item">
+            <div class="card slider-card border-0">
+               <div class="card-body text-center">
+                  <div class="simple-online-transparent-slider">
+                       <img src="{{ url('public/images') }}/{{ $company->comp_logo }}">
+                  </div>
+                  <div class="slider-heading">
+                     <h2>Coverage : ${{ $coverage_ammount[$i] }}</h2>
+                  </div>
+                  <div class="slider-pargraph">
+                     <p>$ <?php echo number_format($rate[$i],2); ?></p>
                   </div>
                </div>
-               <?php } ?>
             </div>
          </div>
-      </section>
+         <?php } ?>
+      </div>
+   </div>
+   <script type="text/javascript">
+      $(document).ready(function() {
+        $(".slider").slick({
+          arrows: true,
+          nextArrow: '<button class="slickarrowsnext"><i class="fa fa-solid fa-arrow-right  slick-next"></i></button>',
+          prevArrow: '<button class="slickarrowsprevious"><i class="fa fa-solid fa-arrow-left slick-prev"></i></button>',
+          dots: false,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          autoplay: false,
+          speed: 900,
+          autoplaySpeed: 700,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 550,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      });
+      
+   </script>
+</section> 
+
+
+
+
+   <div  class="quote-compare__template container-homepage">
       <section class="quote-compare__spec-content" >
          <div class="grid-container">
             <div  class="grid-row pt-3">
@@ -132,7 +172,6 @@ $rate=explode(",", rtrim($request->rate));
       </section>
       <!---->
    </div>
-</main>
 <style type="text/css">
    .expandbenifitpanel{
       max-height: 100% !important;
@@ -145,3 +184,4 @@ $rate=explode(",", rtrim($request->rate));
       element.classList.toggle("expandbenifitpanel");
    }
 </script>
+@endsection
