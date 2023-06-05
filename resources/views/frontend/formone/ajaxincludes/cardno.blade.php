@@ -326,7 +326,7 @@ if($second_show == '1' && $second_total_price > 0){
               <div class="plan-label">
                   <!-- <h2><?php echo $second_plan_name;?></h2> -->
               </div>
-                <p class="plan-subheading display-none-on-mobile">
+                <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
                   Deductible Option ($<?php echo $second_deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
                   <br>
                   Days: <?php echo $second_num_of_days;?> (<?php echo $second_startdate;?> - <?php echo $second_enddate;?>)

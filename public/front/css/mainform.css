@@ -1595,6 +1595,55 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
         }
     }
     @media (min-width: 780px) and (max-width: 910px){
+      .left_qoute_card{
+        margin-left: 10px !important;
+      }
+      .total-price-traveller h2{
+        font-size: 15px !important;
+      }
+      .limit-lable span {
+          font-size: 13px !important;
+      }
+      .adjust-quoto h4{
+        display: flex;
+      }
+      .adjust-quoto h4 input{
+        text-align: left !important;
+        margin-left: 10px !important;
+        font-size: 20px !important;
+      }
+      .coverage-mobile-view h4{
+        display: flex;
+      }
+      .coverage-mobile-view h4 input{
+        text-align: left !important;
+        margin-left: 10px !important;
+        font-size: 20px !important;
+      }
+      .display-none-on-tablet{
+        display: none;
+      }
+      .person-additional-traveler-h3{
+        margin-top: 14px !important;
+      }
+      .quotationscards{
+        margin-top: 55px !important;
+      }
+
+      .form-input.date-range {
+          width: 230px;
+      }
+
+      .form-input.date-range .input-field {
+          grid-template-columns: 100px 100px 1fr;
+          grid-column-gap: 0px
+      }
+
+      .quotes-generator-bar .generator-bar-row-wrap {
+          grid-template-columns: 195px 185px 217px 98px !important;
+          grid-gap: 25px !important;
+      }
+
      .quotes-generator-bar .generator-bar-row-wrap {
      grid-template-columns: 137px 185px 266px 98px;
      grid-gap: 0px;
@@ -1604,7 +1653,7 @@ td[data-v-98ac2448], th[data-v-98ac2448] {
         box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
         position: relative;
         max-width: 1096px;
-        margin: 0 auto -48px;
+        margin: 12px auto -73px;
         width: 100%;
         bottom: -11px !important;
         left: 1%;

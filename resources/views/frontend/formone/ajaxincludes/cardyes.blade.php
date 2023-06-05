@@ -347,7 +347,7 @@ if($show == '1' && $total_price > 0){
   <div class="card-body">
       <div class="row ahBuyInsuranceCard">
           <div class="col-md-6">
-                <p class="plan-subheading display-none-on-mobile">
+                <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
                   Deductible Option ($<?php echo $deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
                   <br>
                   Days: <?php echo $num_of_days;?> (<?php echo $startdate;?> - <?php echo $enddate;?>)
