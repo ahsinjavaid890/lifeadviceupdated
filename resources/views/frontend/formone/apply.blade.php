@@ -28,6 +28,12 @@
 	.input{
 		border: 1px solid #cfd9e8 !important;
 	}
+	@media only screen and (max-width: 600px)
+	  {
+	    .select2-container{
+	    	width: 100% !important;
+	    }
+	  }
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/tab_style.css') }}">
 <section class="tabshead">
