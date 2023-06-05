@@ -356,4 +356,10 @@ form.form.form-layout1 .form-control {
   .padding-right-zero-on-mobile{
     padding-right: 0px !important; 
   }
+  .firstsection{
+    padding: 0px 0px !important;
+  }
+  .mobile-deisply-none{
+      display: none !important;
+    }
 }

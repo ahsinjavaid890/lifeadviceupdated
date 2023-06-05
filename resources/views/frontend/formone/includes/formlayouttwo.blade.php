@@ -24,7 +24,7 @@ $k = array_rand($bgs);
 $bg = $bgs[$k];
 
 ?>
-<section style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('') }}public/front/bgs/<?php echo $bg;?>.jpg'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
+<section class="firstsection" style="background: linear-gradient( rgba(162, 44, 44, 0.3), rgba(82, 82, 82, 0.3) ), url('{{ asset('') }}public/front/bgs/<?php echo $bg;?>.jpg'); background-size: cover; background-position: 50% 50%; padding:50px 0px;">
    <div class="container">
       <div class="row birthdate">
          <div class="col-md-2 hidden-xs"></div>
@@ -32,7 +32,7 @@ $bg = $bgs[$k];
             <div class="clearfix"></div>
             <div class="col-md-12 text-center" style="padding: 20px 0;">
                <h1 class="title-form" style="font-weight:bold;margin: 0px;color: #FFF;font-size: 38px;"><strong>{{ $data->pro_name }}</strong></h1>
-               <h2 class="title_des" style="margin: 0px;font-size: 16px;line-height: normal;color:#FFF;">To start, we have a few quick questions to understand your needs.</h2>
+               <h2 class="title_des mobile-deisply-none" style="margin: 0px;font-size: 16px;line-height: normal;color:#FFF;">To start, we have a few quick questions to understand your needs.</h2>
             </div>
             <form action="{{ url('quotes') }}" method="post" class=" form form-layout1" role="form" id="dh-get-quote">
             @csrf
