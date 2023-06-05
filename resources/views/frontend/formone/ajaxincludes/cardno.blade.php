@@ -488,8 +488,7 @@ if($second_show == '1' && $second_total_price > 0){
 
             <div class="compare compare-check  justify-content-end display-none-on-mobile">
                 <span class="">Compare</span>
-                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $second_plan_id; ?>" price="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" value="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" onclick="comparetest()">
-
+                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})">
             </div>
             <div class="qoute-logo display-none-on-mobile">
                 <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
@@ -502,8 +501,7 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
                 <div class="compare compare-check  justify-content-end d-flex">
                     <span class="">Compare</span>
-                    <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $second_plan_id; ?>" price="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" value="<?php echo str_replace(',', '', number_format($second_total_price,2));?>" onclick="comparetest()">
-
+                     <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})">
                 </div>
             </div>
 

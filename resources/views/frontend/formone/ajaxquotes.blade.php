@@ -135,6 +135,9 @@ $('.coverage-amt-'+group).hide();
         @endif
     </div>
 </div>
+@php
+    $rand = rand(100000000 , 20000000);
+@endphp
 <script>
     $( document ).ready(function() {
         var divList = $(".listing-item");
@@ -153,21 +156,13 @@ $('.coverage-amt-'+group).hide();
         }
         $(".hoverdetails_"+id).slideToggle();
     }
-    function comparetest(){
-        var pids = [];
-        var coverageammounts = [];
-        var price = [];
+    function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 
+    {
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
-            var pid =  jQuery(this).attr('data-pid');
-            var product_id =  jQuery(this).attr('data-productid');
-            var coverage_ammount =  jQuery(this).attr('data-coverage');
-            var price_plan = jQuery(this).val();
             $checkboxes.attr("disabled", false);
             var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
-            console.log(countCheckedCheckboxes);
             if (countCheckedCheckboxes == 1){
-                jQuery('.compare_header_top').show();
                 jQuery('.two_select').hide();
                 jQuery('.one_select').show();
             }else if(countCheckedCheckboxes == 2){
@@ -184,83 +179,32 @@ $('.coverage-amt-'+group).hide();
             else{
                 jQuery('.compare_header_top').hide();
             }
-            if (jQuery(this).is(":checked")== false) {
-                 pids.splice(pids.indexOf(pid), 1);
-                 price.splice(price.indexOf(price_plan), 1);
-            }else{
-                pids.push(pid);
-                price.push(price_plan);
-                coverageammounts.push(coverage_ammount);
-           }
-            var url = window.location.href; 
-            var arr=url.split('?')[1];
-            var slider1 = localStorage.getItem("default_value");
-            var slider2 = localStorage.getItem("price_value");
-            
-            jQuery("#new_window").click(function(){
-                var planId = jQuery.unique(pids);
-                var coverage_ammount = jQuery.unique(coverageammounts);
-                var main_price = jQuery.unique(price);
-                var compareUrl = "{{ url('') }}/compareplans?product_id=" + product_id + '&coverage_ammount=' + coverage_ammount + '&ids=' + planId + '&'+arr+'&default_value='+slider1+'&price_value='+slider2+'&rate='+main_price;
-                if (compareUrl.indexOf("#") > -1) {
-                    var myUrl = compareUrl.replace(/\#/g, '');
-                    var newUrl = jQuery(".two_select a").prop("href",myUrl);
-                }else{
-                    var newUrl = jQuery(".two_select a").prop("href",compareUrl);
-                }
-                var newwindow = window.open($(this).prop("href"), "_blank");
-                if (window.focus) {newwindow.focus()}
-                return false;   
-            });
-
         });
-        jQuery("#clear").click(function(){
-          $(".hidden1").prop("checked", false);
-          $(".hidden1").prop("disabled", false);
-          $(".two_select a").removeAttr("href");
-          pids = [];
-          price = [];
-          jQuery('.compare_header_top').hide();
-       });
+        $.ajax({
+            type:'GET',
+            url: '{{ url("savecompareplans") }}/'+{{ $rand }}+'/'+plan_id+'/'+product_id+'/'+coverage_ammount+'/'+deductibles+'/'+price,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                $('.compare_header_top').show();
+                $('.compare_header_top').html(data);
+            }
+        });
+    }
+    function removecomarecard(id) {
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
+        $checkboxes.attr("disabled", false);
+        $.ajax({
+            type:'GET',
+            url: '{{ url("removecomarecard") }}/'+id,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                $('.compare_header_top').show();
+                $('.compare_header_top').html(data);
+            }
+        });
     }
 </script>
-<style>
-    .compare_header_top {
-        background: rgb(249, 249, 249) none repeat scroll 0% 0%;
-        padding: 10px;
-        position: fixed;
-        top: 88px;
-        border-radius: 20px;
-        width: 87%;
-        display: none;
-    }
-    @media only screen and (max-width: 600px)
-      {
-        .compare_header_top {
-            top: 80px !important;
-            border-radius: 0px !important;
-            width: 100% !important;
-        }
-      }
-</style>
-<div class="compare_header_top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 text-center">
-            <h3 style="margin-bottom: 10px;font-weight: bold;">Select & Compare Plans</h3>
-            </div>
-        </div>  
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="one_select">
-                   <i class="fa fa-warning text-warning"></i> Select one more plan to compare
-                </div>
-                <div class="two_select">
-                    <a href="#" class="btn btn-primary" id="new_window"><i class="fa fa-server"></i> Compare</a>
-                    <i class="icon"></i>
-                    <a href="#"  class="btn btn-default" id="clear"><i class="fa fa-refresh"></i> Clear all</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

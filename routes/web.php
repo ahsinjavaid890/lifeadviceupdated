@@ -91,7 +91,11 @@ Route::get('/all/newsletters',[SiteController::class , 'viewLetters'])->name('vi
 Route::get('/delete/letters/{id}',[SiteController::class , 'deleteLetters'])->name('deletenews');
 Route::get('/blog/{id}', [SiteController::class, 'blogdetail']);
 Route::get('/category/{id}', [SiteController::class, 'blogbycategory']);
-Route::get('/compareplans', [SiteController::class, 'compareplans']);
+Route::get('/compareplans/{id}', [SiteController::class, 'compareplans']);
+Route::get('/removecomarecard/{id}', [SiteController::class, 'removecomarecard']);
+
+
+Route::get('/savecompareplans/{rand}/{plan_id}/{product_id}/{coverage_ammount}/{deductibles}/{price}', [SiteController::class, 'savecompareplans']);
 Route::POST('/apply', [SiteController::class, 'applyplan']);
 Route::POST('/applyqoute', [SiteController::class, 'applyqoute']);
 Route::get('/conferm', [SiteController::class, 'confermquote']);

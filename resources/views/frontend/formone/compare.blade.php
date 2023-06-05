@@ -2,27 +2,6 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
-<?php
-$startdate = $request->departure_date;
-$enddate = $request->return_date;
-
-$dStart = new DateTime($request->departure_date);
-$dEnd  = new DateTime($request->return_date);
-$dDiff = $dStart->diff($dEnd);
-$dDiff->format('%R'); // use for point out relation: smaller/greater
-$num_of_days = $dDiff->days;
-if($num_of_days > 365 || $num_of_days == 364){ $num_of_days = 365; }
-
-$product_id = $request->product_id;
-$product = DB::table('wp_dh_products')->where('pro_id' , $product_id)->first();
-$product_name = $product->pro_name;
-$rate=explode(",", rtrim($request->rate));
-?>
-<?php
-      $planid=explode(",", rtrim($_REQUEST['ids']));
-      $coverage_ammount=explode(",", rtrim($_REQUEST['coverage_ammount']));
-?>
-
 <section class="copareheading">
     <div class="container">
        <div class="row">
@@ -35,7 +14,7 @@ $rate=explode(",", rtrim($request->rate));
                   <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
                </div>
                 <div style="width: 50%;">
-                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}?email={{$request->email}}&product_id={{$request->product_id}}&ids={{$request->ids}}&default_value={{$request->default_value}}&price_value={{$request->price_value}}&rate={{$request->rate}}" class="btn btn-success"> Email Comparison </a>
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}" class="btn btn-success"> Email Comparison </a>
                </div>
              </div>
           </div>
@@ -49,14 +28,13 @@ $rate=explode(",", rtrim($request->rate));
    <div class="wrapper">
       <!-- Контент -->
       <div class="slider">
-         <?php 
-         for($i=0;$i<count($planid);$i++){
-            $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
+         @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $r)
+         @php
+            $plan = DB::table('wp_dh_insurance_plans')->where('id' , $r->plan_id)->first();
             $planname = $plan->plan_name;
             $insurance_company = $plan->insurance_company;
-
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
-         ?>
+         @endphp
          <div class="slider__item">
             <div class="card slider-card border-0">
                <div class="card-body text-center">
@@ -64,15 +42,15 @@ $rate=explode(",", rtrim($request->rate));
                        <img src="{{ url('public/images') }}/{{ $company->comp_logo }}">
                   </div>
                   <div class="slider-heading">
-                     <h2>Coverage : ${{ $coverage_ammount[$i] }}</h2>
+                     <h2>Coverage : ${{ $r->coverage_ammount }}</h2>
                   </div>
                   <div class="slider-pargraph">
-                     <p>$ <?php echo number_format($rate[$i],2); ?></p>
+                     <p>$ <?php echo number_format($r->price,2); ?></p>
                   </div>
                </div>
             </div>
          </div>
-         <?php } ?>
+         @endforeach
       </div>
    </div>
    <script type="text/javascript">
@@ -139,15 +117,16 @@ $rate=explode(",", rtrim($request->rate));
                                     <div class="panel-content--heading">{{ $b->benefits_head }}</div>
                                  </span>
                               </div>
+                              @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $h)
                               <?php 
-                                 for($i=0;$i<count($planid);$i++){
-                                    $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
+                                    $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h->plan_id)->first();
                                     $planname = $plan->plan_name;
                                  ?>
+
                               <div class="panel-content__table-cell">
-                                 <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $planid[$i])->where('benefits_head' , $b->benefits_head)->first()){{ DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $planid[$i])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc }} @else N/A @endif</div>
+                                 <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()){{ DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()->benefits_desc }} @else N/A @endif</div>
                               </div>
-                              <?php } ?>
+                              @endforeach
                            </div>
                            @endforeach
                         </div>

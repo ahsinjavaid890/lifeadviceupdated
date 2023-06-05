@@ -18,6 +18,7 @@ use App\Models\sales_cards;
 use App\Models\traveler_sale_informations;
 use App\Models\blogcategories;
 use App\Models\contactus_messages; 
+use App\Models\compare_plans; 
 use App\Models\newsletter; 
 use App\Models\temproaryquote; 
 use Illuminate\Support\Facades\Hash;
@@ -37,6 +38,108 @@ class SiteController extends Controller
         foreach($request->ages as $r) {
             echo $r;
         }
+    }
+    public function savecompareplans($rand,$plan_id,$product_id,$coverage_ammount,$deductibles,$price)
+    {
+        $check = DB::table('compare_plans')->where('comparenumber' , $rand)->where('plan_id' , $plan_id)->where('product_id' , $product_id)->where('coverage_ammount' , $coverage_ammount)->where('deductibles' , $deductibles)->where('price' , $price);
+
+        if($check->count() > 0)
+        {
+            $check->delete();
+        }else{
+            $compare = new compare_plans();
+            $compare->comparenumber = $rand;
+            $compare->plan_id = $plan_id;
+            $compare->product_id = $product_id;
+            $compare->coverage_ammount = $coverage_ammount;
+            $compare->deductibles = $deductibles;
+            $compare->price = $price;
+            $compare->save();
+        }
+        $data = DB::table('compare_plans')->where('comparenumber' , $rand)->get();
+
+        echo '<div class="container">
+                <div class="d-flex showcomparediv">';
+                    foreach ($data as $r) {
+                        $plan = DB::table('wp_dh_insurance_plans')->where('id' , $r->plan_id)->first();
+
+
+                        if($plan->plan_name)
+                        {
+                            $words = explode(" ", $plan->plan_name);
+                            $acronym = "";
+                            foreach ($words as $w) {
+                              $acronym .= mb_substr($w, 0, 1);
+                            }
+
+                            $planname = $acronym;
+                        }else{
+                            $planname = 'PL';
+                        }
+                        
+
+
+                            echo '<div class="card-plan-compare">
+                                    <span  class="card-plan-compare-title">
+                                        <span  class="card-plan-compare-title-full">';
+                                        if($plan->plan_name)
+                                        {
+                                            echo $plan->plan_name;
+                                        }else{
+                                            echo 'Plan '.$data->count();
+                                        }
+                                        echo '</span>
+                                        <span class="card-plan-compare-title-abbr">'.$planname.'</span>
+                                    </span>
+                                    <i onclick="removecomarecard('.$r->id.')" class="icon icon-remove-card"></i>
+                                </div>';
+                            }
+                    echo '<p class="text-secondary-color compare-bar__count"><span>'.$data->count().'</span>/3 Selected</p>';
+                    if($data->count() > 1)
+                    {
+                        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="'.url('compareplans').'/'.$rand.'">Compare</a>';
+                    }else{
+                        echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+                    }
+                    
+                echo '</div>  
+            </div>';
+    }
+    public function removecomarecard($id)
+    {
+        $compare_plans = DB::table('compare_plans')->where('id' , $id)->first();
+        DB::table('compare_plans')->where('id' , $id)->delete();
+        $data = DB::table('compare_plans')->where('comparenumber' , $compare_plans->comparenumber)->get();
+
+        echo '<div class="container">
+                <div class="d-flex showcomparediv">';
+                    foreach ($data as $r) {
+                        $plan = DB::table('wp_dh_insurance_plans')->where('id' , $r->plan_id)->first();
+
+                            echo '<div class="card-plan-compare">
+                                    <span  class="card-plan-compare-title">
+                                        <span  class="card-plan-compare-title-full">';
+                                        if($plan->plan_name)
+                                        {
+                                            echo $plan->plan_name;
+                                        }else{
+                                            echo 'Plan '.$data->count();
+                                        }
+                                        echo '</span>
+                                    </span>
+                                    <i onclick="removecomarecard('.$r->id.')" class="icon icon-remove-card"></i>
+                                </div>';
+                            }
+                    echo '<p class="text-secondary-color compare-bar__count"><span>'.$data->count().'</span>/3 Selected</p>';
+                    if($data->count() > 1)
+                    {
+                        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="'.url('compareplans').'/'.$compare_plans->comparenumber.'">Compare</a>';
+                    }else{
+                        echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+                    }
+                    
+                echo '</div>  
+            </div>';
     }
     public function sendcompareemail(Request $request)
     {
@@ -186,9 +289,9 @@ class SiteController extends Controller
     {
         return view('frontend.formone.apply')->with(array('request'=>$request));
     }
-    public function compareplans(Request $request)
+    public function compareplans($id)
     {
-        return view('frontend.formone.compare')->with(array('request'=>$request));
+        return view('frontend.formone.compare')->with(array('id'=>$id));
     }
     public function productdetail($id)
     {

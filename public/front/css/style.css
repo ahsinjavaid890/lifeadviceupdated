@@ -142,7 +142,94 @@ ul {
     outline: 0;
     border: 1px solid #31abfc;
 }
+.compare_header_top{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 11111;
+    display: none;
+    border-top: 1px solid #2b3481;
+    padding: 15px;
+}
 
+@media only screen and (max-width: 600px)
+  {
+    .showcomparediv .get-quotes-button{
+        margin-top: 0px !important;
+    }
+    .card-plan-compare{
+        max-width: 21% !important;
+    }
+   .card-plan-compare-title-full{
+        display: none;
+    }
+    .card-plan-compare-title-abbr{
+        display: unset !important;
+    }
+    .card-plan-compare{
+        height: 48px;
+    }
+    .card-plan-compare-title {
+        font-size: 13px;
+        padding: 6px 15px;
+    }
+    .compare-bar__count{
+        display: none;
+    }
+  }
+
+.card-plan-compare-title-abbr{
+    display: none;
+}
+
+
+.compare-bar__count{
+    max-width: 8%;
+    flex-basis: auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: 12px;
+    margin-top: 10px;
+}
+.card-plan-compare{
+    max-width: 25%;
+    flex-basis: auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+.card-plan-compare-title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    padding: 12px 21px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #c2cad7;
+    border-radius: 8px;
+    color: #2b3481;
+}
+.icon-remove-card {
+    position: absolute;
+    cursor: pointer;
+    font-size: 20px;
+    right: -15px;
+    top: -16px;
+    background-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMjAnIGhlaWdodD0nMjAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGNpcmNsZSBjeD0nMTAnIGN5PScxMCcgcj0nMTAnIGZpbGw9JyM2Nzc3OEYnLz48cGF0aCBkPSdNMTAuNzMzIDEwbDMuMTE1LTMuMTE1YS41MTguNTE4IDAgMTAtLjczMy0uNzMzTDEwIDkuMjY3IDYuODg1IDYuMTUyYS41MTguNTE4IDAgMTAtLjczMy43MzNMOS4yNjcgMTBsLTMuMTE1IDMuMTE1YS41MTguNTE4IDAgMTAuNzMzLjczM0wxMCAxMC43MzNsMy4xMTUgMy4xMTVhLjUxNy41MTcgMCAwMC43MzMgMCAuNTE4LjUxOCAwIDAwMC0uNzMzTDEwLjczMyAxMHonIGZpbGw9JyNmZmYnIHN0cm9rZT0nI2ZmZicgc3Ryb2tlLXdpZHRoPScuMjUnLz48L3N2Zz4=);
+}
+.comparebutton{
+
+}
 .form-control:hover:focus,
 .form-control:focus {
     -webkit-box-shadow: unset;
