@@ -360,6 +360,9 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                     min-width: 320px;
                     font-family: 'Lato', sans-serif;
                     font-weight: 400;
+                    border: 1px solid #cfd9e8;
+                    border-radius: 10px;
+                    padding: 10px;
                   }
 
                   .calendar_weekdays {
@@ -421,14 +424,18 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                     color: #12b48b;
                   }
                   .calendar_content div.selected {
-                    background-color: rgba(153, 153, 161, .2); /*rgba(170, 170, 176, .5) #aaaab0*/
+                    background-color: #2b3481;
                     border: 1px solid white;
+                    border-radius: 10px;
+                    color: white;
                   }
                   .calendar_header {
                     width: 100%;
                     text-align: center;
                   }
-
+                  .secondcalenderfordateshow{
+                     padding-right: 0px;
+                  }
                   .calendar_header h2 {
                     float:left;
                     width:70%;
@@ -507,8 +514,6 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                               </div>
                               @endif
                               <div class="row userdate-coverage mt-2">
-
-
                                  <div class="col-sm-6 p-r-z-o-m p-l-z-o-m firstcalenderfordateshow">
                                     <div class="calendar calendar-first" id="calendar_first">
                                       <div class="calendar_header">

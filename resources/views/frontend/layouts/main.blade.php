@@ -79,6 +79,9 @@
 		<script src="{{ asset('public/front/js/contact-form-script.js') }}"></script>
 		<script src="{{ asset('public/front/js/custom.js') }}"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js"></script>
+		<div class="compare_header_top">
+
+		</div>
 	</body>
 </html>
 @yield('script')
