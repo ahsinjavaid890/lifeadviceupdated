@@ -2,7 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
-<section class="copareheading">
+<section class="copareheading ah-compare-heading">
     <div class="container">
        <div class="row">
          <div class="col-md-6">
@@ -23,7 +23,7 @@
 </section>
 
 
-<section class="card-slide">
+<section class="card-slide ah-slider-setting">
    <div class="container-homepage">
    <div class="wrapper">
       <!-- Контент -->
@@ -69,21 +69,23 @@
             {
               breakpoint: 768,
               settings: {
-                slidesToShow: 2
+                slidesToShow: 2,
+                  slidesToScroll: 1,
               }
             },
             {
               breakpoint: 550,
               settings: {
-                slidesToShow: 1
+                slidesToShow: 1,
+                  slidesToScroll: 1,
               }
             }
           ]
         });
       });
-      
+
    </script>
-</section> 
+</section>
 
 
 
@@ -96,13 +98,37 @@
                   <!---->
                </div>
             </div>
+             <div class="ah-accordain-wrapper">
+                 <div id="accordion">
+                     @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
+                     <div class="card">
+                         <div class="card-header" id="headingOne">
+                             <h5 class="mb-0">
+                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
+                                     <img  src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
+                                     {{ $r->name }}
+                                 </button>
+                             </h5>
+                         </div>
+
+                         <div id="collapse{{ $r->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                             <div class="card-body">
+                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                             </div>
+                         </div>
+                     </div>
+                     @endforeach
+                 </div>
+             </div>
             <div  class="grid-row">
                <div  class="grid-col-12">
                   <div  class="spec-content__expansion-panels">
                      @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
                      <div onclick="showbenifitpanel({{$r->id}})" id="benefit-panel-{{ $r->id }}" class="expansion-panel mb-3">
                         <div  class="expansion-panel__header">
-                           <div class="panel-header-icon"><img  src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview"></div>
+                           <div class="panel-header-icon">
+                               <img  src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
+                           </div>
                            <div class="panel-header-text">
                               <h3 class="header-title heading-4">{{ $r->name }}</h3>
                               <!-- <h4 class="header-subtitle body-text-2 text-secondary-color"> {{ $r->description }} </h4> -->
@@ -118,7 +144,7 @@
                                  </span>
                               </div>
                               @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $h)
-                              <?php 
+                              <?php
                                     $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h->plan_id)->first();
                                     $planname = $plan->plan_name;
                                  ?>
@@ -137,7 +163,7 @@
             </div>
          </div>
       </section>
-      <section class="quote-compare__disclaimer" style="padding-top:0;" >
+      <section class="quote-compare__disclaimer ah_compare__disclaimer" style="padding-top:0;" >
          <div class="grid-container">
             <div class="grid-row">
                <div class="grid-col-12">
