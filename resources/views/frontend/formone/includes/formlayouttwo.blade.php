@@ -75,7 +75,7 @@ $bg = $bgs[$k];
                                  <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 padding-right-zero-on-mobile">
                                     <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                        <div class="custom-form-control mb-2">
-                                          <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input id="dateofbirthfull{{ $i }}" class="form-control" type="number" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                                     <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">

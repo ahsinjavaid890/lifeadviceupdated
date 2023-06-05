@@ -190,10 +190,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
                                           <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-{{--                                             <option value="">Select Pre Existing Condition</option>--}}
                                               <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
                                               <option @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
-
                                            </select>
                                     </div>
                                     <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
@@ -227,10 +225,8 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
                                           <label class="selectlabel">Pre Existing Condition</label>
                                           <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-{{--                                             <option value="">Select Pre Existing Condition</option>--}}
                                               <option value="no">No</option>
                                               <option value="yes">Yes</option>
-
                                            </select>
                                     </div>
                                     <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
