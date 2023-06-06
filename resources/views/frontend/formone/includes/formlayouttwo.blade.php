@@ -28,7 +28,7 @@ $bg = $bgs[$k];
    <div class="container">
       <div class="row birthdate">
          <div class="col-md-2 hidden-xs"></div>
-         <div class="col-md-8 visa-insurance new-visa" style="padding-top: 10px;padding-bottom: 20px;background:rgba(0,0,0,0.7);padding-left: 2px;padding-right: 0;">
+         <div class="col-md-8 visa-insurance new-visa" style="padding-top: 10px;padding-bottom: 20px;background:rgba(0,0,0,0.7);padding-left: 10px;padding-right: 0;">
             <div class="clearfix"></div>
             <div class="col-md-12 text-center" style="padding: 20px 0;">
                <h1 class="title-form" style="font-weight:bold;margin: 0px;color: #FFF;font-size: 38px;"><strong>{{ $data->pro_name }}</strong></h1>
