@@ -363,6 +363,6 @@ form.form.form-layout1 .form-control {
       display: none !important;
     }
   #ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
-    width:90%;
+    width:70%;
   }
 }
