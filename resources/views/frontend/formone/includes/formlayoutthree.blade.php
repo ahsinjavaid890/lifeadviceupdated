@@ -241,7 +241,7 @@ $bg = $bgs[$k];
                            <div class="row" >
                               <div class="col-md-6" id="dob" style="">
                               <div class="form-group ">
-                                 <input id="dateofbirthfull{{$i}}" class="form-control" type="number" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" >
+                                 <input id="dateofbirthfull{{$i}}" class="form-control" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" >
                   
                               </div> 
                            </div>

@@ -73,7 +73,7 @@
                                     <label for="day{{$i}}" class="label-style">Birth date of the oldest Traveller
                                     </label>
                                        <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class="inputs-style w-100 " type="number" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" style="">
+                                          <input id="dateofbirthfull{{ $i }}" class="inputs-style w-100" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY" style="">
          
                                        </div>
                                     </div>

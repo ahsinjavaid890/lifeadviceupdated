@@ -243,7 +243,7 @@
                                     <div style="padding-left: 0px;" class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                        <label for="day{{$i}}" class="">Age of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull{{ $i }}" class="form-input" type="number" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
