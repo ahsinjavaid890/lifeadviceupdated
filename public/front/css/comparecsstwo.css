@@ -20,3 +20,55 @@
 .slider-heading{
 	margin-top: 20px;
 }
+
+
+
+
+.ah-accordain-wrapper .card {
+    margin-bottom: 20px;
+}
+.ah-accordain-wrapper .card .btn {
+    width: 100%;
+    text-align: left;
+    outline: none !important;
+    display: flex;
+    align-items: center;
+}
+.ah-accordain-wrapper .card .btn img {
+    width: 40px;
+    margin-right: 15px;
+}
+.ah-slider-setting .slider{
+    padding: 0;
+}
+.ah_compare__disclaimer {
+    margin-bottom: 50px;
+} 
+@media (max-width:900px){
+    .ah-compare-heading {
+        height: auto;
+        padding: 20px 10px;
+    }
+    .ah-compare-heading .col-md-6 {
+        text-align: center;
+    }
+    .ah-compare-heading .d-flex {
+        text-align: center;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .ah-compare-heading .d-flex > div {
+        width: auto !important;
+        margin: 0 5px;
+    }
+    .ah-compare-heading .d-flex > div .btn {
+        width: 100% !important;
+        min-width: 100px;
+    }
+    .ah-accordain-wrapper div#accordion, .ah_compare__disclaimer{
+        margin: 0 15px;
+    }
+    .ah_compare__disclaimer {
+        margin-bottom: 30px;
+    }
+}
