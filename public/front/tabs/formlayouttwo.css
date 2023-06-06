@@ -362,4 +362,10 @@ form.form.form-layout1 .form-control {
   .mobile-deisply-none{
       display: none !important;
     }
+    .col-md-12{
+      padding-left: 25px !important;
+    }
+    .col-md-6{
+      padding-left: 25px !important;
+    }
 }
