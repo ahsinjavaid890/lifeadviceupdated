@@ -191,7 +191,7 @@ $bg = $bgs[$k];
                      @if(isset($fields['phone']))
                         @if($fields['phone'] == "on" )
                            <div class="col-md-4" style="margin-bottom:10px;">
-                              <input id="phone" name="phone" size="" minlength="10" maxlength="10" class="form-control" placeholder="Your phone number" type="text" required  onkeyup="validatephone()">
+                              <input inputmode="numeric" id="phone" name="phone" size="" minlength="10" maxlength="10" class="form-control" placeholder="Your phone number" type="text" required  onkeyup="validatephone()">
                            </div>
                            <script>
                               function validatephone(){

@@ -52,9 +52,9 @@
                         <label class="icon-left" for="phonenumbermask" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
                            <i class="fa fa-phone" style="border-right: 1px solid #666;padding-right: 8px;"></i>
                         </label>
-                        <label for="phonenumbermask" class="d-sm-none" >Phone <b id="phone_error" class="text-danger"></b></label>
+                        <label for="phonenumbermask" class="d-sm-none" >Phone Number<b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" id="phonenumbermask"  name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
+                           <input onkeyup="validatephone()" type="text" id="phonenumbermask"  name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
                         </div>
                      </div>
                      <script>

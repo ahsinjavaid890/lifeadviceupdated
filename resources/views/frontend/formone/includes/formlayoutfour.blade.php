@@ -284,7 +284,7 @@
                      @if($fields['phone'] == 'on')
                      <div class="col-md-12 col-sm-12 col-xs-12 control-input">
                      <label class="input-label" for="phonenumbermask">Phone <small id="phone_error" class="text-danger"></small></label>
-                           <input   id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" id="phone" name="phone" size="" minlength="10" maxlength="10" value="" class="form-control " placeholder="Enter Phone Number" type="text" required="" onkeyup="validatephone()" style="padding-left: 40px !important;">
+                           <input inputmode="numeric"  id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" id="phone" name="phone" size="" minlength="10" maxlength="10" value="" class="form-control " placeholder="Enter Phone Number" type="text" required="" onkeyup="validatephone()" style="padding-left: 40px !important;">
                            <span class="phoneicon" style="color:#01a281;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>

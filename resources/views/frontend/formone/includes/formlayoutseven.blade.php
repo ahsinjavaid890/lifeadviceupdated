@@ -113,7 +113,7 @@
                      <div class="col-md-12 mb-2">
                         <label for="phonenumbermask" class="label-style" >Phone <b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" id="phonenumbermask" type="text" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" required id="phone" class="w-100 inputs-style">
+                           <input inputmode="numeric" onkeyup="validatephone()" id="phonenumbermask" type="text" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" required id="phone" class="w-100 inputs-style">
                         </div>
                      </div>
                      <script>

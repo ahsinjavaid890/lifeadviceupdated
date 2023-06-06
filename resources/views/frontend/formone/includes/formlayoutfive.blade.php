@@ -70,7 +70,7 @@
                      </div>
                      <div class="col-md-6 no-padding-right">
                         <div class="custom-form-control">
-                           <input style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" onkeyup="validatephone()" type="text" name="phone" required id="phone" class="form-input">
+                           <input inputmode="numeric" style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" onkeyup="validatephone()" type="text" name="phone" required id="phone" class="form-input">
                            <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>
