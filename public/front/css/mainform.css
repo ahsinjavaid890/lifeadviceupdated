@@ -3464,3 +3464,9 @@ input:checked + .tooglecheckbox:before {
 .toogleswithchdiv label{
    margin-bottom: 0px;
 }
+@media (max-width: 900px){
+    .nav-area.nev-style-five .mean-container a.meanmenu-reveal span{
+        top: 0;
+        margin-top: 5px;
+    }
+}
