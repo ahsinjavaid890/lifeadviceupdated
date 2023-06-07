@@ -28,12 +28,12 @@
                 </div>
                 <div class="travel-medical-paragraph" style="margin-top:20px;">
                       <p>Check to see if there is disability insurance available through your workplace, in which case your employer may cover part of your premiums. Consider purchasing a policy on your own if coverage at the workplace is insuficient to meet your needs or if workplace coverage is not available to you. Ways to buy a policy on your own include going through a professional association, contacting an insurance broker, reaching out to an insurance company. Take the time to understand the policy you are buying, and don’t be afraid to ask any questions about what your disability insurance policy covers.</p>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="benefits ptb-100">
+<section class="benefits ptb-100 ah-benefits">
     <div class="container-homepage">
         <div class="row">
             <div style="margin-bottom: 25px;" class="col-md-12 text-center">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5 trans-card">
-                
+
                 <div class="card transparent-card">
                  <div class="card-body text-center">
                     <div class="transparent-card-heading mt-3">
@@ -123,7 +123,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 trans-card">
-                
+
                 <div class="card transparent-card">
                  <div class="card-body text-center">
                     <div class="transparent-card-heading mt-3">

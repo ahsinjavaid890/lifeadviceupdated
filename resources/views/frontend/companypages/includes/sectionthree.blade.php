@@ -3,7 +3,7 @@
     $thirdsection = DB::table('section_three_elements')->where('type' , 'beautifulcards')->where('page' , $url)->get();
     $page = DB::table('travelpages')->where('url' , $url)->get()->first();
 @endphp
-<section class="benefits ptb-100">
+<section class="benefits ptb-100 ah-benefits">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">
             <h2>{!! $page->sectionthreeheading !!}</h2>

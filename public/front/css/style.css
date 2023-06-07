@@ -12542,19 +12542,19 @@ ul.tabs li.current {
         height: 295px !important;
     }
 
-    .travel-medical-heading h2 {
+    .travel-medical-heading h2, .travel-medical-heading h2 span {
         font-size: 22px !important;
     }
 
-    .travel-medical-heading2 h2 {
+    .travel-medical-heading2 h2, .travel-medical-heading2 h2 span {
         font-size: 22px !important;
     }
 
-    .calculate-heading h2 {
+    .calculate-heading h2, .calculate-heading h2 span {
         font-size: 22px !important;
     }
 
-    .policies-heading h2 {
+    .policies-heading h2, .policies-heading h2 span {
         font-size: 22px !important;
     }
 
@@ -12567,7 +12567,7 @@ ul.tabs li.current {
     }
 
     .slider-heading h2 span {
-        font-size: 17px !important;
+        font-size: 22px !important;
     }
 
     .calculate-heading h2 span {
@@ -14939,12 +14939,15 @@ ul .child-list li a {
 
     @media (max-width: 450px){
         .ahmSupperBanner .super-images {
-            height: 262px !important;
+            height: 246px !important;
             background-position: 60% 0% !important;
             background-size: cover !important;
         }
         .super-hero.ahmSupperBanner {
-            height: 322px !important;
+            height: 300px !important;
+        }
+        .ahmSupperBanner .herrotext.super-hero-text{
+            margin-top: 230px;
         }
         .ahm-form-wrap .quotes-generator-bar .form-input{
             margin-top: 0 !important;
@@ -15046,6 +15049,12 @@ ul .child-list li a {
         }
         .ahModelStyle .showrowstraveler .select2 {
             width: 100% !important;
+        }
+        .ah-benefits .step_name{
+            background-size: 60px !important;
+        }
+        .ah-benefits .step_name{
+            padding: 0 0 0 70px
         }
     }
     @media (max-width:375px){

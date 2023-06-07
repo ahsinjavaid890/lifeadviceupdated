@@ -1398,15 +1398,19 @@ break {
 .how_to_buy_steps {
   position: relative;
   margin-top: 15px;
+    overflow: hidden;
 }
 .how_to_buy_steps_connection {
-  background: url(../img/images/timeline.png);
-  width: 82px;
-  height: 423px;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  margin-left: -41px;
+    background: url(../img/images/timeline.png);
+    width: 82px;
+    height: 100%;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -41px;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .step {
   height: 100%;
@@ -1441,7 +1445,7 @@ break {
 .step_1 .step_name {
   background-position: left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 48px;
 }
 .step_2 .step_name {
   background-position: left;
