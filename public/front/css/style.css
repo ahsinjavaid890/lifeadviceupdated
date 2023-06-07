@@ -14938,6 +14938,9 @@ ul .child-list li a {
 
 
     @media (max-width: 450px){
+        .ah-benefits .step_name p span {
+            display: inline-block;
+        }
         .ahmSupperBanner .super-images {
             height: 246px !important;
             background-position: 60% 0% !important;
