@@ -389,15 +389,15 @@ $bg = $bgs[$k];
                            <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding input custom_traveller gender-main">
                                  <label class="input-label">Do you Smoke in last 12 months?</label>
                                  <button type="button" id="doyousmoke" class="form-control text-left" 
-                                 onclick="doyousmokeinlasttwelvedays();" style="padding: 0;font-size: 14px;font-weight: 500;"><img src="{{ url('public/front/bgs/no-smoking.svg') }}"> No</button>
+                                 onclick="doyousmokeinlasttwelvedays();" style="padding: 0;font-size: 14px;font-weight: 500;"><img src="{{ url('public/front/no-smoking.png') }}"> No</button>
                               <script>
                               function doyousmokeinlasttwelvedays(){
                                  if(document.getElementById('Smoke12').value == 'no'){
 
-                                    document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/bgs/smoking.svg') }}"> Yes';
+                                    document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/smoking.png') }}"> Yes';
                                     document.getElementById('Smoke12').value = 'yes';
                                  } else {
-                                 document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/bgs/no-smoking.svg') }}"> No';
+                                 document.getElementById('doyousmoke').innerHTML = '<img src="{{ url('public/front/no-smoking.png') }}"> No';
                                  document.getElementById('Smoke12').value = 'no';   
                                  }
                               }

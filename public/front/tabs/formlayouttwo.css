@@ -63,10 +63,10 @@ form.form.form-layout1 .form-control {
         padding: 13px 25px 11px 8px;
     }
   #dh-get-quote button{
-padding: 8px 50px;
-font-weight: bold;
-border: 1px solid #1BBC9B;
-font-size: 16px;
+    padding: 8px 50px;
+    font-weight: bold;
+    border: 1px solid #1BBC9B;
+    font-size: 16px;
   }
 
 
@@ -345,7 +345,6 @@ form.form.form-layout1 .form-control {
     background: #F1F1F1;
     height: 100%;
     margin-right: 7px;
-    padding: 10px 10px 10px 10px;
 }
 
 @media only screen and (max-width: 600px)
