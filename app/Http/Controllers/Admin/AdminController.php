@@ -725,7 +725,7 @@ class AdminController extends Controller
         if($request->policydocument)
         {
             $document = Cmf::sendimagetodirectory($request->policydocument);
-            $update = array('policy_number' => $request->policy_number, 'policy_status' => $request->policy_status, 'policydocument' => $document);
+            $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status, 'policydocument' => $document);
         }else{
             $update = array('policy_number' => $request->policy_number, 'policy_status' => $request->policy_status);
         }
