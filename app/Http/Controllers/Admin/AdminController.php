@@ -727,7 +727,7 @@ class AdminController extends Controller
             $document = Cmf::sendimagetodirectory($request->policydocument);
             $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status, 'policydocument' => $document);
         }else{
-            $update = array('policy_number' => $request->policy_number, 'policy_status' => $request->policy_status);
+            $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status);
         }
         DB::table('sales')->where('id' , $request->id)->update($update);
         return redirect()->back()->with('message', 'Sales Updated Successfully');
