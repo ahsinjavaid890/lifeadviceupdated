@@ -570,7 +570,7 @@ if($show == '1' && $total_price > 0){
                                 <p>BY CALLING</p>
                                 <p><a href="tel:+18555005041" style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a></p>
                                 <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
-                                <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+                                <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EST | Friday 8:00 am to 8:00 pm EST | Saturday 8:30 am to 4:00 pm EST | Closed on holidays.</p>
                             </div>
                             <div class="col-md-1">
                                 <div style="position: relative;border-left: 1px solid #2b3481;height: 100%;">

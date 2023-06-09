@@ -182,7 +182,7 @@
                                             <td>{{ $data->sponsersname }}</td>
                                         </tr>
                                         <tr>
-                                            <td bgcolor="#F6F6F6"><strong>Sponsers Email:</strong></td>
+                                            <td bgcolor="#F6F6F6"><strong>Sponsers Relationship:</strong></td>
                                             <td>{{ $data->sponsersemail }}</td>
                                             
                                         </tr>

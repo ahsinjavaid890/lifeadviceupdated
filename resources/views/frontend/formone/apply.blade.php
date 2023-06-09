@@ -190,7 +190,7 @@
 										</div>
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
-								              	<label class="selectlabeldateofbirth">Sponsor Email</label>
+								              	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
 								                <input id="" class="input" type="" name="sponsersemail">
 								            </div>
 										</div>
