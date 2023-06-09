@@ -981,8 +981,9 @@ var searchInput = 'pac-input';
 $(document).ready(function () {
     var autocomplete;
     autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-    	fields: ["address_components", "geometry", "icon", "name"],
-        types: ['establishment'],
+    	componentRestrictions: { country: ["us", "ca"] },
+	    fields: ["address_components", "geometry"],
+	    types: ["address"],
     });
 	
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
