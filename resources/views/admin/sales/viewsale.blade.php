@@ -178,6 +178,15 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Sponsers Name:</strong></td>
+                                            <td>{{ $data->sponsersname }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Sponsers Email:</strong></td>
+                                            <td>{{ $data->sponsersemail }}</td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td bgcolor="#F6F6F6"><strong>Email:</strong></td>
                                             <td>{{ $data->email }}</td>
                                         </tr>

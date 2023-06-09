@@ -314,9 +314,9 @@
                                                     <div class="col-md-6 userdata-card mt-3 mobile-device-email-input">
                                                         <div class="custom-form-control positionrelative">
                                                             <label class="selectlabeldateofbirth">Enter Your Email</label>
-                                                            <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
+                                                            <input onkeyup="checkemailcorection(this.value)" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
                                                         </div>
-                                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
+                                                        <div class="text-danger mt-1" id="savers_emailerror"></div>
                                                     </div>
                                                 @endif
                                             @endif

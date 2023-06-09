@@ -249,8 +249,21 @@ function firstnext() {
      $('#firstnextorignal').click();
   }
 }
+ function validateEmail($email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailReg.test( $email );
+}
 
+function checkemailcorection(id) {
+    if( !validateEmail($('#savers_email').val())) { 
+        $('#savers_emailerror').show();
+        $('#savers_emailerror').html('Please Enter Correct Email');
 
+     }else{
+        $('#savers_emailerror').hide();
+        $('#savers_emailerror').html('');
+     }
+}
 
 function thirdone() {
  if($('#savers_email').val() == '')
@@ -258,10 +271,19 @@ function thirdone() {
     $('#savers_emailerror').show();
     $('#savers_emailerror').html('Please Enter Your Email');
  }else{
-    $('#savers_emailerror').hide();
+
+    if( !validateEmail($('#savers_email').val())) { 
+        $('#savers_emailerror').show();
+        $('#savers_emailerror').html('Please Enter Correct Email');
+
+     }else{
+        $('#savers_emailerror').hide();
      $('#donefake').hide();
      $('#doneoriginal').show();
      $('#doneoriginal').click();
+     }
+
+    
   }
 }
 

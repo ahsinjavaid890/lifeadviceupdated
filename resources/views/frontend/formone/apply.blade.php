@@ -180,6 +180,22 @@
 										</div>
 									</div>
 								</div>
+								<div class="form-group mt-3">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="custom-form-control positionrelative">
+						                    	<label class="selectlabeldateofbirth">Sponsor Name</label>
+						                        <input class="input" type="" placeholder=" " id="" name="sponsersname">
+						                    </div>
+										</div>
+										<div class="col-md-6 nopad">
+											<div class="custom-form-control positionrelative">
+								              	<label class="selectlabeldateofbirth">Sponsor Email</label>
+								                <input id="" class="input" type="" name="sponsersemail">
+								            </div>
+										</div>
+									</div>
+								</div>
 								<div class="card-body">
 									<div class="col-md-12">
 										

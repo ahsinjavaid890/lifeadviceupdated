@@ -206,6 +206,8 @@ class SiteController extends Controller
 
         $newsale = new sales();
         $newsale->reffrence_number = $reffrence_number;
+        $newsale->sponsersname = $request->sponsersname;
+        $newsale->sponsersemail = $request->sponsersemail;
         $newsale->email = $request->email;
         $newsale->phonenumber = $request->phone;
         $newsale->address = $request->streetname;
@@ -283,6 +285,11 @@ class SiteController extends Controller
         Mail::send('email.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
               $message->to($request->email);
               $message->subject('Tell Us How We Did?');
+        });
+        $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
+        Mail::send('email.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
+              $message->to('admin@lifeadvice.ca');
+              $message->subject($subject);
         });
         return view('frontend.formone.conferm')->with(array('request'=>$request));
     }
