@@ -749,7 +749,7 @@ class AdminController extends Controller
         $addcode->save();
         $subject = 'Verfication Code For Customer Card Information';
         Mail::send('email.sendcode', ['code' => $rand], function($message) use($subject){
-              $message->to('ahsinjavaid890@gmail.com');
+              $message->to('admin@lifeadvice.ca');
               $message->subject($subject);
         });
     }
