@@ -188,7 +188,7 @@
                                         </tr>
                                         <tr>
                                             <td bgcolor="#F6F6F6"><strong>Address:</strong></td>
-                                            <td>{{ $r->address }}</td>  
+                                            <td>{{ $data->address }}</td>  
                                         </tr>
                                         <tr>
                                             <td bgcolor="#F6F6F6"><strong>Appartment:</strong></td>
