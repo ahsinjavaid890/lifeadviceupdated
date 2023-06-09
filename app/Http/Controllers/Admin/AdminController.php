@@ -729,7 +729,7 @@ class AdminController extends Controller
         }else{
             $update = array('policy_number' => $request->policy_number, 'policy_status' => $request->policy_status);
         }
-        DB::table('sales')->where('sales_id' , $request->id)->update($update);
+        DB::table('sales')->where('id' , $request->id)->update($update);
         return redirect()->back()->with('message', 'Sales Updated Successfully');
     }
 
