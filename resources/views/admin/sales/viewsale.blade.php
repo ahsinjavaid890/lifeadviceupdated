@@ -163,6 +163,59 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card card-custom mt-5">
+                        <div class="card-header flex-wrap py-5">
+                            <div class="card-title">
+                                <h3 class="card-label">
+                                    Insured Details
+                                </h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Modal -->
+                        <div class="card-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Email:</strong></td>
+                                            <td>{{ $data->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Phone Number:</strong></td>
+                                            <td>{{ $data->phonenumber }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Address:</strong></td>
+                                            <td>{{ $r->address }}</td>  
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>Appartment:</strong></td>
+                                            <td style="color:red"><strong>{{ $data->appartment }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>country:</strong></td>
+                                            <td style="color:red"><strong>{{ $data->country }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>postalcode:</strong></td>
+                                            <td style="color:red"><strong>{{ $data->postalcode }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>province:</strong></td>
+                                            <td style="color:red"><strong>{{ $data->province }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#F6F6F6"><strong>city:</strong></td>
+                                            <td style="color:red"><strong>{{ $data->city }}</strong></td>
+                                        </tr>
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     @foreach(DB::table('traveler_sale_informations')->where('sale_id' , $data->id)->get() as $key=> $r)
