@@ -268,8 +268,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/editsale/{id}','AdminController@editsale');
         Route::post('/editsale','AdminController@editsales');
         Route::get('/viewsale/{id}','AdminController@viewsale');
+        Route::get('/sendcode/{id}','AdminController@sendcode');
         Route::post('/policyconfermation','AdminController@policyconfermation');
-
+        Route::get('/sendcodetocheck/{id}/{code}','AdminController@showdetailsbutton');
         
     });
 

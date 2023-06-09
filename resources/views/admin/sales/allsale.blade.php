@@ -22,84 +22,31 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>                        
-                                <th><strong>Policy Number</strong></th>
-                                <th><strong>Policy Title</strong></th>
-                                <th><strong>Product</strong></th>
-                                <th><strong>Client</strong></th>
-                                <th><strong>Purchase Date</strong></th>
-                                <th><strong>Effective/Expiry</strong></th>
+                                <th><strong>Reffrence Number</strong></th>
+                                <th><strong>Product Name</strong></th>
+                                <th><strong>Start Date</strong></th>
+                                <th><strong>End Date</strong></th>
+                                <th><strong>Total Premium</strong></th>
                                 <th><strong>Status</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
-                                @php
-                                    if($r->product == 1){
-                                        $policytype = 'SVI';
-                                    } else if($r->product == 2){
-                                        $policytype = 'VTC';
-                                    } else if($r->product == 3){
-                                        $policytype = 'SI';
-                                    } else if($r->product == 4){
-                                        $policytype = 'IFC';
-                                    } else if($r->product == 5){
-                                        $policytype = 'ST';
-                                    } else if($r->product == 6){
-                                        $policytype = 'MT';
-                                    } else if($r->product == 7){
-                                        $policytype = 'AI';
-                                    } else if($r->product == 8){
-                                        $policytype = 'TII';
-                                    } else if($r->product == 9){
-                                        $policytype = 'BC';
-                                    }else{
-                                        $policytype = '';
-                                    }
-                                    $policy_number_temp = 10000000 + $r->sales_id;
-                                    $policy_number = $policytype.$policy_number_temp;
-
-
-                                    $today = strtotime(date('Y-m-d'));
-                                    $st_date = strtotime($r->start_date);
-                                @endphp
-
-                                <tr>                                
+                                <tr @if($r->newstatus == 'new') style="background-color:#ddd;" @endif>                                
+                                    <td>{{ $r->reffrence_number }} @if($r->newstatus == 'new') <span class="badge badge-danger">New</span> @endif</td>
+                                    <td>{{$r->product_name}}</td>
                                     <td>
-                                        {{ $policy_number }}
+                                        {{ Cmf::date_format($r->start_date) }}
                                     </td>
-                                    <td>{{$r->policy_title}}</td>
-                                    <td>
-                                        @if(DB::table('wp_dh_products')->where('pro_id' , $r->product)->get()->first())
-                                        {{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->get()->first()->pro_name }}
-                                        @endif
+                                    <td>{{ Cmf::date_format($r->end_date) }}
                                     </td>
+                                    <td>{{ $r->premium }}</td>
                                     <td>
-                                        {{ $r->fname }} {{ $r->lname }} <br>
-                                    </td>
-                                    <td>{{ Cmf::date_format($r->purchase_date) }}</td>
-                                    <td>
-                                        {{ Cmf::date_format($r->start_date) }} / {{ Cmf::date_format($r->end_date) }}
+                                        {{ $r->status }}
                                     </td>
                                    <td>
-                                       @if($r->policy_status == 'cancel')
-                                        <div class="badge badge-danger">Cancelled</div>
-                                       @elseif($r->policy_status == 'pending')
-                                       <div class="badge badge-info">Pending</div>
-                                       @elseif($r->policy_status == 'return')
-                                       <div class="badge badge-warning">Early Return</div>
-                                       @elseif($today >= $st_date && $r->policy_status == 'paid')
-
-                                       <div class="badge badge-success">Active</div>
-                                       
-                                       @elseif($r->policy_status == 'paid')
-
-                                       <div class="badge badge-success">Paid</div>
-                                       
-                                       @endif
-                                   </td>
-                                   <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->sales_id }}"><i class="fa fa-eye"></i> View Policy</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View Sale</a>
                                    </td>
                                 </tr>
 

@@ -228,6 +228,7 @@ class SiteController extends Controller
         $newsale->comp_id = $request->comp_id;
         $newsale->plan_id = $request->plan_id;
         $newsale->status = 'Pending';
+        $newsale->newstatus = 'new';
         $newsale->save();
 
 

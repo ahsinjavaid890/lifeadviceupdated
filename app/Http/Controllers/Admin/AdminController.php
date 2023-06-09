@@ -18,6 +18,7 @@ use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_life_plans;
 use App\Models\wp_dh_products;
 use App\Models\quotes;
+use App\Models\sales_cards;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
@@ -704,7 +705,7 @@ class AdminController extends Controller
     }
     public function allsale()
     {
-        $data = DB::table('sales')->orderby('purchase_date' , 'DESC')->paginate(10);
+        $data = DB::table('sales')->orderby('id' , 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data'=>$data));
     }
     public function editsale($id)
@@ -734,10 +735,69 @@ class AdminController extends Controller
 
     public function viewsale($id)
     {
-        $data = DB::table('sales')->where('sales_id' , $id)->first();
-        $insurance_plan = wp_dh_insurance_plans::where('id'  ,$data->policy_id)->first();
-        $company = wp_dh_companies::where('comp_id' , $insurance_plan->insurance_company)->first();
-        return view('admin.sales.viewsale')->with(array('data'=>$data,'insurance_plan'=>$insurance_plan,'company'=>$company));
+        DB::table('sales')->where('id' , $id)->update(array('newstatus' =>'old'));
+        $data = DB::table('sales')->where('id' , $id)->first();
+        $company = DB::table('wp_dh_companies')->where('comp_id' , $data->comp_id)->first();
+        return view('admin.sales.viewsale')->with(array('data'=>$data,'company'=>$company));
+    }
+    public function sendcode($id)
+    {
+        $rand = rand(1234 , 4321);
+        $data = sales_cards::where('sale_id' , $id)->first();
+        $addcode = sales_cards::find($data->id);
+        $addcode->code = $rand;
+        $addcode->save();
+        $subject = 'Verfication Code For Customer Card Information';
+        Mail::send('email.sendcode', ['code' => $rand], function($message) use($subject){
+              $message->to('ahsinjavaid890@gmail.com');
+              $message->subject($subject);
+        });
+    }
+    public function showdetailsbutton($id , $code)
+    {
+        $data = sales_cards::where('sale_id' , $id)->first();
+        $card = sales_cards::find($data->id);
+        if($code == $card->code)
+        {
+            echo '<h2 style=" text-align: center; color: red; font-size: 18px; ">Please Coppy Card Details POP Will Disapper after 30 Second and Page Load Automatically</h2><table class="table table-borderd">
+                <tbody>
+                    <tr>
+                        <td bgcolor="#F6F6F6"><strong>Card Holder Name:</strong></td>
+                        <td>
+                            '.$card->card_name.'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F6F6F6"><strong>Card Number:</strong></td>
+                        <td>
+                            '.$card->card_number.'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F6F6F6"><strong>Card CVC:</strong></td>
+                        <td>
+                            '.$card->card_cvc.'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F6F6F6"><strong>Card Month:</strong></td>
+                        <td>
+                            '.$card->card_month.'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#F6F6F6"><strong>Card Year:</strong></td>
+                        <td>
+                            '.$card->card_year.'
+                        </td>
+                    </tr>
+                </tbody>
+               
+            </table>';
+        }else{
+            echo 1;
+        }
+        
     }
     public function allcompanies()
     {

@@ -177,7 +177,7 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Manage Sales</span><i class="menu-arrow"></i>
+                        <span class="menu-text">Manage Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 10px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span><i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
@@ -187,7 +187,7 @@
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/sales/allsale') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Sales</span>
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 40px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span>
                                 </a>
                             </li>
                         </ul>
