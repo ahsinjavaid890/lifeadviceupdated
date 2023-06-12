@@ -2,10 +2,13 @@
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
 @include('frontend.companypages.includes.main')
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div style="background-color:#f4f7fa" class="container-homepage">
-	<div class="quotationscards">
+    <div class="quotationscards">
                       
-	</div>
+    </div>
 </div>
 @include('frontend.companypages.includes.sectiontwo')
 @include('frontend.companypages.includes.sectionthree')

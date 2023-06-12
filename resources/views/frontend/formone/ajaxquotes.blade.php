@@ -84,7 +84,11 @@ var group = SliderValues[i];
 $('.coverage-amt-'+group).hide();
 }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount").val("$" + SliderValues[ui.value]);
+
+            $('#coverageprice').val(SliderValues[ui.value]);
+            $('#sum_insured2').val(SliderValues[ui.value]);
+            
         }
     });
 
