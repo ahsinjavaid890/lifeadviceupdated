@@ -223,6 +223,13 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                         if($request->pre_existing[$perone-1]=='yes')
                         {
                             $dailyrate = $plan_rates[0]->rate_with_pre_existing;
+
+
+                            if($dailyrate == 0)
+                            {
+                                print_r($plan_rates);
+                            }
+
                             $daily_rate += $dailyrate;
                             if($dailyrate == '')
                             {
