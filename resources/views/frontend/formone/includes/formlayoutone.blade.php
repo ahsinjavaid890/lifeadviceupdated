@@ -224,7 +224,7 @@
                                           <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option selected value="no">No</option>
                                            </select>
                                        </div>
                                     </div>
@@ -359,7 +359,7 @@
                                  <select required class="form-input" name="Smoke12" id="">
                                     <option value="">--- Please Choose ---</option>
                                       <option value="yes" >Yes</option>
-                                      <option value="no" >No</option>
+                                      <option selected value="no" >No</option>
                                  </select>
                               </div>
                            </div>
@@ -379,7 +379,7 @@
                                     <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes">Yes</option>
-                                         <option value="no">No</option>
+                                         <option selected value="no">No</option>
                                     </select>
                                  </div>
                               </div>
