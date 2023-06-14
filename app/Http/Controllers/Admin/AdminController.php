@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Hash;
 use Mail;
 use Auth;
 use DB;
+use Redirect;
 class AdminController extends Controller
 {
     public function dashboard(){
@@ -271,6 +272,9 @@ class AdminController extends Controller
         $updateplan->last_updated_by = Auth::user()->id;
         $updateplan->save();
         
+
+
+        wp_dh_insurance_plans_deductibles::where('plan_id' , $updateplan->id)->delete();
         for($i=0;$i<count($request->ideductHash);$i++){
             $deduct = $request->ideductHash[$i];
             $ideductPer = $request->ideductPer[$i];
@@ -281,6 +285,8 @@ class AdminController extends Controller
             $add_deductibles->created_by = Auth::user()->id;
             $add_deductibles->save();
         }
+
+
         $rateBase = $request->irateCalculation;
         if($rateBase == '3')
         {
@@ -306,6 +312,7 @@ class AdminController extends Controller
               }
              }
         } else {
+            DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $updateplan->id)->delete();
             for($i=0;$i<count($request->iratesMin);$i++){
                 $irateMin = $request->iratesMin[$i];
                 $irateMax = $request->iratesMax[$i];
@@ -315,11 +322,11 @@ class AdminController extends Controller
                 $cuser = Auth::user()->id;
                 $time = time();
                 $insertRates = "INSERT INTO wp_dh_insurance_plans_rates(plan_id, minage,maxage,sum_insured,rate_with_pre_existing,rate_without_pre_existing,created_on, created_by ) VALUES('$updateplan->id','$irateMin','$irateMax','$irateSum','$irateRate','$iratesRatewithout', '$time', '$cuser')";
-                
                 DB::statement($insertRates);
             }
         }
-        return redirect()->back()->with('message', 'Plan Added Successfully');
+        $redirecturl = url('admin/plans/editplan/').'/'.$updateplan->id;
+        return Redirect::to($redirecturl);
     }
     public function planupdate(Request $request)
     {
