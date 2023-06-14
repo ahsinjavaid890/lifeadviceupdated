@@ -152,6 +152,7 @@
                            format: 'yyyy-mm-dd',
                            todayHighlight:'TRUE',
                            autoclose: true,
+                           minDate: 0,
                            });
                         </script>
                      </div>
