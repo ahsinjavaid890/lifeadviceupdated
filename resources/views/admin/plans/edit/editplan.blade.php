@@ -296,41 +296,42 @@ form .row {
                 foreach ($rats_q as $r) {
                     $counter++;
                     if($counter == 1){
+                        $rand = $counter * (rand(10,100)); 
                 ?>
-                <div class="original">
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-md-1" style="width: 71px;margin-right: 10px;padding: 0;">
-                            <div class="col-md-12">
-                            <label><strong>Select</strong></label>
-                            </div>
-                            <div class="col-md-12">
-                            <label class="checkbox">
-                                <input type="checkbox" value="1" id="rt[]" name="rt[]">
+                <div class="orignal" id="row_<?php echo date('his').$rand;?>" style="margin-bottom: 10px;">
+                    <div class="row">
+                            <div class="col-md-1" style="width: auto;margin-right: 10px;">
+                                <label class="checkbox">
+                                <input type="checkbox" value="<?php echo date('his').$rand;?>" id="rt[]" name="rt[]">
                                 <i></i>
                             </label>
                             </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesMin'+countRates+'" name="iratesMin[]" class="min_<?php echo date('his').$rand;?> form-control" value="{{ $r->minage }}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesMax'+countRates+'" name="iratesMax[]" class="max_<?php echo date('his').$rand;?> form-control" value="{{ $r->maxage }}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesSum'+countRates+'" name="iratesSum[]" class="sum_<?php echo date('his').$rand;?> form-control" value="{{$r->sum_insured}}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]" class="form-control" value="{{ $r->rate_with_pre_existing }}">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input">
+                                    <input type="text" id="iratesRatewithout'+countRates+'" name="iratesRatewithout[]" class="form-control" value="{{ $r->rate_without_pre_existing }}">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <label><strong>Min Age</strong></label>
-                            <input id="iratesMin1" name="iratesMin[]" class="form-control" value="{{ $r->minage }}" type="text" class="min_1">
-                        </div>
-                        <div class="col-md-2">
-                            <label><strong>Max Age</strong></label>
-                            <input id="iratesMax1" name="iratesMax[]" class="form-control" value="{{ $r->maxage }}" type="text" class="max_1">
-                        </div>
-                        <div class="col-md-2">
-                            <label class="wrapup"><strong>Benefit Amount</strong></label>
-                            <input id="iratesSum1" name="iratesSum[]" class="form-control" value="{{$r->sum_insured}}" type="text" class="sum_1">
-                        </div>
-                        <div class="col-md-2">
-                            <label><strong>Rate ($) With Pre Existing</strong></label>
-                            <input id="iratesRate1" name="iratesRate[]" class="form-control" value="{{ $r->rate_with_pre_existing }}" type="text">
-                        </div>
-                        <div class="col-md-2">
-                            <label><strong>Rate ($) Without Pre Existing</strong></label>
-                            <input id="iratesRate1" name="iratesRatewithout[]" class="form-control" value="{{ $r->rate_without_pre_existing }}" type="text">
-                        </div>
-                    </div>
                 </div>
                 <div id="appendRates">
                 <?php } else {
@@ -550,6 +551,7 @@ form .row {
             $class = 'appended';
             
          ?>
+         <div id="deductionAppend">
          <div class="row" style="margin-top:10px; margin-bottom:0; margin-right:0; margin-left:0;">
             <div class="col-md-6 unit"  >
                <div class="widget left-50">
@@ -579,9 +581,9 @@ form .row {
 
             <?php } ?>
          <?php } ?>   
-                  <div id="deductionAppend">
+        
 
-                     </div> 
+        </div> 
          <div class="col-md-6">
             <a href="javascript:void(0)" class="btn btn-default btn-sm addDeduct addnewItem"><i class="fa fa-plus"></i> Add Item</a>
             <a href="javascript:void(0)" class="btn btn-danger btn-sm removeDeduct addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
@@ -883,6 +885,8 @@ jQuery('.copyRates').click(function(event) {
       iratesMin_value = $('.min_'+copy_values[i]).val();
       iratesMax_value = $('.max_'+copy_values[i]).val();
       iratesSum_value = $('.sum_'+copy_values[i]).val();
+      console.log(iratesMin_value);
+
       range+=  '<div class="col-md-3 margin5">' +
         '<div class="input">'+
         '<input type="text" id="days_rate' + countRates + '" name="days_rate'+countRates1+'[]" class="form-control">' +
