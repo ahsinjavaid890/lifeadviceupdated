@@ -334,7 +334,7 @@ border: 1px solid #ccc !important;
       display: none !important;
     }
     .padding-left-zero-on-mobile{
-      padding-left: 5px !important; 
+      padding-left: 0px !important; 
     }
     .padding-right-zero-on-mobile{
       padding-right: 0px !important; 
