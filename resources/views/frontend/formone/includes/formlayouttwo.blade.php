@@ -307,7 +307,7 @@ $bg = $bgs[$k];
                      <div class="col-md-12 ">
                         <label for="phonenumbermask" class="text-white">Enter Your Phone Number</label>
                         <div class="custom-form-control">
-                           <input style="padding-left: 40px !important;" type="text" name="phone" inputmode="numeric" data-placeholder="000-000-0000" placeholder="000-000-0000" required id="phonenumbermask" class="form-control">
+                           <input style="padding-left: 40px !important;" type="text" name="phone" inputmode="numeric" data-placeholder="000-000-000000" placeholder="000-000-0000" required id="phonenumbermask" class="form-control">
                            <span class="phoneicon" style="color:#1BBC9B;">
                               <i class="fa fa-phone" aria-hidden="true"></i>
                            </span>
