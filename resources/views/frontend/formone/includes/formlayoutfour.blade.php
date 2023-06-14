@@ -242,9 +242,9 @@
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                     <div style="padding-left: 0px;" class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
-                                       <label for="day{{$i}}" class="">Age of the oldest Traveller</label>
+                                       <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
                                        <div class="custom-form-control">
-                                          <input onchange="dateofbirth(this.value)" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
@@ -397,7 +397,11 @@
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
    $( document ).ready(function() {
-       $('#dateofbirthfull1').mask('00/00/0000');
+      $("#dateofbirthfull1").mask("99-99-9999", {
+         completed: function() {
+           dateReflection($(this));
+         }
+       });
        $('#dateofbirthfull2').mask('00/00/0000');
        $('#dateofbirthfull3').mask('00/00/0000');
        $('#dateofbirthfull4').mask('00/00/0000');
@@ -472,37 +476,7 @@
       }
    }
 </script>
-<script>
-   var container = document.getElementsByClassName("birthdate")[0];
-   container.onkeyup = function(e) {
-       var target = e.srcElement || e.target;
-       var maxLength = parseInt(target.attributes["maxlength"].value, 10);
-       var myLength = target.value.length;
-       if (myLength >= maxLength) {
-           var next = target;
-           while (next = next.nextElementSibling) {
-               if (next == null)
-                   break;
-               if (next.tagName.toLowerCase() === "input") {
-                   next.focus();
-                   break;
-               }
-           }
-       }
-       // Move to previous field if empty (user pressed backspace)
-       else if (myLength === 0) {
-           var previous = target;
-           while (previous = previous.previousElementSibling) {
-               if (previous == null)
-                   break;
-               if (previous.tagName.toLowerCase() === "input") {
-                   previous.focus();
-                   break;
-               }
-           }
-       }
-   }
-   
+<script>   
    function supervisayes(){
    window.setTimeout(function(){    
     var tt = document.getElementById('departure_date').value;
