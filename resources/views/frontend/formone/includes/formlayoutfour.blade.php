@@ -254,7 +254,7 @@
                                           <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option selected value="no">No</option>
                                            </select>
                                        </div>
                                     </div>
@@ -361,7 +361,7 @@
                                     <select required class="form-control" name="fplan" id="">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                         <option selected value="no"  onclick="changefamilyno()">No</option>
                                     </select>
                                  </div>
                               </div>
