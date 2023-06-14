@@ -253,7 +253,7 @@
                            <i class="fa fa-calendar"   style="border-right: 1px solid #666;padding-right: 8px;"></i>
                      </label>
                         <div class="custom-form-control">
-                           <input style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                           <input inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                            <script>
                            $('#departure_date').datepicker({
                            format: 'yyyy-mm-dd',
