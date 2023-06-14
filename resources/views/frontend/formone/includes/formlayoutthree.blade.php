@@ -250,7 +250,7 @@ $bg = $bgs[$k];
                                        <select name="pre_existing[]" class="form-control" style=" padding: 5px 12px !important;">
                                           <option value="">Select Pre Existing Condition</option>
                                           <option value="yes">Yes</option>
-                                          <option value="no">No</option>
+                                          <option selected value="no">No</option>
                                         </select>
                                     </div>
                                  </div>
