@@ -696,7 +696,6 @@ $bg = $bgs[$k];
        $('#dateofbirthfull4').mask('00/00/0000');
        $('#dateofbirthfull5').mask('00/00/0000');
        $('#dateofbirthfull6').mask('00/00/0000');
-
-       $('#phonenumbermask').mask('000-000-0000');
+       $('#phonenumbermask').mask('000-000-000000');
    });
 </script>
