@@ -408,7 +408,7 @@ form .row {
           <div class="col-md-12">
              <h4 class="item-sub"><i class="fa fa-plus"></i> Add Rates</h4>
             <?php
-            $ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->groupby('minage' , 'maxage')->orderby('id' , 'asc')->get();
+            $ranges_q = DB::table('wp_dh_plan_day_rate')->where('plan_id' , $data->id)->groupby('minage' , 'maxage')->orderby('minage' , 'asc')->get();
             $ranges_num = $ranges_q->count();
             if($ranges_num == 0){?>
             <div class="original">
