@@ -420,7 +420,7 @@
    position: relative;
    cursor: pointer;
    }
-   .form-input.date-range .from:before {
+/*   .form-input.date-range .from:before {
    position: absolute;
    content: "";
    display: block;
@@ -434,7 +434,7 @@
    visibility: hidden;
    transition-duration: .15s;
    transition-property: visibility,opacity;
-   }
+   }*/
    .form-input.date-range .from .icon {
    width: 16px;
    }
@@ -924,7 +924,7 @@
     opacity: 1;
     visibility: visible;
 }
-.form-input.date-range .from:before {
+/*.form-input.date-range .from:before {
     position: absolute;
     content: "";
     display: block;
@@ -938,7 +938,7 @@
     visibility: hidden;
     transition-duration: .15s;
     transition-property: visibility,opacity;
-}
+}*/
 .form-input.date-range .from .icon {
     width: 16px;
 }

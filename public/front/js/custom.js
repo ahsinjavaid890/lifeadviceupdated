@@ -266,25 +266,10 @@ function checkemailcorection(id) {
 }
 
 function thirdone() {
- if($('#savers_email').val() == '')
- {
-    $('#savers_emailerror').show();
-    $('#savers_emailerror').html('Please Enter Your Email');
- }else{
-
-    if( !validateEmail($('#savers_email').val())) { 
-        $('#savers_emailerror').show();
-        $('#savers_emailerror').html('Please Enter Correct Email');
-
-     }else{
-        $('#savers_emailerror').hide();
-     $('#donefake').hide();
-     $('#doneoriginal').show();
-     $('#doneoriginal').click();
-     }
-
-    
-  }
+ $('#savers_emailerror').hide();
+ $('#donefake').hide();
+ $('#doneoriginal').show();
+ $('#doneoriginal').click();
 }
 
 function calprimaryage(id){

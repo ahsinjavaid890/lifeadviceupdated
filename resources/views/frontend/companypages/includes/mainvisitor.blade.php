@@ -546,13 +546,13 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                     </div>
 
                                   </div>
-                                   <div class="col-md-6 userdata-card @if($mobile == 'yes') mt-1 @else mt-3 @endif">
+                                   <!-- <div class="col-md-6 userdata-card @if($mobile == 'yes') mt-1 @else mt-3 @endif">
                                       <div class="custom-form-control positionrelative">
                                           <label class="selectlabeldateofbirth">Enter Your Email</label>
                                             <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif class="input" type="text"  name="savers_email" placeholder="Please Enter Your Email" required id="savers_email" class="input">
                                       </div>
                                        <div class="text-danger mt-4" id="savers_emailerror"></div>
-                                   </div>
+                                   </div> -->
                               </div>
                            </div>
                         </div>
