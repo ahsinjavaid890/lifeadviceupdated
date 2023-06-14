@@ -101,7 +101,7 @@ $bg = $bgs[$k];
 
                               <div class="col-md-6">
                                  <label class="input-label"> Start Date</label>
-                                 <input readonly style="padding-left: 40px;" id="departure_date" autocomplete="off" inputmode="numeric" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                                 <input style="padding-left: 40px;" id="departure_date" autocomplete="off" inputmode="numeric" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                                  <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                  </span>
