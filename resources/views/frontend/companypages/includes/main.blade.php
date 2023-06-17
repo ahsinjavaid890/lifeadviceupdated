@@ -49,9 +49,12 @@
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-
+                @php
+                    $date = date('Y-m-d');
+                    $todate =  date('Y-m-d', strtotime($date. ' + 364 days'));
+                @endphp
                 <input type="hidden" @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif id="departure_date" name="departure_date">
-                <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
+                <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @else value="{{ $todate }}" @endif id="return_date" name="return_date">
                 <div class="qoute-card">
                     <div class="card-body">
                         <div  class="quotes-generator-bar fixed">
