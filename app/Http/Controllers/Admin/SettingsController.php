@@ -15,136 +15,42 @@ class SettingsController extends Controller
     }
     public function appearance()
     {   
-        $settings = Settings::first();
+        $settings = Settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
         return view('admin.website.settings',compact("settings"));
     }
-    public function appearance_update(Request $request)
+    public function settingsupdate(Request $request)
     {
-
-        $input = $request->all();
-        $settings = Settings::first();
-        if(!empty($input['website_name']))
-        $settings->site_name = $input['website_name'];
-        if(!empty($input['site_motto']))
-        $settings->site_moto = $input['site_motto'];
-         
-
-        if(!empty($input['site_email']))
-        $settings->site_email = $input['site_email'];
-        if(!empty($input['site_phonenumber']))
-        $settings->site_phonenumber = $input['site_phonenumber'];
-        if(!empty($input['site_fax']))
-        $settings->site_fax = $input['site_fax'];
-        if(!empty($input['site_address']))
-        $settings->site_address = $input['site_address'];
-        
-
-
-        if(!empty($input['paypal']))
-        $settings->paypal = $input['paypal'];
-        if(!empty($input['stripe']))
-        $settings->stripe = $input['stripe'];
-        if(!empty($input['jazcash']))
-        $settings->jazcash = $input['jazcash'];
-
-
-
-        if(!empty($input['published_stripe']))
-        $settings->published_stripe = $input['published_stripe'];
-        if(!empty($input['secret_stripe']))
-        $settings->secret_stripe = $input['secret_stripe'];
-
-    
-        if(!empty($input['paypal_secret']))
-        $settings->paypal_secret = $input['paypal_secret'];
-        if(!empty($input['paypal_client']))
-        $settings->paypal_client = $input['paypal_client'];
-
-    
-        if(!empty($input['cod']))
-        $settings->cod = $input['cod'];
-        
-
-
-        if(!empty($input['vat_percentage']))
-        $settings->vat_percentage = $input['vat_percentage'];
-        if(!empty($input['vat_value']))
-        $settings->vat_value = $input['vat_value'];
-        if(!empty($input['sale_percentage']))
-        $settings->sale_percentage = $input['sale_percentage'];
-        if(!empty($input['sale_value']))
-        $settings->sale_value = $input['sale_value'];
-
-
-    
-        $updated = $settings->save();
-        
-        if($updated)
-        {
-
-          return redirect()->back()->with('message', 'Settings Updated Successfully');
-        }
-        else
-        {
-            return back()->with('warning', 'Something went Wrong!')->withInput();
-        }
+        $settings = Settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
+        $upadate = Settings::find($settings->id);
+        $upadate->site_name = $request->website_name;
+        $upadate->site_phonenumber = $request->site_phonenumber;
+        $upadate->site_address = $request->site_address;
+        $upadate->site_email = $request->site_email;
+        $upadate->site_basecolor = $request->site_basecolor;
+        $upadate->site_hovercolor = $request->site_hovercolor;
+        $upadate->site_textcolor = $request->site_textcolor;
+        $upadate->save();
+        return redirect()->back()->with('message', 'Settings Updated Successfully');
     }
 
     public function updatelogos(Request $request)
     {
-        $settings = Settings::first();
-        if(!empty($request->header_logo))
+        $settings = Settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
+        $upadate = Settings::find($settings->id);
+        if($request->header_logo)
         {
-            $settings->header_logo = Cmf::sendimagetodirectory($request->header_logo);
+            $upadate->header_logo = Cmf::sendimagetodirectory($request->header_logo);
         }
-        if(!empty($request->footer_logo))
+        if($request->footer_logo)
         {
-            $settings->footer_logo = Cmf::sendimagetodirectory($request->footer_logo);
+            $upadate->footer_logo = Cmf::sendimagetodirectory($request->footer_logo);
         }
-        if(!empty($request->favicon))
+        if($request->favicon)
         {
-            $settings->favicon = Cmf::sendimagetodirectory($request->favicon);
+            $upadate->favicon = Cmf::sendimagetodirectory($request->favicon);
         }
-        $updated = $settings->save();
-        if($updated)
-        {
-          return redirect()->back()->with('message', 'Settings Updated Successfully');
-        }
-        else
-        {
-            return back()->with('warning', 'Something went Wrong!')->withInput();
-        }
+        $upadate->save();
+        return redirect()->back()->with('message', 'Logos Updated Successfully');
     }
 
-    public function payementmethod()
-    {
-        $settings = Settings::first();
-        return view('admin.settings.payementmethod',compact("settings"));
-    }
-    public function taxsettings()
-    {
-        $settings = Settings::first();
-        return view('admin.settings.taxsettings',compact("settings"));
-    }
-
-    public function taxsettingsupdate(Request $request)
-    {
-        $input = $request->all();
-        $settings = Settings::first();
-        $settings->vat_percentage = $input['vat_percentage'];
-        $settings->vat_value = $input['vat_value'];
-        $settings->sale_percentage = $input['sale_percentage'];
-        $settings->sale_value = $input['sale_value'];
-        $updated = $settings->save();
-        if($updated)
-        {
-          return redirect()->back()->with('message', 'Settings Updated Successfully');
-        }
-        else
-        {
-            return back()->with('warning', 'Something went Wrong!')->withInput();
-        }
-    }
-    
-    
 }

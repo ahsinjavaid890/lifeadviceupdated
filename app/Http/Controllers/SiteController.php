@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helpers\Cmf;
 use Illuminate\Http\Request;
 use App\Models\companies;
 use App\Models\jobs;
@@ -303,7 +303,7 @@ class SiteController extends Controller
     }
     public function productdetail($id)
     {
-        $data = wp_dh_products::where('url' , $id)->first();
+        $data = wp_dh_products::where('url' , $id)->where('website' , Cmf::getsite())->first();
         if($data)
         {
             $fields = unserialize($data->pro_fields);

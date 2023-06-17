@@ -34,6 +34,11 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin/dashboard/index');
     }
+    public function changewebsite($id)
+    {
+        DB::table('select_websites')->where('id' , 1)->update(array('name' => $id));
+        return redirect()->back()->with('message', 'Website Change Successfully');
+    }
     public function editproduct($id)
     {
         $data = wp_dh_products::where('pro_id' , $id)->first();
@@ -74,9 +79,8 @@ class AdminController extends Controller
             DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }
 
-
-        
-        return redirect()->back()->with('message', 'Product Updated Successfully');
+        $url = url('admin/products/allproducts');
+        return Redirect::to($url);
     }
 
 
@@ -200,7 +204,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('status' , 1)->orderby('pro_name' , 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website' , Cmf::getwebsite()->smallname)->where('status' , 1)->orderby('pro_name' , 'desc')->get();
         return view('admin.products.index')->with(array('data'=>$data));
     }
     public function allplans()

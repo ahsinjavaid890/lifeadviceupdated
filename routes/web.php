@@ -166,6 +166,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::get('/profile','AdminController@profile')->name('profile');
     Route::post('/updateuserprofile','AdminController@updateuserprofile');
     Route::post('/updateusersecurity','AdminController@updateusersecurity');
+    Route::get('/changewebsite/{id}','AdminController@changewebsite');
+    
 
     Route::name('blogs.')->prefix('blogs')->group(function(){
         Route::get('/blogcategories','AdminController@blogcategories');
@@ -179,7 +181,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');
-        Route::post('/settingsupdate','SettingsController@appearance_update');
+        Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
     });
     Route::name('companies.')->prefix('companies')->group(function(){

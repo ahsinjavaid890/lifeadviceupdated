@@ -6,14 +6,15 @@
         <div class="d-flex align-items-stretch mr-2">
             <!--begin::Page Title-->
             <h3 class="d-none text-dark d-lg-flex align-items-center mr-10 mb-0">
-                Dashboard
+               {{ Cmf::getwebsite()->site_name }} Dashboard
             </h3>
             <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                 <li class="breadcrumb-item">
-                    <a href="dashboard.html" class="text-muted">
-                        <i class="flaticon2-shelter icon-1x"></i>&nbsp;
-                        Dashboard
-                    </a>
+                    <select onchange="if (this.value) window.location.href=this.value" class="form-control">
+                        @foreach(DB::table('site_settings')->get() as $r)
+                        <option @if(Cmf::getwebsite()->smallname == $r->smallname) selected @endif value="{{ url('admin/changewebsite') }}/{{ $r->smallname }}">{{ $r->site_name }}</option>
+                        @endforeach
+                    </select>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="all-jobs" class="text-muted"></a>

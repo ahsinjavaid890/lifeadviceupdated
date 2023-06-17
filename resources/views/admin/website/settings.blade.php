@@ -16,12 +16,6 @@
                     <h4 class="fw-600 mb-0">General</h4>
                 </div>
                 <div class="card-body">
-
-                    <?php
-                    // echo "<pre>";
-                    // print_r($settings[0]);
-                    // die();
-                    ?>
                     <form action="{{ url('admin/website/settingsupdate') }}" enctype='multipart/form-data' method="POST">
                        @csrf
                         <div class="form-group row">
@@ -43,6 +37,24 @@
                                 <input type="text" name="site_phonenumber" class="form-control"  value="{{$settings->site_phonenumber}}" />
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Site Base Color</label>
+                            <div class="col-md-8">
+                                <input type="color" name="site_basecolor" class="form-control"  value="{{$settings->site_basecolor}}" />
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Site Hover Color</label>
+                            <div class="col-md-8">
+                                <input type="color" name="site_hovercolor" class="form-control"  value="{{$settings->site_hovercolor}}" />
+                            </div>
+                        </div> -->
+                        <!-- <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Site Text Color</label>
+                            <div class="col-md-8">
+                                <input type="color" name="site_textcolor" class="form-control"  value="{{$settings->site_textcolor}}" />
+                            </div>
+                        </div> -->
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">Site Address</label>
                             <div class="col-md-8">
