@@ -1,13 +1,26 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css')}}"> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 <div class="container">
    <div class="row">
       <div class="col-md-12 text-center mt-4 mb-0">
-         <h1 class="form-one-heading text-danger">{{ $data->pro_name }}</h1>
+         <h1 class="form-one-heading">{{ $data->pro_name }}</h1>
          <h2 class="mb-2 heading-description mobile-deisply-none">It's fast and easy using our secure online application.</h2>
       </div>
    </div>
          <div class="row mainsection birthdate">
+            <div class="col-md-12">
+               <div class="text-center">
+                  <h3 class="content-title no-bm">Enter Your Trip Details</h3>
+                  <div class="grey font-12">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <span>Your information is secure and will not be sold.</span>
+                     </div>
+                  </div>
+            </div>
+            <div class="col-md-12">
+               <hr>
+            </div>
             <div class="col-md-7 leftsection">
                <form method="POST" action="{{ url('quotes') }}">
                   @csrf
@@ -82,7 +95,7 @@
                      <div class="col-md-7">
                         <label for="coverageammount" class="d-sm-none">Maximum Coverage Amount</label>
                         <div class="custom-form-control">
-                           <select required class="form-input" name="sum_insured2" id="coverageammount">
+                           <select required class="form-input selecttwo" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
                               @foreach($sum_insured as $key=> $r)
                               <option value="{{ $r->sum_insured }}" @if($key == 0) selected
@@ -144,7 +157,7 @@
                               <div class="col-md-7">
                                  <label for="primary_destination" class="d-sm-none" >States In Canda</label>
                                  <div class="custom-form-control" id="states">
-                                    <select style=" width: 386px;border-radius: 1px;"  required class="form-input" name="primary_destination" id="primary_destination">
+                                    <select required class="selecttwo" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                           <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -161,7 +174,7 @@
                            <div class="col-md-7" >
                               <label for="primary_destination" class="d-sm-none">Primary destination in Canada</label>
                               <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
+                                 <select required class="form-input selecttwo" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
                                     @foreach(DB::table('primary_destination_in_canada')->get() as $r)
                                        <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
@@ -186,7 +199,7 @@
                            <div class="col-md-7">
                            <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
                            <div class="custom-form-control">
-                              <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
+                              <select onchange="checknumtravellers(this.value)" required class="form-input selecttwo" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
                                  <option value="{{ $i }}">{{ $i }}</option>
@@ -212,7 +225,7 @@
                                  <div class="col-md-7 padding-left-eight-on-mobile" style="padding-right:0px !important">
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class=" oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" >
+                                          <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" >
                                        </div>
                                     </div>
                                     <div class="col-md-5">
@@ -322,7 +335,7 @@
                         <div class="col-md-7">
                            <label for="gender" class="d-sm-none">Primary Applicant`s Gender</label>
                            <div class="custom-form-control">
-                              <select required class="form-input" name="gender" id="gender">
+                              <select required class="form-input selecttwo" name="gender" id="gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -339,7 +352,7 @@
                         <div class="col-md-7">
                            <label for="old_traveller_gender" class="d-sm-none">Gender of the Oldest traveller</label>
                            <div class="custom-form-control">
-                              <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
+                              <select required class="form-input selecttwo" name="old_traveller_gender" id="old_traveller_gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -357,7 +370,7 @@
                            <div class="col-md-7">
                               <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
                               <div class="custom-form-control">
-                                 <select required class="form-input" name="Smoke12" id="">
+                                 <select required class="form-input selecttwo" name="Smoke12" id="">
                                     <option value="">--- Please Choose ---</option>
                                       <option value="yes" >Yes</option>
                                       <option selected value="no" >No</option>
@@ -377,7 +390,7 @@
                               <div class="col-md-7">
                                  <label for="" class="d-sm-none">Do you require Family Plan ?</label>
                                  <div class="custom-form-control">
-                                    <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
+                                    <select onchange="changefamilyyes(this.value)" required class="form-input selecttwo" name="fplan" id="selectfamilyplan">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes">Yes</option>
                                          <option selected value="no">No</option>
@@ -417,28 +430,23 @@
             <div class="col-md-5 mobile-deisply-none">
                   <div class="imagesection">
                      <div class="row">
-                        <div class="">
+                        <div class="col-md-12">
                            <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
                         </div>
-                        <div class="col-md-12 text-center" style="padding-top:20px;text-align: justify !important;background: #f0f0f0;margin-top: 10px;max-height: 335px;overflow-y: auto;border: 1px solid #ddd;font-size: 14px;line-height: 1.42857143;color: #333;">
-                           <strong>Why Choosing us</strong>: we are reputed experience insurance   provider, we provide flexible and affordable Travel Insurance Plan from   multiple insurance companies like <a href="" target="_blank">Manulife Insurance</a>, GMS, <a href="" target="_blank">TIC Insurance</a>,   SRMRM insurance, Travelance Insurance, TUGO, 21st Century,&nbsp;we provide   services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton,   Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. <strong>Super Visa Insurance</strong>&nbsp;:&nbsp;Super Visa is a new option for   parents and grandparents of Canadian citizens and permanent residents to   visit their family in Canada. These individuals may be eligible to   apply for the Parent and Grandparent Super Visa to visit their family in   Canada for up to 2 years without the need to renew their status. Super   Visa Insurance provides coverage for emergency medical and hospital care   in Canada. This insurance is valid for 365 days.
+                        <div class="col-md-12">
 
-                           <h2 style="    color: #000;   margin: 0 0 30px 0;line-height: 1.5; -webkit-font-smoothing: antialiased;">How to Apply for Super Visa Insurance</h2>
-                           <ul  style="padding-inline-start: 40px;margin-bottom: 30px;}">
-                             <li class="liststyle">
-                              Fill out the 
-                              <a style="display:inline" href="http://www.cic.gc.ca/english/pdf/kits/forms/IMM5257E.PDF">Application for a Temporary Resident Visa Made Outside of Canada [IMM5257]
-                              </a>.
-                           </li>
-                             <li class="liststyle">Gather any required documentation.</li>
-                             <li class="liststyle">Submit your completed form and supporting documents to a visa office.</li>
-                             <li class="liststyle">Make sure to pay the 
-                              <a href="http://www.cic.gc.ca/english/information/offices/apply-where.asp">fee that coincides with your country or region</a>.
-                           </li>
-                             <li class="liststyle">Make sure to purchase <a href="">Visitors to Canada insurance</a></li>
-                           </ul>
-
-                           <p><strong>Super visa Requirements&nbsp;:&nbsp;</strong>To obtain a Parent or   Grandparent Super Visa for Canada, applicants must have valid Super Visa   Insurance. With Super Visa applications They need to provide a proof   that they have private medical insurance from a Canadian insurance   company valid for a minimum of 1 year from a Canadian insurance company   and that it:    &nbsp; <strong>Here’s the things you need to know before you buy Super Visa Insurance </strong> <strong>Pre-existing Conduction: </strong>A Pre-existing condition   depends on your health condition means the critical illness, injury,   symptom(s) that exists before and after effective date of insurance.   Sometimes a healthy applicant can be deemed to have a pre-existing   condition based on a past health problem or evidence of treatment for a   particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles.   The deductible is the amount of each claim that you will pay. A $0   deductible means the insurance company pays 100% of each eligible claim.   A $1000 deductible means you will pay up to $1000 of each eligible   claim and the insurance company will only pay amounts in excess of the   $1000. <strong>Multiple Entry</strong>: Multiple entry coverage provides   intermittent coverage that allows you to travel back and forth between   Canada and your home country. Your coverage will be interrupted when you   return to your home country, and then be automatically reinstated when   you return to Canada. Plans that do not offer Multiple Entry have   coverage that stops as soon as you return to your home country. <strong>Side Trip: Side</strong> trip coverage provides travel health   insurance for any trips you take outside Canada during your stay, i.e.   if you take vacations to the U.S. If you expect to spend some time   outside of Canada during the term of your super visa, you should choose a   plan that has side trip coverage. <strong>Refundable</strong>: The government requires that you purchase   coverage for a full year. If you’re planning on staying less than a year   a refundable plan will allow you to receive a refund of the unused   portion of the annual/yearly premiums. These refunds come with   conditions, so again it’s important that you read the policy.</p>
+                           <div class="content">
+                              <p><strong>Why Choosing us:</strong>we are reputed experience insurance provider, we provide flexible and affordable Travel Insurance Plan from multiple insurance companies like Manulife Insurance, GMS, TIC Insurance, SRMRM insurance, Travelance Insurance, TUGO, 21st Century, we provide services in Kitchener, Waterloo, Cambridge, Guelph, Stratford ,Hamilton, Branford, Woodstock, London, Milton, Mississauga, Brampton, Toronto. Super Visa Insurance : Super Visa is a new option for parents and grandparents of Canadian citizens and permanent residents to visit their family in Canada. These individuals may be eligible to apply for the Parent and Grandparent Super Visa to visit their family in Canada for up to 2 years without the need to renew their status. Super Visa Insurance provides coverage for emergency medical and hospital care in Canada. This insurance is valid for 365 days.</p>
+                              <h3>How to Apply for Super Visa Insurance</h3>
+                              <ul>
+                                 <li>Fill out the Application for a Temporary Resident Visa Made Outside of Canada [IMM5257] .</li>
+                                 <li>Gather any required documentation.</li>
+                                 <li>Submit your completed form and supporting documents to a visa office.</li>
+                                 <li>Make sure to pay the fee that coincides with your country or region.</li>
+                                 <li>Make sure to purchase Visitors to Canada insurance</li>
+                              </ul>
+                              <p><strong>Super visa Requirements :</strong> To obtain a Parent or Grandparent Super Visa for Canada, applicants must have valid Super Visa Insurance. With Super Visa applications They need to provide a proof that they have private medical insurance from a Canadian insurance company valid for a minimum of 1 year from a Canadian insurance company and that it:   <strong>Here’s the things you need to know before you buy Super Visa Insurance Pre-existing Conduction:</strong> A Pre-existing condition depends on your health condition means the critical illness, injury, symptom(s) that exists before and after effective date of insurance. Sometimes a healthy applicant can be deemed to have a pre-existing condition based on a past health problem or evidence of treatment for a particular condition. <strong>Deductible:</strong> Most plans have a variety of deductibles. The deductible is the amount of each claim that you will pay. A $0 deductible means the insurance company pays 100% of each eligible claim. A $1000 deductible means you will pay up to $1000 of each eligible claim and the insurance company will only pay amounts in excess of the $1000. Multiple Entry: Multiple entry coverage provides intermittent coverage that allows you to travel back and forth between Canada and your home country. Your coverage will be interrupted when you return to your home country, and then be automatically reinstated when you return to Canada. Plans that do not offer Multiple Entry have coverage that stops as soon as you return to your home country. Side Trip: Side trip coverage provides travel health insurance for any trips you take outside Canada during your stay, i.e. if you take vacations to the U.S. If you expect to spend some time outside of Canada during the term of your super visa, you should choose a plan that has side trip coverage. Refundable: The government requires that you purchase coverage for a full year. If you’re planning on staying less than a year a refundable plan will allow you to receive a refund of the unused portion of the annual/yearly premiums. These refunds come with conditions, so again it’s important that you read the policy.</p>
+                           </div>
                            </div>
                      </div>
                   </div>
@@ -531,7 +539,11 @@
        });
 </script>
 <script src="{{ asset('public/front/js/jquery-1.12.4.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
+   $(document).ready(function() {
+     $(".selecttwo").select2();
+   });
    function supervisayes(){
    //window.setTimeout(function(){ 
        var tt = document.getElementById('departure_date').value;

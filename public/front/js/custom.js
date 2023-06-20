@@ -256,19 +256,31 @@ function firstnext() {
      $('#firstnextorignal').click();
   }
 }
- function validateEmail($email) {
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-  return emailReg.test( $email );
+ function validateEmail(email) {
+
+    
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test(email);
 }
 
 function checkemailcorection(id) {
     if( !validateEmail($('#savers_email').val())) { 
         $('#savers_emailerror').show();
         $('#savers_emailerror').html('Please Enter Correct Email');
-
      }else{
-        $('#savers_emailerror').hide();
-        $('#savers_emailerror').html('');
+        var url = 'https://mailbite.io/api/check?key=Mf8DT724QiKMmXOOBdftckJPM2RubTh0tcBY&email='+id;
+        $.get(url).done(function(data) { 
+          if(data.email_status == 'INVALID')
+          {
+            $('#savers_emailerror').show();
+            $('#savers_emailerror').html('Please Enter Valid Email');
+          }else{
+            $('#savers_emailerror').hide();
+            $('#savers_emailerror').html('');
+          }
+        });
+
+        
      }
 }
 

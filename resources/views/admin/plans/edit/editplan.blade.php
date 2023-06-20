@@ -288,6 +288,30 @@ form .row {
             <div class="col-md-12">
 
                 <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i class="fa fa-shopping-cart"></i> Manage Plan Prices</h4>
+                <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-1" style="width: 71px;margin-right: 10px;padding: 0;">
+                    <div class="col-md-12">
+                    <label><strong>Select</strong></label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label><strong>Min Age</strong></label>
+                </div>
+                <div class="col-md-2">
+                    <label><strong>Max Age</strong></label>
+                </div>
+                <div class="col-md-2">
+                    <label class="wrapup"><strong>Benefit Amount</strong></label>
+                </div>
+                <div class="col-md-2">
+                    <label><strong>Rate ($) With Pre Existing</strong></label>
+                </div>
+                <div class="col-md-2">
+                    <label><strong>Rate ($) Without Pre Existing</strong></label>
+                </div>
+            </div>
+
+
                 <?php
                 if($data->id){
                 $counter=0;
