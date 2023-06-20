@@ -1,13 +1,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayouttwo.css')}}">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-   $(document).ready(function() {
-    $('.selecttwo').select2();
-});
-</script>
-
 <?php
 if($data->pro_id == '1'){
 $bgs = array(4, 6, 8, 11); //Super
@@ -73,7 +65,7 @@ $bg = $bgs[$k];
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                 <div style="padding-left: 2px;margin-bottom: -14px" class="col-md-6 padding-right-zero-on-mobile">
+                                 <div style="margin-bottom: -14px" class="col-md-6 padding-right-zero-on-mobile">
                                     <label style="font-size: 16px;" for="year{{$i}}" class="text-white">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                        <div class="custom-form-control mb-2">
                                           <input id="dateofbirthfull{{ $i }}" class="form-control" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
@@ -85,7 +77,7 @@ $bg = $bgs[$k];
                                           <select name="pre_existing[]" class="form-control" style="    padding: 5px 12px !important;">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option selected value="no">No</option>
                                            </select>
                                        </div>
                                     </div>
@@ -366,7 +358,7 @@ $bg = $bgs[$k];
                                     <select required class="form-input" name="fplan" id=""      style="    padding: 5px 12px !important;">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                         <option value="no"  onclick="changefamilyno()">No</option>
+                                         <option selected value="no"  onclick="changefamilyno()">No</option>
                                     </select>
                                  </div>
                               </div>
@@ -410,13 +402,14 @@ $bg = $bgs[$k];
                         @endif
                          @endif
                         @endfor 
-                  </div>
-      
-                     
-                  <div class="col-md-12" style="clear: both;">
+                        <div class="col-md-12" style="clear: both;">
                      <span id="family_error" style="display: none; text-align: right;padding: 20px; color:yellow;"><i class="fa fa-warning"></i> </span>
                      <button type="submit" name="GET QUOTES" id="GET_QUOTES" class="btn btn-danger" style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 20px;display: block;border-radius: 4px !important;"><i class="fa fa-list"></i> Get a Quote </button>
                   </div>
+                  </div>
+      
+                     
+                  
                
             </form>
          </div>
@@ -492,36 +485,6 @@ $bg = $bgs[$k];
    }
 </script>
 <script>
-   var container = document.getElementsByClassName("birthdate")[0];
-   container.onkeyup = function(e) {
-       var target = e.srcElement || e.target;
-       var maxLength = parseInt(target.attributes["maxlength"].value, 10);
-       var myLength = target.value.length;
-       if (myLength >= maxLength) {
-           var next = target;
-           while (next = next.nextElementSibling) {
-               if (next == null)
-                   break;
-               if (next.tagName.toLowerCase() === "input") {
-                   next.focus();
-                   break;
-               }
-           }
-       }
-       // Move to previous field if empty (user pressed backspace)
-       else if (myLength === 0) {
-           var previous = target;
-           while (previous = previous.previousElementSibling) {
-               if (previous == null)
-                   break;
-               if (previous.tagName.toLowerCase() === "input") {
-                   previous.focus();
-                   break;
-               }
-           }
-       }
-   }
-  
    function supervisayes(){
    window.setTimeout(function(){    
     var tt = document.getElementById('departure_date').value;
@@ -593,20 +556,6 @@ $bg = $bgs[$k];
    
    
 
-</script>
-<script>
-      jQuery(document).ready(function($){
-          $("select[name=number_travelers]").on("change", function(){
-              var number_of_traveller = $(this).val();
-              var aa = "";
-              for(var i=2; i<=number_of_traveller; i++){
-                  aa = aa +'<div class="col-md-6 col-sm-6 col-xs-12 control-input">' + $(".birthday")[0].outerHTML +'</div>';
-              }
-   
-              $("#birthday_view").html(aa);
-              console.log( $(".birthday")[0] );
-          })
-      });
 </script>
 <script>
 

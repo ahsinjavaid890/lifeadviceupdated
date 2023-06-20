@@ -6,15 +6,11 @@
         <div class="d-flex align-items-stretch mr-2">
             <!--begin::Page Title-->
             <h3 class="d-none text-dark d-lg-flex align-items-center mr-10 mb-0">
-               {{ Cmf::getwebsite()->site_name }} Dashboard
+               Life Advice Admin Dashboard
             </h3>
             <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                 <li class="breadcrumb-item">
-                    <select onchange="if (this.value) window.location.href=this.value" class="form-control">
-                        @foreach(DB::table('site_settings')->get() as $r)
-                        <option @if(Cmf::getwebsite()->smallname == $r->smallname) selected @endif value="{{ url('admin/changewebsite') }}/{{ $r->smallname }}">{{ $r->site_name }}</option>
-                        @endforeach
-                    </select>
+                    Dashboard
                 </li>
                 <li class="breadcrumb-item">
                     <a href="all-jobs" class="text-muted"></a>
@@ -33,133 +29,6 @@
         <!--begin::Topbar-->
         <div class="topbar">
             <!--begin::Notifications-->
-            <div class="dropdown">
-                <!--begin::Toggle-->
-
-                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">
-                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
-                        <span class="svg-icon svg-icon-xl svg-icon-primary">
-                            <img src="{{asset('public/admin/assets/media/custom/notification-bell.svg')}}">
-                        </span>
-                    </div>
-                </div>
-                <!--end::Toggle-->
-                <!--begin::Dropdown-->
-                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg" style="width: 400px;">
-                    <form>
-                        <!--begin::Header-->
-                        <div class="d-flex flex-column pt-8 pl-9 pb-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url({{asset('public/admin/assets/media/misc/bg-1.jpg')}});">
-                            <!--begin::Title-->
-                            <h4 class="d-flex rounded-top">
-                                <span class="text-white">User Notifications</span>
-                            </h4>
-                            <span class="text-white">
-                                See your all notifications here
-                            </span>
-                            <!--end::Title-->
-                        </div>
-                        <!--end::Header-->
-                        <div class="p-6">
-                            <!--begin::Scroll-->
-                            <div class="scroll pr-7 mr-n7 ps ps--active-y" data-scroll="true" data-height="300" data-mobile-height="200" style="height: 300px; overflow: hidden;">
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-6">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-40 symbol-light-secondary mr-5">
-                                        <span class="symbol-label">
-                                            <img src="{{asset('public/admin/assets/media/custom/account-drop.svg')}}">
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Text-->
-                                    <div class="d-flex flex-column font-weight-bold">
-                                        <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Profile update</a>
-                                        <span class="text-muted">Your profile is updated now</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-6">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-40 symbol-light-secondary mr-5">
-                                        <span class="symbol-label">
-                                            <img src="{{asset('public/admin/assets/media/custom/billing-drop.svg')}}">
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Text-->
-                                    <div class="d-flex flex-column font-weight-bold">
-                                        <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Billing Detail</a>
-                                        <span class="text-muted">your invoice is ready...</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-6">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-40 symbol-light-secondary mr-5">
-                                        <span class="symbol-label">
-                                            <img src="{{asset('public/admin/assets/media/custom/integration-drop.svg')}}">
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Text-->
-                                    <div class="d-flex flex-column font-weight-bold">
-                                        <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">New Request</a>
-                                        <span class="text-muted">You have new applicant</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-6">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-40 symbol-light-secondary mr-5">
-                                        <span class="symbol-label">
-                                            <img src="{{asset('public/admin/assets/media/custom/message-drop.svg')}}">
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Text-->
-                                    <div class="d-flex flex-column font-weight-bold">
-                                        <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">New Message</a>
-                                        <span class="text-muted">Pase 1 Development</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-6">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-40 symbol-light-secondary mr-5">
-                                        <span class="symbol-label">
-                                            <img src="{{asset('public/admin/assets/media/custom/project-drop.svg')}}">
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Text-->
-                                    <div class="d-flex flex-column font-weight-bold">
-                                        <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Project Alice</a>
-                                        <span class="text-muted">Pase 1 Development</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                                </div>
-                                <div class="ps__rail-y" style="top: 0px; right: 0px; height: 300px;">
-                                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 203px;"></div>
-                                </div>
-                            </div>
-                            <!--end::Scroll-->
-                        </div>
-                    </form>
-                </div>
-                <!--end::Dropdown-->
-            </div>
             <!--end::Notifications-->
             <div class="dropdown">
                 <!--begin::Toggle-->

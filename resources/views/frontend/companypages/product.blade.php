@@ -35,7 +35,7 @@
          </div>
          <div class="col-md-8 pl-5">
             <div class="row">
-                @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->get() as $p)
+                @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->where('website' , 'lifeadvice')->get() as $p)
                <div class="col-md-6 mt-3 life-product">
                   <div class="card">
                      <div class="card-body">
@@ -61,7 +61,7 @@
         @else
         <div class="col-md-8">
             <div class="row">
-                @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->get() as $p)
+                @foreach(DB::table('wp_dh_products')->where('category_id' , $r->id)->where('website' , 'lifeadvice')->get() as $p)
                 <div class="col-md-6 mt-3 life-product">
                   <div class="card">
                      <div class="card-body">

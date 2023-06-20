@@ -21,7 +21,8 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>                        
+                            <tr> 
+                                <th><strong>Website Sale</strong></th>                       
                                 <th><strong>Reffrence Number</strong></th>
                                 <th><strong>Product Name</strong></th>
                                 <th><strong>Start Date</strong></th>
@@ -33,7 +34,18 @@
                         </thead>
                         <tbody>
                             @foreach($data as $r)
-                                <tr @if($r->newstatus == 'new') style="background-color:#ddd;" @endif>                                
+                                <tr @if($r->newstatus == 'new') style="background-color:#ddd;" @endif>    
+                                    <td>
+                                        @if($r->website == 'lifeadvice')
+                                        <span class="badge badge-danger" style="background-color: #2b3481">{{ $r->website }}</span>
+                                        @endif
+                                        @if($r->website == 'visitorinsure')
+                                        <span class="badge badge-danger">{{ $r->website }}</span>
+                                        @endif
+                                        @if($r->website == 'visitorguard')
+                                        <span class="badge badge-success">{{ $r->website }}</span>
+                                        @endif
+                                    </td>                            
                                     <td>{{ $r->reffrence_number }} @if($r->newstatus == 'new') <span class="badge badge-danger">New</span> @endif</td>
                                     <td>{{$r->product_name}}</td>
                                     <td>

@@ -1,3 +1,7 @@
+.tabshead{
+  padding-top: 8px !important;
+  padding-bottom: 0px;
+}
 form .row{
   margin-bottom: 0px;
 }

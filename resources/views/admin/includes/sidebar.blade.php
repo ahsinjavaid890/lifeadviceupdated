@@ -67,7 +67,7 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Manage Members</span><i class="menu-arrow"></i>
+                        <span class="menu-text">Manage Agents</span><i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
@@ -78,12 +78,12 @@
 
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/users/allusers') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Manage Users</span>
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Manage Agents</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/users/addnewuser') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Add New User</span>
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Add New Agent</span>
                                 </a>
                             </li>
 

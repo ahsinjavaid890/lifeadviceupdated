@@ -611,64 +611,45 @@ class AdminController extends Controller
 
     public function updateusers(Request $request)
     {
-        
-
         $update = User::find($request->id);
-        $update->name = $request->fname.' '.$request->lname;
+        $update->name = $request->name;
         $update->email = $request->email;
         $update->phone = $request->phone;
-        $update->dob = $request->dob; 
         $update->about_me = $request->about_me;
-        $update->username = $request->username;
-        $update->password = Hash::make($request->password);
-        if($request->logo)
-        {
-            $update->logo = Cmf::sendimagetodirectory($request->logo);
-        }
-        $update->address = $request->address;
-        $update->province = $request->province;
-        $update->city = $request->city;
-        $update->country = $request->country;
-        $update->postal = $request->postal;
-        $update->user_type = $request->user_type;
-        $update->parent_id = $request->parent_id;
-        $update->status = $request->status;
-        $update->mg_capability = $request->mg_capability;
-        $update->fiscal_year = $request->fiscal_year;
-        $update->save();
-        return redirect()->back()->with('message', 'User Updated Successfully');
-    }
-    public function addnewusers(Request $request)
-    {
-        
-
-        $update = new User;
-        $update->name = $request->fname.' '.$request->lname;
-        $update->email = $request->email;
-        $update->phone = $request->phone;
-        $update->dob = $request->dob; 
-        $update->about_me = $request->about_me;
-        $update->username = $request->username;
         if($request->password){
 
             $update->password = Hash::make($request->password);
         }
-        if($request->logo)
-        {
-            $update->logo = Cmf::sendimagetodirectory($request->logo);
+        $update->address = $request->address;
+        $update->province = $request->province;
+        $update->city = $request->city;
+        $update->country = $request->country;
+        $update->postal = $request->postal;
+        $update->status = $request->status;
+        $update->save();
+        return redirect()->back()->with('message', 'Agent Updated Successfully');
+    }
+    public function addnewusers(Request $request)
+    {
+        $update = new User;
+        $update->website = $request->website;
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->about_me = $request->about_me;
+        if($request->password){
+
+            $update->password = Hash::make($request->password);
         }
         $update->address = $request->address;
         $update->province = $request->province;
         $update->city = $request->city;
         $update->country = $request->country;
         $update->postal = $request->postal;
-        $update->user_type = $request->user_type;
-        $update->parent_id = $request->parent_id;
-        $update->status = $request->status;
-        $update->mg_capability = $request->mg_capability;
-        $update->fiscal_year = $request->fiscal_year;
+        $update->status = 'active';
+        $update->type = 'agent';
         $update->save();
-        return redirect()->back()->with('message', 'User Updated Successfully');
+        return redirect()->back()->with('message', 'Agent Added Successfully');
     }
     public function updateuserprofile(Request $request)
     {
