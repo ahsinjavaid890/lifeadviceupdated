@@ -159,6 +159,11 @@ class AdminController extends Controller
         $data = DB::table('users')->where('id' , $id)->first();
         return view('admin.users.edituser')->with(array('data'=>$data));
     }
+    public function deleteuser($id)
+    {
+        DB::table('users')->where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'User Deleted Successfully');   
+    }
     public function memberdocument()
     {
         return view('admin.document.member-document');
@@ -613,6 +618,10 @@ class AdminController extends Controller
     {
         $update = User::find($request->id);
         $update->name = $request->name;
+        if($request->insurancedocument){
+
+            $update->insurancedocument = Cmf::sendimagetodirectory($request->insurancedocument);
+        }
         $update->email = $request->email;
         $update->phone = $request->phone;
         $update->about_me = $request->about_me;

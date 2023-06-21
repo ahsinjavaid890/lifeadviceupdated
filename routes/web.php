@@ -242,7 +242,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
 
     Route::name('users.')->prefix('users')->group(function(){
         Route::get('/allusers','AdminController@allusers');
-        Route::get('/viewuser/{id}','AdminController@viewuser');
+        Route::get('/deleteuser/{id}','AdminController@deleteuser');
         Route::get('/addnewuser','AdminController@addnewuser');
         Route::get('/edituser/{id}','AdminController@edituser');
         Route::post('/addnewuser','AdminController@addnewusers');

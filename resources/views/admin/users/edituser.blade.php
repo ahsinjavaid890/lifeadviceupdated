@@ -30,10 +30,16 @@
                         </select>
                     </div>
                      <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input required value="{{  $data->name }}" type="text" name="name" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>E&O Insurance document</label>
+                                <input type="file" name="insurancedocument" class="form-control" placeholder="Name">
                             </div>
                         </div>
                     </div>
@@ -65,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label>Account Password</label>
-                        <input required type="password" name="password" class="form-control" placeholder="Password">
+                        <input  type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input type="submit" name="password" value="Update Agent" class="btn btn-primary" placeholder="Password">

@@ -23,6 +23,7 @@
                         <thead>
                             <tr>
                                 <th>Website Agent</th>
+                                <th>E&O Insurance document</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Status</th>
@@ -34,6 +35,14 @@
                             @foreach($data as $r)
                                 <tr>
                                     <td>{{$r->website}}</td>
+                                    <td>@if($r->insurancedocument)
+                                        <a href="{{ url('public/images') }}/{{ $r->insurancedocument }}" download="">Download Document</a>
+                                        @else
+
+                                        No Document
+
+                                        @endif
+                                    </td>
                                     <td>{{$r->name}}</td>
                                     <td>{{$r->email}}</td>                                
                                     <td>
@@ -53,6 +62,7 @@
 
                                     @else
                                        <a class="btn btn-info btn-sm" href="{{ url('admin/users/edituser') }}/{{ $r->id }}"><i class="fa fa-edit"></i> Edit</a>
+                                       <a onClick="return confirm('Are you sure you want to delete ?');" class="btn btn-danger btn-sm" href="{{ url('admin/users/deleteuser') }}/{{ $r->id }}"><i class="fa fa-trash"></i> Delete</a>
                                     @endif
                                    </td>
                                 </tr>
