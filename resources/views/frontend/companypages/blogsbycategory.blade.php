@@ -56,7 +56,7 @@
                             <hr>
                         </div>
                         <ul class="parent-list nav  nav-tabs d-block" role="tablist">
-                            @foreach(DB::table('blogcategories')->get() as $r)
+                            @foreach(DB::table('blogcategories')->where('website' , 'lifeadvice')->get() as $r)
                                 <li class="nav-item">
                                     <a class="nav-link @if($category->url == $r->url) active @endif" data-toggle="tab-{{$r->id}}" role="tab"href="{{ url('category') }}/{{ $r->url }}">{{ $r->name }}</a>
                                 </li>

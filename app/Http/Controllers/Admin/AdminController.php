@@ -810,7 +810,7 @@ class AdminController extends Controller
 
     public function blogcategories()
     {
-        $data = DB::table('blogcategories')->get();
+        $data = DB::table('blogcategories')->where('website' , 'lifeadvice')->get();
         return view('admin.blogs.categories')->with(array('data'=>$data));
     }
     public function deleteblogcategory($id)

@@ -6,7 +6,7 @@
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
-        <div class=" container ">
+        <div class=" container-fluid ">
             <!--begin::Card-->
             @include('alerts.index')
             <div class="card card-custom mt-5">
@@ -49,7 +49,7 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
-                                    <img style="width:100px;" src="{{ url('public/images') }}/{{ $r->icon }}">
+                                    <img class="img-thumbnail" style="width:100px;" src="{{ url('public/images') }}/{{ $r->icon }}">
                                 </td>
                                 <td>
                                     {{ $r->name }}

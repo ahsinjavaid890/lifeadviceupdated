@@ -15,7 +15,7 @@
         </div>
         <div class="benifitrow faq">
             <div class="accordion" id="accordionExample">
-               @foreach(DB::table('frequesntlyaskquestions')->where('category_id' , $faq->faq_id)->orderby('order' , 'asc')->get() as $f)
+               @foreach(DB::table('frequesntlyaskquestions')->where('website' , 'lifeadvice')->where('category_id' , $faq->faq_id)->orderby('order' , 'asc')->get() as $f)
                <div class="card faqquestion" style="border-radius: 16px !important;margin-top: 13px;">
                   <div class="card-header"  style="background-color: #ffffffff;" id="faq{{ $f->id }}">
                      <h5 class="mb-0">

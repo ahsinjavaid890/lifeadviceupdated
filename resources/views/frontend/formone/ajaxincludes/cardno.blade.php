@@ -206,10 +206,6 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
                         if($request->pre_existing[$second_perone-1]=='yes')
                         {
                             $second_dailyrate = $second_plan_rates[0]->rate_with_pre_existing;
-                            if($second_dailyrate == 0)
-                            {
-                                $second_dailyrate = 50000;
-                            }
                             $second_daily_rate += $second_dailyrate;
                             if($second_dailyrate == ''){ $second_dailyrate = 0; }
                             $second_display[] =  $second_dailyrate;

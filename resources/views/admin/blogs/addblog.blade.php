@@ -37,9 +37,7 @@
                     <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Blog ID</th>
                                 <th>Blog Image</th>
-                                
                                 <th>Blog Tittle</th>
                                 <th>Category Name</th>
                                 <th>Created At</th>
@@ -50,10 +48,9 @@
                         <tbody>
                             @foreach($data as $r)
                             <tr>
-                                <td>{{ $r->id }}</td>
                                 <td>
-                                    <a target="_blank" href="{{ url('public/images') }}/{{ $r->image }}">
-                                        <img width="120" height="120" src="{{ url('public/images') }}/{{ $r->image }}">
+                                    <a  target="_blank" href="{{ url('public/images') }}/{{ $r->image }}">
+                                        <img class="img-thumbnail" width="120" height="120" src="{{ url('public/images') }}/{{ $r->image }}">
                                     </a>
                                 </td>
                                 
@@ -64,10 +61,14 @@
                                     {{ DB::table('blogcategories')->where('id' , $r->category_id)->first()->name }}
                                 </td>
                                 <td>
-                                    {{ $r->created_at }}
+                                    @if($r->created_at)
+                                        {{ Cmf::date_format($r->created_at) }}
+                                    @endif
                                 </td>
                                 <td>
-                                    {{ $r->updated_at }}
+                                    @if($r->updated_at)
+                                        {{ Cmf::date_format($r->updated_at) }}
+                                    @endif
                                 </td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>

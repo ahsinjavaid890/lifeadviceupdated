@@ -223,14 +223,6 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                         if($request->pre_existing[$perone-1]=='yes')
                         {
                             $dailyrate = $plan_rates[0]->rate_with_pre_existing;
-                            if($dailyrate == 0)
-                            {
-                                $plan = DB::table('wp_dh_insurance_plans')->where('id' , $dailyrate = $plan_rates[0]->plan_id)->first();
-                                $companyid = $plan->insurance_company;
-                                $newplan = DB::table('wp_dh_insurance_plans')->where('insurance_company' , $plan->insurance_company)->whereNotIn('id', [$plan_rates[0]->plan_id])->first();
-                                $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$newplan->id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                                $dailyrate = $plan_rates[0]->rate_with_pre_existing;
-                            }
                             $daily_rate += $dailyrate;
                             if($dailyrate == '')
                             {
@@ -390,20 +382,6 @@ if($show == '1' && $total_price > 0){
                         if($request->pre_existing[$per-1]=='yes')
                         {
                             $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-
-
-                            if($single_person_rate == 0)
-                            {
-                                $plan = DB::table('wp_dh_insurance_plans')->where('id' , $dailyrate = $p_planrates[0]->plan_id)->first();
-                                $companyid = $plan->insurance_company;
-                                $newplan = DB::table('wp_dh_insurance_plans')->where('insurance_company' , $plan->insurance_company)->whereNotIn('id', [$p_planrates[0]->plan_id])->first();
-                                $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$newplan->id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                                $single_person_rate = $plan_rates[0]->rate_with_pre_existing;
-                            }else{
-                                $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                            }
-
-                            
                             $existingshow = $pre_existing_name;
                         }else{
                             $single_person_rate = $p_planrates[0]->rate_without_pre_existing;

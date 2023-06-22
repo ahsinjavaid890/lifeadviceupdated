@@ -335,8 +335,8 @@ class SiteController extends Controller
     }
     public function blogbycategory($id)
     {
-        $category = blogcategories::where('url' , $id)->first();
-        $data = DB::table('blogs')->where('category_id' , $category->id)->paginate(9);
+        $category = blogcategories::where('url' , $id)->where('website' , 'lifeadvice')->first();
+        $data = DB::table('blogs')->where('category_id' , $category->id)->where('website' , 'lifeadvice')->paginate(9);
         return view('frontend.companypages.blogsbycategory')->with(array('data'=>$data,'category'=>$category));
     }
     public function supervisa()
@@ -441,7 +441,7 @@ class SiteController extends Controller
     }
     public function blogs()
     {
-        $data = DB::table('blogs')->paginate(9);
+        $data = DB::table('blogs')->where('website' , 'lifeadvice')->paginate(9);
         return view('frontend.companypages.blogs')->with(array('data'=>$data));
     }
     public function contactus()
