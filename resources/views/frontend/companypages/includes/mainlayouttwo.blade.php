@@ -81,14 +81,14 @@
         <div class="row wow slideInUp animated animated" id="days-calculate" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
            <div class="input-group input-append date col-md-4" id="datePicker_0">
                 <label>Start Date <span class="text-danger" id="departure_date_error"></span></label>
-                <input type="text" onchange="supervisayes()" class="form-control" id="departure_date" name="departure_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
+                <input type="text" @if($data->url != 'visitor-insurance') onchange="supervisayes()" @endif @if($data->url == 'visitor-insurance') onchange="visitorinsuracendate()" @endif class="form-control" id="departure_date" name="departure_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
                 <span class="input-group-addon add-on">
                     <i class="fa fa-calendar visStartDate" aria-hidden="true"></i>
                 </span>
            </div>
            <div class="input-group input-append date col-md-4">
                 <label>End Date</label>
-                <input type="text" class="form-control" name="return_date" id="return_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
+                <input onchange="getnumberofdays()" type="text" class="form-control" name="return_date" id="return_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
                 <span class="input-group-addon add-on">
                     <i class="fa fa-calendar visEndDate" aria-hidden="true"></i>
                 </span>
@@ -152,6 +152,17 @@ function getagesecondage(id) {
     var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
     $('#getagesecond').val(age);
 }
+
+function visitorinsuracendate() {
+    var mindate = $('#departure_date').val();
+    $('#return_date').datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        minDate: new Date(mindate),
+    });
+}
+
 $(function() {
     $('#date_of_birth_one').datepicker( {
         changeMonth: true,
