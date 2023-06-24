@@ -56,7 +56,7 @@ class AdminController extends Controller
         $pro_travel_destination = $request->destinationtype;
         $pro_url = $request->pro_url;
         $redirect_from_url = $request->redirect_from_url;
-
+        $quotation_form_on_stylish_page = $request->quotation_form_on_stylish_page;
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
@@ -76,11 +76,10 @@ class AdminController extends Controller
             $vector = Cmf::sendimagetodirectory($request->vector);
             DB::statement("UPDATE `wp_dh_products` SET `vector`='$vector',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }else{
-            DB::statement("UPDATE `wp_dh_products` SET `description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
+            DB::statement("UPDATE `wp_dh_products` SET `stylish_form_layout`='$request->stylish_form_layout',`quotation_form_on_stylish_page`='$request->quotation_form_on_stylish_page',`description`='$request->description',`category_id`='$category_id',`pro_name`='$pro_name',`pro_parent`='$pro_parent',`pro_supervisa`='$pro_supervisa',`pro_life`='$pro_life',`pro_fields`='$prod_fields',`pro_sort`='$sort_orders',`pro_travel_destination`='$pro_travel_destination',`pro_url`='$pro_url', `redirect_from_url`='$redirect_from_url' WHERE `pro_id`='$request->id'");
         }
 
-        $url = url('admin/products/allproducts');
-        return Redirect::to($url);
+        return redirect()->back()->with('message', 'Product Updated Successfully');
     }
 
 

@@ -167,7 +167,49 @@
                                        <input type="hidden" name="prod[price_layout]" id="price_layout" value="{{$price_layout}}">
                                     </div>
                                  </div>
+                                 <br><br>
+                                 <div class="row">
+                                    <div class="col-md-6" style="padding:0;">
+                                       <div class="col-md-12"> <label><strong>Active Quotation Form on Stylish Page</strong></label> </div>
+                                       <div class="col-md-12"> 
+                                        <label class="switch switch-green switch-success switch-round">
+                                           <input onchange="selectstylishform(this.value)" type="checkbox" class="switch-input" name="quotation_form_on_stylish_page" id="quotation_form_on_stylish_page" value="1" @if($data->quotation_form_on_stylish_page == 1) checked="" @endif>
+                                           <span class="switch-label" data-on="YES" data-off="NO"></span>
+                                           <span class="switch-handle"></span>
+                                         </label>
+                                        </div>
+                                    </div>
+                                 </div>
+                                 <br><br><br>
+                                 <div id="stylishformlayoutrow" @if($data->quotation_form_on_stylish_page == 1)  @else style="display:none"; @endif class="row">
+                                    <div class="col-md-12"> 
+                                        <label>
+                                            <strong>Choose Form Layout <span class="text-danger">*</span></strong> 
+                                        </label> 
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_1') selected @endif" onclick="stylishformlayout('layout_1')" id="stylishformlayoutonelayout_1"> 
+                                            <img src="{{ asset('public/front/layouts/prices-one.png')}}"> 
+                                        </div>
+                                        <div class="design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_2') selected @endif" onclick="stylishformlayout('layout_2')" id="stylishformlayoutonelayout_2">
+                                            <img src="{{ asset('public/front/layouts/prices-two.png')}}">
+                                         </div>
+                                       <input type="hidden" name="stylish_form_layout" id="stylish_form_layout" value="{{$data->stylish_form_layout}}">
+                                    </div>
+                                 </div>
                             </div>
+                            <script>
+                                function selectstylishform(id) 
+                                {
+                                    $('#stylishformlayoutrow').toggle('slow');
+
+                                }
+                                function stylishformlayout(id) {
+                                    $('.stylishlayoutclass').removeClass('selected');
+                                    $('#stylish_form_layout').val(id);
+                                    $('#stylishformlayoutone'+id).addClass('selected');
+                                }
+                            </script>
                             <div class="card-footer">
                                 <input type="submit" class="btn btn-success" value="Submit Changes">
                             </div>

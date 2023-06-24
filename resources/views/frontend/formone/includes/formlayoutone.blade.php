@@ -67,22 +67,9 @@
                         </label>
                         <label for="phonenumbermask" class="d-sm-none" >Phone Number<b id="phone_error" class="text-danger"></b></label>
                         <div class="custom-form-control">
-                           <input onkeyup="validatephone()" type="text" id="phonenumbermask"  name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
+                           <input type="text" id="phonenumbermask"  name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
                         </div>
                      </div>
-                     <script>
-                        function validatephone(){
-                           var checkphone = document.getElementById('phone').value;
-                           document.getElementById('phone').value = checkphone.replace(/\D/g,'');
-                           if (checkphone.length < 10) {
-                           document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                           document.getElementById('getquote').disabled = true;  
-                           } else {
-                           document.getElementById('getquote').disabled = false; 
-                           document.getElementById('phone_error').innerHTML = '';
-                           }
-                           }
-                     </script>
                      @endif
                      @endif
                      @endif
