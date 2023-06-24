@@ -977,13 +977,7 @@ function addtravellers()
                   $('#errortravelr').show();
                   $('#errortravelr').html('Date of birth can not be a future date.');
               }else{
-                  if(year > getfourtyyear)
-                  {
-                    $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
-                    $('#errortravelr').show();
-                    $('#errortravelr').html('Super Visa Is Eligible only Greate Then 40 Years Old');
-                  }else{
-
+    
                     if(year < getlastdob)
                     {
                        $('.dateofbirthclass'+showrowstraveler).addClass('errorinput')
@@ -1003,7 +997,7 @@ function addtravellers()
                     }
 
 
-                  }
+                  
               }
 
             var number_travelers = $("#number_travelers").val();

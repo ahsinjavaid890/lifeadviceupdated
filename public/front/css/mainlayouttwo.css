@@ -366,6 +366,13 @@ ul.common-btn li {
 .input-group {
     margin-bottom: 25px;
 }
+.tab-list-wrap li:hover {
+    --x: 100%;
+}
+
+.tab-img img {
+    width: 80%;
+}
 
 .ui-datepicker-month{
     border-right: 0px;
