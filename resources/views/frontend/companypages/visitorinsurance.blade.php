@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
-@include('frontend.companypages.includes.mainvisitor')
+
 
 @php
    $useragent=$_SERVER['HTTP_USER_AGENT'];
@@ -18,14 +18,33 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div style="background-color:#f4f7fa" class="container-homepage">
-	<div class="quotationscards">
-                      
+@if($data->quotation_form_on_stylish_page == 1)
+    @if($data->stylish_form_layout == 'layout_1')
+    @include('frontend.companypages.includes.main')
+    @include('frontend.companypages.includes.mainvisitor')
+	<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<div style="background-color:#f4f7fa" class="container-homepage">
+		<div class="quotationscards">
+	                      
+		</div>
 	</div>
-</div>
+    @endif
+
+    @if($data->stylish_form_layout == 'layout_2')
+    @include('frontend.companypages.includes.mainlayouttwo')
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+
+        </div>
+    </div>
+    @endif
+@else
+    @include('frontend.companypages.includes.includes.heroinclude')
+@endif
 @include('frontend.companypages.includes.sectiontwo')
 @include('frontend.companypages.includes.sectionthree')
 @include('frontend.companypages.includes.sectionfour')
