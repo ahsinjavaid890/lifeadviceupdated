@@ -165,7 +165,19 @@ class SiteController extends Controller
         $ded = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id', $plan->id)->groupby('deductible1')->get();
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
-        $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+
+        if($data->stylish_form_layout == 'layout_1')
+        {
+            $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        
+
+        if($data->stylish_form_layout == 'layout_2')
+        {
+            $returnHTML =  view('frontend.formone.ajaxlayouttwo.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+
+
         $data = json_encode($request->all(), true);
         $quotesave = new temproaryquote();
         $quotesave->quote_id = $quoteNumber;

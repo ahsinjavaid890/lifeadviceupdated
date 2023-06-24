@@ -146,3 +146,205 @@
     height: 100% !important;
     padding: 1rem 0.75rem;
 }
+
+.subpage-full-details {
+    padding: 50px 0;
+    background: #fff !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+.output-info-tabs .tab-btns {
+    position: relative;
+    display: block;
+    border-bottom: 2px solid #f1f1f1;
+}
+.output-info-tabs .tab-btns li {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    margin: 0px 22px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #503c57;
+    text-transform: uppercase;
+}
+.output-info-tabs .tab-btns li:before {
+    position: absolute;
+    content: '';
+    background: #ff3d3d;
+    width: 0%;
+    height: 2px;
+    left: 0px;
+    top: -12px;
+}
+@media screen and (min-width: 992px)
+{
+    select#deductiblemob, .deductiblemob {
+        display: none!important;
+    }
+}
+
+.result-blk .tab-list-wrap .row {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 0 15px;
+}
+.tab-list-wrap li {
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+    transition: all 2500ms ease;
+    background: linear-gradient(90deg, #dddddd70, #dddddd70 51%, #c5c4c4) var(--x, 0)/200%;
+}
+.list-head {
+    background: -webkit-linear-gradient(0deg, #d90504, #ff2600 95%) !important;
+    padding: 6px 0;
+    color: #fff;
+}
+.list-head {
+    padding: 10px 0 !important;
+    margin: 0;
+}
+
+@media only screen and (min-width: 1024px)
+{
+    .subpage-full-details .row {
+        padding-left: 0 !important;
+    }
+}
+
+.result-blk .tab-list-wrap li .grid-list:first-child {
+    padding: 10px;
+}
+
+@media (min-width: 1200px)
+{
+    .result-blk .tab-list-wrap .grid-list {
+        text-align: center;
+        max-width: 20% !important;
+        display: inline-table;
+        margin: auto;
+        padding: 0;
+        flex: initial;
+    }
+}
+
+.tab-list-wrap li .fold {
+    position: relative;
+    text-decoration: none;
+    color: #999;
+    transition: all ease .5s;
+}
+.grid-list {
+    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    color: #000;
+    font-size: 14px;
+}
+.result-blk .tab-list-wrap .grid-list .common-btn {
+    display: flex;
+}
+ul.common-btn li {
+    display: inline-block !important;
+}
+.common-btn li {
+    background: transparent !important;
+}
+.common-btn li {
+    border: none;
+    display: inline-flex;
+}
+.color-one-btn {
+    background: #495677;
+    color: #fff;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    border: 1px;
+}
+.btn-wrap {
+    background: #666;
+    color: #fff;
+    padding: 0 10px 2px;
+    min-width: 100px;
+    display: inline-block;
+    border-radius: 30px;
+    float: left;
+    margin-right: 5px;
+    font-size: 14px;
+}
+.common-btn li a {
+    min-width: 100px;
+    text-align: center;
+}
+.color-three-btn {
+    background: #d90504;
+    color: #fff;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+.checkboxbtn {
+    position: relative;
+    display: block;
+}
+.checkboxbtn label {
+    display: block;
+    color: #444;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background: #fff;
+    border: 2px solid #ddd;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.checkboxbtn label:before {
+    background: transparent;
+    -webkit-transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+    transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+    z-index: 2;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: center;
+    width: 0;
+    height: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+}
+.checkboxbtn label:after, .checkboxbtn label:before {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: #d90504;
+}
+.checkboxbtn label:after, .checkboxbtn label:before {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: #d90504;
+}
+.result-blk .tab-list-wrap .list-head .col-md-2, .result-blk .tab-list-wrap .list-head .col-md-4 {
+    max-width: 20% !important;
+    text-align: center;
+    display: inline-table;
+    padding: 0;
+    margin: auto;
+    padding: 0;
+    flex: initial;
+}

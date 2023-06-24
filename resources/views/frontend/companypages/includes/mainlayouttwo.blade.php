@@ -32,7 +32,9 @@
 
 <div class="pt-3 pb-3 subpage-full-details mydata svicmai_resultblk">
    <div class="container">
-      <form class="quteform super-visa-quote" id="visitorSingleQuote" name="visitorSingleQuote" method="POST" siq_id="autopick_2239">
+      <form id="quoteform" class="quteform super-visa-quote" action="{{ url('ajaxquotes') }}" method="POST">
+        @csrf
+        <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
          <h1 class="h2title">{{ $data->pro_name }} Quote Form</h1>
          <div class="row wow slideInUp animated animated mb-3" id="min-requirement" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
             <div class="input-group input-append date col-md-4">
@@ -88,15 +90,20 @@
             </div>
            @endfor
          <div class="mb-3 row wow slideInDown animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
+            @php
+                $date = date('Y-m-d');
+                $todate =  date('Y-m-d', strtotime($date. ' + 364 days'));
+            @endphp
             <div class="input-group input-append date col-md-4" id="datePicker_0">
                 <label>Start Date</label>
-                <input type="date" class="form-control" name="visStartDate" placeholder="YYYY-MM-DD" autocomplete="off">
+                <input type="date" id="departure_date" onchange="supervisayes()" class="form-control" name="departure_date" placeholder="YYYY-MM-DD" autocomplete="off">
             </div>
             <div class="input-group input-append date col-md-4" id="datePicker_1">
                 <label>End Date</label>
-                <input type="date" class="form-control" name="visStartDate" placeholder="YYYY-MM-DD" autocomplete="off">
+                <input type="date" class="form-control" name="return_date" id="return_date" placeholder="YYYY-MM-DD" autocomplete="off">
             </div>
          </div>
+
          <div class="row wow slideInDown animated animated" id="first-dob" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
             
          </div>
@@ -106,10 +113,54 @@
          </div>
          
         <div class="mt-3 form-group message-btn wow slideInUp animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
-            <button type="submit" class="btn-style-four" id="VisitorSingleSub">GET QUOTE</button>
+            <button type="submit" class="btn-style-four" id="getqoutesubmitbutton">GET QUOTE</button>
         </div>
       </form>
       <div class="results_search" id="results_search">
       </div>
    </div>
 </div>
+
+
+<script type="text/javascript">
+ function supervisayes(){
+   //window.setTimeout(function(){ 
+       var tt = document.getElementById('departure_date').value;
+       var date = new Date(tt);
+       var newdate = new Date(date);
+       newdate.setDate(newdate.getDate() + 364);
+       var dd = newdate.getDate();
+       var mm = newdate.getMonth() + 1;
+       var y = newdate.getFullYear();
+       if(mm <= 9){
+       var mm = '0'+mm;    
+       }
+       if(dd <= 9){
+       var dd = '0'+dd;    
+       }
+       // var someFormattedDate = mm + '/' + dd + '/' + y;
+       var someFormattedDate = y + '-' + mm + '-' + dd;
+       document.getElementById('return_date').value = someFormattedDate;
+       //alert(someFormattedDate);
+   //}, 1000);
+   
+   }
+   $('#quoteform').on('submit',(function(e) {
+        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                // console.log(data.html)
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                $('.results_search').html(data.html);
+            }
+        });
+    }));
+</script>
