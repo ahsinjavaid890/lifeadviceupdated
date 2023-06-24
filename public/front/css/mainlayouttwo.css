@@ -1,3 +1,8 @@
+@media (min-width: 1200px){
+.container-layout-two{
+    max-width: 1170px;
+}
+}
 .quteform {
     border: 1px solid #ddd;
     border-radius: 20px;
@@ -5,6 +10,7 @@
     border: 1px solid #ddd;
     border-radius: 20px;
     padding: 25px;
+    background-color: white !important;
     box-shadow: 2px 2px 10px #dddddd9e;
 }
 .mydata h1 {
@@ -42,7 +48,7 @@
     width: 20px;
     height: 20px;
     border-radius: 3px;
-    background: #d90504;
+    background: #2b3481;
 }
 
 .radiobtn label:before {
@@ -72,13 +78,13 @@
     animation-name: blink;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
-    border-color: #d90504;
+    border-color: #2b3481;
     background: #fff;
     box-shadow: 2px 12px 10px rgba(186, 185, 185, 0.20)
 }
 
 .radiobtn input[type="radio"]:checked + label:after {
-    background: #d90504;
+    background: #2b3481;
 }
 
 .radiobtn input[type="radio"]:checked + label:before {
@@ -102,7 +108,7 @@
     margin-bottom: 2px;
 }
 .quteform h6, .quteform h2 {
-    color: #d90504;
+    color: #2b3481;
     margin-bottom: 5px;
     font-size: 17px;
 }
@@ -200,7 +206,7 @@
     background: linear-gradient(90deg, #dddddd70, #dddddd70 51%, #c5c4c4) var(--x, 0)/200%;
 }
 .list-head {
-    background: -webkit-linear-gradient(0deg, #d90504, #ff2600 95%) !important;
+    background: -webkit-linear-gradient(0deg, #2b3481, #ff2600 95%) !important;
     padding: 6px 0;
     color: #fff;
 }
@@ -284,7 +290,7 @@ ul.common-btn li {
     text-align: center;
 }
 .color-three-btn {
-    background: #d90504;
+    background: #2b3481;
     color: #fff;
     transition: all 500ms ease;
     -moz-transition: all 500ms ease;
@@ -327,7 +333,7 @@ ul.common-btn li {
     width: 20px;
     height: 20px;
     border-radius: 3px;
-    background: #d90504;
+    background: #2b3481;
 }
 .checkboxbtn label:after, .checkboxbtn label:before {
     content: "";
@@ -337,7 +343,7 @@ ul.common-btn li {
     width: 20px;
     height: 20px;
     border-radius: 3px;
-    background: #d90504;
+    background: #2b3481;
 }
 .result-blk .tab-list-wrap .list-head .col-md-2, .result-blk .tab-list-wrap .list-head .col-md-4 {
     max-width: 20% !important;
@@ -347,4 +353,33 @@ ul.common-btn li {
     margin: auto;
     padding: 0;
     flex: initial;
+}
+.fld-mt {
+    margin-top: 2.4rem !important;
+    text-align: center;
+}
+.fld-mt p {
+    background: #2b3481;
+    border-radius: 100px;
+    color: #fff;
+}
+.input-group {
+    margin-bottom: 25px;
+}
+
+.ui-datepicker-month{
+    border-right: 0px;
+    border: 2px solid #e2e6e7;
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    border-radius: 5px;
+    height: 42px;
+}
+.ui-datepicker-year{
+    border-left:0px;
+    border: 2px solid #e2e6e7;
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    border-radius: 5px;
+    height: 42px;
 }

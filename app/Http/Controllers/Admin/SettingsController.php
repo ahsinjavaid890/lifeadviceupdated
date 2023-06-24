@@ -15,8 +15,13 @@ class SettingsController extends Controller
     }
     public function appearance()
     {   
-        $settings = Settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
+        $settings = Settings::where('smallname' , 'lifeadvice')->first();
         return view('admin.website.settings',compact("settings"));
+    }
+    public function emailsettings()
+    {   
+        $settings = Settings::where('smallname' , 'lifeadvice')->first();
+        return view('admin.website.emailsettings',compact("settings"));
     }
     public function settingsupdate(Request $request)
     {

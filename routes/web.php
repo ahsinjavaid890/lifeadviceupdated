@@ -183,6 +183,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/settings','SettingsController@appearance');
         Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
+        Route::get('/emailsettings','SettingsController@emailsettings');
+        
     });
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');

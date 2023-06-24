@@ -31,11 +31,74 @@
 </div>
 
 <div class="pt-3 pb-3 subpage-full-details mydata svicmai_resultblk">
-   <div class="container">
+   <div class="container container-layout-two">
       <form id="quoteform" class="quteform super-visa-quote" action="{{ url('ajaxquotes') }}" method="POST">
         @csrf
         <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
          <h1 class="h2title">{{ $data->pro_name }} Quote Form</h1>
+         <h6>What type of policy do you want?</h6>
+         <div class="row wow slideInDown animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
+           <div class="radiobtn input-group input-append col-md-3 col-sm-6 col-xs-12">
+              <input onchange="policytype(this.value)" type="radio" id="single" class="policy-type" name="drone_policy" value="single" checked="">
+              <label for="single">Single Coverage</label>
+           </div>
+           <div class="radiobtn input-group input-append col-md-3 col-sm-6 col-xs-12">
+              <input onchange="policytype(this.value)" type="radio" id="couple" class="policy-type" name="drone_policy" value="couple">
+              <label for="couple">Couple Policy</label>
+           </div>
+           @if($data->url == 'visitor-insurance')
+           <div class="radiobtn input-group input-append col-md-3 col-sm-6 col-xs-12">
+              <input type="radio" id="family" class="policy-type" name="drone_policy" value="family" data-gtm-form-interact-field-id="6"><label for="family">Family Policy</label>
+           </div>
+           @endif
+        </div>
+        <div class="row wow slideInDown animated animated" id="first-dob" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
+           <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
+              <label>Date of Birth</label>
+              <input onchange="getage(this.value)" type="text" class="form-control" id="date_of_birth_one" name="dob" placeholder="YYYY-MM-DD" autocomplete="off" readonly="true">
+              <span class="input-group-addon add-on"><i class="fa fa-calendar dob" aria-hidden="true"></i></span>
+           </div>
+           <small class="fld-mt col-md-1">
+              <p>OR</p>
+           </small>
+           <div class="input-group input-append date col-md-2">
+              <label>Age</label><input readonly type="number" placeholder="Age" class="card-number" name="age" id="age">
+           </div>
+        </div>
+        <div class="row" id="second-dob"  style="display: none;">
+            <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
+                <label>Date of Birth</label>
+                <input onchange="getagesecondage(this.value)" type="text" class="form-control" id="date_of_birth_two" placeholder="YYYY-MM-DD" autocomplete="off" readonly="true">
+                <span class="input-group-addon add-on"><i class="fa fa-calendar dobsecond" aria-hidden="true"></i>
+                </span>
+            </div>
+            <small class="fld-mt col-md-1">
+              <p>OR</p>
+            </small>
+            <div class="input-group input-append date col-md-2"> <label>Age</label><input type="number" placeholder="Age" class="card-number" name="age_second" id="getagesecond"></div>
+        </div>
+        <div class="row wow slideInUp animated animated" id="days-calculate" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
+           <div class="input-group input-append date col-md-4" id="datePicker_0">
+                <label>Start Date</label>
+                <input type="text" onchange="supervisayes()" class="form-control" id="departure_date" name="departure_date" placeholder="YYYY-MM-DD" autocomplete="off" readonly="true">
+                <span class="input-group-addon add-on">
+                    <i class="fa fa-calendar visStartDate" aria-hidden="true"></i>
+                </span>
+           </div>
+           <div class="input-group input-append date col-md-4">
+                <label>End Date</label>
+                <input type="text" class="form-control" name="return_date" id="return_date" placeholder="YYYY-MM-DD" autocomplete="off" readonly="true">
+                <span class="input-group-addon add-on">
+                    <i class="fa fa-calendar visEndDate" aria-hidden="true"></i>
+                </span>
+           </div>
+           <small class="fld-mt col-md-1">
+              <p>OR</p>
+           </small>
+           <div class="input-group input-append date col-md-2">
+              <label>Days</label><input readonly type="number" placeholder="Days" class="card-number visDaysNo" name="visDaysNo">
+           </div>
+        </div>
          <div class="row wow slideInUp animated animated mb-3" id="min-requirement" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
             <div class="input-group input-append date col-md-4">
                <label>Coverage</label>
@@ -46,72 +109,21 @@
                     @endforeach
                 </select>
             </div>
-            <div class="input-group input-append date col-md-4">
-               <label>Primary Destination</label>
-               <select name="primarydestination" id="primarydestination" class="card-number">
-                    <option value="">Select Primary Destination</option>
-                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                        <option @if(isset($_GET['primarydestination'])) @if($_GET['primarydestination'] == $r->name) selected @endif @endif @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="input-group input-append date col-md-4">
-               <label>Number of Travellers</label>
-               <select onchange="checknumtravellers(this.value)" required class="card-number" name="number_travelers" id="number_travelers">
-                 <option value="">Number of Travellers</option>
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-              </select>
-            </div>
-         </div>
-            @php
-              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
-              $c = 0;
-           @endphp
-
-           @for($i=1;$i<=6;$i++)
-            <div class="row no_of_travelers mb-3" style="display: none;" id="traveler{{ $i }}">
-                <div class="input-group input-append date col-md-4">
-                    <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
-                    <input id="dateofbirthfull{{ $i }}" class="card-number" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" >
-                </div>
-                <div class="input-group input-append date col-md-4">
-                    <label for="day" class="form-label lables" id="">Pre Existing of <?php echo $ordinal_words[$i];?></label>
-                    <select id="pre_existing{{ $i }}" name="pre_existing[]" class="card-number">
-                     <option value="">Select Pre Existing Condition</option>
-                     <option value="yes">Yes</option>
-                     <option selected value="no">No</option>
-                   </select>
-                </div>
-            </div>
-           @endfor
-         <div class="mb-3 row wow slideInDown animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
-            @php
-                $date = date('Y-m-d');
-                $todate =  date('Y-m-d', strtotime($date. ' + 364 days'));
-            @endphp
-            <div class="input-group input-append date col-md-4" id="datePicker_0">
-                <label>Start Date</label>
-                <input type="date" id="departure_date" onchange="supervisayes()" class="form-control" name="departure_date" placeholder="YYYY-MM-DD" autocomplete="off">
-            </div>
-            <div class="input-group input-append date col-md-4" id="datePicker_1">
-                <label>End Date</label>
-                <input type="date" class="form-control" name="return_date" id="return_date" placeholder="YYYY-MM-DD" autocomplete="off">
-            </div>
          </div>
 
-         <div class="row wow slideInDown animated animated" id="first-dob" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
-            
-         </div>
-
-         <div class="row wow slideInUp animated animated" id="days-calculate" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
-            
-         </div>
-         
+         <h6>Would you like to cover pre-existing medical conditions? </h6>
+         <div class="row pre-existing-first wow slideInDown animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
+            <div class="radiobtn col-md-2">
+                <input type="radio" id="no" class="pre-exist" name="pre_exist" value="no" checked=""><label for="no">No</label>
+            </div>
+            <div class="radiobtn col-md-2 ">
+                <input type="radio" id="yes" class="pre-exist" name="pre_exist" value="yes"><label for="yes">Yes</label>
+            </div>
+        </div>
+        <div class="row pre-existing-second" style="display: none;">
+           <div class="radiobtn col-md-2"><input type="radio" id="no-two" class="pre-exist" name="pre_exist_second" value="no" checked=""><label for="no-two">No</label> </div>
+           <div class="radiobtn col-md-2 "><input type="radio" id="yes-two" class="pre-exist" name="pre_exist_second" value="yes"><label for="yes-two">Yes</label></div>
+        </div>
         <div class="mt-3 form-group message-btn wow slideInUp animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
             <button type="submit" class="btn-style-four" id="getqoutesubmitbutton">GET QUOTE</button>
         </div>
@@ -120,9 +132,71 @@
       </div>
    </div>
 </div>
-
-
 <script type="text/javascript">
+function getage(id) {
+    dob = new Date(id);
+    var today = new Date();
+    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+    $('#age').val(age);
+}
+function getagesecondage(id) {
+    dob = new Date(id);
+    var today = new Date();
+    var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+    $('#getagesecond').val(age);
+}
+$(function() {
+    $('#date_of_birth_one').datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        maxDate: new Date(),
+    });
+    $('#departure_date').datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        minDate: new Date(),
+    });
+    $('#date_of_birth_two').datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        maxDate: new Date(),
+    });
+});
+function policytype(id) {
+    if(id == 'single')
+    {
+        $('#second-dob').slideToggle('slow');
+        $('.pre-existing-second').slideToggle('slow');
+    }
+
+
+    if(id == 'couple')
+    {
+        $('#second-dob').slideToggle('slow');
+        $('.pre-existing-second').slideToggle('slow');
+    }
+}
+function getnumberofdays() {
+    var departure_date = $('#departure_date').val();
+      var return_date = $('#return_date').val();
+      var startDay = new Date(departure_date);  
+      var endDay = new Date(return_date);  
+      var dayssuminsured = Math.round((endDay - startDay) / (1000 * 60 * 60 * 24));
+      if(departure_date)
+      {
+         if(dayssuminsured < 1)
+         {
+            $('#return_date').val('');
+            $('#total_number_of_days').val('');
+         }else{
+            $('.visDaysNo').val(dayssuminsured);
+         }
+      }
+}
+
  function supervisayes(){
    //window.setTimeout(function(){ 
        var tt = document.getElementById('departure_date').value;
@@ -138,12 +212,12 @@
        if(dd <= 9){
        var dd = '0'+dd;    
        }
-       // var someFormattedDate = mm + '/' + dd + '/' + y;
-       var someFormattedDate = y + '-' + mm + '-' + dd;
+       var someFormattedDate = mm + '/' + dd + '/' + y;
+       // var someFormattedDate = y + '-' + mm + '-' + dd;
        document.getElementById('return_date').value = someFormattedDate;
        //alert(someFormattedDate);
    //}, 1000);
-   
+        getnumberofdays();
    }
    $('#quoteform').on('submit',(function(e) {
         $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
