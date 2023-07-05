@@ -877,6 +877,14 @@ class AdminController extends Controller
     {
         return view('admin.website.settings');
     }
+    public function addnewcompany(Request $request)
+    {
+        $company = new wp_dh_companies();
+        $company->comp_name = $request->name;
+        $company->comp_logo = Cmf::sendimagetodirectory($request->logo);
+        $company->save();
+        return redirect()->back()->with('message', 'Company Added Successfully');
+    }
     public function updatecompanyinfo(Request $request)
     {
         if($request->claimform)

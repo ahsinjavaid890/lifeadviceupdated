@@ -165,22 +165,30 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="{{ url('admin/companyinfo/addnewpage') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/companies/addnewcompany') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Name</label>
-                                <input name="name" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                <label class="lable-control">Company Name</label>
+                                <input name="name" required type="text" id="emailfield" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Page Content</label>
-                                <textarea name="additional_notes_about_expereince" class="summernote"></textarea>
+                                <label class="lable-control">Company Logo</label>
+                                <input name="logo" type="file" id="emailfield" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Claim Form</label>
+                                <input name="claimform" type="file" class="form-control">
                             </div>
                         </div>
                     </div>
