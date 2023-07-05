@@ -188,11 +188,32 @@
                                         </label> 
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_1') selected @endif" onclick="stylishformlayout('layout_1')" id="stylishformlayoutonelayout_1"> 
-                                            <img src="{{ asset('public/front/layouts/prices-one.png')}}"> 
+                                        <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_1') selected @endif" onclick="stylishformlayout('layout_1')" id="stylishformlayoutonelayout_1"> 
+                                            <img src="{{ asset('public/front/layouts/form-one.png')}}"> 
                                         </div>
-                                        <div class="design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_2') selected @endif" onclick="stylishformlayout('layout_2')" id="stylishformlayoutonelayout_2">
-                                            <img src="{{ asset('public/front/layouts/prices-two.png')}}">
+                                        <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_2') selected @endif" onclick="stylishformlayout('layout_2')" id="stylishformlayoutonelayout_2">
+                                            <img src="{{ asset('public/front/layouts/form-two.png')}}">
+                                        </div>
+                                        <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_3') selected @endif" onclick="stylishformlayout('layout_3')" id="stylishformlayoutonelayout_3">
+                                            <img src="{{ asset('public/front/layouts/form-three.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_4') selected @endif" onclick="stylishformlayout('layout_4')" id="stylishformlayoutonelayout_4">
+                                            <img src="{{ asset('public/front/layouts/form-four.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_5') selected @endif" onclick="stylishformlayout('layout_5')" id="stylishformlayoutonelayout_5">
+                                            <img src="{{ asset('public/front/layouts/form-five.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_6') selected @endif" onclick="stylishformlayout('layout_6')" id="stylishformlayoutonelayout_6">
+                                            <img src="{{ asset('public/front/layouts/form-six.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_7') selected @endif" onclick="stylishformlayout('layout_7')" id="stylishformlayoutonelayout_7">
+                                            <img src="{{ asset('public/front/layouts/form-seven.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_8') selected @endif" onclick="stylishformlayout('layout_8')" id="stylishformlayoutonelayout_8">
+                                            <img src="{{ asset('public/front/layouts/form-eight.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclass @if($data->stylish_form_layout == 'layout_9') selected @endif" onclick="stylishformlayout('layout_9')" id="stylishformlayoutonelayout_9">
+                                            <img src="{{ asset('public/front/layouts/form-nine.png')}}">
                                          </div>
                                        <input type="hidden" name="stylish_form_layout" id="stylish_form_layout" value="{{$data->stylish_form_layout}}">
                                     </div>
