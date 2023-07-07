@@ -217,6 +217,41 @@
                                          </div>
                                        <input type="hidden" name="stylish_form_layout" id="stylish_form_layout" value="{{$data->stylish_form_layout}}">
                                     </div>
+                                    <div class="col-md-12 mt-4"> 
+                                        <label>
+                                            <strong>Choose Price Layout <span class="text-danger">*</span></strong>
+                                        </label> 
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_1') selected @endif" onclick="stylishpricelayout('layout_1')" id="stylishpricelayoutonelayout_1"> 
+                                            <img src="{{ asset('public/front/layouts/form-one.png')}}"> 
+                                        </div>
+                                        <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_2') selected @endif" onclick="stylishpricelayout('layout_2')" id="stylishpricelayoutonelayout_2">
+                                            <img src="{{ asset('public/front/layouts/form-two.png')}}">
+                                        </div>
+                                        <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_3') selected @endif" onclick="stylishpricelayout('layout_3')" id="stylishpricelayoutonelayout_3">
+                                            <img src="{{ asset('public/front/layouts/form-three.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_4') selected @endif" onclick="stylishpricelayout('layout_4')" id="stylishpricelayoutonelayout_4">
+                                            <img src="{{ asset('public/front/layouts/form-four.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_5') selected @endif" onclick="stylishpricelayout('layout_5')" id="stylishpricelayoutonelayout_5">
+                                            <img src="{{ asset('public/front/layouts/form-five.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_6') selected @endif" onclick="stylishpricelayout('layout_6')" id="stylishpricelayoutonelayout_6">
+                                            <img src="{{ asset('public/front/layouts/form-six.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_7') selected @endif" onclick="stylishpricelayout('layout_7')" id="stylishpricelayoutonelayout_7">
+                                            <img src="{{ asset('public/front/layouts/form-seven.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_8') selected @endif" onclick="stylishpricelayout('layout_8')" id="stylishpricelayoutonelayout_8">
+                                            <img src="{{ asset('public/front/layouts/form-eight.png')}}">
+                                         </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_9') selected @endif" onclick="stylishpricelayout('layout_9')" id="stylishpricelayoutonelayout_9">
+                                            <img src="{{ asset('public/front/layouts/form-nine.png')}}">
+                                         </div>
+                                       <input type="hidden" name="stylish_price_layout" id="stylish_price_layout" value="{{$data->stylish_price_layout}}">
+                                    </div>
                                  </div>
                             </div>
                             <script>
@@ -229,6 +264,11 @@
                                     $('.stylishlayoutclass').removeClass('selected');
                                     $('#stylish_form_layout').val(id);
                                     $('#stylishformlayoutone'+id).addClass('selected');
+                                }
+                                function stylishpricelayout(id) {
+                                    $('.stylishlayoutclassprice').removeClass('selected');
+                                    $('#stylish_price_layout').val(id);
+                                    $('#stylishpricelayoutone'+id).addClass('selected');
                                 }
                             </script>
                             <div class="card-footer">

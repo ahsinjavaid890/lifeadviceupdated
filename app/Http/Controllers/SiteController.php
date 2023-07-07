@@ -165,19 +165,38 @@ class SiteController extends Controller
         $ded = DB::table('wp_dh_insurance_plans_deductibles')->where('plan_id', $plan->id)->groupby('deductible1')->get();
         $query = "CAST(`sum_insured` AS DECIMAL)";
         $sum = DB::table('wp_dh_insurance_plans_rates')->where('plan_id', $plan->id)->groupby('sum_insured')->orderByRaw($query)->get();
-
-        if($data->stylish_form_layout == 'layout_1')
+        if($data->stylish_price_layout == 'layout_1')
         {
-            $returnHTML =  view('frontend.formone.ajaxquotes')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+            $returnHTML =  view('frontend.travelinsurance.includes.one.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
         }
-        
-
-        if($data->stylish_form_layout == 'layout_2')
+        if($data->stylish_price_layout == 'layout_2')
         {
-            $returnHTML =  view('frontend.formone.ajaxlayouttwo.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+            $returnHTML =  view('frontend.travelinsurance.includes.two.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
         }
-
-
+        if($data->stylish_price_layout == 'layout_3')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.three.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_6')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.six.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_7')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.seven.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_8')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.eight.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_9')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.pricelayoutnine')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_10')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.ten.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
         $data = json_encode($request->all(), true);
         $quotesave = new temproaryquote();
         $quotesave->quote_id = $quoteNumber;
@@ -360,7 +379,7 @@ class SiteController extends Controller
             $fields = unserialize($data->pro_fields);
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product' , $data->pro_id)->get();
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id' , $wp_dh_insurance_plans)->groupby('sum_insured')->get();
-            return view('frontend.companypages.supervisa')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
+            return view('frontend.travelinsurance.super-visa')->with(array('data'=>$data,'fields'=>$fields,'sum_insured'=>$sum_insured));
         }
         else
         {
