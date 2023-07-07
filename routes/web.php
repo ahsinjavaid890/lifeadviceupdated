@@ -153,6 +153,7 @@ Route::get('/carrier-profile/reviews', function () {
 
 
 
+
 // Hiring Maps
 Route::name('admin.')->prefix('admin')->group(function(){
     Route::get('/login',[LoginController::class, 'login'])->name('login');
@@ -184,6 +185,10 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
         Route::get('/emailsettings','SettingsController@emailsettings');
+        Route::post('/emailsettingsupdate','SettingsController@emailsettingsupdate');
+        Route::post('/emailtemplateupdate','SettingsController@emailtemplateupdate');
+        Route::get('/userpanelsettings','SettingsController@userpanelsettings');
+        Route::post('/userpanelsettingupdate','SettingsController@userpanelsettingupdate');
         
     });
     Route::name('companies.')->prefix('companies')->group(function(){

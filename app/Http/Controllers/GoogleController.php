@@ -2,13 +2,13 @@
   
 namespace App\Http\Controllers;
   
-use Illuminate\Http\Request;
-use Laravel\Socialite\Facades\Socialite;
-use Exception;
-use App\Models\User;
 use App\Models\productgallerimages;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
   
 class GoogleController extends Controller
 {
