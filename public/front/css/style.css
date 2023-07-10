@@ -12003,8 +12003,8 @@ ul.tabs li.current {
     background-color: #2b3481;
 }*/
 .tab-content {
-    display: none;
-    background: #f4f7fa;
+    /* display: none; */
+    /* background: #f4f7fa; */
 }
 
 .tab-content.current {

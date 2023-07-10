@@ -555,7 +555,17 @@ class SiteController extends Controller
         {
             return redirect()->route('user.dashboard');   
         }else{
-            return view('auth.login');
+            $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+
+            if ( $temp == "1") {
+            
+                return view('auth.template1.login');
+
+            } elseif($temp == "2"){
+                
+                return view('auth.template2.login');
+            }
+            
         }
         
     }
