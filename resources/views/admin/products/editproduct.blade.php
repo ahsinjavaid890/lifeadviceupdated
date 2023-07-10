@@ -250,6 +250,9 @@
                                          <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_9') selected @endif" onclick="stylishpricelayout('layout_9')" id="stylishpricelayoutonelayout_9">
                                             <img src="{{ asset('public/front/layouts/form-nine.png')}}">
                                          </div>
+                                         <div class="mt-3 design-select stylishlayoutclassprice @if($data->stylish_price_layout == 'layout_10') selected @endif" onclick="stylishpricelayout('layout_10')" id="stylishpricelayoutonelayout_10">
+                                            <img src="{{ asset('public/front/layouts/form-ten.png')}}">
+                                         </div>
                                        <input type="hidden" name="stylish_price_layout" id="stylish_price_layout" value="{{$data->stylish_price_layout}}">
                                     </div>
                                  </div>

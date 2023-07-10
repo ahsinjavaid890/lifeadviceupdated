@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/mainlayouttwo.css') }}">
 <div class="subpage-full-details  result-blk">
   <div class="container">
      <div class="output-info-tabs right">
