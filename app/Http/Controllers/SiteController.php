@@ -177,6 +177,15 @@ class SiteController extends Controller
         {
             $returnHTML =  view('frontend.travelinsurance.includes.three.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
         }
+        if($data->stylish_price_layout == 'layout_4')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.four.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
+        if($data->stylish_price_layout == 'layout_5')
+        {
+            $returnHTML =  view('frontend.travelinsurance.includes.
+                .index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
+        }
         if($data->stylish_price_layout == 'layout_6')
         {
             $returnHTML =  view('frontend.travelinsurance.includes.six.index')->with(array('quoteNumber'=>$quoteNumber,'data'=>$data,'fields'=>$fields,'ded'=>$ded,'sum'=>$sum,'request'=>$request))->render();
