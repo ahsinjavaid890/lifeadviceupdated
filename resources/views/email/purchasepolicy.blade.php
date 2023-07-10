@@ -48,7 +48,7 @@
                                                                                        <div style="font-family:inherit;text-align:inherit"><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-weight:800;font-size:30px;line-height:41px">Policy Confirmation</span></div>
                                                                                        <div style="font-family:inherit;text-align:inherit"><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-size:18px;line-height:40px;font-weight:700">Thank you for your purchase!</span></div>
                                                                                        <div style="font-family:inherit;text-align:inherit"><br></div>
-                                                                                       <div style="font-family:inherit;text-align:inherit"><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-size:18px;line-height:40px;font-weight:600">Reffrence ID:</span><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-size:18px;line-height:40px;font-weight:700">"{{ $policy_number }}"</span></div>
+                                                                                       <div style="font-family:inherit;text-align:inherit"><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-size:18px;line-height:40px;font-weight:600">Reffrence ID:</span><span style="color:#ffffff;font-family:&quot;Open Sans&quot;,sans-serif;font-size:18px;line-height:40px;font-weight:700">{{ $policy_number }}</span></div>
                                                                                        <div></div>
                                                                                     </div>
                                                                                  </td>
@@ -236,7 +236,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale-&gt;status }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->status }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -276,7 +276,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale-&gt;start_date }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->start_date }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -316,7 +316,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale-&gt;end_date }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->end_date }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -356,7 +356,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">${{ $sale-&gt;coverage_ammount }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">${{ $sale->coverage_ammount }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -396,7 +396,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale-&gt;deductibles }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->deductibles }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -428,7 +428,7 @@
                                                       </tr>
                                                    </tbody>
                                                 </table>
-@foreach(DB::table('traveler_sale_informations')-&gt;where('sale_id' , $sale-&gt;id)-&gt;get() as $key =&gt; $r)
+@foreach(DB::table('traveler_sale_informations')->where('sale_id' , $sale->id)->get() as $key => $r)
 <table style="padding:24px 30px;width:100%">
 <tbody>
 <tr>
@@ -498,7 +498,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r-&gt;f_name }} {{ $r-&gt;l_name }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->f_name }} {{ $r->l_name }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -538,7 +538,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r-&gt;gender }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -578,7 +578,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r-&gt;pre_existing_condition }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->pre_existing_condition }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -618,7 +618,7 @@
                   <tr>
                      <td style="padding:10px 0px 10px 0px;line-height:24px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                         <div>
-                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r-&gt;date_of_birth }}</span></div>
+                           <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit"><span style="white-space:pre-wrap;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->date_of_birth }}</span></div>
                            <div></div>
                         </div>
                      </td>
@@ -731,7 +731,7 @@
                                                                                        <tbody>
                                                                                           <tr>
                                                                                              <td align="center">
-                                                                                                <a href="https://www.google.com/search?q=life+advice+insurance+inc&amp;rlz=1C1UEAD_enPK975PK975&amp;oq=life+advice+insurance+inc&amp;aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&amp;sourceid=chrome&amp;ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," target="_blank">
+                                                                                                <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," target="_blank">
                                                                                                 <img src="https://lifeadvice.ca/public/email/googlerattings.png" width="103" style="width:103px" class="CToWUd" data-bit="iit">
                                                                                                 </a>
                                                                                              </td>
