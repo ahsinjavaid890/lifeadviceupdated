@@ -167,11 +167,11 @@
 .qoute-card{
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgb(87 106 134 / 25%);
-    max-width: 1150px;
+/*    max-width: 1150px;*/
     width: 100%;
     background: #fff;
     position: relative;
-    left: 21%;
+    left: 11%;
     top: -31px;
 }
 .get-quotes-button{
