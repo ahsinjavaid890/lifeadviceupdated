@@ -1,4 +1,16 @@
-<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#F4F7FA">
+
+
+@php
+   $temp_id = DB::table('site_settings')->where('smallname','lifeadvice')->first()->email_template;
+   $temp =  DB::table('email_templates')->where('id',$temp_id)->first();
+@endphp
+
+{!! $temp->purchase_email !!}
+
+
+
+
+{{-- <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#F4F7FA">
    <tbody>
       <tr>
          <td valign="top" bgcolor="#F4F7FA" width="100%">
@@ -832,4 +844,5 @@
          </td>
       </tr>
    </tbody>
-</table>
+</table> --}}
+
