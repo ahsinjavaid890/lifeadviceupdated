@@ -36,16 +36,7 @@ class SettingsController extends Controller
         $upadate->save();
         return redirect()->back()->with('message', 'Email Template Settings Updated Successfully');
     }
-    public function emailtemplateupdate(Request $request)
-    {   
-        $upadate = email_template::find($request->temp_id);
-        $upadate->purchase_email = $request->purchase_email;
-        $upadate->review_email = $request->review_email;
-        $upadate->compare_email = $request->compare_email;
-        $upadate->quote_email = $request->quote_email;
-        $upadate->save();
-        return redirect()->back()->with('message', 'Email Template Updated Successfully');
-    }
+    
     public function userpanelsettings()
     {   
         $settings = Settings::where('smallname' , 'lifeadvice')->first();

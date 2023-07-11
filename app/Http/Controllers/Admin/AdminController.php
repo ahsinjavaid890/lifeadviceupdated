@@ -25,10 +25,10 @@ use App\Models\product_categories;
 use App\Models\plan_benifits_categories;
 use App\Models\sales;
 use Illuminate\Support\Facades\Hash;
-use Mail;
-use Auth;
-use DB;
-use Redirect;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use  Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
     public function dashboard(){
