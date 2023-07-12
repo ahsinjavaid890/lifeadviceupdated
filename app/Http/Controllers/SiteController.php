@@ -230,6 +230,7 @@ class SiteController extends Controller
 
         $newsale = new sales();
         $newsale->reffrence_number = $reffrence_number;
+        $newsale->website = 'lifeadvice';
         $newsale->sponsersname = $request->sponsersname;
         $newsale->sponsersemail = $request->sponsersemail;
         $newsale->email = $request->email;
@@ -580,6 +581,9 @@ class SiteController extends Controller
             } elseif ($temp == "2") {
 
                 return view('auth.template2.login');
+            } elseif ($temp == "3") {
+
+                return view('auth.template3.login');
             }
         }
     }

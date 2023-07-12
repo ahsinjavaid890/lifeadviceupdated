@@ -26,7 +26,7 @@
                                                             <tr>
                                                                 <td align="center" bgcolor="#ededed" valign="top">
                                                                     <table align="center" border="0" cellpadding="0"
-                                                                        cellspacing="0" style="max-width: 700px"
+                                                                        cellspacing="0" style="max-width: 650px"
                                                                         width="100%">
                                                                         <tbody>
                                                                             <tr>
@@ -133,9 +133,7 @@
                                                                                         width="100%">
                                                                                         <tbody>
                                                                                             <tr>
-                                                                                                <td style="width:40px"
-                                                                                                    width="40">
-                                                                                                </td>
+                                                                                                
                                                                                                 <td align="center"
                                                                                                     valign="top">
                                                                                                     <table
