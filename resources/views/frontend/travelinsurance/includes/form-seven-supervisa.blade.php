@@ -1,11 +1,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutseven.css')}}">
-<div class="col-md-12 text-center" style="margin-top: 8px;margin-bottom: 30px;">
-   <h1 style="font-weight:bold;margin: 0px; color: #222;" class=""><strong>{{ $data->pro_name }}</strong></h1>
-   <h2 style="argin-bottom: 30px ;margin-top: 12px;font-weight: normal;font-size: 1.125em;line-height: 1.5em;letter-spacing: 1px;
-   color: #222;" class="hidden-xs">To start, we have a few quick questions to understand your needs.</h2>
-</div>   
-<form method="POST" action="{{ url('quotes') }}">
-   @csrf
+<style type="text/css">
+   .form-control{
+      height: 40px !important;
+   }
+</style>
+<form id="quoteform" class="mt-5" action="{{ url('ajaxquotes') }}" method="POST">
+                @csrf
 <div class=" birthdate card  mb-5 box-style" >
           
 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -69,7 +69,7 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
-                                 <div style="padding-left: 0px;" class="col-md-6 mb-2">
+                                 <div class="col-md-6 mb-2">
                                     <label for="day{{$i}}" class="label-style">Birth date of the oldest Traveller
                                     </label>
                                        <div class="custom-form-control">
@@ -84,7 +84,7 @@
                                           <select name="pre_existing[]" class="w-100 inputs-style">
                                              <option value="">Select Pre Existing Condition</option>
                                              <option value="yes">Yes</option>
-                                             <option value="no">No</option>
+                                             <option selected value="no">No</option>
                                            </select>
                                        </div>
                                     </div>
@@ -324,10 +324,9 @@
    @endfor                                             
 </div>
 
-<div class="col-md-12 text-center mb-5">
-   <button type="submit" class="btn btn-lg get_qout">Continue<i class="pl-2 fa fa-arrow-right"></i></button>
+<div class="col-md-12 text-center">
+   <button type="submit" id="getqoutesubmitbutton" class="btn btn-lg get_qout">Continue<i class="pl-2 fa fa-arrow-right"></i></button>
 </div> 
-<br><br><br>
 </form>             
                      
 <script>
@@ -467,4 +466,22 @@
        $('#dateofbirthfull6').mask('00/00/0000');
        $('#phonenumbermask').mask('000-000-0000');
    });
+   $('#quoteform').on('submit',(function(e) {
+        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                // console.log(data.html)
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                $('.quotationscards').html(data.html);
+            }
+        });
+    }));
 </script>

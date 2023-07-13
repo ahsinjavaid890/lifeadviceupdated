@@ -1,10 +1,106 @@
 @extends('frontend.layouts.maintwo')
 @include('frontend.companypages.includes.mettatittle')
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
+@php
+    $url = request()->segment(count(request()->segments()));
+    $firstsection = DB::table('travelpages')->where('url' , $url)->first();
+@endphp
+<div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
+    <div class="container-homepage">
+        <div class="row mb-3">
+            <div class="col-md-6 hero-texts">
+                <div class="herrotext super-hero-text">
+                    <h2 class="wow fadeInUp text-responsive" data-wow-delay=".4s">{!! $firstsection->main_heading !!}</h2>
+                    <h5 class="wow fadeInUp  text-justify super-text" data-wow-delay=".6s"><span class="text-white">{{ $firstsection->sub_heading }}</span></h5>
+                    @if($firstsection->main_button_text)
+                        <div class="btns d-flex">
+                            <div class="details">
+                                <a href="{{ $firstsection->main_button_link }}" class=" btn-lg">{{ $firstsection->main_button_text }}</a>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6 hero-images">
+                <div class="hero-image super-images" style=" background-image: url('{{ url('') }}/public/images/{{ $firstsection->main_image  }}');
+               background-position: 50% 70%;
+               background-size: 100%;
+               background-repeat: no-repeat;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @if($data->quotation_form_on_stylish_page == 1)
-    @if($data->stylish_form_layout == 'layout_8')
-    @include('frontend.travelinsurance.includes.form-eight-supervisa')
+    @if($data->stylish_form_layout == 'layout_1')
+    @include('frontend.travelinsurance.includes.form-one-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_2')
+    @include('frontend.travelinsurance.includes.form-two-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_3')
+    @include('frontend.travelinsurance.includes.form-three-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_4')
+    @include('frontend.travelinsurance.includes.form-four-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_5')
+    @include('frontend.travelinsurance.includes.form-five-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_6')
+    @include('frontend.travelinsurance.includes.form-six-supervisa')
+    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div style="background-color:#f4f7fa" class="container-homepage">
+        <div class="quotationscards">
+                          
+        </div>
+    </div>
+    @endif
+    @if($data->stylish_form_layout == 'layout_7')
+    @include('frontend.travelinsurance.includes.form-seven-supervisa')
     <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
