@@ -379,7 +379,7 @@
                               <div class="col-md-7">
                                  <label for="" class="d-sm-none">Do you require Family Plan ?</label>
                                  <div class="custom-form-control">
-                                    <select onchange="changefamilyyes(this.value)" required class="form-input selecttwo" name="fplan" id="selectfamilyplan">
+                                    <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
                                        <option value="">--- Please Choose ---</option>
                                          <option value="yes">Yes</option>
                                          <option selected value="no">No</option>
@@ -411,7 +411,7 @@
                      </div>
                      <div class="col-md-6 col-xs-6 width-50-percent" style="padding-right: 14px;">
                      <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
-                        <button type="submit" id="getqoutesubmitbutton" class="btn  pull-right" style="display: block;border-radius: 4px !important;background-color: #12b48b;color: white;">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
+                        <button type="submit" id="getqoutesubmitbutton" class="btn  pull-right" style="display: block;border-radius: 4px !important;background-color: #12b48b;color: white;width: 200px">Get a Quote <i class="fa fa-angle-double-right"></i> </button>
                      </div>
                   </div>
                </form>
@@ -631,7 +631,7 @@
        
    }
    $('#quoteform').on('submit',(function(e) {
-        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
@@ -645,6 +645,10 @@
                 // console.log(data.html)
                 $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
+
+                 $('html, body').animate({
+                    scrollTop: $(".quotationscards").offset().top
+                }, 2000);
             }
         });
     }));

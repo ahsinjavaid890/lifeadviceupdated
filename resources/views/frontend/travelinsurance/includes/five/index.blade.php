@@ -171,16 +171,17 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             ?></small>
             <h1 style="margin:0;font-size:23px">Quote Reference:</h1> 
             <h3 class="pt-3" style="margin: 0; font-size:22px;    color: #000;font-weight: 500; "><?php echo $quoteNumber; ?></h3>
-        </div>
-        <div class="col-md-12 adjust-quoto" style="border-top: 0px solid #ddd !important"> 
-            <h2 >Adjust your quotes</h2>
             <h4 class="deductible" style=";    margin: 0; padding: 0; font-weight: bold;margin-bottom: 0; border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
             
             <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+            <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $_REQUEST['sum_insured2'];?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+            <div id="sum_slider" style=" margin:30px 0px;border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+        </div>
+        <div class="col-md-12 adjust-quoto" style="border-top: 0px solid #ddd !important"> 
+            <
         </div>
         <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-             <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $_REQUEST['sum_insured2'];?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-            <div id="sum_slider" style=" margin:30px 0px;border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+             
         </div>
     </div>
     <div class="col-md-9" id="listprices">
@@ -258,6 +259,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
           
             if($supervisa == 'yes'){
                 $addinbenefit = "AND CAST(`sum_insured` AS DECIMAL)>='100000'";
+            }else{
+                $addinbenefit = "";
             }
             $sum_insured= '';        
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
