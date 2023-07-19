@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Company Logo</th>
@@ -49,7 +49,7 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
-                                    <img src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="120">
+                                    <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="100" height="100">
                                 </td>
                                 <td>
                                     {{ $r->comp_name }}
@@ -73,10 +73,13 @@
                                 </td>
                             </tr>
                             <div class="modal fade" id="deleteModal{{ $r->comp_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <form method="POST" action="{{ url('admin/companies/deletecompany') }}">
+                                    @csrf
+                                <input type="hidden" value="{{ $r->comp_id }}" name="comp_id">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Are you Sure?</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Are you Sure you want to Delete this?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <i aria-hidden="true" class="ki ki-close"></i>
                                             </button>
@@ -85,11 +88,12 @@
                                             Are you Sure You want to Delete This Page
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/companyinfo/deletepage') }}/{{ $r->comp_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-danger font-weight-bold">Yes, Delete it</button>
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                             <div class="modal fade" id="categoryedit{{ $r->comp_id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -144,6 +148,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="margin-top:10px;" class="row">
+                        {!! $data->links('frontend.pagination') !!}
+                    </div>
                 </div>
             </div>
             <!--end::Card-->
@@ -158,7 +165,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New Page</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New company</h5>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -180,7 +187,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Company Logo</label>
-                                <input name="logo" type="file" id="emailfield" class="form-control">
+                                <input required name="logo" type="file" id="emailfield" class="form-control">
                             </div>
                         </div>
                     </div>

@@ -93,10 +93,9 @@
                     
 
             
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <!-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
@@ -111,7 +110,6 @@
                                     />
                                 </g>
                             </svg>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-text">Licenses & E&O</span><i class="menu-arrow"></i>
                     </a>
@@ -140,10 +138,11 @@
 
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
+                
+                <li class="menu-item">
+                    <a href="{{ url('admin/sales/allsale') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -162,26 +161,12 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Manage Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 10px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span><i class="menu-arrow"></i>
+                        <span class="menu-text">All Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 40px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span></i>
                     </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link"><span class="menu-text">Manage Sales</span></span>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/sales/allsale') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">All Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 40px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <!-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
@@ -196,7 +181,6 @@
                                     />
                                 </g>
                             </svg>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-text">Manage Reports</span><i class="menu-arrow"></i>
                     </a>
@@ -224,9 +208,9 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
+                </li> -->
+                <li class="menu-item">
+                    <a href="{{ url('admin/companies/allcompanies') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -245,22 +229,10 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Manage Companies</span><i class="menu-arrow"></i>
+                        <span class="menu-text">All Companies</span></i>
                     </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link"><span class="menu-text">Manage Companies</span></span>
-                            </li>
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{ url('admin/companies/allcompanies') }}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Companies</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -363,10 +335,9 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <!-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="{{ url('admin/quotation/allquotations') }}" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24" />
@@ -381,11 +352,10 @@
                                     />
                                 </g>
                             </svg>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-text">Quotations</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="{{ url('admin/contact/messages') }}" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">

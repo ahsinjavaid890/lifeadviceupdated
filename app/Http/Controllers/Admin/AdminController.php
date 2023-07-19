@@ -206,7 +206,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('website', Cmf::getwebsite()->smallname)->where('status', 1)->orderby('pro_name', 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website', 'lifeadvice')->where('status', 1)->orderby('pro_id', 'desc')->get();
         return view('admin.products.index')->with(array('data' => $data));
     }
     public function allplans()
@@ -785,11 +785,16 @@ class AdminController extends Controller
     }
     public function allcompanies()
     {
-        $data = DB::table('wp_dh_companies')->get();
+        $data = DB::table('wp_dh_companies')->orderby('comp_id' , 'desc')->paginate(10);
         return view('admin.companies.all')->with(array('data' => $data));
     }
 
-
+    public function deletecompany(Request $request)
+    {
+        DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->delete();
+        DB::table('wp_dh_insurance_plans')->where('insurance_company' , $request->comp_id)->delete();
+        return redirect()->back()->with('message', 'Company Deleted Successfully');
+    }
 
     public function blogcategories()
     {

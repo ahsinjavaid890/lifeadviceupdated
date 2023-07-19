@@ -19,10 +19,11 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Product Name</th>
+                                <th>Category</th>
                                 <th>Supervisa</th>
                                 <th>Action</th>
                             </tr>
@@ -32,6 +33,11 @@
                                 <tr>                                
                                     <td>
                                         {{ $r->pro_name }}
+                                    </td>
+                                    <td>
+                                        @if($r->category_id)
+                                        {!! strip_tags(DB::table('product_categories')->where('id' , $r->category_id)->first()->name) !!}
+                                        @endif
                                     </td>
                                     <td>
                                         @if($r->pro_supervisa == 1)
