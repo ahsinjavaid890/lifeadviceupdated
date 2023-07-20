@@ -1,5 +1,5 @@
 @extends('admin.layouts.main-layout')
-@section('title','Edit Plan')
+@section('title','Add New Plan')
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
         <!-- CORE CSS -->

@@ -94,25 +94,27 @@ class AdminController extends Controller
         $pro_travel_destination = $request->destinationtype;
         $pro_url = $request->pro_url;
         $redirect_from_url = $request->redirect_from_url;
-        $url = Cmf::shorten_url($request->pro_name);
+        $quotation_form_on_stylish_page = $request->quotation_form_on_stylish_page;
         $prod_fields = serialize($request->prod);
         $sort_orders = array();
         $i = 1;
+        // print_r($request->sort);exit;
         foreach ($request->sort as  $order) {
             $sort_orders[$i] = $order;
             $i++;
         }
+        // print_r($sort_orders);exit;
         $sort_orders =  serialize($sort_orders);
+
+
+
         if ($request->vector) {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("INSERT INTO `wp_dh_products`(`description`,`vector`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$vector','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`vector`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$vector','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         } else {
-            DB::statement("INSERT INTO `wp_dh_products`(`description`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->description','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
         }
-
-
-
-        return redirect()->back()->with('message', 'Product Inserted Successfully');
+        return redirect()->back()->with('message', 'Product Added Successfully');
     }
 
 
