@@ -12003,7 +12003,7 @@ ul.tabs li.current {
     background-color: #2b3481;
 }*/
 .tab-content {
-    /* display: none; */
+    display: none; 
     /* background: #f4f7fa; */
 }
 

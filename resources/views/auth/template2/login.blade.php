@@ -129,6 +129,10 @@
             border: none;
             color: black;
         }
+        .tab-content {
+            display: block; 
+            /* background: #f4f7fa; */
+        }
     </style>
 
     <section class="chooses-blogs chooses-blogs-responsive choose-us-area-five pt-5"
