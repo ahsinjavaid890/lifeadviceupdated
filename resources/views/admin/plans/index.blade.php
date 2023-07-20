@@ -38,12 +38,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Logo</th>
                                 <th>Plan Name</th>
-                                <th>plan_name_for_result</th>
                                 <th>Product Name</th>
                                 <th>Company Name</th>
-                                <th>Company Logo</th>
-                                <th>Last Updated By</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -51,24 +49,17 @@
                             @foreach($data as $r)
                                 <tr>
                                     <td>{{ $r->plan_id }}</td>
-                                    
                                     <td>
-                                        {{ $r->plan_name }}
+                                        <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="120">
                                     </td>
                                     <td>
-                                        {{ $r->plan_name_for_result }}
+                                        {{ $r->plan_name }}
                                     </td>
                                     <td>
                                         {{$r->pro_name}}
                                     </td>
                                     <td>
                                         {{$r->comp_name}}
-                                    </td>
-                                    <td>
-                                        <img src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="120">
-                                    </td>
-                                    <td>
-                                        Administrator
                                     </td>
                                    <td>
                                        <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>

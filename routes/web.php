@@ -194,7 +194,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::name('companies.')->prefix('companies')->group(function(){
         Route::get('/allcompanies','AdminController@allcompanies');
 
-        
+        Route::post('/deletecompany','AdminController@deletecompany');
         Route::post('/addnewcompany','AdminController@addnewcompany');
         Route::post('/updatecompanyinfo','AdminController@updatecompanyinfo');
     });

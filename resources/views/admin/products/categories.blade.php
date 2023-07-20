@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Vector</th>
@@ -52,7 +52,7 @@
                             @endphp
                             <tr>
                                 <td>
-                                    <img width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
+                                    <img class="img-thumbnail" width="120" src="{{ url('public/images') }}/{{ $r->vector }}">
                                 </td>
                                 <td>{!! $name !!}</td>
                                 <td>{{ DB::table('wp_dh_products')->where('category_id' , $r->id)->count() }}</td>
