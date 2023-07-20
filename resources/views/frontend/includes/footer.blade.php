@@ -69,7 +69,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('aboutus') }}">
                                 About Life Advice
                             </a>
                     </li>
@@ -121,10 +121,10 @@
                     </li>
 
                     <li class="pl-0">
-                        <a href="/cdn-cgi/l/email-protection#98f0fdf4f4f7d8ebedeafdece1b6fbf7f5">
-                                <i class="flaticon-email"></i>
-                                <p><span>Email:</span><span class="__cf_email__" data-cfemail="cea6aba2a2a18ebdbbbcabbab7e0ada1a3"> {{ Cmf::get_store_value('site_email') }}</span></p>
-                            </a>
+                        <a href="mailto:{{ Cmf::get_store_value('site_email') }}">
+                            <i class="flaticon-email"></i>
+                            <p><span>Email:</span>{{ Cmf::get_store_value('site_email') }}</p>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -143,7 +143,7 @@
             </div>
         </div>
         <div class="col-md-6 text-right">
-            <p>Copyright © All Rights Reserved.</p>
+            <p>Copyright {{ date('Y') }} © All Rights Reserved.</p>
         </div>
     </div>
     
