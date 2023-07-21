@@ -208,7 +208,7 @@ class AdminController extends Controller
 
     public function allproducts()
     {
-        $data = DB::table('wp_dh_products')->where('website', 'lifeadvice')->where('status', 1)->orderby('pro_id', 'desc')->get();
+        $data = DB::table('wp_dh_products')->where('website', 'lifeadvice')->where('status', 1)->orderby('category_id', 'desc')->get();
         return view('admin.products.index')->with(array('data' => $data));
     }
     public function allplans()

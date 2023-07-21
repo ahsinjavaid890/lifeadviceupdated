@@ -164,7 +164,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-<div class="container">
+<div class="">
     <div class="col-md-12 visible-xs">
     <button type="button" class="btn" onclick="changedisplay()" style="display: block;width: 100%;background: #FFF !important;color: #333 !important;padding: 10px;"><i class="fa fa-gear"></i> Change Coverage</button>
     </div>
@@ -436,12 +436,12 @@ if($show == '1' && $total_price > 0){
 
 <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
 <div class="row">
-<div class="compare col-md-2 hidden-xs" style="padding-top: 7px;">
+<div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
 <label><input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" style="height: auto;margin: 0;" onclick="comparetest()">
         Add To Compare</label>
 </div>
-<div class="col-md-2 text-center" style="padding-top: 0px;">
-<img style="width:auto;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
+<div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
+<img width="200" class="img-thumbnail" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
 </div>
 <!-- <div class="col-md-3 hidden-xs text-center">
 <strong>Plan</strong>
@@ -456,24 +456,23 @@ if($show == '1' && $total_price > 0){
 <h2 style="color:#000;font-size: 25px;">$<?php echo $sum_insured; ?></h2>
 <strong>Deductible:<span> $<?php echo $deductible; ?></span></strong>
 </div>
-<div class="col-md-2 text-center">
+<div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
 <strong>Premium</strong>
 <h2 style="color: #C00;font-weight: bold;font-size: 26px;font-family: arial;">$<?php echo number_format($total_price,2);?></h2>
 <?php if($monthly_two == '1'){?>
         <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;background: #F9F9F9;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>
 </div>
-<div class="col-md-3 col-xs-6" >
+<div class="col-md-3 col-xs-6" style="margin: auto;">
 <?php
 $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
 $agent = $request->agent;
 $broker = $request->broker;
-$buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
 ?>
 <a class="submit-btn text-center" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #1BBC9B;border-radius: 0px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i> Buy Now</a>
 </div>
 </div>
-<div class="row" style="background:#F9F9F9;padding-bottom: 10px;">
+<div class="row" style="padding-bottom: 10px;">
 <div class="col-md-2 col-xs-6">
 <button type="button" class="btn btn-default dh-toggle"  onclick="$('.moredetails_<?php echo $deductible.$plan_id;?>').fadeToggle();"  data-value='<?php echo $sum_insured.$deductible.$plan_id; ?>' aria-hidden="true" style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i class="fa fa-plus"></i> More Details</button>
 </div>

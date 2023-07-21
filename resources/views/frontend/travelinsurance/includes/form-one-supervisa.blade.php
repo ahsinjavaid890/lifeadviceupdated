@@ -8,8 +8,12 @@
 #quoteform{
    background-color: white !important;
 }
+.mainsection{
+   margin-bottom: 20px !important;
+   margin-top: 20px !important; 
+}
 </style>
-<div class="container">
+<div class="container-homepage">
          <div class="row mainsection birthdate">
             <div class="col-md-12">
                <div class="text-center">
@@ -211,7 +215,7 @@
                                  <div class="col-md-5">
                                     <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                 <div class="col-md-7 padding-left-eight-on-mobile">
+                                 <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
                                        <label for="day" class="d-sm-none" >Birth date of the oldest Traveller</label>
                                        <div class="custom-form-control">
                                           <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" >
@@ -220,7 +224,7 @@
                                     <div class="col-md-5">
                                        <label for="day" class="form-label lables" id="">Pre Existing of <?php echo $ordinal_words[$i];?></label>
                                     </div>
-                                    <div style="padding-right: 0px;" class="col-md-7 padding-left-eight-on-mobile">
+                                    <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
                                        <label for="day" class="d-sm-none">Select Pre Existing</label>
                                        <div class="custom-form-control">
                                           <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
@@ -324,7 +328,7 @@
                         <div class="col-md-7">
                            <label for="gender" class="d-sm-none">Primary Applicant`s Gender</label>
                            <div class="custom-form-control">
-                              <select required class="form-input selecttwo" name="gender" id="gender">
+                              <select required class="form-input" name="gender" id="gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -341,7 +345,7 @@
                         <div class="col-md-7">
                            <label for="old_traveller_gender" class="d-sm-none">Gender of the Oldest traveller</label>
                            <div class="custom-form-control">
-                              <select required class="form-input selecttwo" name="old_traveller_gender" id="old_traveller_gender">
+                              <select required class="form-input" name="old_traveller_gender" id="old_traveller_gender">
                                  <option value="">Select Gender</option>
                                    <option value="male" >Male</option>
                                    <option value="female" >Female</option>
@@ -359,7 +363,7 @@
                            <div class="col-md-7">
                               <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
                               <div class="custom-form-control">
-                                 <select required class="form-input selecttwo" name="Smoke12" id="">
+                                 <select required class="form-input" name="Smoke12" id="">
                                     <option value="">--- Please Choose ---</option>
                                       <option value="yes" >Yes</option>
                                       <option selected value="no" >No</option>

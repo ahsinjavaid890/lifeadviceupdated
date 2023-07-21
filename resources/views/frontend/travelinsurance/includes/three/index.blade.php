@@ -1,7 +1,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<style type="text/css">
+    .ui-slider .ui-slider-handle{
+        top: -2px !important;
+    }
+</style>
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -163,7 +168,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-<div class="container">
+<div class="">
 <div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;background: #F9F9F9;text-align: center;padding-top: 10px;border-top: 4px solid #DDD;">   
     <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
     <i class="fa fa-filter"></i> Filter Results
@@ -185,7 +190,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 </div>
 
 <div class="row">
-    <div class="col-md-12 right-bar-content" id="listprices" style="padding:0;">
+    <div class="col-md-12 right-bar-content" id="listprices" style="padding-right:0;">
         
         <?php
         $addinquery = '';
@@ -420,7 +425,6 @@ if($show == '1' && $total_price > 0){
 <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
-<h1 style="margin-top: 0;font-size: 20px;color: #FFF;line-height: 50px;text-align: left;background: url(https://lifeadvice.ca/wp-content/uploads/2019/03/plan_bg.png);background-repeat: no-repeat;padding-left: 20px;"><?php echo $plan_name; ?></h1>
 <img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
 
 
@@ -576,8 +580,8 @@ font-weight:bold;
 $pdfq = DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $plan_id)->first();
 ?>
 @if($pdfq)
-<a class="btn btn-primary" href="{{ url('public/images') }}/{{ $pdfq->pdfpolicy }}" target="_blank" style="line-height: 26px;background-color: #337ab7;  padding: 8px 14px;
-"><i class="fa fa-file-pdf-o pr-1" style="color:#fff;"></i> Sample Policy</a> 
+<!-- <a class="btn btn-primary" href="{{ url('public/images') }}/{{ $pdfq->pdfpolicy }}" target="_blank" style="line-height: 26px;background-color: #337ab7;  padding: 8px 14px;
+"><i class="fa fa-file-pdf-o pr-1" style="color:#fff;"></i> Sample Policy</a>  -->
 @endif
 </div>
 
@@ -598,7 +602,7 @@ $pdfq = DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $plan_
             <?php } } ?>          
 </div>
 <div class="col-md-3 text-center" style="padding-top: 30px; padding-bottom: 10px;">
-<h1 class="planprice"><span>Price</span> $<?php echo number_format($total_price,2);?></h1>
+<h1 class="planprice "><span class="text-center">Price</span> $<?php echo number_format($total_price,2);?></h1>
 <p class="text-center" id="rate">This rate is for $<?php echo $deductible; ?> deductible options</p>
 <div class="col-md-12 col-xs-12" >
 <?php
