@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\sale_change_requests;
 use App\Models\sale_extend_requests;
 use App\Models\sale_refund_requests;
-use Auth;
-use Mail;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function __construct()
@@ -21,12 +21,39 @@ class HomeController extends Controller
     }
     public function requests()
     {
-        return view('frontend.user.requests');
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->userpanel_temp;
+
+        if ( $temp == "1") {
+        
+            return view('frontend.user.temp1.requests');
+
+        } elseif($temp == "2"){
+            
+            return view('frontend.user.temp2.requests');
+        } elseif($temp == "3"){
+            
+            return view('frontend.user.temp3.requests');
+        }
+
+       
     }
     public function dashboard()
     {
         $sales = DB::table('sales')->where('email' , Auth::user()->email)->orderby('id' , 'desc')->get();
-        return view('frontend.user.dashboard')->with(array('sales'=>$sales));
+       
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->userpanel_temp;
+
+        if ( $temp == "1") {
+        
+            return view('frontend.user.temp1.dashboard')->with(array('sales'=>$sales));
+
+        } elseif($temp == "2"){
+            
+            return view('frontend.user.temp2.dashboard')->with(array('sales'=>$sales));
+        } elseif($temp == "3"){
+            
+            return view('frontend.user.temp3.dashboard')->with(array('sales'=>$sales));
+        }
     }
     public function securitysettings()
     {
@@ -43,7 +70,20 @@ class HomeController extends Controller
     public function policydetail($id)
     {
         $sales = DB::table('sales')->where('id' , $id)->first();
-        return view('frontend.user.policydetail')->with(array('data'=>$sales));
+
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->userpanel_temp;
+
+        if ( $temp == "1") {
+        
+           return view('frontend.user.temp1.policydetail')->with(array('data'=>$sales));
+
+        } elseif($temp == "2"){
+            
+            return view('frontend.user.temp2.policydetail')->with(array('data'=>$sales));
+        } elseif($temp == "3"){
+            
+            return view('frontend.user.temp3.policydetail')->with(array('data'=>$sales));
+        }
     }
     public function changerequest(Request $request)
     {
