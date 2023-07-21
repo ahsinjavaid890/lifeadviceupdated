@@ -148,7 +148,7 @@
         <div class="row " style="margin-top:100px">
             <div class="col-md-12">
                 <div class="heading-wrapper ">
-                    <h3 style="font-size: 35px;margin-bottom:20px" class="heading-2 text-md-left">My Account</h3>
+                    <h3 style="font-size: 30px;margin-bottom:20px" class="heading-2 text-md-left">My Account</h3>
                 </div>
             </div>
         </div>
