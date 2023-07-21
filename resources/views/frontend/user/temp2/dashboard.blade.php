@@ -141,6 +141,10 @@
         .activenav:hover{
             color: white;
         }
+        
+        a{
+            color: black;
+        }
     </style>
 
 

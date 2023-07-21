@@ -155,6 +155,9 @@
    .nav-tabs {
             border-bottom: none
         }
+   a{
+            color: black;
+            }
 </style>
 
 
@@ -162,7 +165,7 @@
    <div class="row" style="margin-top: 100px">
        <div class="col-md-12">
            <div class="heading-wrapper">
-               <h3  style="font-size: 35px;margin-bottom:20px" class="heading-2 text-md-start">Policy Detail</h3>
+               <h3  style="font-size: 35px;margin-bottom:10px" class="heading-2 text-md-start">Policy Detail</h3>
            </div>
        </div>
 

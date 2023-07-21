@@ -413,7 +413,7 @@ if($show == '1' && $total_price > 0){
                             
 
 <div class="col-md-12 col-xs-12" style="padding:0;">
-<div class="row">
+<div class="row" style="margin-left: 0px">
 <div class="col-md-12 col-xs-12 text-center" style="border-bottom:2px solid #c0c0c0;">
 <h3 style="margin-bottom:5px;font-size: 22px;font-weight: bold;">
 <?php //echo $plan_name;?>
@@ -636,7 +636,7 @@ $broker = $request->broker;
 </div>                          
                             
 <div style="clear:both;"></div>
-<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
+<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;margin-left:0px;">
 <form method="post" action="{{ url('apply') }}">
 
     @csrf
@@ -672,8 +672,8 @@ $broker = $request->broker;
     <input type="hidden" value="{{ $dob }}" name="dob">
     <input type="hidden" value="{{ $agent }}" name="agent">
     <input type="hidden" value="{{ $broker }}" name="broker">
-    <div class="row">
-<div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;">
+    <div class="row" style="flex-wrap: nowrap;">
+<div class="col-md-6 col-xs-12" style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;margin-left:15px;">
 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;color: #000;">Buy Online</h3>
 <p style="font-weight: bold;-webkit-margin-before: 1em;    margin-bottom: 30px;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 <p style=""><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
