@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutsix.css') }}">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -174,7 +174,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-	<div class="container">
+	<div class="">
     <div class="row">
 		<div class="col-md-12 visible-xs">
 	       <button type="button" class="btn" onclick="changedisplay()" style="display: block;width: 100%;background: #FFF !important;color: #333 !important;padding: 10px;"><i class="fa fa-gear"></i> Change Coverage</button>
@@ -439,7 +439,7 @@ if($show == '1' && $total_price > 0){
 <?php } ?>
 </div>
 <div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
-<small><?php echo $number_travelers; ?> traveller(s)</small>
+<small style=" font-size: 10px; margin-left: 10px;"><?php echo $number_travelers; ?> traveller(s)</small>
 </div>
 <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;color: #808180;padding-top: 5px;">
 $<?php echo $sum_insured; ?> <?php echo $plan_name;?><br/>

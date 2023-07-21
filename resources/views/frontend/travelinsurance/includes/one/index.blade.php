@@ -50,7 +50,7 @@ $(function () {
 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
 //Sum Insured Slider
-var SliderValues = [<?php
+var SliderValues = [0,<?php
                 $s = 0;
                 foreach($sum as $r){
                 $s++;
@@ -446,7 +446,7 @@ if($show == '1' && $total_price > 0){
 <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="line-height:1.0; display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details mb-0 ml-1 deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; margin-top:0; margin-left:1px; margin-right:0; margin-bottom 0px !important;border-bottom: 1px solid #0084c1;">
     <div class="col-md-3 col-xs-6 text-center" style="padding-top: 20px;padding-left: 0;padding-right: 0;">
-    <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
+    <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive img-thumbnail" width="200" />
     </div>
     <div class="col-md-2 col-xs-6 text-center benefit_padding" style="font-size: 18px;color: #333;">$<?php 
     if($sum_insured >= 1000000){
