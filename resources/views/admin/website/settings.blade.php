@@ -110,6 +110,47 @@
                     </form>
                 </div>
             </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4 class="fw-600 mb-0">Social Links</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url('admin/website/updatelinks') }}" enctype='multipart/form-data' method="POST">
+                       @csrf
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Facebook Link</label>
+                            <div class="col-md-8">
+                                <div class="input-group" data-toggle="aizuploader" data-type="facebook_link">
+                                    <input type="text" class="form-control"  value="{{$settings->facebook_link}}" name="facebook_link">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Instagram Link</label>
+                            <div class="col-md-8">
+                                <div class="input-group" data-toggle="aizuploader" data-type="insta_link">
+                                    <input type="text" class="form-control"  value="{{$settings->insta_link}}" name="insta_link">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">Twitter Link</label>
+                            <div class="col-md-8">
+                                <div class="input-group" data-toggle="aizuploader" data-type="twitter_link">
+                                    <input type="text" class="form-control"  value="{{$settings->twitter_link}}" name="twitter_link">
+                                </div>
+                                <br>
+                               
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div> <!-- end col-->
     </div>
             <!--end::Card-->

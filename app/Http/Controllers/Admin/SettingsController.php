@@ -66,6 +66,16 @@ class SettingsController extends Controller
         $upadate->save();
         return redirect()->back()->with('message', 'Settings Updated Successfully');
     }
+    public function updatelinks(Request $request)
+    {
+        $settings = Settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
+        $upadate = Settings::find($settings->id);
+        $upadate->facebook_link = $request->facebook_link;
+        $upadate->insta_link = $request->insta_link;
+        $upadate->twitter_link = $request->twitter_link;
+        $upadate->save();
+        return redirect()->back()->with('message', 'Social Links Updated Successfully');
+    }
 
     public function updatelogos(Request $request)
     {

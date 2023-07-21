@@ -184,6 +184,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/settings','SettingsController@appearance');
         Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
+        Route::post('/updatelinks','SettingsController@updatelinks');
         Route::get('/emailsettings','SettingsController@emailsettings');
         Route::post('/emailsettingsupdate','SettingsController@emailsettingsupdate');
         Route::post('/emailtemplateupdate','SettingsController@emailtemplateupdate');
