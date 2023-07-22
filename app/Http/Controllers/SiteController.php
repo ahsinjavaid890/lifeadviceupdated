@@ -418,10 +418,15 @@ class SiteController extends Controller
 
         $data = wp_dh_products::where('url', 'super-visa-insurance')->first();
         if ($data) {
+            
             $fields = unserialize($data->pro_fields);
+
             $sortfields = unserialize($data->pro_sort);
+
             $wp_dh_insurance_plans = wp_dh_insurance_plans::select('wp_dh_insurance_plans.id')->where('product', $data->pro_id)->get();
+
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
+
             return view('frontend.travelinsurance.super-visa')->with(array('data' => $data,'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
         } else {
             return response()->view('frontend.errors.404', [], 404);
