@@ -736,7 +736,7 @@ class AdminController extends Controller
         $addcode->code = $rand;
         $addcode->save();
         $subject = 'Verfication Code For Customer Card Information';
-        Mail::send('email.sendcode', ['code' => $rand], function ($message) use ($subject) {
+        Mail::send('email.template1.sendcode', ['code' => $rand], function ($message) use ($subject) {
             $message->to('admin@lifeadvice.ca');
             $message->subject($subject);
         });
