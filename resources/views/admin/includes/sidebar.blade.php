@@ -573,6 +573,16 @@
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">User Panel</span>
                                 </a>
                             </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/clearcache') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Clear Cache</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/website/server-info') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Server</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

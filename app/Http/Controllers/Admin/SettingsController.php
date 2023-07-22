@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\site_settings as Settings;
 use App\Models\site_settings;
 use Illuminate\Support\Facades\DB;
+use Artisan;
 
 class SettingsController extends Controller
 {
@@ -21,6 +22,23 @@ class SettingsController extends Controller
     {   
         $settings = Settings::where('smallname' , 'lifeadvice')->first();
         return view('admin.website.settings',compact("settings"));
+    }
+    public function clearcache()
+    {
+        return view('admin.website.clearcache');
+    }
+    public function cacheclear()
+    {
+        Artisan::call('route:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        Artisan::call('storage:link');
+        return redirect()->back()->with('message', 'Cache Cleard Successfully');
+    }
+    public function serverinfo()
+    {
+        return view('admin.website.serverinfo');
     }
     public function emailsettings()
     {   

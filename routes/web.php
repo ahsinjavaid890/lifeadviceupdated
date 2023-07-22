@@ -182,6 +182,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     });
     Route::name('website.')->prefix('website')->group(function(){
         Route::get('/settings','SettingsController@appearance');
+        Route::get('/server-info','SettingsController@serverinfo');
+        Route::get('/clearcache','SettingsController@clearcache');
+        Route::POST('/clearcache','SettingsController@cacheclear');
         Route::post('/settingsupdate','SettingsController@settingsupdate');
         Route::post('/updatelogos','SettingsController@updatelogos');
         Route::post('/updatelinks','SettingsController@updatelinks');
