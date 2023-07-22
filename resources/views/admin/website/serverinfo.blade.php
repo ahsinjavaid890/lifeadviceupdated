@@ -15,13 +15,30 @@
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <ul class="list-group">
-                                        @foreach($_SERVER as $key=>$r)
                                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                            <span>{{ $key }}</span>
-                                            <span>{{ $r }}</span>
+                                            <span>PHP Version</span>
+                                            <span>8.1.20</span>
                                         </li>
-
-                                        @endforeach
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <span>Server Software</span>
+                                            <span>LiteSpeed</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <span>Server IP Address</span>
+                                            <span>64.185.231.6</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <span>Server Protocol</span>
+                                            <span>HTTP/1.1</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <span>HTTP Host</span>
+                                            <span>script.viserlab.com</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <span>Server Port</span>
+                                            <span>443</span>
+                                        </li>
                                     </ul>
                                 </div>
                               </div>
