@@ -144,65 +144,139 @@
     @include('frontend.companypages.includes.sectionfour')
     @include('frontend.companypages.includes.faqsection')
     @include('frontend.companypages.includes.productsection')
+
+    @php
+    $rand = rand(100000000 , 20000000);
+@endphp
+<script>
+    $( document ).ready(function() {
+        var divList = $(".listing-item");
+        divList.sort(function(a, b){
+            return $(a).data("listing-price")-$(b).data("listing-price")
+        });
+        $("#main").html(divList);
+    });
+    function slideadditionaltravelers(id) {
+        var text = $('#changeshowtoless'+id).text();
+        if(text == ' Show Details')
+        {
+            $('#changeshowtoless'+id).html('<i class="fa fa-minus-circle colorblue"></i> Hide Details');
+        }else{
+            $('#changeshowtoless'+id).html('<i class="fa fa-plus-circle colorblue"></i> Show Details');
+        }
+        $(".hoverdetails_"+id).slideToggle();
+    }
+    function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 
+    {
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
+        $checkboxes.change(function(e){
+            $checkboxes.attr("disabled", false);
+            var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+            if (countCheckedCheckboxes == 1){
+                jQuery('.two_select').hide();
+                jQuery('.one_select').show();
+            }else if(countCheckedCheckboxes == 2){
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').show();
+                jQuery('.one_select').hide();
+            }else if(countCheckedCheckboxes >= 3){
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').show();
+                jQuery('.one_select').hide();
+                $checkboxes.attr("disabled", true);
+                $checkboxes.filter(':checked').attr("disabled", false);
+            }
+            else{
+                jQuery('.compare_header_top').hide();
+            }
+        });
+        $.ajax({
+            type:'GET',
+            url: '{{ url("savecompareplans") }}/'+{{ $rand }}+'/'+plan_id+'/'+product_id+'/'+coverage_ammount+'/'+deductibles+'/'+price,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                $('.compare_header_top').show();
+                $('.compare_header_top').html(data);
+            }
+        });
+    }
+    function removecomarecard(id) {
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
+        $checkboxes.attr("disabled", false);
+        $.ajax({
+            type:'GET',
+            url: '{{ url("removecomarecard") }}/'+id,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                $('.compare_header_top').show();
+                $('.compare_header_top').html(data);
+            }
+        });
+    }
+</script>
 @endsection
 
 
 @section('script')
-    <link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
-    <script src="{{ url('public/front/js/select2.min.js') }}"></script>
-    <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#dateofbirthfull').mask('00/00/0000');
-            $('.dateofbirthfull2').mask('00/00/0000');
-            $('.dateofbirthfull3').mask('00/00/0000');
-            $('.dateofbirthfull4').mask('00/00/0000');
-            $('.dateofbirthfull5').mask('00/00/0000');
-            $('.dateofbirthfull6').mask('00/00/0000');
-        });
-    </script>
-    <script>
-        $(".sum_insured2").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Select Coverage Amount",
-            allowClear: false
-        });
-        $(".primarydestination").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Select Primary Destination",
-            allowClear: false
-        });
+<link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
+<script src="{{ url('public/front/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#dateofbirthfull').mask('00/00/0000');
+        $('.dateofbirthfull2').mask('00/00/0000');
+        $('.dateofbirthfull3').mask('00/00/0000');
+        $('.dateofbirthfull4').mask('00/00/0000');
+        $('.dateofbirthfull5').mask('00/00/0000');
+        $('.dateofbirthfull6').mask('00/00/0000');
+    });
+</script>
+<script>
+    $(".sum_insured2").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Select Coverage Amount",
+        allowClear: false
+    });
+    $(".primarydestination").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Select Primary Destination",
+        allowClear: false
+    });
 
 
-        $(".pre_existing_condition1").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition2").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition3").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition4").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition5").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-        $(".pre_existing_condition6").select2({
-            minimumResultsForSearch: -1,
-            placeholder: "Pre Existing",
-            allowClear: false
-        });
-    </script>
+    $(".pre_existing_condition1").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition2").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition3").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition4").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition5").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+    $(".pre_existing_condition6").select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Pre Existing",
+        allowClear: false
+    });
+</script>
 @endsection

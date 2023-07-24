@@ -464,9 +464,9 @@ if($show == '1' && $total_price > 0){
         <div class="col-md-6 col-xs-6">
         <h1 style="padding: 0;margin: 0;line-height: normal; font-size:28px;">$<?php echo str_replace(',','', number_format($total_price,2));?></h1>
         <?php if($monthly_two == '1'){?>
-        <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;background: #F9F9F9;">$<?php echo number_format($monthly_price,2);?>/M <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
+        <h2 style=" font-size: 11px; font-weight: bold; color: #333;">$<?php echo number_format($monthly_price,2);?>/M <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
         <?php } ?>
-        <small><?php echo $number_travelers;?> Traveller(s)</small>
+        <!-- <small><?php echo $number_travelers;?> Traveller(s)</small> -->
         </div>
         <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
 <style>
@@ -625,13 +625,10 @@ font-weight:bold;
                     </div>
                 </div>
                 </li>
-                <li style="list-style: none;"><a href="#"> Sample Policy</a></li>
+                <!-- <li style="list-style: none;"><a href="#"> Sample Policy</a></li> -->
             </ul>  
         </div>
     </div>
-        <div class="col-md-12 col-xs-12 text-center" id="plan">
-        <?php echo $plan_name;?>
-        </div>
     </div>
 <?php
 $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
@@ -640,7 +637,7 @@ $broker = $request->broker;
 ?>
     <div class="compare col-md-3 col-xs-12 text-center"><a class="submit-btn col-md-12 col-xs-5 " onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"><i class="fa fa-shopping-cart"></i> Buy Now</a>
     <div class="col-xs-2 visible-xs">&nbsp;</div>
-    <label class="col-md-12 col-xs-5" id="compare"><input type="checkbox" name="addtocompare" id="addtocompare" data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="height: auto;margin: 0; opacity:0; position:absolute;" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" onclick="comparetest()"> <i class="fa fa-database"></i> Compare</label>
+    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
     
     
         <!--<small style="display:block"><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>-->
