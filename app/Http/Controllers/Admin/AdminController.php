@@ -106,13 +106,14 @@ class AdminController extends Controller
         // print_r($sort_orders);exit;
         $sort_orders =  serialize($sort_orders);
 
-
+        $website = 'lifeadvice';
+        $url = Cmf::shorten_url($request->pro_name);
 
         if ($request->vector) {
             $vector = Cmf::sendimagetodirectory($request->vector);
-            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`vector`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$vector','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`vector`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`,`website`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$vector','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url','$website')");
         } else {
-            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url')");
+            DB::statement("INSERT INTO `wp_dh_products`(`stylish_price_layout`,`stylish_form_layout`,`quotation_form_on_stylish_page`,`description`,`category_id`,`url`,`pro_name`, `pro_parent`, `pro_supervisa`, `pro_life`, `pro_fields`, `pro_sort`, `pro_travel_destination`, `pro_url`, `redirect_from_url`,`website`) VALUES ('$request->stylish_price_layout','$request->stylish_form_layout','$request->quotation_form_on_stylish_page','$request->description','$category_id','$url','$pro_name','$pro_parent','$pro_supervisa','$pro_life','$prod_fields','$sort_orders','$pro_travel_destination', '$pro_url', '$redirect_from_url','$website')");
         }
         return redirect()->back()->with('message', 'Product Added Successfully');
     }
@@ -121,6 +122,10 @@ class AdminController extends Controller
     public function addnewproduct()
     {
         return view('admin.products.addnewproduct');
+    }
+    public function deleteproducts($id){
+        DB::table('wp_dh_products')->where('pro_id',$id)->delete();
+        return redirect()->back()->with('message', 'Product Deleted Successfully');
     }
     public function productcategories()
     {
@@ -148,6 +153,11 @@ class AdminController extends Controller
         $add->show_on = $request->show_on;
         $add->save();
         return redirect()->back()->with('message', 'Category Added Successfully');
+    }
+    public function deleteproductcategory($id){
+        DB::table('product_categories')->where('id',$id)->delete();
+        DB::table('wp_dh_products')->where('category_id',$id)->delete();
+        return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
     public function addnewuser()
     {
@@ -728,6 +738,11 @@ class AdminController extends Controller
         $company = DB::table('wp_dh_companies')->where('comp_id', $data->comp_id)->first();
         return view('admin.sales.viewsale')->with(array('data' => $data, 'company' => $company));
     }
+    public function deletesale($id)
+    {
+        DB::table('sales')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Sale Deleted Successfully');
+    }
     public function sendcode($id)
     {
         $rand = rand(1234, 4321);
@@ -871,6 +886,7 @@ class AdminController extends Controller
         $company = new wp_dh_companies();
         $company->comp_name = $request->name;
         $company->comp_logo = Cmf::sendimagetodirectory($request->logo);
+        $company->claimform = Cmf::sendimagetodirectory($request->claimform);
         $company->save();
         return redirect()->back()->with('message', 'Company Added Successfully');
     }

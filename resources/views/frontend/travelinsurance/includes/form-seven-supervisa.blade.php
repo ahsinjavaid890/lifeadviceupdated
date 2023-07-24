@@ -68,7 +68,7 @@
 
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
-                              <div class="row">
+                              <div class="row" style="align-items: flex-end">
                                  <div class="col-md-6 mb-2">
                                     <label for="day{{$i}}" class="label-style">Birth date of the oldest Traveller
                                     </label>

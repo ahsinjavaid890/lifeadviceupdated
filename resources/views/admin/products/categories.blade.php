@@ -59,8 +59,29 @@
                                 <td>{{ $r->show_on }}</td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>
+
+                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete"> <i class="la la-trash"></i> </a>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="deleteModal{{ $r->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Are you Sure?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p style="color:red;">Are you Sure You want to delete this. If you Delete this Category then All Products will be deleted Automaticaly against this Category</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                                            <a href="{{ url('admin/products/deleteproductcategory') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="modal fade" id="categoryedit{{ $r->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">

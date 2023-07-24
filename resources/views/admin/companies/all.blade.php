@@ -39,9 +39,11 @@
                             <tr>
                                 <th>Company Logo</th>
                                 <th>Company Name</th>
-                                <th>Canada PDF Policy</th>
-                                <th>Student PDF Policy</th>
                                 <th>Claim Form</th>
+                             
+                                <th>Student PDF Policy</th>
+                                <th>Canada PDF Policy</th>
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -62,7 +64,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('public/images') }}/{{ $r->comp_canadapdf }}" class="btn btn-default btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Canada PDF Policy</a>
+                                    <a href="{{ url('public/images') }}/{{ $r->comp_canadapdf }}" class="btn btn-default btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Student PDF Policy</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('public/images') }}/{{ $r->comp_canadapdf }}" class="btn btn-default btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Canada PDF Policy</a>
@@ -187,7 +189,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Company Logo</label>
-                                <input required name="logo" type="file" id="emailfield" class="form-control">
+                                <input required name="logo"  accept="image/*" type="file" id="emailfield" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -195,7 +197,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Claim Form</label>
-                                <input name="claimform" type="file" class="form-control">
+                                <input required name="claimform" accept = "application/pdf,.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" type="file" class="form-control">
                             </div>
                         </div>
                     </div>

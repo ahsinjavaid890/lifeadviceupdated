@@ -208,9 +208,11 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/addnewproduct','AdminController@addnewproducts');
         Route::get('/edit/{id}','AdminController@editproduct');
         Route::post('/updateproducts','AdminController@updateproducts');
+        Route::get('/delete/{id}','AdminController@deleteproducts');
         Route::get('/productcategories','AdminController@productcategories');
         Route::post('/createproductcategory','AdminController@createproductcategory');
         Route::post('/updatproductcategory','AdminController@updatproductcategory');
+        Route::get('/deleteproductcategory/{id}','AdminController@deleteproductcategory');
     });
     Route::name('reports.')->prefix('reports')->group(function(){
         Route::get('/salesreport','Reportcontroller@salesreport');
@@ -284,6 +286,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/editsale/{id}','AdminController@editsale');
         Route::post('/editsale','AdminController@editsales');
         Route::get('/viewsale/{id}','AdminController@viewsale');
+        Route::get('/deletesale/{id}','AdminController@deletesale');
         Route::get('/sendcode/{id}','AdminController@sendcode');
         Route::post('/policyconfermation','AdminController@policyconfermation');
         Route::get('/sendcodetocheck/{id}/{code}','AdminController@showdetailsbutton');
