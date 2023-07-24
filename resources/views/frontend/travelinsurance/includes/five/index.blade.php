@@ -442,11 +442,9 @@ if($show == '1' && $total_price > 0){
                             <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="btn submit-btn" data-value="<?php echo $plan_id; ?>"  name="buynow">Buy this plan</button>
                             <div class="compare">
                                 <div class="ui center aligned header">
-                                    <label  class="checkbox-inline">
-                                        <input data-productid="<?php echo $data->pro_id; ?>"  data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>"  style=" width: 16px;
-                                            height: 26px;
-                                            text-align: left;
-                                            margin-left: -25px;margin-right:8px" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" onclick="comparetest()">Add to Compare</label>
+
+
+                                    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
 
                                 </div>
                             </div>

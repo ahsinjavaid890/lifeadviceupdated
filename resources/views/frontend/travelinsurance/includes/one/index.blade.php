@@ -637,7 +637,8 @@ $broker = $request->broker;
 ?>
     <div class="compare col-md-3 col-xs-12 text-center"><a class="submit-btn col-md-12 col-xs-5 " onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"><i class="fa fa-shopping-cart"></i> Buy Now</a>
     <div class="col-xs-2 visible-xs">&nbsp;</div>
-    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+
+    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
     
     
         <!--<small style="display:block"><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>-->

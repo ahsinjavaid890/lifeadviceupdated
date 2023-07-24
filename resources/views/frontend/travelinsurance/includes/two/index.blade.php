@@ -470,12 +470,9 @@ if($show == '1' && $total_price > 0){
                             <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
                                 <div class="row">
                                     <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
-                                        <label><input data-productid="<?php echo $data->pro_id; ?>"
-                                                data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price)); ?>"
-                                                type="checkbox" tabindex="0" class="hidden1"
-                                                value="<?php echo str_replace(',', '', number_format($total_price)); ?>" style="height: auto;margin: 0;"
-                                                onclick="comparetest()">
-                                            Add To Compare</label>
+
+                                        <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5"  style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+
                                     </div>
                                     <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
                                         <img width="200" class="img-thumbnail"
@@ -520,8 +517,9 @@ if($show == '1' && $total_price > 0){
                                 </div>
                                 <div class="row" style="padding-bottom: 10px;">
                                     <div class="col-md-2 col-xs-6" id="fold">
-                                        <button id="mybutton" type="button" class="btn btn-default dh-toggle"
-                                            onclick="$('.moredetails_<?php echo $deductible . $plan_id; ?>').fadeToggle();changetext()"
+                                        <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
+                                            class="btn btn-default dh-toggle"
+                                            onclick="$('.moredetails_<?php echo $deductible . $plan_id; ?>').fadeToggle();showmore(<?php echo $deductible . $plan_id; ?>)"
                                             data-value='<?php echo $sum_insured . $deductible . $plan_id; ?>' aria-hidden="true"
                                             style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i
                                                 class="fa fa-plus"></i> More Details</button>
@@ -797,15 +795,7 @@ if($show == '1' && $total_price > 0){
     </div>
 
 
-    <script>
-        $(document).ready(function() {
-            function changetext(params) {
-                alert('hello');
-                // $('#mybutton').text("Hide Details"); 
-            }
 
-        });
-    </script>
 
     <script>
         jQuery(function($) {
@@ -884,9 +874,13 @@ if($show == '1' && $total_price > 0){
 
 
 
-        $(document).ready(function() {
-            $("#fold").click(function() {
-                $("#fold_p").text("Expand it");
-            })
-        });
+
+        function showmore(id) {
+            var text = $('#showmore' + id).text();
+            if (text == ' More Details') {
+                $('#showmore' + id).html('<i class="fa fa-minus"></i> Hide Details');
+            } else {
+                $('#showmore' + id).html('<i class="fa fa-plus"></i> More Details');
+            }
+        }
     </script>

@@ -599,6 +599,11 @@ $broker = $request->broker;
         data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"
         name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now
 </button>
+
+
+<label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+
+
 </div>
 <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
 <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="images/<?php echo $comp_logo; ?>" class="img-responsive" />

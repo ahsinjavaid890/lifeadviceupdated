@@ -433,7 +433,11 @@ if($show == '1' && $total_price > 0){
                                         <div class="compare col-md-12 text-center">
                                             <i class="fa fa-exclamation-circle dh-toggle hidden-md" onclick="showdetails(<?php echo $plan_id; ?>)" style="cursor:pointer;position: absolute;top: 40%;left: -10px;" aria-hidden="true"></i> 
 <div class="compare text-center hidden-xs" style="padding-top: 7px;">
-<label class="sub header"><input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price));?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price));?>" style="height: auto;margin: 0 auto; display:block;" onclick="comparetest()"> Compare</label>
+
+
+    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+
+
 </div>
 
                                         </div>

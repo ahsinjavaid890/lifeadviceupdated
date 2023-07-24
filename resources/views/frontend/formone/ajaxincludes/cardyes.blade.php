@@ -528,8 +528,7 @@ if($show == '1' && $total_price > 0){
           <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
 
             <div class="compare compare-check  justify-content-end display-none-on-mobile">
-                <span class="">Compare</span>
-                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})">
+                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
             <div class="qoute-logo display-none-on-mobile">
                 <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
@@ -539,8 +538,7 @@ if($show == '1' && $total_price > 0){
                     <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
                 </div>
                 <div class="compare compare-check  justify-content-end d-flex">
-                <span class="">Compare</span>
-                <input style="height: 28px; width: 20px; margin-left: 10px;" type="checkbox" name="addtocompare" id="addtocompare" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})">
+                    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
                 </div>
             </div>
             

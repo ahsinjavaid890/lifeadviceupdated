@@ -619,9 +619,11 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="    font-weight: bold;padding: 7px 20px; box-shadow: none;border: 1px solid #999;  font-size: 16px;display: block;color: #FFF;background: #C00;border-radius: 5px;margin-top:2px;margin-bottom: 10px;}">
     <i class="fa fa-shopping-cart"></i> Buy Now</a>
 <div class="compare hidden-xs">
-<label style="border: 1px solid #CCC;   padding: 10px;text-align: center;display: block;
-background: #F9F9F9; box-shadow: 0px 0px 1px 0px #CCC inset; border-radius: 3px; cursor:pointer;font-weight: bold;margin-bottom: 10px;"><input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" price="<?php echo str_replace(',', '', number_format($total_price,2));?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo str_replace(',', '', number_format($total_price,2));?>" style="height: auto;margin: 0;" onclick="comparetest()">
-        Add To Compare</label>
+
+
+    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+
+
 </div>
 </div>
 </div>
