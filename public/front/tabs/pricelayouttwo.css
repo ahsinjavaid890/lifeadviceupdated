@@ -498,13 +498,13 @@ button.buynow-btn {
 .ui-slider-horizontal .ui-slider-range {
     background-color: #1ABC9C !important;
 }
-.ui-state-default, .ui-widget-content .ui-state-default{
+/* .ui-state-default, .ui-widget-content .ui-state-default{
     border: 4px solid #1bbc9b !important;
     background: #1bbc9b !important;
     font-weight: normal;
     color: #454545;
     border-radius: 11px;
-}
+} */
    .row.plan-details {
     align-items: flex-start;}
 .ui-slider .ui-slider-handle::before {

@@ -202,13 +202,13 @@ color: #fff;
 font-weight: bold;
 font-size: 14px;  
 }
-.ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
+/* .ui-monthpicker .ui-datepicker-today a, .ui-monthpicker .ui-datepicker-today a:hover, .ui-datepicker .ui-datepicker-current-day a {
 background: #44bc9b !important;
 color: #FFF !important;
 text-align: center;
 border: none !important;
 outline: none;
-}
+} */
 .ui-datepicker-calendar th span {
    color:#333 !important;
 }
