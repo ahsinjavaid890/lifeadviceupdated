@@ -222,11 +222,14 @@
                            <div class="col-sm-4 col-md-3">
                               <div class="form-group ">
                                  <label>Do you require Family Plan?</label>
-                                 <select required class="form-input" name="fplan" id="">
-                                    <option value="">--- Please Choose ---</option>
-                                      <option value="yes" onclick="changefamilyyes()">Yes</option>
-                                      <option value="no"  onclick="changefamilyno()">No</option>
-                                 </select>
+                                 <select onchange="changefamilyyes(this.value)" required
+                                 class="form-input" name="fplan" id=""
+                                 style="padding: 5px 12px !important;">
+                                 <option value="">--- Please Choose ---</option>
+                                 <option value="yes">Yes</option>
+                                 <option selected value="no">No
+                                 </option>
+                             </select>
                               </div>
                            </div>
                            <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -289,7 +292,10 @@
          @endif
          <div class="row">
             <div class="col-md-12 mb-3 text-right">
-                  <button id="getqoutesubmitbutton" class="btn btn-quote">GET A QUOTE</button>
+                  <button id="getqoutesubmitbutton" class=" mt-3 btn btn-quote">GET A QUOTE</button>
+                  <span id="family_error"
+                                style="display: none; text-align: right;padding: 20px; font-weight:700; color:#1BBC9B;"><i
+                                    class="fa fa-warning"></i> </span>
             </div>
          </div>
       </form>
@@ -534,52 +540,59 @@ $('button[type="submit"]').click(function() {
    
    
    function checkfamilyplan(){
-       //Eligibility
-       var inps = document.getElementsByName('ages[]');
-       var ages = [];
-       for (var i = 0; i <inps.length; i++) {
-           var inp=inps[i];
-           if(inp.value > 0){
-               ages.push(inp.value);
+      
+      //Eligibility
+      var titles = $('input[name^=years]').map(function(idx, elem) {
+         return $(elem).val();
+       }).get();
+        var ages = [];
+        for (var i = 0; i < titles.length; i++) {
+           if(titles[i])
+           {
+              dob = new Date(titles[i]);
+              var today = new Date();
+              var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+              ages.push(age);
            }
-       }
-       
-       Array.prototype.max = function() {
-         return Math.max.apply(null, this);
-       };
-       
-       Array.prototype.min = function() {
-         return Math.min.apply(null, this);
-       };
-   
-       var max_age = ages.max();
-       var min_age = ages.min();
-       if($('#familyplan_temp').val() == 'yes'){
-           if($('#number_travelers').value >='2' && max_age <=59 && min_age <=21){
-               $('#GET_QUOTES').css('display', 'block');
-               $('#family_error').html('');
-               $('#family_error').css('display', 'none');
-           } 
-           else {
-               $('#GET_QUOTES').css('display', 'none');
-               if($('#number_travelers').value <'2'){
-                   $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
-               } 
-               else if(max_age > 59){
-                   $('#family_error').html('<i class="fa fa-warning"></i> Maximum age for family plan should be 59');  
-               } 
-               else if(min_age > 21){
-                   $('#family_error').html('<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21'); 
-               }
-               $('#family_error').css('display', 'block'); 
-           }
-       } 
-       else {
-           $('#GET_QUOTES').css('display', 'block');
-           $('#family_error').css('display', 'none');  
-       }
-       
-   }
+        }
+        Array.prototype.max = function() {
+          return Math.max.apply(null, this);
+        };
+        Array.prototype.min = function() {
+          return Math.min.apply(null, this);
+        };
+  
+      var max_age = ages.max();
+      var min_age = ages.min();
+      if($('#familyplan_temp').val() == 'yes'){
+          if($('#number_travelers').val() >='2' && max_age <=59 && min_age <=21){
+              $('#getqoutesubmitbutton').css('display', 'block');
+              $('#family_error').html('');
+              $('#family_error').css('display', 'none');
+          } 
+          else {
+              $('#getqoutesubmitbutton').css('display', 'none');
+
+              
+
+              if($('#number_travelers').val() <'2'){
+                  $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
+              } 
+              else if(max_age > 59){
+                  $('#family_error').html('<i class="fa fa-warning"></i> Maximum age for family plan should be 59');  
+              } 
+              else if(min_age > 21){
+                  $('#family_error').html('<i class="fa fa-warning"></i> For family plan the youngest traveller shouldn`t be elder than 21'); 
+              }
+              $('#family_error').css('display', 'block'); 
+          }
+      } 
+      else {
+          $('#getqoutesubmitbutton').css('display', 'block');
+          $('#family_error').css('display', 'none');  
+      }
+      
+  }
    
    window.onload = function() {
      checktravellers();

@@ -621,6 +621,10 @@
                 // console.log(data.html)
                 $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
+
+                $('html, body').animate({
+                    scrollTop: $(".quotationscards").offset().top
+                }, 2000);
             }
         });
     }));

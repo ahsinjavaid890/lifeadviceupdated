@@ -562,6 +562,7 @@
    }
    
    function checktravellers(){
+    
        //Number OF Traveller
        var number_of_traveller = $("#number_travelers").val();
        for(var t=2; t<=8; t++){
@@ -585,6 +586,7 @@
    
    
    function checkfamilyplan(){
+      
        //Eligibility
        var titles = $('input[name^=years]').map(function(idx, elem) {
           return $(elem).val();
@@ -616,6 +618,9 @@
            } 
            else {
                $('#getqoutesubmitbutton').css('display', 'none');
+
+               
+
                if($('#number_travelers').val() <'2'){
                    $('#family_error').html('<i class="fa fa-warning"></i> Minimum 2 travellers required for family plan.');
                } 
