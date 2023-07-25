@@ -538,7 +538,7 @@ if($show == '1' && $total_price > 0){
                     <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
                 </div>
                 <div class="compare compare-check  justify-content-end d-flex">
-                    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+                    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
                 </div>
             </div>
             
