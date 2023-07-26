@@ -259,7 +259,11 @@
             @for($i=1;$i<=$number_of_travel;$i++)
             <div style="display: none;" id="traveler{{ $i }}" class="row no_of_travelers">
                <div class="col-sm-12">
-                  <h5 class="type-of-policy"><?php echo $ordinal_words[$i];?> Traveler</h5>
+                  {{-- <h5 class="type-of-policy">
+                     <?php 
+                        // echo $ordinal_words[$i];
+                     ?>
+                      Traveler</h5> --}}
                </div>
                <div class="col-sm-4 col-md-3">
                   <div class="form-group ">

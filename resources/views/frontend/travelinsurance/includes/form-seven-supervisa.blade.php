@@ -75,8 +75,7 @@
                                         class="no_of_travelers col-md-12">
                                         <div class="row" style="align-items: flex-end">
                                             <div class="col-md-6 mb-2">
-                                                <label for="day{{ $i }}" class="label-style">Birth date of
-                                                    the oldest Traveller
+                                                <label for="day{{ $i }}" class="label-style">Birth date 
                                                 </label>
                                                 <div class="custom-form-control">
                                                     <input id="dateofbirthfull{{ $i }}"

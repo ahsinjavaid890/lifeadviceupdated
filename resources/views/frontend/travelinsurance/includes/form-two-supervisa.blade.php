@@ -51,7 +51,7 @@
                                                             class="col-md-6 padding-right-zero-on-mobile">
                                                             <label style="font-size: 16px;"
                                                                 for="year{{ $i }}" class="">Birth date
-                                                                of the <?php echo $ordinal_words[$i]; ?> Traveller</label>
+                                                                </label>
                                                             <div class="custom-form-control mb-2">
                                                                 <input id="dateofbirthfull{{ $i }}"
                                                                     class="form-control" type="text"
@@ -64,8 +64,8 @@
                                                             <div class="custom-form-control">
                                                                 <label style="font-size: 16px;"
                                                                     for="year{{ $i }}" class="">Pre
-                                                                    Existing of the <?php echo $ordinal_words[$i]; ?>
-                                                                    Traveller</label>
+                                                                    Existing Conditions
+                                                                    </label>
                                                                 <select name="pre_existing[]" class="form-control"
                                                                     style="    padding: 5px 12px !important;">
                                                                     <option value="">Select Pre Existing Condition
@@ -457,10 +457,6 @@
                                     class="fa fa-list"></i> Get a Quote </button>
                         </div>
                     </div>
-
-
-
-
                 </form>
             </div>
         </div>

@@ -229,8 +229,90 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <style type="text/css">
+                                .switch {
+                                 position: relative;
+                                 display: inline-block;
+                                 width: 53px;
+                                 height: 27px;
+                                }
+        
+                                /* Hide default HTML checkbox */
+                                .switch input {
+                                  opacity: 0;
+                                  width: 0;
+                                  height: 0;
+                                }
+        
+                                /* The slider */
+                                .tooglecheckbox {
+                                  position: absolute;
+                                  cursor: pointer;
+                                  top: 0;
+                                  left: 0;
+                                  right: 0;
+                                  bottom: 0;
+                                  background-color: #919192;
+                                  -webkit-transition: .4s;
+                                  transition: .4s;
+                                }
+        
+                                .tooglecheckbox:before {
+                                  position: absolute;
+                                  content: "";
+                                  height: 20px;
+                                  width: 20px;
+                                  left: 4px;
+                                  bottom: 4px;
+                                  background-color: white;
+                                  -webkit-transition: .4s;
+                                  transition: .4s;
+                                }
+        
+                                input:checked + .tooglecheckbox {
+                                  background-color: #2b3481;
+                                }
+        
+                                input:focus + .tooglecheckbox {
+                                  box-shadow: 0 0 1px #2196F3;
+                                }
+        
+                                input:checked + .tooglecheckbox:before {
+                                  -webkit-transform: translateX(26px);
+                                  -ms-transform: translateX(26px);
+                                  transform: translateX(26px);
+                                }
+        
+                                /* Rounded sliders */
+                                .tooglecheckbox.round {
+                                  border-radius: 34px;
+                                }
+        
+                                .tooglecheckbox.round:before {
+                                  border-radius: 50%;
+                                }
+                                .nextbtns{
+                                   display: flex;
+                                }
+                                .toogleswithchdiv label{
+                                   margin-bottom: 0px;
+                                }
+                             </style>
+
                             <div class="modal-footer">
                                 <div class="nextbtns">
+                                    <div class="toogleswithchdiv">
+                                        <input type="hidden" value="no" id="familyplan_temp" name="familyplan_temp">
+                                        <label style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do You Require Family Plan?</label>
+                                        <label style="margin-right:10px;">No</label>
+                                        <label style="margin-right:10px;" class="switch">
+                                          <input id="familyplanyes" onclick="checkfamilyplan(this.value)" value="yes" type="checkbox">
+                                          <p class="tooglecheckbox round"></p>
+                                        </label>
+                                        <label style="margin-right:20px;">Yes</label>
+                                     </div>
                                     <span class="btn btn-default btn-prev">Prev</span>
                                     <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
                                     <span id="secondnextorignal" style="display: none;"   class="btn btn-default btn-next">Next</span>
@@ -602,6 +684,70 @@ if(value == '')
 
 }
 }
+
+function checkfamilyplan(id){
+   checkBox = document.getElementById('familyplanyes');
+   if(checkBox.checked) {
+      $('#familyplan_temp').val('yes');
+      var titles = $('input[name^=years]').map(function(idx, elem) {
+       return $(elem).val();
+     }).get();
+      var ages = [];
+      for (var i = 0; i < titles.length; i++) {
+         if(titles[i])
+         {
+            dob = new Date(titles[i]);
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            ages.push(age);
+         }
+      }
+      Array.prototype.max = function() {
+        return Math.max.apply(null, this);
+      };
+      Array.prototype.min = function() {
+        return Math.min.apply(null, this);
+      };
+      var max_age = ages.max();
+      var min_age = ages.min();
+      if(document.getElementById('number_travelers').value >='2' && max_age <=59 && min_age <=21)
+      {
+         $('#errortravelr').hide();
+         $('#errortravelr').html('');
+         $("#secondnextfake").css("pointer-events","auto");
+         $("#secondnextfake").css("background-color","#2b3481");
+         $("#secondnextfake").css("color","#fff");
+      }
+      else
+      {
+         $("#secondnextfake").css("pointer-events","none");
+         $("#secondnextfake").css("background-color","#f2dede");
+         $("#secondnextfake").css("color","#b94a48");
+         if(document.getElementById('number_travelers').value <'2'){
+            $('#errortravelr').show();
+            $('#errortravelr').html('Minimum 2 travellers required for family plan.');
+         } else if(max_age > 59){
+            $('#errortravelr').show();
+            $('#errortravelr').html('Maximum age for family plan should be 59');
+         } else if(min_age > 21){
+            $('#errortravelr').show();
+            $('#errortravelr').html('For family plan the youngest traveller shouldn`t be elder than 21');
+         }
+      }
+   }else{
+      $('#familyplan_temp').val('no');
+      $('#errortravelr').hide();
+      $('#errortravelr').html('');
+      $("#secondnextfake").css("pointer-events","auto");
+      $("#secondnextfake").css("background-color","#2b3481");
+      $("#secondnextfake").css("color","#fff");
+   }
+}
+
+
+
+
+
 
 function enddateinsupervisainsurance() {
     var newDate = $('#coveragedate').text();

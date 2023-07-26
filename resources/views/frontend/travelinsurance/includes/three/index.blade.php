@@ -629,7 +629,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 </div>
 
     <div style="clear:both;"></div>
-<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;">
+<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;margin-left:0px">
     <form method="post" action="{{ url('apply') }}">
         @csrf
     <input type="hidden" value="{{ $request->savers_email }}" name="email">

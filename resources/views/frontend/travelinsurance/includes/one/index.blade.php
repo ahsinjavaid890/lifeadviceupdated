@@ -678,15 +678,15 @@ $broker = $request->broker;
     <input type="hidden" value="{{ $dob }}" name="dob">
     <input type="hidden" value="{{ $agent }}" name="agent">
     <input type="hidden" value="{{ $broker }}" name="broker">
-          <div class="row">
-             <div class="col-md-6" style="background:#F9F9F9;">
+          <div class="row" style="flex-wrap: nowrap;padding:0px">
+             <div class="col-md-6" style="background:#F9F9F9;margin-left:15px">
                 <h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
                 <p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
                 <p><input type="checkbox" name="agree" required="" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
                 <p></p>
                 <p><button type="submit" class="submit-btn" style="font-weight: bold;padding: 6px 20px;font-size: 16px;display: block;color: #FFF; margin-bottom:5px;margin-top: 10px;border-radius: 6px;border-bottom: 2px solid #999;box-shadow: none;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
              </div>
-             <div class="col-md-6 text-center" style="font-size:16px;">
+             <div class="col-md-6 text-center" style="font-size:16px;padding-top:10px;padding-right:20px;">
                 <a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
                 <p>or</p>
                 <p>BY CALLING</p>

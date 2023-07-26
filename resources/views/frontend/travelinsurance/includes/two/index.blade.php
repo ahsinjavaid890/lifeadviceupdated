@@ -699,7 +699,7 @@ echo number_format($person_price,2); ?>
                             <div style="clear:both;"></div>
                             <div class="row buynow_<?php echo $deductible . $plan_id; ?>"
                                 style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
-                                <div class="col-md-6" style="background:#F9F9F9;">
+                                <div class="col-md-6" style="background:#F9F9F9;padding-top: 10px;padding-bottom: 10px;">
                                     <h3
                                         style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">
                                         Buy Online</h3>

@@ -467,7 +467,8 @@ if($show == '1' && $total_price > 0){
     margin-bottom: 25px;
     font-weight: bold;
     display: block;
-    background: #1bbc9b;"><i
+background:#2b3481;
+   "><i
                                 class="fa fa-shopping-cart"></i> Buy Now</button></p>
                 </div>
                 <div class="col-md-6 col-xs-12 text-center contact-details" style="font-size:16px;">
@@ -476,7 +477,7 @@ if($show == '1' && $total_price > 0){
                     <p style=";">or</p>
                     <p style="">BY CALLING</p>
                     <p style=""><a href="tel:8555008999"
-                            style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
+                            style="font-size:24px; font-weight:bold; color:#2b3481;">855-500-8999</a></p>
                     <p style="; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;  ">CALL CENTRE HOURS</p>
                     <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday
                         8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
@@ -630,7 +631,7 @@ $person_price = $person_price - $p_discountonplan;
                     <?php
                     if ($features->count() > 1) {
                         foreach ($features as $feature) {
-                            echo "<li style='transition: none;border:none;background:none;' >" . $feature->features . '</li>';
+                            echo "<li style='list-style-type:disc;transition: none;border:none;background:none;' >" . $feature->features . '</li>';
                         }
                     }
                     ?>

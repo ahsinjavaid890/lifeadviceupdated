@@ -490,13 +490,13 @@ if($show == '1' && $total_price > 0){
                             </div>
 
                             <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
-                                <div class=" center aligned middle aligned column">
-                                    <div class="ui center aligned header pr-4" >
+                              
+                                    
                                        
                                            
 
 
-                                                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+                                                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer;font-size:14px"><i class="fa fa-database"></i> Compare</label>
 
 
                                             
@@ -513,8 +513,8 @@ if($show == '1' && $total_price > 0){
                                             <p>Reduced: <?= $total_price ?></p>
 
                                         </div>
-                                    </div>
-                                </div>
+                                    
+                             
                             </div>
 
 
