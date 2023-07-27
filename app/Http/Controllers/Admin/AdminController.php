@@ -244,7 +244,6 @@ class AdminController extends Controller
 
         $input = $request->all();
 
-
         $cdiscountrate = $request->cdiscountrate;
         $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
         $flat =  $request->iflat;
@@ -312,7 +311,7 @@ class AdminController extends Controller
                 $features = $request->ifeaturelist[$i];
                 $userID = Auth::user()->id;
                 $time = time();
-                echo $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$updateplan->id','$features','$time','$userID')";
+                $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$updateplan->id','$features','$time','$userID')";
                 DB::statement($insertRates);
             }
         }
