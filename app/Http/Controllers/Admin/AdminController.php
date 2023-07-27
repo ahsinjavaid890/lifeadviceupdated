@@ -240,7 +240,10 @@ class AdminController extends Controller
     }
     public function createnewplan(Request $request)
     {
+        
+
         $input = $request->all();
+
 
         $cdiscountrate = $request->cdiscountrate;
         $cdiscountprice = $cdiscountrate == 1 ? $request->cdiscountprice : "0";
@@ -301,6 +304,20 @@ class AdminController extends Controller
         }
 
 
+
+        //features
+
+        if ($request->ifeaturelist) {
+            for ($i = 0; $i < count($request->ifeaturelist); $i++) {
+                $features = $request->ifeaturelist[$i];
+                $userID = Auth::user()->id;
+                $time = time();
+                echo $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$updateplan->id','$features','$time','$userID')";
+                DB::statement($insertRates);
+            }
+        }
+
+        
         $rateBase = $request->irateCalculation;
         if ($rateBase == '3') {
             DB::table('wp_dh_plan_day_rate')->where('plan_id', $updateplan->id)->delete();

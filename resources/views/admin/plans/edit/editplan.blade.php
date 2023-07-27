@@ -757,22 +757,22 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i
-                                        class="fa fa-file"></i> Upload PDFs</h4>
+                                        class="fa fa-file"></i> PDF Policy</h4>
                                 <div class="mt-3">
                                     <label>Plan PDF (Pre Eisting)</label>
-                                    <input type="file" class="form-control" name="plan_pdf_pre_existing">
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="plan_pdf_pre_existing">
                                 </div>
                                 <div class="mt-3">
                                     <label>Benifits Summary (Pre Eisting)</label>
-                                    <input type="file" class="form-control" name="benifit_summary_pre_existing">
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="benifit_summary_pre_existing">
                                 </div>
                                 <div class="mt-3">
                                     <label>Plan PDF (Without Pre Eisting)</label>
-                                    <input type="file" class="form-control" name="plan_pdf_without_pre_existing">
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="plan_pdf_without_pre_existing">
                                 </div>
                                 <div class="mt-3">
                                     <label>Benifits Summary (Without Pre Eisting)</label>
-                                    <input type="file" class="form-control"
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control"
                                         name="benifit_summary_without_pre_existing">
                                 </div>
                                 <div id="appendPDFpolicy"></div>

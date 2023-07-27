@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                                 <label><i class="fa fa-leaf"></i> <strong class="text-danger">Select
                                         Product</strong></label>
-                                <select required name="ipname" id="ipname" class="form-control">
+                                <select  required name="ipname" id="ipname" class="form-control">
                                     <option value="">Select Product</option>
                                     @foreach (DB::table('wp_dh_products')->get() as $r)
                                         <option value="{{ $r->pro_id }}">{{ $r->pro_name }}</option>
@@ -75,21 +75,21 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label><strong>Plan Full Name</strong></label>
-                                <input id="iplan" name="iplan" placeholder="Enter Plan Name" class="form-control"
+                                <input id="iplan" required name="iplan" placeholder="Enter Plan Name" class="form-control"
                                     type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label><strong>Pre Existing Name</strong></label>
-                                <input id="pre_existing_name" name="pre_existing_name" placeholder="Pre Existing Name"
+                                <input required id="pre_existing_name" name="pre_existing_name" placeholder="Pre Existing Name"
                                     class="form-control" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label><strong>Without Pre Existing Name</strong></label>
-                                <input id="without_pre_existing_name" name="without_pre_existing_name"
+                                <input required id="without_pre_existing_name" name="without_pre_existing_name"
                                     placeholder="Without Pre Existing Name" class="form-control" type="text">
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="original row">
                             <div class="col-md-12" id="links">
                                 <label><i class="fa fa-shopping-cart"></i> Buynow Link</label>
-                                <input id="directlink" name="directlink" class="form-control" placeholder="https://"
+                                <input id="directlink" required name="directlink" class="form-control" placeholder="https://"
                                     type="text">
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label class="switch switch-success switch-round">
-                                    <input type="checkbox" name="ifeature" id="ifeature" value="1">
+                                    <input type="checkbox"  name="ifeature" id="ifeature" value="1">
                                     <span class="switch-label" data-on="YES" data-off="NO"></span>
                                 </label>
                             </div>
@@ -323,19 +323,19 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="1" id="rt[]" name="rt[]">
+                                                <input required type="checkbox" value="1" id="rt[]" name="rt[]">
                                                 <i></i>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <label><strong>Min Age</strong></label>
-                                        <input id="iratesMin1" name="iratesMin[]" class="min_1 form-control" type="text"
+                                        <input id="iratesMin1" required name="iratesMin[]" class="min_1 form-control" type="text"
                                             >
                                     </div>
                                     <div class="col-md-2">
                                         <label><strong>Max Age</strong></label>
-                                        <input id="iratesMax1" name="iratesMax[]" class="max_1 form-control" type="text"
+                                        <input id="iratesMax1" required name="iratesMax[]" class="max_1 form-control" type="text"
                                            >
                                     </div>
                                     <div class="col-md-2">
@@ -345,11 +345,11 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label><strong>Rate ($) With Pre Existing</strong></label>
-                                        <input id="iratesRate1" name="iratesRate[]" class="form-control" type="text">
+                                        <input id="iratesRate1" required name="iratesRate[]" class="form-control" type="text">
                                     </div>
                                     <div class="col-md-2">
                                         <label><strong>Rate ($) Without Pre Existing</strong></label>
-                                        <input id="iratesRate1" name="iratesRatewithout[]" class="form-control"
+                                        <input id="iratesRate1" required name="iratesRatewithout[]" class="form-control"
                                             type="text">
                                     </div>
                                 </div>
@@ -494,9 +494,21 @@
                             <div class="col-md-6">
                                 <h4 class="item-sub" style="margin: 0;margin-bottom: 20px;margin-top: 5px; color:#c00;"><i
                                         class="fa fa-file"></i> PDF Policy</h4>
-                                <div class="">
-                                    <label>Upload PDF Policy</label>
-                                    <input type="file" class="form-control" name="ipdfPolicy">
+                                <div class="mt-3">
+                                    <label>Plan PDF (Pre Eisting)</label>
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="plan_pdf_pre_existing">
+                                </div>
+                                <div class="mt-3">
+                                    <label>Benifits Summary (Pre Eisting)</label>
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="benifit_summary_pre_existing">
+                                </div>
+                                <div class="mt-3">
+                                    <label>Plan PDF (Without Pre Eisting)</label>
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control" name="plan_pdf_without_pre_existing">
+                                </div>
+                                <div class="mt-3">
+                                    <label>Benifits Summary (Without Pre Eisting)</label>
+                                    <input type="file" accept="application/pdf,application/vnd.ms-excel"  class="form-control"  name="benifit_summary_without_pre_existing">
                                 </div>
                                 <div id="appendPDFpolicy"></div>
                                 <div class="clear"></div>
