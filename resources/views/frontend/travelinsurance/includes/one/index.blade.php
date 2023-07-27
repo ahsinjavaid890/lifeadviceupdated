@@ -127,6 +127,8 @@ $supervisa = 'no';
  
     $years = array();
 
+   
+
 foreach ($request->years as $r) {
     if($r)
     {
@@ -220,6 +222,10 @@ if(displayvalue == '0'){
         }
         $plans_q = DB::select("SELECT * FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id' AND `status`='1' $lessquery $addinquery ORDER BY `id`");
 
+        // echo"<pre>";
+        // print_r($plans_q);
+        // die;
+
         foreach($plans_q as $plan){
 
         $plan_id = $plan->id;
@@ -253,7 +259,11 @@ if(displayvalue == '0'){
 
         //COMPANY Details
         $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
+        
         $comp_id = $company->comp_id;
+        
+
+
         $comp_name = $company->comp_name;
         $comp_logo = $company->comp_logo;
 

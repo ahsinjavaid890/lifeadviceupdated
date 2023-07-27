@@ -48,6 +48,7 @@
     </div>
 </div>
 
+
 @if($data->quotation_form_on_stylish_page == 1)
 
 	@if($data->stylish_form_layout == 'layout_1')
