@@ -376,7 +376,7 @@
                             <?php
                 if($data->id){
                 $counter=0;
-                $rats_q = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $data->id)->orderby('sum_insured' , 'asc')->get();
+                $rats_q = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $data->id)->orderby('minage' , 'asc')->get();
                 $rats_num = $rats_q->count();
                 foreach ($rats_q as $r) {
                     $counter++;
