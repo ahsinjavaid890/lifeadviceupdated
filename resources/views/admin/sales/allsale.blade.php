@@ -58,9 +58,9 @@
                                         {{ $r->status }}
                                     </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View Sale</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->id }}"><i class="fa fa-eye"></i> View</a>
                                        
-                                       <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Delete Sale</a>
+                                       <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Delete</a>
                                    </td>
                                 </tr>
 
