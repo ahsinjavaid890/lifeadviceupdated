@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Auth;
+
 use Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -11,11 +12,11 @@ class LoginController extends Controller
 {
     //
 
-    public function login(){
-        if(Auth::check())
-        {
+    public function login()
+    {
+        if (Auth::check()) {
             return redirect()->route('admin.dashboard');
-        }else{
+        } else {
             return view('admin.auth.login');
         }
     }
@@ -24,13 +25,12 @@ class LoginController extends Controller
     {
         $data = $request->all();
         $this->validator($request);
-        if(auth()->attempt(['email'=>$data['email'],'password'=>$data['password']],$request->filled('remember'))){
-            if(Auth::user()->type == 'admin')
-            {
-                return redirect()->route('admin.dashboard')->with('success','You are Login as Admin!');
-            }else{
+        if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']], $request->filled('remember'))) {
+            if (Auth::user()->type == 'admin') {
+                return redirect()->route('admin.dashboard')->with('success', 'You are Login as Admin!');
+            } else {
                 Auth::logout();
-                return back()->with('error','You have not Access For Admin');
+                return back()->with('error', 'You have not Access For Admin');
             }
         }
         return $this->loginFailed();
@@ -43,8 +43,8 @@ class LoginController extends Controller
      */
     public function logout()
     {
-      Auth::logout();
-      return redirect()->route('admin.login')->with('success','Admin has been logged out!');
+        Auth::logout();
+        return redirect()->route('admin.login')->with('success', 'Admin has been logged out!');
     }
 
     /**
@@ -55,22 +55,21 @@ class LoginController extends Controller
      */
     private function validator(Request $request)
     {
-      //validate the form...
+        //validate the form...
 
-              //validation rules.
-    $rules = [
-        'email'    => 'required|email|exists:users|min:5|max:191',
-        'password' => 'required|string|min:4|max:255',
-    ];
+        //validation rules.
+        $rules = [
+            'email'    => 'required|email|exists:users|min:5|max:191',
+            'password' => 'required|string|min:4|max:255',
+        ];
 
-    //custom validation error messages.
-    $messages = [
-        'email.exists' => 'These credentials do not match our records.',
-    ];
+        //custom validation error messages.
+        $messages = [
+            'email.exists' => 'These credentials do not match our records.',
+        ];
 
-    //validate the request.
-    $request->validate($rules,$messages);
-
+        //validate the request.
+        $request->validate($rules, $messages);
     }
 
     /**
@@ -80,6 +79,6 @@ class LoginController extends Controller
      */
     private function loginFailed()
     {
-      return redirect()->back()->withInput()->with('error','Login failed, please try again!');
+        return redirect()->back()->withInput()->with('error', 'Login failed, please try again!');
     }
 }
