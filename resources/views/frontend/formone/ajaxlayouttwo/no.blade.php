@@ -341,9 +341,6 @@ $show = 1;
 
 if($show == '1' && $total_price > 0){
 
-    echo $total_price;
-    die;
-
    ?>
 
 
