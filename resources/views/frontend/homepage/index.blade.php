@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @section('tittle')
 <title>Life Insurance Ontario – Get Tips, Online Quotes for Life Insurance</title>
+<link rel="canonical" href="{{Request::url()}}">
 @endsection
 @section('content')
 <div class="right-images">
