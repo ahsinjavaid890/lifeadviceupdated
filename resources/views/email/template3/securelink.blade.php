@@ -46,7 +46,7 @@
                                     <td class="m_2524544869209104962rounded" align="center" bgcolor="#1A3760" valign="top" style="margin:0;padding:60px 20px 60px;border-radius:20px">
                                        <h2 style="font-family:'Montserrat','Helvetica Neue','Helvetica',sans-serif;font-size:28px;line-height:34px;color:#ffffff;font-weight:600;padding:0px;margin:0;text-align:left;">Hello</h2>
                                        <p style="color:white;text-align:left;">Click on the button below to sign in to your account.</p><br>
-                                       <a href="" style="font-family:'Inter','Helvetica Neue','Helvetica',sans-serif;font-size: 17px;line-height: 75px;color:#ffffff;font-weight:600;letter-spacing: 0.01em;text-decoration:none;text-align:center;border: 1px solid;padding: 10px;border-radius: 10px;margin-right: 28px;" target="_blank">Sign in to your account</a>
+                                       <a href="{{ $link }}" style="font-family:'Inter','Helvetica Neue','Helvetica',sans-serif;font-size: 17px;line-height: 75px;color:#ffffff;font-weight:600;letter-spacing: 0.01em;text-decoration:none;text-align:center;border: 1px solid;padding: 10px;border-radius: 10px;margin-right: 28px;" target="_blank">Sign in to your account</a>
                                        <br><br>
                                        <span style="color:#fff;font-weight:600;font-size:14px;line-height:26px;font-family:&quot;Open Sans&quot;,sans-serif">Don’t see the button?
                                        <a href="{{ $link }}" style="color:#fff;text-decoration:none" target="_blank">
