@@ -1,5 +1,16 @@
 <div class="tab-pane fade show active" id="tab1">
-   <div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_one" id="" class="form-control">
+                    <option  value="">---Select option---</option>
+                
+                    <option {{ ( $data->showsection_one == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_one == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="form-group">
                 <label>Main Image</label>
@@ -7,8 +18,9 @@
             </div>
         </div>
         <div class="col-md-4">
-              <label>Main Image</label>
-              <button  data-toggle="modal" data-target="#viewmainimage" type="button" class="btn btn-primary form-control">View Image</button>
+            <label>Main Image</label>
+            <button data-toggle="modal" data-target="#viewmainimage" type="button"
+                class="btn btn-primary form-control">View Image</button>
         </div>
         <div class="col-md-12">
             <div class="form-group">
@@ -35,4 +47,4 @@
             </div>
         </div>
     </div>
- </div>
+</div>

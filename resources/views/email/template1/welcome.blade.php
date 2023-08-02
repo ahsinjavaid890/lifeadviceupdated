@@ -1,4 +1,4 @@
-@include('frontend.email.header')
+@include('frontend.email.template1.header')
 
 <tr>
     <td align="center" style="font-size:0px;padding:10px 25px;padding-bottom:40px;word-break:break-word;">
@@ -39,4 +39,4 @@
         </table>
     </td>
 </tr>
-@include('frontend.email.footer')                       
+@include('frontend.email.template1.footer')                       

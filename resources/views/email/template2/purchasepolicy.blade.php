@@ -44,6 +44,7 @@
                                                                                                         href=""
                                                                                                         target="_blank"
                                                                                                         data-saferedirecturl=""><img
+                                                                                                            width="250px"
                                                                                                             alt="VISITORINSURANCE"
                                                                                                             border="0"
                                                                                                             style="display:block;font-family:Arial,sans-serif;font-size:20px;line-height:30px;color:#ee3623;font-weight:bold"
@@ -55,46 +56,10 @@
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td height="50"
-                                                                                                    style="height:50px;line-height:0px;font-size:0px">
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td align="left"
-                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#000000;font-size:51px;line-height:60px;font-weight:bold"
-                                                                                                    valign="top">
-                                                                                                    <b>Policy
-                                                                                                        Confirmation</b>
-
-
-
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td align="left"
-                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#000000;font-size:40px;line-height:60px;font-weight:bold"
-                                                                                                    valign="top">
-                                                                                                    Thank you for your
-                                                                                                    purchase!
-
-
-                                                                                                </td>
-                                                                                            </tr>
-
-                                                                                            <tr>
-                                                                                                <td align="left"
-                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#000000;font-size:35px;line-height:60px;font-weight:bold"
-                                                                                                    valign="top">
-                                                                                                    Reffrence
-                                                                                                    ID:{{ $policy_number }}
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
                                                                                                 <td height="20"
                                                                                                     style="height:20px;line-height:0px;font-size:0px">
                                                                                                 </td>
                                                                                             </tr>
-
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </td>
@@ -109,10 +74,9 @@
                                                     </table>
                                                 </td>
                                             </tr>
-
                                             <tr>
                                                 <td align="center" valign="top">
-                                                    <table align="center" style="max-width: 600px" border="0"
+                                                    <table align="center" style="max-width: 650px" border="0"
                                                         cellpadding="0" cellspacing="0" width="100%">
                                                         <tbody>
                                                             <tr>
@@ -124,16 +88,15 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td align="center"
-                                                                                    style="box-shadow:3px 4px 20px 7px rgb(179, 176, 176); border-top-left-radius:40px;border-top-right-radius:40px;border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; background-color:#ffffff;"
+                                                                                    style="box-shadow:1px 1px 7px 0px rgb(179, 176, 176); border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; background-color:#ffffff;"
                                                                                     valign="top">
                                                                                     <table align="center"
-                                                                                        style="max-width: 600px"
+                                                                                        style="max-width: 600px;border: 1px solid rgba(77, 77, 77, 0.363);border-radius: 20px;"
                                                                                         border="0" cellpadding="0"
-                                                                                        cellspacing="0"
-                                                                                        width="100%">
+                                                                                        cellspacing="0" width="100%">
                                                                                         <tbody>
                                                                                             <tr>
-                                                                                                
+
                                                                                                 <td align="center"
                                                                                                     valign="top">
                                                                                                     <table
@@ -145,13 +108,50 @@
                                                                                                         width="100%">
                                                                                                         <tbody>
                                                                                                             <tr>
-                                                                                                                <td height="50"
-                                                                                                                    style="height:50px;line-height:0px;font-size:0px">
+                                                                                                                <td height="20"
+                                                                                                                    style="height:20px;line-height:0px;font-size:0px">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+
+
+                                                                                                                <td align="left"
+                                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#2b3481;font-size:40px;line-height:60px;font-weight:bold"
+                                                                                                                    valign="top">
+                                                                                                                    <b>Policy
+                                                                                                                        Confirmation</b>
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td align="left"
-                                                                                                                    style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
+                                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#2b3481;font-size:30px;line-height:30px;font-weight:bold"
+                                                                                                                    valign="top">
+                                                                                                                    Thank
+                                                                                                                    you
+                                                                                                                    for
+                                                                                                                    your
+                                                                                                                    purchase!
+
+
+                                                                                                                </td>
+
+                                                                                                            </tr>
+
+                                                                                                            <tr>
+
+
+                                                                                                                <td align="left"
+                                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#2b3481;font-size:20px;line-height:40px;font-weight:bold"
+                                                                                                                    valign="top">
+                                                                                                                    Reffrence
+                                                                                                                    ID:{{ $policy_number }}
+                                                                                                                </td>
+
+                                                                                                            </tr>
+
+                                                                                                            <tr>
+                                                                                                                <td align="left"
+                                                                                                                    style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:30px;padding-top: 20px;"
                                                                                                                     valign="top">
                                                                                                                     We
                                                                                                                     truly
@@ -376,7 +376,7 @@
                                                                                                                     role="module"
                                                                                                                     style="max-width: 600px;padding:0px 30px 0px 30px">
                                                                                                                     <tbody>
-                                                                                                                        
+
 
                                                                                                                         <tr
                                                                                                                             role="module-content">
@@ -472,7 +472,7 @@
                                                                                                                                         </tr>
                                                                                                                                     </tbody>
                                                                                                                                 </table>
-                                                                                                                              </tr>
+                                                                                                                        </tr>
                                                                                                                         <tr
                                                                                                                             role="module-content">
                                                                                                                             <td height="100%"
@@ -510,7 +510,8 @@
                                                                                                                                                                 <div
                                                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
                                                                                                                                                                     <span
-                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Start Date</span>
+                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Start
+                                                                                                                                                                        Date</span>
                                                                                                                                                                 </div>
 
 
@@ -566,7 +567,7 @@
                                                                                                                                         </tr>
                                                                                                                                     </tbody>
                                                                                                                                 </table>
-                                                                                                                              </tr>
+                                                                                                                        </tr>
                                                                                                                         <tr
                                                                                                                             role="module-content">
                                                                                                                             <td height="100%"
@@ -604,7 +605,8 @@
                                                                                                                                                                 <div
                                                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
                                                                                                                                                                     <span
-                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">End Date</span>
+                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">End
+                                                                                                                                                                        Date</span>
                                                                                                                                                                 </div>
 
 
@@ -660,7 +662,7 @@
                                                                                                                                         </tr>
                                                                                                                                     </tbody>
                                                                                                                                 </table>
-                                                                                                                              </tr>
+                                                                                                                        </tr>
                                                                                                                         <tr
                                                                                                                             role="module-content">
                                                                                                                             <td height="100%"
@@ -698,7 +700,8 @@
                                                                                                                                                                 <div
                                                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
                                                                                                                                                                     <span
-                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Coverage Amount</span>
+                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Coverage
+                                                                                                                                                                        Amount</span>
                                                                                                                                                                 </div>
 
 
@@ -754,7 +757,7 @@
                                                                                                                                         </tr>
                                                                                                                                     </tbody>
                                                                                                                                 </table>
-                                                                                                                              </tr>
+                                                                                                                        </tr>
                                                                                                                         <tr
                                                                                                                             role="module-content">
                                                                                                                             <td height="100%"
@@ -848,527 +851,528 @@
                                                                                                                                         </tr>
                                                                                                                                     </tbody>
                                                                                                                                 </table>
-                                                                                                                              </tr>
-                                                                                                                        
-                                                                                                                                    
-                                                                                                                                                
-                                                                                                                                                            
-
-                                                                                                                                                                        @foreach (DB::table('traveler_sale_informations')->where('sale_id', $sale->id)->get() as $key => $r)
-                                                                                                                                                                            <tr>
-                                                                                                                                                                                <td align="left"
-                                                                                                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#000000;font-size:26px;line-height:36px;font-weight:bold;padding-top: 25px;padding-bottom: 25px;"
-                                                                                                                                                                                    valign="top">
-                                                                                                                                                                                    Traveler
-                                                                                                                                                                                    Information
-                                                                                                                                                                                    {{ $key + 1 }}
-                                                                                                                                                                                </td>
-                                                                                                                                                                            </tr>
-
-                                                                                                                                                                            <tr>
-                                                                                                                                                                                <table
-                                                                                                                                                                                    border="0"
-                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                    align="center"
-                                                                                                                                                                                    width="100%"
-                                                                                                                                                                                    role="module"
-                                                                                                                                                                                    style="">
-                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                        <tr
-                                                                                                                                                                                            role="module-content">
-                                                                                                                                                                                            <td height="100%"
-                                                                                                                                                                                                valign="top">
-                                                                                                                                                                                                <table
-                                                                                                                                                                                                    width="180"
-                                                                                                                                                                                                    style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                                    align="left"
-                                                                                                                                                                                                    border="0"
-                                                                                                                                                                                                    bgcolor="">
-                                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                            <td
-                                                                                                                                                                                                                style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                <table
-                                                                                                                                                                                                                    role="module"
-                                                                                                                                                                                                                    border="0"
-                                                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                                                    width="100%"
-                                                                                                                                                                                                                    style="table-layout:fixed">
-                                                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                                            <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                height="100%"
-                                                                                                                                                                                                                                valign="top"
-                                                                                                                                                                                                                                bgcolor=""
-                                                                                                                                                                                                                                role="module-content">
-                                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                                    <div
-                                                                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                        <span
-                                                                                                                                                                                                                                            style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Name
-                                                                                                                                                                                                                                        </span>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                                    </tbody>
-                                                                                                                                                                                                                </table>
-                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                    </tbody>
-                                                                                                                                                                                                </table>
-                                                                                                                                                                                                <table
-                                                                                                                                                                                                    width="260"
-                                                                                                                                                                                                    style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                                    align="left"
-                                                                                                                                                                                                    border="0"
-                                                                                                                                                                                                    bgcolor="">
-                                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                            <td
-                                                                                                                                                                                                                style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                <table
-                                                                                                                                                                                                                    role="module"
-                                                                                                                                                                                                                    border="0"
-                                                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                                                    width="100%"
-                                                                                                                                                                                                                    style="table-layout:fixed">
-                                                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                                            <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                height="100%"
-                                                                                                                                                                                                                                valign="top"
-                                                                                                                                                                                                                                bgcolor=""
-                                                                                                                                                                                                                                role="module-content">
-                                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                                    <div
-                                                                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                        <span
-                                                                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->f_name }}
-                                                                                                                                                                                                                                            {{ $r->l_name }}</span>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                                    </tbody>
-                                                                                                                                                                                                                </table>
-                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                    </tbody>
-                                                                                                                                                                                                </table>
-                                                                                                                                                                                        </tr>
-                                                                                                                                                                                        <tr>
-                                                                                                                                                                                            <table
-                                                                                                                                                                                                border="0"
-                                                                                                                                                                                                cellpadding="0"
-                                                                                                                                                                                                cellspacing="0"
-                                                                                                                                                                                                align="center"
-                                                                                                                                                                                                width="100%"
-                                                                                                                                                                                                role="module"
-                                                                                                                                                                                                style="">
-                                                                                                                                                                                                <tbody>
-                                                                                                                                                                                                    <tr
-                                                                                                                                                                                                        role="module-content">
-                                                                                                                                                                                                        <td height="100%"
-                                                                                                                                                                                                            valign="top">
-                                                                                                                                                                                                            <table
-                                                                                                                                                                                                                width="180"
-                                                                                                                                                                                                                style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                cellpadding="0"
-                                                                                                                                                                                                                cellspacing="0"
-                                                                                                                                                                                                                align="left"
-                                                                                                                                                                                                                border="0"
-                                                                                                                                                                                                                bgcolor="">
-                                                                                                                                                                                                                <tbody>
-                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                        <td
-                                                                                                                                                                                                                            style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                            <table
-                                                                                                                                                                                                                                role="module"
-                                                                                                                                                                                                                                border="0"
-                                                                                                                                                                                                                                cellpadding="0"
-                                                                                                                                                                                                                                cellspacing="0"
-                                                                                                                                                                                                                                width="100%"
-                                                                                                                                                                                                                                style="table-layout:fixed">
-                                                                                                                                                                                                                                <tbody>
-                                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                                        <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                            height="100%"
-                                                                                                                                                                                                                                            valign="top"
-                                                                                                                                                                                                                                            bgcolor=""
-                                                                                                                                                                                                                                            role="module-content">
-                                                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                                                <div
-                                                                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                    <span
-                                                                                                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Gender
-                                                                                                                                                                                                                                                    </span>
-                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                </tbody>
-                                                                                                                                                                                                                            </table>
-                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                </tbody>
-                                                                                                                                                                                                            </table>
-                                                                                                                                                                                                            <table
-                                                                                                                                                                                                                width="260"
-                                                                                                                                                                                                                style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                cellpadding="0"
-                                                                                                                                                                                                                cellspacing="0"
-                                                                                                                                                                                                                align="left"
-                                                                                                                                                                                                                border="0"
-                                                                                                                                                                                                                bgcolor="">
-                                                                                                                                                                                                                <tbody>
-                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                        <td
-                                                                                                                                                                                                                            style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                            <table
-                                                                                                                                                                                                                                role="module"
-                                                                                                                                                                                                                                border="0"
-                                                                                                                                                                                                                                cellpadding="0"
-                                                                                                                                                                                                                                cellspacing="0"
-                                                                                                                                                                                                                                width="100%"
-                                                                                                                                                                                                                                style="table-layout:fixed">
-                                                                                                                                                                                                                                <tbody>
-                                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                                        <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                            height="100%"
-                                                                                                                                                                                                                                            valign="top"
-                                                                                                                                                                                                                                            bgcolor=""
-                                                                                                                                                                                                                                            role="module-content">
-                                                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                                                <div
-                                                                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                    <span
-                                                                                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span>
-                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                </tbody>
-                                                                                                                                                                                                                            </table>
-                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                </tbody>
-                                                                                                                                                                                                            </table>
-                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                        <table
-                                                                                                                                                                                                            border="0"
-                                                                                                                                                                                                            cellpadding="0"
-                                                                                                                                                                                                            cellspacing="0"
-                                                                                                                                                                                                            align="center"
-                                                                                                                                                                                                            width="100%"
-                                                                                                                                                                                                            role="module"
-                                                                                                                                                                                                            style="">
-                                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                                <tr
-                                                                                                                                                                                                                    role="module-content">
-                                                                                                                                                                                                                    <td height="100%"
-                                                                                                                                                                                                                        valign="top">
-                                                                                                                                                                                                                        <table
-                                                                                                                                                                                                                            width="180"
-                                                                                                                                                                                                                            style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                            cellpadding="0"
-                                                                                                                                                                                                                            cellspacing="0"
-                                                                                                                                                                                                                            align="left"
-                                                                                                                                                                                                                            border="0"
-                                                                                                                                                                                                                            bgcolor="">
-                                                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                                    <td
-                                                                                                                                                                                                                                        style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                                        <table
-                                                                                                                                                                                                                                            role="module"
-                                                                                                                                                                                                                                            border="0"
-                                                                                                                                                                                                                                            cellpadding="0"
-                                                                                                                                                                                                                                            cellspacing="0"
-                                                                                                                                                                                                                                            width="100%"
-                                                                                                                                                                                                                                            style="table-layout:fixed">
-                                                                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                                                    <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                                        height="100%"
-                                                                                                                                                                                                                                                        valign="top"
-                                                                                                                                                                                                                                                        bgcolor=""
-                                                                                                                                                                                                                                                        role="module-content">
-                                                                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                                                                            <div
-                                                                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                                <span
-                                                                                                                                                                                                                                                                    style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Pre
-                                                                                                                                                                                                                                                                    Existing
-                                                                                                                                                                                                                                                                    Condition
-                                                                                                                                                                                                                                                                </span>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                    </td>
-                                                                                                                                                                                                                                                </tr>
-                                                                                                                                                                                                                                            </tbody>
-                                                                                                                                                                                                                                        </table>
-                                                                                                                                                                                                                                    </td>
-                                                                                                                                                                                                                                </tr>
-                                                                                                                                                                                                                            </tbody>
-                                                                                                                                                                                                                        </table>
-                                                                                                                                                                                                                        <table
-                                                                                                                                                                                                                            width="260"
-                                                                                                                                                                                                                            style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                            cellpadding="0"
-                                                                                                                                                                                                                            cellspacing="0"
-                                                                                                                                                                                                                            align="left"
-                                                                                                                                                                                                                            border="0"
-                                                                                                                                                                                                                            bgcolor="">
-                                                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                                    <td
-                                                                                                                                                                                                                                        style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                                        <table
-                                                                                                                                                                                                                                            role="module"
-                                                                                                                                                                                                                                            border="0"
-                                                                                                                                                                                                                                            cellpadding="0"
-                                                                                                                                                                                                                                            cellspacing="0"
-                                                                                                                                                                                                                                            width="100%"
-                                                                                                                                                                                                                                            style="table-layout:fixed">
-                                                                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                                                    <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                                        height="100%"
-                                                                                                                                                                                                                                                        valign="top"
-                                                                                                                                                                                                                                                        bgcolor=""
-                                                                                                                                                                                                                                                        role="module-content">
-                                                                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                                                                            <div
-                                                                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                                <span
-                                                                                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->pre_existing_condition }}</span>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                            <div>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                    </td>
-                                                                                                                                                                                                                                                </tr>
-                                                                                                                                                                                                                                            </tbody>
-                                                                                                                                                                                                                                        </table>
-                                                                                                                                                                                                                                    </td>
-                                                                                                                                                                                                                                </tr>
-                                                                                                                                                                                                                            </tbody>
-                                                                                                                                                                                                                        </table>
-                                                                                                                                                                                                                </tr>
-                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                    <table
-                                                                                                                                                                                                                        border="0"
-                                                                                                                                                                                                                        cellpadding="0"
-                                                                                                                                                                                                                        cellspacing="0"
-                                                                                                                                                                                                                        align="center"
-                                                                                                                                                                                                                        width="100%"
-                                                                                                                                                                                                                        role="module"
-                                                                                                                                                                                                                        style="">
-                                                                                                                                                                                                                        <tbody>
-                                                                                                                                                                                                                            <tr
-                                                                                                                                                                                                                                role="module-content">
-                                                                                                                                                                                                                                <td height="100%"
-                                                                                                                                                                                                                                    valign="top">
-                                                                                                                                                                                                                                    <table
-                                                                                                                                                                                                                                        width="180"
-                                                                                                                                                                                                                                        style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                                        cellpadding="0"
-                                                                                                                                                                                                                                        cellspacing="0"
-                                                                                                                                                                                                                                        align="left"
-                                                                                                                                                                                                                                        border="0"
-                                                                                                                                                                                                                                        bgcolor="">
-                                                                                                                                                                                                                                        <tbody>
-                                                                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                                                                <td
-                                                                                                                                                                                                                                                    style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                                                    <table
-                                                                                                                                                                                                                                                        role="module"
-                                                                                                                                                                                                                                                        border="0"
-                                                                                                                                                                                                                                                        cellpadding="0"
-                                                                                                                                                                                                                                                        cellspacing="0"
-                                                                                                                                                                                                                                                        width="100%"
-                                                                                                                                                                                                                                                        style="table-layout:fixed">
-                                                                                                                                                                                                                                                        <tbody>
-                                                                                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                                                                                <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                                                    height="100%"
-                                                                                                                                                                                                                                                                    valign="top"
-                                                                                                                                                                                                                                                                    bgcolor=""
-                                                                                                                                                                                                                                                                    role="module-content">
-                                                                                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                                                                                        <div
-                                                                                                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                                            <span
-                                                                                                                                                                                                                                                                                style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Date
-                                                                                                                                                                                                                                                                                of
-                                                                                                                                                                                                                                                                                Birth</span>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </td>
-                                                                                                                                                                                                                                                            </tr>
-                                                                                                                                                                                                                                                        </tbody>
-                                                                                                                                                                                                                                                    </table>
-                                                                                                                                                                                                                                                </td>
-                                                                                                                                                                                                                                            </tr>
-                                                                                                                                                                                                                                        </tbody>
-                                                                                                                                                                                                                                    </table>
-                                                                                                                                                                                                                                    <table
-                                                                                                                                                                                                                                        width="260"
-                                                                                                                                                                                                                                        style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
-                                                                                                                                                                                                                                        cellpadding="0"
-                                                                                                                                                                                                                                        cellspacing="0"
-                                                                                                                                                                                                                                        align="left"
-                                                                                                                                                                                                                                        border="0"
-                                                                                                                                                                                                                                        bgcolor="">
-                                                                                                                                                                                                                                        <tbody>
-                                                                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                                                                <td
-                                                                                                                                                                                                                                                    style="padding:0px;margin:0px;border-spacing:0">
-                                                                                                                                                                                                                                                    <table
-                                                                                                                                                                                                                                                        role="module"
-                                                                                                                                                                                                                                                        border="0"
-                                                                                                                                                                                                                                                        cellpadding="0"
-                                                                                                                                                                                                                                                        cellspacing="0"
-                                                                                                                                                                                                                                                        width="100%"
-                                                                                                                                                                                                                                                        style="table-layout:fixed">
-                                                                                                                                                                                                                                                        <tbody>
-                                                                                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                                                                                <td style="line-height:24px;text-align:inherit"
-                                                                                                                                                                                                                                                                    height="100%"
-                                                                                                                                                                                                                                                                    valign="top"
-                                                                                                                                                                                                                                                                    bgcolor=""
-                                                                                                                                                                                                                                                                    role="module-content">
-                                                                                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                                                                                        <div
-                                                                                                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
-                                                                                                                                                                                                                                                                            <span
-                                                                                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->date_of_birth }}</span>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </td>
-                                                                                                                                                                                                                                                            </tr>
-                                                                                                                                                                                                                                                        </tbody>
-                                                                                                                                                                                                                                                    </table>
-                                                                                                                                                                                                                                                </td>
-                                                                                                                                                                                                                                            </tr>
-                                                                                                                                                                                                                                        </tbody>
-                                                                                                                                                                                                                                    </table>
-                                                                                                                                                                                                                            </tr>
-                                                                                                                                                                        @endforeach
+                                                                                                                        </tr>
 
 
 
 
+
+                                                                                                                        @foreach (DB::table('traveler_sale_informations')->where('sale_id', $sale->id)->get() as $key => $r)
+                                                                                                                            <tr>
+                                                                                                                                <td align="left"
+                                                                                                                                    style="font-family:'TTNorms-Bold',Arial,sans-serif;color:#000000;font-size:26px;line-height:36px;font-weight:bold;padding-top: 25px;padding-bottom: 25px;"
+                                                                                                                                    valign="top">
+                                                                                                                                    Traveler
+                                                                                                                                    Information
+                                                                                                                                    {{ $key + 1 }}
+                                                                                                                                </td>
+                                                                                                                            </tr>
+
+                                                                                                                            <tr>
+                                                                                                                                <table
+                                                                                                                                    border="0"
+                                                                                                                                    cellpadding="0"
+                                                                                                                                    cellspacing="0"
+                                                                                                                                    align="center"
+                                                                                                                                    width="100%"
+                                                                                                                                    role="module"
+                                                                                                                                    style="padding: 0px 30px;">
+                                                                                                                                    <tbody>
+                                                                                                                                        <tr
+                                                                                                                                            role="module-content">
+                                                                                                                                            <td height="100%"
+                                                                                                                                                valign="top">
+                                                                                                                                                <table
+                                                                                                                                                    width="100%"
+                                                                                                                                                    style="width:150px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                    cellpadding="0"
+                                                                                                                                                    cellspacing="0"
+                                                                                                                                                    align="left"
+                                                                                                                                                    border="0"
+                                                                                                                                                    bgcolor="">
+                                                                                                                                                    <tbody>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <td
+                                                                                                                                                                style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                <table
+                                                                                                                                                                    role="module"
+                                                                                                                                                                    border="0"
+                                                                                                                                                                    cellpadding="0"
+                                                                                                                                                                    cellspacing="0"
+                                                                                                                                                                    width="100%"
+                                                                                                                                                                    style="table-layout:fixed">
+                                                                                                                                                                    <tbody>
                                                                                                                                                                         <tr>
-                                                                                                                                                                            <td height="45"
-                                                                                                                                                                                style="height:45px;line-height:0px;font-size:0px">
-                                                                                                                                                                            </td>
-                                                                                                                                                                        </tr>
-                                                                                                                                                                        <tr>
-                                                                                                                                                                            <td align="center"
-                                                                                                                                                                                valign="top">
-                                                                                                                                                                                <table
-                                                                                                                                                                                    align="center"
-                                                                                                                                                                                    border="0"
-                                                                                                                                                                                    cellpadding="0"
-                                                                                                                                                                                    cellspacing="0"
-                                                                                                                                                                                    width="100%">
-                                                                                                                                                                                    <tbody>
-                                                                                                                                                                                        <tr>
-                                                                                                                                                                                            <td align="left"
-                                                                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
-                                                                                                                                                                                                valign="top">
-                                                                                                                                                                                                <font
-                                                                                                                                                                                                    size="2"
-                                                                                                                                                                                                    color="#666666">
-                                                                                                                                                                                                    We
-                                                                                                                                                                                                    look
-                                                                                                                                                                                                    forward
-                                                                                                                                                                                                    to
-                                                                                                                                                                                                    a
-                                                                                                                                                                                                    long
-                                                                                                                                                                                                    and
-                                                                                                                                                                                                    rewarding
-                                                                                                                                                                                                    relationship
-                                                                                                                                                                                                    with
-                                                                                                                                                                                                    you.
-                                                                                                                                                                                                    Thank
-                                                                                                                                                                                                    you
-                                                                                                                                                                                                    once
-                                                                                                                                                                                                    again
-                                                                                                                                                                                                    for
-                                                                                                                                                                                                    trusting
-                                                                                                                                                                                                    Life
-                                                                                                                                                                                                    Advice
-                                                                                                                                                                                                    Insurance
-                                                                                                                                                                                                    Inc.
-                                                                                                                                                                                                    We're
-                                                                                                                                                                                                    here
-                                                                                                                                                                                                    to
-                                                                                                                                                                                                    support
-                                                                                                                                                                                                    you
-                                                                                                                                                                                                    every
-                                                                                                                                                                                                    step
-                                                                                                                                                                                                    of
-                                                                                                                                                                                                    the
-                                                                                                                                                                                                    way.
-                                                                                                                                                                                                </font>
-                                                                                                                                                                                                <br><br>
-
-                                                                                                                                                                                            </td>
-                                                                                                                                                                                        </tr>
-                                                                                                                                                                                        <tr>
-                                                                                                                                                                                            <td align="left"
-                                                                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
-                                                                                                                                                                                                valign="top">
-                                                                                                                                                                                                Sincerely,
-                                                                                                                                                                                            </td>
-                                                                                                                                                                                        </tr>
-                                                                                                                                                                                        <tr>
-                                                                                                                                                                                            <td align="left"
-                                                                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:16px;line-height:24px;margin: 50px 0px;"
-                                                                                                                                                                                                valign="top">
-                                                                                                                                                                                                <b>LifeAdvice</b>
-                                                                                                                                                                                            </td>
-                                                                                                                                                                                        </tr>
-
-                                                                                                                                                                                    </tbody>
-                                                                                                                                                                                </table>
-                                                                                                                                                                            </td>
-                                                                                                                                                                        </tr>
-                                                                                                                                                                        <tr>
-                                                                                                                                                                            <td height="22"
-                                                                                                                                                                                style="height:22px;line-height:0px;font-size:0px">
+                                                                                                                                                                            <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                height="100%"
+                                                                                                                                                                                valign="top"
+                                                                                                                                                                                bgcolor=""
+                                                                                                                                                                                role="module-content">
+                                                                                                                                                                                <div>
+                                                                                                                                                                                    <div
+                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                        <span
+                                                                                                                                                                                            style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Name
+                                                                                                                                                                                        </span>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <div>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </div>
                                                                                                                                                                             </td>
                                                                                                                                                                         </tr>
                                                                                                                                                                     </tbody>
                                                                                                                                                                 </table>
+                                                                                                                                                            </td>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </tbody>
+                                                                                                                                                </table>
+                                                                                                                                                <table
+                                                                                                                                                    width="260"
+                                                                                                                                                    style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                    cellpadding="0"
+                                                                                                                                                    cellspacing="0"
+                                                                                                                                                    align="left"
+                                                                                                                                                    border="0"
+                                                                                                                                                    bgcolor="">
+                                                                                                                                                    <tbody>
+                                                                                                                                                        <tr>
+                                                                                                                                                            <td
+                                                                                                                                                                style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                <table
+                                                                                                                                                                    role="module"
+                                                                                                                                                                    border="0"
+                                                                                                                                                                    cellpadding="0"
+                                                                                                                                                                    cellspacing="0"
+                                                                                                                                                                    width="100%"
+                                                                                                                                                                    style="table-layout:fixed">
+                                                                                                                                                                    <tbody>
+                                                                                                                                                                        <tr>
+                                                                                                                                                                            <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                height="100%"
+                                                                                                                                                                                valign="top"
+                                                                                                                                                                                bgcolor=""
+                                                                                                                                                                                role="module-content">
+                                                                                                                                                                                <div>
+                                                                                                                                                                                    <div
+                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                        <span
+                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->f_name }}
+                                                                                                                                                                                            {{ $r->l_name }}</span>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <div>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </td>
+                                                                                                                                                                        </tr>
+                                                                                                                                                                    </tbody>
+                                                                                                                                                                </table>
+                                                                                                                                                            </td>
+                                                                                                                                                        </tr>
+                                                                                                                                                    </tbody>
+                                                                                                                                                </table>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                            <table
+                                                                                                                                                border="0"
+                                                                                                                                                cellpadding="0"
+                                                                                                                                                cellspacing="0"
+                                                                                                                                                align="center"
+                                                                                                                                                width="100%"
+                                                                                                                                                role="module"
+                                                                                                                                                style="">
+                                                                                                                                                <tbody>
+                                                                                                                                                    <tr
+                                                                                                                                                        role="module-content">
+                                                                                                                                                        <td height="100%"
+                                                                                                                                                            valign="top">
+                                                                                                                                                            <table
+                                                                                                                                                                width="180"
+                                                                                                                                                                style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                cellpadding="0"
+                                                                                                                                                                cellspacing="0"
+                                                                                                                                                                align="left"
+                                                                                                                                                                border="0"
+                                                                                                                                                                bgcolor="">
+                                                                                                                                                                <tbody>
+                                                                                                                                                                    <tr>
+                                                                                                                                                                        <td
+                                                                                                                                                                            style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                            <table
+                                                                                                                                                                                role="module"
+                                                                                                                                                                                border="0"
+                                                                                                                                                                                cellpadding="0"
+                                                                                                                                                                                cellspacing="0"
+                                                                                                                                                                                width="100%"
+                                                                                                                                                                                style="table-layout:fixed;padding: 0px 30px;">
+                                                                                                                                                                                <tbody>
+                                                                                                                                                                                    <tr>
+                                                                                                                                                                                        <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                            height="100%"
+                                                                                                                                                                                            valign="top"
+                                                                                                                                                                                            bgcolor=""
+                                                                                                                                                                                            role="module-content">
+                                                                                                                                                                                            <div>
+                                                                                                                                                                                                <div
+                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                    <span
+                                                                                                                                                                                                        style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Gender
+                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                <div>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                        </td>
+                                                                                                                                                                                    </tr>
+                                                                                                                                                                                </tbody>
+                                                                                                                                                                            </table>
+                                                                                                                                                                        </td>
+                                                                                                                                                                    </tr>
+                                                                                                                                                                </tbody>
+                                                                                                                                                            </table>
+                                                                                                                                                            <table
+                                                                                                                                                                width="260"
+                                                                                                                                                                style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                cellpadding="0"
+                                                                                                                                                                cellspacing="0"
+                                                                                                                                                                align="left"
+                                                                                                                                                                border="0"
+                                                                                                                                                                bgcolor="">
+                                                                                                                                                                <tbody>
+                                                                                                                                                                    <tr>
+                                                                                                                                                                        <td
+                                                                                                                                                                            style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                            <table
+                                                                                                                                                                                role="module"
+                                                                                                                                                                                border="0"
+                                                                                                                                                                                cellpadding="0"
+                                                                                                                                                                                cellspacing="0"
+                                                                                                                                                                                width="100%"
+                                                                                                                                                                                style="table-layout:fixed">
+                                                                                                                                                                                <tbody>
+                                                                                                                                                                                    <tr>
+                                                                                                                                                                                        <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                            height="100%"
+                                                                                                                                                                                            valign="top"
+                                                                                                                                                                                            bgcolor=""
+                                                                                                                                                                                            role="module-content">
+                                                                                                                                                                                            <div>
+                                                                                                                                                                                                <div
+                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                    <span
+                                                                                                                                                                                                        style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                <div>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                        </td>
+                                                                                                                                                                                    </tr>
+                                                                                                                                                                                </tbody>
+                                                                                                                                                                            </table>
+                                                                                                                                                                        </td>
+                                                                                                                                                                    </tr>
+                                                                                                                                                                </tbody>
+                                                                                                                                                            </table>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr>
+                                                                                                                                                        <table
+                                                                                                                                                            border="0"
+                                                                                                                                                            cellpadding="0"
+                                                                                                                                                            cellspacing="0"
+                                                                                                                                                            align="center"
+                                                                                                                                                            width="100%"
+                                                                                                                                                            role="module"
+                                                                                                                                                            style="">
+                                                                                                                                                            <tbody>
+                                                                                                                                                                <tr
+                                                                                                                                                                    role="module-content">
+                                                                                                                                                                    <td height="100%"
+                                                                                                                                                                        valign="top">
+                                                                                                                                                                        <table
+                                                                                                                                                                            width="180"
+                                                                                                                                                                            style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                            cellpadding="0"
+                                                                                                                                                                            cellspacing="0"
+                                                                                                                                                                            align="left"
+                                                                                                                                                                            border="0"
+                                                                                                                                                                            bgcolor="">
+                                                                                                                                                                            <tbody>
+                                                                                                                                                                                <tr>
+                                                                                                                                                                                    <td
+                                                                                                                                                                                        style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                                        <table
+                                                                                                                                                                                            role="module"
+                                                                                                                                                                                            border="0"
+                                                                                                                                                                                            cellpadding="0"
+                                                                                                                                                                                            cellspacing="0"
+                                                                                                                                                                                            width="100%"
+                                                                                                                                                                                            style="table-layout:fixed;padding: 0px 30px;">
+                                                                                                                                                                                            <tbody>
+                                                                                                                                                                                                <tr>
+                                                                                                                                                                                                    <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                                        height="100%"
+                                                                                                                                                                                                        valign="top"
+                                                                                                                                                                                                        bgcolor=""
+                                                                                                                                                                                                        role="module-content">
+                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                            <div
+                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                                <span
+                                                                                                                                                                                                                    style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Pre
+                                                                                                                                                                                                                    Existing
+                                                                                                                                                                                                                    Condition
+                                                                                                                                                                                                                </span>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                </tr>
+                                                                                                                                                                                            </tbody>
+                                                                                                                                                                                        </table>
+                                                                                                                                                                                    </td>
+                                                                                                                                                                                </tr>
+                                                                                                                                                                            </tbody>
+                                                                                                                                                                        </table>
+                                                                                                                                                                        <table
+                                                                                                                                                                            width="260"
+                                                                                                                                                                            style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                            cellpadding="0"
+                                                                                                                                                                            cellspacing="0"
+                                                                                                                                                                            align="left"
+                                                                                                                                                                            border="0"
+                                                                                                                                                                            bgcolor="">
+                                                                                                                                                                            <tbody>
+                                                                                                                                                                                <tr>
+                                                                                                                                                                                    <td
+                                                                                                                                                                                        style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                                        <table
+                                                                                                                                                                                            role="module"
+                                                                                                                                                                                            border="0"
+                                                                                                                                                                                            cellpadding="0"
+                                                                                                                                                                                            cellspacing="0"
+                                                                                                                                                                                            width="100%"
+                                                                                                                                                                                            style="table-layout:fixed">
+                                                                                                                                                                                            <tbody>
+                                                                                                                                                                                                <tr>
+                                                                                                                                                                                                    <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                                        height="100%"
+                                                                                                                                                                                                        valign="top"
+                                                                                                                                                                                                        bgcolor=""
+                                                                                                                                                                                                        role="module-content">
+                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                            <div
+                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                                <span
+                                                                                                                                                                                                                    style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->pre_existing_condition }}</span>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </td>
+                                                                                                                                                                                                </tr>
+                                                                                                                                                                                            </tbody>
+                                                                                                                                                                                        </table>
+                                                                                                                                                                                    </td>
+                                                                                                                                                                                </tr>
+                                                                                                                                                                            </tbody>
+                                                                                                                                                                        </table>
+                                                                                                                                                                </tr>
+                                                                                                                                                                <tr>
+                                                                                                                                                                    <table
+                                                                                                                                                                        border="0"
+                                                                                                                                                                        cellpadding="0"
+                                                                                                                                                                        cellspacing="0"
+                                                                                                                                                                        align="center"
+                                                                                                                                                                        width="100%"
+                                                                                                                                                                        role="module"
+                                                                                                                                                                        style="">
+                                                                                                                                                                        <tbody>
+                                                                                                                                                                            <tr
+                                                                                                                                                                                role="module-content">
+                                                                                                                                                                                <td height="100%"
+                                                                                                                                                                                    valign="top">
+                                                                                                                                                                                    <table
+                                                                                                                                                                                        width="180"
+                                                                                                                                                                                        style="width:180px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                                        cellpadding="0"
+                                                                                                                                                                                        cellspacing="0"
+                                                                                                                                                                                        align="left"
+                                                                                                                                                                                        border="0"
+                                                                                                                                                                                        bgcolor="">
+                                                                                                                                                                                        <tbody>
+                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                <td
+                                                                                                                                                                                                    style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                                                    <table
+                                                                                                                                                                                                        role="module"
+                                                                                                                                                                                                        border="0"
+                                                                                                                                                                                                        cellpadding="0"
+                                                                                                                                                                                                        cellspacing="0"
+                                                                                                                                                                                                        width="100%"
+                                                                                                                                                                                                        style="table-layout:fixed;padding: 0px 30px;">
+                                                                                                                                                                                                        <tbody>
+                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                                <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                                                    height="100%"
+                                                                                                                                                                                                                    valign="top"
+                                                                                                                                                                                                                    bgcolor=""
+                                                                                                                                                                                                                    role="module-content">
+                                                                                                                                                                                                                    <div>
+                                                                                                                                                                                                                        <div
+                                                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                                            <span
+                                                                                                                                                                                                                                style="color:#2b3481;font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;font-weight:800;line-height:24px">Date
+                                                                                                                                                                                                                                of
+                                                                                                                                                                                                                                Birth</span>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                </td>
+                                                                                                                                                                                                            </tr>
+                                                                                                                                                                                                        </tbody>
+                                                                                                                                                                                                    </table>
+                                                                                                                                                                                                </td>
+                                                                                                                                                                                            </tr>
+                                                                                                                                                                                        </tbody>
+                                                                                                                                                                                    </table>
+                                                                                                                                                                                    <table
+                                                                                                                                                                                        width="260"
+                                                                                                                                                                                        style="width:260px;border-spacing:0;border-collapse:collapse;margin:0px 0px 0px 0px"
+                                                                                                                                                                                        cellpadding="0"
+                                                                                                                                                                                        cellspacing="0"
+                                                                                                                                                                                        align="left"
+                                                                                                                                                                                        border="0"
+                                                                                                                                                                                        bgcolor="">
+                                                                                                                                                                                        <tbody>
+                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                <td
+                                                                                                                                                                                                    style="padding:0px;margin:0px;border-spacing:0">
+                                                                                                                                                                                                    <table
+                                                                                                                                                                                                        role="module"
+                                                                                                                                                                                                        border="0"
+                                                                                                                                                                                                        cellpadding="0"
+                                                                                                                                                                                                        cellspacing="0"
+                                                                                                                                                                                                        width="100%"
+                                                                                                                                                                                                        style="table-layout:fixed">
+                                                                                                                                                                                                        <tbody>
+                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                                <td style="line-height:24px;text-align:inherit"
+                                                                                                                                                                                                                    height="100%"
+                                                                                                                                                                                                                    valign="top"
+                                                                                                                                                                                                                    bgcolor=""
+                                                                                                                                                                                                                    role="module-content">
+                                                                                                                                                                                                                    <div>
+                                                                                                                                                                                                                        <div
+                                                                                                                                                                                                                            style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                                                                                                            <span
+                                                                                                                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->date_of_birth }}</span>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                </td>
+                                                                                                                                                                                                            </tr>
+                                                                                                                                                                                                        </tbody>
+                                                                                                                                                                                                    </table>
+                                                                                                                                                                                                </td>
+                                                                                                                                                                                            </tr>
+                                                                                                                                                                                        </tbody>
+                                                                                                                                                                                    </table>
+                                                                                                                                                                            </tr>
+                                                                                                                        @endforeach
+
+
+
+
+                                                                                                                        <tr>
+                                                                                                                            <td height="45"
+                                                                                                                                style="height:45px;line-height:0px;font-size:0px">
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td align="center"
+                                                                                                                                valign="top">
+                                                                                                                                <table
+                                                                                                                                    align="center"
+                                                                                                                                    border="0"
+                                                                                                                                    cellpadding="0"
+                                                                                                                                    cellspacing="0"
+                                                                                                                                    width="100%"
+                                                                                                                                    style="padding: 0px 30px;">
+                                                                                                                                    <tbody>
+                                                                                                                                        <tr>
+                                                                                                                                            <td align="left"
+                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
+                                                                                                                                                valign="top">
+                                                                                                                                                <font
+                                                                                                                                                    size="2"
+                                                                                                                                                    color="#666666">
+                                                                                                                                                    We
+                                                                                                                                                    look
+                                                                                                                                                    forward
+                                                                                                                                                    to
+                                                                                                                                                    a
+                                                                                                                                                    long
+                                                                                                                                                    and
+                                                                                                                                                    rewarding
+                                                                                                                                                    relationship
+                                                                                                                                                    with
+                                                                                                                                                    you.
+                                                                                                                                                    Thank
+                                                                                                                                                    you
+                                                                                                                                                    once
+                                                                                                                                                    again
+                                                                                                                                                    for
+                                                                                                                                                    trusting
+                                                                                                                                                    Life
+                                                                                                                                                    Advice
+                                                                                                                                                    Insurance
+                                                                                                                                                    Inc.
+                                                                                                                                                    We're
+                                                                                                                                                    here
+                                                                                                                                                    to
+                                                                                                                                                    support
+                                                                                                                                                    you
+                                                                                                                                                    every
+                                                                                                                                                    step
+                                                                                                                                                    of
+                                                                                                                                                    the
+                                                                                                                                                    way.
+                                                                                                                                                </font>
+                                                                                                                                                <br><br>
+
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                            <td align="left"
+                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
+                                                                                                                                                valign="top">
+                                                                                                                                                Sincerely,
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                            <td align="left"
+                                                                                                                                                style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:16px;line-height:24px;margin: 50px 0px;"
+                                                                                                                                                valign="top">
+                                                                                                                                                <b>LifeAdvice</b>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+
+                                                                                                                                    </tbody>
+                                                                                                                                </table>
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                            <td height="22"
+                                                                                                                                style="height:22px;line-height:0px;font-size:0px">
+                                                                                                                            </td>
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
                                                                                                 </td>
 
-                                                                                             <tr>
+                                                                                            <tr>
                                                                                                 <td style="width:40px"
                                                                                                     width="40">
                                                                                                 </td>

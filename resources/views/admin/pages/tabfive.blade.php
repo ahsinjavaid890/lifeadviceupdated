@@ -2,6 +2,16 @@
     <div class="row">
         <div class="col-md-12">
            @if($data->url == 'resp')
+         
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_five" id="" class="form-control">
+                    <option value="">---Select option---</option>
+                    <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+      
             <div class="form-group">
                 <label>Section Five Description</label>
                 <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -12,6 +22,14 @@
             </div>
            @endif
            @if($data->url == 'term-life-insurance')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
             <div class="form-group">
                 <label>Section Five Description</label>
                 <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -22,6 +40,14 @@
             </div>
            @endif
            @if($data->url == 'terms-and-condition')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
             <div class="form-group">
                 <label>Section Five Description</label>
                 <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -32,6 +58,14 @@
             </div>
            @endif
            @if($data->url == 'mortgage')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
             <div class="form-group">
                 <label>Section Five Description</label>
                 <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -42,6 +76,14 @@
             </div>
            @endif
            @if($data->url == 'tfsa')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
             <div class="form-group">
                 <label>Section Five Description</label>
                 <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -52,6 +94,14 @@
             </div>
            @endif
            @if($data->url == 'rrsp')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
         <div class="form-group">
             <label>Section Five Description</label>
             <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -62,6 +112,14 @@
         </div>
        @endif
            @if($data->url == 'nonmedical')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_five" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
         <div class="form-group">
             <label>Section Five Description</label>
             <textarea class="summernote" name="section_five_description">{{ $data->section_five_description}}</textarea>
@@ -72,6 +130,15 @@
         </div>
        @endif
             @if($data->url == 'health-insurance') 
+        
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_five" id="" class="form-control">
+                        <option value="">---Select option---</option>  <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+       
             <div class="form-group">
                 <label>Sec Five Heading</label>
                 <input type="text"  class="form-control" name="section_five_heading">
@@ -98,6 +165,15 @@
         </table>
            @endif
             @if($data->url == 'critical-illness')
+        
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_five" id="" class="form-control">
+                        <option value="">---Select option---</option>   <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+          
             <div class="form-group">
                 <label>Sec Five Heading</label>
                 <input type="text"  class="form-control" name="desability_five_heading">
@@ -123,7 +199,16 @@
                 </tbody>
             </table>
            @endif
-            @if($data->url == 'desability')      
+            @if($data->url == 'desability') 
+          
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_five" id="" class="form-control">
+                        <option value="">---Select option---</option>   <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+             
             <div class="form-group">
                 <label>Section Five Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_five_vector">
@@ -154,6 +239,15 @@
         </table>
            @endif
          @if($data->url == 'life-insurance')
+ 
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_five" id="" class="form-control">
+                    <option value="">---Select option---</option>  <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+        
             <div class="form-group">
                 <label>Sec Five Heading</label>
                 <input type="text"  class="form-control" name="section_five_heading">
@@ -189,6 +283,17 @@
                 <a href="javascript:void(0)" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addnewproduct"><i class="fa fa-plus"></i>Add New Product</a>
             </div>
         </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_five" id="" class="form-control">
+                    <option value="">---Select option---</option>    <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+        </div>
+        </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -216,6 +321,17 @@
                 <a href="javascript:void(0)" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addnewproduct"><i class="fa fa-plus"></i>Add New Product</a>
             </div>
         </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_five" id="" class="form-control">
+                    <option value="">---Select option---</option>   <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+        </div>
+        </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -238,6 +354,15 @@
             </table>
         @endif
              @if($data->url == 'aboutus')
+        
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_five" id="" class="form-control">
+                        <option value="">---Select option---</option>    <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+      
                 <div class="form-group">
                     <label>About Heading</label>
                     <input type="text" class="form-control" name="about_five_Heading">
@@ -252,6 +377,15 @@
                 </div>
              @endif
             @if($data->url == 'travel-insurance')
+         
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_five" id="" class="form-control">
+                        <option value="">---Select option---</option>     <option {{ ( $data->showsection_five == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_five == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+          
                 <div class="form-group">
                 <label>Section five Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_five_vector">

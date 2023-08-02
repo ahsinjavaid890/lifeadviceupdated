@@ -26,6 +26,11 @@ class CmsController extends Controller
     }
     public function updatedynamicpage(Request $request)
     {
+        // echo"<pre>";
+        // print_r($request->all());
+        // print_r($request->showsection_two);
+        // die;
+
         $update = travelpages::find($request->id);
         if($request->main_image)
         {
@@ -40,10 +45,12 @@ class CmsController extends Controller
         $update->sub_heading = $request->sub_heading;
         $update->main_button_text = $request->btn_text;
         $update->main_button_link = $request->btn_link;
+        $update->showsection_one = $request->showsection_one;
         if($request->section_three_vector)
         {
             $update->section_three_vector = Cmf::sendimagetodirectory($request->section_three_vector);
         }
+        $update->showsection_two = $request->showsection_two;
         $update->sectionthreeheading = $request->sectionthreeheading;
         $update->sectionthreedescription = $request->sectionthreedescription;
         $update->privacy_two_heading = $request->privacy_two_heading;
@@ -55,10 +62,12 @@ class CmsController extends Controller
         {
             $update->section_four_vector = Cmf::sendimagetodirectory($request->section_four_vector);
         }
+        $update->showsection_three = $request->showsection_three;
         $update->section_four_heading = $request->section_four_heading;
         $update->section_four_description = $request->section_four_description;
         $update->section_four_notice = $request->section_four_notice;
         $update->section_four_lists = $request->section_four_lists;
+        $update->showsection_four = $request->showsection_four;
         if($request->section_five_vector)
         {
             $update->section_five_vector = Cmf::sendimagetodirectory($request->section_five_vector);
@@ -78,6 +87,12 @@ class CmsController extends Controller
         {
             $update->meta_image = Cmf::sendimagetodirectory($request->meta_image);
         }
+
+        $update->showsection_five = $request->showsection_five;
+        $update->showsection_six = $request->showsection_six;
+        $update->showsection_seven = $request->showsection_seven;
+        $update->showsection_eight = $request->showsection_eight;
+      
         
         $update->section_eight_description_one = $request->section_eight_description_one;
         $update->section_eight_description_two = $request->section_eight_description_two;

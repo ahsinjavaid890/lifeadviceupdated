@@ -2,6 +2,16 @@
     <div class="row">
         <div class="col-md-12">
            @if($data->url == 'homepage')
+      
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select name="s requiredhowsection_four" id="" class="form-control">
+                    <option value="">---Select option---</option>
+                    <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+     
             <div class="form-group">
                 <label>Homepage Description</label>
                 <textarea class="summernote" name="homepage_three_heading"></textarea>
@@ -37,6 +47,16 @@
                 </table>
            @endif
            @if($data->url == 'resp')
+          
+            <div class="form-group">
+                <label>Do You Want to show this section?</label>
+                <select required name="showsection_four" id="" class="form-control">
+                    <option value="">---Select option---</option>
+                    <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                </select>
+            </div>
+   
             <div class="form-group">
                 <label>Section Four Description</label>
                 <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
@@ -47,6 +67,14 @@
             </div>
         @endif
        @if($data->url == 'terms-and-condition')
+       <div class="form-group">
+        <label>Do You Want to show this section?</label>
+        <select required name="showsection_four" id="" class="form-control">
+            <option value="">---Select option---</option>
+            <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+            <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+        </select>
+    </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
@@ -57,6 +85,14 @@
         </div>
        @endif
        @if($data->url == 'term-life-insurance')
+       <div class="form-group">
+        <label>Do You Want to show this section?</label>
+        <select required name="showsection_four" id="" class="form-control">
+            <option value="">---Select option---</option>
+            <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+            <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+        </select>
+    </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
@@ -67,6 +103,14 @@
         </div>
        @endif
        @if($data->url == 'mortgage')
+       <div class="form-group">
+        <label>Do You Want to show this section?</label>
+        <select required name="showsection_four" id="" class="form-control">
+            <option value="">---Select option---</option>
+            <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+            <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+        </select>
+    </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
@@ -77,6 +121,14 @@
         </div>
        @endif
        @if($data->url == 'tfsa')
+       <div class="form-group">
+        <label>Do You Want to show this section?</label>
+        <select required name="showsection_four" id="" class="form-control">
+            <option value="">---Select option---</option>
+            <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+            <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+        </select>
+    </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description}}</textarea>
@@ -87,6 +139,14 @@
         </div>
        @endif
            @if($data->url == 'rrsp')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_four" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                    <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
@@ -97,6 +157,14 @@
         </div>
        @endif
            @if($data->url == 'nonmedical')
+           <div class="form-group">
+            <label>Do You Want to show this section?</label>
+            <select required name="showsection_four" id="" class="form-control">
+                <option value="">---Select option---</option>
+                <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+            </select>
+        </div>
         <div class="form-group">
             <label>Section Four Description</label>
             <textarea class="summernote" name="section_four_description">{{ $data->section_four_description }}</textarea>
@@ -132,6 +200,16 @@
         </table> -->
             @endif
              @if($data->url == 'health-insurance')
+      
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+         
                 <div class="form-group">
                     <label>Sec Four Heading</label>
                     <input class="form-control" name="health_four_heading">
@@ -146,6 +224,16 @@
                 </div>
              @endif
              @if($data->url == 'critical-illness')
+           
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+         
                 <div class="form-group">
                     <label>Sec Four Heading</label>
                     <input class="form-control" name="desability_four_critical">
@@ -164,6 +252,16 @@
                 </div>
                @endif
              @if($data->url == 'desability')
+
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+     
                 <div class="form-group">
                     <label>Sec Four Heading</label>
                     <input class="form-control" name="desability_four_heading">
@@ -178,6 +276,16 @@
                 </div>
                @endif
              @if($data->url == 'life-insurance')
+        
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+         
                 <div class="form-group">
                     <label>Sec Four Heading</label>
                     <textarea class="summernote" name="life_four_description"></textarea>
@@ -188,6 +296,16 @@
                 </div>
                @endif
             @if($data->url == 'aboutus')
+      
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+            
                 <div class="form-group">
                     <label>About Vector Image </label>
                     <input type="file" style="height:45px;" class="form-control" name="about_four_vector">
@@ -217,6 +335,16 @@
                 </table>
             @endif
             @if($data->url == 'travel-insurance' || $data->url == 'student-insurance' )
+         
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+         
                 <div class="form-group">
                 <label>Vector Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
@@ -231,6 +359,16 @@
             </div>
             @endif
             @if($data->url == 'visitor-insurance')
+           
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+            
                 <div class="form-group">
                 <label>Vector Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_four_vector">
@@ -248,7 +386,17 @@
                 <input type="text" class="form-control" value="{{ $data->section_four_notice }}" name="section_four_notice">
             </div>
             @endif
-            @if($data->url == 'super-visa-insurance')                                   
+            @if($data->url == 'super-visa-insurance')  
+    
+                <div class="form-group">
+                    <label>Do You Want to show this section?</label>
+                    <select required name="showsection_four" id="" class="form-control">
+                        <option value="">---Select option---</option>
+                        <option {{ ( $data->showsection_four == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
+                        <option {{ ( $data->showsection_four == 'no') ? 'selected' : '' }} value="no">No</option>
+                    </select>
+                </div>
+                                          
             <div class="form-group">
                 <label>Vector Image</label>
                 <input type="file" style="height:45px;" class="form-control" name="section_four_vector">

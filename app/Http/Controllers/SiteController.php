@@ -301,6 +301,8 @@ class SiteController extends Controller
             $newuser->status = 'active';
             $newuser->save();
         }
+
+
         $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
 
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
@@ -323,45 +325,43 @@ class SiteController extends Controller
                 $message->to('admin@lifeadvice.ca');
                 $message->subject($subject);
             });
-
         } elseif ($temp == "2") {
 
-            Mail::send('email.template2.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
-                $message->to($request->email);
-                $message->subject($subject);
-          });
-  
-          Mail::send('email.template2.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
-                $message->to($request->email);
-                $message->subject('Tell Us How We Did?');
-          });
-  
-          $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
-  
-          Mail::send('email.template2.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
-                $message->to('admin@lifeadvice.ca');
-                $message->subject($subject);
-          });
 
+            Mail::send('email.template2.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+                $message->to($request->email);
+                $message->subject($subject);
+            });
+
+            // Mail::send('email.template2.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+            //     $message->to($request->email);
+            //     $message->subject('Tell Us How We Did?');
+            // });
+
+            // $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+
+            // Mail::send('email.template2.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            //     $message->to('admin@lifeadvice.ca');
+            //     $message->subject($subject);
+            // });
         } elseif ($temp == "3") {
 
-             Mail::send('email.template3.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
+            Mail::send('email.template3.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
                 $message->to($request->email);
                 $message->subject($subject);
-          });
-  
-          Mail::send('email.template3.review', ['request' => $request,'sale' => $newsale], function($message) use($request , $subject){
+            });
+
+            Mail::send('email.template3.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
                 $message->to($request->email);
                 $message->subject('Tell Us How We Did?');
-          });
-  
-          $subject = 'New Sale | Reffrence Number =  '.$reffrence_number;
-  
-          Mail::send('email.template3.purchasepolicy', ['request' => $request,'sale' => $newsale,'policy_number' => $reffrence_number], function($message) use($request , $subject){
+            });
+
+            $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+
+            Mail::send('email.template3.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
                 $message->to('admin@lifeadvice.ca');
                 $message->subject($subject);
-          });
-
+            });
         }
 
 
@@ -418,7 +418,7 @@ class SiteController extends Controller
 
         $data = wp_dh_products::where('url', 'super-visa-insurance')->first();
         if ($data) {
-            
+
             $fields = unserialize($data->pro_fields);
 
             $sortfields = unserialize($data->pro_sort);
@@ -427,7 +427,7 @@ class SiteController extends Controller
 
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
 
-            return view('frontend.travelinsurance.super-visa')->with(array('data' => $data,'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
+            return view('frontend.travelinsurance.super-visa')->with(array('data' => $data, 'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
@@ -444,8 +444,7 @@ class SiteController extends Controller
 
             $sum_insured = wp_dh_insurance_plans_rates::select('wp_dh_insurance_plans_rates.sum_insured')->whereIn('plan_id', $wp_dh_insurance_plans)->groupby('sum_insured')->get();
 
-            return view('frontend.travelinsurance.travelinsurance')->with(array('data' => $data, 'orderdata' => $sortfields,'fields' => $fields, 'sum_insured' => $sum_insured));
-            
+            return view('frontend.travelinsurance.travelinsurance')->with(array('data' => $data, 'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }
@@ -465,9 +464,13 @@ class SiteController extends Controller
     public function visitorinsurance()
     {
         $data = wp_dh_products::where('url', 'visitor-insurance')->first();
-     
+
 
         if ($data) {
+
+            // echo"<pre>";
+            // print_r($data->toArray());
+            // die;
 
             $fields = unserialize($data->pro_fields);
 
@@ -478,8 +481,7 @@ class SiteController extends Controller
             $sum_insured = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM `wp_dh_insurance_plans` WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 
 
-            return view('frontend.travelinsurance.visitorinsurance')->with(array('data' => $data,'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
-
+            return view('frontend.travelinsurance.visitorinsurance')->with(array('data' => $data, 'orderdata' => $sortfields, 'fields' => $fields, 'sum_insured' => $sum_insured));
         } else {
             return response()->view('frontend.errors.404', [], 404);
         }

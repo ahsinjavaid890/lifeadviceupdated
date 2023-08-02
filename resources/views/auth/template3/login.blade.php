@@ -51,6 +51,7 @@
             width: 768px;
             max-width: 100%;
             min-height: 480px;
+            margin: auto
         }
 
         .form-containerr form {
