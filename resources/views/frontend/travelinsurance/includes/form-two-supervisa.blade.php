@@ -9,7 +9,7 @@
                 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
-
+                    <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
                     <div class="row">
                         @for ($orderi = 1; $orderi <= 17; $orderi++)
 
@@ -30,13 +30,56 @@
                                                     style="padding: 5px 12px !important;">
                                                     <option value="">Number of Travellers</option>
                                                     @for ($i = 1; $i <= $number_of_travel; $i++)
-                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                        <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
                                                     @endfor
                                                 </select>
                                             </div>
                                         </div>
+                                        @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+                                                @php
+                                                    $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
+                                                    $c = 0;
+                                                @endphp
 
+                                                <div id="traveler{{ $i }}"
+                                                    class="no_of_travelers col-md-12">
+                                                    <div class="row">
+                                                        <div style="margin-bottom: -14px"
+                                                            class="col-md-6 padding-right-zero-on-mobile">
+                                                            <label style="font-size: 16px;"
+                                                                for="year{{ $i }}" class="">Birth date
+                                                                </label>
+                                                            <div class="custom-form-control mb-2">
+                                                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
+                                                                    class="form-control" type="text"
+                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
+                                                                    name="years[]" data-placeholder="MM/DD/YYYY">
+                                                            </div>
+                                                        </div>
+                                                        <div style="padding-right: 0px;"
+                                                            class="col-md-6 padding-left-zero-on-mobile">
+                                                            <div class="custom-form-control">
+                                                                <label style="font-size: 16px;"
+                                                                    for="year{{ $i }}" class="">Pre
+                                                                    Existing Conditions
+                                                                    </label>
+                                                                <select name="pre_existing[]" class="form-control"
+                                                                    style="    padding: 5px 12px !important;">
+                                                                    <option value="">Select Pre Existing Condition
+                                                                    </option>
+                                                                    <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                                                    <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                            @endif
+                                        @endforeach
+                                    @else
                                         @if (isset($fields['dob']) && $fields['dob'] == 'on')
                                             @php
                                                 $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
@@ -79,6 +122,7 @@
                                                 </div>
                                             @endfor
                                         @endif
+                                        @endif
                                     @endif
                                 @endif
                             @endif
@@ -89,7 +133,7 @@
 
                                     <div class="col-md-6">
                                         <label class="input-label"> Start Date</label>
-                                        <input readonly style="padding-left: 40px;" id="departure_date"
+                                        <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif  readonly style="padding-left: 40px;" id="departure_date"
                                             autocomplete="off" inputmode="numeric" name="departure_date" value=""
                                             class="form-control" type="text" placeholder="Start Date" required
                                             <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
@@ -108,7 +152,7 @@
                                     <div class="col-md-6">
                                         <label class="input-label">End Date of Coverage</label>
                                         <div class="custom-form-control">
-                                            <input style="padding-left: 40px;" id="return_date" autocomplete="off"
+                                            <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left: 40px;" id="return_date" autocomplete="off"
                                                 name="return_date" value="" class="form-control" type="text"
                                                 placeholder="End Date" required
                                                 @if ($data->pro_supervisa == 1) readonly @endif>
@@ -303,7 +347,7 @@
                                             <label style="font-size: 16px;" for="savers_email"
                                                 class="">Email</label>
                                             <div class="custom-form-control">
-                                                <input id="savers_email" name="savers_email" value=""
+                                                <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif id="savers_email" name="savers_email" value=""
                                                     class="form-control form-control" type="email"
                                                     placeholder="Email" style="padding-left: 40px !important;"
                                                     required="">
@@ -643,7 +687,11 @@
         $('#dateofbirthfull6').mask('00/00/0000');
         $('#phonenumbermask').mask('000-000-000000');
     });
-
+    @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#getqoutesubmitbutton').click();
+    });
+    @endif
     $('#quoteform').on('submit', (function(e) {
         $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();

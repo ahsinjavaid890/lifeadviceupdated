@@ -223,7 +223,7 @@
                                             of Travellers</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
+                                        <label for="number_travelers" class="d-sm-none">Number Of Travelers</label>
                                         <div class="custom-form-control">
                                             <select onchange="checknumtravellers(this.value)" required
                                                 class="form-input" name="number_travelers" id="number_travelers">

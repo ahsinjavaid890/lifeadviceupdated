@@ -1,7 +1,4 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutsix.css') }}">
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script>
 <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -683,20 +680,34 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 
 <?php
     if ($sum_insured == $request->sum_insured2){
-        // $mailitem[] = array(
-        //     "deductible"  => $deductible,
-        //     "sum_insured" => $sum_insured,
-        //     "planproduct" => $product_name,
-        //     "price"       => $total_price,
-        //     "quote"       => $quoteNumber,
-        //     "logo"        => $comp_logo,
-        //     "url"         => $_SERVER['REQUEST_URI'] . "?fromemail=yes&quote=" . $quoteNumber,
-        //     "buynow"      => $buynow_url
-        // );
+        $mailitem[] = [
+            'deductible' => $deductible,
+            'sum_insured' => $sum_insured,
+            'planproduct' => $product_name,
+            'price' => $total_price,
+            'quote' => $quoteNumber,
+            'logo' => $comp_logo,
+            'url' => 'test',
+            'buynow' => 'test',
+        ];
         $price[] = $total_price;
     }
     $display = ''; }}}} ?>
-
+<?php
+if ($request->sendemail == 'yes') {
+    $counter = 0;
+    if (isset($request->savers_email)) {
+        array_multisort($price, SORT_ASC, $mailitem);
+        $subject = "Your Quote - $product_name";
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $emailview = 'email.template'.$temp.'.quoteemail';
+        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+                   $message->to($request->savers_email)->subject($subject);
+                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
+                });
+    }
+}
+?>
 
         </div>
 	 </div>

@@ -19,6 +19,7 @@
       <div class="col-md-8 visa-insurance" style="padding: 0;">
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
+            <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">               
                
             <div class="row" style="margin-bottom:0px;">
@@ -97,11 +98,11 @@
 
                        <div class="col-md-12">
                         <h4 class="coverage" style="color: black; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
-                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" value="${{$firstsuminsured}}"></h4>
+                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" @if(isset($_GET['sum_insured2'])) value="{{ $_GET['sum_insured2'] }}" @else value="{{$firstsuminsured}}" @endif></h4>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-                           <input type="hidden" id="sum_insured2" name="sum_insured2" value="{{$firstsuminsured}}" />
+                           <input type="hidden" id="sum_insured2" name="sum_insured2" @if(isset($_GET['sum_insured2'])) value="{{ $_GET['sum_insured2'] }}" @else value="{{$firstsuminsured}}" @endif />
 
                            <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                         
@@ -180,7 +181,7 @@
                      <div class="col-md-6 col-sm-6 col-xs-12 control-input">
                         <label class="input-label"> Start Date</label>
    
-                     <input style="padding-left: 40px !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                     <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif style="padding-left: 40px !important;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                      <span class="hidden-xs calendericon" style="color:#01a281;">
          
                            <i class="fa fa-calendar" aria-hidden="true" ></i>
@@ -197,7 +198,7 @@
                          <div class="col-md-6">
                               <label for="return_date" class="">End Date of Coverage</label>
                               <div class="custom-form-control">
-                                 <input style="padding-left: 40px !important;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
+                                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left: 40px !important;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
                                  <span class="hidden-xs calendericon" style="color:#01a281;">
                             <i class="fa fa-calendar" aria-hidden="true" ></i>
                            </span>
@@ -229,12 +230,40 @@
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option value="{{ $i }}">{{ $i }}</option>
+                                 <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
                                  @endfor
                               </select>
                            </div>
                         </div>
 
+                        @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+
+                                             <div id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                                                <div class="row">
+                                                      <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
+                                                         <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
+                                                         <div class="custom-form-control">
+                                                            <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                                         </div>
+                                                      </div>
+                                                
+                                                      <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
+                                                         <label for="year{{$i}}" class="">Select Pre Existing</label>
+                                                         <div class="custom-form-control">
+                                                            <select name="pre_existing[]" class="form-input">
+                                                               <option value="">Select Pre Existing Condition</option>
+                                                               <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                                               <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                                             </select>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                             </div>
+                        @endif
+                                        @endforeach
+                                    @else
 
                         @if(isset($fields['dob']) && $fields['dob'] == "on" )
 
@@ -268,6 +297,7 @@
                            @endfor
                         @endif
                         @endif
+                        @endif
                      @endif
 
                      @endif
@@ -277,7 +307,7 @@
 
                       <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
                         <label class="input-label">Email Address (Required)</label>
-                        <input id="savers_email" name="savers_email" value="" class="form-control " type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
+                        <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif id="savers_email" name="savers_email" value="" class="form-control " type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
                         <span class="hidden-xs emailicon" style="color:#01a281;">
                            <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
@@ -666,6 +696,11 @@
    window.onload = function() {
      checktravellers();
    };
+   @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#getqoutesubmitbutton').click();
+    });
+    @endif
    $('#quoteform').on('submit',(function(e) {
         $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
