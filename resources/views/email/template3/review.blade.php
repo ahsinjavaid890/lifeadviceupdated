@@ -1,423 +1,349 @@
-<div bgcolor="#ffffff" style="margin:0px auto;padding:0px">
-   <span style="color:transparent;display:none;opacity:0;height:0;width:0;font-size:0"></span><img
-       src="http://localhost/lifeadviceupdated/public/images/118135255.png"
-       style="border:0;width:1px;height:1px;border-width:0px!important;display:none!important;line-height:0!important"
-       width="1" height="1" class="CToWUd" data-bit="iit">
-   <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
-       <tbody>
-           <tr>
-               <td align="center" valign="top">
-                   <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                       <tbody>
-                           <tr>
-                               <td align="center" valign="top">
-                                   <table align="center" bgcolor="#ededed" border="0" cellpadding="0"
-                                       cellspacing="0" width="100%">
-                                       <tbody>
-                                           <tr>
-                                               <td height="62" style="height:62px;line-height:0px;font-size:0px">
-                                               </td>
-                                           </tr>
-                                           <tr>
-                                               <td align="center" valign="top">
-                                                   <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                                       width="100%">
-                                                       <tbody>
-                                                           <tr>
-                                                               <td align="center" bgcolor="#ededed" valign="top">
-                                                                   <table align="center" border="0" cellpadding="0"
-                                                                       cellspacing="0" style="max-width: 650px"
-                                                                       width="100%">
-                                                                       <tbody>
-                                                                           <tr>
-                                                                               <td style="width:60px" width="60">
-                                                                               </td>
-                                                                               <td align="center" valign="top">
-                                                                                   <table align="center" border="0"
-                                                                                       cellpadding="0" cellspacing="0"
-                                                                                       width="100%">
-                                                                                       <tbody>
-                                                                                           <tr>
-                                                                                               <td align="left"
-                                                                                                   valign="top"><a
-                                                                                                       style="text-decoration:none"
-                                                                                                       href=""
-                                                                                                       target="_blank"
-                                                                                                       data-saferedirecturl=""><img
-                                                                                                           alt="VISITORINSURANCE"
-                                                                                                           border="0"
-                                                                                                           style="display:block;font-family:Arial,sans-serif;font-size:20px;line-height:30px;color:#ee3623;font-weight:bold"
-                                                                                                           width="130"
-                                                                                                           src="https://visitorinsure.ca/public/front/visitorinsure/images/logo-color.png"
-                                                                                                           class="CToWUd"
-                                                                                                           data-bit="iit">
-                                                                                                   </a>
-                                                                                               </td>
-                                                                                           </tr>
-                                                                                          
-                                                                                           
-                                                                                           <tr>
-                                                                                             <td height="20"
-                                                                                                 style="height:20px;line-height:0px;font-size:0px">
-                                                                                             </td>
-                                                                                         </tr>
-
-                                                                                           
-                                                           
-
-                                                                                       </tbody>
-                                                                                   </table>
-                                                                               </td>
-                                                                               <td style="width:20px" width="20">
-                                                                               </td>
-                                                                           </tr>
-                                                                       </tbody>
-                                                                   </table>
-                                                               </td>
-                                                           </tr>
-                                                       </tbody>
-                                                   </table>
-                                               </td>
-                                           </tr>
-
-                                           <tr>
-                                               <td align="center" valign="top">
-                                                   <table align="center" style="max-width: 600px" border="0"
-                                                       cellpadding="0" cellspacing="0" width="100%">
-                                                       <tbody>
-                                                           <tr>
-                                                               <td style="width:6%" width="6%"> </td>
-                                                               <td align="center" valign="top">
-                                                                   <table align="center" style="max-width: 600px"
-                                                                       border="0" cellpadding="0" cellspacing="0"
-                                                                       width="100%">
-                                                                       <tbody>
-                                                                           
-                                                                           <tr>
-                                                                               <td align="center"
-                                                                                   style="box-shadow:3px 4px 20px 7px rgb(179, 176, 176); border-top-left-radius:40px;border-top-right-radius:40px;border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; background-color:#ffffff;"
-                                                                                   valign="top">
-                                                                                   <table align="center"
-                                                                                       style="max-width: 600px"
-                                                                                       border="0" cellpadding="0"
-                                                                                       cellspacing="0"
-                                                                                       width="100%">
-                                                                                       <tbody>
-                                                                                           
-                                                                                           <tr>
-                                                                                              
-                                                                                               <td align="center"
-                                                                                                   valign="top">
-                                                                                                   <table
-                                                                                                       style="max-width: 600px;padding:0px 30px;"
-                                                                                                       align="center"
-                                                                                                       border="0"
-                                                                                                       cellpadding="0"
-                                                                                                       cellspacing="0"
-                                                                                                       width="100%">
-                                                                                                       <tbody>
-                                                                                                           <tr>
-                                                                                                               <td height="50"
-                                                                                                                   style="height:50px;line-height:0px;font-size:0px">
-                                                                                                               </td>
-                                                                                                           </tr>
-                                                                                                           <tr>
-                                                                                                            <td align="center" style="position: relative;top: 35px;font-size:6px;line-height:10px;padding:0px 0px 0px 0px" valign="top"><a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," target="_blank"><img alt="" border="0" src="https://ci5.googleusercontent.com/proxy/9MyeZLicdnwAfoip1un7OdT_a26sTYkKFYGNaU8WsnuKrR5hD3CGVADzBhOUUQdEhVJPM_4DKiQ7SJ_BqOEce98K6hJgWiQJ34cDT0WkE6j2t7bs8CaJZUxPIE8ChZox8_NOnxzDI9T-hl-ODbOVfZbqFHTCNmU9hBahKp_FU4yvBMAN-QI=s0-d-e1-ft#http://cdn.mcauto-images-production.sendgrid.net/d326e5c9c15dddaf/d8875063-3e02-4d83-af50-686240fed7bf/1200x266.jpg" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px;max-width:100%!important;width:100%;height:auto!important" width="600" class="CToWUd" data-bit="iit"></a></td>
-                                                                                                         </tr>
-                                                                                                           <tr>
-                                                                                                               <td align="left"
-                                                                                                                   style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px;
-                                                                                                                   padding-top:10px; "
-                                                                                                                   valign="top">
-                                                                                                                   <span style="font-family:&quot;Open Sans&quot;,sans-serif;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;color:#67778f;font-size:16px">Dear customer,</span>
-                                                                                                               </td>
-                                                                                                           </tr>
-                                                                                                           <tr>
-                                                                                                               <td align="left"
-                                                                                                                   style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
-                                                                                                                   valign="top">
-                                                                                                                   <span style="font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px">Thank you for your recent purchase from <a href="http://lifeadvice.ca" target="_blank">lifeadvice.ca</a>.</span>
-                                                                                                               </td>
-                                                                                                           </tr>
-                                                                                                           <tr>
-                                                                                                               <td align="left"
-                                                                                                                   style="margin-top: 50px;margin-bottom: 50px; font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px"
-                                                                                                                   valign="top">
-                                                                                                                   <span style="font-family:&quot;Open Sans&quot;,sans-serif;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:600;letter-spacing:normal;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:16px;color:#67778f;line-height:28px"><a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="text-decoration:none;color:#1b8fe4" target="_blank">How would you rate lifeadvice.ca?</a>&nbsp;</span>
-                                                                                                               </td>
-                                                                                                           </tr>
-                                                                                                           <tr>
-                                                                                                               <td>
-                                                                                                                   <table border="0" cellpadding="0" cellspacing="0" role="module" style="table-layout:fixed" width="100%">
-                                                                                                                       <tbody>
-                                                                                                                          <tr>
-                                                                                                                             <td bgcolor="" height="100%" role="module-content" style="padding:23px 0px 0px 46px;line-height:20px;text-align:inherit" valign="top">
-                                                                                                                                <div>
-                                                                                                                                   <div style="font-family:inherit;text-align:inherit">
-                                                                                                                                      <span style="font-family:&quot;Open Sans&quot;,sans-serif;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:normal;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:20px;color:#e6526e">
-                                                                                                                                         <table style="margin:.25em 0">
-                                                                                                                                            <tbody>
-                                                                                                                                               <tr>
-                                                                                                                                                  <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <img src="https://ci6.googleusercontent.com/proxy/mS3j22o9OhJSQRczlc0c8LOICKB0GdHT8P6fN3cSChBF55fHLZzV7dUlYXRLWOFnH-5Q-nr1l4fDose9s0m7A_cvbgEqcHpnjj4wESl8Mk4LWOYoxM9aow9qjQHPqvxLwCbqBy7FApxCy5M=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-5-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
-                                                                                                                                                     <br>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                               </tr>
-                                                                                                                                            </tbody>
-                                                                                                                                         </table>
-                                                                                                                                         <table style="margin:.25em 0">
-                                                                                                                                            <tbody>
-                                                                                                                                               <tr>
-                                                                                                                                                  <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <img src="https://ci3.googleusercontent.com/proxy/NJPkISwszGDYIYSdrSwJTum3br9IJnVLfmccgdyw9HA4NqA4d5nL4i1Tp9f79fxa7YEbWcDkXv5jRHDiF-dHnulj5u-Se7A-KXzcOHSw5ro0bLI_HuFNmMeTr6iYYAEBdeak-z9nqF7QRjg=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-4-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
-                                                                                                                                                     <br>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                               </tr>
-                                                                                                                                            </tbody>
-                                                                                                                                         </table>
-                                                                                                                                         <table style="margin:.25em 0">
-                                                                                                                                            <tbody>
-                                                                                                                                               <tr>
-                                                                                                                                                  <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <img src="https://ci3.googleusercontent.com/proxy/Tmq9Fjhwe0VAQ01Bp-BSbANRwzWVaVWNUGYtBMj5EVJATiiFYff7iF59sTRXtF9drSeAZzWNKFAS6fqclxurNuEJhXHZfvY4tocgCGmU72jXDJNDAUGQJ_Bk_l6eGID_k03jeaPzMUW3wSA=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-3-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
-                                                                                                                                                     <br>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                               </tr>
-                                                                                                                                            </tbody>
-                                                                                                                                         </table>
-                                                                                                                                         <table style="margin:.25em 0">
-                                                                                                                                            <tbody>
-                                                                                                                                               <tr>
-                                                                                                                                                  <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank" >
-                                                                                                                                                     <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <img src="https://ci6.googleusercontent.com/proxy/4P9rPR26AgszynYMQWfw9PuPC2eIM08PFJC8H2naQi-dVXCZanVooyhyrNvso2xJ4vJYIWKP0B1rDw_-LHiaaJapyvMtfSJY5DVKW3X7ijwd1zy6ZAm82kajMOeLAkYGnO2l6XJ2mfH65PM=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-2-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
-                                                                                                                                                     <br>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                               </tr>
-                                                                                                                                            </tbody>
-                                                                                                                                         </table>
-                                                                                                                                         <table style="margin:.25em 0">
-                                                                                                                                            <tbody>
-                                                                                                                                               <tr>
-                                                                                                                                                  <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <img src="https://ci4.googleusercontent.com/proxy/3PlKCr93qI9R89W8PL6wxfFCGEy_d1oWb00llKB_ObnxT49ef7aut-wmuHoD7tBSKJqF6m4sGR6S0B_3o5MDrC30vJUobovs2M_TchfpISUzCvfjz56ae7uefE664QI42t1shPQJvpJkKw=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-1-star.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                                  <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
-                                                                                                                                                     <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
-                                                                                                                                                     <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
-                                                                                                                                                     <br>
-                                                                                                                                                     </a>
-                                                                                                                                                  </td>
-                                                                                                                                               </tr>
-                                                                                                                                            </tbody>
-                                                                                                                                         </table>
-                                                                                                                                      </span>
-                                                                                                                                   </div>
-                                                                                                                                </div>
-                                                                                                                             </td>
-                                                                                                                          </tr>
-                                                                                                                       </tbody>
-                                                                                                                    </table>
-                                                                                                               </td>
-                                                                                                           </tr>
-                                                                                                          
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                           
-                                                                                                                       
-                                                                                                                       
-                                                                                                                       
-                                                                                                                                   
-                                                                                                                                               
-                                                                                                                                                           
-
-                                                                                                                                                                    
-                                                                                                                                                                           
-                                                                                                                                                                       
-
-
-
-
-                                                                                                                                                                       <tr>
-                                                                                                                                                                           <td height="45"
-                                                                                                                                                                               style="height:45px;line-height:0px;font-size:0px">
-                                                                                                                                                                           </td>
-                                                                                                                                                                       </tr>
-                                                                                                                                                                       <tr>
-                                                                                                                                                                           <td align="center"
-                                                                                                                                                                               valign="top">
-                                                                                                                                                                               <table
-                                                                                                                                                                                   align="center"
-                                                                                                                                                                                   border="0"
-                                                                                                                                                                                   cellpadding="0"
-                                                                                                                                                                                   cellspacing="0"
-                                                                                                                                                                                   width="100%">
-                                                                                                                                                                                   <tbody>
-                                                                                                                                                                                       <tr>
-                                                                                                                                                                                           <td align="left"
-                                                                                                                                                                                               style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:22px;line-height:24px;font-weight: 600;"
-                                                                                                                                                                                               valign="top">
-                                                                                                                                                                                               <font
-                                                                                                                                                                                                   size="3"
-                                                                                                                                                                                                   color="#666666">
-                                                                                                                                                                                                   We remain committed to provide you with world class products and services. Getting your feedback and experience is important to us. Your review helps us to improve and continue the excellent service that our customer (You!) deserve.
-                                                                                                                                                                                               </font>
-                                                                                                                                                                                               <br><br>
-
-                                                                                                                                                                                           </td>
-                                                                                                                                                                                       </tr>
-                                                                                                                                                                                       <tr>
-                                                                                                                                                                                           <td align="left"
-                                                                                                                                                                                               style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:17px;line-height:24px;font-weight: 600;padding: 20px 0px;"
-                                                                                                                                                                                               valign="top">
-                                                                                                                                                                                              
-                                                                                                                                                                                                   We look forward to continuing to serve you!
-                                                                                                                                                                                           
-                                                                                                                                                                                           
-                                                                                                                                                                                           </td>
-                                                                                                                                                                                       </tr>
-                                                                                                                                                                                       <tr>
-                                                                                                                                                                                           <td align="left"
-                                                                                                                                                                                               style="padding-bottom: 20px; font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:16px;line-height:24px;margin: 50px 0px; font-weight: 600;"
-                                                                                                                                                                                               valign="top">
-                                                                                                                                                                                               Happy Travels,
-                                                                                                                                                                                               <div> <a href="https://lifeadvice.ca/" target="_blank">lifeadvice.ca</a> </div>
-                                                                                                                                                                    </td>
-                                                                                                                                                                                       </tr>
-
-                                                                                                                                                                                     
-                                                                                                                                                                                       <tr>
-                                                                                                                                                                                           <td align="left"
-                                                                                                                                                                                               style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:14px;line-height: 20px; padding: 20px 0px; border-top: 2px solid grey;margin-top: 10px;"
-                                                                                                                                                                                               valign="top">
-                                                                                                                                                                                              
-                                                                                                                                                                                               <b>Note: </b> We request that you leave a review only about your buying experience on  <a href="https://lifeadvice.ca/" target="_blank">lifeadvice.ca</a>  . If you would rather review a particular insurance product, please leave a review for the appropriate administrator.  <a href="https://lifeadvice.ca/" target="_blank">lifeadvice.ca</a>  is a travel insurance marketplace that lists insurance products from top-rated insurance companies.
-                                                                                                                                                                                           
-                                                                                                                                                                                           
-                                                                                                                                                                                           </td>
-                                                                                                                                                                                       </tr>
-                                                                                                                                                                                       <tr>
-                                                                                                                                                                                           <td align="left"
-                                                                                                                                                                                               style="font-family:'TTNorms-Regular',Arial,sans-serif;color:#767676;font-size:14px;line-height: 20px;margin-top: 10px;"
-                                                                                                                                                                                               valign="top">
-                                                                                                                                                                                              
-                                                                                                                                                                                               This email is sent automatically, so you may have received this review invitation before the arrival of your confirmation. In this case, you are welcome to wait with writing your review until your confirmation arrives.
-                                                                                                                                                                                           
-                                                                                                                                                                                           
-                                                                                                                                                                                           </td>
-                                                                                                                                                                                       </tr>
-
-                                                                                                                                                                                   </tbody>
-                                                                                                                                                                               </table>
-                                                                                                                                                                           </td>
-                                                                                                                                                                       </tr>
-                                                                                                                                                                       <tr>
-                                                                                                                                                                           <td height="22"
-                                                                                                                                                                               style="height:22px;line-height:0px;font-size:0px">
-                                                                                                                                                                           </td>
-                                                                                                                                                                       </tr>
-                                                                                                                                                                   </tbody>
-                                                                                                                                                               </table>
-                                                                                               </td>
-
-                                                                                            <tr>
-                                                                                               <td style="width:40px"
-                                                                                                   width="40">
-                                                                                               </td>
-                                                                                           </tr>
-                                                                                       </tbody>
-                                                                                   </table>
-                                                                               </td>
-                                                                           </tr>
-
-
-
-
-
-
-                                                                       </tbody>
-                                                                   </table>
-                                                               </td>
-                                                               <td style="width:6%" width="6%"> </td>
-                                                           </tr>
-                                                       </tbody>
-                                                   </table>
-                                               </td>
-                                           </tr>
-                                          
-                                           
-                                       </tbody>
-                                   </table>
-                               </td>
-                           </tr>
-                       </tbody>
-                   </table>
-               </td>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif"><head><meta http-equiv="Content-Security-Policy" content="script-src 'none'; connect-src 'none'; object-src 'none'; form-action 'none';">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="telephone=no" name="format-detection">
+    <title>Time flies</title><!--[if (mso 16)]>
+      <style type="text/css">
+      a {text-decoration: none;}
+      </style>
+      <![endif]--><!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
+  <xml>
+      <o:OfficeDocumentSettings>
+      <o:AllowPNG></o:AllowPNG>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+  </xml>
+  <![endif]--><!--[if !mso]><!-- -->
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet"><!--<![endif]-->
+    <style type="text/css">
+  #outlook a {
+      padding:0;
+  }
+  .es-button {
+      mso-style-priority:100!important;
+      text-decoration:none!important;
+  }
+  a[x-apple-data-detectors] {
+      color:inherit!important;
+      text-decoration:none!important;
+      font-size:inherit!important;
+      font-family:inherit!important;
+      font-weight:inherit!important;
+      line-height:inherit!important;
+  }
+  .es-desk-hidden {
+      display:none;
+      float:left;
+      overflow:hidden;
+      width:0;
+      max-height:0;
+      line-height:0;
+      mso-hide:all;
+  }
+  @media only screen and (max-width:600px) {p, ul li, ol li, a { line-height:150%!important } h1, h2, h3, h1 a, h2 a, h3 a { line-height:120% } h1 { font-size:28px!important; text-align:center!important } h2 { font-size:26px!important; text-align:center!important } h3 { font-size:20px!important; text-align:center!important } .es-header-body h1 a, .es-content-body h1 a, .es-footer-body h1 a { font-size:28px!important; text-align:center!important } .es-header-body h2 a, .es-content-body h2 a, .es-footer-body h2 a { font-size:26px!important; text-align:center!important } .es-header-body h3 a, .es-content-body h3 a, .es-footer-body h3 a { font-size:20px!important; text-align:center!important } .es-menu td a { font-size:12px!important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size:14px!important } .es-content-body p, .es-content-body ul li, .es-content-body ol li, .es-content-body a { font-size:14px!important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size:14px!important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size:12px!important } *[class="gmail-fix"] { display:none!important } .es-m-txt-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align:center!important } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align:right!important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { text-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display:inline!important } .es-button-border { display:inline-block!important } a.es-button, button.es-button { font-size:18px!important; display:inline-block!important } .es-adaptive table, .es-left, .es-right { width:100%!important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width:100%!important; max-width:600px!important } .es-adapt-td { display:block!important; width:100%!important } .adapt-img { width:100%!important; height:auto!important } .es-m-p0 { padding:0!important } .es-m-p0r { padding-right:0!important } .es-m-p0l { padding-left:0!important } .es-m-p0t { padding-top:0!important } .es-m-p0b { padding-bottom:0!important } .es-m-p20b { padding-bottom:20px!important } .es-mobile-hidden, .es-hidden { display:none!important } tr.es-desk-hidden, td.es-desk-hidden, table.es-desk-hidden { width:auto!important; overflow:visible!important; float:none!important; max-height:inherit!important; line-height:inherit!important } tr.es-desk-hidden { display:table-row!important } table.es-desk-hidden { display:table!important } td.es-desk-menu-hidden { display:table-cell!important } .es-menu td { width:1%!important } table.es-table-not-adapt, .esd-block-html table { width:auto!important } table.es-social { display:inline-block!important } table.es-social td { display:inline-block!important } .es-desk-hidden { display:table-row!important; width:auto!important; overflow:visible!important; max-height:inherit!important } .es-m-p5 { padding:5px!important } .es-m-p5t { padding-top:5px!important } .es-m-p5b { padding-bottom:5px!important } .es-m-p5r { padding-right:5px!important } .es-m-p5l { padding-left:5px!important } .es-m-p10 { padding:10px!important } .es-m-p10t { padding-top:10px!important } .es-m-p10b { padding-bottom:10px!important } .es-m-p10r { padding-right:10px!important } .es-m-p10l { padding-left:10px!important } .es-m-p15 { padding:15px!important } .es-m-p15t { padding-top:15px!important } .es-m-p15b { padding-bottom:15px!important } .es-m-p15r { padding-right:15px!important } .es-m-p15l { padding-left:15px!important } .es-m-p20 { padding:20px!important } .es-m-p20t { padding-top:20px!important } .es-m-p20r { padding-right:20px!important } .es-m-p20l { padding-left:20px!important } .es-m-p25 { padding:25px!important } .es-m-p25t { padding-top:25px!important } .es-m-p25b { padding-bottom:25px!important } .es-m-p25r { padding-right:25px!important } .es-m-p25l { padding-left:25px!important } .es-m-p30 { padding:30px!important } .es-m-p30t { padding-top:30px!important } .es-m-p30b { padding-bottom:30px!important } .es-m-p30r { padding-right:30px!important } .es-m-p30l { padding-left:30px!important } .es-m-p35 { padding:35px!important } .es-m-p35t { padding-top:35px!important } .es-m-p35b { padding-bottom:35px!important } .es-m-p35r { padding-right:35px!important } .es-m-p35l { padding-left:35px!important } .es-m-p40 { padding:40px!important } .es-m-p40t { padding-top:40px!important } .es-m-p40b { padding-bottom:40px!important } .es-m-p40r { padding-right:40px!important } .es-m-p40l { padding-left:40px!important } }
+  </style>
+   <link href="https://viewstripo.email/assets/css/dev-custom-scroll.css" rel="stylesheet" type="text/css"><base href="#"></head>
+   <body style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+    <div class="es-wrapper-color" style="background-color:#E2EAFC"><!--[if gte mso 9]>
+              <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                  <v:fill type="tile" color="#e2eafc"></v:fill>
+              </v:background>
+          <![endif]-->
+     <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#edf5fc">
+       <tbody><tr>
+        <td valign="top" style="padding:0;Margin:0">
+         <table cellpadding="0" cellspacing="0" class="es-header" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+           <tbody><tr>
+            <td align="center" style="padding:0;Margin:0">
+             <table bgcolor="#ffffff" class="es-header-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#f7f7f7;border-radius:20px 20px 0px 0px;background-repeat:no-repeat;width:600px;background-position:left top" >
+               <tbody><tr>
+                <td class="es-m-p20r es-m-p20l" align="left" style="Margin:0;padding-bottom:15px;padding-top:30px;padding-left:40px;padding-right:40px">
+                 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                   <tbody><tr>
+                    <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:520px">
+                     <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                       <tbody><tr>
+                        <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://viewstripo.email" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#30225E;font-size:14px"><img width="250px" class="adapt-img" src="https://lifeadvice.ca/public/images/118135255.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"  title="Logo"></a></td>
+                       </tr>
+                     </tbody></table></td>
+                   </tr>
+                 </tbody></table></td>
+               </tr>
+             </tbody></table></td>
            </tr>
-       </tbody>
-   </table>
-   <img border="0" width="1" height="1" alt=""
-       src="https://ci3.googleusercontent.com/proxy/WmYtY9kdO-Ph_yQTuXfnRMjZWFg4KGJH-eKyTI6Fe0k3AIrorfuUPj5flOQerF6JY_em9Jviua3uiH8QUgc0G7usnvkEQYXxRzDqalbj5x_uOzu7SPacak7o8SrB5Zz_l6QxUH6Dl2DEogiAP7MIHi9LOgRQXc2F_3lQKEronT9uLjf4uPKYsOGIszr3b3a3dOAmAj0MAcldJc4=s0-d-e1-ft#http://post.spmailtechnolo.com/q/DGhlUFtaTmy7oDs6hhw5Og~~/AAEh-AA~/RgRmchH3PlcDc3BjQgpkf_eMj2RUiq3xUhNtc2hhcmRhMjlAZ21haWwuY29tWAQAAAAA"
-       class="CToWUd" data-bit="iit">
-   <font color="#888888">
-   </font>
-</div>
+         </tbody></table>
+         <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+           <tbody><tr>
+            <td align="center" style="padding:0;Margin:0">
+             <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#edf2fb" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#f7f7f7;width:600px">
+               <tbody><tr>
+                <td class="es-m-p20r es-m-p20l" align="left" style="Margin:0;padding-bottom:20px;padding-top:30px;padding-left:40px;padding-right:40px">
+                 <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                   <tbody>
+                   <tr>
+                    <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:560px">
+                     <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:10px;background-color:#ffffff" bgcolor="#ffffff" role="presentation">
+                       <tbody><tr>
+                        <td align="center" style="padding:30px;Margin:0"><h1 style="Margin:0;line-height:57px;mso-line-height-rule:exactly;font-family:'Krona One', sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#2b3481"> 	
+                            Dear
+                            Customer, </h1>
+                        <h1 style="Margin:0;line-height:57px;mso-line-height-rule:exactly;font-family:'Krona One', sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#2b3481" >Thank you for your purchase!</h1>
+
+                     
+                        </td>
+                       </tr>
+                       <tr>
+                        <td align="left" style="padding:0;Margin:0;padding-bottom:30px;padding-left:30px;padding-right:30px"><a  href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="text-decoration:none;color:#1b8fe4;font-weight: bold;" target="_blank">How would you rate lifeadvice.ca?</a></td>
+                       </tr>
+
+                       
+
+
+                       <tr>
+                        <td>
+                            <table border="0" cellpadding="0" cellspacing="0" role="module" style="table-layout:fixed" width="100%">
+                                <tbody>
+                                   <tr>
+                                      <td bgcolor="" height="100%" role="module-content" style="padding:23px 0px 0px 46px;line-height:20px;text-align:inherit" valign="top">
+                                         <div>
+                                            <div style="font-family:inherit;text-align:inherit">
+                                               <span style="font-family:&quot;Open Sans&quot;,sans-serif;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:normal;letter-spacing:0.053px;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:initial;float:none;display:inline;font-size:20px;color:#e6526e">
+                                                  <table style="margin:.25em 0">
+                                                     <tbody>
+                                                        <tr>
+                                                           <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <img src="https://ci6.googleusercontent.com/proxy/mS3j22o9OhJSQRczlc0c8LOICKB0GdHT8P6fN3cSChBF55fHLZzV7dUlYXRLWOFnH-5Q-nr1l4fDose9s0m7A_cvbgEqcHpnjj4wESl8Mk4LWOYoxM9aow9qjQHPqvxLwCbqBy7FApxCy5M=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-5-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
+                                                              <br>
+                                                              </a>
+                                                           </td>
+                                                        </tr>
+                                                     </tbody>
+                                                  </table>
+                                                  <table style="margin:.25em 0">
+                                                     <tbody>
+                                                        <tr>
+                                                           <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <img src="https://ci3.googleusercontent.com/proxy/NJPkISwszGDYIYSdrSwJTum3br9IJnVLfmccgdyw9HA4NqA4d5nL4i1Tp9f79fxa7YEbWcDkXv5jRHDiF-dHnulj5u-Se7A-KXzcOHSw5ro0bLI_HuFNmMeTr6iYYAEBdeak-z9nqF7QRjg=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-4-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
+                                                              <br>
+                                                              </a>
+                                                           </td>
+                                                        </tr>
+                                                     </tbody>
+                                                  </table>
+                                                  <table style="margin:.25em 0">
+                                                     <tbody>
+                                                        <tr>
+                                                           <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <img src="https://ci3.googleusercontent.com/proxy/Tmq9Fjhwe0VAQ01Bp-BSbANRwzWVaVWNUGYtBMj5EVJATiiFYff7iF59sTRXtF9drSeAZzWNKFAS6fqclxurNuEJhXHZfvY4tocgCGmU72jXDJNDAUGQJ_Bk_l6eGID_k03jeaPzMUW3wSA=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-3-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
+                                                              <br>
+                                                              </a>
+                                                           </td>
+                                                        </tr>
+                                                     </tbody>
+                                                  </table>
+                                                  <table style="margin:.25em 0">
+                                                     <tbody>
+                                                        <tr>
+                                                           <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank" >
+                                                              <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <img src="https://ci6.googleusercontent.com/proxy/4P9rPR26AgszynYMQWfw9PuPC2eIM08PFJC8H2naQi-dVXCZanVooyhyrNvso2xJ4vJYIWKP0B1rDw_-LHiaaJapyvMtfSJY5DVKW3X7ijwd1zy6ZAm82kajMOeLAkYGnO2l6XJ2mfH65PM=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-2-stars.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
+                                                              <br>
+                                                              </a>
+                                                           </td>
+                                                        </tr>
+                                                     </tbody>
+                                                  </table>
+                                                  <table style="margin:.25em 0">
+                                                     <tbody>
+                                                        <tr>
+                                                           <td style="border-collapse:collapse;width:30px;min-width:20px;padding-right:0.1em;color:inherit;font-size:14px" width="30">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="font-size:32px;color:#ccc;vertical-align:middle;line-height:36px">    ○</span>
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;width:200px;max-width:200px;height:auto;max-height:36px;color:inherit;font-size:14px" width="200">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <img src="https://ci4.googleusercontent.com/proxy/3PlKCr93qI9R89W8PL6wxfFCGEy_d1oWb00llKB_ObnxT49ef7aut-wmuHoD7tBSKJqF6m4sGR6S0B_3o5MDrC30vJUobovs2M_TchfpISUzCvfjz56ae7uefE664QI42t1shPQJvpJkKw=s0-d-e1-ft#https://images-static.trustpilot.com/a-b-tst/review-invitation-assets/tp-new-1-star.png" width="200" style="border:0;line-height:100%;outline:none;text-decoration:none;display:inline;width:100%;vertical-align:middle;height:auto!important" class="CToWUd" data-bit="iit">
+                                                              </a>
+                                                           </td>
+                                                           <td style="border-collapse:collapse;padding-left:.5em;text-align:left;min-width:70px;color:inherit;font-size:14px" align="left">
+                                                              <a href="https://www.google.com/search?q=life+advice+insurance+inc&rlz=1C1UEAD_enPK975PK975&oq=life+advice+insurance+inc&aqs=chrome..69i57j0i8i15i30j0i390l7.11008j1j9&sourceid=chrome&ie=UTF-8#lrd=0x882bf5f3329ed419:0x669c2fe4071dc2ef,1,," style="color:black;text-decoration:none" target="_blank">
+                                                              <span style="display:inline-block;line-height:36px;vertical-align:middle;height:36px"></span>
+                                                              <br>
+                                                              </a>
+                                                           </td>
+                                                        </tr>
+                                                     </tbody>
+                                                  </table>
+                                               </span>
+                                            </div>
+                                         </div>
+                                      </td>
+                                   </tr>
+                                </tbody>
+                             </table>
+                        </td>
+                    </tr>  
+
+                    <tr>
+
+                        <td align="left" style="padding:0;padding-top: 30px; Margin:0;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px"> We remain committed to provide you with world class products and services. Getting your feedback and experience is important to us. Your review helps us to improve and continue the excellent service that our customer (You!) deserve.</p></td>
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td align="left" style="padding:0;padding-top: 30px; Margin:0;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px"> We look forward to continuing to serve you!</p></td>
+                    </tr>
+
+                    
+                    <tr>
+
+                        <td align="left" style="padding:0;padding-top: 30px; Margin:0;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px">Happy Travels,</p></td>
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td align="left" style="padding:0;padding-top: 10px; Margin:0;padding-left:30px;padding-right:30px;padding-bottom: 30px;"><a style="font-weight: bold;" href="https://lifeadvice.ca/">lifeadvice.ca</a></td>
+                    </tr>
+                       
+                       
+
+
+
+                      
+
+                     </tbody></table></td>
+                   </tr>
+                 </tbody></table></td>
+               </tr>
+               
+             </tbody></table></td>
+           </tr>
+         </tbody></table>
+
+         
+         <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+           <tbody><tr>
+            <td align="center" style="padding:0;Margin:0">
+             <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#f7f7f7;width:600px">
+               <tbody>
+                
+
+                
+
+                
+
+
+                
+                
+
+
+                <tr>
+                <td class="es-m-p20r es-m-p20l" align="left" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:40px;padding-right:40px"><!--[if mso]><table style="width:520px" cellpadding="0" cellspacing="0"><tr><td style="width:248px" valign="top"><![endif]-->
+                 <table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                   <tbody>
+                    
+                   
+
+
+                    
+                 </tbody></table><!--[if mso]></td><td style="width:25px"></td><td style="width:247px" valign="top"><![endif]-->
+                 <!--[if mso]></td></tr></table><![endif]--></td>
+               </tr>
+
+
+
+
+
+               
+             
+
+
+
+         
+         <table cellpadding="0" cellspacing="0" class="es-footer" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+           <tbody>
+            
+            
+            
+            <tr>
+            <td align="center" style="padding:0;Margin:0">
+             <table bgcolor="#ffffff" class="es-footer-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#f7f7f7;border-radius:0 0 20px 20px;width:600px">
+               <tbody>
+                
+                <tr>
+                    <td align="left" class="es-m-txt-c" style="padding:0;Margin:0"><p style="padding-left:40px;padding-right:40px;padding-bottom: 30px;text-align: justify; Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px"> <b>Note :</b>  We request that you leave a review only about your buying experience on <a href="https://lifeadvice.ca/">lifeadvice.ca</a>. If you would rather review a particular insurance product, please leave a review for the appropriate administrator . <a href="https://lifeadvice.ca/">lifeadvice.ca</a> is a travel insurance marketplace that lists insurance products from top-rated insurance companies.</p></td>
+                   </tr>
+                <tr>
+                    <td align="left" class="es-m-txt-c" style="padding:0;Margin:0"><p style="padding-left:40px;padding-right:40px;padding-bottom: 30px;text-align: justify; Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;color:#333333;font-size:14px"> This email is sent automatically, so you may have received this review invitation before the arrival of your confirmation. In this case, you are welcome to wait with writing your review until your confirmation arrives.</p></td>
+                   </tr>
+                
+             </tbody></table></td>
+           </tr>
+         </tbody></table>
+         <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+           <tbody><tr>
+            <td align="center" style="padding:0;Margin:0">
+             <table class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px">
+               <tbody><tr>
+                <td class="es-m-p20r es-m-p20l" align="left" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:40px;padding-right:40px">
+                 </td>
+               </tr>
+             </tbody></table></td>
+           </tr>
+         </tbody></table></td>
+       </tr>
+     </tbody></table>
+    </div> 
+  </body>
+  </html>

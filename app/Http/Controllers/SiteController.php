@@ -303,71 +303,25 @@ class SiteController extends Controller
         }
 
 
+
+
         $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
-
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-
-        if ($temp == "1") {
-
-            Mail::send('email.template1.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-                $message->to($request->email);
-                $message->subject($subject);
-            });
-
-            Mail::send('email.template1.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-                $message->to($request->email);
-                $message->subject('Tell Us How We Did?');
-            });
-
-            $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-
-            Mail::send('email.template1.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-                $message->to('admin@lifeadvice.ca');
-                $message->subject($subject);
-            });
-        } elseif ($temp == "2") {
-
-
-            Mail::send('email.template2.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-                $message->to($request->email);
-                $message->subject($subject);
-            });
-
-            // Mail::send('email.template2.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-            //     $message->to($request->email);
-            //     $message->subject('Tell Us How We Did?');
-            // });
-
-            // $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-
-            // Mail::send('email.template2.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-            //     $message->to('admin@lifeadvice.ca');
-            //     $message->subject($subject);
-            // });
-        } elseif ($temp == "3") {
-
-            Mail::send('email.template3.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-                $message->to($request->email);
-                $message->subject($subject);
-            });
-
-            Mail::send('email.template3.review', ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-                $message->to($request->email);
-                $message->subject('Tell Us How We Did?');
-            });
-
-            $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-
-            Mail::send('email.template3.purchasepolicy', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-                $message->to('admin@lifeadvice.ca');
-                $message->subject($subject);
-            });
-        }
-
-
-
-
-
+        $purchasepolicyemailview = 'email.template'.$temp.'.purchasepolicy';
+        $reviewemailview = 'email.template'.$temp.'.review';
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject($subject);
+        });
+        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject('Tell Us How We Did?');
+        });
+        $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to('admin@lifeadvice.ca');
+            $message->subject($subject);
+        });
         return view('frontend.formone.conferm')->with(array('request' => $request));
     }
     public function applyplan(Request $request)
