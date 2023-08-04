@@ -550,7 +550,7 @@ if($show == '1' && $total_price > 0){
                     <div class="compare compare-check  justify-content-end display-none-on-mobile">
                         <label
                             onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                            style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i
+                            style="cursor: pointer" class="text-center col-md-12 col-xs-5" id="compare"><i
                                 class="fa fa-database"></i> Compare</label>
                     </div>
                     <div class="qoute-logo display-none-on-mobile">
