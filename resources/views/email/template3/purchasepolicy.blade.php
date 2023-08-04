@@ -479,7 +479,7 @@
                                                                                     <td align="center"
                                                                                         style="padding:0;Margin:0;font-size:0px">
                                                                                         <a target="_blank"
-                                                                                            href="https://viewstripo.email"
+                                                                                            href="https://lifeadvice.ca/"
                                                                                             style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#30225E;font-size:14px"><img
                                                                                                 width="250px"
                                                                                                 class="adapt-img"
@@ -568,16 +568,6 @@
                                                                                 </tr>
 
 
-
-
-
-
-
-
-
-
-
-
                                                                             </tbody>
                                                                         </table>
                                                                     </td>
@@ -630,7 +620,7 @@
                                                     <td align="center" style="padding:10px;Margin:0"><span
                                                             class="msohide es-button-border"
                                                             style="border-style:solid;border-color:#2CB543;background:#2b3481;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-hide:all"><a
-                                                                href="https://viewstripo.email" class="es-button"
+                                                                href="http://localhost/lifeadviceupdated/login" class="es-button"
                                                                 target="_blank"
                                                                 style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;display:inline-block;background:#2b3481;border-radius:30px;font-family:Poppins, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;mso-padding-alt:0;mso-border-alt:10px solid #2b3481">Sign
                                                                 in</a></span><!--<![endif]--></td>
@@ -750,7 +740,7 @@
                                                                                     <td align="center"
                                                                                         style="padding:20px;Margin:0;font-size:0px">
                                                                                         <a target="_blank"
-                                                                                            href="https://viewstripo.email"
+                                                                                            href="javascript:void(0)"
                                                                                             style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#30225E;font-size:14px"><img
                                                                                                 src="https://lifeadvice.ca/public/images/324714173.png"
                                                                                                 class="p_image"
@@ -938,7 +928,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->start_date }}</span>
                                                                                                                             </div>
@@ -1030,7 +1020,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->end_date }}</span>
                                                                                                                             </div>
@@ -1122,7 +1112,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->coverage_ammount }}</span>
                                                                                                                             </div>
@@ -1213,7 +1203,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $sale->deductibles }}</span>
                                                                                                                             </div>
@@ -1323,7 +1313,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">
                                                                                                                                     {{ $r->f_name }} {{ $r->l_name }}</span>
@@ -1418,7 +1408,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">{{ $r->gender }}</span>
                                                                                                                             </div>
@@ -1513,7 +1503,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">
                                                                                                                                     {{ $r->pre_existing_condition }}</span>
@@ -1606,7 +1596,7 @@
                                                                                                                         role="module-content">
                                                                                                                         <div>
                                                                                                                             <div
-                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit">
+                                                                                                                                style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:right">
                                                                                                                                 <span
                                                                                                                                     style="font-family:&quot;Open Sans&quot;,sans-serif;font-size:14px;line-height:24px;font-weight:600;color:#67778f">
                                                                                                                                     {{ $r->date_of_birth }}</span>
@@ -1767,7 +1757,7 @@
                                                                                                                 valign="top"
                                                                                                                 style="padding:0;Margin:0;padding-right:20px">
                                                                                                                 <a target="_blank"
-                                                                                                                    href="https://viewstripo.email"
+                                                                                                                    href="https://www.facebook.com/lifeadviceinsurance/"
                                                                                                                     style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#30225E;font-size:14px"><img
                                                                                                                         title="Facebook"
                                                                                                                         src="https://tlr.stripocdn.email/content/assets/img/social-icons/rounded-colored-bordered/facebook-rounded-colored-bordered.png"
@@ -1779,7 +1769,7 @@
                                                                                                                 valign="top"
                                                                                                                 style="padding:0;Margin:0;padding-right:20px">
                                                                                                                 <a target="_blank"
-                                                                                                                    href="https://viewstripo.email"
+                                                                                                                    href="https://ca.linkedin.com/in/life-advice-insurance-inc-3a7074138"
                                                                                                                     style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#30225E;font-size:14px"><img
                                                                                                                         title="Twitter"
                                                                                                                         src="https://tlr.stripocdn.email/content/assets/img/social-icons/rounded-colored-bordered/twitter-rounded-colored-bordered.png"
