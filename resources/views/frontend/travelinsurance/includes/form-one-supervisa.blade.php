@@ -29,13 +29,10 @@
         <div class="col-md-12">
             <hr>
         </div>
-
-
-       
-
         <div class="col-md-7 leftsection">
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
+                <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                 <div class="row">
                     @for ($orderi = 1; $orderi <= 17; $orderi++)
@@ -46,7 +43,7 @@
                                         <label for="firstname" class="form-label d-md-block lables">First name</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <label for="firstname" class="d-sm-none  ">First name</label>
+                                        <label for="firstname" class="d-sm-none">First name</label>
                                         <div class="custom-form-control">
                                             <input type="text" name="fname" placeholder="firstname" required
                                                 id="firstname" class="form-input">
@@ -109,9 +106,7 @@
                                                 id="coverageammount">
                                                 <option value="">Coverage Amount</option>
                                                 @foreach ($sum_insured as $key => $r)
-                                                    <option value="{{ $r->sum_insured }}"
-                                                        @if ($key == 0) selected @endif>
-                                                        ${{ $r->sum_insured }}</option>
+                                                    <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif @endif value="{{ $r->sum_insured }}"@if ($key == 0) selected @endif>${{ $r->sum_insured }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -234,27 +229,73 @@
                                                 class="form-input" name="number_travelers" id="number_travelers">
                                                 <option value="">Number of Travellers</option>
                                                 @for ($i = 1; $i <= $number_of_travel; $i++)
-                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                    <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                             </select>
                                         </div>
                                     </div>
+                                    @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+                                                @php
+                                                    $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
+                                                    $c = 0;
+                                                @endphp
+                                                <div  id="traveler{{ $i }}"
+                                                    class="no_of_travelers col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i]; ?> Traveller</label>
+                                                        </div>
+                                                        <div style="padding-right:0px;padding-left: 22px;"
+                                                            class="col-md-7 padding-left-eight-on-mobile">
+                                                            <label for="day" class="d-sm-none">Birth date of the
+                                                                oldest Traveller</label>
+                                                            <div class="custom-form-control">
+                                                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
+                                                                    class="oldTraveler" type="text"
+                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
+                                                                    name="years[]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label for="day" class="form-label lables"
+                                                                id="">Pre Existing of <?php echo $ordinal_words[$i]; ?></label>
+                                                        </div>
+                                                        <div style="padding-right:0px;padding-left: 22px;"
+                                                            class="col-md-7 padding-left-eight-on-mobile">
+                                                            <label for="day" class="d-sm-none">Select Pre
+                                                                Existing</label>
+                                                            <div class="custom-form-control">
+                                                                <select id="pre_existing{{ $i }}"
+                                                                    name="pre_existing[]" class="form-input">
+                                                                    <option value="">Select Pre Existing Condition
+                                                                    </option>
+                                                                    <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                                                    <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
+
+                                                </div>
+
+                                                @endif
+                                        @endforeach
+                                    @else
 
                                     @if (isset($fields['dob']) && $fields['dob'] == 'on')
                                         @php
                                             $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
                                             $c = 0;
                                         @endphp
-
                                         @for ($i = 1; $i <= $number_of_travel; $i++)
                                             <div style="display: none;" id="traveler{{ $i }}"
                                                 class="no_of_travelers col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label for="day" class="form-label lables"
-                                                            id="">Birth date of the <?php echo $ordinal_words[$i]; ?>
-                                                            Traveller</label>
+                                                        <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i]; ?> Traveller</label>
                                                     </div>
                                                     <div style="padding-right:0px;padding-left: 22px;"
                                                         class="col-md-7 padding-left-eight-on-mobile">
@@ -291,9 +332,13 @@
                                             </div>
                                         @endfor
                                     @endif
+
+                                    @endif
                                 @endif
                             @endif
                         @endif
+
+
                         @if (array_search('id_8', $orderdata) == $orderi)
                             @if (isset($fields['sdate']) && $fields['sdate'] == 'on' && isset($fields['edate']) && $fields['edate'] == 'on')
                                 <link rel="stylesheet"
@@ -314,7 +359,7 @@
                                             style="border-right: 1px solid #666;padding-right: 8px;"></i>
                                     </label>
                                     <div class="custom-form-control">
-                                        <input readonly inputmode="numeric"
+                                        <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly inputmode="numeric"
                                             style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
                                             id="departure_date" autocomplete="off" name="departure_date"
                                             value="" class="form-control" type="text"
@@ -348,7 +393,7 @@
                                     <div class="custom-form-control">
 
 
-                                        <input
+                                        <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif
                                             style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
                                             id="return_date" autocomplete="off" name="return_date" value=""
                                             class="form-control" type="text" placeholder="End Date" required
@@ -383,10 +428,9 @@
                                                 style="border-right: 1px solid #666;padding-right: 8px;"></i>
                                         </label>
                                         <div class="custom-form-control">
-                                            <input type="text" name="savers_email" placeholder="name@example.com"
+                                            <input type="text" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif name="savers_email" placeholder="name@example.com"
                                                 required id="savers_email" class="oldTraveler"
                                                 style="padding-left: 40px !important">
-                                            {{-- <label for="savers_email" class="form-label">Email</label> --}}
                                         </div>
                                     </div>
                                 @endif
@@ -761,6 +805,11 @@
         }
 
     }
+    @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#getqoutesubmitbutton').click();
+    });
+    @endif
     $('#quoteform').on('submit', (function(e) {
         $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();

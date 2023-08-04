@@ -190,12 +190,18 @@ class SiteController extends Controller
         if ($data->stylish_price_layout == 'layout_10') {
             $returnHTML =  view('frontend.travelinsurance.includes.ten.index')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();
         }
-        $data = json_encode($request->all(), true);
-        $quotesave = new temproaryquote();
-        $quotesave->quote_id = $quoteNumber;
-        $quotesave->data = $data;
-        $quotesave->type = 'ajax';
-        $quotesave->save();
+        if(isset($request->sendemail))
+        {
+            if($request->sendemail == 'yes')
+            {
+                $data = json_encode($request->all(), true);
+                $quotesave = new temproaryquote();
+                $quotesave->quote_id = $quoteNumber;
+                $quotesave->data = $data;
+                $quotesave->type = 'ajax';
+                $quotesave->save();
+            }
+        }
         return response()->json(array('success' => true, 'html' => $returnHTML));
     }
     public function confermquote()
