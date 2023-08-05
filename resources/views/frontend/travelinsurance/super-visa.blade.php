@@ -5,9 +5,10 @@
     @php
         $url = request()->segment(count(request()->segments()));
         $firstsection = DB::table('travelpages')
-            ->where('url', $url)
+            ->where('url', $url)->where('showsection_one','yes')
             ->first();
     @endphp
+    @if ($firstsection)
     <div class="health-inssurance-hero-banners super-hero ahmSupperBanner">
         <div class="container-homepage">
             <div class="row mb-3">
@@ -37,6 +38,8 @@
             </div>
         </div>
     </div>
+    @endif
+    
     @if ($data->quotation_form_on_stylish_page == 1)
         @if ($data->stylish_form_layout == 'layout_1')
             @include('frontend.travelinsurance.includes.form-one-supervisa')

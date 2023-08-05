@@ -1,7 +1,8 @@
 @php
     $url = request()->segment(count(request()->segments()));
-    $page = DB::table('travelpages')->where('url' , $url)->get()->first();
+    $page = DB::table('travelpages')->where('url' , $url)->where('showsection_four','yes')->get()->first();
 @endphp
+@if ($page)
 <section class="third-section ">
     <div class="container-homepage">
         <div class="calculate-heading" style="text-align: center;">
@@ -37,3 +38,4 @@
         </div>
     </div>
 </section>
+@endif
