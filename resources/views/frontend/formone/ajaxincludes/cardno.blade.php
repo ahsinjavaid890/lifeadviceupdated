@@ -190,10 +190,17 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             //$second_single_person_rate = array();
             $second_display = array();
             if($second_family_plan == 'yes'){
-                $second_planrates = DB::select("SELECT * FROM $second_rates_table_name WHERE `plan_id`='$second_deduct_plan_id' AND '$second_elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$second_sumamt' $second_addquery");
-                $second_daily_rate = $second_planrates[0]->rate * 2;   //Multipling by 2 for family elder rate
-
+            $second_plan_rates = DB::select("SELECT * FROM $second_rates_table_name WHERE `plan_id`='$second_deduct_plan_id' AND '$second_elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$second_sumamt' $second_addquery");
+            $second_countarray =  count($second_plan_rates);
+            if($second_countarray > 0)
+            {
+                $second_daily_rate = $second_plan_rates[0]->rate_without_pre_existing * 2;
                 if(!$second_daily_rate){ $second_display = '0'; }
+            }
+            else{
+                $second_daily_rate = 500;
+                if(!$second_daily_rate){ $second_display = '0'; }
+            }
             } else {
                 $second_perone = 0;
                 foreach($second_ages_array as $second_person_age){

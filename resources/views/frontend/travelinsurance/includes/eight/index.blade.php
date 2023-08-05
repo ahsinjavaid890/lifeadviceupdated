@@ -284,12 +284,18 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             //$single_person_rate = array();
             $display = array();
             if($family_plan == 'yes'){
-                $plan_rates = mysqli_query($db,  "SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery" );
-                $planrates = mysqli_fetch_assoc($plan_rates);
-                $daily_rate = $planrates['rate'] * 2;   //Multipling by 2 for family elder rate
-
-                if(!$daily_rate){ $display = '0'; }
-            } else {
+$plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+$countarray =  count($plan_rates);
+if($countarray > 0)
+{
+    $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+    if(!$daily_rate){ $display = '0'; }
+}
+else{
+    $daily_rate = 500;
+    if(!$daily_rate){ $display = '0'; }
+}
+} else {
                 $perone = 0;
                 foreach($ages_array as $person_age){
                     $perone++;
