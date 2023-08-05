@@ -120,9 +120,6 @@ color: #FFF;
 .visible-xs{
     display: none;
 }
-input[type="text"], input[type="password"] {
-    border: 0 !important;
-}
 .dh-toggle-show-hide-216{
     z-index: 2;
 }

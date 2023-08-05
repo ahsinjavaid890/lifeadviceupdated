@@ -192,71 +192,71 @@
                 @endif
                 @endif
 
-                @if (array_search('id_3', $orderdata) == $orderi)
-                @if (isset($fields['traveller']) && $fields['traveller'] == 'on')
-                @php
-                $number_of_travel = $fields['traveller_number'];
-                @endphp
-                @if ($number_of_travel > 0)
-                <div class="col-md-5">
-                    <label for="number_travelers" class="form-label lables" id="">Number
-                        of Travellers</label>
-                </div>
-                <div class="col-md-7">
-                    <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
-                    <div class="custom-form-control">
-                        <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
-                            <option value="">Number of Travellers</option>
-                            @for ($i = 1; $i <= $number_of_travel; $i++) <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @endif value="{{ $i }}">{{ $i }}
-                                </option>
-                                @endfor
-                        </select>
-                    </div>
-                </div>
-
-
-                @if(isset($_GET['years']))
-                @foreach($_GET['years'] as $key=> $year)
-                @if($year)
-                @php
-                $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
-                'eighth'];
-                $c = 0;
-                @endphp
-                <div id="traveler{{ $i }}" class="no_of_travelers col-md-12">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label for="day" class="form-label lables" id="">Birth date of the
-                                <?php echo $ordinal_words[$i]; ?> Traveller
-                            </label>
-                        </div>
-                        <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
-                            <label for="day" class="d-sm-none">Birth date of the
-                                oldest Traveller</label>
-                            <div class="custom-form-control">
-                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="day" class="form-label lables" id="">Pre Existing of
-                                <?php echo $ordinal_words[$i]; ?>
-                            </label>
-                        </div>
-                        <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
-                            <label for="day" class="d-sm-none">Select Pre
-                                Existing</label>
-                            <div class="custom-form-control">
-                                <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
-                                    <option value="">Select Pre Existing Condition
-                                    </option>
-                                    <option @if($_GET['pre_existing'][$key]=='yes' ) selected @endif value="yes">Yes
-                                    </option>
-                                    <option @if($_GET['pre_existing'][$key]=='no' ) selected @endif value="no">No
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                        @if (array_search('id_3', $orderdata) == $orderi)
+                            @if (isset($fields['traveller']) && $fields['traveller'] == 'on')
+                                @php
+                                    $number_of_travel = $fields['traveller_number'];
+                                @endphp
+                                @if ($number_of_travel > 0)
+                                    <div class="col-md-5">
+                                        <label for="number_travelers" class="form-label lables" id="">Number
+                                            of Travellers</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
+                                        <div class="custom-form-control">
+                                            <select onchange="checknumtravellers(this.value)" required
+                                                class="form-input" name="number_travelers" id="number_travelers">
+                                                <option value="">Number of Travellers</option>
+                                                @for ($i = 1; $i <= $number_of_travel; $i++)
+                                                    <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+                                                @php
+                                                    $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
+                                                    $c = 0;
+                                                @endphp
+                                                <div  id="traveler{{ $i }}"
+                                                    class="no_of_travelers col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i]; ?> Traveller</label>
+                                                        </div>
+                                                        <div style="padding-right:0px;padding-left: 22px;"
+                                                            class="col-md-7 padding-left-eight-on-mobile">
+                                                            <label for="day" class="d-sm-none">Birth date of the
+                                                                oldest Traveller</label>
+                                                            <div class="custom-form-control">
+                                                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
+                                                                    class="oldTraveler" type="text"
+                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
+                                                                    name="years[]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label for="day" class="form-label lables"
+                                                                id="">Pre Existing of <?php echo $ordinal_words[$i]; ?></label>
+                                                        </div>
+                                                        <div style="padding-right:0px;padding-left: 22px;"
+                                                            class="col-md-7 padding-left-eight-on-mobile">
+                                                            <label for="day" class="d-sm-none">Select Pre
+                                                                Existing</label>
+                                                            <div class="custom-form-control">
+                                                                <select id="pre_existing{{ $i }}"
+                                                                    name="pre_existing[]" class="form-input">
+                                                                    <option value="">Select Pre Existing Condition
+                                                                    </option>
+                                                                    <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                                                    <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
                 </div>

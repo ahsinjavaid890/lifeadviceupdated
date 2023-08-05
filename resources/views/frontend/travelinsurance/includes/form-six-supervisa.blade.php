@@ -5,7 +5,7 @@
                 @csrf
          <div class="row">
             <div class="col-md-12">
-               
+                  <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
                      @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
@@ -19,7 +19,7 @@
                            <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                               <option value="">Number of Travellers</option>
                               @for($i=1;$i<=$number_of_travel;$i++)
-                              <option value="{{ $i }}">{{ $i }}</option>
+                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
                               @endfor
                            </select>
                         </div>
@@ -30,14 +30,14 @@
                         <div class="col-sm-4 col-md-3">
                            <div class="form-group">
                               <label>Start Date</label>
-                              <input  id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-input" type="date" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <input  @if(isset($_GET['departure_date'])) value="{{ date('Y-m-d' , strtotime($_GET['departure_date'])) }}" @endif id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-input" type="date" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                            </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
                            <div class="form-group">
                               <label>End Date</label>
                               <div class="custom-form-control">
-                                 <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-input" onchange="calculatedays()" type="date" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif  >
+                                 <input @if(isset($_GET['return_date'])) value="{{ date('Y-m-d' , strtotime($_GET['return_date'])) }}" @endif id="return_date" autocomplete="off" name="return_date" value=""  class="form-input" onchange="calculatedays()" type="date" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif  >
                               </div>
                            </div>
                         </div>
@@ -58,7 +58,7 @@
                               <select required class="form-input" name="sum_insured2" id="coverageammount">
                                  <option value="">Coverage Amount</option>
                                  @foreach($sum_insured as $r)
-                                 <option value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
+                                 <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif @endif value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
                                  @endforeach
                               </select>
                            </div>
@@ -146,7 +146,7 @@
                               <div class="col-sm-4 col-md-3">
                                  <div class="form-group">
                                  <label>Email</label>             
-                                    <input type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
+                                    <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
                                  </div>
                               </div>
                            @endif
@@ -251,6 +251,56 @@
             </div>
          </div>
 
+         @if(isset($_GET['years']))
+                                        @foreach($_GET['years'] as $key=> $year)
+                                            @if($year)
+
+                                            @php
+               $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+               $c = 0;
+            @endphp
+               <div id="traveler{{ $i }}" class="row no_of_travelers">
+               <div class="col-sm-12">
+                  {{-- <h5 class="type-of-policy">
+                     <?php 
+                        // echo $ordinal_words[$i];
+                     ?>
+                      Traveler</h5> --}}
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group ">
+                     <label>Enter Date Of Birth</label>
+                     <input value="{{ date('Y-m-d' , strtotime($year)) }}" onchange="travelerdateofbirth(this.value , {{$i}})" id="dateofbirthfull{{ $i }}" class="form-input txtDate" type="date" name="years[]">
+                     <span class="errorshow" id="dateerror{{ $i }}"></span>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group">
+                     <label>Age</label>
+                     <div class="custom-form-control">
+                        <input  id="age{{ $i }}" value=""  class="form-input"  type="text" placeholder="Age" readonly>
+                        <span class="errorshow" id="ageerror{{ $i }}"></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-3">
+                  <div class="form-group ">
+                     <label>Select Pre Existing Condition</label>
+                     <select name="pre_existing[]" class="form-input">
+                        <option value="">Select Pre Existing Condition</option>
+                        <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                        <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                      </select>
+                  </div>
+               </div>
+            </div>
+            
+
+            @endif
+                                        @endforeach
+                                    @else
+
+
          @if(isset($fields['dob']) && $fields['dob'] == "on" )
             @php
                $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
@@ -293,6 +343,7 @@
                </div>
             </div>
             @endfor
+         @endif
          @endif
          <div class="row">
             <div class="col-md-12 mb-3 text-right">
@@ -601,6 +652,11 @@ $('button[type="submit"]').click(function() {
    window.onload = function() {
      checktravellers();
    };
+   @if(isset($_GET['sum_insured2']))
+    $( document ).ready(function() {
+        $('#getqoutesubmitbutton').click();
+    });
+   @endif
    $('#quoteform').on('submit',(function(e) {
         $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
