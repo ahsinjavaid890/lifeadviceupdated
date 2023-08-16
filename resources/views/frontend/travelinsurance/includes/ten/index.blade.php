@@ -8,6 +8,13 @@
         background: rgb(122, 0, 0) !important;
         border: rgb(122, 0, 0) solid 1px !important;
     }
+    .quotationscards{
+        max-width: 100% !important;
+    }
+    .checkboxbtn label:after, .checkboxbtn label:before{
+        right: 5px !important;
+        top: 5px !important;
+    }
 </style>
 
 <script>
@@ -99,15 +106,9 @@
 
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/mainlayouttwo.css') }}">
 <div class="subpage-full-details  result-blk">
-    <div class="container">
+    <div class="">
         <div class="output-info-tabs right">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 tabs-column wow slideInDown animated animated"
-                    data-wow-delay="100ms" data-wow-duration="1500ms"
-                    style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
-
-
-                    <div class="row  filterdiv hidden-xs mt-3"
+            <div class="row  filterdiv hidden-xs mt-3"
                         style="border: 1px solid #ddd;text-align: center;padding-top: 10px;margin-bottom:20px; background:#FFF; justify-content:center;align-items:center">
                         <div class="col-md-2 hidden-xs"
                             style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
@@ -146,6 +147,13 @@
                                 <?php echo $request->departure_date . '-' . $request->return_date; ?></small>
                         </div>
                     </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 tabs-column wow slideInDown animated animated"
+                    data-wow-delay="100ms" data-wow-duration="1500ms"
+                    style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
+
+
+                    
 
 
 
@@ -183,11 +191,11 @@
     </div>
 </div>
 <script type="text/javascript">
-    // $( document ).ready(function() {
-    //      var divList = $(".listing-item-new");
-    //      divList.sort(function(a, b){
-    //          return $(a).data("listing-price")-$(b).data("listing-price")
-    //      });
-    //      $("#results_search").html(divList);
-    //  });
+    $( document ).ready(function() {
+         var divList = $(".listing-item-new");
+         divList.sort(function(a, b){
+             return $(a).data("listing-price")-$(b).data("listing-price")
+         });
+         $("#results_search").html(divList);
+     });
 </script>
