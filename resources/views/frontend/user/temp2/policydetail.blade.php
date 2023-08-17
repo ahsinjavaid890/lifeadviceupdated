@@ -338,7 +338,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" class="form-control"  value="{{ $data->policy_number }} name="policy_number" required>
                   </div>
                </div>
             </div>

@@ -325,7 +325,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" readonly class="form-control" value="{{ $data->policy_number }}" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -435,7 +435,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input type="text" class="form-control" name="policy_number" required>
+                     <input type="text" readonly class="form-control"  value="{{ $data->policy_number }}" name="policy_number" required>
                   </div>
                </div>
             </div>
@@ -504,7 +504,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Policy Number</label>
-                     <input required placeholder="Enter Policy Number" type="text" class="form-control" name="policy_number">
+                     <input required readonly placeholder="Enter Policy Number"  value="{{ $data->policy_number }}" type="text" class="form-control" name="policy_number">
                   </div>
                </div>
             </div>

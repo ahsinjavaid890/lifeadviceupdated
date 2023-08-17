@@ -283,6 +283,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
 
     Route::name('sales.')->prefix('sales')->group(function(){
         Route::get('/allsale','AdminController@allsale');
+        Route::get('/changerequest','AdminController@changerequest');
+        Route::get('/extendrequest','AdminController@extendrequest');
+        Route::get('/refundrequest','AdminController@refundrequest');
         Route::get('/editsale/{id}','AdminController@editsale');
         Route::post('/editsale','AdminController@editsales');
         Route::get('/viewsale/{id}','AdminController@viewsale');

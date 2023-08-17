@@ -721,6 +721,21 @@ class AdminController extends Controller
         $data = DB::table('sales')->orderby('id', 'DESC')->paginate(10);
         return view('admin.sales.allsale')->with(array('data' => $data));
     }
+    public function changerequest()
+    {
+        $data = DB::table('sale_change_requests')->orderby('id', 'DESC')->paginate(10);
+        return view('admin.requests.changerequest')->with(array('data' => $data));
+    }
+    public function extendrequest()
+    {
+        $data = DB::table('sale_extend_requests')->orderby('id', 'DESC')->paginate(10);
+        return view('admin.requests.extendrequest')->with(array('data' => $data));
+    }
+    public function refundrequest()
+    {
+        $data = DB::table('sale_refund_requests')->orderby('id', 'DESC')->paginate(10);
+        return view('admin.requests.refundrequest')->with(array('data' => $data));
+    }
     public function editsale($id)
     {
         $data = DB::table('sales')->where('id', $id)->first();

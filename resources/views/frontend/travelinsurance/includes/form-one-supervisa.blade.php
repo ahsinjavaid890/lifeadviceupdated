@@ -14,7 +14,6 @@
         margin-bottom: 20px !important;
         margin-top: 20px !important;
     }
-
 </style>
 <div class="container-homepage">
     <div class="row mainsection birthdate">
@@ -33,16 +32,19 @@
         <div class="col-md-7 leftsection">
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
-                <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
+                <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else
+                    value="yes" @endif>
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                 <div class="row">
-                    @for ($orderi = 1; $orderi <= 17; $orderi++) @if (array_search('id_1', $orderdata)==$orderi) @if (isset($fields['fname'])) @if ($fields['fname']=='on' ) <div class="col-md-5 ">
+                    @for ($orderi = 1; $orderi <= 17; $orderi++) @if (array_search('id_1', $orderdata)==$orderi) @if
+                        (isset($fields['fname'])) @if ($fields['fname']=='on' ) <div class="col-md-5 ">
                         <label for="firstname" class="form-label d-md-block lables">First name</label>
                 </div>
                 <div class="col-md-7">
                     <label for="firstname" class="d-sm-none">First name</label>
                     <div class="custom-form-control">
-                        <input type="text" name="fname" placeholder="firstname" required id="firstname" class="form-input">
+                        <input type="text" name="fname" placeholder="firstname" required id="firstname"
+                            class="form-input">
                     </div>
                 </div>
                 @endif
@@ -65,16 +67,21 @@
                 @if (isset($fields['phone']))
                 @if ($fields['phone'] == 'on')
                 <div class="col-md-5">
-                    <label for="phone" class="form-label lables">Phone <b id="phone_error" class="text-danger"></b></label>
+                    <label for="phone" class="form-label lables">Phone <b id="phone_error"
+                            class="text-danger"></b></label>
                 </div>
 
                 <div class="col-md-7">
-                    <label class="icon-left" for="phonenumbermask" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
+                    <label class="icon-left" for="phonenumbermask"
+                        style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
                         <i class="fa fa-phone" style="border-right: 1px solid #666;padding-right: 8px;"></i>
                     </label>
-                    <label for="phonenumbermask" class="d-sm-none">Phone Number<b id="phone_error" class="text-danger"></b></label>
+                    <label for="phonenumbermask" class="d-sm-none">Phone Number<b id="phone_error"
+                            class="text-danger"></b></label>
                     <div class="custom-form-control">
-                        <input type="text" id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required id="phone" class="oldTraveler" style="padding-left: 40px !important">
+                        <input type="text" id="phonenumbermask" name="phone" placeholder="000-000-0000"
+                            data-placeholder="000-000-0000" inputmode="numeric" required id="phone" class="oldTraveler"
+                            style="padding-left: 40px !important">
                     </div>
                 </div>
                 @endif
@@ -129,16 +136,19 @@
 
 
                         <div class="col-sm-5">
-                            <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables">Primary Destination</label>
+                            <label style="margin-left: -11.5px;" for="primary_destination"
+                                class="form-label lables">Primary Destination</label>
                         </div>
                         <div class="col-md-7 " style="margin-right:0 !important">
                             <label for="primary_destination" class="d-sm-none">Primary
                                 Destination</label>
                             <div class="custom-form-control form-select" id="cnt">
-                                <select style=" width: 386px;border-radius: 1px;" onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                                <select style=" width: 386px;border-radius: 1px;" onchange="CountryState(this.value)"
+                                    required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Select Country</option>
                                     @foreach (DB::table('countries')->get() as $r)
-                                    <option value='{{ $r->name }}' data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">
+                                    <option value='{{ $r->name }}' data-imagecss="flag {{ $r->data_imagecss }}"
+                                        data-title="{{ $r->name }}">
                                         {{ $r->name }}</option>
                                     @endforeach
                                 </select>
@@ -149,14 +159,16 @@
                 <div id="canadastate" class="col-md-12" style="display:none;">
                     <div class="row">
                         <div class="col-md-5">
-                            <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables" id="">States In
+                            <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables"
+                                id="">States In
                                 Canda</label>
                         </div>
                         <div class="col-md-7">
                             <label for="primary_destination" class="d-sm-none">States In
                                 Canda</label>
                             <div class="custom-form-control" id="states">
-                                <select required class="form-control" name="primary_destination" id="primary_destination">
+                                <select required class="form-control" name="primary_destination"
+                                    id="primary_destination">
                                     <option value="">Primary destination in Canada
                                     </option>
                                     @foreach (DB::table('primary_destination_in_canada')->get() as $r)
@@ -192,77 +204,80 @@
                 @endif
                 @endif
 
-                        @if (array_search('id_3', $orderdata) == $orderi)
-                            @if (isset($fields['traveller']) && $fields['traveller'] == 'on')
-                                @php
-                                    $number_of_travel = $fields['traveller_number'];
-                                @endphp
-                                @if ($number_of_travel > 0)
-                                    <div class="col-md-5">
-                                        <label for="number_travelers" class="form-label lables" id="">Number
-                                            of Travellers</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
-                                        <div class="custom-form-control">
-                                            <select onchange="checknumtravellers(this.value)" required
-                                                class="form-input" name="number_travelers" id="number_travelers">
-                                                <option value="">Number of Travellers</option>
-                                                @for ($i = 1; $i <= $number_of_travel; $i++)
-                                                    <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                    </div>
-                                    @if(isset($_GET['years']))
-                                        @foreach($_GET['years'] as $key=> $year)
-                                            @if($year)
-                                                @php
-                                                    $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth'];
-                                                    $c = 0;
-                                                @endphp
-                                                <div  id="traveler{{ $i }}"
-                                                    class="no_of_travelers col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label for="day" class="form-label lables" id="">Birth date of the <?php echo $ordinal_words[$i]; ?> Traveller</label>
-                                                        </div>
-                                                        <div style="padding-right:0px;padding-left: 22px;"
-                                                            class="col-md-7 padding-left-eight-on-mobile">
-                                                            <label for="day" class="d-sm-none">Birth date of the
-                                                                oldest Traveller</label>
-                                                            <div class="custom-form-control">
-                                                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
-                                                                    class="oldTraveler" type="text"
-                                                                    inputmode="numeric" placeholder="MM/DD/YYYY" 
-                                                                    name="years[]">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-md-5">
-                                                            <label for="day" class="form-label lables"
-                                                                id="">Pre Existing of <?php echo $ordinal_words[$i]; ?></label>
-                                                        </div>
-                                                        <div style="padding-right:0px;padding-left: 22px;"
-                                                            class="col-md-7 padding-left-eight-on-mobile">
-                                                            <label for="day" class="d-sm-none">Select Pre
-                                                                Existing</label>
-                                                            <div class="custom-form-control">
-                                                                <select id="pre_existing{{ $i }}"
-                                                                    name="pre_existing[]" class="form-input">
-                                                                    <option value="">Select Pre Existing Condition
-                                                                    </option>
-                                                                    <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
-                                                                    <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                @if (array_search('id_3', $orderdata) == $orderi)
+                @if (isset($fields['traveller']) && $fields['traveller'] == 'on')
+                @php
+                $number_of_travel = $fields['traveller_number'];
+                @endphp
+                @if ($number_of_travel > 0)
+                <div class="col-md-5">
+                    <label for="number_travelers" class="form-label lables" id="">Number
+                        of Travellers</label>
+                </div>
+                <div class="col-md-7">
+                    <label for="number_travelers" class="d-sm-none">Number of Travellers</label>
+                    <div class="custom-form-control">
+                        <select onchange="checknumtravellers(this.value)" required class="form-input"
+                            name="number_travelers" id="number_travelers">
+                            <option value="">Number of Travellers</option>
+                            @for ($i = 1; $i <= $number_of_travel; $i++) <option @if(isset($_GET['number_travelers']))
+                                @if($_GET['number_travelers']==$i) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                </option>
+                                @endfor
+                        </select>
+                    </div>
+                </div>
+                @if(isset($_GET['years']))
+                @foreach($_GET['years'] as $key=> $year)
+                @if($year)
+                @php
+                $ordinal_words = ['oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
+                'eighth'];
+                $c = 0;
+                @endphp
+                <div id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="day" class="form-label lables" id="">Birth date of the
+                                <?php echo $ordinal_words[$i]; ?> Traveller
+                            </label>
+                        </div>
+                        <div style="padding-right:0px;padding-left: 22px;"
+                            class="col-md-7 padding-left-eight-on-mobile">
+                            <label for="day" class="d-sm-none">Birth date of the
+                                oldest Traveller</label>
+                            <div class="custom-form-control">
+                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text"
+                                    inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="day" class="form-label lables" id="">Pre Existing of
+                                <?php echo $ordinal_words[$i]; ?>
+                            </label>
+                        </div>
+                        <div style="padding-right:0px;padding-left: 22px;"
+                            class="col-md-7 padding-left-eight-on-mobile">
+                            <label for="day" class="d-sm-none">Select Pre
+                                Existing</label>
+                            <div class="custom-form-control">
+                                <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
+                                    <option value="">Select Pre Existing Condition
+                                    </option>
+                                    <option @if($_GET['pre_existing'][$key]=='yes' ) selected @endif value="yes">Yes
+                                    </option>
+                                    <option @if($_GET['pre_existing'][$key]=='no' ) selected @endif value="no">No
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
 
-                
+
 
                 @endif
                 @endforeach
@@ -274,18 +289,21 @@
                 'eighth'];
                 $c = 0;
                 @endphp
-                @for ($i = 1; $i <= $number_of_travel; $i++) <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                @for ($i = 1; $i <= $number_of_travel; $i++) <div style="display: none;" id="traveler{{ $i }}"
+                    class="no_of_travelers col-md-12">
                     <div class="row">
                         <div class="col-md-5">
                             <label for="day" class="form-label lables" id="">Birth date of the
                                 <?php echo $ordinal_words[$i]; ?> Traveller
                             </label>
                         </div>
-                        <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
+                        <div style="padding-right:0px;padding-left: 22px;"
+                            class="col-md-7 padding-left-eight-on-mobile">
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" onkeyup="calculateAge(this.value)" placeholder="MM/DD/YYYY" name="years[]">
+                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric"
+                                    onkeyup="calculateAge(this.value)" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -293,7 +311,8 @@
                                 <?php echo $ordinal_words[$i]; ?>
                             </label>
                         </div>
-                        <div style="padding-right:0px;padding-left: 22px;" class="col-md-7 padding-left-eight-on-mobile">
+                        <div style="padding-right:0px;padding-left: 22px;"
+                            class="col-md-7 padding-left-eight-on-mobile">
                             <label for="day" class="d-sm-none">Select Pre
                                 Existing</label>
                             <div class="custom-form-control">
@@ -344,7 +363,8 @@
         @if (isset($fields['sdate']) && $fields['sdate'] == 'on' && isset($fields['edate']) && $fields['edate'] == 'on')
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <div class="col-md-5 col-xs-12 ">
-            <label class="input-label preinfo">Start Date of Coverage <i class="fa fa-info" style="z-index: 99999;"><span>
+            <label class="input-label preinfo">Start Date of Coverage <i class="fa fa-info"
+                    style="z-index: 99999;"><span>
                         <strong>Start Date</strong><br>
                         The date of the coverage start from.
                     </span></i>
@@ -352,11 +372,17 @@
         </div>
         <div class="col-md-7">
             <label for="departure_date" class="d-none">Start Date of Coverage</label>
-            <label for="" onclick="(this.type='date')" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
+            <label for="" onclick="(this.type='date')"
+                style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
                 <i class="fa fa-calendar" style="border-right: 1px solid #666;padding-right: 8px;"></i>
             </label>
             <div class="custom-form-control">
-                <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control" type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly
+                    inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
+                    id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control"
+                    type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?>
+                onchange="supervisayes()"
+                <?php } ?>>
                 <script>
                     $('#departure_date').datepicker({
                         format: 'yyyy-mm-dd'
@@ -377,13 +403,17 @@
         </div>
         <div class="col-md-7">
             <label for="departure_date" class="d-none">End Date of Coverage</label>
-            <label for="departure_date" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
+            <label for="departure_date"
+                style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
                 <i class="fa fa-calendar" onclick="" style="border-right: 1px solid #666;padding-right: 8px;"></i>
             </label>
             <div class="custom-form-control">
 
 
-                <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date" autocomplete="off" name="return_date" value="" class="form-control" type="text" placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
+                <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif
+                    style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date"
+                    autocomplete="off" name="return_date" value="" class="form-control" type="text"
+                    placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
 
                 @if ($data->pro_supervisa != 1)
                 <script>
@@ -408,11 +438,14 @@
         </div>
         <div class="col-md-7">
             <label for="savers_email" class="d-sm-none">Email</label>
-            <label class="icon-left" for="savers_email" style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top: 0px;width: 42px;z-index: 2; left:14px;">
+            <label class="icon-left" for="savers_email"
+                style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top: 0px;width: 42px;z-index: 2; left:14px;">
                 <i class="fa fa-envelope-o" style="border-right: 1px solid #666;padding-right: 8px;"></i>
             </label>
             <div class="custom-form-control">
-                <input type="text" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif name="savers_email" placeholder="name@example.com" required id="savers_email" class="oldTraveler" style="padding-left: 40px !important">
+                <input type="text" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif
+                    name="savers_email" placeholder="name@example.com" required id="savers_email" class="oldTraveler"
+                    style="padding-left: 40px !important">
             </div>
         </div>
         @endif
@@ -487,7 +520,8 @@
         <div class="col-md-7">
             <label for="" class="d-sm-none">Do you require Family Plan ?</label>
             <div class="custom-form-control">
-                <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
+                <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan"
+                    id="selectfamilyplan">
                     <option value="">--- Please Choose ---</option>
                     <option value="yes">Yes</option>
                     <option selected value="no">No</option>
@@ -518,8 +552,11 @@
             <img src="{{ url('public/front/bgs/low_pr_icon.png') }}">
         </div>
         <div class="col-md-6 col-xs-6 width-50-percent" style="padding-right: 14px;">
-            <span id="family_error" style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;" class="text-danger"><i class="fa fa-warning"></i> </span>
-            <button type="submit" id="getqoutesubmitbutton" class="btn  pull-right" style="display: block;border-radius: 4px !important;background-color: #12b48b;color: white;width: 200px">Get
+            <span id="family_error"
+                style="display: none; font-size: 15px;font-weight: bold;text-align: right;padding: 20px;"
+                class="text-danger"><i class="fa fa-warning"></i> </span>
+            <button type="submit" id="getqoutesubmitbutton" class="btn  pull-right"
+                style="display: block;border-radius: 4px !important;background-color: #12b48b;color: white;width: 200px">Get
                 a Quote <i class="fa fa-angle-double-right"></i> </button>
         </div>
     </div>

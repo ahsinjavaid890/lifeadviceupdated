@@ -140,9 +140,9 @@
                     </div>
                 </li> -->
                 
-                
-                <li class="menu-item">
-                    <a href="{{ url('admin/sales/allsale') }}" class="menu-link">
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -161,9 +161,40 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">All Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 40px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span></i>
+                        <span class="menu-text">Manage Sales</span><i class="menu-arrow"></i>
                     </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/sales/allsale') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text"><span class="menu-text">All Sales @if(DB::table('sales')->where('newstatus' , 'new')->count() > 0) <span style="margin-left: 40px;" class="badge badge-danger">{{ DB::table('sales')->where('newstatus' , 'new')->count() }}</span> @endif</span> </span>
+                                </a>
+                            </li>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/sales/changerequest') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Change Requests </span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/sales/extendrequest') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Extend Requests </span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{ url('admin/sales/refundrequest') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">Refund Requests </span>
+                                </a>
+                            </li>
+                           
+
+                        </ul>
+                    </div>
                 </li>
+
+                
+                
                 <!-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
