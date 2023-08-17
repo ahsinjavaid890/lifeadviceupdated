@@ -264,6 +264,12 @@
                      <h3 style="color: #2b3481!important">Claim form</h3>                      
                      <p>Our dedicated claims team is always available to provide guidance and assistance throughout the process, ensuring that your claim is handled swiftly and sympathetically.</p>
                      <p>At Life Advice Insurance Inc, we're more than just an insurance provider; we're here to support you every step of the way.</p>
+
+
+
+                     <a href=""><i class="fa fa-download"></i> Download Claim Form</a>
+
+
                   </div>
                </div>
       </div>

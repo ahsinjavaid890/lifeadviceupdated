@@ -120,18 +120,17 @@
          <div class="card mb-3">
             <div class="d-flex justify-content">
                <h3>{{ DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->f_name }} {{  DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->l_name }}</h3>
-               @if($r->status == 'pending')
+               @if($r->status == 'Pending')
                <span class="badge badge-warning">{{ $r->status }}</span>
                @endif
-               @if($r->status == 'rejected')
+               @if($r->status == 'Cancel')
                <span class="badge badge-danger">{{ $r->status }}</span>
                @endif
                @if($r->status == 'Approved')
                <span class="badge badge-success">{{ $r->status }}</span>
                @endif
             </div>
-            <div style="color: #3f3e81;
-    font-weight: 900;">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product_id)->first()->pro_name }}</div>
+            <div style="color: #3f3e81;font-weight: 900;">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product_id)->first()->pro_name }}</div>
             <div class="d-flex">
                <div class="date">
                  <span> Effective : </span>{{ Cmf::date_format($r->start_date) }}
@@ -140,8 +139,20 @@
                  <span> To : </span>{{ Cmf::date_format($r->end_date) }}
                </div>
             </div>
+            @if($r->status == 'Approved')
+            <div class="d-flex">
+               <div class="date">
+                 <span> Policy Number : </span>{{ $r->policy_number }}
+               </div>
+            </div>
+            <div class="d-flex">
+               <div class="date">
+                 <span> Purchase Confirmation Document : </span> <a href="{{ url('public/images') }}/{{ $r->policydocument }}"><i class="fa fa-download"></i> Download</a>
+               </div>
+            </div>
+            @endif
             <div class="d-flex policyid justify-content">
-               <span>Reffrence Id: {{$r->reffrence_number}} </span>
+               <span>Reffrence Id: {{$r->reffrence_number}} </span> 
                <a href="{{ url('policydetail') }}/{{ $r->id }}">View Details</a>
             </div>
          </div>
