@@ -234,10 +234,11 @@
                                                             <div class="custom-form-control">
                                                                 <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
                                                                     class="oldTraveler" type="text"
-                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
+                                                                    inputmode="numeric" placeholder="MM/DD/YYYY" 
                                                                     name="years[]">
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-md-5">
                                                             <label for="day" class="form-label lables"
                                                                 id="">Pre Existing of <?php echo $ordinal_words[$i]; ?></label>
@@ -284,7 +285,7 @@
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
+                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" onkeyup="calculateAge(this.value)" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -305,6 +306,28 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        function calculateAge(birthdate) {
+                        const today = new Date();
+                        const birth = new Date(birthdate);
+                        
+                        const age = today.getFullYear() - birth.getFullYear();
+                        const birthMonth = birth.getMonth();
+                        const todayMonth = today.getMonth();
+                        const birthDay = birth.getDate();
+                        const todayDay = today.getDate();
+
+                        if (
+                            (todayMonth < birthMonth) ||
+                            (todayMonth === birthMonth && todayDay < birthDay)
+                        ) {
+                            return age - 1;
+                        }
+                        return age;
+                        }
+ 
+
+                    </script>
 
 
         </div>

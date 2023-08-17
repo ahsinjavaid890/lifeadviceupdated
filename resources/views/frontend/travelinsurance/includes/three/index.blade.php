@@ -627,7 +627,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <div class="compare hidden-xs">
 
 
-    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="    font-weight: bold;padding: 7px 20px; box-shadow: none;border: 1px solid #999;  font-size: 16px;display: block;color: #FFF;background: #12b48b;border-radius: 5px;margin-top:2px;margin-bottom: 10px;cursor:pointer;" class="col-md-12 col-xs-5 text-center text-white" id="compare"><i class="fa fa-database"></i> Compare</label>
 
 
 </div>
@@ -679,7 +679,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
     <p><button type="submit" class="submit-btn" style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #2b3481;border-radius: 5px;margin-top: 2px; margin-bottom:10px;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
     </div>
     <div class="col-md-6 text-center" style="font-size:16px;">
-    <a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+    <a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
     <p>or</p>
     <p>BY CALLING</p>
     <p><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>

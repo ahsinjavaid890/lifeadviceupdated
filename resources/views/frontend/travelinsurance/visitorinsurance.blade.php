@@ -160,6 +160,9 @@
 @include('frontend.companypages.includes.sectionfour')
 @include('frontend.companypages.includes.faqsection')
 @include('frontend.companypages.includes.productsection')
+@php
+    $rand = rand(100000000 , 20000000);
+@endphp
 @endsection
 @section('script')
 <link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
@@ -174,6 +177,69 @@
        $('.dateofbirthfull5').mask('00/00/0000');
        $('.dateofbirthfull6').mask('00/00/0000');
    });
+</script>
+<script>
+	function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 
+    {
+	
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
+        $checkboxes.change(function(e){
+            $checkboxes.attr("disabled", false);
+            var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+            if (countCheckedCheckboxes == 1){
+                jQuery('.two_select').hide();
+                jQuery('.one_select').show();
+            }else if(countCheckedCheckboxes == 2){
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').show();
+                jQuery('.one_select').hide();
+            }else if(countCheckedCheckboxes >= 3){
+                jQuery('.compare_header_top').show();
+                jQuery('.two_select').show();
+                jQuery('.one_select').hide();
+                $checkboxes.attr("disabled", true);
+                $checkboxes.filter(':checked').attr("disabled", false);
+            }
+            else{
+                jQuery('.compare_header_top').hide();
+            }
+        });
+        $.ajax({
+            type:'GET',
+            url: '{{ url("savecompareplans") }}/'+{{ $rand }}+'/'+plan_id+'/'+product_id+'/'+coverage_ammount+'/'+deductibles+'/'+price,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                if(data){
+                    $('.compare_header_top').show();
+                    $('.compare_header_top').html(data);
+                }else{
+                    $('.compare_header_top').hide();
+                }
+            }
+        });
+    }
+    function removecomarecard(id) {
+        var $checkboxes = jQuery('.compare input[type="checkbox"]');
+        $checkboxes.attr("disabled", false);
+        $.ajax({
+            type:'GET',
+            url: '{{ url("removecomarecard") }}/'+id,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                if(data){
+                    $('.compare_header_top').show();
+                    $('.compare_header_top').html(data);
+                }else{
+                    $('.compare_header_top').hide();
+                }
+                
+            }
+        });
+    }
 </script>
 <script>
 $(".sum_insured2").select2({
@@ -250,6 +316,9 @@ $(".do_you_smoke6").select2({
     allowClear: false
 });
 $( document ).ready(function() {
+
+	
+
 function c(passed_month, passed_year, calNum) {
 	var calendar = calNum == 0 ? calendars.cal1 : calendars.cal2;
 	makeWeek(calendar.weekline);

@@ -387,8 +387,8 @@ $broker = $request->broker;
 
 
       
-        <div class="grid-list col-md-3 custom_comparebtn">
-            <div class="checkboxbtn col-md-12">
+        <div class="grid-list col-md-3 ">
+            <div class=" col-md-12">
 
                 {{-- <input type="checkbox" data-planid="99" data-insuranceid="1381"
                     data-planlogo="assets/img/plans/output-onlinepngtools_1621638516.png" data-dedid="3"
@@ -399,7 +399,14 @@ $broker = $request->broker;
                 
 
 
-                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="display: block;
+                    color: rgb(68, 68, 68);
+                    border-radius: 5px;
+                    padding: 5px 20px;
+                    background: rgb(255, 255, 255);
+                    border: 2px solid rgb(221, 221, 221);
+                    margin-bottom: 5px;
+                    cursor: pointer;"><i class="fa fa-database"></i> Compare</label>
             </div>
         </div>
     </div>
@@ -407,6 +414,12 @@ $broker = $request->broker;
 
 
     <div class="col-md-12 col-xs-12 summary_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial; background: rgb(255, 255, 255) none repeat scroll 0% 0%;  padding: 10px 0; display: none;">
+        <div class="row">
+            <div class="col-12">
+                <a href="javascript:void(0)" onclick="$('.summary_<?php echo $deductible . $plan_id; ?>').fadeToggle();"
+                    class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+            </div>
+        </div>
       <div class="row">
       <div class="col-md-6 col-xs-6 text-left">
           <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
@@ -616,7 +629,7 @@ $broker = $request->broker;
     background: #1bbc9b;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 col-xs-12 text-center contact-details" style="font-size:16px;">
-<a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+<a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
 <p style=";">or</p>
 <p style="">BY CALLING</p>
 <p style=""><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>

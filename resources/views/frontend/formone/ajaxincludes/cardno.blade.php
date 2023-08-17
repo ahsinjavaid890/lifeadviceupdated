@@ -493,13 +493,7 @@ if($second_show == '1' && $second_total_price > 0){
 
 
 
-            <div class="compare compare-check  justify-content-end display-none-on-mobile ">
-
-                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5 text-center" id="compare"><i class="fa fa-database"></i> Compare</label>
-
-
-                
-            </div>
+          
             <div class="qoute-logo display-none-on-mobile">
                 <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
             </div>
@@ -509,9 +503,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <div class="qoute-logo">
                     <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
                 </div>
-                <div class="compare compare-check  justify-content-end d-flex">
-                    <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5 text-center" id="compare"><i class="fa fa-database"></i> Compare</label>
-                </div>
+                
             </div>
 
 
@@ -525,6 +517,11 @@ if($second_show == '1' && $second_total_price > 0){
               </div>
               <div class="buy_now">
                 <span data-toggle="modal" data-target="#myModal<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="btn btn-block text-white">Buy</span>
+              </div>
+              <div>
+                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"  style="    background: #5ea047;
+                    color: white !important;
+                    border-radius: 33px;cursor: pointer" class="mt-1 p-2 col-md-12 col-xs-5 text-center" id="compare"><i class="fa fa-database"></i> Compare</label>
               </div>
               <div id="myModal<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="modal zoom-in ahByNowbtn" role="dialog" aria-labelledby="myModalLabel" aria-modal="false">
                   <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">

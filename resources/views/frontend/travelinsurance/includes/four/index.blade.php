@@ -3,7 +3,7 @@
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script>
-<?php
+    <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
 ?>
 var Slider_Values = [<?php
@@ -61,28 +61,28 @@ var SliderValues = [0,<?php
                 } ?>];
 var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
 $(function () {
-    $("#sum_slider").slider({
+    $("#sum_slider1").slider({
         range: "min",
         min: 0,
         max: SliderValues.length - 1,
         step: 1,
         value: iValue,
         slide: function (event, ui) {
-            $('#coverage_amount').text(SliderValues[ui.value]);
+            $('#coverage_amount1').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
             for (i = 0; i < SliderValues.length; i++) {
                 var group = SliderValues[i];
                 $('.coverage-amt-'+group).hide();
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount1" ).val( "$" + SliderValues[ui.value] );
         }
     });
 
 });
-  </script>
+</script>
 <script>
-function changedisplay(){
+    function changedisplay(){
 var displayvalue = document.getElementById('change_display').value;
 if(displayvalue == '0'){
     $('.filterdiv').attr('style','display: block !important');
@@ -94,7 +94,7 @@ if(displayvalue == '0'){
 }
 </script>
 <div class="dh-listings " id="dh-get-quote">
-<?php
+    <?php
 //  error_reporting(E_ERROR);
 $startdate = $request->departure_date;
 $enddate = $request->return_date;
@@ -175,27 +175,43 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 }
 ?>
     <div class="container">
-    <div class="row">
-        <div class="col-md-12 visible-xs">
-           <button type="button" class="btn" onclick="changedisplay()" style="display: block;width: 100%;background: #FFF !important;color: #333 !important;padding: 10px;"><i class="fa fa-gear"></i> Change Coverage</button>
-    </div>
-    <input type="hidden" id="change_display" name="change_display" value="0">
-    
-
-<div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
-   <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-    <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
-      <h4 class="coverage mt-3" style="padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-      <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;"></div>
-      <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-      <div id="slider" class="mt-0" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-   </div>
-</div>
+        <div class="row">
+            <div class="col-md-12 visible-xs">
+                <button type="button" class="btn" onclick="changedisplay()"
+                    style="display: block;width: 100%;background: #FFF !important;color: #333 !important;padding: 10px;"><i
+                        class="fa fa-gear"></i> Change Coverage</button>
+            </div>
+            <input type="hidden" id="change_display" name="change_display" value="0">
 
 
-<div class="col-md-9 mt-3" style="padding:0;" id="listprices">
+            <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
+                <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+                    <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
+                    <h4 class="coverage mt-3"
+                        style="padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
+                        <input type="text" id="coverage_amount1" name="coverage_amount"
+                            value="$<?php echo $request->sum_insured2;?>"
+                            style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
+                    </h4>
+                    <div id="sum_slider1"
+                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;">
+                    </div>
+                    <h4 class="deductible"
+                        style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                        Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
+                            value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>"
+                            style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;">
+                    </h4>
+                    <div id="slider" class="mt-0"
+                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
 
-            <?php
+
+            <div class="col-md-9 mt-3" style="padding:0;" id="listprices">
+
+                <?php
         $addinquery = '';
         $lessquery = '';
         if($request->pre_existing == 'yes' || $request->pre_existing == '1'){
@@ -429,56 +445,78 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 if($show == '1' && $total_price > 0){
 ?>
 
- <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-                        <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>"
-                             style="display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
-                            <div class="row plan-details   deductable-<?php echo $deductible; ?>"
-                                 style=" display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-                                <div class="col-md-2 col-sm-6 hidden-xs">
-                                    <div class=" center aligned middle aligned column">
-                                        <div class="compare col-md-12 text-center">
-                                            <i class="fa fa-exclamation-circle dh-toggle hidden-md" onclick="showdetails(<?php echo $plan_id; ?>)" style="cursor:pointer;position: absolute;top: 40%;left: -10px;" aria-hidden="true"></i> 
-<div class="compare text-center hidden-xs" style="padding-top: 7px;">
-
-
-    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
-
-
-</div>
-
+                <div class="desktop-compare listing-item"
+                    data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
+                    <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>"
+                        style="display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+                        <div class="row plan-details align-items-center  deductable-<?php echo $deductible; ?>"
+                            style=" display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
+                            <div class="col-md-1 col-sm-6 hidden-xs">
+                                <div class=" center aligned middle aligned column">
+                                    <div class="compare col-md-12 text-center">
+                                        <i class="fa fa-exclamation-circle dh-toggle hidden-md"
+                                            onclick="showdetails(<?php echo $plan_id; ?>)"
+                                            style="cursor:pointer;position: absolute;top: 40%;left: -10px;"
+                                            aria-hidden="true"></i>
+                                        <div class="compare text-center hidden-xs" style="padding-top: 7px;">
                                         </div>
+
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col-md-3 col-xs-6 logogd"
-                                     style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
-                                    <img style="height:auto; width:auto; margin-left: 20px"
-                                         src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"/>
+                            <div class="col-md-4 col-xs-6 logogd"
+                                style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
+                                <img style="height:auto; width:auto; margin-left: 20px"
+                                    src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" />
 
-                                </div>
-                                <div class="col-md-4 col-xs-6 text-center" id="price">
+                            </div>
+                            <div class="col-md-4 col-xs-6 text-center" id="price">
 
-                                    <h3 style="display:inline;color: #000;font-weight: bold;    font-size: 30px;">
-                                        $<?php $explode = explode('.',number_format($total_price,2));
-                                        ?><span><?php echo str_replace(',', '',$explode[0]).'.';?><sup class="superior"><?php echo $explode[1];?></sup></span></h3>
-                                        <?php if($monthly_two == '1'){?>
-                                           
-        <h2 style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 10px; width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?></small></h2>
-        <?php } ?>  
-                                    <p>
-                                        $<?php echo $deductible; ?> Deductible <br/>
-                                    </p>
+                                <h3 style="display:inline;color: #000;font-weight: bold;    font-size: 30px;">
+                                    $
+                                    <?php $explode = explode('.',number_format($total_price,2));
+                                        ?><span>
+                                        <?php echo str_replace(',', '',$explode[0]).'.';?><sup class="superior">
+                                            <?php echo $explode[1];?>
+                                        </sup>
+                                    </span>
+                                </h3>
+                                <?php if($monthly_two == '1'){?>
 
-                                </div>
-                                <div class="col-md-12 visible-xs"><div style="clear:both;"></div></div>
-                                
-                                <div class="col-md-3 col-xs-6 visible-xs text-center">
-                                                <label class="compare" style="border: 1px solid #999; text-align: center; background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(0, 0, 0); font-size: 16px; text-transform: none; font-weight: normal; padding: 8px; width: 100%;border-radius: 5px;cursor: pointer;" id="mob_compare_<?php echo $sum_insured.$deductible.$plan_id;?>" onclick="mobcomparefunc_<?php echo $sum_insured.$deductible.$plan_id; ?>()">
-<input data-productid="<?php echo $data->pro_id; ?>" data-pid="<?php echo $plan_id; ?>" type="checkbox" tabindex="0" class="hidden1" value="<?php echo $total_price; ?>" style="height: auto;margin: 0 auto;" onclick="comparetest()"> Compare
-</label>                                                
-                                                <input type="hidden" value="0" id="mobcurrent_<?php echo $sum_insured.$deductible.$plan_id; ?>">
-                                                
-                                    <script>
+                                <h2
+                                    style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 10px; width: auto;">
+                                    $
+                                    <?php echo number_format($monthly_price,2);?>/Month<small
+                                        style="color: #f5821f;font-weight: bold;margin-left: 1px;">
+                                        <?php echo $num_months;?>
+                                    </small>
+                                </h2>
+                                <?php } ?>
+                                <p>
+                                    $
+                                    <?php echo $deductible; ?> Deductible <br />
+                                </p>
+
+                            </div>
+                            <div class="col-md-12 visible-xs">
+                                <div style="clear:both;"></div>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6 visible-xs text-center">
+                                <label class="compare"
+                                    style="border: 1px solid #999; text-align: center; background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(0, 0, 0); font-size: 16px; text-transform: none; font-weight: normal; padding: 8px; width: 100%;border-radius: 5px;cursor: pointer;"
+                                    id="mob_compare_<?php echo $sum_insured.$deductible.$plan_id;?>"
+                                    onclick="mobcomparefunc_<?php echo $sum_insured.$deductible.$plan_id; ?>()">
+                                    <input data-productid="<?php echo $data->pro_id; ?>"
+                                        data-pid="<?php echo $plan_id; ?>" type="checkbox" tabindex="0" class="hidden1"
+                                        value="<?php echo $total_price; ?>" style="height: auto;margin: 0 auto;"
+                                        onclick="comparetest()"> Compare
+                                </label>
+                                <input type="hidden" value="0"
+                                    id="mobcurrent_<?php echo $sum_insured.$deductible.$plan_id; ?>">
+
+                                <script>
                                     function mobcomparefunc_<?php echo $sum_insured.$deductible.$plan_id; ?>(){
                                     if(document.getElementById('mobcurrent_<?php echo $sum_insured.$deductible.$plan_id; ?>').value == '0'){
                                     document.getElementById('mobcurrent_<?php echo $sum_insured.$deductible.$plan_id; ?>').value = '1';
@@ -490,45 +528,73 @@ if($show == '1' && $total_price > 0){
                                     document.getElementById('mob_compare_<?php echo $sum_insured.$deductible.$plan_id; ?>').style.color = '#444';
                                     }
                                     }
-                                    </script>
-                                    <div style="clear:both;"></div>
-                                </div>
+                                </script>
+                                <div style="clear:both;"></div>
+                            </div>
 
 
-                                <div class="col-md-3 col-xs-6" style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
+                            <div class="col-md-3 col-xs-6"
+                                style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
                                 <?php
                                 $dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
                                 $agent = $request->agent;
                                 $broker = $request->broker;
                                 ?>
 
-                                    <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" class="submit-btn"
-                                            data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger"
-                                            name="buynow"><i class="fa fa-shopping-cart"></i> Buy Now
-                                    </button>
-                                </div>
+                                <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
+                                    class="submit-btn" data-value="<?php echo $plan_id; ?>"
+                                    class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
+                                    Now
+                                </button>
 
-                                <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"
-                                     style="display:none;">
-                                     <div class="row">
+                                <label
+                                     onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
+                                       style="cursor: pointer;background:#00c2a2;color:white;font-weight:700" class="pb-2 mt-2 col-md-12 col-xs-5 btn btn-lg" id="compare"><i
+                                             class="fa fa-database"></i> Compare</label>
+                            </div>
+
+                            <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>" style="display:none;">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="javascript:void(0)"
+                                        onclick="showdetails(<?php echo $plan_id; ?>)"
+                                        class="pull-right text-danger" style="font-size:16px;"><i
+                                            class="fa fa-close"></i></a>
+                                        </div>
+                                        </div>
+                              
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
-                                        <hr/>
+                                        <hr />
                                         <div style="font-size:70%;">
-                                            <b><?php echo $plan_name;?> - <?php echo $plan_id;?></b><br/>
-                                            <b>Plan</b> <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?><br/>
-                                            Days&nbsp; <?php echo $num_of_days; ?> &nbsp;
-                                            (<?php echo $startdate . " - " . $enddate; ?>)<Br/>
-                                            Total&nbsp; $<?php echo $total_price; ?>
-                                        <?php
+                                            <b>
+                                                <?php echo $plan_name;?> -
+                                                <?php echo $plan_id;?>
+                                            </b><br />
+                                            <b>Plan</b>
+                                            <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?><br />
+                                            Days&nbsp;
+                                            <?php echo $num_of_days; ?> &nbsp;
+                                            (
+                                            <?php echo $startdate . " - " . $enddate; ?>)<Br />
+                                            Total&nbsp; $
+                                            <?php echo $total_price; ?>
+                                            <?php
                                         $per = 0;
                     foreach($ages_array as $person_age){
                     $per++;
                                         ?>
-                                        <br/><b>Person <?php echo $per;?></b><br/>
-                                        Age: <?php echo $person_age; ?><br/>
-                                        Coverage Amount: <?php echo $sum_insured; ?> <br/>
-                                        Premium  <?php
+                                            <br /><b>Person
+                                                <?php echo $per;?>
+                                            </b><br />
+                                            Age:
+                                            <?php echo $person_age; ?><br />
+                                            Coverage Amount:
+                                            <?php echo $sum_insured; ?> <br />
+                                            Premium
+                                            <?php
                     $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
                     $countarraytwo =  count($p_planrates);
@@ -624,7 +690,7 @@ if($show == '1' && $total_price > 0){
                                         $person_price = $person_price - $p_discountonplan;
 
                                         echo number_format($person_price,2); ?>
-                            <?php } 
+                                            <?php } 
                         }?>
                                         </div>
                                     </div>
@@ -633,9 +699,11 @@ if($show == '1' && $total_price > 0){
                                         $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
                                         ?>
                                         <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
-                                        <hr/>
+                                        <hr />
                                         <ul>
-                                            <li>$<?php echo $request->deductible1; ?> deductible</li>
+                                            <li>$
+                                                <?php echo $request->deductible1; ?> deductible
+                                            </li>
                                             <?php
                                                 if ($features->count() > 1 ) {
                                                     foreach($features as $feature) {
@@ -648,8 +716,10 @@ if($show == '1' && $total_price > 0){
                                     </div>
                                     <div class="col-md-3">
                                         <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                                        <span style="display: none;"><? //"SELECT * FROM wp_dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_REQUEST['sum_insured']."' limit 1000" ?></span>
-                                        <hr/>
+                                        <span style="display: none;">
+                                            <? //"SELECT * FROM wp_dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_REQUEST['sum_insured']."' limit 1000" ?>
+                                        </span>
+                                        <hr />
                                         <?php
                                         //foreach ( get_all_pdfpolicy( $plan['plan'] ) as $pdfpolicy ):
                                             //echo "<a href='$pdfpolicy->pdfpolicy' style='font-size: 70%;'>Sample Policy</a>";
@@ -658,71 +728,92 @@ if($show == '1' && $total_price > 0){
                                     </div>
                                 </div>
                             </div>
-                                
-<div style="clear:both;"></div>
-<div class="row buynow_<?php echo $deductible.$plan_id;?>" style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
-<div class="col-md-6" style="background:#F9F9F9;padding: 15px;">
-<h3 style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">Buy Online</h3>
-<p style="font-weight: bold;">In three simple steps you can purchase your policy, easily and securely, online.</p>
 
-<p>
-    <form method="post" action="{{ url('apply') }}">
-            @csrf
-            <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a href="/">Privacy Policy</a></p>
-            <p></p>
-            <input type="hidden" value="{{ $request->savers_email }}" name="email">
-            <input type="hidden" value="{{ $request->fname }}" name="fname">
-            <input type="hidden" value="{{ $request->lname }}" name="lname">
-            <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-            <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-            <input type="hidden" value="{{ $deductible }}" name="deductibles">
-            <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-            <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-            @foreach($request->years as $year)
-            <input type="hidden" name="years[]" value="{{ $year }}">
-            @endforeach
-            @foreach($request->pre_existing as $preexisting)
-    <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
-    @endforeach
-            <input type="hidden" value="{{ $num_of_days }}" name="days">
-            <input type="hidden" value="{{ $comp_name }}" name="companyName">
-            <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-            <input type="hidden" value="{{ $plan_name }}" name="planname">
-            <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-            <input type="hidden" value="{{ $startdate }}" name="tripdate">
-            <input type="hidden" value="{{ $enddate }}" name="tripend">
-            <input type="hidden" value="{{ $total_price }}" name="premium">
-            <input type="hidden" value="" name="cdestination">
-            <input type="hidden" value="{{ $product_name }}" name="product_name">
-            <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-            <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
-            <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-            <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-            <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-            <input type="hidden" value="{{ $dob }}" name="dob">
-            <input type="hidden" value="{{ $agent }}" name="agent">
-            <input type="hidden" value="{{ $broker }}" name="broker">
-            <button class="submit-btn" type="submit"><i class="fa fa-shopping-cart"></i> Buy Now</button>
-        </form>
-</p>
-</div>
-<div class="col-md-6 text-center" style="font-size:16px;">
-<a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
-<p>or</p>
-<p>BY CALLING</p>
-<p><a href="tel:+18555005041" style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a></p>
-<p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
-<p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
-</div>
-</div>
+                            <div style="clear:both;"></div>
+                            <div class="row buynow_<?php echo $deductible.$plan_id;?>"
+                                style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
+                                <div class="col-md-6" style="background:#F9F9F9;padding: 15px;">
+                                    <h3
+                                        style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">
+                                        Buy Online</h3>
+                                    <p style="font-weight: bold;">In three simple steps you can purchase your policy,
+                                        easily and securely, online.</p>
 
+                                    <p>
+                                    <form method="post" action="{{ url('apply') }}">
+                                        @csrf
+                                        <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give
+                                            permission to LifeAdvice.ca to transfer my quote information and contact
+                                            details to
+                                            <?php echo $comp_name;?> in order to complete the purchase of travel
+                                            insurance. LifeAdvice values your privacy. For details, see our <a
+                                                href="/">Privacy Policy</a>
+                                        </p>
+                                        <p></p>
+                                        <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                                        <input type="hidden" value="{{ $request->fname }}" name="fname">
+                                        <input type="hidden" value="{{ $request->lname }}" name="lname">
+                                        <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                                        <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                                        <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                                        <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                                        <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                                        @foreach($request->years as $year)
+                                        <input type="hidden" name="years[]" value="{{ $year }}">
+                                        @endforeach
+                                        @foreach($request->pre_existing as $preexisting)
+                                        <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+                                        @endforeach
+                                        <input type="hidden" value="{{ $num_of_days }}" name="days">
+                                        <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                                        <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                                        <input type="hidden" value="{{ $plan_name }}" name="planname">
+                                        <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                                        <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                                        <input type="hidden" value="{{ $enddate }}" name="tripend">
+                                        <input type="hidden" value="{{ $total_price }}" name="premium">
+                                        <input type="hidden" value="" name="cdestination">
+                                        <input type="hidden" value="{{ $product_name }}" name="product_name">
+                                        <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                                        <input type="hidden" value="{{ $request->primary_destination }}"
+                                            name="destination">
+                                        <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                                        <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                                        <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                                        <input type="hidden" value="{{ $dob }}" name="dob">
+                                        <input type="hidden" value="{{ $agent }}" name="agent">
+                                        <input type="hidden" value="{{ $broker }}" name="broker">
+                                        <button class="submit-btn" type="submit"><i class="fa fa-shopping-cart"></i> Buy
+                                            Now</button>
+                                    </form>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 text-center" style="font-size:16px;">
+                                    <a href="javascript:void(0)"
+                                        onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();"
+                                        class="pull-right text-danger" style="font-size:16px;"><i
+                                            class="fa fa-close"></i></a>
+                                    <p>or</p>
+                                    <p>BY CALLING</p>
+                                    <p><a href="tel:+18555005041"
+                                            style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a>
+                                    </p>
+                                    <p
+                                        style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">
+                                        CALL CENTRE HOURS</p>
+                                    <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm
+                                        EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed
+                                        on holidays.</p>
+                                </div>
                             </div>
 
+                        </div>
 
-                         </div>
+
                     </div>
+                </div>
 
-<?php
+                <?php
     if ($sum_insured == $request->sum_insured2){
         $mailitem[] = [
             'deductible' => $deductible,
@@ -738,7 +829,7 @@ if($show == '1' && $total_price > 0){
     }
     $display = ''; }}}} ?>
 
-<?php
+                <?php
 if ($request->sendemail == 'yes') {
     $counter = 0;
     if (isset($request->savers_email)) {
@@ -753,21 +844,21 @@ if ($request->sendemail == 'yes') {
     }
 }
 ?>
+            </div>
         </div>
-     </div>
- </div>
+    </div>
     <!--    row end-->
 
-<script>
-jQuery(function($) {
+    <script>
+        jQuery(function($) {
 var divList = $(".listing-item");
 divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
 
 $("#listprices").html(divList);
 })
-</script>
-<script>
-    function showdetails(id)
+    </script>
+    <script>
+        function showdetails(id)
     {
         $('.dh-toggle-show-hide-'+id).slideToggle();
     }
@@ -790,10 +881,9 @@ $("#listprices").html(divList);
         buynow_selected = id;
         jQuery(".buynow-btn-" + id).slideToggle();
     });
-</script>
+    </script>
 
     <script>
-
         jQuery( function() {
 
             var visiblePlans = jQuery(".plan-details:visible").length;
@@ -815,12 +905,12 @@ $("#listprices").html(divList);
 
     </script>
 
-   <script>
-$(document).ready(function(){
+    <script>
+        $(document).ready(function(){
     $(".toggle-216").click(function(){
         $(".show-toggle-216").toggle(1000);
     });
 });
-</script>
+    </script>
 
 </div>

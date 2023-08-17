@@ -698,7 +698,7 @@ $broker = $request->broker;
     background: #1bbc9b;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 col-xs-12 text-center contact-details" style="font-size:16px;">
-<a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+<a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
 <p style=";">or</p>
 <p style="">BY CALLING</p>
 <p style=""><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>

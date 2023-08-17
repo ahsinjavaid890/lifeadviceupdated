@@ -440,7 +440,7 @@ if($show == '1' && $total_price > 0){
                             } else {
                                 echo 'none';
                             } ?>;">
-                            <div class="col-md-5 col-xs-12 logogd">
+                            <div class="col-md-4 col-xs-12 logogd">
                                 <div class="col-md-12 col-xs-12 text-center"
                                     style="border: 0px solid #000;padding: 5px 0 10px;text-align: center;background: #EEE;border-radius: 10px;">
                                     <img style="max-height:60px; width:auto;"
@@ -495,7 +495,7 @@ if($show == '1' && $total_price > 0){
 
                             </div>
 
-                            <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+                            <div class="col-md-2 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
                               
                                     
                                        

@@ -211,8 +211,12 @@
             contentType: false,
             processData: false,
             success: function(data) {
-                $('.compare_header_top').show();
-                $('.compare_header_top').html(data);
+                if(data){
+                    $('.compare_header_top').show();
+                    $('.compare_header_top').html(data);
+                }else{
+                    $('.compare_header_top').hide();
+                }
             }
         });
     }
@@ -227,8 +231,12 @@
             contentType: false,
             processData: false,
             success: function(data) {
-                $('.compare_header_top').show();
-                $('.compare_header_top').html(data);
+                if(data){
+                    $('.compare_header_top').show();
+                    $('.compare_header_top').html(data);
+                }else{
+                    $('.compare_header_top').hide();
+                }
             }
         });
     }

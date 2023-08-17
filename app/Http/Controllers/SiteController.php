@@ -59,49 +59,52 @@ class SiteController extends Controller
         }
         $data = DB::table('compare_plans')->where('comparenumber', $rand)->get();
 
-        echo '<div class="container">
-                <div class="d-flex showcomparediv">';
-        foreach ($data as $r) {
-            $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
+        if($data->count()){
+            echo '<div class="container">
+            <div class="d-flex showcomparediv">';
+    foreach ($data as $r) {
+        $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
 
 
-            if ($plan->plan_name) {
-                $words = explode(" ", $plan->plan_name);
-                $acronym = "";
-                foreach ($words as $w) {
-                    $acronym .= mb_substr($w, 0, 1);
-                }
-
-                $planname = $acronym;
-            } else {
-                $planname = 'PL';
+        if ($plan->plan_name) {
+            $words = explode(" ", $plan->plan_name);
+            $acronym = "";
+            foreach ($words as $w) {
+                $acronym .= mb_substr($w, 0, 1);
             }
 
-
-
-            echo '<div class="card-plan-compare">
-                                    <span  class="card-plan-compare-title">
-                                        <span  class="card-plan-compare-title-full">';
-            if ($plan->plan_name) {
-                echo $plan->plan_name;
-            } else {
-                echo 'Plan ' . $data->count();
-            }
-            echo '</span>
-                                        <span class="card-plan-compare-title-abbr">' . $planname . '</span>
-                                    </span>
-                                    <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
-                                </div>';
-        }
-        echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
-        if ($data->count() > 1) {
-            echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $rand . '">Compare</a>';
+            $planname = $acronym;
         } else {
-            echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+            $planname = 'PL';
         }
 
-        echo '</div>  
-            </div>';
+        echo '<div class="card-plan-compare">
+                                <span  class="card-plan-compare-title">
+                                    <span  class="card-plan-compare-title-full">';
+        if ($plan->plan_name) {
+            echo $plan->plan_name;
+        } else {
+            echo 'Plan ' . $data->count();
+        }
+        echo '</span>
+                                    <span class="card-plan-compare-title-abbr">' . $planname . '</span>
+                                </span>
+                                <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
+                            </div>';
+    }
+    echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
+    if ($data->count() > 1) {
+        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $rand . '">Compare</a>';
+    } else {
+        echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+    }
+
+    echo '</div>  
+        </div>';
+        }
+
+
+       
     }
     public function removecomarecard($id)
     {
@@ -109,33 +112,35 @@ class SiteController extends Controller
         DB::table('compare_plans')->where('id', $id)->delete();
         $data = DB::table('compare_plans')->where('comparenumber', $compare_plans->comparenumber)->get();
 
-        echo '<div class="container">
-                <div class="d-flex showcomparediv">';
-        foreach ($data as $r) {
-            $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
+        if ($data->count() > 0) {
+            echo '<div class="container">
+            <div class="d-flex showcomparediv">';
+            foreach ($data as $r) {
+                $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
 
-            echo '<div class="card-plan-compare">
-                                    <span  class="card-plan-compare-title">
-                                        <span  class="card-plan-compare-title-full">';
-            if ($plan->plan_name) {
-                echo $plan->plan_name;
-            } else {
-                echo 'Plan ' . $data->count();
+                echo '<div class="card-plan-compare">
+                                <span  class="card-plan-compare-title">
+                                    <span  class="card-plan-compare-title-full">';
+                if ($plan->plan_name) {
+                    echo $plan->plan_name;
+                } else {
+                    echo 'Plan ' . $data->count();
+                }
+                echo '</span>
+                                </span>
+                                <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
+                            </div>';
             }
-            echo '</span>
-                                    </span>
-                                    <i onclick="removecomarecard(' . $r->id . ')" class="icon icon-remove-card"></i>
-                                </div>';
-        }
-        echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
-        if ($data->count() > 1) {
-            echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $compare_plans->comparenumber . '">Compare</a>';
-        } else {
-            echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
-        }
+            echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
+            if ($data->count() > 1) {
+                echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $compare_plans->comparenumber . '">Compare</a>';
+            } else {
+                echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
+            }
 
-        echo '</div>  
-            </div>';
+            echo '</div>  
+        </div>';
+        }
     }
     public function sendcompareemail(Request $request)
     {
@@ -190,10 +195,8 @@ class SiteController extends Controller
         if ($data->stylish_price_layout == 'layout_10') {
             $returnHTML =  view('frontend.travelinsurance.includes.ten.index')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();
         }
-        if(isset($request->sendemail))
-        {
-            if($request->sendemail == 'yes')
-            {
+        if (isset($request->sendemail)) {
+            if ($request->sendemail == 'yes') {
                 $data = json_encode($request->all(), true);
                 $quotesave = new temproaryquote();
                 $quotesave->quote_id = $quoteNumber;
@@ -313,8 +316,8 @@ class SiteController extends Controller
 
         $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-        $purchasepolicyemailview = 'email.template'.$temp.'.purchasepolicy';
-        $reviewemailview = 'email.template'.$temp.'.review';
+        $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
+        $reviewemailview = 'email.template' . $temp . '.review';
         Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
             $message->to($request->email);
             $message->subject($subject);

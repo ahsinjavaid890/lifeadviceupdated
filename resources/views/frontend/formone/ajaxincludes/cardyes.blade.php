@@ -547,12 +547,7 @@ if($show == '1' && $total_price > 0){
                 </div>
                 <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
 
-                    <div class="compare compare-check  justify-content-end display-none-on-mobile">
-                        <label
-                            onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                            style="cursor: pointer" class="text-center col-md-12 col-xs-5" id="compare"><i
-                                class="fa fa-database"></i> Compare</label>
-                    </div>
+                   
                     <div class="qoute-logo display-none-on-mobile">
                         <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
                     </div>
@@ -560,12 +555,7 @@ if($show == '1' && $total_price > 0){
                         <div class="qoute-logo">
                             <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
                         </div>
-                        <div class="compare compare-check  justify-content-end d-flex">
-                            <label
-                                onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                                class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i
-                                    class="fa fa-database"></i> Compare</label>
-                        </div>
+                        
                     </div>
 
 
@@ -585,6 +575,14 @@ if($show == '1' && $total_price > 0){
                     <div class="buy_now">
                         <span data-toggle="modal" data-target="#myModal<?php echo $newdeductibleforshow . $plan_id; ?>"
                             class="btn btn-block text-white">Buy</span>
+                    </div>
+                    <div>
+                        <label
+                        onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
+                        style="background: #5ea047;
+                        color: white !important;
+                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i
+                            class="fa fa-database"></i> Compare</label>
                     </div>
                     <div id="myModal<?php echo $newdeductibleforshow . $plan_id; ?>" class="modal zoom-in ahByNowbtn" role="dialog"
                         aria-labelledby="myModalLabel" aria-modal="false">

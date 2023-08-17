@@ -512,7 +512,7 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 <p><button type="submit" style="background-color: #2b3481; width: 100%; text-align: center; border: 0;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
 </div>
 <div class="col-md-6 text-center" style="font-size:16px;">
-<a href="#" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+<a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
 <p>or</p>
 <p>BY CALLING</p>
 <p><a href="tel:8555008999" style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a></p>
@@ -525,6 +525,11 @@ $buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&trave
 
                                 
                                 <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>"  style="display:none; margin-top: 20px;border-top: 1px solid #ddd;font-family: arial;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a href="javascript:void(0)" onclick="showdetails(<?php echo $plan_id; ?>)"  class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+                                            </div>
+                                        </div>
                                     <div class="row">
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
