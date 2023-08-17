@@ -1,9 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayouteight.css') }}">
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script>
-<?php
+    <?php
 $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
 ?>
 var Slider_Values = [<?php
@@ -50,7 +47,7 @@ $(function () {
 $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
 ?>
 //Sum Insured Slider
-var SliderValues = [<?php
+var SliderValues = [0,<?php
                 $s = 0;
                 foreach($sum as $r){
                 $s++;
@@ -80,7 +77,7 @@ $(function () {
     });
 
 });
-  </script>
+</script>
 <div class="dh-listings " id="dh-get-quote">
 <?php
 //  error_reporting(E_ERROR);
@@ -166,15 +163,27 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3 col-xs-12 side-bar filterdiv hidden-xs" style="margin:10px 0;">
-            <div class="col-md-12">
-                <h3 style="margin:0;font-weight:bold;">Reference Number</h3>
-                <h3><span><?php echo rand(); ?><span></h3>
-                <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-                <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-                <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-                
-                <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+        <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
+            <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+                <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
+                <h4 class="coverage mt-3"
+                    style="padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
+                    <input type="text" id="coverage_amount1" name="coverage_amount"
+                        value="$<?php echo $request->sum_insured2;?>"
+                        style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
+                </h4>
+                <div id="sum_slider1"
+                    style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;">
+                </div>
+                <h4 class="deductible"
+                    style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                    Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
+                        value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>"
+                        style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;">
+                </h4>
+                <div id="slider" class="mt-0"
+                    style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                </div>
             </div>
         </div>
 
@@ -612,7 +621,7 @@ $broker = $request->broker;
 
 </div>
 <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
-<img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="images/<?php echo $comp_logo; ?>" class="img-responsive" />
+<img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
 </div>
 <div class="col-md-3 col-xs-6 hidden-xs text-center" style="padding-top: 15px;">
 <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">$<?php echo $deductible; ?><br/><small style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Deductible</small></h3>
@@ -832,31 +841,3 @@ $("#listprices").html(divList);
 
       
     </script>
-
-   <script>
-$(document).ready(function(){
-    $(".toggle-216").click(function(){
-        $(".dh-toggle-show-hide-216").toggle(500);
-    });
-});
-</script>
-<script>
-$(document).ready(function(){
-    $(".toggle-217").click(function(){
-        $(".dh-toggle-show-hide-217").toggle(500);
-    });
-});
-</script>
-
-</div>
-<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-<script type="text/javascript">
-   $( document ).ready(function() {
-       $('#dateofbirthfull1').mask('00/00/0000');
-       $('#dateofbirthfull2').mask('00/00/0000');
-       $('#dateofbirthfull3').mask('00/00/0000');
-       $('#dateofbirthfull4').mask('00/00/0000');
-       $('#dateofbirthfull5').mask('00/00/0000');
-       $('#dateofbirthfull6').mask('00/00/0000');
-   });
-</script>
