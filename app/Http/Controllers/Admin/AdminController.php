@@ -197,7 +197,7 @@ class AdminController extends Controller
     }
     public function allquotations()
     {
-        $data = DB::table('temproaryquotes')->paginate(10);
+        $data = DB::table('temproaryquotes')->orderby('id' , 'desc')->paginate(10);
         return view('admin/quotations/index')->with(array('data' => $data));
     }
     public function messages()
