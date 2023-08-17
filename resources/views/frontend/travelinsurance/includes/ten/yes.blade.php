@@ -358,8 +358,10 @@ if($show == '1' && $total_price > 0){
      </div>
      <div class="grid-list col-md-3 custom_comparebtn">
         <div class="checkboxbtn col-md-12">
-           <input type="checkbox" data-planid="99" data-insuranceid="1381" data-planlogo="assets/img/plans/output-onlinepngtools_1621638516.png" data-dedid="3" data-planprice="198.90" id="compare_129" class="vi-compare-plan" name="compare[]" value="compare">
-           <label for="compare_129">Compare</label>
+           <div class="compare col-md-3 col-xs-12 text-center">
+                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i
+                        class="fa fa-database"></i> Compare</label>
+            </div>
         </div>
      </div>
   </div>

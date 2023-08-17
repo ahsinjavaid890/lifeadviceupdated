@@ -529,7 +529,7 @@
     <div class="imagesection">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
+                <img style="width: 100%;" src="{{ url('public/front/bgs/Super-Visa-Insurance-visitorguard.ca.jpg') }}">
             </div>
             <div class="col-md-12">
 

@@ -116,7 +116,7 @@
                         </div>
                         <div class="col-md-3 " style="border:none;">
                             <h4 class="deductible"
-                                style="color:#2b3481; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                                style="color:#2b3481; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;margin-bottom: 10px;">
                                 Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
                                     value="$<?php if ($havethousand == 'no') {
                                         echo '0';
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-3  coverage-mobile-view" style="border-top:0px; ">
                             <h4 class="coverage"
-                                style="color:#2b3481;margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                                style="color:#2b3481;margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;margin-bottom: 10px;">
                                 Coverage: <input type="text" id="coverage_amount" name="coverage_amount"
                                     value="$<?php echo $request->sum_insured2; ?>"
                                     style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 115px;">
