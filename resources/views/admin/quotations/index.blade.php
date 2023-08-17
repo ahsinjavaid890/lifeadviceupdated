@@ -22,6 +22,7 @@
                     <table class="table table-bordered table-head-custom" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Quote ID</th>
                                 <th>Time Ago</th>                            
                                 <th>Date</th>
                                 <th>Time</th>
@@ -31,11 +32,12 @@
                         <tbody>
                             @foreach($data as $r)
                                 <tr>
+                                    <td>{{ $r->quote_id }}</td>
                                    <td>{{ Cmf::create_time_ago($r->created_at) }}</td>
                                    <td>{{ Cmf::date_format($r->created_at) }}</td>
                                    <td>{{ date('H:s a', strtotime($r->created_at)) }}</td>
                                    <td>
-                                       <a target="_blank" class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}"><i class="fa fa-eye"></i> View Quote</a>
+                                       <a target="_blank" class="btn btn-primary btn-sm" href="{{ url('getquote') }}/{{ $r->quote_id }}"><i class="fa fa-eye"></i> View Quote</a>
                                    </td>
                                 </tr>
 
