@@ -3,12 +3,9 @@
 <title>Apply</title>
 @endsection
 @section('content')
-<link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
-<script src="js/mobiscroll.jquery.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYUTCpyRfNY8Und6oYaKi5Vkqip7OIWEU&libraries=geometry,places&v=weekly"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css')}}">
-<link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css')}}">
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
@@ -414,7 +411,7 @@
 												<div class="col-md-6">
 													<div class="custom-form-control positionrelative mb-3">
 								                    	<label class="selectlabeldateofbirth">Name</label>
-								                        <input onkeydown="return /[a-z]/i.test(event.key)" name="cardholdername" id="name" maxlength="20" type="text" class="input" >
+								                        <input name="cardholdername" id="name" maxlength="20" type="text" class="input" >
 								                    </div>
 												</div>
 												<div class="col-md-6">
@@ -885,21 +882,6 @@ securitycode.addEventListener('focus', function () {
 };
 </script>
 <script type="text/javascript">
-$(function () {
-
-    var now = new Date(),
-        until = new Date(now.getFullYear() + 10, now.getMonth());
-
-    $('#expirationdate').mobiscroll().datepicker({
-        controls: ['date'],
-        dateFormat: 'MM/YYYY',
-        dateWheels: 'DD MMMM YYYY',
-        min: now,
-        max: until
-    });
-});
-</script>
-<script type="text/javascript">
     $(function() {
   var dd1 = new dropDown($('#coverage_amount'));
   
@@ -1056,7 +1038,4 @@ function displayLocation(latitude,longitude){
     );
 }
 </script>
-
-
-
 @endsection

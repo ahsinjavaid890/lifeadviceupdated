@@ -6,6 +6,7 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
+            @include('alerts.index')
             <!--begin::Card-->
             <div class="row">
                 <div class="col-md-12">
@@ -81,29 +82,55 @@
                                        <div class="col-md-6">
                                           <div class="form-group">
                                              <label>Select Policy Status</label>
-                                             <select required class="form-control" name="policy_status">
+                                             <select onchange="policystatus(this.value)" required class="form-control" name="policy_status">
                                                  <option value="">Select Status</option>
                                                  <option value="Pending">Pending</option>
                                                  <option value="Approved">Approved</option>
+                                                 <option value="Cancel">Cancel</option>
                                              </select>
                                           </div>
                                        </div>
-                                       <div class="col-md-6">
+                                       <div class="col-md-6 hideforcancle">
                                           <div class="form-group">
                                              <label>Policy Number</label>
-                                             <input required type="text" class="form-control" name="policy_number">
+                                             <input id="policy_number" required type="text" class="form-control" name="policy_number">
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row hideforcancle">
                                        <div class="col-md-12">
                                           <div class="form-group">
                                              <label>Upload Document</label>
                                              <input type="file" style="height:50px !important;" class="form-control" name="policydocument">
                                           </div>
                                        </div>
+                                    </div> 
+                                    <div class="row cancelreason" style="display: none;">
+                                       <div class="col-md-12">
+                                          <div class="form-group">
+                                             <label>Cancel Reason</label>
+                                             <textarea id="cancelreasontextarea" class="form-control" name="cancelreason"></textarea>
+                                          </div>
+                                       </div>
                                     </div>                            
-                                
+                                    <script type="text/javascript">
+                                        function policystatus(id) {
+                                            if(id == 'Cancel')
+                                            {
+                                                $('.hideforcancle').hide();
+                                                $('.cancelreason').show();
+                                                $("#cancelreasontextarea").prop('required',true);
+                                                $("#policy_number").prop('required',false);
+
+
+                                            }else{
+                                                $('.cancelreason').hide();
+                                                $("#policy_number").prop('required',true);
+                                                $('.hideforcancle').show();
+                                                $("#cancelreasontextarea").prop('required',false);
+                                            }
+                                        }
+                                    </script>
                               </div>
                               <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>

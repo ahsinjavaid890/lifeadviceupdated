@@ -737,13 +737,51 @@ class AdminController extends Controller
 
     public function policyconfermation(Request $request)
     {
-        if ($request->policydocument) {
-            $document = Cmf::sendimagetodirectory($request->policydocument);
-            $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status, 'policydocument' => $document);
-        } else {
-            $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status);
+
+        if($request->policy_status == 'Cancel')
+        {
+            $update = array('cancelreason' => $request->cancelreason, 'status' => $request->policy_status);
+            DB::table('sales')->where('id', $request->id)->update($update);
+
+            $sale = DB::table('sales')->where('id', $request->id)->first();
+            $subject = 'Update about your Policy Status | ' . $sale->reffrence_number;
+            $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+            $policystatus = 'email.template' . $temp . '.policystatus';
+            Mail::send($policystatus, ['status' => 'Cancel', 'cancelreason' => $request->cancelreason, 'reffrence_number' => $sale->reffrence_number], function ($message) use ($sale, $subject) {
+                $message->to($sale->email);
+                $message->subject($subject);
+            });
+            return redirect()->back()->with('message', 'Sales Updated Successfully');
+        }else{
+            if ($request->policydocument) {
+                $document = Cmf::sendimagetodirectory($request->policydocument);
+                $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status, 'policydocument' => $document);
+            } else {
+                $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status);
+            }
+            DB::table('sales')->where('id', $request->id)->update($update);
+            $sale = DB::table('sales')->where('id', $request->id)->first();
+            $subject = 'Update about your Policy Status | ' . $sale->reffrence_number;
+            $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+            $policystatus = 'email.template' . $temp . '.policystatus';
+            $data["email"] = $sale->email;
+            $data["title"] = $subject;
+            $data["status"] = $sale->status;
+            $data["reffrence_number"] = $sale->reffrence_number;
+            $data["policynumber"] = $request->policy_number;
+            $files = [
+                public_path('images/'.$document.''),
+            ];
+            Mail::send($policystatus, $data, function($message)use($data, $files) {
+                $message->to($data["email"], $data["email"])
+                        ->subject($data["title"]);
+     
+                foreach ($files as $file){
+                    $message->attach($file);
+                }
+                
+            });
         }
-        DB::table('sales')->where('id', $request->id)->update($update);
         return redirect()->back()->with('message', 'Sales Updated Successfully');
     }
 

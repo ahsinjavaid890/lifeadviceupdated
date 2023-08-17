@@ -5,8 +5,10 @@
     }
 
     .ui-state-active {
-        background: rgb(122, 0, 0) !important;
-        border: rgb(122, 0, 0) solid 1px !important;
+        background: #12b48b !important;
+        border: #12b48b !important;
+        text-align: center !important;
+        color: white !important;
     }
     .quotationscards{
         max-width: 100% !important;

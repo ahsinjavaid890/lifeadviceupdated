@@ -264,17 +264,17 @@
                                  <div class="col-md-6 text-md-right">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                    <div class="custom-form-control col-md-6 " >
-                                       <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                    <div style=" padding-left: 23px; padding-right: 0; " class="custom-form-control col-md-6 " >
+                                       <input  id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                     </div>
                                     <div class="col-md-6 text-md-right">
                                        <label for="year{{$i}}" class="input-label">Pre Existing of <?php echo $ordinal_words[$i];?><span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
                                     </div>
-                                    <div class="custom-form-control col-md-6 ">
+                                    <div style=" padding-left: 23px; padding-right: 0; " class="custom-form-control col-md-6 ">
                                        <select name="pre_existing[]" class="form-input">
                                           <option value="">Select Pre Existing of <?php echo $ordinal_words[$i];?></option>
                                           <option value="yes">Yes</option>
-                                          <option value="no">No</option>
+                                          <option selected value="no">No</option>
                                        </select>
                                     </div>
                                     <div id="slide_preexisting{{ $i }}" style="margin-top: 10px;" class="form-group tooltip-box">

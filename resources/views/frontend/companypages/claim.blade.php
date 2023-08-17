@@ -58,286 +58,68 @@
 <section class="claim-download">
     <div class="container-homepage">
         <div class="row">
+            <div class="col-md-12">
+                <h4>Pre Existing Plans</h4>
+            </div>
+        </div>
+        <div class="row">
+            @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('pre_existing_name')->get() as $r)
             <div class="col-md-3 mt-4">
                  <div class="card transparent-cards">
                     <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/tl.jpg')}}">
-                        <h2><span>Essential </span>Plan</h2>
+                        @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first())
+                        <img src="{{ url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->comp_logo }}">
+                        @endif
+                        <h2>{{ $r->pre_existing_name }}</h2>
                         <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
+                        <a download="true" href="{{ url('public/images') }}/{{ $r->plan_pdf_pre_existing }}" class="btn btn-block claim-btn">Policy Detail</a>
+                        <a download="true" href="{{ url('public/images') }}/{{ $r->benifit_summary_pre_existing }}" class="btn btn-block policy-btn">Benefit Summary</a>
+                        @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first())
+                            @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->claimform)
+                            <a download="true" href="{{ url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->claimform }}" class="btn btn-block claim-btn">Claim Form</a>
+                            @endif
+                        @endif
                         <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
                         <p>(Within Canada & USA)</p>
                         <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
                      </div>
                 </div>       
             </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<section class="claim-download">
+    <div class="container-homepage">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Without Pre Existing Plans</h4>
+            </div>
+        </div>
+        <div class="row">
+            @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('without_pre_existing_name')->get() as $r)
             <div class="col-md-3 mt-4">
                  <div class="card transparent-cards">
                     <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/tl.jpg')}}">
-                        <h2><span>Premier </span>Plan</h2>
+                        @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first())
+                        <img src="{{ url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->comp_logo }}">
+                        @endif
+                        <h2>{{ $r->without_pre_existing_name }}</h2>
                         <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
+                        <a download="true" href="{{ url('public/images') }}/{{ $r->plan_pdf_without_pre_existing }}" class="btn btn-block claim-btn">Policy Detail</a>
+                        <a download="true" href="{{ url('public/images') }}/{{ $r->benifit_summary_without_pre_existing }}" class="btn btn-block policy-btn">Benefit Summary</a>
+                        @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first())
+                            @if(DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->claimform)
+                            <a download="true" href="{{ url('public/images') }}/{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->claimform }}" class="btn btn-block claim-btn">Claim Form</a>
+                            @endif
+                        @endif
                         <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
                         <p>(Within Canada & USA)</p>
                         <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
                      </div>
                 </div>       
             </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/GMS.png')}}">
-                        <h2><span>Plan-b</span> With Pre</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/21_century.png')}}">
-                        <h2><span>Enhanced </span>Plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/tugo.png')}}">
-                        <h2><span>Daily Plan </span> - A</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/manulife.png')}}">
-                        <h2><span>Plan </span>- A</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/manulife.png')}}">
-                        <h2><span>Plan </span>- B</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/Blue-cross.png')}}">
-                        <h2><span>Plan</span>-a</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/rsz.png')}}">
-                        <h2><span>Plan</span>-b</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/rsz.png')}}">
-                        <h2><span>Plan</span>-a</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/rsz.png')}}">
-                        <h2><span>Comprehensive</span>-plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/destination.png')}}">
-                        <h2><span>Premier </span>Plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/destination.png')}}">
-                        <h2><span>Base </span>Plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/INGLE.png')}}">
-                        <h2><span>Plan</span>-a</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/INGLE.png')}}">
-                        <h2><span>Plan</span>- B</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/allianz.png')}}">
-                        <h2><span>Plan</span>- A</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/GMS.png')}}">
-                        <h2><span>Plan-b </span>With Pre</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/21_century.png')}}">
-                        <h2><span>Standard </span>Plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/21_century.png')}}">
-                        <h2><span>Basic </span>Plan</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
-            <div class="col-md-3 mt-4">
-                 <div class="card transparent-cards">
-                    <div class="card-body text-center">
-                        <img src="{{asset('public/front/img/logos/GMS.png')}}">
-                        <h2><span>Plan-b </span>With Pre</h2>
-                        <hr class="hr-tag">
-                        <a href="#" class="btn btn-block claim-btn">Claim Form</a>
-                        <a href="#" class="btn btn-block policy-btn">Claim Form</a>
-                        <h5 class="mt-4 call-heading"><i class="flaticon-call"></i>1-800-334-7787</h5>
-                        <p>(Within Canada & USA)</p>
-                        <h5><i class="flaticon-call"></i>1-905-667-0587</h5>
-                     </div>
-                </div>       
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

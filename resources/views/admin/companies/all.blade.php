@@ -39,11 +39,7 @@
                             <tr>
                                 <th>Company Logo</th>
                                 <th>Company Name</th>
-                                <th>Claim Form</th>
-                             
-                                <th>Student PDF Policy</th>
-                                <th>Canada PDF Policy</th>
-                                
+                                <th>Claim Form</th>                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -62,12 +58,6 @@
                                     @else
                                     <a href="javascript:void(0)" class="btn btn-default btn-xs">No Claim Form</a>
                                     @endif
-                                </td>
-                                <td>
-                                    <a href="{{ url('public/images') }}/{{ $r->comp_canadapdf }}" class="btn btn-default btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Student PDF Policy</a>
-                                </td>
-                                <td>
-                                    <a href="{{ url('public/images') }}/{{ $r->comp_canadapdf }}" class="btn btn-default btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Canada PDF Policy</a>
                                 </td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->comp_id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>

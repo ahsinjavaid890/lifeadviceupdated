@@ -28,12 +28,20 @@
                                 <th><strong>Start Date</strong></th>
                                 <th><strong>End Date</strong></th>
                                 <th><strong>Total Premium</strong></th>
+                                <th><strong>Any Requests</strong></th>
                                 <th><strong>Status</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
+
+                                @php
+                                    $sale_change_requests = DB::table('sale_change_requests')->where('reffrence_number' , $r->reffrence_number)->count();
+                                    $sale_extend_requests = DB::table('sale_extend_requests')->where('reffrence_number' , $r->reffrence_number)->count();
+                                    $sale_refund_requests = DB::table('sale_refund_requests')->where('reffrence_number' , $r->reffrence_number)->count();
+                                @endphp
+
                                 <tr @if($r->newstatus == 'new') style="background-color:#ddd;" @endif>    
                                     <td>
                                         @if($r->website == 'lifeadvice')
@@ -54,6 +62,16 @@
                                     <td>{{ Cmf::date_format($r->end_date) }}
                                     </td>
                                     <td>{{ $r->premium }}</td>
+                                    <td>
+                                        @if($sale_change_requests+$sale_extend_requests+$sale_refund_requests > 0)
+                                            <span class="badge badge-success">{{ $sale_change_requests+$sale_extend_requests+$sale_refund_requests }}
+                                            Requests</span>
+                                            
+                                        @else
+
+                                           <span class="badge badge-danger"> No Request </span>
+                                        @endif
+                                    </td>
                                     <td>
                                         {{ $r->status }}
                                     </td>
