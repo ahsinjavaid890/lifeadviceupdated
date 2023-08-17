@@ -18,7 +18,7 @@ use App\Models\wp_dh_insurance_plans_benefits;
 use App\Models\wp_dh_insurance_plans;
 use App\Models\wp_dh_life_plans;
 use App\Models\wp_dh_products;
-use App\Models\quotes;
+use App\Models\temproaryquotes;
 use App\Models\sales_cards;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
@@ -197,7 +197,7 @@ class AdminController extends Controller
     }
     public function allquotations()
     {
-        $data = quotes::all();
+        $data = DB::table('temproaryquotes')->paginate(10);
         return view('admin/quotations/index')->with(array('data' => $data));
     }
     public function messages()

@@ -19,48 +19,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom" style="width:100%">
+                    <table class="table table-bordered table-head-custom" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Created On</th>
-                                <th>Number</th>
-                                <th>Email</th>
-                                
-                                <th>Product</th>
-                                <th>Coverage</th>
+                                <th>Time Ago</th>                            
+                                <th>Date</th>
+                                <th>Time</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
-
-                            @php
-                                $values = json_decode($r->data, true);
-                                $coverage = number_format($values['sum_insured2']);
-                                $productid = $values['product_id']
-                            @endphp
                                 <tr>
-                                    <td>{{$r->created_on}}</td>
-                                    <td>{{ $r->number }}</td>
-                                    
-                                    <td>
-                                        {{ $r->email }}
-                                    </td>
-                                    <td>
-                                       {{ DB::table('wp_dh_products')->where('pro_id' , $productid)->first()->pro_name }}
-                                    </td>
-                                    <td>
-                                        ${{ $coverage }}
-                                    </td>
+                                   <td>{{ Cmf::create_time_ago($r->created_at) }}</td>
+                                   <td>{{ Cmf::date_format($r->created_at) }}</td>
+                                   <td>{{ date('H:s a', strtotime($r->created_at)) }}</td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->sales_id }}"><i class="fa fa-eye"></i> View Quote</a>
-                                       <a class="btn btn-danger btn-sm" href="{{ url('admin/sales/viewsale') }}/{{ $r->sales_id }}"><i class="fa fa-trash"></i> Delete Quote</a>
+                                       <a target="_blank" class="btn btn-primary btn-sm" href="{{ url('admin/sales/viewsale') }}"><i class="fa fa-eye"></i> View Quote</a>
                                    </td>
                                 </tr>
 
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="margin-top:10px;" class="row">
+                        {!! $data->links('frontend.pagination') !!}
+                    </div>
                 </div>
             </div>
             <!--end::Card-->

@@ -335,7 +335,7 @@
                         </ul>
                     </div>
                 </li>
-                <!-- <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="{{ url('admin/quotation/allquotations') }}" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -355,7 +355,7 @@
                         </span>
                         <span class="menu-text">Quotations</span>
                     </a>
-                </li> -->
+                </li>
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="{{ url('admin/contact/messages') }}" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
