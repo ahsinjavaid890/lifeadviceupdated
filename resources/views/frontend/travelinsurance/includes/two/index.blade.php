@@ -786,7 +786,7 @@ echo number_format($person_price,2); ?>
                                     </p>
                                 </div>
                                 <div class="col-md-6 text-center" style="font-size:16px;">
-                                    <a href="#" onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeOut();"
+                                    <a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeOut();"
                                         class="pull-right text-danger" style="font-size:16px;"><i
                                             class="fa fa-close"></i></a>
                                     <p>or</p>
