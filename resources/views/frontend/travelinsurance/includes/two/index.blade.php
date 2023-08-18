@@ -478,26 +478,15 @@ if($show == '1' && $total_price > 0){
                             <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
                                 <div class="row">
                                     <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
-
-                                        <label
-                                            onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                                            class="col-md-12 col-xs-5" style="cursor: pointer" id="compare"><i
-                                                class="fa fa-database"></i> 
-                                                Compare  </label>
-
+                                        <label id="comparelabel{{ $plan_id }}{{ $sum_insured }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
+                                            class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
+                                            <i class="fa fa-database"></i> Compare  
+                                        </label>
                                     </div>
                                     <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
                                         <img width="200" class="img-thumbnail"
-                                            src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" />
+                                            src="{{ url('public/images') }}/{{ $comp_logo }}" />
                                     </div>
-                                    <!-- <div class="col-md-3 hidden-xs text-center">
-<strong>Plan</strong>
-<h1 style="font-size: 20px;font-weight: bold; color:#3a5371;"><?php echo $plan_name; ?></h1>
-</div> -->
-                                    <!-- <div class="col-md-2 hidden-xs text-center">
-<strong>Deductible</strong>
-<h2>$<?php echo $deductible; ?></h2>
-</div> -->
                                     <div class="col-md-3 text-center">
                                         <strong>Coverage Amount</strong>
                                         <h2 style="color:#000;font-size: 25px;">$
@@ -510,17 +499,13 @@ if($show == '1' && $total_price > 0){
                                     <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
                                         <strong>Premium</strong>
                                         <h2 style="color: #C00;font-weight: bold;font-size: 26px;font-family: arial;">
-                                            $
-                                            <?php echo number_format($total_price, 2); ?>
+                                            ${{number_format($total_price, 2)}}
                                         </h2>
                                         <?php if($monthly_two == '1'){?>
                                         <h2
                                             style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;background: #F9F9F9;width: auto;">
-                                            $
-                                            <?php echo number_format($monthly_price, 2); ?>/Month<small
-                                                style="color: #f5821f;font-weight: bold;margin-left: 1px;">
-                                                <?php echo $num_months; ?>
-                                            </small>
+                                            ${{number_format($monthly_price, 2)}}/Month<small
+                                                style="color: #f5821f;font-weight: bold;margin-left: 1px;">{{$num_months}}</small>
                                         </h2>
                                         <?php } ?>
                                     </div>
@@ -531,7 +516,7 @@ if($show == '1' && $total_price > 0){
                                         $broker = $request->broker;
                                         ?>
                                         <a class="submit-btn text-center"
-                                            onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();"
+                                            onclick="$('.buynow_{{$deductible.$plan_id}}').fadeIn();"
                                             style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #1BBC9B;border-radius: 0px;margin-top: 10px;"><i
                                                 class="fa fa-shopping-cart"></i> Buy Now</a>
                                     </div>
@@ -546,13 +531,13 @@ if($show == '1' && $total_price > 0){
                                             style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i
                                                 class="fa fa-plus"></i> More Details</button>
                                     </div>
-                                    <!-- <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
-<strong>Plan Type: </strong> <?php if ($family_plan == 'yes') {
-    echo 'Family';
-} else {
-    echo 'Individual';
-} ?>
-</div> -->
+                                    <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
+                                    <strong>Plan Type: </strong> <?php if ($family_plan == 'yes') {
+                                            echo 'Family';
+                                        } else {
+                                            echo 'Individual';
+                                        } ?>
+                                    </div>
 
                                 </div>
 
@@ -704,17 +689,7 @@ echo number_format($person_price,2); ?>
 
                                             </div>
                                             <div class="col-md-3">
-                                                <b style="color:#C00;"><i class="fa fa-list-alt" aria-hidden="true"></i>
-                                                    Policy details:</b>
-                                                <span style="display: none;">
-                                                    <? //"SELECT * FROM wp_dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_REQUEST['sum_insured']."' limit 1000" ?>
-                                                </span>
-                                                <hr />
-                                                <?php
-                                                //while ( get_all_pdfpolicy( $plan_id ) as $pdfpolicy ):
-                                                //echo "<a href='$pdfpolicy->pdfpolicy' style='font-size: 13px;' target='_blank'><i class='fa fa-file-pdf'></i> Sample Policy</a>";
-                                                //endforeach;
-                                                ?>
+                                                <b><i class="fa fa-list-alt" aria-hidden="true"></i>Policy details:</b>
                                             </div>
                                         </div>
                                     </div>
@@ -722,85 +697,62 @@ echo number_format($person_price,2); ?>
                                 </div>
 
 
-                            </div>
-
-                            <div style="clear:both;"></div>
-                            <div class="row buynow_<?php echo $deductible . $plan_id; ?>"
-                                style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
-                                <div class="col-md-6"
-                                    style="background:#F9F9F9;padding-top: 10px;padding-bottom: 10px;">
-                                    <h3
-                                        style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">
-                                        Buy Online</h3>
-                                    <p style="font-weight: bold;">In three simple steps you can purchase your policy,
-                                        easily and securely, online.</p>
-                                    <p><input type="checkbox" required name="agree" style="height: auto;margin: 0;"> I
-                                        give
-                                        permission to LifeAdvice.ca to transfer my quote information and contact details
-                                        to
-                                        <?php echo $comp_name; ?> in order to complete the purchase of travel insurance.
-                                        LifeAdvice values your privacy. For details, see our <a href="/">Privacy
-                                            Policy</a>
-                                    </p>
-                                    <p></p>
-                                    <p>
-                                    <form method="post" action="{{ url('apply') }}">
-                                        @csrf
-                                        <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                                        <input type="hidden" value="{{ $request->fname }}" name="fname">
-                                        <input type="hidden" value="{{ $request->lname }}" name="lname">
-                                        <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-                                        <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-                                        <input type="hidden" value="{{ $deductible }}" name="deductibles">
-                                        <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-                                        <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                                        @foreach ($request->years as $year)
-                                        <input type="hidden" name="years[]" value="{{ $year }}">
-                                        @endforeach
-                                        @foreach ($request->pre_existing as $preexisting)
-                                        <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
-                                        @endforeach
-                                        <input type="hidden" value="{{ $num_of_days }}" name="days">
-                                        <input type="hidden" value="{{ $comp_name }}" name="companyName">
-                                        <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-                                        <input type="hidden" value="{{ $plan_name }}" name="planname">
-                                        <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-                                        <input type="hidden" value="{{ $startdate }}" name="tripdate">
-                                        <input type="hidden" value="{{ $enddate }}" name="tripend">
-                                        <input type="hidden" value="{{ $total_price }}" name="premium">
-                                        <input type="hidden" value="" name="cdestination">
-                                        <input type="hidden" value="{{ $product_name }}" name="product_name">
-                                        <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                                        <input type="hidden" value="{{ $request->primary_destination }}"
-                                            name="destination">
-                                        <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-                                        <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-                                        <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                                        <input type="hidden" value="{{ $dob }}" name="dob">
-                                        <input type="hidden" value="{{ $agent }}" name="agent">
-                                        <input type="hidden" value="{{ $broker }}" name="broker">
-                                        <button class="submit-btn" type="submit"><i class="fa fa-shopping-cart"></i>
-                                            Buy Now</button>
-                                    </form>
-
-                                    </p>
-                                </div>
-                                <div class="col-md-6 text-center" style="font-size:16px;">
-                                    <a href="javascript:void(0)" onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeOut();"
-                                        class="pull-right text-danger" style="font-size:16px;"><i
-                                            class="fa fa-close"></i></a>
-                                    <p>or</p>
-                                    <p>BY CALLING</p>
-                                    <p><a href="tel:+18555005041"
-                                            style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a>
-                                    </p>
-                                    <p
-                                        style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">
-                                        CALL CENTRE HOURS</p>
-                                    <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00
-                                        pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT |
-                                        Closed on holidays.</p>
-                                </div>
+                            </div>                            
+                            <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
+                                <form method="POST" action="{{ url('apply') }}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                                    <input type="hidden" value="{{ $request->fname }}" name="fname">
+                                    <input type="hidden" value="{{ $request->lname }}" name="lname">
+                                    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                                    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                                    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                                    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                                    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                                    @foreach($request->years as $year)
+                                    <input type="hidden" name="years[]" value="{{ $year }}">
+                                    @endforeach
+                                    @foreach($request->pre_existing as $preexisting)
+                                    <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+                                    @endforeach
+                                    <input type="hidden" value="{{ $num_of_days }}" name="days">
+                                    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                                    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                                    <input type="hidden" value="{{ $plan_name }}" name="planname">
+                                    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                                    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                                    <input type="hidden" value="{{ $enddate }}" name="tripend">
+                                    <input type="hidden" value="{{ $total_price }}" name="premium">
+                                    <input type="hidden" value="" name="cdestination">
+                                    <input type="hidden" value="{{ $product_name }}" name="product_name">
+                                    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                                    <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
+                                    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                                    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                                    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                                    <div class="row" style="flex-wrap: nowrap;padding:0px">
+                                        <div class="col-md-6 buynodropdownsectioncolsix">
+                                            <h3 class="buyonlinebutton">Buy Online</h3>
+                                            <b>In three simple steps you can purchase your policy, easily and securely, online.</b>
+                                            <p>
+                                                <input type="checkbox" name="agree" required=""> 
+                                                I give permission to LifeAdvice.ca to transfer my quote information and contact details to {{ $comp_name }} in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our 
+                                                <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a>
+                                            </p>
+                                            <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <a href="javascript:void(0)" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
+                                            </a>
+                                            <p>or</p>
+                                            <p>BY CALLING</p>
+                                            <p><a href="tel:8555008999">855-500-8999</a>
+                                            </p>
+                                            <p>CALL CENTRE HOURS</p>
+                                            <p>Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>

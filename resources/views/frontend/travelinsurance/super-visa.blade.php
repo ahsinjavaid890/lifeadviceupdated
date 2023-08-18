@@ -200,6 +200,7 @@
             contentType: false,
             processData: false,
             success: function(data){
+                $('#comparelabel'+plan_id+coverage_ammount).addClass('selectedcomparebutton')
                 if(data){
                     $('.compare_header_top').show();
                     $('.compare_header_top').html(data);

@@ -10,7 +10,53 @@ body {
     color: #6e6e6e;
 }
 
+.selectedcomparebutton{
+    cursor: pointer;
+    background-color: #1bbc9b;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
 
+
+.buyonlinebutton{
+    border-bottom:1px solid #ccc;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buynodropdownsectioncolsix{
+    background:#F9F9F9;
+    margin-left:15px;
+}
+
+.buynodropdownsectioncolsix input{
+    height: auto;
+    margin: 0;
+}
+
+.buynodropdownsectioncolsix .submit-btn{
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    color: #FFF; 
+    margin-bottom:5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border-bottom: 2px solid #999;
+    box-shadow: none;
+}
+
+.buynowrow{
+    clear: both;
+    margin: 20px 0px 0px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+}
 
 .body-five .h1,
 .body-five .h2,

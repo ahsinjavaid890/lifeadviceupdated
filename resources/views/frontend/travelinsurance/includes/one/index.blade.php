@@ -621,10 +621,20 @@ if($show == '1' && $total_price > 0){
                                         $per = 0;
                     foreach($ages_array as $person_age){
                     $per++;
+
+
+                    if($request->pre_existing[$per-1]=='yes')
+                    {
+                        $existingshow = $pre_existing_name;
+                    }else{
+                        $existingshow = $without_pre_existing_name;
+                    }
+
+
                                         ?>
                                                                 <br /><span
                                                                     style="display:block; padding:3px; font-size:17px; text-align:left; border-bottom:1px dashed #333; border-bottom:1px dashed #333;">Person
-                                                                    <?php echo $per;?>
+                                                                    <?php echo $per;?> ({{$existingshow}})
                                                                 </span>
 
                                                                 <?php
@@ -735,48 +745,41 @@ if($show == '1' && $total_price > 0){
 
 
 
-                    ?>
+                    ?>                                          @if($single_person_rate)
                                                                 <div class="col-md-12 no-padding"><small>Insured: <span
                                                                             style="color: #f5821f;"> (Age:
                                                                             <?php echo $person_age; ?>)
-                                                                        </span> Coverage Amount: <span
-                                                                            style="color: #f5821f;">$
-                                                                            <?php echo $sum_insured;?>
-                                                                        </span> Premium: <span style="color: #f5821f;">$
-                                                                            <?php echo number_format($person_price,2);?>
-                                                                        </span></small></div>
+                                                                </span> Coverage Amount: <span
+                                                                    style="color: #f5821f;">$
+                                                                    <?php echo $sum_insured;?>
+                                                                </span> Premium: <span style="color: #f5821f;">$
+                                                                    <?php echo number_format($person_price,2);?>
+                                                                </span></small></div>
+                                                                @php
+                                                                    $alert = '';
+                                                                @endphp
+                                                                @else
+                                                                @php
+                                                                    $alert = 'You Purchase Plan For Only One Person';
+                                                                @endphp
+                                                                    <p class="text-danger">No Price found for this Person</p>
+                                                                @endif
                                                                 <?php $single_person_rate = '';}//} ?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <!-- <li style="list-style: none;"><a href="#"> Sample Policy</a></li> -->
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
-$agent = $request->agent;
-$broker = $request->broker;
-?>
-                            <div class="compare col-md-3 col-xs-12 text-center"><a
-                                    class="submit-btn col-md-12 col-xs-5 "
-                                    onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"><i
-                                        class="fa fa-shopping-cart"></i> Buy Now</a>
-                                <div class="col-xs-2 visible-xs">&nbsp;</div>
-
-                                <label
-                                    onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                                    style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i
-                                        class="fa fa-database"></i> Compare</label>
-
-
-                                <!--<small style="display:block"><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>-->
+                            <div class="compare col-md-3 col-xs-12 text-center">
+                                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+                                <small><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>
                             </div>
-                            <div class="row buynow_<?php echo $deductible.$plan_id;?>"
-                                style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
+                            <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
                                 <form method="POST" action="{{ url('apply') }}">
                                     @csrf
                                     <input type="hidden" value="{{ $request->savers_email }}" name="email">
@@ -808,45 +811,26 @@ $broker = $request->broker;
                                     <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
                                     <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
                                     <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                                    <input type="hidden" value="{{ $dob }}" name="dob">
-                                    <input type="hidden" value="{{ $agent }}" name="agent">
-                                    <input type="hidden" value="{{ $broker }}" name="broker">
                                     <div class="row" style="flex-wrap: nowrap;padding:0px">
-                                        <div class="col-md-6" style="background:#F9F9F9;margin-left:15px">
-                                            <h3
-                                                style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">
-                                                Buy Online</h3>
-                                            <p style="font-weight: bold;">In three simple steps you can purchase your
-                                                policy, easily and securely, online.</p>
-                                            <p><input type="checkbox" name="agree" required=""
-                                                    style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca
-                                                to transfer my quote information and contact details to
-                                                <?php echo $comp_name;?> in order to complete the purchase of travel
-                                                insurance. LifeAdvice values your privacy. For details, see our <a
-                                                    href="/">Privacy Policy</a>
+                                        <div class="col-md-6 buynodropdownsectioncolsix">
+                                            <h3 class="buyonlinebutton">Buy Online</h3>
+                                            <b>In three simple steps you can purchase your policy, easily and securely, online.</b>
+                                            <p>
+                                                <input type="checkbox" name="agree" required=""> 
+                                                I give permission to LifeAdvice.ca to transfer my quote information and contact details to {{ $comp_name }} in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our 
+                                                <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a>
                                             </p>
-                                            <p></p>
-                                            <p><button type="submit" class="submit-btn"
-                                                    style="font-weight: bold;padding: 6px 20px;font-size: 16px;display: block;color: #FFF; margin-bottom:5px;margin-top: 10px;border-radius: 6px;border-bottom: 2px solid #999;box-shadow: none;"><i
-                                                        class="fa fa-shopping-cart"></i> Buy Now</button></p>
+                                            <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
                                         </div>
-                                        <div class="col-md-6 text-center"
-                                            style="font-size:16px;padding-top:10px;padding-right:20px;">
-                                            <a href="javascript:void(0)"
-                                                onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();"
-                                                class="pull-right text-danger" style="font-size:16px;"><i
-                                                    class="fa fa-close"></i></a>
+                                        <div class="col-md-6 text-center">
+                                            <a href="javascript:void(0)" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
+                                            </a>
                                             <p>or</p>
                                             <p>BY CALLING</p>
-                                            <p><a href="tel:8555008999"
-                                                    style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a>
+                                            <p><a href="tel:8555008999">855-500-8999</a>
                                             </p>
-                                            <p
-                                                style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">
-                                                CALL CENTRE HOURS</p>
-                                            <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to
-                                                9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00
-                                                pm EDT | Closed on holidays.</p>
+                                            <p>CALL CENTRE HOURS</p>
+                                            <p>Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                                         </div>
                                     </div>
                                 </form>
