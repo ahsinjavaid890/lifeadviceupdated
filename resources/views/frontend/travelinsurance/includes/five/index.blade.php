@@ -70,14 +70,14 @@ $(function () {
         step: 1,
         value: iValue,
         slide: function (event, ui) {
-            $('#coverage_amount').text(SliderValues[ui.value]);
+            $('#coverage_amount_for_slider').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
             for (i = 0; i < SliderValues.length; i++) {
                 var group = SliderValues[i];
                 $('.coverage-amt-'+group).hide();
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount_for_slider" ).val( "$" + SliderValues[ui.value] );
         }
     });
 
@@ -189,7 +189,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                 </div>
                 <h4 class="coverage"
                     style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
-                    Coverage: <input type="text" id="coverage_amount" name="coverage_amount"
+                    Coverage: <input type="text" id="coverage_amount_for_slider" name="coverage_amount"
                         value="$<?php echo $_REQUEST['sum_insured2'];?>"
                         style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
                 </h4>
