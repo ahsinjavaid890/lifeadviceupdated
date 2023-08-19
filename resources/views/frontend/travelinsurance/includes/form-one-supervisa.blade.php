@@ -36,9 +36,12 @@
                     value="yes" @endif>
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                 <div class="row">
-                    @for ($orderi = 1; $orderi <= 17; $orderi++) @if (array_search('id_1', $orderdata)==$orderi) @if
-                        (isset($fields['fname'])) @if ($fields['fname']=='on' ) <div class="col-md-5 ">
-                        <label for="firstname" class="form-label d-md-block lables">First name</label>
+                @for ($orderi = 1; $orderi <= 17; $orderi++)
+                @if (array_search('id_1', $orderdata) == $orderi)
+                @if(isset($fields['fname'])) 
+                @if ($fields['fname']=='on' ) 
+                <div class="col-md-5 ">
+                    <label for="firstname" class="form-label d-md-block lables">First name</label>
                 </div>
                 <div class="col-md-7">
                     <label for="firstname" class="d-sm-none">First name</label>
@@ -831,22 +834,19 @@
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
-            type: 'POST'
-            , url: $(this).attr('action')
-            , data: formData
-            , cache: false
-            , contentType: false
-            , processData: false
-            , success: function(data) {
-                // console.log(data.html)
+            type: 'POST', 
+            url: $(this).attr('action'),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
                 $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
-
                 $('html, body').animate({
                     scrollTop: $(".quotationscards").offset().top
                 }, 2000);
             }
         });
     }));
-
 </script>
