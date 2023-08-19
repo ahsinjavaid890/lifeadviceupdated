@@ -283,9 +283,6 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
 
     Route::name('sales.')->prefix('sales')->group(function(){
         Route::get('/allsale','AdminController@allsale');
-        Route::get('/changerequest','AdminController@changerequest');
-        Route::get('/extendrequest','AdminController@extendrequest');
-        Route::get('/refundrequest','AdminController@refundrequest');
         Route::get('/editsale/{id}','AdminController@editsale');
         Route::post('/editsale','AdminController@editsales');
         Route::get('/viewsale/{id}','AdminController@viewsale');
@@ -293,7 +290,15 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/sendcode/{id}','AdminController@sendcode');
         Route::post('/policyconfermation','AdminController@policyconfermation');
         Route::get('/sendcodetocheck/{id}/{code}','AdminController@showdetailsbutton');
-        
+        Route::get('/changerequest','AdminController@changerequest');
+        Route::get('/extendrequest','AdminController@extendrequest');
+        Route::get('/refundrequest','AdminController@refundrequest');
+        Route::get('/changerequest/delete/{id}','AdminController@changerequestdel');
+        Route::get('/extendrequest/delete/{id}','AdminController@extendrequestdel');
+        Route::get('/refundrequest/delete/{id}','AdminController@refundrequestdel');
+        Route::get('/changerequest/status/{id}','AdminController@changerequeststatus');
+        Route::get('/extendrequest/status/{id}','AdminController@extendrequeststatus');
+        Route::get('/refundrequest/status/{id}','AdminController@refundrequeststatus');
     });
 
     Route::name('faq.')->prefix('faq')->group(function(){

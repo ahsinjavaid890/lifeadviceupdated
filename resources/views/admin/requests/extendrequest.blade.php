@@ -13,8 +13,8 @@
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">
-                            All Sale
-                            <div class="text-muted pt-2 font-size-sm">Manage All Sale</div>
+                            All Extend Request
+                            <div class="text-muted pt-2 font-size-sm">Manage All Request</div>
                         </h3>
                     </div>
                 </div>
@@ -27,49 +27,46 @@
                                 <th><strong>Policy Number</strong></th>
                                 <th><strong>Start Date</strong></th>
                                 <th><strong>End Date</strong></th>
-                               
                                 <th><strong>New Return Date</strong></th>
-
-
-                              
+                                <th><strong>Status</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
 
-                            @php
-                            $sale_change_requests = DB::table('sale_change_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            $sale_extend_requests = DB::table('sale_extend_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            $sale_refund_requests = DB::table('sale_refund_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            @endphp
+                            <tr @if($r->new_status == '1') style="background-color:#ddd;" @endif>
 
-                            <tr>
-
-                                <td>{{ $r->reffrence_number }}</td>
+                                <td>{{ $r->reffrence_number }} @if($r->new_status == '1') <span class="badge badge-danger">New</span> @endif</td>
                                 <td>{{ $r->policy_number }}</td>
                                 <td>
                                     {{ Cmf::date_format($r->start_date) }}
                                 </td>
                                 <td>{{ Cmf::date_format($r->end_date) }}
                                 </td>
-                                
+
                                 <td>
                                     {{ Cmf::date_format($r->new_return_date) }}
                                 </td>
-                              
-
-
                                 <td>
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ url('admin/sales/viewsale') }}/{{ $r->id }}"><i class="fa fa-eye"></i>
-                                        View</a>
+                                    @php
+                                    $btn = "";
+                                    $style = "";
+                                        if($r->request_status == "Pending"){
+                                            $btn = "btn-info";
+                                        }else{
+                                            $style = 'style=background-color:#02a702;color:white';
+                                        }
+                                    @endphp
+                                    
 
-                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;"
-                                        class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="{{url('admin/sales/extendrequest/status')}}/{{ $r->id }}" {{$style}}
+                                        class="btn {{$btn}}">{{ $r->request_status }}</a>
+                                </td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}"
+                                        href="javascript:void(0);" class="btn btn-danger btn-sm"><i
+                                            class="fa fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
 
@@ -84,12 +81,12 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p style="color:red;">Are you Sure You want to delete this Sale</p>
+                                            <p style="color:red;">Are you Sure You want to delete this Request</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold"
                                                 data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/sales/deletesale') }}/{{ $r->id }}"
+                                            <a href="{{ url('admin/sales/extendrequest/delete') }}/{{ $r->id }}"
                                                 class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>

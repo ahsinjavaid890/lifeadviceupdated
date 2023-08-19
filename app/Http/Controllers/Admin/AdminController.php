@@ -24,6 +24,9 @@ use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
 use App\Models\plan_benifits_categories;
+use App\Models\sale_change_requests;
+use App\Models\sale_extend_requests;
+use App\Models\sale_refund_requests;
 use App\Models\sales;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -123,8 +126,9 @@ class AdminController extends Controller
     {
         return view('admin.products.addnewproduct');
     }
-    public function deleteproducts($id){
-        DB::table('wp_dh_products')->where('pro_id',$id)->delete();
+    public function deleteproducts($id)
+    {
+        DB::table('wp_dh_products')->where('pro_id', $id)->delete();
         return redirect()->back()->with('message', 'Product Deleted Successfully');
     }
     public function productcategories()
@@ -154,9 +158,10 @@ class AdminController extends Controller
         $add->save();
         return redirect()->back()->with('message', 'Category Added Successfully');
     }
-    public function deleteproductcategory($id){
-        DB::table('product_categories')->where('id',$id)->delete();
-        DB::table('wp_dh_products')->where('category_id',$id)->delete();
+    public function deleteproductcategory($id)
+    {
+        DB::table('product_categories')->where('id', $id)->delete();
+        DB::table('wp_dh_products')->where('category_id', $id)->delete();
         return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
     public function addnewuser()
@@ -197,7 +202,7 @@ class AdminController extends Controller
     }
     public function allquotations()
     {
-        $data = DB::table('temproaryquotes')->orderby('id' , 'desc')->paginate(10);
+        $data = DB::table('temproaryquotes')->orderby('id', 'desc')->paginate(10);
         return view('admin/quotations/index')->with(array('data' => $data));
     }
     public function messages()
@@ -240,7 +245,7 @@ class AdminController extends Controller
     }
     public function createnewplan(Request $request)
     {
-        
+
 
         $input = $request->all();
 
@@ -316,7 +321,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
         $rateBase = $request->irateCalculation;
         if ($rateBase == '3') {
             DB::table('wp_dh_plan_day_rate')->where('plan_id', $updateplan->id)->delete();
@@ -723,19 +728,78 @@ class AdminController extends Controller
     }
     public function changerequest()
     {
-        $data = DB::table('sale_change_requests')->orderby('id', 'DESC')->paginate(10);
+        $data = DB::table('sale_change_requests')->orderby('new_status', 'DESC')->paginate(10);
         return view('admin.requests.changerequest')->with(array('data' => $data));
     }
+
+
     public function extendrequest()
     {
-        $data = DB::table('sale_extend_requests')->orderby('id', 'DESC')->paginate(10);
+        $data = DB::table('sale_extend_requests')->orderby('new_status', 'DESC')->paginate(10);
         return view('admin.requests.extendrequest')->with(array('data' => $data));
     }
     public function refundrequest()
     {
-        $data = DB::table('sale_refund_requests')->orderby('id', 'DESC')->paginate(10);
+        $data = DB::table('sale_refund_requests')->orderby('new_status', 'DESC')->paginate(10);
         return view('admin.requests.refundrequest')->with(array('data' => $data));
     }
+
+    public function changerequestdel($id)
+    {
+        DB::table('sale_change_requests')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Request Deleted Successfully');
+    }
+    public function extendrequestdel($id)
+    {
+        DB::table('sale_extend_requests')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Request Deleted Successfully');
+    }
+    public function refundrequestdel($id)
+    {
+        DB::table('sale_refund_requests')->where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Request Deleted Successfully');
+    }
+    public function changerequeststatus($id)
+    {
+        $changerequest = sale_change_requests::find($id);
+        $changerequest->new_status = "0";
+        if($changerequest->request_status == "Pending"){
+            $changerequest->request_status = "Approved";
+        }else{
+            $changerequest->request_status = "Pending";
+        }
+        $changerequest->update();
+        
+        return redirect()->back()->with('message', 'Request Status Changed Successfully');
+    }
+    public function extendrequeststatus($id)
+    {
+        $changerequest = sale_extend_requests::find($id);
+        $changerequest->new_status = "0";
+        if($changerequest->request_status == "Pending"){
+            $changerequest->request_status = "Approved";
+        }else{
+            $changerequest->request_status = "Pending";
+        }
+        $changerequest->update();
+        
+        return redirect()->back()->with('message', 'Request Status Changed Successfully');
+    }
+    public function refundrequeststatus($id)
+    {
+        $changerequest = sale_refund_requests::find($id);
+        $changerequest->new_status = "0";
+        if($changerequest->request_status == "Pending"){
+            $changerequest->request_status = "Approved";
+        }else{
+            $changerequest->request_status = "Pending";
+        }
+        $changerequest->update();
+        
+        return redirect()->back()->with('message', 'Request Status Changed Successfully');
+    }
+
+
     public function editsale($id)
     {
         $data = DB::table('sales')->where('id', $id)->first();
@@ -753,8 +817,7 @@ class AdminController extends Controller
     public function policyconfermation(Request $request)
     {
 
-        if($request->policy_status == 'Cancel')
-        {
+        if ($request->policy_status == 'Cancel') {
             $update = array('cancelreason' => $request->cancelreason, 'status' => $request->policy_status);
             DB::table('sales')->where('id', $request->id)->update($update);
 
@@ -767,7 +830,7 @@ class AdminController extends Controller
                 $message->subject($subject);
             });
             return redirect()->back()->with('message', 'Sales Updated Successfully');
-        }else{
+        } else {
             if ($request->policydocument) {
                 $document = Cmf::sendimagetodirectory($request->policydocument);
                 $update = array('policy_number' => $request->policy_number, 'status' => $request->policy_status, 'policydocument' => $document);
@@ -785,16 +848,15 @@ class AdminController extends Controller
             $data["reffrence_number"] = $sale->reffrence_number;
             $data["policynumber"] = $request->policy_number;
             $files = [
-                public_path('images/'.$document.''),
+                public_path('images/' . $document . ''),
             ];
-            Mail::send($policystatus, $data, function($message)use($data, $files) {
+            Mail::send($policystatus, $data, function ($message) use ($data, $files) {
                 $message->to($data["email"], $data["email"])
-                        ->subject($data["title"]);
-     
-                foreach ($files as $file){
+                    ->subject($data["title"]);
+
+                foreach ($files as $file) {
                     $message->attach($file);
                 }
-                
             });
         }
         return redirect()->back()->with('message', 'Sales Updated Successfully');
@@ -871,14 +933,14 @@ class AdminController extends Controller
     }
     public function allcompanies()
     {
-        $data = DB::table('wp_dh_companies')->orderby('comp_id' , 'desc')->paginate(10);
+        $data = DB::table('wp_dh_companies')->orderby('comp_id', 'desc')->paginate(10);
         return view('admin.companies.all')->with(array('data' => $data));
     }
 
     public function deletecompany(Request $request)
     {
-        DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->delete();
-        DB::table('wp_dh_insurance_plans')->where('insurance_company' , $request->comp_id)->delete();
+        DB::table('wp_dh_companies')->where('comp_id', $request->comp_id)->delete();
+        DB::table('wp_dh_insurance_plans')->where('insurance_company', $request->comp_id)->delete();
         return redirect()->back()->with('message', 'Company Deleted Successfully');
     }
 

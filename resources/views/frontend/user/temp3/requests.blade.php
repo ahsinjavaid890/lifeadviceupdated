@@ -544,7 +544,7 @@
                                                                     <div class="col-md-6">
                                                                         <label>Request Status</label><br>
                                                                         <a class="badge badge-success"
-                                                                            href="javascript:void(0)">Pending</a>
+                                                                            href="javascript:void(0)">{{ $r->request_status }}</a>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Reffrence Number</label>
@@ -597,7 +597,7 @@
                                                                     <div class="col-md-6">
                                                                         <label>Request Status</label><br>
                                                                         <a class="badge badge-success"
-                                                                            href="javascript:void(0)">Pending</a>
+                                                                            href="javascript:void(0)">{{ $r->request_status }}</a>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Reffrence Number</label>

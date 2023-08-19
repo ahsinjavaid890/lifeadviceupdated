@@ -95,6 +95,8 @@ class HomeController extends Controller
         $change_request->end_date = $request->end_date;
         $change_request->new_effective_date = $request->new_effective_date;
         $change_request->new_return_date = $request->new_return_date;
+        $change_request->new_status = "1";
+        $change_request->request_status = "Pending";
         if($request->document)
         {
             $change_request->document = Cmf::sendimagetodirectory($request->document);
@@ -166,6 +168,8 @@ class HomeController extends Controller
         $change_request->policy_number = $request->policy_number;
         $change_request->start_date = $request->start_date;
         $change_request->return_date = $request->return_date;
+        $change_request->new_status = "1";
+        $change_request->request_status = "Pending";
         if($request->refund_form)
         {
             $change_request->refund_form = Cmf::sendimagetodirectory($request->refund_form);
@@ -235,6 +239,8 @@ class HomeController extends Controller
         $change_request->start_date = $request->start_date;
         $change_request->end_date = $request->end_date;
         $change_request->new_return_date = $request->new_return_date;
+        $change_request->new_status = "1";
+        $change_request->request_status = "Pending";
         $change_request->save();
 
 

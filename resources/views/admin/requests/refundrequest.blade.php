@@ -27,43 +27,69 @@
                                 <th><strong>Policy Number</strong></th>
                                 <th><strong>Start Date</strong></th>
                                 <th><strong>Return Date</strong></th>
-                               
-
-
-                              
+                                <th><strong>Refund Form </strong></th>
+                                <th><strong>Proof Document </strong></th>
+                                <th><strong>Status</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $r)
 
-                            @php
-                            $sale_change_requests = DB::table('sale_change_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            $sale_extend_requests = DB::table('sale_extend_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            $sale_refund_requests = DB::table('sale_refund_requests')->where('reffrence_number' ,
-                            $r->reffrence_number)->count();
-                            @endphp
+                          
 
-                            <tr>
+                            <tr @if($r->new_status == '1') style="background-color:#ddd;" @endif>
 
-                                <td>{{ $r->reffrence_number }}</td>
+                                <td>{{ $r->reffrence_number }} @if($r->new_status == '1') <span class="badge badge-danger">New</span> @endif</td>
                                 <td>{{ $r->policy_number }}</td>
                                 <td>
                                     {{ Cmf::date_format($r->start_date) }}
                                 </td>
                                 <td>{{ Cmf::date_format($r->return_date) }}
                                 </td>
-                              
-
 
                                 <td>
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ url('admin/sales/viewsale') }}/{{ $r->id }}"><i class="fa fa-eye"></i>
+                                    <a class="btn btn-primary btn-sm" <?php if(empty( $r->refund_form)){
+                                        ?>
+                                        style="background-color:#3e9dff9e;border-color:#3e9dff9e;pointer-events: none;"
+                                        <?php
+                                    }
+                                    ?>
+                                    
+                                        href="{{ url('public/images') }}/{{ $r->refund_form }}" target="_blank"><i class="fa fa-eye"></i>
                                         View</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" <?php if(empty( $r->proof_of_return)){
+                                        ?>
+                                        style="background-color:#3e9dff9e;border-color:#3e9dff9e;pointer-events: none;"
+                                        <?php
+                                    }
+                                    ?>
+                                        href="{{ url('public/images') }}/{{ $r->proof_of_return }}" target="_blank"><i class="fa fa-eye"></i>
+                                        View</a>
+                                </td>
 
-                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:;"
+                                <td>
+                                    @php
+                                    $btn = "";
+                                    $style = "";
+                                        if($r->request_status == "Pending"){
+                                            $btn = "btn-info";
+                                        }else{
+                                            $style = 'style=background-color:#02a702;color:white';
+                                        }
+                                    @endphp
+                                    
+
+                                    <a href="{{url('admin/sales/refundrequest/status')}}/{{ $r->id }}" {{$style}}
+                                        class="btn {{$btn}}">{{ $r->request_status }}</a>
+                                </td>
+
+                                <td>
+
+
+                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->id }}" href="javascript:void(0);"
                                         class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
@@ -84,7 +110,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold"
                                                 data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/sales/deletesale') }}/{{ $r->id }}"
+                                            <a href="{{ url('admin/sales/refundrequest/delete') }}/{{ $r->id }}"
                                                 class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>
