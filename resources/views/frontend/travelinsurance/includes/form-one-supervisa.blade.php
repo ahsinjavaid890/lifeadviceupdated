@@ -270,7 +270,7 @@
                                     </option>
                                     <option @if($_GET['pre_existing'][$key]=='yes' ) selected @endif value="yes">Yes
                                     </option>
-                                    <option @if($_GET['pre_existing'][$key]=='no' ) selected @endif value="no">No
+                                    <option @if($_GET['pre_existing'][$key]=='no' ) selected @else selected @endif value="no">No
                                     </option>
                                 </select>
                             </div>
