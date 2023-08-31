@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Redirect;
 use Session;
+use Validator;
+use Input;
 use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller

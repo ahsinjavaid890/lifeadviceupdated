@@ -187,9 +187,7 @@ padding: 6px 8px !important;
 
 
 
-#ui-datepicker-div, .ui-datepicker-div, .ui-datepicker-inline {
-  width:auto;
-}
+
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
 border: none;
 background: #f5821f;

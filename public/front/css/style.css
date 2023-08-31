@@ -10,6 +10,18 @@ body {
     color: #6e6e6e;
 }
 
+.summaryheading{
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #12b48b;
+}
+.summarydata{
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 600;
+    color: #2b3481;
+}
 .selectedcomparebutton{
     cursor: pointer;
     background-color: #1bbc9b;

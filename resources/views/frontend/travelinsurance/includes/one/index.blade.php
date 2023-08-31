@@ -573,202 +573,8 @@ if($show == '1' && $total_price > 0){
                                                 display: block !important;
                                             }
                                         </style>
-
                                         <ul style="margin:0;">
-                                            <li style="list-style: none;"
-                                                class="hover_<?php echo $deductible.$plan_id;?>"><a href="#"
-                                                    class="mb-2"> Policy Details</a>
-
-                                                <div class="row hoverdetails_<?php echo $deductible.$plan_id;?>">
-                                                    <div class="col-md-12">
-                                                        <h2>Quote Details
-                                                            <?php echo $product_name;?>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <h3>Totel Premium: <span>$
-                                                                <?php echo number_format($total_price,2);?>
-                                                            </span></h3>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-12"
-                                                            style="border:1px solid #333; text-align:left;     padding: 10px 22px;">
-                                                            <div class="col-md-12 no-padding"><span
-                                                                    style="display:block; padding:3px 0px 5px; font-size:17px; text-align:left; border-bottom:1px dashed #333;">Plan:
-                                                                    <span style="font-size:15px; color: #f5821f;">
-                                                                        <?php echo $plan_name;?> -
-                                                                        <?php echo $plan_id;?>
-                                                                    </span></span></div>
-                                                            <div class="col-md-12 no-padding pt-1"><small
-                                                                    style="font-size: 85% !important;">Days: <span
-                                                                        style="color: #f5821f;">
-                                                                        <?php echo $num_of_days;?> (
-                                                                        <?php echo $startdate;?> -
-                                                                        <?php echo $enddate;?>)
-                                                                    </span></small>
-                                                                <small style="font-size: 85% !important;">Total: <span
-                                                                        style="color: #f5821f;">$
-                                                                        <?php echo number_format($total_price,2);?>
-                                                                    </span></small>
-                                                            </div>
-                                                            <div class="col-md-12 no-padding"><small
-                                                                    style="font-size: 85% !important;">Option: <span
-                                                                        style="color: #f5821f;">Deductible Option ($
-                                                                        <?php echo $deductible;?> (included in premium))
-                                                                    </span></small></div>
-                                                            <div class="col-md-12 no-padding">
-                                                                <?php
-                                        $per = 0;
-                    foreach($ages_array as $person_age){
-                    $per++;
-
-
-                    if($request->pre_existing[$per-1]=='yes')
-                    {
-                        $existingshow = $pre_existing_name;
-                    }else{
-                        $existingshow = $without_pre_existing_name;
-                    }
-
-
-                                        ?>
-                                                                <br /><span
-                                                                    style="display:block; padding:3px; font-size:17px; text-align:left; border-bottom:1px dashed #333; border-bottom:1px dashed #333;">Person
-                                                                    <?php echo $per;?> ({{$existingshow}})
-                                                                </span>
-
-                                                                <?php
-                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-
-                    $countarraytwo =  count($p_planrates);
-
-                    if($countarraytwo > 0)
-
-                    {
-                        if($request->pre_existing[$per-1]=='yes')
-                        {
-                            $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                            $existingshow = $pre_existing_name;
-                        }else{
-                            $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
-                            $existingshow = $without_pre_existing_name;
-                        }
-                        if($family_plan == 'yes' && $elder_age != $person_age){
-                        $person_daily = 0;
-                        } else if($family_plan == 'yes' && $elder_age == $person_age){
-                        $person_daily = $single_person_rate * 2;
-                        } else {
-                        $person_daily = $single_person_rate;
-                        }
-
-                        if($rate_base == '0'){ // if daily rate
-                        $person_price = $person_daily * $num_of_days;
-                        } else if($rate_base == '1'){ //if monthly rate
-                        $person_price = $person_daily * $num_months;
-                        } else if($rate_base == '2'){ // if yearly rate
-                        $person_price = $person_daily;
-                        }
-                        else if($rate_base == '3'){ // if multi days rate
-                        $person_price = $person_daily;
-                        }
-
-                        if($flatrate_type == 'each'){
-                        $p_flat_price = $flatrate;
-                        }else if($flatrate_type == 'total'){
-                        $p_flat_price = $flatrate  / $number_travelers;
-                        } else {
-                        $p_flat_price = 0;
-                        }
-                        //totaldaysprice
-                        $ptotaldaysprice = $person_price;
-                        //SALES TAX
-
-                        if($sales_tax != 0)
-                        {
-                            if($salestax_dest == $post_dest){
-                            //$salesequal = 'yes';
-                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                            } else {
-                            $p_salestaxes = 0;
-                            //$salesequal = 'no';
-                            }
-                        }else{
-                            $p_salestaxes = 0;
-                        }
-
-                        
-
-                        //SMOKE RATE
-                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-                        if($smoke == '0'){
-
-                            if($smoke_rate == 0)
-                            {
-                                $p_smoke_price = 0;
-                            }else{
-                               $p_smoke_price = $smoke_rate;
-                            }
-
-
-                        } else if($smoke == '1'){
-                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
-                        }
-                        } else {
-                        $p_smoke_price = 0;
-                        }
-
-                        // OTHERS
-                        $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
-
-                        //Deductible
-                        $p_deduct_discount = ($person_price * $deduct_rate) / 100;
-                        $p_cdiscount = ($person_price * $cdiscountrate) / 100;
-                        if (strpos($deductsq->deductible2, '-') !== false) {
-                        //if deductible is in minus
-                        $p_discount = $p_deduct_discount + $p_cdiscount;
-                        $p_adddeductible = 0;
-                        } else {
-                        //if deductible is in plus
-                        $p_discount = $p_cdiscount;
-                        $p_adddeductible = $p_deduct_discount;
-                        }
-
-                        $person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
-                        $p_discountonplan = 0;
-                        if($plan_discount == '1'){
-                        if($number_travelers > 1 && $family_plan == 'no'){
-                        $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
-                        }
-                        }
-                    }
-
-
-
-
-                    ?>                                          @if($single_person_rate)
-                                                                <div class="col-md-12 no-padding"><small>Insured: <span
-                                                                            style="color: #f5821f;"> (Age:
-                                                                            <?php echo $person_age; ?>)
-                                                                </span> Coverage Amount: <span
-                                                                    style="color: #f5821f;">$
-                                                                    <?php echo $sum_insured;?>
-                                                                </span> Premium: <span style="color: #f5821f;">$
-                                                                    <?php echo number_format($person_price,2);?>
-                                                                </span></small></div>
-                                                                @php
-                                                                    $alert = '';
-                                                                @endphp
-                                                                @else
-                                                                @php
-                                                                    $alert = 'You Purchase Plan For Only One Person';
-                                                                @endphp
-                                                                    <p class="text-danger">No Price found for this Person</p>
-                                                                @endif
-                                                                <?php $single_person_rate = '';}//} ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <li style="list-style: none;" onclick="showdetails({{ $deductible.$plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -778,6 +584,173 @@ if($show == '1' && $total_price > 0){
                                 <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                                 <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
                                 <small><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>
+                            </div>
+                            <div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }}" style="display:none;">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="javascript:void(0)"
+                                        onclick="showdetails(<?php echo $plan_id; ?>)"
+                                        class="pull-right text-danger" style="font-size:16px;"><i
+                                            class="fa fa-close"></i></a>
+                                        </div>
+                                        </div>
+                              
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Number of Days</span> : <span class="summarydata"> {{$num_of_days}} Days</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Start Date</span> : <span class="summarydata"> {{ Cmf::date_format($startdate) }} </span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">End Date</span> : <span class="summarydata"> {{ Cmf::date_format($enddate) }} </span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Total Premium</span> : <span class="summarydata">$ {{$total_price}} </span>
+                                            </div>
+                                            <?php
+                                            $per = 0;
+                                                foreach($ages_array as $person_age){
+                                                $per++;
+                                            ?>
+                                            <br /><b>Person
+                                                <?php echo $per;?>
+                                            </b><br />
+                                            Age:
+                                            <?php echo $person_age; ?><br />
+                                            Coverage Amount:
+                                            <?php echo $sum_insured; ?> <br />
+                                            Premium
+                                            <?php
+                                                $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+
+                                                $countarraytwo =  count($p_planrates);
+
+                                                if($countarraytwo > 0)
+
+                                                {
+                                                    if($request->pre_existing[$per-1]=='yes')
+                                                    {
+                                                        $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
+                                                        $existingshow = $pre_existing_name;
+                                                    }else{
+                                                        $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
+                                                        $existingshow = $without_pre_existing_name;
+                                                    }
+
+                                        if($family_plan == 'yes' && $elder_age != $person_age){
+                                        $person_daily = 0;
+                                        } else if($family_plan == 'yes' && $elder_age == $person_age){
+                                        $person_daily = $single_person_rate * 2;
+                                        } else {
+                                        $person_daily = $single_person_rate;
+                                        }
+
+                                        if($rate_base == '0'){ // if daily rate
+                                        $person_price = $person_daily * $num_of_days;
+                                        } else if($rate_base == '1'){ //if monthly rate
+                                        $person_price = $person_daily * $num_months;
+                                        } else if($rate_base == '2'){ // if yearly rate
+                                        $person_price = $person_daily;
+                                        }
+                                        else if($rate_base == '3'){ // if multi days rate
+                                        $person_price = $person_daily;
+                                        }
+
+                                        if($flatrate_type == 'each'){
+                                        $p_flat_price = $flatrate;
+                                        }else if($flatrate_type == 'total'){
+                                        $p_flat_price = $flatrate  / $number_travelers;
+                                        } else {
+                                        $p_flat_price = 0;
+                                        }
+                                        //totaldaysprice
+                                        $ptotaldaysprice = $person_price;
+                                        //SALES TAX
+                                        if($sales_tax != 0)
+                                        {
+                                            if($salestax_dest == $post_dest){
+                                            //$salesequal = 'yes';
+                                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                                            } else {
+                                            $p_salestaxes = 0;
+                                            //$salesequal = 'no';
+                                            }
+                                        }else{
+                                            $p_salestaxes = 0;
+                                        }
+
+                                        //SMOKE RATE
+                                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                                        if($smoke == '0'){
+                                        $p_smoke_price = $smoke_rate;
+                                        } else if($smoke == '1'){
+                                        $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
+                                        }
+                                        } else {
+                                        $p_smoke_price = 0;
+                                        }
+
+                                        // OTHERS
+                                        $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+
+                                        //Deductible
+                                        $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                                        $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                                        if (strpos($deductsq->deductible2, '-') !== false) {
+                                        //if deductible is in minus
+                                        $p_discount = $p_deduct_discount + $p_cdiscount;
+                                        $p_adddeductible = 0;
+                                        } else {
+                                        //if deductible is in plus
+                                        $p_discount = $p_cdiscount;
+                                        $p_adddeductible = $p_deduct_discount;
+                                        }
+
+                                        $person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
+                                        $p_discountonplan = 0;
+                                        if($plan_discount == '1'){
+                                        if($number_travelers > 1 && $family_plan == 'no'){
+                                        $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
+                                        }
+                                        }
+                                        $person_price = $person_price - $p_discountonplan;
+
+                                        echo number_format($person_price,2); ?>
+                                            <?php } 
+                        }?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @php
+                                            $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
+                                        @endphp
+                                        <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
+                                        <hr />
+                                        <ul>
+                                            @if($features->count() > 1)
+                                                @foreach($features as $feature)
+                                                @if($feature->features)
+                                                    @php
+                                                        $value = $feature->features;
+                                                        $test =  strtok($value, ":");
+                                                    @endphp
+                                                    <li style="list-style: circle;margin-left: 20px;line-height: 20px;"><b>{{ $test }}</b> {{ str_replace($test, '', $feature->features) }}</li><br>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
+                                                                                
+                                    </div>
+                                </div>
                             </div>
                             <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
                                 <form method="POST" action="{{ url('apply') }}">
@@ -873,10 +846,10 @@ if ($request->sendemail == 'yes') {
         $subject = "Your Quote - $product_name";
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
+        // Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+        //            $message->to($request->savers_email)->subject($subject);
+        //            $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        //         });
     }
 }
 ?>
@@ -893,7 +866,11 @@ if ($request->sendemail == 'yes') {
     })
     </script>
     <script>
-        var buynow_selected = "";
+    function showdetails(id)
+    {
+        $('.dh-toggle-show-hide-'+id).slideToggle();
+    }
+    var buynow_selected = "";
     var info_box = "";
     jQuery(".dh-toggle").click(function () {
         if (info_box != "") {

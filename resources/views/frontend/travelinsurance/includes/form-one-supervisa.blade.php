@@ -30,6 +30,9 @@
             <hr>
         </div>
         <div class="col-md-7 leftsection">
+            <div class="mt-2 mb-3 alert alert-danger print-error-msg-login" style="max-width: 70rem; margin: auto;display:none; color: #a94442;background-color: #f2dede;border-color: #ebccd1;">
+                <ul style="text-transform:capitalize;"></ul>
+            </div>
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
                 <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else
@@ -250,8 +253,7 @@
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text"
-                                    inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
+                                <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
 
@@ -305,7 +307,7 @@
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric"
+                                <input id="dateofbirthfull{{ $i }}" readonly class="oldTraveler" type="text" inputmode="numeric"
                                     onkeyup="calculateAge(this.value)" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
@@ -320,8 +322,7 @@
                                 Existing</label>
                             <div class="custom-form-control">
                                 <select id="pre_existing{{ $i }}" name="pre_existing[]" class="form-input">
-                                    <option value="">Select Pre Existing Condition
-                                    </option>
+                                    <option value="">Select Pre Existing Condition</option>
                                     <option value="yes">Yes</option>
                                     <option selected value="no">No</option>
                                 </select>
@@ -387,13 +388,12 @@
                 onchange="supervisayes()"
                 <?php } ?>>
                 <script>
-                    $('#departure_date').datepicker({
-                        format: 'yyyy-mm-dd'
-                        , todayHighlight: 'TRUE'
-                        , autoclose: true
-                        , minDate: 0
-                    , });
-
+                    $('#departure_date').datepicker( {
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                        minDate: new Date(),
+                    });
                 </script>
             </div>
         </div>
@@ -421,11 +421,11 @@
                 @if ($data->pro_supervisa != 1)
                 <script>
                     $('#return_date').datepicker({
-                        format: 'yyyy-mm-dd'
-                        , todayHighlight: 'TRUE'
-                        , autoclose: true
-                    , });
-
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                        minDate: new Date(),    
+                    });
                 </script>
                 @endif
 
@@ -631,13 +631,18 @@
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#dateofbirthfull1').mask('00/00/0000');
-        $('#dateofbirthfull2').mask('00/00/0000');
-        $('#dateofbirthfull3').mask('00/00/0000');
-        $('#dateofbirthfull4').mask('00/00/0000');
-        $('#dateofbirthfull5').mask('00/00/0000');
-        $('#dateofbirthfull6').mask('00/00/0000');
+
+
+    @for ($i=1; $i < 6; $i++)
+    $('#dateofbirthfull{{$i}}').datepicker( {
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        maxDate: new Date(),
+    });
+    @endfor
+
+    $(document).ready(function() {               
         $('#phonenumbermask').mask('000-000-0000');
     });
 
@@ -841,12 +846,28 @@
             contentType: false,
             processData: false,
             success: function(data) {
+            if($.isEmptyObject(data.error)){
                 $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
                 $('html, body').animate({
                     scrollTop: $(".quotationscards").offset().top
                 }, 2000);
+            }else{
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                // printErrorMsglogin(data.error);
+                var response = $.parseJSON(reject.responseText);
+                $.each(response.errors, function(key, val) {
+                    $("#" + key + "_error").text(val[0]);
+                })
+            }   
             }
         });
     }));
+    function printErrorMsglogin (msg) {
+        $(".print-error-msg-login").find("ul").html('');
+        $(".print-error-msg-login").css('display','block');
+        $.each( msg, function( key, value ) {
+            $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
+        });
+    }
 </script>
