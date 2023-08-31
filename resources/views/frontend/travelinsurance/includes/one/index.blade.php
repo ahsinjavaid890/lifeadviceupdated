@@ -585,18 +585,13 @@ if($show == '1' && $total_price > 0){
                                 <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
                                 <small><strong>Plan Type: </strong> <?php if($family_plan == 'yes'){ echo '<i class="fa fa-child"></i> Family'; } else {echo '<i class="fa fa-user"></i> Individual';}?></small>
                             </div>
-                            <div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }}" style="display:none;">
+                            <div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }} buynowrow">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <a href="javascript:void(0)"
-                                        onclick="showdetails(<?php echo $plan_id; ?>)"
-                                        class="pull-right text-danger" style="font-size:16px;"><i
-                                            class="fa fa-close"></i></a>
-                                        </div>
-                                        </div>
-                              
+                                <div class="col-12">
+                                    <a href="javascript:void(0)"onclick="showdetails({{ $deductible.$plan_id }})"class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+                                    </div>
+                                </div>
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr />
@@ -613,19 +608,20 @@ if($show == '1' && $total_price > 0){
                                             <div class="col-md-12">
                                                 <span class="summaryheading">Total Premium</span> : <span class="summarydata">$ {{$total_price}} </span>
                                             </div>
+                                            <hr style="margin-left: 16px !important; width: 200px;">
                                             <?php
                                             $per = 0;
                                                 foreach($ages_array as $person_age){
                                                 $per++;
                                             ?>
-                                            <br /><b>Person
-                                                <?php echo $per;?>
-                                            </b><br />
-                                            Age:
-                                            <?php echo $person_age; ?><br />
-                                            Coverage Amount:
-                                            <?php echo $sum_insured; ?> <br />
-                                            Premium
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Person {{ $per }}</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Premium</span> : 
                                             <?php
                                                 $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
@@ -721,7 +717,10 @@ if($show == '1' && $total_price > 0){
                                         }
                                         $person_price = $person_price - $p_discountonplan;
 
-                                        echo number_format($person_price,2); ?>
+                                        ?>
+
+                                        <span class="summarydata">$ {{number_format($person_price,2)}}</span>
+                                    </div>
                                             <?php } 
                         }?>
                                         </div>
@@ -748,7 +747,7 @@ if($show == '1' && $total_price > 0){
                                     </div>
                                     <div class="col-md-3">
                                         <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                                                                                
+                                        <hr>                                        
                                     </div>
                                 </div>
                             </div>
