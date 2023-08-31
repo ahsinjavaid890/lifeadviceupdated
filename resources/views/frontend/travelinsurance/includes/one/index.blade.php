@@ -615,11 +615,12 @@ if($show == '1' && $total_price > 0){
                                                 $per++;
                                             ?>
                                             <div class="col-md-12">
-                                                <span class="summaryheading">Person {{ $per }}</span>
+                                                <span style="color:#2b3481;" class="summaryheading">Person {{ $per }}</span>
                                             </div>
                                             <div class="col-md-12">
                                                 <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
                                             </div>
+                                            
                                             <div class="col-md-12">
                                                 <span class="summaryheading">Premium</span> : 
                                             <?php
@@ -633,10 +634,14 @@ if($show == '1' && $total_price > 0){
                                                     if($request->pre_existing[$per-1]=='yes')
                                                     {
                                                         $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                                                        $existingshow = $pre_existing_name;
+                                                        $existingshow = 'Yes';
+                                                        $document_pre_existing = 'yes';
+                                                        $document_without_pre_existing = '';
                                                     }else{
                                                         $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
-                                                        $existingshow = $without_pre_existing_name;
+                                                        $existingshow = 'No';
+                                                        $document_without_pre_existing = 'yes';
+                                                        $document_pre_existing = '';
                                                     }
 
                                         if($family_plan == 'yes' && $elder_age != $person_age){
@@ -721,8 +726,11 @@ if($show == '1' && $total_price > 0){
 
                                         <span class="summarydata">$ {{number_format($person_price,2)}}</span>
                                     </div>
+                                    <div class="col-md-12">
+                                        <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
+                                    </div>
                                             <?php } 
-                        }?>
+                                        }?>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -746,8 +754,44 @@ if($show == '1' && $total_price > 0){
                                         </ul>
                                     </div>
                                     <div class="col-md-3">
-                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                                        <hr>                                        
+                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy Documents:</b>
+                                        <hr>
+
+                                        @if($document_pre_existing == 'yes')
+                                            @if ($plan->plan_pdf_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }} plan_pdf_pre_existing
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of {{ $existingshow }}  benifit_summary_pre_existing
+                                                </a>
+                                            @endif
+                                        @endif
+
+                                        @if($document_without_pre_existing == 'yes')
+
+                                            @if ($plan->plan_pdf_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF {{ $existingshow }}
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of
+                                                    {{ $existingshow }}
+                                                </a>
+                                            @endif
+
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
