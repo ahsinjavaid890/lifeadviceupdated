@@ -435,8 +435,7 @@ if($show == '1' && $total_price > 0){
 
                             <div class="col-md-12 col-xs-12" style="padding:0;">
                                 <div class="row" style="margin-left: 0px">
-                                    <div class="col-md-12 col-xs-12 text-center"
-                                        style="border-bottom:2px solid #c0c0c0;">
+                                    <div class="col-md-12 col-xs-12 text-center" style="border-bottom:2px solid #c0c0c0;">
                                         <h3 style="margin-bottom:5px;font-size: 22px;font-weight: bold;">
                                             <?php //echo $plan_name;?>
                                             <button class="btn btn-default dh-toggle"
@@ -457,204 +456,230 @@ if($show == '1' && $total_price > 0){
                                                     aria-hidden="true"></i>
                                             </button>
                                         </h3>
-
-                                        <div class="col-md-12 col-xs-12 summary_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $plan_id; ?>"
-                                            style="margin-bottom: 20px; border: 1px solid rgb(221, 221, 221); font-family: arial; background: rgb(255, 255, 255) none repeat scroll 0% 0%;  padding: 10px 0; display: none;">
+                                        <div class="col-md-12 summary_<?php echo $deductible.$plan_id;?>  dh-toggle-show-hide-<?php echo $plan_id; ?> buynowrow summarydiv">
                                             <div class="row">
-                                                <div class="col-md-6 col-xs-6 text-left">
+                                            <div class="col-12">
+                                                <a href="javascript:void(0)"onclick="showdetails({{ $deductible.$plan_id }})"class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                                     <hr />
-                                                    <div style="font-size:12px;">
-                                                        <p style="margin:0;"><b>Plan:</b> <small>
-                                                                <?php echo $plan_name; ?>
-                                                            </small></p>
-                                                        <p style="margin:0;"><b>Plan Type:</b> <small>
-                                                                <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?>
-                                                            </small></p>
-                                                        <p style="margin:0;"><b>Travellers:</b> <small>
-                                                                <?php echo $number_travelers; ?>
-                                                            </small></p>
-                                                        <p style="margin:0;">
-                                                            <?php
-                                        $per = 0;
-                    foreach($ages_array as $person_age){
-                    $per++;
-                                        ?>
-                                                            <br /><b>Person: </b><small>
-                                                                <?php echo $per;?>
-                                                            </small><br />
-                                                            Age: <small>
-                                                                <?php echo $person_age; ?>
-                                                            </small><br />
-                                                            Coverage Amount: <small>$
-                                                                <?php echo $sum_insured; ?>
-                                                            </small> <br />
-                                                            Premium <small>
-                                                                <?php
-                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">Number of Days</span> : <span class="summarydata"> {{$num_of_days}} Days</span>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">Start Date</span> : <span class="summarydata"> {{ Cmf::date_format($startdate) }} </span>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">End Date</span> : <span class="summarydata"> {{ Cmf::date_format($enddate) }} </span>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">Total Premium</span> : <span class="summarydata">$ {{$total_price}} </span>
+                                                        </div>
+                                                        <hr style="margin-left: 16px !important; width: 200px;">
+                                                        <?php
+                                                        $per = 0;
+                                                            foreach($ages_array as $person_age){
+                                                            $per++;
+                                                        ?>
+                                                        <div class="col-md-12">
+                                                            <span style="color:#2b3481;" class="summaryheading">Person {{ $per }}</span>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                            <span class="summaryheading">Premium</span> : 
+                                                        <?php
+                                                            $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
-                    $countarraytwo =  count($p_planrates);
+                                                            $countarraytwo =  count($p_planrates);
+                                                            $document_pre_existing = '';
+                                                            if($countarraytwo > 0)
 
-                    if($countarraytwo > 0)
+                                                            {
+                                                                if($request->pre_existing[$per-1]=='yes')
+                                                                {
+                                                                    $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
+                                                                    $existingshow = $pre_existing_name;
+                                                                    $document_pre_existing = 'yes';
+                                                                    $document_without_pre_existing = '';
+                                                                }else{
+                                                                    $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
+                                                                    $existingshow = $without_pre_existing_name;
+                                                                    $document_without_pre_existing = 'yes'; 
+                                                                    if($document_pre_existing == 'yes')
+                                                                    {
+                                                                        $document_pre_existing = 'yes';
+                                                                    }else{
+                                                                        $document_pre_existing = '';
+                                                                    }
+                                                                }
 
-                    {
-                        if($request->pre_existing[$per-1]=='yes')
-                        {
-                            $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                            $existingshow = $pre_existing_name;
-                        }else{
-                            $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
-                            $existingshow = $without_pre_existing_name;
-                        }
+                                                    if($family_plan == 'yes' && $elder_age != $person_age){
+                                                    $person_daily = 0;
+                                                    } else if($family_plan == 'yes' && $elder_age == $person_age){
+                                                    $person_daily = $single_person_rate * 2;
+                                                    } else {
+                                                    $person_daily = $single_person_rate;
+                                                    }
 
-if($family_plan == 'yes' && $elder_age != $person_age){
-$person_daily = 0;
-} else if($family_plan == 'yes' && $elder_age == $person_age){
-$person_daily = $single_person_rate * 2;
-} else {
-$person_daily = $single_person_rate;
-}
+                                                    if($rate_base == '0'){ // if daily rate
+                                                    $person_price = $person_daily * $num_of_days;
+                                                    } else if($rate_base == '1'){ //if monthly rate
+                                                    $person_price = $person_daily * $num_months;
+                                                    } else if($rate_base == '2'){ // if yearly rate
+                                                    $person_price = $person_daily;
+                                                    }
+                                                    else if($rate_base == '3'){ // if multi days rate
+                                                    $person_price = $person_daily;
+                                                    }
 
-if($rate_base == '0'){ // if daily rate
-$person_price = $person_daily * $num_of_days;
-} else if($rate_base == '1'){ //if monthly rate
-$person_price = $person_daily * $num_months;
-} else if($rate_base == '2'){ // if yearly rate
-$person_price = $person_daily;
-}
-else if($rate_base == '3'){ // if multi days rate
-$person_price = $person_daily;
-}
+                                                    if($flatrate_type == 'each'){
+                                                    $p_flat_price = $flatrate;
+                                                    }else if($flatrate_type == 'total'){
+                                                    $p_flat_price = $flatrate  / $number_travelers;
+                                                    } else {
+                                                    $p_flat_price = 0;
+                                                    }
+                                                    //totaldaysprice
+                                                    $ptotaldaysprice = $person_price;
+                                                    //SALES TAX
+                                                    if($sales_tax != 0)
+                                                    {
+                                                        if($salestax_dest == $post_dest){
+                                                        //$salesequal = 'yes';
+                                                        $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
+                                                        } else {
+                                                        $p_salestaxes = 0;
+                                                        //$salesequal = 'no';
+                                                        }
+                                                    }else{
+                                                        $p_salestaxes = 0;
+                                                    }
 
-if($flatrate_type == 'each'){
-$p_flat_price = $flatrate;
-}else if($flatrate_type == 'total'){
-$p_flat_price = $flatrate  / $number_travelers;
-} else {
-$p_flat_price = 0;
-}
-//totaldaysprice
-$ptotaldaysprice = $person_price;
-//SALES TAX
-if($sales_tax != 0)
-                        {
-                            if($salestax_dest == $post_dest){
-                            //$salesequal = 'yes';
-                            $p_salestaxes = ($salestax_rate * $ptotaldaysprice) / 100;
-                            } else {
-                            $p_salestaxes = 0;
-                            //$salesequal = 'no';
-                            }
-                        }else{
-                            $p_salestaxes = 0;
-                        }
+                                                    //SMOKE RATE
+                                                    if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
+                                                    if($smoke == '0'){
+                                                    $p_smoke_price = $smoke_rate;
+                                                    } else if($smoke == '1'){
+                                                    $p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
+                                                    }
+                                                    } else {
+                                                    $p_smoke_price = 0;
+                                                    }
 
-//SMOKE RATE
-if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-if($smoke == '0'){
-$p_smoke_price = $smoke_rate;
-} else if($smoke == '1'){
-$p_smoke_price = ($ptotaldaysprice * $smoke_rate) / 100;
-}
-} else {
-$p_smoke_price = 0;
-}
+                                                    // OTHERS
+                                                    $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
 
-// OTHERS
-$p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
+                                                    //Deductible
+                                                    $p_deduct_discount = ($person_price * $deduct_rate) / 100;
+                                                    $p_cdiscount = ($person_price * $cdiscountrate) / 100;
+                                                    if (strpos($deductsq->deductible2, '-') !== false) {
+                                                    //if deductible is in minus
+                                                    $p_discount = $p_deduct_discount + $p_cdiscount;
+                                                    $p_adddeductible = 0;
+                                                    } else {
+                                                    //if deductible is in plus
+                                                    $p_discount = $p_cdiscount;
+                                                    $p_adddeductible = $p_deduct_discount;
+                                                    }
 
-//Deductible
-$p_deduct_discount = ($person_price * $deduct_rate) / 100;
-$p_cdiscount = ($person_price * $cdiscountrate) / 100;
-if (strpos($deductsq->deductible2, '-') !== false) {
-//if deductible is in minus
-$p_discount = $p_deduct_discount + $p_cdiscount;
-$p_adddeductible = 0;
-} else {
-//if deductible is in plus
-$p_discount = $p_cdiscount;
-$p_adddeductible = $p_deduct_discount;
-}
+                                                    $person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
+                                                    $p_discountonplan = 0;
+                                                    if($plan_discount == '1'){
+                                                    if($number_travelers > 1 && $family_plan == 'no'){
+                                                    $p_discountonplan = ($plan_discount_rate * $person_price) / 100;
+                                                    }
+                                                    }
+                                                    $person_price = $person_price - $p_discountonplan;
 
-$person_price = ($person_price - $p_discount) + ($p_others + $p_adddeductible);
-$p_discountonplan = 0;
-if($plan_discount == '1'){
-if($number_travelers > 1 && $family_plan == 'no'){
-$p_discountonplan = ($plan_discount_rate * $person_price) / 100;
-}
-}
-$person_price = $person_price - $p_discountonplan;
+                                                    ?>
 
-                                        echo number_format($person_price,2); ?>
-                                                                <?php } }?>
-                                                        </p>
-
-                                                        <p style="margin:0;"><b>Duration:</b><small>
-                                                                <?php echo $num_of_days; ?> days (
-                                                                <?php echo $startdate . " - " . $enddate; ?>)
-                                                            </small></p>
-                                                        <p style="margin:0;"><b>Total Premium:</b> $
-                                                            <?php echo number_format($total_price,2); ?></small>
-                                                        </p>
+                                                    <span class="summarydata">$ {{number_format($person_price,2)}}</span>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
+                                                </div>
+                                                        <?php } 
+                                                    }?>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-3">
-                                                    <?php
-                                        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
-                                        ?>
-                                                    <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                                        Features:</b>
+                                                    @php
+                                                        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
+                                                    @endphp
+                                                    <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
                                                     <hr />
                                                     <ul>
-                                                        <li>$
-                                                            <?php echo $request->deductible1; ?> deductible
-                                                        </li>
-                                                        <?php
-                                                if ($features->count() > 1 ) {
-                                                    foreach($features as $feature) {
-                                                        echo "<li> ".$feature->features."</li>";
-                                                    }
-                                                }
-                                                ?>
+                                                        @if($features->count() > 1)
+                                                            @foreach($features as $feature)
+                                                            @if($feature->features)
+                                                                @php
+                                                                    $value = $feature->features;
+                                                                    $test =  strtok($value, ":");
+                                                                @endphp
+                                                                <li style="list-style: circle;margin-left: 20px;line-height: 20px;"><b>{{ $test }}</b> {{ str_replace($test, '', $feature->features) }}</li><br>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
                                                     </ul>
-
                                                 </div>
-                                                <div class="col-md-3 col-xs-6 text-left">
-                                                    <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy
-                                                        details:</b>
-                                                    <span style="display: none;">
-                                                        <?// "SELECT * FROM {$wpdb->prefix}dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_SESSION['sum_insured2']."' limit 1000" ?>
-                                                    </span>
-                                                    <hr />
-                                                    <?php
-                                        //foreach ( get_all_pdfpolicy( $plan_id ) as $pdfpolicy ):
-                                            //echo "<a href='$pdfpolicy->pdfpolicy' style='font-size: 70%;'>Sample Policy</a>";
-                                        //endforeach;
-                                        ?>
+                                                <div class="col-md-3">
+                                                    <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy Documents:</b>
+                                                    <hr>
+
+                                                    @if($document_pre_existing == 'yes')
+                                                        @if ($plan->plan_pdf_pre_existing)
+                                                            <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
+                                                                class="pdf-additional-travelers">
+                                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Pre Existing Person
+                                                            </a>
+                                                        @endif
+                                                        <br>
+                                                        @if ($plan->benifit_summary_pre_existing)
+                                                            <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}"
+                                                                class="pdf-additional-travelers">
+                                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Pre Existing Person 
+                                                            </a>
+                                                        @endif
+                                                    @endif
+
+                                                    @if($document_without_pre_existing == 'yes')
+
+                                                        @if ($plan->plan_pdf_without_pre_existing)
+                                                            <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
+                                                                class="pdf-additional-travelers">
+                                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Without Pre Existing Person
+                                                            </a>
+                                                        @endif
+                                                        <br>
+                                                        @if ($plan->benifit_summary_without_pre_existing)
+                                                            <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}"
+                                                                class="pdf-additional-travelers">
+                                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Without Pre Existing Person
+                                                            </a>
+                                                        @endif
+
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <?php
-$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
-$agent = $request->agent;
-$broker = $request->broker;
-?>
                                     <div class="col-md-3 hidden-xs col-xs-12 text-center" style="padding-top: 15px;">
-                                        <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;"
-                                            src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"
+                                        <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;"src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"
                                             class="img-responsive" />
-
                                         <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
                                             class="buynow-btn" data-value="<?php echo $plan_id; ?>"
                                             class="btn btn-lg btn-danger" name="buynow"
                                             style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy
                                             Now
                                         </button>
-
-
                                         <label
                                             onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
                                             class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i
@@ -732,10 +757,8 @@ $broker = $request->broker;
                             </div>
 
                             <div style="clear:both;"></div>
-                            <div class="row buynow_<?php echo $deductible.$plan_id;?>"
-                                style="clear: both;  border: 1px solid rgb(204, 204, 204);background: #FFF;margin-top: 10px !important;margin-bottom: 10px !important; display:none;margin-left:0px;">
-                                <form method="post" action="{{ url('apply') }}">
-
+                            <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
+                                <form method="POST" action="{{ url('apply') }}">
                                     @csrf
                                     <input type="hidden" value="{{ $request->savers_email }}" name="email">
                                     <input type="hidden" value="{{ $request->fname }}" name="fname">
@@ -766,52 +789,26 @@ $broker = $request->broker;
                                     <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
                                     <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
                                     <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                                    <input type="hidden" value="{{ $dob }}" name="dob">
-                                    <input type="hidden" value="{{ $agent }}" name="agent">
-                                    <input type="hidden" value="{{ $broker }}" name="broker">
-                                    <div class="row" style="flex-wrap: nowrap;">
-                                        <div class="col-md-6 col-xs-12"
-                                            style="background:#F9F9F9; padding-right: 15px; padding-left: 15px;margin-left:15px;">
-                                            <h3
-                                                style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;color: #000;">
-                                                Buy Online</h3>
-                                            <p
-                                                style="font-weight: bold;-webkit-margin-before: 1em;    margin-bottom: 30px;">
-                                                In three simple steps you can purchase your policy, easily and securely,
-                                                online.</p>
-                                            <p style=""><input type="checkbox" name="agree" required=""
-                                                    style="height: auto;margin: 0;"> I give permission to LifeAdvice.ca
-                                                to transfer my quote information and contact details to
-                                                <?php echo $comp_name;?> in order to complete the purchase of travel
-                                                insurance. LifeAdvice values your privacy. For details, see our <a
-                                                    href="/">Privacy Policy</a>
+                                    <div class="row" style="flex-wrap: nowrap;padding:0px">
+                                        <div class="col-md-6 buynodropdownsectioncolsix">
+                                            <h3 class="buyonlinebutton">Buy Online</h3>
+                                            <b>In three simple steps you can purchase your policy, easily and securely, online.</b>
+                                            <p>
+                                                <input type="checkbox" name="agree" required=""> 
+                                                I give permission to LifeAdvice.ca to transfer my quote information and contact details to {{ $comp_name }} in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our 
+                                                <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a>
                                             </p>
-                                            <p></p>
-                                            <p><button type="submit" class="btn submit-btn mt-2" style="    color: #FFF;
-    height: 45px;
-    border-radius: 5px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    display: block;
-    background: #1bbc9b;"><i class="fa fa-shopping-cart"></i> Buy Now</button></p>
+                                            <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
                                         </div>
-                                        <div class="col-md-6 col-xs-12 text-center contact-details"
-                                            style="font-size:16px;">
-                                            <a href="javascript:void(0)"
-                                                onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();"
-                                                class="pull-right text-danger" style="font-size:16px;"><i
-                                                    class="fa fa-close"></i></a>
-                                            <p style=";">or</p>
-                                            <p style="">BY CALLING</p>
-                                            <p style=""><a href="tel:8555008999"
-                                                    style="font-size:24px; font-weight:bold; color:#44bc9b;">855-500-8999</a>
+                                        <div class="col-md-6 text-center">
+                                            <a href="javascript:void(0)" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
+                                            </a>
+                                            <p>or</p>
+                                            <p>BY CALLING</p>
+                                            <p><a href="tel:8555008999">855-500-8999</a>
                                             </p>
-                                            <p
-                                                style="; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;  ">
-                                                CALL CENTRE HOURS</p>
-                                            <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to
-                                                9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00
-                                                pm EDT | Closed on holidays.</p>
+                                            <p>CALL CENTRE HOURS</p>
+                                            <p>Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
                                         </div>
                                     </div>
                                 </form>
@@ -846,10 +843,10 @@ if ($request->sendemail == 'yes') {
         $subject = "Your Quote - $product_name";
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
+        // Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+        //            $message->to($request->savers_email)->subject($subject);
+        //            $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        //         });
     }
 }
 ?>
@@ -956,14 +953,3 @@ $("#listprices").html(divList);
     </script>
 
 </div>
-<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-<script type="text/javascript">
-    $( document ).ready(function() {
-       $('#dateofbirthfull1').mask('00/00/0000');
-       $('#dateofbirthfull2').mask('00/00/0000');
-       $('#dateofbirthfull3').mask('00/00/0000');
-       $('#dateofbirthfull4').mask('00/00/0000');
-       $('#dateofbirthfull5').mask('00/00/0000');
-       $('#dateofbirthfull6').mask('00/00/0000');
-   });
-</script>

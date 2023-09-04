@@ -169,14 +169,14 @@
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
-   $( document ).ready(function() {
-       $('#dateofbirthfull').mask('00/00/0000');
-       $('.dateofbirthfull2').mask('00/00/0000');
-       $('.dateofbirthfull3').mask('00/00/0000');
-       $('.dateofbirthfull4').mask('00/00/0000');
-       $('.dateofbirthfull5').mask('00/00/0000');
-       $('.dateofbirthfull6').mask('00/00/0000');
-   });
+@for ($i=1; $i < 6; $i++)
+$('#dateofbirthfull{{$i}}').datepicker( {
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "-100:+0",
+    maxDate: new Date(),
+});
+@endfor
 </script>
 <script>
 	function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 

@@ -1,7 +1,4 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayouttwo.css') }}">
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script>
     <?php
     $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");
@@ -542,8 +539,7 @@ if($show == '1' && $total_price > 0){
                                 </div>
 
 
-
-                                <div class="col-md-12 moredetails_<?php echo $deductible . $plan_id; ?> dh-toggle-show-hide-{{ $deductible.$plan_id }} buynowrow">
+                            <div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }} moredetails_<?php echo $deductible . $plan_id; ?> buynowrow">
                                 <div class="row">
                                 <div class="col-12">
                                     <a href="javascript:void(0)"onclick="showdetails({{ $deductible.$plan_id }})"class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
@@ -573,18 +569,19 @@ if($show == '1' && $total_price > 0){
                                                 $per++;
                                             ?>
                                             <div class="col-md-12">
-                                                <span class="summaryheading">Person {{ $per }}</span>
+                                                <span style="color:#2b3481;" class="summaryheading">Person {{ $per }}</span>
                                             </div>
                                             <div class="col-md-12">
                                                 <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
                                             </div>
+                                            
                                             <div class="col-md-12">
                                                 <span class="summaryheading">Premium</span> : 
                                             <?php
                                                 $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
                                                 $countarraytwo =  count($p_planrates);
-
+                                                $document_pre_existing = '';
                                                 if($countarraytwo > 0)
 
                                                 {
@@ -592,9 +589,18 @@ if($show == '1' && $total_price > 0){
                                                     {
                                                         $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
                                                         $existingshow = $pre_existing_name;
+                                                        $document_pre_existing = 'yes';
+                                                        $document_without_pre_existing = '';
                                                     }else{
                                                         $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
                                                         $existingshow = $without_pre_existing_name;
+                                                        $document_without_pre_existing = 'yes'; 
+                                                        if($document_pre_existing == 'yes')
+                                                        {
+                                                            $document_pre_existing = 'yes';
+                                                        }else{
+                                                            $document_pre_existing = '';
+                                                        }
                                                     }
 
                                         if($family_plan == 'yes' && $elder_age != $person_age){
@@ -679,8 +685,11 @@ if($show == '1' && $total_price > 0){
 
                                         <span class="summarydata">$ {{number_format($person_price,2)}}</span>
                                     </div>
+                                    <div class="col-md-12">
+                                        <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
+                                    </div>
                                             <?php } 
-                        }?>
+                                        }?>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -704,12 +713,46 @@ if($show == '1' && $total_price > 0){
                                         </ul>
                                     </div>
                                     <div class="col-md-3">
-                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                                        <hr>                                        
+                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy Documents:</b>
+                                        <hr>
+
+                                        @if($document_pre_existing == 'yes')
+                                            @if ($plan->plan_pdf_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Pre Existing Person
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Pre Existing Person 
+                                                </a>
+                                            @endif
+                                        @endif
+
+                                        @if($document_without_pre_existing == 'yes')
+
+                                            @if ($plan->plan_pdf_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Without Pre Existing Person
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Without Pre Existing Person
+                                                </a>
+                                            @endif
+
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
-
 
                             </div>                            
                             <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">

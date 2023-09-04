@@ -1,6 +1,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayouttwo.css') }}">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <section class="firstsection">
     <div class="container-homepage">
         <div class="row birthdate">
@@ -52,10 +50,7 @@
                                                                 for="year{{ $i }}" class="">Birth date
                                                                 </label>
                                                             <div class="custom-form-control mb-2">
-                                                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}"
-                                                                    class="form-control" type="text"
-                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
-                                                                    name="years[]" data-placeholder="MM/DD/YYYY">
+                                                                <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
                                                             </div>
                                                         </div>
                                                         <div style="padding-right: 0px;"
@@ -96,10 +91,7 @@
                                                                 for="year{{ $i }}" class="">Birth date
                                                                 </label>
                                                             <div class="custom-form-control mb-2">
-                                                                <input id="dateofbirthfull{{ $i }}"
-                                                                    class="form-control" type="text"
-                                                                    inputmode="numeric" placeholder="MM/DD/YYYY"
-                                                                    name="years[]" data-placeholder="MM/DD/YYYY">
+                                                                <input id="dateofbirthfull{{ $i }}" readonly class="form-control" type="text" inputmode="numeric"  placeholder="MM/DD/YYYY" name="years[]">
                                                             </div>
                                                         </div>
                                                         <div style="padding-right: 0px;"
@@ -128,9 +120,6 @@
                             @endif
                             @if (array_search('id_8', $orderdata) == $orderi)
                                 @if (isset($fields['sdate']) && $fields['sdate'] == 'on' && isset($fields['edate']) && $fields['edate'] == 'on')
-                                    <link rel="stylesheet"
-                                        href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
                                     <div class="col-md-6">
                                         <label class="input-label"> Start Date</label>
                                         <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif  readonly style="padding-left: 40px;" id="departure_date"
@@ -348,7 +337,7 @@
                                                 class="">Email</label>
                                             <div class="custom-form-control">
                                                 <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif id="savers_email" name="savers_email" value=""
-                                                    class="form-control form-control" type="email"
+                                                    class="form-control" type="email"
                                                     placeholder="Email" style="padding-left: 40px !important;"
                                                     required="">
                                                 <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -506,66 +495,6 @@
         </div>
     </div>
 </section>
-
-
-
-<script type="text/javascript">
-    function checknumtravellers(id) {
-        if (id == '') {
-            $('.no_of_travelers').hide();
-        }
-        if (id == 1) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-        }
-        if (id == 2) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-        }
-        if (id == 3) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-            $('#traveler3').show();
-        }
-        if (id == 4) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-            $('#traveler3').show();
-            $('#traveler4').show();
-        }
-        if (id == 5) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-            $('#traveler3').show();
-            $('#traveler4').show();
-            $('#traveler5').show();
-        }
-        if (id == 6) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-            $('#traveler3').show();
-            $('#traveler4').show();
-            $('#traveler5').show();
-            $('#traveler6').show();
-        }
-        if (id == 7) {
-            $('.no_of_travelers').hide();
-            $('#traveler1').show();
-            $('#traveler2').show();
-            $('#traveler3').show();
-            $('#traveler4').show();
-            $('#traveler5').show();
-            $('#traveler6').show();
-            $('#traveler7').show();
-
-        }
-    }
-</script>
 <script>
     function supervisayes() {
         window.setTimeout(function() {
@@ -679,12 +608,6 @@
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#dateofbirthfull1').mask('00/00/0000');
-        $('#dateofbirthfull2').mask('00/00/0000');
-        $('#dateofbirthfull3').mask('00/00/0000');
-        $('#dateofbirthfull4').mask('00/00/0000');
-        $('#dateofbirthfull5').mask('00/00/0000');
-        $('#dateofbirthfull6').mask('00/00/0000');
         $('#phonenumbermask').mask('000-000-000000');
     });
     @if(isset($_GET['sum_insured2']))

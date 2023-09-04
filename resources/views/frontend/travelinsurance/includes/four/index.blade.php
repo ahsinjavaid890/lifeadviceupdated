@@ -315,18 +315,18 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             //$single_person_rate = array();
             $display = array();
             if($family_plan == 'yes'){
-$plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-$countarray =  count($plan_rates);
-if($countarray > 0)
-{
-    $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
-    if(!$daily_rate){ $display = '0'; }
-}
-else{
-    $daily_rate = 500;
-    if(!$daily_rate){ $display = '0'; }
-}
-} else {
+                $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                $countarray =  count($plan_rates);
+                if($countarray > 0)
+                {
+                    $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                    if(!$daily_rate){ $display = '0'; }
+                }
+                else{
+                    $daily_rate = 500;
+                    if(!$daily_rate){ $display = '0'; }
+                }
+            } else {
                 $perone = 0;
                 foreach($ages_array as $person_age){
                     $perone++;
@@ -455,7 +455,7 @@ if($show == '1' && $total_price > 0){
                                 <div class=" center aligned middle aligned column">
                                     <div class="compare col-md-12 text-center">
                                         <i class="fa fa-exclamation-circle dh-toggle hidden-md"
-                                            onclick="showdetails(<?php echo $plan_id; ?>)"
+                                            onclick="showdetails({{ $deductible.$plan_id }})"
                                             style="cursor:pointer;position: absolute;top: 40%;left: -10px;"
                                             aria-hidden="true"></i>
                                         <div class="compare text-center hidden-xs" style="padding-top: 7px;">
@@ -550,66 +550,72 @@ if($show == '1' && $total_price > 0){
                                 <label
                                      onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
                                        style="cursor: pointer;background:#00c2a2;color:white;font-weight:700" class="pb-2 mt-2 col-md-12 col-xs-5 btn btn-lg" id="compare"><i
-                                             class="fa fa-database"></i> Compare</label>
+                                             class="fa fa-database text-white"></i> Compare</label>
                             </div>
 
-                            <div class="col-md-12 dh-toggle-show-hide-<?php echo $plan_id; ?>" style="display:none;">
+                            <div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }} buynowrow">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <a href="javascript:void(0)"
-                                        onclick="showdetails(<?php echo $plan_id; ?>)"
-                                        class="pull-right text-danger" style="font-size:16px;"><i
-                                            class="fa fa-close"></i></a>
-                                        </div>
-                                        </div>
-                              
+                                <div class="col-12">
+                                    <a href="javascript:void(0)"onclick="showdetails({{ $deductible.$plan_id }})"class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+                                    </div>
+                                </div>
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <b><i class="fa fa-briefcase" aria-hidden="true"></i> Summary:</b>
                                         <hr />
-                                        <div style="font-size:70%;">
-                                            <b>
-                                                <?php echo $plan_name;?> -
-                                                <?php echo $plan_id;?>
-                                            </b><br />
-                                            <b>Plan</b>
-                                            <?php if($family_plan == 'yes'){ echo 'Family'; } else {echo 'Individual';}?><br />
-                                            Days&nbsp;
-                                            <?php echo $num_of_days; ?> &nbsp;
-                                            (
-                                            <?php echo $startdate . " - " . $enddate; ?>)<Br />
-                                            Total&nbsp; $
-                                            <?php echo $total_price; ?>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Number of Days</span> : <span class="summarydata"> {{$num_of_days}} Days</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Start Date</span> : <span class="summarydata"> {{ Cmf::date_format($startdate) }} </span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">End Date</span> : <span class="summarydata"> {{ Cmf::date_format($enddate) }} </span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Total Premium</span> : <span class="summarydata">$ {{$total_price}} </span>
+                                            </div>
+                                            <hr style="margin-left: 16px !important; width: 200px;">
                                             <?php
-                                        $per = 0;
-                    foreach($ages_array as $person_age){
-                    $per++;
-                                        ?>
-                                            <br /><b>Person
-                                                <?php echo $per;?>
-                                            </b><br />
-                                            Age:
-                                            <?php echo $person_age; ?><br />
-                                            Coverage Amount:
-                                            <?php echo $sum_insured; ?> <br />
-                                            Premium
+                                            $per = 0;
+                                                foreach($ages_array as $person_age){
+                                                $per++;
+                                            ?>
+                                            <div class="col-md-12">
+                                                <span style="color:#2b3481;" class="summaryheading">Person {{ $per }}</span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
+                                            </div>
+                                            
+                                            <div class="col-md-12">
+                                                <span class="summaryheading">Premium</span> : 
                                             <?php
-                    $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                                                $p_planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
 
-                    $countarraytwo =  count($p_planrates);
+                                                $countarraytwo =  count($p_planrates);
+                                                $document_pre_existing = '';
+                                                if($countarraytwo > 0)
 
-                    if($countarraytwo > 0)
-
-                    {
-                        if($request->pre_existing[$per-1]=='yes')
-                        {
-                            $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
-                            $existingshow = $pre_existing_name;
-                        }else{
-                            $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
-                            $existingshow = $without_pre_existing_name;
-                        }
+                                                {
+                                                    if($request->pre_existing[$per-1]=='yes')
+                                                    {
+                                                        $single_person_rate = $p_planrates[0]->rate_with_pre_existing;
+                                                        $existingshow = $pre_existing_name;
+                                                        $document_pre_existing = 'yes';
+                                                        $document_without_pre_existing = '';
+                                                    }else{
+                                                        $single_person_rate = $p_planrates[0]->rate_without_pre_existing;
+                                                        $existingshow = $without_pre_existing_name;
+                                                        $document_without_pre_existing = 'yes'; 
+                                                        if($document_pre_existing == 'yes')
+                                                        {
+                                                            $document_pre_existing = 'yes';
+                                                        }else{
+                                                            $document_pre_existing = '';
+                                                        }
+                                                    }
 
                                         if($family_plan == 'yes' && $elder_age != $person_age){
                                         $person_daily = 0;
@@ -689,122 +695,135 @@ if($show == '1' && $total_price > 0){
                                         }
                                         $person_price = $person_price - $p_discountonplan;
 
-                                        echo number_format($person_price,2); ?>
+                                        ?>
+
+                                        <span class="summarydata">$ {{number_format($person_price,2)}}</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
+                                    </div>
                                             <?php } 
-                        }?>
+                                        }?>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <?php
-                                        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
-                                        ?>
+                                        @php
+                                            $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
+                                        @endphp
                                         <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
                                         <hr />
                                         <ul>
-                                            <li>$
-                                                <?php echo $request->deductible1; ?> deductible
-                                            </li>
-                                            <?php
-                                                if ($features->count() > 1 ) {
-                                                    foreach($features as $feature) {
-                                                        echo "<li>".$feature->features."</li>";
-                                                    }
-                                                }
-                                                ?>
+                                            @if($features->count() > 1)
+                                                @foreach($features as $feature)
+                                                @if($feature->features)
+                                                    @php
+                                                        $value = $feature->features;
+                                                        $test =  strtok($value, ":");
+                                                    @endphp
+                                                    <li style="list-style: circle;margin-left: 20px;line-height: 20px;"><b>{{ $test }}</b> {{ str_replace($test, '', $feature->features) }}</li><br>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </ul>
-
                                     </div>
                                     <div class="col-md-3">
-                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy details:</b>
-                                        <span style="display: none;">
-                                            <? //"SELECT * FROM wp_dh_insurance_plans_rates WHERE minage <= '$year' AND maxage >= '$year' and sum_insured ='".$_REQUEST['sum_insured']."' limit 1000" ?>
-                                        </span>
-                                        <hr />
-                                        <?php
-                                        //foreach ( get_all_pdfpolicy( $plan['plan'] ) as $pdfpolicy ):
-                                            //echo "<a href='$pdfpolicy->pdfpolicy' style='font-size: 70%;'>Sample Policy</a>";
-                                        //endforeach;
-                                        ?>
+                                        <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy Documents:</b>
+                                        <hr>
+
+                                        @if($document_pre_existing == 'yes')
+                                            @if ($plan->plan_pdf_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Pre Existing Person
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Pre Existing Person 
+                                                </a>
+                                            @endif
+                                        @endif
+
+                                        @if($document_without_pre_existing == 'yes')
+
+                                            @if ($plan->plan_pdf_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Without Pre Existing Person
+                                                </a>
+                                            @endif
+                                            <br>
+                                            @if ($plan->benifit_summary_without_pre_existing)
+                                                <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}"
+                                                    class="pdf-additional-travelers">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Without Pre Existing Person
+                                                </a>
+                                            @endif
+
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
 
                             <div style="clear:both;"></div>
-                            <div class="row buynow_<?php echo $deductible.$plan_id;?>"
-                                style="clear:both;margin: 0;border: 1px solid #CCC; display:none;">
-                                <div class="col-md-6" style="background:#F9F9F9;padding: 15px;">
-                                    <h3
-                                        style="border-bottom:1px solid #ccc;margin: 0;font-size: 18px;font-weight: bold;">
-                                        Buy Online</h3>
-                                    <p style="font-weight: bold;">In three simple steps you can purchase your policy,
-                                        easily and securely, online.</p>
-
-                                    <p>
-                                    <form method="post" action="{{ url('apply') }}">
-                                        @csrf
-                                        <p><input type="checkbox" name="agree" style="height: auto;margin: 0;"> I give
-                                            permission to LifeAdvice.ca to transfer my quote information and contact
-                                            details to
-                                            <?php echo $comp_name;?> in order to complete the purchase of travel
-                                            insurance. LifeAdvice values your privacy. For details, see our <a
-                                                href="/">Privacy Policy</a>
-                                        </p>
-                                        <p></p>
-                                        <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                                        <input type="hidden" value="{{ $request->fname }}" name="fname">
-                                        <input type="hidden" value="{{ $request->lname }}" name="lname">
-                                        <input type="hidden" value="{{ $sum_insured }}" name="coverage">
-                                        <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-                                        <input type="hidden" value="{{ $deductible }}" name="deductibles">
-                                        <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-                                        <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                                        @foreach($request->years as $year)
-                                        <input type="hidden" name="years[]" value="{{ $year }}">
-                                        @endforeach
-                                        @foreach($request->pre_existing as $preexisting)
-                                        <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
-                                        @endforeach
-                                        <input type="hidden" value="{{ $num_of_days }}" name="days">
-                                        <input type="hidden" value="{{ $comp_name }}" name="companyName">
-                                        <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-                                        <input type="hidden" value="{{ $plan_name }}" name="planname">
-                                        <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-                                        <input type="hidden" value="{{ $startdate }}" name="tripdate">
-                                        <input type="hidden" value="{{ $enddate }}" name="tripend">
-                                        <input type="hidden" value="{{ $total_price }}" name="premium">
-                                        <input type="hidden" value="" name="cdestination">
-                                        <input type="hidden" value="{{ $product_name }}" name="product_name">
-                                        <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                                        <input type="hidden" value="{{ $request->primary_destination }}"
-                                            name="destination">
-                                        <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-                                        <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-                                        <input type="hidden" value="{{ $ages_array[0] }}" name="age">
-                                        <input type="hidden" value="{{ $dob }}" name="dob">
-                                        <input type="hidden" value="{{ $agent }}" name="agent">
-                                        <input type="hidden" value="{{ $broker }}" name="broker">
-                                        <button class="submit-btn" type="submit"><i class="fa fa-shopping-cart"></i> Buy
-                                            Now</button>
-                                    </form>
-                                    </p>
-                                </div>
-                                <div class="col-md-6 text-center" style="font-size:16px;">
-                                    <a href="javascript:void(0)"
-                                        onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeOut();"
-                                        class="pull-right text-danger" style="font-size:16px;"><i
-                                            class="fa fa-close"></i></a>
-                                    <p>or</p>
-                                    <p>BY CALLING</p>
-                                    <p><a href="tel:+18555005041"
-                                            style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a>
-                                    </p>
-                                    <p
-                                        style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">
-                                        CALL CENTRE HOURS</p>
-                                    <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm
-                                        EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed
-                                        on holidays.</p>
-                                </div>
+                            <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
+                                <form method="POST" action="{{ url('apply') }}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                                    <input type="hidden" value="{{ $request->fname }}" name="fname">
+                                    <input type="hidden" value="{{ $request->lname }}" name="lname">
+                                    <input type="hidden" value="{{ $sum_insured }}" name="coverage">
+                                    <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                                    <input type="hidden" value="{{ $deductible }}" name="deductibles">
+                                    <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                                    <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                                    @foreach($request->years as $year)
+                                    <input type="hidden" name="years[]" value="{{ $year }}">
+                                    @endforeach
+                                    @foreach($request->pre_existing as $preexisting)
+                                    <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+                                    @endforeach
+                                    <input type="hidden" value="{{ $num_of_days }}" name="days">
+                                    <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                                    <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                                    <input type="hidden" value="{{ $plan_name }}" name="planname">
+                                    <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                                    <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                                    <input type="hidden" value="{{ $enddate }}" name="tripend">
+                                    <input type="hidden" value="{{ $total_price }}" name="premium">
+                                    <input type="hidden" value="" name="cdestination">
+                                    <input type="hidden" value="{{ $product_name }}" name="product_name">
+                                    <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                                    <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
+                                    <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                                    <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                                    <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                                    <div class="row" style="flex-wrap: nowrap;padding:0px">
+                                        <div class="col-md-6 buynodropdownsectioncolsix">
+                                            <h3 class="buyonlinebutton">Buy Online</h3>
+                                            <b>In three simple steps you can purchase your policy, easily and securely, online.</b>
+                                            <p>
+                                                <input type="checkbox" name="agree" required=""> 
+                                                I give permission to LifeAdvice.ca to transfer my quote information and contact details to {{ $comp_name }} in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our 
+                                                <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a>
+                                            </p>
+                                            <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <a href="javascript:void(0)" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
+                                            </a>
+                                            <p>or</p>
+                                            <p>BY CALLING</p>
+                                            <p><a href="tel:8555008999">855-500-8999</a>
+                                            </p>
+                                            <p>CALL CENTRE HOURS</p>
+                                            <p>Monday to Thursday 8:00 am to 9:00 pm EDT | Friday 8:00 am to 8:00 pm EDT | Saturday 8:30 am to 4:00 pm EDT | Closed on holidays.</p>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
@@ -837,10 +856,10 @@ if ($request->sendemail == 'yes') {
         $subject = "Your Quote - $product_name";
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
+        // Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+        //            $message->to($request->savers_email)->subject($subject);
+        //            $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        //         });
     }
 }
 ?>
@@ -858,7 +877,7 @@ $("#listprices").html(divList);
 })
     </script>
     <script>
-        function showdetails(id)
+    function showdetails(id)
     {
         $('.dh-toggle-show-hide-'+id).slideToggle();
     }
