@@ -73,6 +73,18 @@ $(function () {
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
             $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+
+            var uniqueClasses = {};
+            console.log('ok');
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
+
         }
     });
 
@@ -458,7 +470,7 @@ if($show == '1' && $total_price > 0){
 ?>
 
 <div class="listing-item" data-listing-price="{{str_replace(',', '', number_format($total_price))}}">
-    <div class="coverage-amt pricearray coverage-amt-{{$sum_insured}} pricearray{{ $total_price }}" style="line-height:1.0; display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+    <div class="coverage-amt pricearray coverage-amt-{{$sum_insured}} pricearray{{ $comp_id }}{{ $total_price }}" style="line-height:1.0; display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
         <div class="row plan-details mb-0 ml-1 deductable-<?php echo $deductible; ?>"
             style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; margin-top:0; margin-left:1px; margin-right:0; margin-bottom 0px !important;border-bottom: 1px solid #0084c1;">
             <div class="col-md-3 col-xs-6 text-center" style="padding-top: 20px;padding-left: 0;padding-right: 0;">

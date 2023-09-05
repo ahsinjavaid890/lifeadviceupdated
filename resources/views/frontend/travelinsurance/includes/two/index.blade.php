@@ -40,6 +40,19 @@
                 }
                 $('.deductable-' + Slider_Values[ui.value]).css('display', 'flex');
                 $("#coverage_deductible").val("$" + Slider_Values[ui.value]);
+
+
+                var uniqueClasses = {};
+                $('#listprices .pricearray').each(function () {
+                    var currentClass = $(this).attr('class');
+                    if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                        uniqueClasses[currentClass] = true;
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+                
             }
         });
     });
@@ -457,93 +470,92 @@ if($show == '1' && $total_price > 0){
 ?>
 
 
-                <div class="desktop-compare listing-item"
-                    data-listing-price="<?php echo str_replace(',', '', number_format($total_price)); ?>">
-                    <div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if ($_REQUEST['sum_insured2'] == $sum_insured) {
-                        echo 'block';
-                    } else {
-                        echo 'none';
-                    } ?>;">
-                        <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if ($deductible == '1000') {
-                                echo 'flex';
-                            } elseif ($havethousand == 'no' && $deductible == '0') {
-                                echo 'block';
-                            } else {
-                                echo 'none';
-                            } ?>; padding: 0;     margin-bottom: 11px !important;">
+<div class="desktop-compare listing-item" data-listing-price="{{str_replace(',', '', number_format($total_price))}}">
+    <div class="pricearray pricearray{{ $total_price }} coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if ($_REQUEST['sum_insured2'] == $sum_insured) {
+        echo 'block';
+    } else {
+        echo 'none';
+    } ?>;">
+        <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if ($deductible == '1000') {
+                echo 'flex';
+            } elseif ($havethousand == 'no' && $deductible == '0') {
+                echo 'block';
+            } else {
+                echo 'none';
+            } ?>; padding: 0;     margin-bottom: 11px !important;">
 
-                            <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
-                                <div class="row">
-                                    <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
-                                        <label id="comparelabel{{ $plan_id }}{{ $sum_insured }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
-                                            class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
-                                            <i class="fa fa-database"></i> Compare  
-                                        </label>
-                                    </div>
-                                    <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
-                                        <img width="200" class="img-thumbnail"
-                                            src="{{ url('public/images') }}/{{ $comp_logo }}" />
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <strong>Coverage Amount</strong>
-                                        <h2 style="color:#000;font-size: 25px;">$
-                                            <?php echo $sum_insured; ?>
-                                        </h2>
-                                        <strong>Deductible:<span> $
-                                                <?php echo $deductible; ?>
-                                            </span></strong>
-                                    </div>
-                                    <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
-                                        <strong>Premium</strong>
-                                        <h2 style="color: #C00;font-weight: bold;font-size: 26px;font-family: arial;">
-                                            ${{number_format($total_price, 2)}}
-                                        </h2>
-                                        <?php if($monthly_two == '1'){?>
-                                        <h2
-                                            style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;background: #F9F9F9;width: auto;">
-                                            ${{number_format($monthly_price, 2)}}/Month<small
-                                                style="color: #f5821f;font-weight: bold;margin-left: 1px;">{{$num_months}}</small>
-                                        </h2>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6" style="margin: auto;">
-                                        <?php
-                                        $dob = $request->years[0] . '-' . $request->month . '' . $request->dob_day;
-                                        $agent = $request->agent;
-                                        $broker = $request->broker;
-                                        ?>
-                                        <a class="submit-btn text-center"
-                                            onclick="$('.buynow_{{$deductible.$plan_id}}').fadeIn();"
-                                            style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #1BBC9B;border-radius: 0px;margin-top: 10px;"><i
-                                                class="fa fa-shopping-cart"></i> Buy Now</a>
-                                    </div>
-                                </div>
-                                <div class="row" style="padding-bottom: 10px;">
-                                    <div class="col-md-2 col-xs-6" id="fold">
-                                        <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
-                                            class="btn btn-default dh-toggle"
-                                            onclick="$('.moredetails_<?php echo $deductible . $plan_id; ?>').fadeToggle();showmore(<?php echo $deductible . $plan_id; ?>)"
-                                            data-value='<?php echo $sum_insured . $deductible . $plan_id; ?>'
-                                            aria-hidden="true"
-                                            style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i
-                                                class="fa fa-plus"></i> More Details</button>
-                                    </div>
-                                    <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
-                                    <strong>Plan Type: </strong> <?php if ($family_plan == 'yes') {
-                                            echo 'Family';
-                                        } else {
-                                            echo 'Individual';
-                                        } ?>
-                                    </div>
-
-                                </div>
-                            @include('frontend.travelinsurance.includes.policydetails')
-                            </div>                            
-                            @include('frontend.travelinsurance.includes.buynowform')
-
-                        </div>
+            <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
+                <div class="row">
+                    <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
+                        <label id="comparelabel{{ $plan_id }}{{ $sum_insured }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
+                            class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
+                            <i class="fa fa-database"></i> Compare  
+                        </label>
+                    </div>
+                    <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
+                        <img width="200" class="img-thumbnail"
+                            src="{{ url('public/images') }}/{{ $comp_logo }}" />
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <strong>Coverage Amount</strong>
+                        <h2 style="color:#000;font-size: 25px;">$
+                            <?php echo $sum_insured; ?>
+                        </h2>
+                        <strong>Deductible:<span> $
+                                <?php echo $deductible; ?>
+                            </span></strong>
+                    </div>
+                    <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
+                        <strong>Premium</strong>
+                        <h2 style="color: #C00;font-weight: bold;font-size: 26px;font-family: arial;">
+                            ${{number_format($total_price, 2)}}
+                        </h2>
+                        <?php if($monthly_two == '1'){?>
+                        <h2
+                            style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;background: #F9F9F9;width: auto;">
+                            ${{number_format($monthly_price, 2)}}/Month<small
+                                style="color: #f5821f;font-weight: bold;margin-left: 1px;">{{$num_months}}</small>
+                        </h2>
+                        <?php } ?>
+                    </div>
+                    <div class="col-md-3 col-xs-6" style="margin: auto;">
+                        <?php
+                        $dob = $request->years[0] . '-' . $request->month . '' . $request->dob_day;
+                        $agent = $request->agent;
+                        $broker = $request->broker;
+                        ?>
+                        <a class="submit-btn text-center"
+                            onclick="$('.buynow_{{$deductible.$plan_id}}').fadeIn();"
+                            style="font-weight: bold;padding: 7px 20px;box-shadow: none;border: 1px solid #999;font-size: 16px;display: block;color: #FFF;background: #1BBC9B;border-radius: 0px;margin-top: 10px;"><i
+                                class="fa fa-shopping-cart"></i> Buy Now</a>
                     </div>
                 </div>
+                <div class="row" style="padding-bottom: 10px;">
+                    <div class="col-md-2 col-xs-6" id="fold">
+                        <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
+                            class="btn btn-default dh-toggle"
+                            onclick="$('.moredetails_<?php echo $deductible . $plan_id; ?>').fadeToggle();showmore(<?php echo $deductible . $plan_id; ?>)"
+                            data-value='<?php echo $sum_insured . $deductible . $plan_id; ?>'
+                            aria-hidden="true"
+                            style="width: 100%;display: block;border: 1px solid #BBB;padding: 5px 0;margin-top: 2px;border-radius: 0;background: #F1F1F1 !important;color: #333 !important;"><i
+                                class="fa fa-plus"></i> More Details</button>
+                    </div>
+                    <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
+                    <strong>Plan Type: </strong> <?php if ($family_plan == 'yes') {
+                            echo 'Family';
+                        } else {
+                            echo 'Individual';
+                        } ?>
+                    </div>
+
+                </div>
+            @include('frontend.travelinsurance.includes.policydetails')
+            </div>                            
+            @include('frontend.travelinsurance.includes.buynowform')
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -583,10 +595,10 @@ if ($request->sendemail == 'yes') {
         $subject = "Your Quote - $product_name";
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
+        // Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
+        //            $message->to($request->savers_email)->subject($subject);
+        //            $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        //         });
     }
 }
 ?>
@@ -598,90 +610,97 @@ if ($request->sendemail == 'yes') {
 
 
 
-    <script>
-        jQuery(function($) {
-            var divList = $(".listing-item");
-            divList.sort(function(a, b) {
-                return $(a).data("listing-price") - $(b).data("listing-price")
-            });
+<script>
+jQuery(function($) {
+    var divList = $(".listing-item");
+    divList.sort(function(a, b) {
+        return $(a).data("listing-price") - $(b).data("listing-price")
+    });
 
-            $("#listprices").html(divList);
-        })
-    </script>
-    <script>
-        var buynow_selected = "";
-        var info_box = "";
-        jQuery(".dh-toggle").click(function() {
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-            }
+    $("#listprices").html(divList);
+})
+</script>
+<script>
+var buynow_selected = "";
+var info_box = "";
+jQuery(".dh-toggle").click(function() {
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+    }
 
-            if (jQuery(this).data('value') == info_box) {
-                info_box = "";
-                return false;
-            }
+    if (jQuery(this).data('value') == info_box) {
+        info_box = "";
+        return false;
+    }
 
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-                buynow_selected = "";
-            }
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+        buynow_selected = "";
+    }
 
-            var id = jQuery(this).data('value');
-            info_box = id;
-            jQuery(".dh-toggle-show-hide-" + id).slideToggle();
-            console.log(".dh-toggle-show-hide-" + id);
-        });
-        jQuery(".buynow-btn").click(function() {
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-            }
+    var id = jQuery(this).data('value');
+    info_box = id;
+    jQuery(".dh-toggle-show-hide-" + id).slideToggle();
+    console.log(".dh-toggle-show-hide-" + id);
+});
+jQuery(".buynow-btn").click(function() {
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+    }
 
-            if (jQuery(this).data('value') == buynow_selected) {
-                buynow_selected = "";
-                return false;
-            }
+    if (jQuery(this).data('value') == buynow_selected) {
+        buynow_selected = "";
+        return false;
+    }
 
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-                info_box = "";
-            }
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+        info_box = "";
+    }
 
-            var id = jQuery(this).data('value');
-            buynow_selected = id;
-            jQuery(".buynow-btn-" + id).slideToggle();
-        });
-        jQuery(function() {
+    var id = jQuery(this).data('value');
+    buynow_selected = id;
+    jQuery(".buynow-btn-" + id).slideToggle();
+});
+jQuery(function() {
 
-            var visiblePlans = jQuery(".plan-details:visible").length;
-            var textToShow = "Great! We found " + visiblePlans + " for you.";
-            if (visiblePlans > 0) {
-                // jQuery(".num-of-quotes").show();
-                jQuery(".num-of-quotes").text(textToShow);
-            } else {
-                jQuery(".num-of-quotes").hide();
-            }
-        });
-        jQuery(function() {});
-        $(document).ready(function() {
-            $(".toggle-216").click(function() {
-                $(".show-toggle-216").toggle("");
-            });
-        });
-        $(document).ready(function() {
-            $(".toggle-217").click(function() {
-                $(".show-toggle-217").toggle("");
-            });
-        });
-
-
-
-
-        function showmore(id) {
-            var text = $('#showmore' + id).text();
-            if (text == ' More Details') {
-                $('#showmore' + id).html('<i class="fa fa-minus"></i> Hide Details');
-            } else {
-                $('#showmore' + id).html('<i class="fa fa-plus"></i> More Details');
-            }
+    var visiblePlans = jQuery(".plan-details:visible").length;
+    var textToShow = "Great! We found " + visiblePlans + " for you.";
+    if (visiblePlans > 0) {
+        // jQuery(".num-of-quotes").show();
+        jQuery(".num-of-quotes").text(textToShow);
+    } else {
+        jQuery(".num-of-quotes").hide();
+    }
+});
+jQuery(function() {});
+$(document).ready(function() {
+    $(".toggle-216").click(function() {
+        $(".show-toggle-216").toggle("");
+    });
+});
+$(document).ready(function() {
+    $(".toggle-217").click(function() {
+        $(".show-toggle-217").toggle("");
+    });
+});
+function showmore(id) {
+    var text = $('#showmore' + id).text();
+    if (text == ' More Details') {
+        $('#showmore' + id).html('<i class="fa fa-minus"></i> Hide Details');
+    } else {
+        $('#showmore' + id).html('<i class="fa fa-plus"></i> More Details');
+    }
+}
+$(document).ready(function () {
+    var uniqueClasses = {};
+    $('#listprices .pricearray').each(function () {
+        var currentClass = $(this).attr('class');
+        if (!uniqueClasses.hasOwnProperty(currentClass)) {
+            uniqueClasses[currentClass] = true;
+        } else {
+            $(this).hide();
         }
-    </script>
+    });
+});
+</script>
