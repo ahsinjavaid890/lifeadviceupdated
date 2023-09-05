@@ -52,7 +52,7 @@
                     }
                 });
 
-                
+
             }
         });
     });
@@ -87,6 +87,17 @@
                 }
                 $('.coverage-amt-' + SliderValues[ui.value]).show();
                 $("#coverage_amount1").val("$" + SliderValues[ui.value]);
+
+
+                var uniqueClasses = {};
+                $('#listprices .pricearray').each(function () {
+                    var currentClass = $(this).attr('class');
+                    if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                        uniqueClasses[currentClass] = true;
+                    } else {
+                        $(this).hide();
+                    }
+                });
             }
         });
 
@@ -471,7 +482,7 @@ if($show == '1' && $total_price > 0){
 
 
 <div class="desktop-compare listing-item" data-listing-price="{{str_replace(',', '', number_format($total_price))}}">
-    <div class="pricearray pricearray{{ $total_price }} coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if ($_REQUEST['sum_insured2'] == $sum_insured) {
+    <div class="pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if ($_REQUEST['sum_insured2'] == $sum_insured) {
         echo 'block';
     } else {
         echo 'none';

@@ -75,7 +75,6 @@ $(function () {
             $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
 
             var uniqueClasses = {};
-            console.log('ok');
             $('#listprices .pricearray').each(function () {
                 var currentClass = $(this).attr('class');
                 if (!uniqueClasses.hasOwnProperty(currentClass)) {
