@@ -847,8 +847,8 @@
             processData: false,
             success: function(data) {
             if($.isEmptyObject(data.error)){
-                $('#getqoutesubmitbutton').html('Get Quotes');
                 $('.quotationscards').html(data.html);
+                $('#getqoutesubmitbutton').html('Get Quotes');
                 $('html, body').animate({
                     scrollTop: $(".quotationscards").offset().top
                 }, 2000);

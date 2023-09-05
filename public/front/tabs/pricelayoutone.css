@@ -361,8 +361,9 @@ sup.superior {
     display: block!important;
 } 
  .row.plan-details {
- display: block;
-
+    display: block;
+    border-radius: 0;
+    margin-left: 0 !important;
   }
 .ui.checkbox.large.nopad label{
      padding:11px;
