@@ -19,7 +19,7 @@
                     <span class="summaryheading">End Date</span> : <span class="summarydata"> {{ Cmf::date_format($enddate) }} </span>
                 </div>
                 <div class="col-md-12">
-                    <span class="summaryheading">Total Premium</span> : <span class="summarydata">$ {{$total_price}} </span>
+                    <span class="summaryheading">Total Premium</span> : <span class="summarydata">${{str_replace(',','', number_format($total_price,2))}}</span>
                 </div>
                 <hr style="margin-left: 16px !important; width: 200px;">
                 <?php
