@@ -39,6 +39,15 @@ $(function () {
             }
             $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
+            var uniqueClasses = {};
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
         }
     });
 });
@@ -73,22 +82,19 @@ $(function () {
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
             $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            var uniqueClasses = {};
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
         }
     });
 
 });
-  </script>
-<script>
-function changedisplay(){
-var displayvalue = document.getElementById('change_display').value;
-if(displayvalue == '0'){
-    $('.filterdiv').attr('style','display: block !important');
-    document.getElementById('change_display').value = '1';
-} else {
-    $('.filterdiv').attr('style','display: none !important');
-    document.getElementById('change_display').value = '0';
-}
-}
 </script>
 <div class="dh-listings " id="dh-get-quote">
 <?php
@@ -173,20 +179,14 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 ?>
 	<div class="">
     <div class="row">
-		<div class="col-md-12 visible-xs">
-	       <button type="button" class="btn" onclick="changedisplay()" style="display: block;width: 100%;background: #FFF !important;color: #333 !important;padding: 10px;"><i class="fa fa-gear"></i> Change Coverage</button>
-	</div>
-	<input type="hidden" id="change_display" name="change_display" value="0">
-    
-
-<div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
-   <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-      <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
-      <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-      <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-      <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-   </div>
-</div>
+        <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
+           <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+              <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;"></h4>
+              <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+              <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
+              <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
+           </div>
+        </div>
 
 
 <div class="col-md-9 mt-3" style="padding:0;" id="listprices">
@@ -425,52 +425,39 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 if($show == '1' && $total_price > 0){
 ?>
 
-    <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-    <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
-                            <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-
-<div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
-<a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ $deductible.$plan_id }})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+<div class="desktop-compare listing-item" data-listing-price="{{ str_replace(',', '', number_format($total_price)) }}">
+   <div class="coverage-amt col-md-12 pricearray coverage-amt-{{$sum_insured}} pricearray{{ $comp_id }}{{ $total_price }}" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
+      <div class="row plan-details   deductable-{{ $deductible }}" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
+         <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
+            <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ $deductible.$plan_id }})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+         </div>
+         <div class="col-md-3 col-xs-11 text-center">
+            <img src="{{ url('public/images') }}/{{ $comp_logo }}" class="img-responsive" style="max-height: 61px;" />
+         </div>
+         <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
+            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?></h1>
+            @if($monthly_two == '1')
+            <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
+            @endif
+         </div>
+         <div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
+            <small style=" font-size: 10px; margin-left: 10px;">{{ $number_travelers }} Traveller @if($number_travelers > 1) (s) @endif</small>
+         </div>
+         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;color: #808180;padding-top: 5px;">
+            ${{ $sum_insured }}<br/>
+            ${{ $deductible }} Deductible
+         </div>
+         <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
+            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+            <button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
+               font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+            <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+         </div>
+         @include('frontend.travelinsurance.includes.policydetails')
+         @include('frontend.travelinsurance.includes.buynowform')
+      </div>
+   </div>
 </div>
-<div class="col-md-3 col-xs-11 text-center">
-<img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" style="max-height: 61px;" />
-</div>
-<div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
-<h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?></h1>
-<?php if($monthly_two == '1'){?>
-<h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
-<?php } ?>
-</div>
-<div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
-<small style=" font-size: 10px; margin-left: 10px;"><?php echo $number_travelers; ?> traveller(s)</small>
-</div>
-<div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;color: #808180;padding-top: 5px;">
-$<?php echo $sum_insured; ?> <?php echo $plan_name;?><br/>
-$<?php echo $deductible; ?> deductible
-</div>
-
-<div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-<button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
-<button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
-font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
-
-
-<label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
-
-
-</div>
-
-                            @include('frontend.travelinsurance.includes.policydetails')
-                            @include('frontend.travelinsurance.includes.buynowform')
-
-                                
-                                
-
-
-                            </div>
-                            </div>
-
-                         </div>
 
 <?php
     if ($sum_insured == $request->sum_insured2){
@@ -510,67 +497,43 @@ if ($request->sendemail == 'yes') {
 
 <script>
 jQuery(function($) {
-var divList = $(".listing-item");
-divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
-
-$("#listprices").html(divList);
+    var divList = $(".listing-item");
+    divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
+    $("#listprices").html(divList);
 })
-</script>
-<script>
-    function showdetails(id)
-    {
-        $('.dh-toggle-show-hide-'+id).slideToggle();
+function showdetails(id)
+{
+    $('.dh-toggle-show-hide-'+id).slideToggle();
+}
+jQuery(".buynow-btn").click(function () {
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
     }
-    jQuery(".buynow-btn").click(function () {
-        if (buynow_selected != "") {
-            jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+
+    if (jQuery(this).data('value') == buynow_selected) {
+        buynow_selected = "";
+        return false;
+    }
+
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+        info_box = "";
+    }
+
+    var id = jQuery(this).data('value');
+    buynow_selected = id;
+    jQuery(".buynow-btn-" + id).slideToggle();
+});
+$(document).ready(function () {
+    var uniqueClasses = {};
+    $('#listprices .pricearray').each(function () {
+        var currentClass = $(this).attr('class');
+        if (!uniqueClasses.hasOwnProperty(currentClass)) {
+            uniqueClasses[currentClass] = true;
+        } else {
+            $(this).hide();
         }
-
-        if (jQuery(this).data('value') == buynow_selected) {
-            buynow_selected = "";
-            return false;
-        }
-
-        if (info_box != "") {
-            jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-            info_box = "";
-        }
-
-        var id = jQuery(this).data('value');
-        buynow_selected = id;
-        jQuery(".buynow-btn-" + id).slideToggle();
-    });
-</script>
-
-    <script>
-
-        jQuery( function() {
-
-            var visiblePlans = jQuery(".plan-details:visible").length;
-            var textToShow = "Great! We found "+visiblePlans+" for you.";
-            if(visiblePlans > 0){
-                // jQuery(".num-of-quotes").show();
-                jQuery(".num-of-quotes").text(textToShow);
-            }else{
-                jQuery(".num-of-quotes").hide();
-            }
-        } );
-
-        jQuery( function() {
-
-
-
-        } );
-
-
-    </script>
-
-   <script>
-$(document).ready(function(){
-    $(".toggle-216").click(function(){
-        $(".show-toggle-216").toggle(1000);
     });
 });
 </script>
-
 </div>

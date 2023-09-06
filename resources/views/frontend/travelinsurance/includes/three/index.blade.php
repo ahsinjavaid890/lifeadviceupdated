@@ -44,6 +44,16 @@ $(function () {
             }
             $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
+
+            var uniqueClasses = {};
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
         }
     });
 });
@@ -78,6 +88,16 @@ $(function () {
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
             $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+
+            var uniqueClasses = {};
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
         }
     });
 
@@ -425,50 +445,19 @@ if($show == '1' && $total_price > 0){
 
 
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-<div class="coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+<div class="coverage-amt pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
-<img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
-
-
-<style>
-.hoverdetails_<?php echo $deductible.$plan_id;?> {
-    width: 400px;background: #fff;border: 1px solid #ccc;position: absolute;z-index: 100;box-shadow: 0 0 2px #999;border-radius: 2px;display:none;padding:10px 0;
-}
-.hoverdetails_<?php echo $deductible.$plan_id;?> h2 {
-font: 400 14px Arial,Helvetica,sans-serif;line-height: normal;color: #2ba382;line-height: 30px;border-bottom: 1px solid #999;padding-bottom: 5px;margin: 0; 
-}
-.hoverdetails_<?php echo $deductible.$plan_id;?> h3 {
-font: 400 14px Arial,Helvetica,sans-serif;line-height: normal;color: #333;line-height: 30px;padding-bottom: 5px;margin: 0;  
-}
-.hoverdetails_<?php echo $deductible.$plan_id;?> h3 span{
-color: #2ba382;
-font-weight:bold;   
-}
-.hover_<?php echo $deductible.$plan_id;?>:hover  .hoverdetails_<?php echo $deductible.$plan_id;?>{
-    display:block !important;
-}
-.no-padding {
-    padding:0;
-}
-</style>        
-                <div onclick="showdetails({{ $deductible.$plan_id }})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a>
-                </div>
-
-
-<span style="display:block; padding:7px;">$<?php echo $sum_insured; ?> Benefits Maximum</span>
-<?php
-$pdfq = DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $plan_id)->first();
-?>
-@if($pdfq)
-<!-- <a class="btn btn-primary" href="{{ url('public/images') }}/{{ $pdfq->pdfpolicy }}" target="_blank" style="line-height: 26px;background-color: #337ab7;  padding: 8px 14px;
-"><i class="fa fa-file-pdf-o pr-1" style="color:#fff;"></i> Sample Policy</a>  -->
-@endif
+   <img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/{{ $comp_logo }}" class="img-responsive" />
+   <div onclick="showdetails({{ $deductible.$plan_id }})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a></div>
+   <span style="display:block; padding:7px;">$<?php echo $sum_insured; ?> Benefits Maximum</span>
 </div>
 
 <div class="col-md-5 hidden-xs" style="font-size:11px;padding-top: 20px;">
 <div class="row">
-<div class="col-md-12"><strong style="font-size:15px;">Plan Features</strong></div>
+    <div class="col-md-12">
+        <strong style="font-size:15px;">Plan Features</strong>
+    </div>
 </div>
         <?php
             $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
@@ -492,29 +481,19 @@ $pdfq = DB::table('wp_dh_insurance_plans_pdfpolicies')->where('plan_id' , $plan_
             <?php } } ?>          
 </div>
 <div class="col-md-3 text-center" style="padding-top: 30px; padding-bottom: 10px;">
-<h1 class="planprice "><span class="text-center">Price</span> $<?php echo number_format($total_price,2);?></h1>
-<p class="text-center" id="rate">This rate is for $<?php echo $deductible; ?> deductible options</p>
-<div class="col-md-12 col-xs-12" >
-<?php
-$dob = $request->years[0].'-'.$request->month.''.$request->dob_day;
-$agent = $request->agent;
-$broker = $request->broker;
-$buynow_url = "tab_buy.php?email=$request->email&coverage=".$sum_insured."&traveller=".$number_travelers."&deductibles=".$deductible."&deductible_rate=$deduct_rate&person1=$request->date_of_birth&days=$num_of_days&companyName=$comp_name&comp_id=".$comp_id."&planname=".$plan_name."&plan_id=".$plan_id."&tripdate=$startdate&tripend=$enddate&premium=$total_price&destination=$request->destination&cdestination=&product_name=$product_name&product_id=$data->pro_id&country=$request->primary_destination&visitor_visa_type=$product_name&tripduration=$num_of_days&age=$ages_array[0]&dob=$dob&agent=$agent&broker=$broker";
-?>
-<a class="submit-btn" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();" style="    font-weight: bold;padding: 7px 20px; box-shadow: none;border: 1px solid #999;  font-size: 16px;display: block;color: #FFF;background: #C00;border-radius: 5px;margin-top:2px;margin-bottom: 10px;}">
-    <i class="fa fa-shopping-cart"></i> Buy Now</a>
-<div class="compare hidden-xs">
-
-
-    <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"  style="    font-weight: bold;padding: 7px 20px; box-shadow: none;border: 1px solid #999;  font-size: 16px;display: block;color: #FFF;background: #12b48b;border-radius: 5px;margin-top:2px;margin-bottom: 10px;cursor:pointer;" class="col-md-12 col-xs-5 text-center text-white" id="compare"><i class="fa fa-database"></i> Compare</label>
-
-
+   <h1 class="planprice "><span class="text-center">Price</span> ${{ number_format($total_price,2) }}</h1>
+   <p class="text-center" id="rate">This rate is for ${{ $deductible }} deductible options</p>
+   <div class="col-md-12 col-xs-12" >
+      <a class="submit-btn" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();">
+      <i class="fa fa-shopping-cart"></i> Buy Now
+      </a>
+      <div class="compare hidden-xs">
+         <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 text-center text-white comparebutton" id="compare">
+         <i class="fa fa-database"></i> Compare
+         </label>
+      </div>
+   </div>
 </div>
-</div>
-</div>
-
-    <div style="clear:both;"></div>
-
 @include('frontend.travelinsurance.includes.policydetails')
 @include('frontend.travelinsurance.includes.buynowform')
 </div>
@@ -561,196 +540,56 @@ function showdetails(id)
     $('.dh-toggle-show-hide-'+id).slideToggle();
 }
 jQuery(function($) {
-var divList = $(".listing-item");
-divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
-
-$("#listprices").html(divList);
+    var divList = $(".listing-item");
+    divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
+    $("#listprices").html(divList);
 })
-</script>
-    <script>
-        var buynow_selected = "";
-        var info_box = "";
-
-        jQuery(".dh-toggle").click(function () {
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-            }
-
-            if (jQuery(this).data('value') == info_box) {
-                info_box = "";
-                return false;
-            }
-
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-                buynow_selected = "";
-            }
-
-            var id = jQuery(this).data('value');
-            info_box = id;
-            jQuery(".dh-toggle-show-hide-" + id).slideToggle();
-            console.log(".dh-toggle-show-hide-" + id);
-        });
+var buynow_selected = "";
+var info_box = "";
+jQuery(".dh-toggle").click(function () {
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+    }
+    if (jQuery(this).data('value') == info_box) {
+        info_box = "";
+        return false;
+    }
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+        buynow_selected = "";
+    }
+    var id = jQuery(this).data('value');
+    info_box = id;
+    jQuery(".dh-toggle-show-hide-" + id).slideToggle();
+    console.log(".dh-toggle-show-hide-" + id);
+});
 
 
-        jQuery(".buynow-btn").click(function () {
-            if (buynow_selected != "") {
-                jQuery(".buynow-btn-" + buynow_selected).slideToggle();
-            }
-
-            if (jQuery(this).data('value') == buynow_selected) {
-                buynow_selected = "";
-                return false;
-            }
-
-            if (info_box != "") {
-                jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
-                info_box = "";
-            }
-
-            var id = jQuery(this).data('value');
-            buynow_selected = id;
-            jQuery(".buynow-btn-" + id).slideToggle();
-        });
-
-
- /*       jQuery('#coverage_deductible').on('change', function () {
-            if (!this.value) {
-                jQuery(".plan-details").show();
-            } else {
-                jQuery(".plan-details").hide();
-                jQuery(".deductable-" + this.value).show();
-            }
-        });
-
-
-        jQuery('#coverage_amount').on('change', function () {
-            //alert( this.value );
-            if (!this.value) {
-                jQuery(".coverage-amt").show();
-            } else {
-                jQuery(".coverage-amt").hide();
-                jQuery(".coverage-amt-" + this.value).show();
-            }
-
-        });
-*/
-    </script>
-
-
-    <script>
-       
-        jQuery( function() {
-
-            var visiblePlans = jQuery(".plan-details:visible").length;
-            var textToShow = "Great! We found "+visiblePlans+" for you.";
-            if(visiblePlans > 0){
-                // jQuery(".num-of-quotes").show();
-                jQuery(".num-of-quotes").text(textToShow);
-            }else{
-                jQuery(".num-of-quotes").hide();
-            }
-/*
-            var values = $('#my-range-converage-deductible').data("steps").split(',');
-            var default_value = $('#my-range-converage-deductible').data("default");
-              
-               $('#my-range-converage-deductible').rangeslider({
-                polyfill : false,
-                onInit : function() {
-                    jQuery('.deductible span').text(default_value);
-                    localStorage.setItem("default_value", default_value);
-
-                },
-                onSlide : function( position, value ) {
-                    jQuery('.deductible span').text(values[this.value]);
-
-                    
-                    localStorage.setItem("default_value", values[this.value]);    
-                    if(visiblePlans > 0){
-                        // jQuery(".num-of-quotes").show();
-                        
-                    }else{
-                        jQuery(".num-of-quotes").hide();
-                    }                        
-                    if(! value ){
-                        // jQuery(".plan-details").show();
-                    }else{
-                        jQuery(".plan-details").hide();
-                        jQuery(".deductable-"+values[this.value]).show();
-                    }
-                    
-                    
-                },
-                onSlideEnd: function( position, value ){
-                    visiblePlans = jQuery(".plan-details:visible").length;
-                    console.log("Deductible: "+visiblePlans);
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    if(visiblePlans > 0){
-                        jQuery(".num-of-quotes").text(textToShow);
-                    }
-                }
-            });
-
-            var values2 = $('#my-range-converage-amount').data("steps").split(',');
-            var default_value2 = $('#my-range-converage-amount').data("default");
-              
-               $('#my-range-converage-amount').rangeslider({
-                polyfill : false,
-                onInit : function() {
-                    jQuery('.coverage span').text(default_value2);
-                    localStorage.setItem("price_value", default_value2);
-
-                },
-                onSlide : function( position, value ) {
-                    jQuery('.coverage span').text(values2[this.value]);
-
-
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    localStorage.setItem("price_value", values2[this.value]);
-                    if(visiblePlans > 0){
-                        // jQuery(".num-of-quotes").show();
-                        // jQuery(".num-of-quotes").text(textToShow);
-                    }else{
-                        jQuery(".num-of-quotes").hide();
-                    }
-                    if(! value ){
-                        jQuery(".coverage-amt").show();
-                    }else{
-                        jQuery(".coverage-amt").hide();
-                        jQuery(".coverage-amt-"+values2[this.value]).show();
-                    }
-                    
-                    
-                },
-                onSlideEnd: function( position, value ){
-                    visiblePlans = jQuery(".plan-details:visible").length;
-                    console.log("Coverage : "+visiblePlans);
-
-                    textToShow = "Great! We found "+visiblePlans+" for you.";
-                    if(visiblePlans > 0){
-                        jQuery(".num-of-quotes").text(textToShow);
-                    }
-                }
-            });
-            */
-        } );
-
-        jQuery( function() {
-        
-            
-               
-        } );
-
-        
-    </script>
-
-   <script>
-$(document).ready(function(){
-    $(".baaababa").click(function(){
-        $("#demo").toggleClass("agaya");
+jQuery(".buynow-btn").click(function () {
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+    }
+    if (jQuery(this).data('value') == buynow_selected) {
+        buynow_selected = "";
+        return false;
+    }
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+        info_box = "";
+    }
+    var id = jQuery(this).data('value');
+    buynow_selected = id;
+    jQuery(".buynow-btn-" + id).slideToggle();
+});
+$(document).ready(function () {
+    var uniqueClasses = {};
+    $('#listprices .pricearray').each(function () {
+        var currentClass = $(this).attr('class');
+        if (!uniqueClasses.hasOwnProperty(currentClass)) {
+            uniqueClasses[currentClass] = true;
+        } else {
+            $(this).hide();
+        }
     });
 });
 </script>
-</div>

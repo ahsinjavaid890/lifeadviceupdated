@@ -200,7 +200,8 @@
             contentType: false,
             processData: false,
             success: function(data){
-                $('#comparelabel'+plan_id+coverage_ammount).addClass('selectedcomparebutton')
+                console.log('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles);
+                $('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles).addClass('selectedcomparebutton')
                 if(data){
                     $('.compare_header_top').show();
                     $('.compare_header_top').html(data);

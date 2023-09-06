@@ -211,6 +211,7 @@ $('#dateofbirthfull{{$i}}').datepicker( {
             contentType: false,
             processData: false,
             success: function(data){
+                $('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles).addClass('selectedcomparebutton');
                 if(data){
                     $('.compare_header_top').show();
                     $('.compare_header_top').html(data);

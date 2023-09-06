@@ -39,6 +39,16 @@ $(function () {
             }
             $('.deductable-'+Slider_Values[ui.value]).css('display' , 'flex');
             $( "#coverage_deductible" ).val( "$" + Slider_Values[ui.value] );
+
+            var uniqueClasses = {};
+            $('#listprices .pricearray').each(function () {
+                var currentClass = $(this).attr('class');
+                if (!uniqueClasses.hasOwnProperty(currentClass)) {
+                    uniqueClasses[currentClass] = true;
+                } else {
+                    $(this).hide();
+                }
+            });
         }
     });
 });
@@ -505,7 +515,7 @@ if($show == '1' && $total_price > 0){
             </div>
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
-                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                 <small>
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 
