@@ -152,23 +152,10 @@
             </div>
         </div>
         <div class="col-md-3">
-            @php
-                $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $plan_id)->get();
-            @endphp
-            <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Features:</b>
+            <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Deductible:</b>
             <hr />
             <ul>
-                @if($features->count() > 1)
-                    @foreach($features as $feature)
-                    @if($feature->features)
-                        @php
-                            $value = $feature->features;
-                            $test =  strtok($value, ":");
-                        @endphp
-                        <li style="list-style: circle;margin-left: 20px;line-height: 20px;"><b>{{ $test }}</b> {{ str_replace($test, '', $feature->features) }}</li><br>
-                        @endif
-                    @endforeach
-                @endif
+                <li style="list-style: circle;margin-left: 20px;line-height: 20px;"><b>${{ $deductible }}</b></li><br>
             </ul>
         </div>
         <div class="col-md-3">
