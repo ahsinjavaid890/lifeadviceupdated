@@ -34,7 +34,6 @@
                 <ul style="text-transform:capitalize;"></ul>
             </div>
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
-                @csrf
                 <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else
                     value="yes" @endif>
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -253,7 +252,7 @@
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
+                                <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
 
@@ -307,8 +306,7 @@
                             <label for="day" class="d-sm-none">Birth date of the
                                 oldest Traveller</label>
                             <div class="custom-form-control">
-                                <input id="dateofbirthfull{{ $i }}" readonly class="oldTraveler" type="text" inputmode="numeric"
-                                    onkeyup="calculateAge(this.value)" placeholder="MM/DD/YYYY" name="years[]">
+                                <input id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}')" placeholder="MM/DD/YYYY" name="years[]">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -329,30 +327,6 @@
                             </div>
                         </div>
                     </div>
-                    <script>
-                        function calculateAge(birthdate) {
-                        const today = new Date();
-                        const birth = new Date(birthdate);
-                        
-                        const age = today.getFullYear() - birth.getFullYear();
-                        const birthMonth = birth.getMonth();
-                        const todayMonth = today.getMonth();
-                        const birthDay = birth.getDate();
-                        const todayDay = today.getDate();
-
-                        if (
-                            (todayMonth < birthMonth) ||
-                            (todayMonth === birthMonth && todayDay < birthDay)
-                        ) {
-                            return age - 1;
-                        }
-                        return age;
-                        }
- 
-
-                    </script>
-
-
         </div>
         @endfor
         @endif
@@ -631,21 +605,15 @@
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">
-
-
-    @for ($i=1; $i < 6; $i++)
-    $('#dateofbirthfull{{$i}}').datepicker( {
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-100:+0",
-        maxDate: new Date(),
-    });
-    @endfor
-
     $(document).ready(function() {               
+        $('#dateofbirthfull1').mask('00/00/0000');
+        $('#dateofbirthfull2').mask('00/00/0000');
+        $('#dateofbirthfull3').mask('00/00/0000');
+        $('#dateofbirthfull4').mask('00/00/0000');
+        $('#dateofbirthfull5').mask('00/00/0000');
+        $('#dateofbirthfull6').mask('00/00/0000');
         $('#phonenumbermask').mask('000-000-0000');
     });
-
 </script>
 <script>
     jQuery('#gender:before').click(function() {
@@ -661,27 +629,6 @@
         return false;
     }
     jQuery(document).ready(function($) {
-        jQuery("#getqoutesubmitbutton").on("click", function() {});
-        /*
-                $("#number_travelers").on("change", function(){
-                 //Number OF Traveller
-                 var number_of_traveller = $("#number_travelers").val();
-                 var aa = "";
-                 for(var i=2; i<=number_of_traveller; i++){
-                 var aa = aa + $("#birthday")[0].outerHTML;
-                 }
-                 $("#birthday_view").html(aa);
-                })
-        */
-        $("button[type=submit]").on("change", function() {
-            //function validateForm() {
-            //if($(this).val() > 1){
-            ///      alert('fsd');
-            //       return false;
-            //}
-            //}
-        });
-
         $('button[type="submit"]').click(function() {
             if ($("select[name=number_travelers]").val() > 1 && $("select[name=familyplan]").val() ==
                 "1") {
@@ -711,14 +658,6 @@
                 $("#familymsg").hide();
             }
         });
-
-        /*       $('#getqoutesubmitbutton').click(function(){
-                 var deparature = $('#departure_date').val();
-                 $('#departuredate').val(deparature);
-             var returndate = $('#return_date').val();
-                 $('#returndate').val(returndate);
-             });
-        */
     });
 
 </script>
@@ -834,6 +773,11 @@
         $('#getqoutesubmitbutton').click();
     });
     @endif
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('#quoteform').on('submit', (function(e) {
         $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
