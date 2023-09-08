@@ -459,7 +459,7 @@ if($show == '1' && $total_price > 0){
             style="border:1px solid #c0c0c0;margin-bottom: 20px; display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
             <div class="col-md-3" style="border:0px solid #000;  text-align:centerk;padding: 5px 0; ">
 
-                <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ $deductible.$plan_id }})"
+                <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 1+$deductible.$plan_id }})"
                     style="cursor:pointer;position: absolute;top: 40%;left: 0;" aria-hidden="true"></i>
 
                 <img style="min-height:20px; margin-left: 41px;" width="200"

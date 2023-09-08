@@ -529,7 +529,7 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-2 col-xs-6" id="fold">
                         <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
                             class="btn btn-default dh-toggle moredetailsbutton"
-                            onclick="$('.moredetails_<?php echo $deductible . $plan_id; ?>').fadeToggle();showmore(<?php echo $deductible . $plan_id; ?>)"
+                            onclick="$('.moredetails_{{ 1+$deductible.$plan_id }}').fadeToggle();showmore({{ 1+$deductible.$plan_id }})"
                             data-value='<?php echo $sum_insured . $deductible . $plan_id; ?>'
                             aria-hidden="true">
                             <i class="fa fa-plus"></i> More Details

@@ -449,7 +449,7 @@ if($show == '1' && $total_price > 0){
                 <div class=" center aligned middle aligned column">
                     <div class="compare col-md-12 text-center">
                         <i class="fa fa-exclamation-circle dh-toggle hidden-md"
-                            onclick="showdetails({{ $deductible.$plan_id }})"
+                            onclick="showdetails({{ 1+$deductible.$plan_id }})"
                             style="cursor:pointer;position: absolute;top: 40%;left: -10px;"
                             aria-hidden="true"></i>
                         <div class="compare text-center hidden-xs" style="padding-top: 7px;">

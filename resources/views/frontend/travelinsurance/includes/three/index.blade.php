@@ -449,7 +449,7 @@ if($show == '1' && $total_price > 0){
 <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
    <img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/{{ $comp_logo }}" class="img-responsive" />
-   <div onclick="showdetails({{ $deductible.$plan_id }})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a></div>
+   <div onclick="showdetails({{ 1+$deductible.$plan_id }})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a></div>
    <span style="display:block; padding:7px;">$<?php echo $sum_insured; ?> Benefits Maximum</span>
 </div>
 
