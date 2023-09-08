@@ -2,7 +2,7 @@ function calculateAge(dateofbirth , classname) {
     var dob = dateofbirth;        
     var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
     if (!dobRegex.test(dob)) {
-        $('#'+classname).css('border-color', 'red !important');
+        $('#'+classname).css('border-color', 'red');
         return;
     }
     var parts = dob.split('/');
@@ -15,11 +15,11 @@ function calculateAge(dateofbirth , classname) {
     var dobDate = new Date(year, month - 1, day); // Month is 0-indexed
     var currentDate = new Date();
     if (isNaN(dobDate.getTime()) || dobDate >= currentDate || year <= hundredyearsback) {
-        $('#'+classname).css('border-color', 'red !important');
+        $('#'+classname).css('border-color', 'red');
         $('#getqoutesubmitbutton').prop('disabled' , true);
         return;
     }else{
-        $('#'+classname).css('border-color', 'green !important');
+        $('#'+classname).css('border-color', 'green');
         changefamilyyes($('#selectfamilyplan').val());
         $('#getqoutesubmitbutton').prop('disabled' , false);
     }
