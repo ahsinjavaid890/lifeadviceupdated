@@ -4,6 +4,15 @@
         <div class="row birthdate">
             <div class="col-md-2 hidden-xs"></div>
             <div class="col-md-8 visa-insurance new-visa">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h3 class="content-title no-bm">Enter Your Trip Details</h3>
+                        <div class="grey font-12">
+                            <i class="fa fa-lock fa-lg"></i>
+                            <span>Your information is secure and will not be sold.</span>
+                        </div>
+                    </div>
+                </div>
                 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -20,7 +29,7 @@
                                     @if ($number_of_travel > 0)
 
                                         <div class="col-md-12 ">
-                                            <label style="font-size: 16px;" for="number_travelers" class="">Number
+                                            <label  for="number_travelers" class="">Number
                                                 of Travellers</label>
                                             <div class="custom-form-control">
                                                 <select onchange="checknumtravellers(this.value)" required
@@ -46,9 +55,7 @@
                                                     <div class="row">
                                                         <div style="margin-bottom: -14px"
                                                             class="col-md-6 padding-right-zero-on-mobile">
-                                                            <label style="font-size: 16px;"
-                                                                for="year{{ $i }}" class="">Birth date
-                                                                </label>
+                                                            <label for="year{{ $i }}" class="">Birth date</label>
                                                             <div class="custom-form-control mb-2">
                                                                 <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
                                                             </div>
@@ -56,10 +63,7 @@
                                                         <div style="padding-right: 0px;"
                                                             class="col-md-6 padding-left-zero-on-mobile">
                                                             <div class="custom-form-control">
-                                                                <label style="font-size: 16px;"
-                                                                    for="year{{ $i }}" class="">Pre
-                                                                    Existing Conditions
-                                                                    </label>
+                                                                <label for="year{{ $i }}" class="">Pre Existing Conditions</label>
                                                                 <select name="pre_existing[]" class="form-control"
                                                                     style="    padding: 5px 12px !important;">
                                                                     <option value="">Select Pre Existing Condition
@@ -87,17 +91,17 @@
                                                     <div class="row">
                                                         <div style="margin-bottom: -14px"
                                                             class="col-md-6 padding-right-zero-on-mobile">
-                                                            <label style="font-size: 16px;"
+                                                            <label 
                                                                 for="year{{ $i }}" class="">Birth date
                                                                 </label>
                                                             <div class="custom-form-control mb-2">
-                                                                <input id="dateofbirthfull{{ $i }}" readonly class="form-control" type="text" inputmode="numeric"  placeholder="MM/DD/YYYY" name="years[]">
+                                                                <input onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}')" id="dateofbirthfull{{ $i }}" class="form-control" type="text" inputmode="numeric"  placeholder="MM/DD/YYYY" name="years[]">
                                                             </div>
                                                         </div>
                                                         <div style="padding-right: 0px;"
                                                             class="col-md-6 padding-left-zero-on-mobile">
                                                             <div class="custom-form-control">
-                                                                <label style="font-size: 16px;"
+                                                                <label 
                                                                     for="year{{ $i }}" class="">Pre
                                                                     Existing Conditions
                                                                     </label>
@@ -183,7 +187,7 @@
                                             <div id="country" class="col-md-12 ">
                                                 <div class="custom-form-control">
                                                     <label for="firstname" class=""
-                                                        style="font-size: 16px;">States In Canada</label>
+                                                        >States In Canada</label>
                                                     <select required class="form-input" name="primary_destination"
                                                         id="primary_destination"
                                                         style="    padding: 5px 12px !important;">
@@ -209,12 +213,12 @@
                                                         @endforeach
                                                     </select>
                                                     <label for="primary_destination" class="form-label"
-                                                        style="font-size: 16px;">States In Canda</label>
+                                                        >States In Canda</label>
                                                 </div>
                                             </div>
                                         @else
                                             <div class="col-md-12 ">
-                                                <label style="font-size: 16px;" for="primary_destination"
+                                                <label  for="primary_destination"
                                                     class="">Primary destination in Canada</label>
                                                 <div class="custom-form-control">
                                                     <select required class="form-input" name="primary_destination"
@@ -237,7 +241,7 @@
                                 @if (isset($fields['fname']))
                                     @if ($fields['fname'] == 'on')
                                         <div class="col-md-6 ">
-                                            <label for="firstname" class="" style="font-size: 16px;">First
+                                            <label for="firstname" class="" >First
                                                 name</label>
                                             <div class="custom-form-control">
                                                 <input type="text" name="fname" placeholder="First Name"
@@ -249,7 +253,7 @@
                                 @if (isset($fields['lname']))
                                     @if ($fields['lname'] == 'on')
                                         <div class="col-md-6 ">
-                                            <label for="lname" class="" style="font-size: 16px;">Last
+                                            <label for="lname" class="" >Last
                                                 name</label>
                                             <div class="custom-form-control">
                                                 <input type="text" name="lname" placeholder="Last Name" required
@@ -333,7 +337,7 @@
                                 @if (isset($fields['email']))
                                     @if ($fields['email'] == 'on')
                                         <div class="col-md-12  col-sm-12 col-xs-12 control-input email-main">
-                                            <label style="font-size: 16px;" for="savers_email"
+                                            <label  for="savers_email"
                                                 class="">Email</label>
                                             <div class="custom-form-control">
                                                 <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif id="savers_email" name="savers_email" value=""
@@ -421,7 +425,7 @@
                                 @if (isset($fields['fplan']))
                                     @if ($fields['fplan'] == 'on')
                                         <div class="col-md-6">
-                                            <label style="font-size: 16px;" for="" class="">Do you
+                                            <label  for="" class="">Do you
                                                 require
                                                 Family Plan ?</label>
                                             <div class="custom-form-control">
@@ -480,14 +484,11 @@
                                 @endif
                             @endif
                         @endfor
-                        <div class="col-md-12" style="clear: both;">
-                            <span id="family_error"
-                                style="display: none; text-align: right;padding: 20px; color:#1BBC9B;"><i
-                                    class="fa fa-warning"></i> </span>
-                            <button type="submit" name="GET QUOTES" id="getqoutesubmitbutton"
-                                class="btn btn-danger"
-                                style="border: 1px solid rgb(27, 188, 155);padding: 10px 30px;;margin-top: 20px;display: block;border-radius: 4px !important;"><i
-                                    class="fa fa-list"></i> Get a Quote </button>
+                        <div class="col-md-12">
+                            <span id="family_error"><i class="fa fa-warning"></i> </span>
+                            <button type="submit" name="GET QUOTES" id="getqoutesubmitbutton" class="btn">
+                                <i class="fa fa-list"></i> Get a Quote 
+                            </button>
                         </div>
                     </div>
                 </form>

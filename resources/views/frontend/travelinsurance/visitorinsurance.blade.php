@@ -168,20 +168,9 @@
 <link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-<script type="text/javascript">
-@for ($i=1; $i < 6; $i++)
-$('#dateofbirthfull{{$i}}').datepicker( {
-    changeMonth: true,
-    changeYear: true,
-    yearRange: "-100:+0",
-    maxDate: new Date(),
-});
-@endfor
-</script>
 <script>
 	function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 
     {
-	
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
             $checkboxes.attr("disabled", false);
@@ -241,6 +230,17 @@ $('#dateofbirthfull{{$i}}').datepicker( {
             }
         });
     }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {               
+        $('#dateofbirthfull1').mask('00/00/0000');
+        $('#dateofbirthfull2').mask('00/00/0000');
+        $('#dateofbirthfull3').mask('00/00/0000');
+        $('#dateofbirthfull4').mask('00/00/0000');
+        $('#dateofbirthfull5').mask('00/00/0000');
+        $('#dateofbirthfull6').mask('00/00/0000');
+        $('#phonenumbermask').mask('000-000-0000');
+    });
 </script>
 <script>
 $(".sum_insured2").select2({

@@ -22,6 +22,27 @@
                     <span class="summaryheading">Total Premium</span> : <span class="summarydata">${{str_replace(',','', number_format($total_price,2))}}</span>
                 </div>
                 <hr style="margin-left: 16px !important; width: 200px;">
+
+                @if($family_plan == 'yes')
+                    @php
+                        $per = 0;
+                        $maxage =  max($ages_array);
+                    @endphp
+                    @foreach($ages_array as $person_age)
+                    @php
+                        $per++;
+                    @endphp
+                    <div class="col-md-12">
+                        <span style="color:#2b3481;" class="summaryheading">Person {{ $per }}</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="summaryheading">Age</span> : <span class="summarydata"> {{$person_age}} Years</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="summaryheading">Premium</span> : <span class="summarydata">@if($maxage == $person_age) ${{str_replace(',','', number_format($total_price,2))}} @else $0 @endif</span>
+                    </div>
+                    @endforeach
+                @else
                 <?php
                 $per = 0;
                     foreach($ages_array as $person_age){
@@ -42,7 +63,6 @@
                     $countarraytwo =  count($p_planrates);
                     $document_pre_existing = '';
                     if($countarraytwo > 0)
-
                     {
                         if($request->pre_existing[$per-1]=='yes')
                         {
@@ -149,6 +169,7 @@
         </div>
                 <?php } 
             }?>
+            @endif
             </div>
         </div>
         <div class="col-md-3">
@@ -161,7 +182,9 @@
         <div class="col-md-3">
             <b><i class="fa fa-list-alt" aria-hidden="true"></i> Policy Documents:</b>
             <hr>
+            @if($family_plan == 'yes')
 
+            @else
             @if($document_pre_existing == 'yes')
                 @if ($plan->plan_pdf_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
@@ -177,7 +200,6 @@
                     </a>
                 @endif
             @endif
-
             @if($document_without_pre_existing == 'yes')
 
                 @if ($plan->plan_pdf_without_pre_existing)
@@ -195,7 +217,7 @@
                 @endif
 
             @endif
-
+            @endif
         </div>
     </div>
 </div>

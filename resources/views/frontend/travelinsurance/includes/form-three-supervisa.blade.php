@@ -1,25 +1,22 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/formlayoutthree.css') }}">
-<style>
-   .form-control {
-      border: 1px solid #ddd !important;
-   }
-
-   .nextbtn {
-      background: #1BBC9B;
-      color: #FFF;
-      padding: 10px 56px !important;
-   }
-</style>
 <section id="sectionbackground">
    <div class="container-homepage">
+
       <div class="col-md-12 text-center">
-         <div class="clearfix"></div>
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
+            <div class="col-md-12 mb-5">
+                 <div class="text-center">
+                     <h3 class="content-title no-bm">Enter Your Trip Details</h3>
+                     <div class="grey font-12">
+                         <i class="fa fa-lock fa-lg"></i>
+                         <span>Your information is secure and will not be sold.</span>
+                     </div>
+                 </div>
+             </div>
             @csrf
             <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
 
-            <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes"
-               @endif>
+            <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes"@endif>
 
 
             <div id="listprices_">
@@ -29,9 +26,9 @@
                      @if($fields['sum_insured'] == 'on')
                      <div class="col-md-4">
                         <div class="form-group">
+                           <label for="coverageammount">Coverage Amount</label>
                            <select required class="form-control" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
-
                               @foreach ($sum_insured as $key => $r)
                               <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
                                  selected @endif @endif value="{{ $r->sum_insured }}"@if ($key == 0) selected @endif>${{
@@ -98,6 +95,7 @@
                      </div>
                      @else
                      <div class="col-md-4">
+                        <label>Primary Destination</label>
                         <select name="primary_destination" class="form-control" id="primary_destination"
                            autocomplete="off" required style="margin-bottom:10px;">
                            <option value=""> --- Primary destination in Canada ---</option>
@@ -117,7 +115,7 @@
                         <div class="form-group">
 
 
-
+                           <label>Email</label>
                            <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif
                               id="savers_email" name="savers_email" class="form-control" required type="email"
                               placeholder="Your email address" style="float: none;padding: 0 10px !important;">
@@ -125,23 +123,10 @@
                      </div>
                      @endif
                      @endif
-                     <div class="clear:both;"></div>
-
-                     <script>
-                        $('html').click(function() {
-                                    $('.ageandcitizen').fadeOut(300);
-                                })
-
-                                $('.agesdiv').click(function(e) {
-                                    e.stopPropagation();
-                                });
-
-                     </script>
                   </div>
-                  <div class="col-md-2 pull-right" style="">
-                     <button class="btn nextbtn" type="button" id="GET_QUOTES"
-                        onclick="$('.page_1').hide();$('.page_2').show('slow');" style="display: block;"> Next <i
-                           class="fa fa-arrow-circle-right"></i></button>
+                  <div class="col-md-2 pull-right">
+                        <button style="width: 100%;" class="btn nextbtn" type="button" id="GET_QUOTES" onclick="$('.page_1').hide();$('.page_2').show('slow');" style="display: block;"> Next <i class="fa fa-arrow-circle-right"></i>
+                        </button>
                   </div>
                </div>
                <!-- PAGE ONE ENDED -->
@@ -376,18 +361,13 @@
                      <div class="row">
                         <div class="col-md-5 col-xs-12" style="padding: 0;width: 50%;">
                            <button class="btn btn-default"
-                              style="padding: 5px 40px; font-weight: bold; font-size: 16px; display: block;border-radius: 50px;  color:#333 !important;background: #FFF !important;box-shadow: none !important; margin-bottom:10px;"
+                              style="padding: 5px 40px; font-weight: bold; font-size: 16px; display: block;border-radius: 50px;  color:#333 !important;background: #ddd !important;box-shadow: none !important; margin-bottom:10px;"
                               id="backbtn" type="button" onclick="$('.page_1').show();$('.page_2').hide('slow');"><i
                                  class="fa fa-arrow-circle-left"></i> Back</button>
                         </div>
                         <div class="col-md-7 col-xs-12" style="padding: 0;width: 50%;">
-                           <button type="submit" id="getqoutesubmitbutton" style="font-size:16px;"
-                              class="btn nextbtn float-right"> Continue <i
-                                 style=" position: absolute; top: 13px; right: 20px; "
-                                 class="fa fa-arrow-circle-right"></i></button>
-                           <span id="family_error" class="col-md-12"
-                              style=" font-size: 16px;font-weight: bold;text-align: right;padding: 20px; color:rgb(27, 188, 155);"><i
-                                 class="fa fa-warning"></i> </span>
+                           <button type="submit" id="getqoutesubmitbutton" class="btn nextbtn float-right"> Continue <i class="fa fa-arrow-circle-right"></i></button>
+                           <span id="family_error" class="col-md-12"><i class="fa fa-warning"></i> </span>
                         </div>
                      </div>
                   </div>

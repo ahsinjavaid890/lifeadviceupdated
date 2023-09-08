@@ -34,6 +34,7 @@
                 <ul style="text-transform:capitalize;"></ul>
             </div>
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
+                @csrf
                 <input type="hidden" name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else
                     value="yes" @endif>
                 <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -505,24 +506,12 @@
                 </select>
             </div>
         </div>
-        <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
-        <script>
-            function changefamilyyes(id) {
-                if (id == 'yes') {
-                    document.getElementById('familyplan_temp').value = 'yes';
-                    checkfamilyplan();
-                } else {
-                    document.getElementById('familyplan_temp').value = 'no';
-                    checkfamilyplan();
-                }
-            }
-
-        </script>
+        
         @endif
         @endif
         @endif
         @endfor
-
+        <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
     </div>
     <div class="row">
         <div class="col-md-6 width-50-percent" id="lowestprice">
@@ -604,17 +593,6 @@
 
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {               
-        $('#dateofbirthfull1').mask('00/00/0000');
-        $('#dateofbirthfull2').mask('00/00/0000');
-        $('#dateofbirthfull3').mask('00/00/0000');
-        $('#dateofbirthfull4').mask('00/00/0000');
-        $('#dateofbirthfull5').mask('00/00/0000');
-        $('#dateofbirthfull6').mask('00/00/0000');
-        $('#phonenumbermask').mask('000-000-0000');
-    });
-</script>
 <script>
     jQuery('#gender:before').click(function() {
         var text = jQuery(this).attr('data-on-text');
@@ -773,11 +751,6 @@
         $('#getqoutesubmitbutton').click();
     });
     @endif
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
     $('#quoteform').on('submit', (function(e) {
         $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
@@ -804,6 +777,10 @@
                     $("#" + key + "_error").text(val[0]);
                 })
             }   
+            },
+            error: function (request, status, error) {
+                // location.reload();
+                console.log(request.responseText)
             }
         });
     }));
@@ -813,5 +790,14 @@
         $.each( msg, function( key, value ) {
             $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
         });
+    }
+    function changefamilyyes(id) {
+        if (id == 'yes') {
+            document.getElementById('familyplan_temp').value = 'yes';
+            checkfamilyplan();
+        } else {
+            document.getElementById('familyplan_temp').value = 'no';
+            checkfamilyplan();
+        }
     }
 </script>

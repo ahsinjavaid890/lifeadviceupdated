@@ -667,6 +667,10 @@ jQuery(function() {
         jQuery(".num-of-quotes").hide();
     }
 });
+function showdetails(id)
+{
+    $('.dh-toggle-show-hide-'+id).slideToggle();
+}
 function showmore(id) {
     var text = $('#showmore' + id).text();
     if (text == ' More Details') {
