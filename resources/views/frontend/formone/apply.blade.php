@@ -166,7 +166,7 @@
 										<div class="col-md-6 nopad">
 											<div class="custom-form-control positionrelative">
 								            	<label class="selectlabeldateofbirth">Phone Number</label>
-								                <input class="input" type="text" placeholder=" " oninput="maxLengthChecks(this)" maxlength="11" value="{{ $request->phone }}" name="phone" data-placeholder="Phone Number" required>
+								                <input value="{{ $request->phone }}" type="text" id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
 								            </div>
 										</div>
 										<div class="col-md-6 nopad">
@@ -1037,5 +1037,11 @@ function displayLocation(latitude,longitude){
         }
     );
 }
+</script>
+<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {               
+        $('#phonenumbermask').mask('000-000-0000');
+    });
 </script>
 @endsection

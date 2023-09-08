@@ -1,4 +1,4 @@
-<div class="col-md-12 dh-toggle-show-hide-{{ $deductible.$plan_id }} buynowrow summarydiv moredetails_<?php echo $deductible . $plan_id; ?> summar_info_<?php echo $deductible . $plan_id; ?> summary_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $plan_id; ?>">
+<div class="col-md-12 dh-toggle-show-hide-{{ 1+$deductible.$plan_id }} buynowrow summarydiv moredetails_<?php echo $deductible . $plan_id; ?> summar_info_<?php echo $deductible . $plan_id; ?> summary_<?php echo $deductible.$plan_id;?> dh-toggle-show-hide-<?php echo $plan_id; ?>">
     <div class="row">
     <div class="col-12">
         <a href="javascript:void(0)"onclick="showdetails({{ $deductible.$plan_id }})"class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>

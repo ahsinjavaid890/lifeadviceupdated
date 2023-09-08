@@ -160,6 +160,7 @@ class SiteController extends Controller
     }
     public function ajaxquotes(Request $request)
     {
+        session()->put('foo' , $request->all());
         $quoteNumber = rand();
         $data = wp_dh_products::where('pro_id', $request->product_id)->first();
         $fields = unserialize($data->pro_fields);
@@ -428,6 +429,7 @@ class SiteController extends Controller
     }
     public function visitorinsurance()
     {
+
         $data = wp_dh_products::where('url', 'visitor-insurance')->first();
 
 

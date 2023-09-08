@@ -1,20 +1,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css') }}">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-<style type="text/css">
-    .form-control {
-        height: 40px !important;
-    }
-
-    #quoteform {
-        background-color: white !important;
-    }
-
-    .mainsection {
-        margin-bottom: 20px !important;
-        margin-top: 20px !important;
-    }
-</style>
 <div class="container-homepage">
     <div class="row mainsection birthdate">
         <div class="col-md-12">
@@ -76,7 +61,6 @@
                     <label for="phone" class="form-label lables">Phone <b id="phone_error"
                             class="text-danger"></b></label>
                 </div>
-
                 <div class="col-md-7">
                     <label class="icon-left" for="phonenumbermask"
                         style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14px;">
@@ -356,8 +340,9 @@
                 <i class="fa fa-calendar" style="border-right: 1px solid #666;padding-right: 8px;"></i>
             </label>
             <div class="custom-form-control">
-                <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly
-                    inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
+                <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif 
+                 @if(session()->get('foo')) value="{{ session()->get('foo')['departure_date'] }}" @endif   
+                 readonly inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
                     id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control"
                     type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?>
                 onchange="supervisayes()"
@@ -389,6 +374,9 @@
 
 
                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif
+
+                    @if(session()->get('foo')) value="{{ session()->get('foo')['return_date'] }}" @endif
+
                     style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date"
                     autocomplete="off" name="return_date" value="" class="form-control" type="text"
                     placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
@@ -644,6 +632,13 @@
 <script>
     $(document).ready(function() {
         $(".selecttwo").select2();
+
+        @if(session()->get('foo'))
+
+            checknumtravellers({{ session()->get('foo')['number_travelers'] }});
+
+        @endif
+
     });
 
     function supervisayes() {
