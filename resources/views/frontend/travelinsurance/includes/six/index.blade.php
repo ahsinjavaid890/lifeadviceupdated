@@ -177,7 +177,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-	<div class="">
+<div class="">
     <div class="row">
         <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
            <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">

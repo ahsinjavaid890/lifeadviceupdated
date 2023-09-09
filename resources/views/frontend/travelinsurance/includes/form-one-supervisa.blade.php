@@ -341,7 +341,7 @@
             </label>
             <div class="custom-form-control">
                 <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif 
-                 @if(session()->get('foo')) value="{{ session()->get('foo')['departure_date'] }}" @endif   
+                  
                  readonly inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
                     id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control"
                     type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?>
@@ -375,7 +375,7 @@
 
                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif
 
-                    @if(session()->get('foo')) value="{{ session()->get('foo')['return_date'] }}" @endif
+                    
 
                     style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date"
                     autocomplete="off" name="return_date" value="" class="form-control" type="text"
@@ -633,11 +633,7 @@
     $(document).ready(function() {
         $(".selecttwo").select2();
 
-        @if(session()->get('foo'))
-
-            checknumtravellers({{ session()->get('foo')['number_travelers'] }});
-
-        @endif
+        // checknumtravellers();
 
     });
 

@@ -227,53 +227,35 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         <div class="row">
             <div class="col-md-12 right-bar-content" id="listprices" style="padding:0;">
 
-                <?php
-        $items = array();
-        $addinquery = '';
-        $lessquery = '';
-        if($request->pre_existing == 'yes' || $request->pre_existing == '1'){
-            $addinquery .= "AND `premedical`='1'";
-        }
-        if($family_plan == 'yes'){
-            $addinquery .= "AND `family_plan`='1'";
-        }
-        if($num_of_days < '365'){
-            $lessquery = " AND `rate_base`<>'2'";
-        }
-        $plans_q = DB::select("SELECT * FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id' AND `status`='1' $lessquery $addinquery ORDER BY `id`");
-
-        // echo"<pre>";
-        // print_r($plans_q);
-        // die;
-
+        <?php
+        $plans_q = DB::table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('status' , 1)->orderby('id' , 'desc')->get();
         foreach($plans_q as $plan){
+            $plan_id = $plan->id;
+            $plan_name = $plan->plan_name;
+            $insurance_company = $plan->insurance_company;
+            $premedical = $plan->premedical;
+            $pre_existing_name = $plan->pre_existing_name;
+            $without_pre_existing_name = $plan->without_pre_existing_name;
+            $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
+            $monthly_two = $plan->monthly_two;
+            $flatrate = $plan->flatrate;
+            $flatrate_type = $plan->flatrate_type;
+            $sales_tax = $plan->sales_tax;
+            $smoke_rate = $plan->smoke_rate;
+            $smoke = $plan->smoke;
+            $directlink = $plan->directlink;
+            $status = $plan->status;
+            $cdiscountrate = $plan->cdiscountrate;
+            $plan_discount = $plan->discount;
+            $plan_discount_rate = $plan->discount_rate;
 
-        $plan_id = $plan->id;
-        $plan_name = $plan->plan_name;
-        $insurance_company = $plan->insurance_company;
-        $premedical = $plan->premedical;
-        $pre_existing_name = $plan->pre_existing_name;
-        $without_pre_existing_name = $plan->without_pre_existing_name;
-        $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
-        $monthly_two = $plan->monthly_two;
-        $flatrate = $plan->flatrate;
-        $flatrate_type = $plan->flatrate_type;
-        $sales_tax = $plan->sales_tax;
-        $smoke_rate = $plan->smoke_rate;
-        $smoke = $plan->smoke;
-        $directlink = $plan->directlink;
-        $status = $plan->status;
-        $cdiscountrate = $plan->cdiscountrate;
-        $plan_discount = $plan->discount;
-        $plan_discount_rate = $plan->discount_rate;
-
-        $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
-        if($sales_tax != 0)
-        {
-            $salestaxeplode = explode('%', $sales_tax);
-            $salestax_rate = $salestaxeplode[0];
-            $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
-        }
+            
+            if($sales_tax != 0)
+            {
+                $salestaxeplode = explode('%', $sales_tax);
+                $salestax_rate = $salestaxeplode[0];
+                $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
+            }
         
 
 
@@ -363,13 +345,13 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
                         if($request->pre_existing[$perone-1]=='yes')
                         {
-                            $dailyrate = $plan_rates[0]->rate_with_pre_existing;
+                            echo $dailyrate = $plan_rates[0]->rate_with_pre_existing;
                             $daily_rate += $dailyrate;
                             if($dailyrate == ''){ $dailyrate = 0; }
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }else{
-                            $dailyrate = $plan_rates[0]->rate_without_pre_existing;
+                            echo $dailyrate = $plan_rates[0]->rate_without_pre_existing;
                             $daily_rate += $dailyrate;
                             if($dailyrate == ''){ $dailyrate = 0; }
                             $display[] =  $dailyrate;
@@ -410,7 +392,7 @@ $flat_price = 0;
 //totaldaysprice
 $totaldaysprice = $total_price;
 //SALES TAX
-
+$post_dest = str_replace(' ', '', strtolower($request->primary_destination));
 if($sales_tax != 0)
 {
     if($salestax_dest == $post_dest){
@@ -478,6 +460,7 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 if($show == '1' && $total_price > 0){             
 ?>
 
+@if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
 <div class="listing-item" data-listing-price="{{str_replace(',', '', number_format($total_price))}}">
     <div class="coverage-amt pricearray coverage-amt-{{$sum_insured}} pricearray{{ $comp_id }}{{ $total_price }}" style="line-height:1.0; display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
         <div class="row plan-details mb-0 ml-1 deductable-<?php echo $deductible; ?>"
@@ -530,7 +513,7 @@ if($show == '1' && $total_price > 0){
         </div>
     </div>
 </div>
-
+@endif
 
                 <?php
 

@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 class Cmf
 {
+    public static function checkallrates($ages_array , $rates_table_name , $deduct_plan_id , $sumamt)
+    {
+        $items = array();
+        foreach($ages_array as $person_age)
+        {
+            $p_planrates =  DB::table($rates_table_name)->where('plan_id' , $deduct_plan_id)->where('maxage', '>=', $person_age)->where('minage', '<=', $person_age)->where('sum_insured' , $sumamt)->get();
+            if($p_planrates->count() > 0)
+            {
+                $items[] = 1;
+            }else{
+                $items[] = 0;
+            }
+        }
+        if (in_array("0", $items))
+        { 
+            return 0; 
+        } else 
+        {
+            return 1; 
+        }
+    }
     public static function error_processor($validator)
     {
         $err_keeper = [];
