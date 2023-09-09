@@ -633,7 +633,7 @@
     $(document).ready(function() {
         $(".selecttwo").select2();
 
-        // checknumtravellers();
+        checknumtravellers($('#number_travelers').val());
 
     });
 
