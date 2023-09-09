@@ -351,7 +351,7 @@
                     $('#departure_date').datepicker( {
                         changeMonth: true,
                         changeYear: true,
-                        yearRange: "-100:+0",
+                        yearRange: "-100:+6",
                         minDate: new Date(),
                     });
                 </script>
@@ -374,9 +374,6 @@
 
 
                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif
-
-                    
-
                     style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;" id="return_date"
                     autocomplete="off" name="return_date" value="" class="form-control" type="text"
                     placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
@@ -386,7 +383,7 @@
                     $('#return_date').datepicker({
                         changeMonth: true,
                         changeYear: true,
-                        yearRange: "-100:+0",
+                        yearRange: "-100:+6",
                         minDate: new Date(),    
                     });
                 </script>
