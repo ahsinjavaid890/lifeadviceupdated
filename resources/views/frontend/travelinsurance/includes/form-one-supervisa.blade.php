@@ -15,7 +15,7 @@
             <hr>
         </div>
         <div class="col-md-7 leftsection">
-            <div class="mt-2 mb-3 alert alert-danger print-error-msg-login">
+            <div class="mt-2 mb-3 alert alert-danger print-error-msg-login" style="display:none;">
                 <ul></ul>
             </div>
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
