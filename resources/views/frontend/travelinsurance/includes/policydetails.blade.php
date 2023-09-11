@@ -57,9 +57,11 @@
                         $existingshow = 'Yes';
                         $document_pre_existing = 'yes';
                         $document_without_pre_existing = '';
+                        $planname = $pre_existing_name;
                     }else{
                         $single_person_rate = $p_planrates->rate_without_pre_existing;
                         $existingshow = 'No';
+                        $planname = $without_pre_existing_name;
                         $document_without_pre_existing = 'yes'; 
                         if($document_pre_existing == 'yes')
                         {
@@ -145,6 +147,9 @@
                 </div>
                 <div class="col-md-12">
                     <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
+                </div>
+                <div class="col-md-12">
+                    <span class="summaryheading">Plan</span> : <span class="summarydata"> {{$planname}}</span>
                 </div>
                 @endforeach
                 @endif
