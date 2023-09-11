@@ -15,8 +15,8 @@
             <hr>
         </div>
         <div class="col-md-7 leftsection">
-            <div class="mt-2 mb-3 alert alert-danger print-error-msg-login" style="max-width: 70rem; margin: auto;display:none; color: #a94442;background-color: #f2dede;border-color: #ebccd1;">
-                <ul style="text-transform:capitalize;"></ul>
+            <div class="mt-2 mb-3 alert alert-danger print-error-msg-login">
+                <ul></ul>
             </div>
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
@@ -762,13 +762,6 @@
             }
         });
     }));
-    function printErrorMsglogin (msg) {
-        $(".print-error-msg-login").find("ul").html('');
-        $(".print-error-msg-login").css('display','block');
-        $.each( msg, function( key, value ) {
-            $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
-        });
-    }
     function changefamilyyes(id) {
         if (id == 'yes') {
             document.getElementById('familyplan_temp').value = 'yes';

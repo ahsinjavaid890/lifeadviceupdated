@@ -1,3 +1,10 @@
+function printErrorMsglogin (msg) {
+    $(".print-error-msg-login").find("ul").html('');
+    $(".print-error-msg-login").css('display','block');
+    $.each( msg, function( key, value ) {
+        $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
+    });
+}
 function calculateAge(dateofbirth , classname) {
     var dob = dateofbirth;        
     var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;

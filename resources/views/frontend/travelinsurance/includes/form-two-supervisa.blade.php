@@ -13,6 +13,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="mt-2 mb-3 alert alert-danger print-error-msg-login">
+                    <ul></ul>
+                </div>
                 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
@@ -28,7 +31,7 @@
                                     @endphp
                                     @if ($number_of_travel > 0)
 
-                                        <div class="col-md-12 ">
+                                        <div class="col-md-12 mb-2">
                                             <label  for="number_travelers" class="">Number
                                                 of Travellers</label>
                                             <div class="custom-form-control">
@@ -124,8 +127,8 @@
                             @endif
                             @if (array_search('id_8', $orderdata) == $orderi)
                                 @if (isset($fields['sdate']) && $fields['sdate'] == 'on' && isset($fields['edate']) && $fields['edate'] == 'on')
-                                    <div class="col-md-6">
-                                        <label class="input-label"> Start Date</label>
+                                    <div class="col-md-6 mb-2">
+                                        <label class="input-label"> Start Date Of Coverage</label>
                                         <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif  readonly style="padding-left: 40px;" id="departure_date"
                                             autocomplete="off" inputmode="numeric" name="departure_date" value=""
                                             class="form-control" type="text" placeholder="Start Date" required
@@ -134,15 +137,15 @@
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </span>
                                         <script>
-                                            $('#departure_date').datepicker({
-                                                format: 'yyyy-mm-dd',
-                                                todayHighlight: 'TRUE',
-                                                autoclose: true,
-                                                minDate: 0,
+                                            $('#departure_date').datepicker( {
+                                                changeMonth: true,
+                                                changeYear: true,
+                                                yearRange: "-100:+6",
+                                                minDate: new Date(),
                                             });
                                         </script>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mb-2">
                                         <label class="input-label">End Date of Coverage</label>
                                         <div class="custom-form-control">
                                             <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left: 40px;" id="return_date" autocomplete="off"
@@ -158,9 +161,10 @@
                                     @if ($data->pro_supervisa != 1)
                                         <script>
                                             $('#return_date').datepicker({
-                                                format: 'yyyy-mm-dd',
-                                                todayHighlight: 'TRUE',
-                                                autoclose: true,
+                                                changeMonth: true,
+                                                changeYear: true,
+                                                yearRange: "-100:+6",
+                                                minDate: new Date(),    
                                             });
                                         </script>
                                     @endif
@@ -217,7 +221,7 @@
                                                 </div>
                                             </div>
                                         @else
-                                            <div class="col-md-12 ">
+                                            <div class="col-md-12 mb-2">
                                                 <label  for="primary_destination"
                                                     class="">Primary destination in Canada</label>
                                                 <div class="custom-form-control">
@@ -617,25 +621,29 @@
     });
     @endif
     $('#quoteform').on('submit', (function(e) {
-        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
-            type: 'POST',
+            type: 'POST', 
             url: $(this).attr('action'),
             data: formData,
             cache: false,
             contentType: false,
             processData: false,
             success: function(data) {
-                // console.log(data.html)
-                $('#getqoutesubmitbutton').html('Get Quotes');
+            if($.isEmptyObject(data.error)){
                 $('.quotationscards').html(data.html);
-
+                $('#getqoutesubmitbutton').html('Get Quotes');
                 $('html, body').animate({
                     scrollTop: $(".quotationscards").offset().top
                 }, 2000);
-
+                $(".print-error-msg-login").find("ul").html('');
+                $(".print-error-msg-login").css('display','none');
+            }else{
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                printErrorMsglogin(data.error);
+            }   
             }
         });
     }));

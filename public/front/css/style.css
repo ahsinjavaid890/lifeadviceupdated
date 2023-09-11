@@ -6,3 +6,15 @@
 .selectedcomparebutton i{
 	color: white !important;
 }
+.print-error-msg-login{
+	max-width: 70rem; 
+	margin: auto;
+	display:none; 
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.print-error-msg-login ul{
+	text-transform:capitalize;
+}

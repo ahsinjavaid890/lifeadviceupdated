@@ -162,11 +162,13 @@ class SiteController extends Controller
     {
         $rules = array(
             'departure_date' => 'required',
-            'return_date' => 'required'
+            'return_date' => 'required',
+            'savers_email' => 'required|email'
         );    
         $messages = array(
                         'departure_date.required' => 'Start Date of Coverage Is Required',
-                        'return_date.required' => 'End Date of Coverage Is Required'
+                        'return_date.required' => 'End Date of Coverage Is Required',
+                        'savers_email.required' => 'Please Enter Valid Email'
                     );
         $validator = Validator::make( $request->all(), $rules, $messages );
         if ($validator->fails()) {
