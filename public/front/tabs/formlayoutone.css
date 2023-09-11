@@ -9,3 +9,23 @@
     margin-bottom: 20px !important;
     margin-top: 20px !important;
 }
+.datelabel{
+    color: rgb(245, 130, 31);
+    font-size: 17px;
+    height: 19px;
+    line-height: 38px !important;
+    opacity: .6;
+    position: absolute;
+    text-align: center;
+    top:0px;width: 42px;
+    z-index: 2; 
+    left:14;
+}
+.datelabel i{
+    border-right: 1px solid #666;
+    padding-right: 8px;
+}
+.dateinput{
+    padding-left:40px !important;    
+    border: 1px solid rgb(173, 173, 173) !important;
+}

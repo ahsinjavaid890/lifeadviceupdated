@@ -160,6 +160,18 @@ class SiteController extends Controller
     }
     public function ajaxquotes(Request $request)
     {
+        $rules = array(
+            'departure_date' => 'required',
+            'return_date' => 'required'
+        );    
+        $messages = array(
+                        'departure_date.required' => 'Start Date of Coverage Is Required',
+                        'return_date.required' => 'End Date of Coverage Is Required'
+                    );
+        $validator = Validator::make( $request->all(), $rules, $messages );
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
         $quoteNumber = rand();
         $data = wp_dh_products::where('pro_id', $request->product_id)->first();
         $fields = unserialize($data->pro_fields);

@@ -335,16 +335,12 @@
         </div>
         <div class="col-md-7">
             <label for="departure_date" class="d-none">Start Date of Coverage</label>
-            <label for="" onclick="(this.type='date')"
-                style="color: rgb(245, 130, 31);font-size: 17px;height: 19px;line-height: 38px !important;opacity: .6;position: absolute;text-align: center;top:0px;width: 42px;z-index: 2; left:14;">
-                <i class="fa fa-calendar" style="border-right: 1px solid #666;padding-right: 8px;"></i>
+            <label class="datelabel">
+                <i class="fa fa-calendar"></i>
             </label>
             <div class="custom-form-control">
-                <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif 
-                  
-                 readonly inputmode="numeric" style="padding-left:40px;    border: 1px solid rgb(173, 173, 173) !important;"
-                    id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control"
-                    type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?>
+                <input required @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif
+                 readonly inputmode="numeric" id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control dateinput" type="text" placeholder="Start Date" <?php if($data->pro_supervisa == 1){?>
                 onchange="supervisayes()"
                 <?php } ?>>
                 <script>
@@ -757,18 +753,12 @@
                 $('html, body').animate({
                     scrollTop: $(".quotationscards").offset().top
                 }, 2000);
+                $(".print-error-msg-login").find("ul").html('');
+                $(".print-error-msg-login").css('display','none');
             }else{
                 $('#getqoutesubmitbutton').html('Get Quotes');
-                // printErrorMsglogin(data.error);
-                var response = $.parseJSON(reject.responseText);
-                $.each(response.errors, function(key, val) {
-                    $("#" + key + "_error").text(val[0]);
-                })
+                printErrorMsglogin(data.error);
             }   
-            },
-            error: function (request, status, error) {
-                // location.reload();
-                console.log(request.responseText)
             }
         });
     }));
