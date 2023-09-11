@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css') }}">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container-homepage">
+<div class="container">
     <div class="row mainsection birthdate">
         <div class="col-md-12">
             <div class="text-center">
