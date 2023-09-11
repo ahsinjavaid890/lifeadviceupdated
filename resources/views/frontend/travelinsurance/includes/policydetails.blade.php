@@ -148,9 +148,11 @@
                 <div class="col-md-12">
                     <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$existingshow}}</span>
                 </div>
+                @if($planname)
                 <div class="col-md-12">
                     <span class="summaryheading">Plan</span> : <span class="summarydata"> {{$planname}}</span>
                 </div>
+                @endif
                 @endforeach
                 @endif
             </div>
