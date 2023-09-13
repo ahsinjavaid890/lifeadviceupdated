@@ -336,22 +336,23 @@ if($second_show == '1' && $second_total_price > 0){
             <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" style="max-height: 61px;" />
          </div>
          <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
-            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$second_<?php echo number_format($second_total_price,2); ?></h1>
+            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($second_total_price,2); ?></h1>
             @if($second_monthly_two == '1')
-            <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$second_<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
+            <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
             @endif
          </div>
          <div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
             <small style=" font-size: 10px; margin-left: 10px;">{{ $second_number_travelers }} Traveller @if($second_number_travelers > 1) (s) @endif</small>
          </div>
          <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;color: #808180;padding-top: 5px;">
-            $second_{{ $second_sum_insured }}<br/>
-            $second_{{ $second_deductible }} Deductible
+            ${{ $second_sum_insured }}<br/>
+            ${{ $second_deductible }} Deductible<br>
+            <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$second_('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
+            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
             <button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
-               font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$second_('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
+               font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
             <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
          </div>
         @include('frontend.travelinsurance.includes.nopolicydetails')
