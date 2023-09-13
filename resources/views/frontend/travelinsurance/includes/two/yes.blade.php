@@ -234,7 +234,7 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 if($show == '1' && $total_price > 0){
 ?>
 
-
+ @if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
 <div class="desktop-compare listing-item" data-listing-price="{{str_replace(',', '', number_format($total_price))}}">
 <div class="pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt coverage-amt-{{ $sum_insured }}" style=" display: <?php if ($_REQUEST['sum_insured2'] == $sum_insured) {
 echo 'block';
@@ -295,7 +295,7 @@ echo 'none';
 </div>
 </div>
 
-
+@endif
 
 
 
