@@ -105,7 +105,7 @@
 </script>
 
 
-<div class="mt-3 dh-listings " id="dh-get-quote">
+<div class="mt-3 dh-listings container" id="dh-get-quote">
     <?php
     //  error_reporting(E_ERROR);
     $startdate = $request->departure_date;

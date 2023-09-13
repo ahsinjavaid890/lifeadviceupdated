@@ -381,14 +381,6 @@ echo 'none';
             <i class="fa fa-plus"></i> More Details
         </button>
     </div>
-    <div class="col-md-4 hidden-xs" style="padding-top: 7px;">
-    <strong>Plan Type: </strong> <?php if ($second_family_plan == 'yes') {
-            echo 'Family';
-        } else {
-            echo 'Individual';
-        } ?>
-    </div>
-
 </div>
 @include('frontend.travelinsurance.includes.nopolicydetails')
            
