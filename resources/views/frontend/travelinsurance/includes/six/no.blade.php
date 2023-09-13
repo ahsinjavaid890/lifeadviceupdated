@@ -330,7 +330,7 @@ if($second_show == '1' && $second_total_price > 0){
    <div class="coverage-amt col-md-12 pricearray coverage-amt-{{$second_sum_insured}} pricearray{{ $second_comp_id }}{{ $second_total_price }}" style="<?php echo ( $request->sum_insured2 == $second_sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
       <div class="row plan-details   deductable-{{ $second_deductible }}" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
          <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
-            <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ 1+$second_deductible.$second_plan_id }})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
          </div>
          <div class="col-md-3 col-xs-11 text-center">
             <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" style="max-height: 61px;" />
