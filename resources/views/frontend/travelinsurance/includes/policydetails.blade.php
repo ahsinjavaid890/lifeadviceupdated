@@ -45,6 +45,7 @@
                 @else
                 @php
                     $per = 0;
+                    $a=array();
                 @endphp
                 @foreach($ages_array as $person_age)
                 <?php
@@ -55,20 +56,13 @@
                     {
                         $single_person_rate = $p_planrates->rate_with_pre_existing;
                         $existingshow = 'Yes';
-                        $document_pre_existing = 'yes';
-                        $document_without_pre_existing = '';
+                        array_push($a,"yes");
                         $planname = $pre_existing_name;
                     }else{
                         $single_person_rate = $p_planrates->rate_without_pre_existing;
                         $existingshow = 'No';
                         $planname = $without_pre_existing_name;
-                        $document_without_pre_existing = 'yes'; 
-                        if($document_pre_existing == 'yes')
-                        {
-                            $document_pre_existing = 'yes';
-                        }else{
-                            $document_pre_existing = '';
-                        }
+                        array_push($a,"No");
                     }
                     if($family_plan == 'yes' && $elder_age != $person_age){
                         $person_daily = 0;
@@ -170,7 +164,7 @@
             @if($family_plan == 'yes')
 
             @else
-            @if($document_pre_existing == 'yes')
+            @if (in_array('yes', $a))
                 @if ($plan->plan_pdf_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
                         class="pdf-additional-travelers">
@@ -185,7 +179,7 @@
                     </a>
                 @endif
             @endif
-            @if($document_without_pre_existing == 'yes')
+            @if (in_array('No', $a))
 
                 @if ($plan->plan_pdf_without_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
@@ -200,7 +194,6 @@
                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Without Pre Existing Person
                     </a>
                 @endif
-
             @endif
             @endif
         </div>
