@@ -45,6 +45,7 @@
                 @else
                 @php
                     $second_per = 0;
+                    $second_a=array();
                 @endphp
                 @foreach($second_ages_array as $second_person_age)
                 <?php
@@ -53,20 +54,15 @@
                     $second_document_pre_existing = '';
                     if($request->pre_existing[$second_per-1]=='yes')
                     {
-                        $second_single_person_rate = $second_p_planrates->rate_with_pre_existing;
-                        $second_existingshow = 'Yes';
-                        $second_document_pre_existing = 'yes';
-                        $second_document_without_pre_existing = '';
+                        $second_single_person_rate = $p_planrates->rate_with_pre_existing;
+                        $second_econd_existingshow = 'Yes';
+                        array_push($second_a,"yes");
+                        $second_planname = $second_pre_existing_name;
                     }else{
                         $second_single_person_rate = $second_p_planrates->rate_without_pre_existing;
                         $second_existingshow = 'No';
-                        $second_document_without_pre_existing = 'yes'; 
-                        if($second_document_pre_existing == 'yes')
-                        {
-                            $second_document_pre_existing = 'yes';
-                        }else{
-                            $second_document_pre_existing = '';
-                        }
+                        $second_planname = $second_without_pre_existing_name;
+                        array_push($second_a,"No");
                     }
                     if($second_family_plan == 'yes' && $second_elder_age != $second_person_age){
                         $second_person_daily = 0;
@@ -146,6 +142,11 @@
                 <div class="col-md-12">
                     <span class="summaryheading">Pre Exisitng Condition</span> : <span class="summarydata"> {{$second_existingshow}}</span>
                 </div>
+                @if($second_planname)
+                <div class="col-md-12">
+                    <span class="summaryheading">Plan</span> : <span class="summarydata"> {{$second_planname}}</span>
+                </div>
+                @endif
                 @endforeach
                 @endif
             </div>
@@ -163,7 +164,7 @@
             @if($second_family_plan == 'yes')
 
             @else
-            @if($second_document_pre_existing == 'yes')
+            @if (in_array('yes', $second_a))
                 @if ($second_plan->plan_pdf_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $second_plan->plan_pdf_pre_existing }}"
                         class="pdf-additional-travelers">
@@ -178,7 +179,7 @@
                     </a>
                 @endif
             @endif
-            @if($second_document_without_pre_existing == 'yes')
+            @if (in_array('No', $second_a))
 
                 @if ($second_plan->plan_pdf_without_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $second_plan->plan_pdf_without_pre_existing }}"
