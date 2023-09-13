@@ -272,7 +272,8 @@
                                     @if ($fields['sum_insured'] == 'on')
                                         @php
                                             $sum = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
-                                            $min = min($sum);
+
+                                                $min = min($sum);
                                             
                                             $firstsuminsured = $min->sum_insured;
                                         @endphp
@@ -294,7 +295,7 @@
                                                 }
                                             } ?>];
 
-                                            var iValue = SliderValues.indexOf({{ $firstsuminsured }});
+                                            var iValue = SliderValues.indexOf(@if($data->url == 'visitor-insurance') 50000 @else {{ $firstsuminsured }} @endif);
                                             $(function() {
                                                 $("#sum_slider").slider({
                                                     range: "min",
@@ -322,13 +323,13 @@
                                             <h4 class="coverage coverageheading">Coverage: <input type="text"
                                                     id="coverage_amount" name="coverage_amount"
                                                     style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;"
-                                                    value="${{ $firstsuminsured }}"></h4>
+                                                    value="$@if($data->url == 'visitor-insurance') 50000 @else {{ $firstsuminsured }} @endif"></h4>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                                             <div id="sum_slider" style="padding: 5px;border: none; background:#FFF;">
                                             </div>
                                             <input type="hidden" id="sum_insured2" name="sum_insured2"
-                                                value="{{ $firstsuminsured }}" />
+                                                value="@if($data->url == 'visitor-insurance') 50000 @else {{ $firstsuminsured }} @endif" />
 
                                             <input name="sum_insured" value="" type="hidden"
                                                 id="hidden_sum_insured">
