@@ -91,7 +91,7 @@
                             <option value="">Coverage Amount</option>
                             @foreach ($sum_insured as $key => $r)
                             <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
-                                selected @endif @endif value="{{ $r->sum_insured }}"@if ($key == 0) selected @endif>${{
+                                selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
                                 $r->sum_insured }}</option>
                             @endforeach
                         </select>
