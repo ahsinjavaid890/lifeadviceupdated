@@ -164,7 +164,7 @@
                                     <i></i> Multi
                                 </label>
                                 <label class="checkbox">
-                                    <input type="checkbox" @if ($data->rate_base == 4) checked="" @endif
+                                    <input type="checkbox" @if ($data->monthly_two == 1) checked="" @endif
                                         name="monthlytwo" id="monthlytwo" value="1">
                                     <i></i> Monthly Option 2
                                 </label>
