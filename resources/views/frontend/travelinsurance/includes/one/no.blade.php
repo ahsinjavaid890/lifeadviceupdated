@@ -334,7 +334,7 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-2 col-xs-6 text-center benefit_padding"
                 style="font-size: 14px;color: #333;">${{number_format($second_sum_insured)}} Coverage
-                <br>
+                <br><br>
                 ${{ $second_deductible }} Deductible
             </div>
             <div class="col-md-4 col-xs-12 text-center" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
