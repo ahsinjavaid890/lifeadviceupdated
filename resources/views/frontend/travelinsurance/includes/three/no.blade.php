@@ -363,10 +363,10 @@ if($second_show == '1' && $second_total_price > 0){
             <?php } } ?>          
 </div>
 <div class="col-md-3 text-center" style="padding-top: 30px; padding-bottom: 10px;">
-   <h1 class="planprice "><span class="text-center">Price</span> $second_{{ number_format($second_total_price,2) }}</h1>
-   <p class="text-center" id="rate">This rate is for $second_{{ $second_deductible }} deductible options</p>
+   <h1 class="planprice "><span class="text-center">Price</span> ${{ number_format($second_total_price,2) }}</h1>
+   <p class="text-center" id="rate">This rate is for ${{ $second_deductible }} deductible options</p>
    <div class="col-md-12 col-xs-12" >
-      <a class="submit-btn" onclick="$second_('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();">
+      <a class="submit-btn" onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();">
       <i class="fa fa-shopping-cart"></i> Buy Now
       </a>
       <div class="compare hidden-xs">

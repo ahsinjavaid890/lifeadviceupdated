@@ -63,6 +63,9 @@ class SiteController extends Controller
 
         if($data->count()){
             echo '<div class="container">
+            <i onclick="removecomparecard()" style="right: 31px;
+    background-color: #67778f;
+    border-radius: 50%;" class="icon icon-remove-card"></i>
             <div class="d-flex showcomparediv">';
     foreach ($data as $r) {
         $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
@@ -206,7 +209,7 @@ class SiteController extends Controller
             $returnHTML =  view('frontend.travelinsurance.includes.eight.index')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();
         }
         if ($data->stylish_price_layout == 'layout_9') {
-            $returnHTML =  view('frontend.travelinsurance.includes.pricelayoutnine')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();
+            $returnHTML =  view('frontend.travelinsurance.includes.nine.index')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();
         }
         if ($data->stylish_price_layout == 'layout_10') {
             $returnHTML =  view('frontend.travelinsurance.includes.ten.index')->with(array('quoteNumber' => $quoteNumber, 'data' => $data, 'fields' => $fields, 'ded' => $ded, 'sum' => $sum, 'request' => $request))->render();

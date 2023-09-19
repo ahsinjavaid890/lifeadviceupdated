@@ -257,8 +257,7 @@ if($show == '1' && $total_price > 0){
                 <h2 style="    color: #223b74; font-size: 32px; font-weight: bold;">$
                     <?php echo number_format($total_price,2); // $planID2->sum_insured + ?><br>
                     <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
-                        <?php echo $number_travelers; ?> Traveller
-                        <?php if($number_travelers > 1){echo 's';} ?>
+                        <?php echo $number_travelers; ?> Traveller<?php if($number_travelers > 1){echo "'s";} ?>
                     </small>
                 </h2>
                 <?php if($monthly_two == '1'){?>
@@ -274,7 +273,7 @@ if($show == '1' && $total_price > 0){
 
             </div>
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 5px; padding-left: 4px; ">
-                <button onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $plan_id }}" name="buynow">Buy this plan</button>
+                <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $plan_id }}" name="buynow">Buy this plan</button>
                 <div class="compare">
                     <div class="ui center aligned header">
                         <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>

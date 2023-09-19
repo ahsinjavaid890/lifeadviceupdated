@@ -559,6 +559,32 @@ class AdminController extends Controller
         wp_dh_insurance_plans_benefits::where('plan_id', $id)->delete();
         return redirect()->back()->with('message', 'Life Plan Benifit Deleted Successfully');
     }
+    public function saveplanfeature(Request $request)
+    {
+        DB::table('wp_dh_insurance_plans_features')->where('id', $request->id)->update(array('features' =>$request->value));
+    }
+    public function deletefeature($id)
+    {
+        $feature = DB::table('wp_dh_insurance_plans_features')->where('id', $id)->first();
+
+        DB::table('wp_dh_insurance_plans_features')->where('id', $id)->delete();
+
+        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id', $feature->plan_id)->get();
+
+        foreach ($features as $r) {
+            echo '<div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-11">
+                        <input id="ifeaturelist'.$r->id.'" onkeyup="changebuttoncolor('.$r->id.')" name="ifeaturelist[]" class="form-control"
+                        value="'.$r->features.'" placeholder="Enter Feature List # 1" type="text">
+                    </div>
+                    <div class="col-md-1">
+                        <i onclick="saveplanfeature('.$r->id.')" id="buttoncolor'.$r->id.'" class="fa fa-save btn btn-success"></i>
+                        <i onclick="deleteplanfeature('.$r->id.')" class="fa fa-trash btn btn-danger"></i>
+                    </div>
+                </div>';
+        }
+        
+    }
     public function lifeplans()
     {
         $data = wp_dh_life_plans::select('wp_dh_life_plans.id as plan_id', 'wp_dh_life_plans.plan_name', 'wp_dh_products.pro_name', 'wp_dh_companies.comp_logo')

@@ -762,13 +762,4 @@
             }
         });
     }));
-    function changefamilyyes(id) {
-        if (id == 'yes') {
-            document.getElementById('familyplan_temp').value = 'yes';
-            checkfamilyplan();
-        } else {
-            document.getElementById('familyplan_temp').value = 'no';
-            checkfamilyplan();
-        }
-    }
 </script>

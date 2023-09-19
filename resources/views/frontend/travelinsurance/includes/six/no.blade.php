@@ -332,8 +332,8 @@ if($second_show == '1' && $second_total_price > 0){
          <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
             <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
          </div>
-         <div class="col-md-3 col-xs-11 text-center">
-            <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" style="max-height: 61px;" />
+         <div class="col-md-3 col-xs-11 text-center mt-2">
+            <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail" />
          </div>
          <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
             <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($second_total_price,2); ?></h1>
@@ -342,9 +342,9 @@ if($second_show == '1' && $second_total_price > 0){
             @endif
          </div>
          <div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
-            <small style=" font-size: 10px; margin-left: 10px;">{{ $second_number_travelers }} Traveller @if($second_number_travelers > 1) (s) @endif</small>
+            <small style=" font-size: 10px; margin-left: 10px;">{{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?></small>
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;color: #808180;padding-top: 5px;">
+         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 5px;">
             ${{ $second_sum_insured }}<br/>
             ${{ $second_deductible }} Deductible<br>
             <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>

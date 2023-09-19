@@ -254,8 +254,7 @@ if($show == '1' && $total_price > 0){
             </div>
 
             <div class="col-md-4 col-xs-6 logogd" style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
-                <img style="height:auto; width:auto; margin-left: 20px"
-                    src="{{ url('public/images') }}/{{ $comp_logo }}" />
+                <img style="width: 200px;height: 80px;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $comp_logo }}" />
 
             </div>
             <div class="col-md-4 col-xs-6 text-center" id="price">
@@ -290,7 +289,7 @@ if($show == '1' && $total_price > 0){
             </div>
             <div class="col-md-3 col-xs-6"
                 style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
-                <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
+                <button style="background-color: #2b3481;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
                     class="submit-btn" data-value="<?php echo $plan_id; ?>"
                     class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
                     Now

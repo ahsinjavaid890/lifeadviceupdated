@@ -11,12 +11,12 @@
       height: 43px;
    }
 </style>
-<div class="container-homepage">
-   <div class="row" style="padding:40px 0;">
+<div class="container mt-5">
+   <div class="row mainpagerow">
       <div class="col-md-4 hidden-xs mobile-deisply-none">
          <img src="{{ asset('public/front/images/woman-4.jpg')}}" style="width: 100%;">
       </div>
-      <div class="col-md-8 visa-insurance" style="padding: 0;">
+      <div class="col-md-8 visa-insurance pt-3 pb-3">
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
             <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
@@ -81,14 +81,14 @@
                                 step: 1,
                                 value: iValue,
                                 slide: function (event, ui) {
-                                    $('#coverage_amount').text(SliderValues[ui.value]);
+                                       $('#coverage_amount').text(SliderValues[ui.value]);
                                        //alert(SliderValues.length);
                                        for (i = 0; i < SliderValues.length; i++) {
                                        var group = SliderValues[i];
                                        $('.coverage-amt-'+group).hide();
                                        }
                                        $('.coverage-amt-'+SliderValues[ui.value]).show();
-                                       $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+                                       $( "#coverage_amount" ).html( "$" + SliderValues[ui.value] );
                                        $( "#sum_insured2").val(SliderValues[ui.value]);
                                 }
                             });
@@ -97,8 +97,7 @@
                           </script>
 
                        <div class="col-md-12">
-                        <h4 class="coverage" style="color: black; margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
-                            <input type="text" id="coverage_amount" name="coverage_amount" style="border:0; font-size:23px; color:#1BBC9B; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: left;width: 150px;" @if(isset($_GET['sum_insured2'])) value="{{ $_GET['sum_insured2'] }}" @else value="{{$firstsuminsured}}" @endif></h4>
+                        <h4 class="coverage">Coverage: <span id="coverage_amount">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }} @else ${{$firstsuminsured}} @endif</span></h4>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
@@ -186,14 +185,14 @@
          
                            <i class="fa fa-calendar" aria-hidden="true" ></i>
                         </span> 
-                     <script>
-                           $('#departure_date').datepicker({
-                           format: 'yyyy-mm-dd',
-                           todayHighlight:'TRUE',
-                           autoclose: true,
-                            minDate: 0,
-                           });
-                        </script>
+                        <script>
+                             $('#departure_date').datepicker( {
+                                 changeMonth: true,
+                                 changeYear: true,
+                                 yearRange: "-100:+6",
+                                 minDate: new Date(),
+                             });
+                         </script>
                          </div>
                          <div class="col-md-6">
                               <label for="return_date" class="">End Date of Coverage</label>
@@ -206,12 +205,13 @@
                            </div>
                            @if($data->pro_supervisa != 1)
                            <script>
-                              $('#return_date').datepicker({
-                              format: 'yyyy-mm-dd',
-                              todayHighlight:'TRUE',
-                              autoclose: true,
-                              });
-                           </script>  
+                                $('#return_date').datepicker({
+                                    changeMonth: true,
+                                    changeYear: true,
+                                    yearRange: "-100:+6",
+                                    minDate: new Date(),    
+                                });
+                            </script> 
                            @endif
                      @endif
                      
@@ -239,28 +239,27 @@
                         @if(isset($_GET['years']))
                                         @foreach($_GET['years'] as $key=> $year)
                                             @if($year)
-
-                                             <div id="traveler{{ $i }}" class="no_of_travelers col-md-12">
-                                                <div class="row">
-                                                      <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
-                                                         <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
-                                                         <div class="custom-form-control">
-                                                            <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                                         </div>
-                                                      </div>
-                                                
-                                                      <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
-                                                         <label for="year{{$i}}" class="">Select Pre Existing</label>
-                                                         <div class="custom-form-control">
-                                                            <select name="pre_existing[]" class="form-input">
-                                                               <option value="">Select Pre Existing Condition</option>
-                                                               <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
-                                                               <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
-                                                             </select>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                             </div>
+                           <div id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                              <div class="row">
+                                    <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
+                                       <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
+                                       <div class="custom-form-control">
+                                          <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                       </div>
+                                    </div>
+                              
+                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
+                                       <label for="year{{$i}}" class="">Select Pre Existing</label>
+                                       <div class="custom-form-control">
+                                          <select name="pre_existing[]" class="form-input">
+                                             <option value="">Select Pre Existing Condition</option>
+                                             <option  @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
+                                             <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
+                                           </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
                         @endif
                                         @endforeach
                                     @else
@@ -278,7 +277,7 @@
                                     <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                        <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
                                        <div class="custom-form-control">
-                                          <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
+                                          <input onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}')" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
@@ -427,8 +426,9 @@
                         </div>
                      </div>
                   </div>
+                  </form>
                </div>
-            </form>
+            </div>
       </div>
    </div>
 </div>

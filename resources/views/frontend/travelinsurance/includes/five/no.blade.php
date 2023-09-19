@@ -350,8 +350,8 @@ if($second_show == '1' && $second_total_price > 0){
             <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 10px 0;">
                 <h2 style="    color: #223b74; font-size: 32px; font-weight: bold;">$<?php echo number_format($second_total_price,2); // $second_planID2->sum_insured + ?><br>
                     <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
-                        <?php echo $second_number_travelers; ?> Traveller
-                        <?php if($second_number_travelers > 1){echo 's';} ?>
+                        <?php echo $second_number_travelers; ?> Traveller<?php if($second_number_travelers > 1){echo "'s";} ?>
+                        
                     </small>
                 </h2>
                 <?php if($second_monthly_two == '1'){?>
@@ -366,7 +366,7 @@ if($second_show == '1' && $second_total_price > 0){
 
             </div>
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 5px; padding-left: 4px; ">
-                <button onclick="$second_('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
+                <button style="background-color: #2b3481 !important;" onclick="$second_('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
                 <div class="compare">
                     <div class="ui center aligned header">
                         <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>

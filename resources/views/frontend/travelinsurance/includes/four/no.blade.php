@@ -345,14 +345,12 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
 
             <div class="col-md-4 col-xs-6 logogd" style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
-                <img style="height:auto; width:auto; margin-left: 20px"
-                    src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
+                <img style="width: 200px;height: 80px;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
 
             </div>
             <div class="col-md-4 col-xs-6 text-center" id="price">
                 <h3 style="display:inline;color: #000;font-weight: bold;    font-size: 30px;">
-                    $second_
-                    <?php $second_explode = explode('.',number_format($second_total_price,2));
+                    $<?php $second_explode = explode('.',number_format($second_total_price,2));
                         ?><span>
                         <?php echo str_replace(',', '',$second_explode[0]).'.';?><sup class="superior">
                             <?php echo $second_explode[1];?>
@@ -363,16 +361,14 @@ if($second_show == '1' && $second_total_price > 0){
 
                 <h2
                     style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 10px; width: auto;">
-                    $second_
-                    <?php echo number_format($second_monthly_price,2);?>/Month<small
+                    $<?php echo number_format($second_monthly_price,2);?>/Month<small
                         style="color: #f5821f;font-weight: bold;margin-left: 1px;">
                         <?php echo $second_num_months;?>
                     </small>
                 </h2>
                 <?php } ?>
                 <p>
-                    $second_
-                    <?php echo $second_deductible; ?> Deductible <br />
+                    ${{ $second_deductible }} Deductible <br />
                 </p>
                 <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
             </div>
@@ -381,7 +377,7 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-3 col-xs-6"
                 style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
-                <button onclick="$second_('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
+                <button style="background-color: #2b3481;"> onclick="$second_('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
                     class="submit-btn" data-value="<?php echo $second_plan_id; ?>"
                     class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
                     Now

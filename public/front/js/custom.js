@@ -5,6 +5,9 @@ function printErrorMsglogin (msg) {
         $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
     });
 }
+function removecomparecard() {
+    $('.compare_header_top').hide();
+}
 function calculateAge(dateofbirth , classname) {
     var dob = dateofbirth;        
     var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
@@ -29,6 +32,15 @@ function calculateAge(dateofbirth , classname) {
         $('#'+classname).css('border-color', 'green');
         changefamilyyes($('#selectfamilyplan').val());
         $('#getqoutesubmitbutton').prop('disabled' , false);
+    }
+}
+function changefamilyyes(id) {
+    if (id == 'yes') {
+        document.getElementById('familyplan_temp').value = 'yes';
+        checkfamilyplan();
+    } else {
+        document.getElementById('familyplan_temp').value = 'no';
+        checkfamilyplan();
     }
 }
 function secondnext() 

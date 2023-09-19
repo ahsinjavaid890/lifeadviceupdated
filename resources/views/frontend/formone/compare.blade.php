@@ -39,7 +39,7 @@
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
-                       <img src="{{ url('public/images') }}/{{ $company->comp_logo }}">
+                       <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
                   </div>
                   <div class="slider-heading">
                      <h2>Coverage : ${{ $r->coverage_ammount }}</h2>

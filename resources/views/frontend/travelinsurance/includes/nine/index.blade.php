@@ -99,6 +99,90 @@
 
     });
 </script>
+<?php
+//  error_reporting(E_ERROR);
+$startdate = $request->departure_date;
+$enddate = $request->return_date;
+
+$dStart = new DateTime($request->departure_date);
+$dEnd  = new DateTime($request->return_date);
+$dDiff = $dStart->diff($dEnd);
+$dDiff->format('%R'); // use for point out relation: smaller/greater
+$num_of_days = $dDiff->days + 1;
+if($num_of_days > 365 || $num_of_days == 364){ $num_of_days = 365; }
+
+//$num_of_days = 365;
+$prosupervisa = $data->pro_supervisa;
+$product_name = $data->pro_name;
+
+if($prosupervisa == '1'){
+$supervisa = 'yes';
+$num_of_days = 365;
+} else {
+$supervisa = 'no';
+}
+
+    $enable_family_plan = (!empty($request->familyplan)) ? true : false;
+    $enable_pre_existing = (!empty($request->pre_existing)) ? true : false;
+
+    if($request->familyplan_temp == 'yes'){
+    $enable_family_plan = true;
+    } else {
+    $enable_family_plan = false;
+    }
+    if($request->pre_existing == 'Yes'){
+    $enable_pre_existing = true;
+    } else {
+    $enable_pre_existing = false;
+    }
+
+    $oldest_traveller = 0;
+    $family_plan      = false;
+ 
+    $years = array();
+
+   
+
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
+    $younger_age = min($ages_array);
+    $elder_age = max($ages_array);
+    $number_travelers = count($ages_array);
+}
+else {
+    $younger_age = 0;
+    $elder_age = 0;
+    $number_travelers = 1;
+}
+
+ 
+
+if($request->familyplan_temp == 'yes'){
+    if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
+        $family_plan = 'yes';
+    }
+    else {
+        $family_plan = 'no';
+    }
+} else {
+    $family_plan = 'no';
+}
+
+if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
+ //echo "<script>window.location='?action=not_eligible';</script>";
+}
+?>
 <div class="row">
     <div class="col-md-4">
         <div class="card qoute-price-card mb-3 left_qoute_card">
@@ -152,10 +236,10 @@
     </div>
     <div id="main" class="col-md-8">
         @if (in_array('yes', $request->pre_existing))
-            @include('frontend.formone.ajaxincludes.cardyes')
+            @include('frontend.travelinsurance.includes.nine.yes')
         @else
-            @include('frontend.formone.ajaxincludes.cardyes')
-            @include('frontend.formone.ajaxincludes.cardno')
+            @include('frontend.travelinsurance.includes.nine.yes')
+            @include('frontend.travelinsurance.includes.nine.no')
         @endif
     </div>
 </div>
@@ -180,4 +264,15 @@ function slideadditionaltravelers(id) {
     }
     $(".hoverdetails_" + id).slideToggle();
 }
+$(document).ready(function () {
+    var uniqueClasses = {};
+    $('#listprices .pricearray').each(function () {
+        var currentClass = $(this).attr('class');
+        if (!uniqueClasses.hasOwnProperty(currentClass)) {
+            uniqueClasses[currentClass] = true;
+        } else {
+            $(this).hide();
+        }
+    });
+});
 </script>

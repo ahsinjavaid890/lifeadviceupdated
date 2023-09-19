@@ -259,7 +259,7 @@ if($show == '1' && $total_price > 0){
                             </small>
                         </h2>
                         @endif
-                        <small>{{ $number_travelers }} Traveller @if($number_travelers > 1) (s) @endif</small>
+                        <small>{{ $number_travelers }} Traveller<?php if($number_travelers > 1){echo "'s";} ?></small>
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">

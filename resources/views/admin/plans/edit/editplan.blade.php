@@ -838,9 +838,15 @@
                                 class="fa fa-database"></i> Manage Features</h4>
                         <div class="original">
                             @foreach (DB::table('wp_dh_insurance_plans_features')->where('plan_id', $data->id)->get() as $r)
-                                <div class="" style="margin-bottom: 10px;">
-                                    <input id="ifeaturelist1" name="ifeaturelist[]" class="form-control"
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-11">
+                                        <input id="ifeaturelist{{ $r->id }}" onkeyup="changebuttoncolor({{$r->id}})" name="ifeaturelist[]" class="form-control"
                                         value="{{ $r->features }}" placeholder="Enter Feature List # 1" type="text">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <i onclick="saveplanfeature({{ $r->id }})" id="buttoncolor{{ $r->id }}" class="fa fa-save btn btn-success"></i>
+                                        <i onclick="deleteplanfeature({{ $r->id }})" class="fa fa-trash btn btn-danger"></i>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -876,6 +882,33 @@
 
     <script type="text/javascript" src="{{ asset('public/admin/assets/js/admin.js') }}"></script>
     <script>
+        function saveplanfeature(id) {
+            var value = $('#ifeaturelist'+id).val();
+
+            $.ajax({
+                type: 'get',
+                url: '{{ url("admin/plans/saveplanfeature") }}/?id='+id+'&value='+value,
+                success: function(response) {
+                    $('#buttoncolor'+id).removeClass('btn-primary');
+                    $('#buttoncolor'+id).addClass('btn-success');
+                    
+                }
+            });
+        }
+        function changebuttoncolor(id) {
+            $('#buttoncolor'+id).removeClass('btn-success');
+            $('#buttoncolor'+id).addClass('btn-primary');
+        }
+        function deleteplanfeature(id) 
+        {
+            $.ajax({
+                type: 'get',
+                url: '{{ url("admin/plans/deletefeature") }}/'+id,
+                success: function(response) {
+                    $('.original').html(response)
+                }
+            });
+        }
         function submitfunc() {
             var a = $("#sortable").sortable("toArray", {
                 attribute: "id"

@@ -57,7 +57,7 @@
                                                     class="no_of_travelers col-md-12">
                                                     <div class="row">
                                                         <div style="margin-bottom: -14px"
-                                                            class="col-md-6 padding-right-zero-on-mobile">
+                                                            class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                                             <label for="year{{ $i }}" class="">Birth date</label>
                                                             <div class="custom-form-control mb-2">
                                                                 <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
@@ -93,7 +93,7 @@
                                                     class="no_of_travelers col-md-12">
                                                     <div class="row">
                                                         <div style="margin-bottom: -14px"
-                                                            class="col-md-6 padding-right-zero-on-mobile">
+                                                            class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                                             <label 
                                                                 for="year{{ $i }}" class="">Birth date
                                                                 </label>
@@ -444,22 +444,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <input type="hidden" id="familyplan_temp" name="familyplan_temp"
-                                            value="no">
-                                        <script>
-                                            function changefamilyyes(id) {
-                                                if (id == 'yes') {
-                                                    document.getElementById('familyplan_temp').value = 'yes';
-                                                    checkfamilyplan();
-                                                } else {
-                                                    document.getElementById('familyplan_temp').value = 'no';
-                                                    checkfamilyplan();
-                                                }
-                                            }
-                                        </script>
                                     @endif
                                 @endif
                             @endif
+                            <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                             @if (array_search('id_5', $orderdata) == $orderi)
                                 @if (isset($fields['Smoke12']))
                                     @if ($fields['Smoke12'] == 'on')
