@@ -237,7 +237,7 @@ if($show == '1' && $total_price > 0){
 <div class="desktop-compare listing-item" data-listing-price="{{ str_replace(',', '', number_format($total_price)) }}">
    <div class="coverage-amt col-md-12 pricearray coverage-amt-{{$sum_insured}} pricearray{{ $comp_id }}{{ $total_price }}" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
       <div class="row plan-details   deductable-{{ $deductible }}" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-         <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 20px 0px 0 10px;">
+         <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 35px 0px 0 10px;">
             <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ 1+$deductible.$plan_id }})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
          </div>
          <div class="col-md-3 col-xs-11 text-center mt-2">
@@ -249,10 +249,10 @@ if($show == '1' && $total_price > 0){
             <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-1 col-xs-4" style="padding: 20px 0 0 0;">
+         <div class="col-md-1 col-xs-4" style="padding: 33px 0 0 0;">
             <small style=" font-size: 10px; margin-left: 10px;">{{ $number_travelers }} Traveller @if($number_travelers > 1) (s) @endif</small>
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 5px;">
+         <div class="col-md-3 col-xs-12 text-center" style="font-size: 25px;padding-top: 5px;">
             ${{ $sum_insured }}<br/>
             ${{ $deductible }} Deductible
          </div>
