@@ -363,11 +363,7 @@ echo 'none';
         <strong>Coverage Amount</strong>
         <h2 style="color:#000;font-size: 25px;">$ {{ $second_sum_insured }} </h2>
         <strong>Deductible:<span> ${{ $second_deductible }}</span></strong>
-        <div class="row">
-            <div class="col-md-12">
-                 <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
-            </div>
-        </div>
+        <strong class="text-danger">This is Pre Existing Plan</strong>
     </div>
     <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
         <strong>Premium</strong>
