@@ -6,7 +6,7 @@
 	font-family: arial;
 }
 .monthlypriceshow{
-	padding;5px;
+	padding:5px;
 	margin:0; 
 	font-size:15px; 
 	font-weight:bold;
@@ -15,7 +15,7 @@
 	padding: 3px;
 	line-height: normal;
 	margin-bottom: 10px;
-	background: #F9F9F9;
+	background: #ffff;
 	width: auto;
 }
 .monthlypriceshowsmall{
