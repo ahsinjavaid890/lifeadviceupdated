@@ -252,11 +252,11 @@ echo 'none';
 <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
 <div class="row">
     <div class="compare col-md-2 hidden-xs mobile-displayflex" style="padding-top: 7px;margin: auto;">
-        <label class="comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
+        <label class="mobilewidth comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
-        <img style="display: none;margin-left: 35px;" width="200" class="img-thumbnail mobile-deisply-show" src="{{ url('public/images') }}/{{ $comp_logo }}" />
+        <img style="display: none;" width="200" class="img-thumbnail mobile-deisply-show" src="{{ url('public/images') }}/{{ $comp_logo }}" />
         <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
