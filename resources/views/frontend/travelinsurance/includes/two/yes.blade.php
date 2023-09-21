@@ -256,7 +256,7 @@ echo 'none';
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
-        <div class="row" style="padding-bottom: 10px;">
+        <div class="row mt-3" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
                     class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$deductible.$plan_id }})">
