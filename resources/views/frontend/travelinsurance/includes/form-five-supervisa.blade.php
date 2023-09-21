@@ -261,7 +261,7 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                               <div class="row">
-                                 <div class="col-md-6 text-md-right">
+                                 <div class="col-md-6 text-md-right padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
                                     <div style=" padding-left: 23px; padding-right: 0; " class="custom-form-control col-md-6 " >

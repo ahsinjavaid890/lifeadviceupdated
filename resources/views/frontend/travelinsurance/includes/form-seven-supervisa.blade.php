@@ -114,7 +114,7 @@
                                                 <label for="day{{ $i }}" class="label-style">Birth date 
                                                 </label>
                                                 <div class="custom-form-control">
-                                                    <input id="dateofbirthfull{{ $i }}"
+                                                    <input onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}')" id="dateofbirthfull{{ $i }}"
                                                         class="inputs-style w-100" type="text" inputmode="numeric"
                                                         placeholder="MM/DD/YYYY" name="years[]"
                                                         data-placeholder="MM/DD/YYYY" style="">
@@ -161,25 +161,12 @@
                                 <label for="phonenumbermask" class="label-style">Phone <b id="phone_error"
                                         class="text-danger"></b></label>
                                 <div class="custom-form-control">
-                                    <input inputmode="numeric" onkeyup="validatephone()" id="phonenumbermask"
+                                    <input inputmode="numeric" id="phonenumbermask"
                                         type="text" name="phone" placeholder="000-000-0000"
                                         data-placeholder="000-000-0000" required id="phone"
                                         class="w-100 inputs-style">
                                 </div>
                             </div>
-                            <script>
-                                function validatephone() {
-                                    var checkphone = document.getElementById('phone').value;
-                                    document.getElementById('phone').value = checkphone.replace(/\D/g, '');
-                                    if (checkphone.length < 10) {
-                                        document.getElementById('phone_error').innerHTML = '<small>(Must be 10 digits)</small>';
-                                        document.getElementById('getquote').disabled = true;
-                                    } else {
-                                        document.getElementById('getquote').disabled = false;
-                                        document.getElementById('phone_error').innerHTML = '';
-                                    }
-                                }
-                            </script>
                         @endif
                     @endif
                 @endif
@@ -202,11 +189,11 @@
                             </label>
 
                             <script>
-                                $('#departure_date').datepicker({
-                                    format: 'yyyy-mm-dd',
-                                    todayHighlight: 'TRUE',
-                                    autoclose: true,
-                                    minDate: 0,
+                                $('#departure_date').datepicker( {
+                                    changeMonth: true,
+                                    changeYear: true,
+                                    yearRange: "-100:+6",
+                                    minDate: new Date(),
                                 });
                             </script>
                         </div>
@@ -224,9 +211,10 @@
                             @if ($data->pro_supervisa != 1)
                                 <script>
                                     $('#return_date').datepicker({
-                                        format: 'yyyy-mm-dd',
-                                        todayHighlight: 'TRUE',
-                                        autoclose: true,
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        yearRange: "-100:+6",
+                                        minDate: new Date(),    
                                     });
                                 </script>
                             @endif
