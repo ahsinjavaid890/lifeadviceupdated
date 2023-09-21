@@ -341,11 +341,12 @@ echo 'none';
 
 <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
 <div class="row">
-    <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
+    <div class="compare col-md-2 hidden-xs mobile-displayflex" style="padding-top: 7px;margin: auto;">
         <label class="comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
+        <img style="display: none;width: 50%;" width="100" class="mobile-deisply-show" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
         <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $second_deductible . $second_plan_id; ?>" type="button"
@@ -355,9 +356,8 @@ echo 'none';
             </div>
         </div>
     </div>
-    <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
-        <img width="200" class="img-thumbnail"
-            src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
+    <div class="col-md-2 text-center mobile-deisply-none" style="padding-top: 0px;margin: auto;">
+        <img width="200" class="img-thumbnail" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
     </div>
     <div class="col-md-3 text-center">
         <strong>Coverage Amount</strong>
