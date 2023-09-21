@@ -249,7 +249,7 @@ if($show == '1' && $total_price > 0){
             <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="padding-top:25px; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
+         <div class="col-md-3 col-xs-12 text-center" style="padding-top:25px; font-size:18px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
             ${{ $sum_insured  }}<br/>
             <span style="font-size:12px; font-weight:500;">${{ $deductible , 2 }} Deductible </span>
          </div>

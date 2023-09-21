@@ -341,7 +341,7 @@ if($second_show == '1' && $second_total_price > 0){
             <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="padding-top:13px; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
+         <div class="col-md-3 col-xs-12 text-center" style="padding-top:13px; font-size:18px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
             ${{ $second_sum_insured  }}<br/>
             <span style="font-size:12px; font-weight:500;">${{ $second_deductible , 2 }} Deductible </span><br>
             <span class="badge badge-danger">This is Pre Existing Plan</span>
