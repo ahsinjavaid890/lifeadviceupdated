@@ -56,8 +56,7 @@
                                                 <div id="traveler{{ $i }}"
                                                     class="no_of_travelers col-md-12">
                                                     <div class="row">
-                                                        <div style="margin-bottom: -14px"
-                                                            class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
+                                                        <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                                             <label for="year{{ $i }}" class="">Birth date</label>
                                                             <div class="custom-form-control mb-2">
                                                                 <input value="{{ $year }}" readonly id="dateofbirthfull{{ $i }}" class="oldTraveler" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]">
@@ -92,8 +91,7 @@
                                                 <div style="display: none;" id="traveler{{ $i }}"
                                                     class="no_of_travelers col-md-12">
                                                     <div class="row">
-                                                        <div style="margin-bottom: -14px"
-                                                            class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
+                                                        <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                                             <label 
                                                                 for="year{{ $i }}" class="">Birth date
                                                                 </label>
