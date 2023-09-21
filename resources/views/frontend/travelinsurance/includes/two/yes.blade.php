@@ -256,7 +256,7 @@ echo 'none';
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
-        <img style="display: none;" width="200" class="img-thumbnail mobile-deisply-show" src="{{ url('public/images') }}/{{ $comp_logo }}" />
+        <img style="display: none;" width="200" class="mobile-deisply-show" src="{{ url('public/images') }}/{{ $comp_logo }}" />
         <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
