@@ -344,7 +344,7 @@ if($second_show == '1' && $second_total_price > 0){
          <div class="col-md-1 col-xs-4" style="padding: 33px 0 0 0;">
             <small style=" font-size: 10px; margin-left: 10px;">{{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?></small>
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 25px;padding-top: 5px;">
+         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 25px;">
             ${{ $second_sum_insured }}<br/>
             ${{ $second_deductible }} Deductible<br>
             <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>

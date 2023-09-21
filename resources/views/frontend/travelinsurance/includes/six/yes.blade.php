@@ -252,7 +252,7 @@ if($show == '1' && $total_price > 0){
          <div class="col-md-1 col-xs-4" style="padding: 33px 0 0 0;">
             <small style=" font-size: 10px; margin-left: 10px;">{{ $number_travelers }} Traveller @if($number_travelers > 1) (s) @endif</small>
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 25px;padding-top: 5px;">
+         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 25px;">
             ${{ $sum_insured }}<br/>
             ${{ $deductible }} Deductible
          </div>
