@@ -335,19 +335,16 @@ if($second_show == '1' && $second_total_price > 0){
          <div class="col-md-3 col-xs-11 text-center mt-2">
             <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail" />
          </div>
-         <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
-            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($second_total_price,2); ?></h1>
+         <div class="col-md-3 col-xs-8 text-left" style="padding: 5px 0px 0px 15px;">
+            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($second_total_price,2); ?><small style=" font-size: 10px;">({{ $second_number_travelers }} Traveller @if($second_number_travelers > 1)'s @endif)</small></h1>
             @if($second_monthly_two == '1')
-            <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
+            <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-1 col-xs-4" style="padding: 33px 0 0 0;">
-            <small style=" font-size: 10px; margin-left: 10px;">{{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?></small>
-         </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 25px;color: black;">
-            ${{ $second_sum_insured }}<br/>
-            ${{ $second_deductible }} Deductible<br>
-            <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
+         <div class="col-md-3 col-xs-12 text-center" style="padding-top:13px; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
+            ${{ number_format($second_sum_insured , 2) }}<br/>
+            ${{ number_format($second_deductible , 2) }} Deductible<br>
+            <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
             <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>

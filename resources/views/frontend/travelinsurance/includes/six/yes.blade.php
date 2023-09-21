@@ -243,18 +243,15 @@ if($show == '1' && $total_price > 0){
          <div class="col-md-3 col-xs-11 text-center mt-2">
             <img src="{{ url('public/images') }}/{{ $comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail"/>
          </div>
-         <div class="col-md-2 col-xs-8 text-center" style="padding: 5px 0px 0px 0;">
-            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?></h1>
+         <div class="col-md-3 col-xs-8 text-left" style="padding: 5px 0px 0px 15px;">
+            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?> <small style=" font-size: 10px;">({{ $number_travelers }} Traveller @if($number_travelers > 1)'s @endif)</small></h1>
             @if($monthly_two == '1')
-            <h2 style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
+            <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-1 col-xs-4" style="padding: 33px 0 0 0;">
-            <small style=" font-size: 10px; margin-left: 10px;">{{ $number_travelers }} Traveller @if($number_travelers > 1) (s) @endif</small>
-         </div>
-         <div class="col-md-3 col-xs-12 text-center" style="font-size: 12px;padding-top: 25px;color: black;">
-            ${{ $sum_insured }}<br/>
-            ${{ $deductible }} Deductible
+         <div class="col-md-3 col-xs-12 text-center" style="padding-top:25px; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
+            ${{ number_format($sum_insured , 2) }}<br/>
+            ${{ number_format($deductible , 2) }} Deductible
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
             <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
