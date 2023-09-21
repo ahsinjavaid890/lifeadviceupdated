@@ -53,4 +53,7 @@
 	.mobile-deisply-show{
 		display: block !important;
 	}
+	.mobile-displayflex{
+		display: flex;
+	}
 }

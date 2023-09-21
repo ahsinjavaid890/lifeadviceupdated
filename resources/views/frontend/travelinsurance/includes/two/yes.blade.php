@@ -251,7 +251,7 @@ echo 'none';
 
 <div class="col-md-12" style="border-left: 1px solid #ddd;font-size: 16px;">
 <div class="row">
-    <div class="compare col-md-2 hidden-xs" style="padding-top: 7px;margin: auto;">
+    <div class="compare col-md-2 hidden-xs mobile-displayflex" style="padding-top: 7px;margin: auto;">
         <label class="comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
