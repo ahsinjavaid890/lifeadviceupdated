@@ -346,7 +346,7 @@ echo 'none';
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
-        <div class="row mt-3" style="padding-bottom: 10px;">
+        <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $second_deductible . $second_plan_id; ?>" type="button"
                     class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})">
@@ -376,6 +376,15 @@ echo 'none';
         <a class="submit-btn text-center" onclick="$('.buynow_{{$second_deductible.$second_plan_id}}').fadeIn();">
             <i class="fa fa-shopping-cart"></i> Buy Now
         </a>
+    </div>
+
+</div>
+<div class="row mt-3 mobile-deisply-show" style="padding-bottom: 10px; display: none;">
+    <div class="col-md-12 col-xs-6" id="fold">
+        <button id="showmore<?php echo $second_deductible . $second_plan_id; ?>" type="button"
+            class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})">
+            <i class="fa fa-plus"></i> More Details
+        </button>
     </div>
 </div>
 @include('frontend.travelinsurance.includes.nopolicydetails')
