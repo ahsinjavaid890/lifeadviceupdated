@@ -256,6 +256,14 @@ echo 'none';
             class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-md-12 col-xs-6" id="fold">
+                <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
+                    class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$deductible.$plan_id }})">
+                    <i class="fa fa-plus"></i> More Details
+                </button>
+            </div>
+        </div>
     </div>
     <div class="col-md-2 text-center" style="padding-top: 0px;margin: auto;">
         <img width="200" class="img-thumbnail"
@@ -277,14 +285,6 @@ echo 'none';
         <a class="submit-btn text-center" onclick="$('.buynow_{{$deductible.$plan_id}}').fadeIn();">
             <i class="fa fa-shopping-cart"></i> Buy Now
         </a>
-    </div>
-</div>
-<div class="row" style="padding-bottom: 10px;">
-    <div class="col-md-2 col-xs-6" id="fold">
-        <button id="showmore<?php echo $deductible . $plan_id; ?>" type="button"
-            class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$deductible.$plan_id }})">
-            <i class="fa fa-plus"></i> More Details
-        </button>
     </div>
 </div>
 @include('frontend.travelinsurance.includes.policydetails')
