@@ -1,4 +1,9 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayouttwo.css') }}">
+<style type="text/css">
+    .fa-database{
+        color: #1bbc9b;
+    }
+</style>
 <script>
     <?php
     $ded = DB::select("SELECT `deductible1` FROM wp_dh_insurance_plans_deductibles WHERE `plan_id` IN (SELECT `id` FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id') GROUP BY `deductible1` ORDER BY `deductible1`");

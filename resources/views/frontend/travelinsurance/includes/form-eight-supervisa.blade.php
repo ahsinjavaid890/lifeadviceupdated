@@ -306,7 +306,7 @@
                                                                             class="selectlabeldateofbirth">Date Of
                                                                             Birth Traveler
                                                                             {{ $i }}</label><input
-                                                                            inputmode="numeric"
+                                                                            inputmode="numeric" 
                                                                             onchange="dateofbirth(this.value , {{ $i }})"
                                                                             class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}"
                                                                             type="text" placeholder="MM/DD/YYYY"
