@@ -335,15 +335,15 @@ if($second_show == '1' && $second_total_price > 0){
          <div class="col-md-3 col-xs-11 text-center mt-2">
             <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail" />
          </div>
-         <div class="col-md-3 col-xs-8 text-left" style="padding: 5px 0px 0px 15px;">
+         <div class="col-md-3 col-xs-8 text-left" @if($second_monthly_two == '1') style="padding: 5px 0px 0px 15px;" @else style="padding: 25px 0px 0px 15px;" @endif>
             <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($second_total_price,2); ?><small style=" font-size: 10px;">({{ $second_number_travelers }} Traveller @if($second_number_travelers > 1)'s @endif)</small></h1>
             @if($second_monthly_two == '1')
             <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($second_monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?> </small> </h2>
             @endif
          </div>
          <div class="col-md-3 col-xs-12 text-center" style="padding-top:13px; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
-            ${{ number_format($second_sum_insured , 2) }}<br/>
-            ${{ number_format($second_deductible , 2) }} Deductible<br>
+            ${{ $second_sum_insured  }}<br/>
+            <span style="font-size:12px; font-weight:500;">${{ $second_deductible , 2 }} Deductible </span><br>
             <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
