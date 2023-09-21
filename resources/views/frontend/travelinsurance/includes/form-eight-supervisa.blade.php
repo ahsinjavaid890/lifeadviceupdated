@@ -255,7 +255,7 @@
                                                                 <div class="input-wrapper positionrelative">
                                                                     <label class="selectlabeldateofbirth">Date Of
                                                                         Birth</label>
-                                                                    <input inputmode="numeric" id="dateofbirthfull"
+                                                                    <input onkeyup="calculateAge(this.value , 'dateofbirthfull1')" inputmode="numeric" id="dateofbirthfull1"
                                                                         class="input dateofbirthclass1" type="text"
                                                                         placeholder="MM/DD/YYYY" name="years[]"
                                                                         data-placeholder="MM/DD/YYYY">
