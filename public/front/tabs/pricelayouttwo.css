@@ -56,4 +56,7 @@
 	.mobile-displayflex{
 		display: flex;
 	}
+	.mobilewidth{
+		width: 50%;
+	}
 }
