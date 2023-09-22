@@ -271,13 +271,13 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="{{ url('public/images') }}/{{ $comp_logo }}" class="img-responsive" />
                     </div>
-                    <div class="col-md-3 col-xs-6 hidden-xs text-center" style="padding-top: 15px;">
+                    <div class="col-md-3 col-xs-6 hidden-xs text-center mobile-deisply-none" style="padding-top: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">${{ $deductible }}<br /><small
                                 style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Deductible</small>
                         </h3>
                     </div>
 
-                    <div class="col-md-3 col-xs-12 text-center"
+                    <div class="col-md-3 col-xs-12 text-center mobile-deisply-none"
                         style="padding-top: 15px; padding-bottom: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;border-right: 1px solid #CCC;border-left: 1px solid #CCC;">
                             <span style="font-size: 30px;font-weight: bold;color:#222;">
@@ -295,7 +295,7 @@ if($show == '1' && $total_price > 0){
                         </h2>
                         @endif
                     </div>
-                    <div class="col-md-3 col-xs-6 hidden-xs text-center" style="padding-top: 15px;">
+                    <div class="col-md-3 col-xs-6 hidden-xs text-center mobile-deisply-none" style="padding-top: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">$
                             <?php echo $sum_insured; ?><br />
                             <small style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Coverage Amount</small>
@@ -305,6 +305,21 @@ if($show == '1' && $total_price > 0){
                         <button onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();" class="buynow-btn" data-value="{{ $plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12 mobile-deisply-show" style="display: none;">
+                <h3 style="margin:0;color: #555;font-weight: bold;text-align: center;">
+                    <span style="font-size: 30px;font-weight: bold;color:#222;">
+                        ${{ number_format($total_price,2) }}
+                    </span>
+                </h3>
+                @if($monthly_two == '1')
+                <h2 style="margin:0; font-size:14px; font-weight:bold;color: #333;line-height: normal;width: auto;padding-top: 5px;text-align: center;">
+                    ${{ number_format($monthly_price,2) }}/Month
+                    <small style="color: #f5821f;font-weight: bold;margin-left: 1px;">
+                        {{ $num_months }}
+                    </small>
+                </h2>
+                @endif
             </div>
             <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
             class="buynow-btn mobile-deisply-show" data-value="<?php echo $plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy Now </button>

@@ -20,6 +20,7 @@ use App\Models\wp_dh_life_plans;
 use App\Models\wp_dh_products;
 use App\Models\temproaryquotes;
 use App\Models\sales_cards;
+use App\Models\wp_dh_insurance_plans_features;
 use App\Models\wp_dh_insurance_plans_pdfpolicy;
 use App\Models\wp_dh_insurance_plans_deductibles;
 use App\Models\product_categories;
@@ -420,19 +421,6 @@ class AdminController extends Controller
             $add_deductibles->save();
         }
 
-        // deleteing features
-        DB::table('wp_dh_insurance_plans_features')->where('plan_id', $request->id)->delete();
-        // Inserting features
-        if ($request->ifeaturelist) {
-            for ($i = 0; $i < count($request->ifeaturelist); $i++) {
-                $features = $request->ifeaturelist[$i];
-                $userID = Auth::user()->id;
-                $time = time();
-                $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$request->id','$features','$time','$userID')";
-                DB::statement($insertRates);
-            }
-        }
-
 
         $rateBase = $request->irateCalculation;
 
@@ -562,6 +550,26 @@ class AdminController extends Controller
     public function saveplanfeature(Request $request)
     {
         DB::table('wp_dh_insurance_plans_features')->where('id', $request->id)->update(array('features' =>$request->value));
+    }
+    public function addFeatures(Request $request)
+    {
+        $newfeature = new wp_dh_insurance_plans_features();
+        $newfeature->plan_id = $request->plan_id;
+        $newfeature->save();
+        $features = DB::table('wp_dh_insurance_plans_features')->where('plan_id', $request->plan_id)->orderby('id' , 'ASC')->get();
+        foreach ($features as $r) {
+            echo '<div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-11">
+                        <input id="ifeaturelist'.$r->id.'" onkeyup="changebuttoncolor('.$r->id.')" name="ifeaturelist[]" class="form-control"
+                        value="'.$r->features.'" placeholder="Enter Feature List # 1" type="text">
+                    </div>
+                    <div class="col-md-1">
+                        <i onclick="saveplanfeature('.$r->id.')" id="buttoncolor'.$r->id.'" class="fa fa-save btn btn-success"></i>
+                        <i onclick="deleteplanfeature('.$r->id.')" class="fa fa-trash btn btn-danger"></i>
+                    </div>
+                </div>';
+        }
+
     }
     public function deletefeature($id)
     {

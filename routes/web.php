@@ -248,6 +248,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::get('/deleteplanbenifit/{id}','AdminController@deleteplanbenifit');
         Route::get('/deletefeature/{id}','AdminController@deletefeature');
         Route::get('/saveplanfeature','AdminController@saveplanfeature');
+        Route::get('/addFeatures','AdminController@addFeatures');
     });
     Route::name('quotation.')->prefix('quotation')->group(function(){
         Route::get('/allquotations','AdminController@allquotations');    

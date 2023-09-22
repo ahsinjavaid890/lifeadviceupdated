@@ -109,7 +109,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="original row">
+                        <div class="row">
                             <div class="col-md-12" id="links">
                                 <label><i class="fa fa-shopping-cart"></i> Buynow Link</label>
                                 <input id="directlink" name="directlink" class="form-control" placeholder="https://"
@@ -854,8 +854,6 @@
                         <div class="">
                             <a href="javascript:void(0)" class="btn btn-default btn-sm addFeatures addnewItem"><i
                                     class="fa fa-plus"></i> Add Item</a>
-                            <a href="javascript:void(0)" class="btn btn-danger btn-sm removeFeatures addnewItem"><i
-                                    class="fa fa-trash"></i> Remove Item</a>
                             <div class="clear">&nbsp;</div>
                         </div>
                         <hr>
@@ -1188,40 +1186,15 @@
             jQuery('#deductionAppend .appended:last-of-type').remove();
 
         });
-
-
-
-
-
-
-
-
-        // Add Features Policy
-
         jQuery('.addFeatures').click(function(event) {
-
-            var countFeature = jQuery('#appendFeatures .appendFeatures').size() + 2;
-
-            jQuery('#appendFeatures').append('<div class="appendFeatures">' +
-
-                '<div class="row unit" style="margin-bottom: 10px;"><div class="col-md-12">' +
-
-                '<input type="text" id="ifeaturelist' + countFeature +
-                '" name="ifeaturelist[]" placeholder="Enter Feature List # ' + countFeature +
-                '" class="form-control">' +
-
-                '</div></div>' +
-
-                '</div>');
-
+            var planid = '{{ $data->id }}';
+            $.ajax({
+                type: 'get',
+                url: '{{ url("admin/plans/addFeatures") }}/?plan_id='+planid,
+                success: function(response) {
+                    $('.original').html(response)          
+                }
+            });
         })
-
-        jQuery('.removeFeatures').click(function(event) {
-
-            /* Remove the last child for deductible */
-
-            jQuery('#appendFeatures .appendFeatures:last-of-type').remove();
-
-        });
     </script>
 @endsection
