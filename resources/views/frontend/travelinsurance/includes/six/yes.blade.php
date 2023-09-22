@@ -237,19 +237,20 @@ if($show == '1' && $total_price > 0){
 <div class="desktop-compare listing-item" data-listing-price="{{ str_replace(',', '', number_format($total_price)) }}">
    <div class="coverage-amt col-md-12 pricearray coverage-amt-{{$sum_insured}} pricearray{{ $comp_id }}{{ $total_price }}" style="<?php echo ( $request->sum_insured2 == $sum_insured ) ? '' : 'display:none;'; ?> padding-right:0; min-height: auto !important; ">
       <div class="row plan-details   deductable-{{ $deductible }}" style="border:1px solid #c0c0c0; margin-bottom: 5px !important; padding:10px;  display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-         <div class="col-md-1 col-xs-1 text-center" style="width: auto;padding: 35px 0px 0 10px;">
+         <div class="col-md-1 col-xs-1 text-center mobilepaddingdecrease" style="width: auto;padding: 35px 0px 0 10px;">
             <a href="javascript:void(0)" class="dh-toggle"  onclick="showdetails({{ 1+$deductible.$plan_id }})" aria-hidden="true"><i style="color: #2b3481;font-size: 21px;" class="fa fa-info-circle" aria-hidden="true"></i></a>
+            <img src="{{ url('public/images') }}/{{ $comp_logo }}" style="width: 200px;height: 80px;display: none;" class="mobile-deisply-show"/>
          </div>
-         <div class="col-md-3 col-xs-11 text-center mt-2">
+         <div class="col-md-3 col-xs-11 text-center mt-2 mobile-deisply-none">
             <img src="{{ url('public/images') }}/{{ $comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail"/>
          </div>
-         <div class="col-md-3 col-xs-8 text-left" @if($monthly_two == '1') style="padding: 5px 0px 0px 15px;" @else style="padding: 25px 0px 0px 15px;" @endif>
+         <div class="col-md-3 col-xs-8 text-left mobilepeddindecreasetwo" @if($monthly_two == '1') style="padding: 5px 0px 0px 15px;" @else style="padding: 25px 0px 0px 15px;" @endif>
             <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?> <small style=" font-size: 10px;">({{ $number_travelers }} Traveller @if($number_travelers > 1)'s @endif)</small></h1>
             @if($monthly_two == '1')
             <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
             @endif
          </div>
-         <div class="col-md-3 col-xs-12 text-center" style="padding-top:25px; font-size:18px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
+         <div class="col-md-3 col-xs-12 text-center paddingtopzero" style="padding-top:25px; font-size:18px; font-weight:bold;color: #333;font-family: arial;line-height: normal;">
             ${{ $sum_insured  }}<br/>
             <span style="font-size:12px; font-weight:500;">${{ $deductible , 2 }} Deductible </span>
          </div>

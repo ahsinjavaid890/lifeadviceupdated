@@ -338,12 +338,12 @@ if($second_show == '1' && $second_total_price > 0){
             } ?>;">
          <div class="col-md-4 col-xs-12 logogd">
             <div class="col-md-12 col-xs-12 text-center"
-               style="border: 0px solid #000;padding: 5px 0 10px;text-align: center;background: #EEE;border-radius: 10px;">
+               style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
-                  src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>" class="img-responsive" />
+                  src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" />
             </div>
             <div class="col-md-12 col-xs-12 text-center">
-               <button class="btn btn-default dh-toggle" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"  aria-hidden="true"
+               <button class="btn btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"  aria-hidden="true"
                   style="text-transform: none;font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor:pointer;height: 34px;margin-top: -10px; background:#1BBC9B;color:#FFF;">
                Summary & Info
                <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -354,7 +354,7 @@ if($second_show == '1' && $second_total_price > 0){
             style="border:0px solid #000; padding: 0px; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
                <?php $second_explode = explode('.', number_format($second_total_price, 2));
-                  ?><span style="font-size: 28px;font-weight: bold;color:#222;"><sup
+                  ?><span style="font-size: 25px;font-weight: bold;color:#222;"><sup
                   class="superior">$</sup><?php echo $second_explode[0] . '.'; ?><sup
                   class="superior"><?php echo $second_explode[1]; ?></sup></span>
             </h3>
@@ -368,27 +368,14 @@ if($second_show == '1' && $second_total_price > 0){
             <p style="font-weight: normal;margin:0;">
                $<?php echo $second_deductible; ?> Deductible
             </p>
-            <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
          </div>
          <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <?php
-               $second_dob = $request->years[0] . '-' . $request->month . '' . $request->dob_day;
-               $second_agent = $request->agent;
-               $second_broker = $request->broker;
-               ?>
-            <button onclick="$('.buynow_<?php echo $second_deductible . $second_plan_id; ?>').fadeIn();" class="buynow-btn"
-               data-value="<?php echo $second_plan_id; ?>" class="btn btn-lg btn-danger" name="buynow"
-               style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy
-            Now
+            <button onclick="$('.buynow_<?php echo $second_deductible . $second_plan_id; ?>').fadeIn();" class="buynowbtn" data-value="<?php echo $second_plan_id; ?>" class="btn btn-lg btn-danger" name="buynow">Buy Now
             </button>
+            <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
-         <div class="col-md-2 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+         <div class="col-md-2 col-sm-6 hidden-xs comparemobile" style="padding-top: 20px;padding-left: 0;">
             <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer;font-size:14px"><i class="fa fa-database"></i> Compare</label>
-            <div style="display: none;">
-               <p>Rate: <?= $second_total_price ?></p>
-               <p>Deductible: <?= $second_deductible ?></p>
-               <p>Reduced: <?= $second_total_price ?></p>
-            </div>
          </div>
       </div>
       @include('frontend.travelinsurance.includes.nopolicydetails')

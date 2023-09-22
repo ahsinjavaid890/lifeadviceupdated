@@ -248,7 +248,7 @@ if($show == '1' && $total_price > 0){
             } ?>;">
          <div class="col-md-4 col-xs-12 logogd">
             <div class="col-md-12 col-xs-12 text-center"
-               style="border: 0px solid #000;padding: 5px 0 10px;text-align: center;background: #EEE;border-radius: 10px;">
+               style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
                   src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
             </div>
@@ -265,7 +265,7 @@ if($show == '1' && $total_price > 0){
             style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
                <?php $explode = explode('.', number_format($total_price, 2));
-                  ?><span style="font-size: 32px;font-weight: bold;color:#222;"><sup
+                  ?><span style="font-size: 25px;font-weight: bold;color:#222;"><sup
                   class="superior">$</sup><?php echo $explode[0] . '.'; ?><sup
                   class="superior"><?php echo $explode[1]; ?></sup></span>
             </h3>
@@ -278,28 +278,15 @@ if($show == '1' && $total_price > 0){
             </h2>
             <?php } ?>
             <p style="font-weight: normal;margin:0;">
-               $<?php echo $deductible; ?> Deductible
+               ${{ $deductible }} Deductible
             </p>
          </div>
          <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <?php
-               $dob = $request->years[0] . '-' . $request->month . '' . $request->dob_day;
-               $agent = $request->agent;
-               $broker = $request->broker;
-               ?>
-            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();" class="buynow-btn"
-               data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" name="buynow"
-               style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy
-            Now
-            </button>
+            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();" class="buynowbtn"
+               data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 15px;" name="buynow">Buy Now</button>
          </div>
-         <div class="col-md-2 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+         <div class="col-md-2 col-sm-6 hidden-xs comparemobile" style="padding-top: 20px;padding-left: 0;">
             <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer;font-size:14px"><i class="fa fa-database"></i> Compare</label>
-            <div style="display: none;">
-               <p>Rate: <?= $total_price ?></p>
-               <p>Deductible: <?= $deductible ?></p>
-               <p>Reduced: <?= $total_price ?></p>
-            </div>
          </div>
       </div>
       @include('frontend.travelinsurance.includes.policydetails')

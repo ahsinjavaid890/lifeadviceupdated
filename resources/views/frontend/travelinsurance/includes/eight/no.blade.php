@@ -334,7 +334,7 @@ if($second_show == '1' && $second_total_price > 0){
                     <div class="col-md-12 col-xs-12 text-center" style="border-bottom:2px solid #c0c0c0;">
                         <h3 style="margin-bottom:5px;font-size: 22px;font-weight: bold;">
                             <?php //echo $second_plan_name;?>
-                            <button class="btn submitbutton btn-default dh-toggle" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"
+                            <button class="btn submitbutton btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"
                                 data-value='{{ $second_plan_id }}' aria-hidden="true">
                                 Summary & Info
                                 <i class="fa fa-angle-down" data-value='{{ $second_plan_id }}'
@@ -343,17 +343,19 @@ if($second_show == '1' && $second_total_price > 0){
                             </button>
                         </h3>
                         @include('frontend.travelinsurance.includes.nopolicydetails')
+                        <div style="position: absolute;top: -8px;right: 10px;">
+                            <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                        </div>
                     </div>
-                    <div class="col-md-3 hidden-xs col-xs-12 text-center" style="padding-top: 15px;">
+                    <div class="col-md-3 hidden-xs col-xs-12 text-center mobilepaddingtop" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;"src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>"
                             class="img-responsive" />
                         <button onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
-                            class="buynow-btn" data-value="<?php echo $second_plan_id; ?>"
-                            class="btn btn-lg btn-danger" name="buynow"
+                            class="buynow-btn mobile-deisply-none" data-value="<?php echo $second_plan_id; ?>"
+                            name="buynow"
                             style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy
                             Now
                         </button>
-                        <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                     </div>
                     <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" />
@@ -368,13 +370,8 @@ if($second_show == '1' && $second_total_price > 0){
                     <div class="col-md-3 col-xs-12 text-center"
                         style="padding-top: 15px; padding-bottom: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;border-right: 1px solid #CCC;border-left: 1px solid #CCC;">
-                            <?php $second_explode = explode('.',number_format($second_total_price,2)); ?>
-                            <span style="font-size: 46px;font-weight: bold;color:#222;">
-                                <sup class="superior">$</sup>
-                                <?php echo $second_explode[0].'.';?>
-                                <sup class="superior">
-                                    <?php echo $second_explode[1];?>
-                                </sup>
+                            <span style="font-size: 30px;font-weight: bold;color:#222;">
+                                {{ number_format($second_total_price,2) }}
                             </span>
                             <br />
                             <small style="font-size: 13px;font-weight: normal;">Total Premium</small>
@@ -399,7 +396,12 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
                 </div>
             </div>
-
+            <button onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
+                class="buynow-btn mobile-deisply-show" data-value="<?php echo $second_plan_id; ?>"
+                name="buynow"
+                style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy
+                Now
+            </button>
             <div style="clear:both;"></div>
             @include('frontend.travelinsurance.includes.nobuynowform')
 
