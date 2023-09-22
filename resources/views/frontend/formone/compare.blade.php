@@ -27,7 +27,7 @@
    <div class="container-homepage">
    <div class="wrapper">
       <!-- Контент -->
-      <div class="slider">
+      <div class="row">
          @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $r)
          @php
             $plan = DB::table('wp_dh_insurance_plans')->where('id' , $r->plan_id)->first();
@@ -35,7 +35,7 @@
             $insurance_company = $plan->insurance_company;
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
          @endphp
-         <div class="slider__item">
+         <div class="slider__item col-md-4">
             <div class="card slider-card border-0">
                <div class="card-body text-center">
                   <div class="simple-online-transparent-slider">
