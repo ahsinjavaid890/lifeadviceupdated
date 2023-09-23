@@ -239,30 +239,24 @@ if($show == '1' && $total_price > 0){
         style="display: <?php if($_REQUEST['sum_insured2'] == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>; vertical-align: inherit; ">
         <div class="row plan-details  deductable-<?php echo $deductible; ?>"
             style="border:1px solid #c0c0c0;margin-bottom: 20px; display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-            <div class="col-md-3" style="border:0px solid #000;  text-align:centerk;padding: 5px 0; ">
-
+            <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding: 5px 0; ">
                 <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 1+$deductible.$plan_id }})"
                     style="cursor:pointer;position: absolute;top: 40%;left: 0;" aria-hidden="true"></i>
-
-                <img style="min-height:20px; margin-left: 41px;" width="200"
-                    src="{{ url('public/images') }}/{{ $comp_logo }}" />
+                <img style="min-height:20px; margin-left: 41px;margin-top: 0px;" width="200"src="{{ url('public/images') }}/{{ $comp_logo }}" />
             </div>
 
-            <div class="col-md-3"
-                style="border:0px solid #000;font-size: 16px;padding: 15px 0; text-align:center;">$
-                <?php  echo $deductible; ?> Deductible
+            <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 5px 0; text-align:center;">
+                <p style="margin-bottom: 5px;">${{number_format($sum_insured)}} Coverage<p>
+                <p style="margin-bottom: 0px;">${{ $deductible }} Deductible<p>
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 10px 0;">
-                <h2 style="    color: #223b74; font-size: 32px; font-weight: bold;">$
-                    <?php echo number_format($total_price,2); // $planID2->sum_insured + ?><br>
-                    <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
-                        <?php echo $number_travelers; ?> Traveller<?php if($number_travelers > 1){echo "'s";} ?>
-                    </small>
-                </h2>
+            <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 5px 0;">
+                <h2 style="color: #223b74; font-size: 30px; font-weight: bold;margin-bottom: 0px;">${{ number_format($total_price,2) }}</h2>
+                <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
+                    <?php echo $number_travelers; ?> Traveller<?php if($number_travelers > 1){echo "'s";} ?>
+                </small>
                 <?php if($monthly_two == '1'){?>
-                <h2
-                    style="padding;5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">
+                <h2 style="margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;width: auto;">
                     $
                     <?php echo number_format($monthly_price,2);?>/Month<small
                         style="color: #f5821f;font-weight: bold;margin-left: 1px;">

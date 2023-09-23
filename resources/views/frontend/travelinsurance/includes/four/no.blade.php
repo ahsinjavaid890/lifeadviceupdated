@@ -330,16 +330,10 @@ if($second_show == '1' && $second_total_price > 0){
         style="display: <?php if($_REQUEST['sum_insured2'] == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
         <div class="row plan-details align-items-center  deductable-<?php echo $second_deductible; ?>"
             style=" display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-            <div class="col-md-1 col-sm-6 hidden-xs">
+            <div class="col-md-1 col-sm-6">
                 <div class=" center aligned middle aligned column">
                     <div class="compare col-md-12 text-center">
-                        <i class="fa fa-exclamation-circle dh-toggle hidden-md"
-                            onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"
-                            style="cursor:pointer;position: absolute;top: 40%;left: -10px;"
-                            aria-hidden="true"></i>
-                        <div class="compare text-center hidden-xs" style="padding-top: 7px;">
-                        </div>
-
+                        <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -358,26 +352,21 @@ if($second_show == '1' && $second_total_price > 0){
                     </span>
                 </h3>
                 <?php if($second_monthly_two == '1'){?>
-
-                <h2
-                    style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 10px; width: auto;">
+                <h2 style="margin: 0; font-size: 15px; font-weight: bold; color: #333; font-family: arial; padding: 3px; line-height: normal; margin-bottom: 0px; width: auto;">
                     $<?php echo number_format($second_monthly_price,2);?>/Month<small
                         style="color: #f5821f;font-weight: bold;margin-left: 1px;">
                         <?php echo $second_num_months;?>
                     </small>
                 </h2>
                 <?php } ?>
-                <p>
-                    ${{ $second_deductible }} Deductible <br />
-                </p>
-                <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
+                <p style="margin-bottom: 0px">${{ $second_deductible }} Deductible</p>
+                <span class="badge badge-danger">This is Pre Existing Plan</span>
             </div>
             <div class="col-md-12 visible-xs">
                 <div style="clear:both;"></div>
             </div>
-            <div class="col-md-3 col-xs-6"
-                style="border:0px solid #000;text-align:center; padding-right: 5px;padding-left: 5px;">
-                <button style="background-color: #2b3481;"> onclick="$second_('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
+            <div class="col-md-3 col-xs-6 text-center">
+                <button style="background-color: #2b3481;" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
                     class="submit-btn" data-value="<?php echo $second_plan_id; ?>"
                     class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
                     Now

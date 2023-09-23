@@ -328,19 +328,19 @@ if($second_show == '1' && $second_total_price > 0){
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($second_total_price));?>">
 <div class="coverage-amt pricearray pricearray{{ $second_comp_id }}{{ $second_total_price }} coverage-amt-<?php echo $second_sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $second_deductible; ?>" style="display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
-<div class="col-md-4" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
+<div class="col-md-4 padding-botom-zero-on-mobile" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
    <img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" />
    <div onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a></div>
-   <span style="display:block; padding:7px;">$<?php echo $second_sum_insured; ?> Benefits Maximum</span><br>
-   <span style=" font-size: 13px; color: red;">This is Pre Existing Plan</span>
+   <span style="display:block; padding:7px;">$<?php echo $second_sum_insured; ?> Benefits Maximum</span>
 </div>
-
-<div class="col-md-5 hidden-xs" style="font-size:11px;padding-top: 20px;">
+<div class="col-md-5 hidden-xs padding-top-zero-on-mobile mobile-deisply-none" style="font-size:11px;padding-top: 20px;">
+@if(DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $second_plan_id)->count() > 0)
 <div class="row">
     <div class="col-md-12">
         <strong style="font-size:15px;">Plan Features</strong>
     </div>
 </div>
+@endif
         <?php
             $second_features = DB::table('wp_dh_insurance_plans_features')->where('plan_id' , $second_plan_id)->get();
             if ($second_features->count() > 1 ) {
@@ -362,9 +362,10 @@ if($second_show == '1' && $second_total_price > 0){
 </div>
             <?php } } ?>          
 </div>
-<div class="col-md-3 text-center" style="padding-top: 30px; padding-bottom: 10px;">
-   <h1 class="planprice "><span class="text-center">Price</span> ${{ number_format($second_total_price,2) }}</h1>
-   <p class="text-center" id="rate">This rate is for ${{ $second_deductible }} deductible options</p>
+<div class="col-md-3 text-center" style="padding-top: 5px; padding-bottom: 5px;">
+   <h1 class="planprice ">${{ number_format($second_total_price,2) }}</h1>
+   <p class="text-center" style="padding-bottom:0px;">This rate is for ${{ $second_deductible }} deductible options</p>
+   <span class="badge badge-danger">This is Pre Existing Plan</span>
    <div class="col-md-12 col-xs-12" >
       <a class="submit-btn" onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();">
       <i class="fa fa-shopping-cart"></i> Buy Now
