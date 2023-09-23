@@ -102,7 +102,6 @@
       border: none;
    }
 </style>
-{{ DB::table('compare_plans')->where('comparenumber'  ,$id)->count() }}
 <section class="card-slide ah-slider-setting">
    <div class="container">
       <!-- Контент -->
