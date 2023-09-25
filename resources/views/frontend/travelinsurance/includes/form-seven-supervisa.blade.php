@@ -9,8 +9,9 @@
     <div class=" birthdate card  mb-5 box-style">
         <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
         <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+        <div class="row">
         @for ($orderi = 1; $orderi <= 17; $orderi++)
-            <div class="row">
+            
                 @if (array_search('id_12', $orderdata) == $orderi)
                     @if (isset($fields['fplan']))
                         @if ($fields['fplan'] == 'on')
@@ -23,9 +24,6 @@
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
                                     </select>
-
-
-
                                 </div>
                             </div>
                             <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -110,7 +108,7 @@
                                     <div style="display: none;" id="traveler{{ $i }}"
                                         class="no_of_travelers col-md-12">
                                         <div class="row" style="align-items: flex-end">
-                                            <div class="col-md-6 mb-2">
+                                            <div class="col-md-6 mb-2 padding-left-zero-on-mbile padding-right-zero-on-mbile">
                                                 <label for="day{{ $i }}" class="label-style">Birth date 
                                                 </label>
                                                 <div class="custom-form-control">
@@ -122,7 +120,7 @@
                                                 </div>
                                             </div>
 
-                                            <div style="padding-right: 0px;" class="col-md-6 mb-2">
+                                            <div style="padding-right: 0px;" class="col-md-6 mb-2 padding-left-zero-on-mbile padding-right-zero-on-mbile">
                                                 <label for="year{{ $i }}" class="label-style">Select Pre
                                                     Existing</label>
                                                 <div class="custom-form-control">
@@ -183,7 +181,7 @@
                                 <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
 
                             <label for="departure_date"
-                                style="z-index: 999;padding: 5px 11px !important;position: absolute; top: 31px;
+                                style="z-index: 999;padding: 5px 11px !important;position: absolute; top: 28px;
                         right: 17px ;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </label>
@@ -204,7 +202,7 @@
                                     class="form-control" type="text" placeholder="End Date" required
                                     @if ($data->pro_supervisa == 1) readonly type="date" @endif>
                                 <label for="departure_date"
-                                    style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 31px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                                    style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 28px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </label>
                             </div>
@@ -377,8 +375,9 @@
                         @endif
                     @endif
                 @endif
-            </div>
+            
         @endfor
+        </div>
     </div>
 
     <div class="col-md-12 text-center">

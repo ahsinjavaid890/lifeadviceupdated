@@ -142,7 +142,7 @@
                         
                         <input id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
 
-                        <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute; top: 31px;
+                        <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute; top: 28px;
                         right: 17px ;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                            <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
@@ -160,7 +160,7 @@
                         <label for="return_date" class="label-style">End Date of Coverage</label>
                         <div class="custom-form-control">
                           <input id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
-                          <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 31px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
+                          <label for="departure_date" style="z-index: 999;padding: 5px 11px !important;position: absolute;top: 28px;right: 17px;background: #F1F1F1;border-radius: 0px 5px 5px 0;">
                            <i class="fa fa-calendar" aria-hidden="true"></i>
                         </label>
                         </div>
