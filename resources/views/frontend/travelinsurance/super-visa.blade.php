@@ -96,7 +96,6 @@
         @endif
         @if ($data->stylish_form_layout == 'layout_6')
             @include('frontend.travelinsurance.includes.form-six-supervisa')
-            <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">

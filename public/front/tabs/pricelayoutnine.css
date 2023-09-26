@@ -1,0 +1,11 @@
+.padding-right-on-price-layout-nine{
+	padding-right: 23px;
+}
+.ui-slider-range{
+	background-color: #2b3481;
+}
+.ui-slider-horizontal .ui-slider-handle{
+	padding: 10px;
+	top: -0.5em;
+	border-radius: 50%;
+}

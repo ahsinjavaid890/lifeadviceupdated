@@ -1,8 +1,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutsix.css')}}"> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container"> 
+<div style="background-color: #f4f7fa;">
+   <div class="container" style="padding-top: 30px;"> 
 
-<form id="quoteform" class="mt-5" action="{{ url('ajaxquotes') }}" method="POST">
+<form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
          <div class="mt-2 mb-3 alert alert-danger print-error-msg-login" style="display:none;">
              <ul></ul>
@@ -376,6 +377,8 @@
       </form>
   
 </div>
+</div>
+
 <script type="text/javascript">
 
    function calculateAge(dateofbirth , classname , travelerid) {

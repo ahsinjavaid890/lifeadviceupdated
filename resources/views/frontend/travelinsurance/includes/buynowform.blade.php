@@ -41,7 +41,7 @@
                 </p>
                 <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center padding-right-on-price-layout-nine">
                 <a href="javascript:void(0)" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
                 </a>
                 <p>or</p>
