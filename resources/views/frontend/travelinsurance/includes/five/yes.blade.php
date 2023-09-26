@@ -246,8 +246,8 @@ if($show == '1' && $total_price > 0){
             </div>
 
             <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 5px 0; text-align:center;">
-                <p style="margin-bottom: 5px;">${{number_format($sum_insured)}} Coverage<p>
-                <p style="margin-bottom: 0px;">${{ $deductible }} Deductible<p>
+                <p style="margin-bottom: 0px;">${{number_format($sum_insured)}} Coverage</p>
+                <p style="margin-bottom: 0px;">${{ $deductible }} Deductible</p>
             </div>
 
             <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 5px 0;">

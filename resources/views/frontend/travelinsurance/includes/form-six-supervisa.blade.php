@@ -1,8 +1,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutsix.css')}}"> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container-homepage"> 
+<div class="container"> 
+
 <form id="quoteform" class="mt-5" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
+         <div class="mt-2 mb-3 alert alert-danger print-error-msg-login" style="display:none;">
+             <ul></ul>
+         </div>       
          <div class="row">
             <div class="col-md-12">
                   <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
@@ -30,15 +34,33 @@
                         <div class="col-sm-4 col-md-3">
                            <div class="form-group">
                               <label>Start Date</label>
-                              <input  @if(isset($_GET['departure_date'])) value="{{ date('Y-m-d' , strtotime($_GET['departure_date'])) }}" @endif id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-input" type="date" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <input required @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly inputmode="numeric" id="departure_date" autocomplete="off" name="departure_date" value="" class="form-input dateinput" type="text" placeholder="Start Date" <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <script>
+                                 $('#departure_date').datepicker( {
+                                    changeMonth: true,
+                                    changeYear: true,
+                                    yearRange: "-100:+6",
+                                    minDate: new Date(),
+                                 });
+                              </script>
                            </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
                            <div class="form-group">
                               <label>End Date</label>
                               <div class="custom-form-control">
-                                 <input @if(isset($_GET['return_date'])) value="{{ date('Y-m-d' , strtotime($_GET['return_date'])) }}" @endif id="return_date" autocomplete="off" name="return_date" value=""  class="form-input" onchange="calculatedays()" type="date" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly @endif  >
+                                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif  id="return_date" autocomplete="off" name="return_date" value="" class="form-input" type="text" placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
                               </div>
+                              @if ($data->pro_supervisa != 1)
+                               <script>
+                                   $('#return_date').datepicker({
+                                       changeMonth: true,
+                                       changeYear: true,
+                                       yearRange: "-100:+6",
+                                       minDate: new Date(),    
+                                   });
+                               </script>
+                               @endif
                            </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
@@ -57,9 +79,11 @@
                               <label>Coverage Amount</label>
                               <select required class="form-input" name="sum_insured2" id="coverageammount">
                                  <option value="">Coverage Amount</option>
-                                 @foreach($sum_insured as $r)
-                                 <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif @endif value="{{ $r->sum_insured }}">${{ $r->sum_insured }}</option>
-                                 @endforeach
+                              @foreach($sum_insured as $key => $r)
+                               <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
+                                   selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
+                                   $r->sum_insured }}</option>
+                               @endforeach
                               </select>
                            </div>
                         </div>
@@ -151,10 +175,6 @@
                               </div>
                            @endif
                         @endif
-
-
-
-                        
                         @if(isset($fields['phone']))
                            @if($fields['phone'] == 'on')
                            <div class="col-sm-4 col-md-3">
@@ -232,7 +252,7 @@
                              </select>
                               </div>
                            </div>
-                           <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
+                           
                            <script>
                               function changefamilyyes(){
                                  document.getElementById('familyplan_temp').value = 'yes';   
@@ -245,7 +265,7 @@
                            </script>
                            @endif
                         @endif
-                        
+                        <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
                   </div>
                
             </div>
@@ -303,7 +323,7 @@
 
          @if(isset($fields['dob']) && $fields['dob'] == "on" )
             @php
-               $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+               $ordinal_words = array('Oldest', 'Oldest', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth');
                $c = 0;
             @endphp
             @for($i=1;$i<=$number_of_travel;$i++)
@@ -317,8 +337,8 @@
                </div>
                <div class="col-sm-4 col-md-3">
                   <div class="form-group ">
-                     <label>Enter Date Of Birth</label>
-                     <input onchange="travelerdateofbirth(this.value , {{$i}})" id="dateofbirthfull{{ $i }}" class="form-input txtDate" type="date" name="years[]">
+                     <label>Birth date of the {{ $ordinal_words[$i] }} Traveller</label>
+                     <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}' , {{$i}})" placeholder="MM/DD/YYYY" name="years[]">
                      <span class="errorshow" id="dateerror{{ $i }}"></span>
                   </div>
                </div>
@@ -337,7 +357,7 @@
                      <select name="pre_existing[]" class="form-input">
                         <option value="">Select Pre Existing Condition</option>
                         <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option selected value="no">No</option>
                       </select>
                   </div>
                </div>
@@ -357,10 +377,43 @@
   
 </div>
 <script type="text/javascript">
+
+   function calculateAge(dateofbirth , classname , travelerid) {
+       var dob = dateofbirth;        
+       var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
+       if (!dobRegex.test(dob)) {
+           $('#'+classname).css('border-color', 'red');
+           return;
+       }
+       var parts = dob.split('/');
+       var month = parseInt(parts[0], 10);
+       var day = parseInt(parts[1], 10);
+       var year = parseInt(parts[2], 10);
+       var d = new Date();
+       var output = d.getFullYear()
+       var hundredyearsback = output-100;
+       var dobDate = new Date(year, month - 1, day); // Month is 0-indexed
+       var currentDate = new Date();
+       if (isNaN(dobDate.getTime()) || dobDate >= currentDate || year <= hundredyearsback) {
+           $('#'+classname).css('border-color', 'red');
+           $('#getqoutesubmitbutton').prop('disabled' , true);
+           return;
+       }else{
+            dob = new Date($('#dateofbirthfull'+travelerid).val());
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $('#age'+travelerid).val(age+' Years Old');
+           $('#'+classname).css('border-color', 'green');
+           changefamilyyes($('#selectfamilyplan').val());
+           $('#getqoutesubmitbutton').prop('disabled' , false);
+       }
+   }
    function travelerdateofbirth(id , travelerid) {
-      var GivenDate = id;
+      var GivenDate = $('#dateofbirthfull'+travelerid).val();
+      console.log(id)
       var CurrentDate = new Date();
       GivenDate = new Date(GivenDate);
+
       if(GivenDate > CurrentDate){
          $('#dateerror'+travelerid).html('You Can Not Add Future Date');
       }else{
@@ -657,21 +710,30 @@ $('button[type="submit"]').click(function() {
         $('#getqoutesubmitbutton').click();
     });
    @endif
-   $('#quoteform').on('submit',(function(e) {
-        $('#getqoutesubmitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+   $('#quoteform').on('submit', (function(e) {
+        $('#getqoutesubmitbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
-            type:'POST',
+            type: 'POST', 
             url: $(this).attr('action'),
-            data:formData,
-            cache:false,
+            data: formData,
+            cache: false,
             contentType: false,
             processData: false,
-            success: function(data){
-                // console.log(data.html)
-                $('#getqoutesubmitbutton').html('Get Quotes');
+            success: function(data) {
+            if($.isEmptyObject(data.error)){
                 $('.quotationscards').html(data.html);
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                $('html, body').animate({
+                    scrollTop: $(".quotationscards").offset().top
+                }, 2000);
+                $(".print-error-msg-login").find("ul").html('');
+                $(".print-error-msg-login").css('display','none');
+            }else{
+                $('#getqoutesubmitbutton').html('Get Quotes');
+                printErrorMsglogin(data.error);
+            }   
             }
         });
     }));

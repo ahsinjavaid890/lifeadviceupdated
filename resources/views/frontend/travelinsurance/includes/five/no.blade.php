@@ -338,8 +338,8 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
 
             <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 5px 0; text-align:center;">
-                <p style="margin-bottom: 5px;">${{number_format($second_sum_insured)}} Coverage<p>
-                <p style="margin-bottom: 0px;">${{ $second_deductible }} Deductible<p>
+                <p style="margin-bottom: 0px;">${{number_format($second_sum_insured)}} Coverage</p>
+                <p style="margin-bottom: 0px;">${{ $second_deductible }} Deductible</p>
                 <span class="badge badge-danger">This is Pre Existing Plan</span>
             </div>
 
