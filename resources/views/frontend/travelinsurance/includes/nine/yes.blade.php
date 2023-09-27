@@ -336,7 +336,7 @@ $show = 1;
 if($show == '1' && $total_price > 0){
 
   ?>
-
+@if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
 <span id="dv_{{ $total_price }}" data-listing-price="{{ $total_price }}" class="listing-item coverage-amt coverage-amt-{{ $sum_insured }}" style="display: <?php if ($request->sum_insured2 == $sum_insured) {
         echo 'block';
     } else {
@@ -432,6 +432,7 @@ if($show == '1' && $total_price > 0){
         </div>
     </div>
 </span>
+@endif
 <?php
 
 $mailitem[] = [

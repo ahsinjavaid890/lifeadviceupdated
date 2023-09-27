@@ -1,7 +1,7 @@
 <div class="col-md-12 dh-toggle-show-hide-{{ 11+$second_deductible.$second_plan_id }} buynowrow summarydiv moredetails_<?php echo $second_deductible . $second_plan_id; ?> summar_info_<?php echo $second_deductible . $second_plan_id; ?> summary_<?php echo $second_deductible.$second_plan_id;?> dh-toggle-show-hide-<?php echo $second_plan_id; ?>">
     <div class="row">
     <div class="col-12">
-        <a href="javascript:void(0)" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
+        <a href="javascript:void(0)" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" class="pull-right text-danger" style="font-size:16px;"><i class="fa fa-close"></i></a>
         </div>
     </div>
     <div class="row">

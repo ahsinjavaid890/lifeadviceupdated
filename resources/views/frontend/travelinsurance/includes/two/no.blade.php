@@ -350,7 +350,7 @@ echo 'none';
         <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
                 <button id="showmore<?php echo $second_deductible . $second_plan_id; ?>" type="button"
-                    class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})">
+                    class="btn btn-default dh-toggle moredetailsbutton" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})">
                     <i class="fa fa-plus"></i> More Details
                 </button>
             </div>

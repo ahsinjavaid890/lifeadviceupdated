@@ -359,7 +359,7 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
-                            <li style="list-style: none;" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
+                            <li style="list-style: none;" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
                         </ul>
                     </div>

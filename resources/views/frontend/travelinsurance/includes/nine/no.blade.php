@@ -324,283 +324,92 @@ if($second_show == '1' && $second_total_price > 0){
 
   ?>
 
-<span id="dv_{{$second_total_price}}" data-listing-price="{{$second_total_price}}" class="listing-item coverage-amt coverage-amt-<?php echo $second_sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
-<div class="deductable card qoute-price-card mb-3 deductable-<?php echo $second_deductible; ?>" style="position: relative;display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-  <div class="card-body">
-    <div class="row" style=" position: absolute; top: -12px; margin: auto; width: 100%; left: 0;"> <div class="col-md-12"> <p style=" background-color: red; width: 180px; text-align: center; color: white; border-radius: 10px; ">This is Pre Eisting Plan</p> </div> </div>
-      <div class="row ahBuyInsuranceCard">
-          <div class="col-md-6">
-              <div class="plan-label">
-                  <!-- <h2><?php echo $second_plan_name;?></h2> -->
-              </div>
-                <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
-                  Deductible Option ($<?php echo $second_deductible;?> <span style="color:#2b3481;">(Included in premium)</span>)
-                  <br>
-                  Days: <?php echo $second_num_of_days;?> (<?php echo $second_startdate;?> - <?php echo $second_enddate;?>)
-                </p>
-                <h2 class="qoute-policy display-none-on-mobile">Policy Details</h2>
-                  <ul class="plan-highlights text-dark ml-3 display-none-on-mobile">
-                      <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers;?> Traveller(s)</span></span></li>
-                      <li><span>Quote Details : <span class="plan-cat"><?php echo $second_product_name;?></span></span></li>
-                  </ul>
-                  <?php
-                    if($second_deductible == 0)
-                    {
-                        $second_newdeductibleforshow = 7896;
-                    }else{
-                        $second_newdeductibleforshow = $second_deductible;
-                    }
-
-                  ?>
-
-                <div style="display: none;" class="row hoverdetails_<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345 hiddenInsuranceDt" >
-
-
-
-                    <div class="">
-                    <?php
-                    $second_per = 0;
-                    $second_single_person_rate = 0;
-                    foreach($second_ages_array as $second_person_age){
-                    $second_per++;
-                    $second_p_planrates = DB::select("SELECT * FROM $second_rates_table_name WHERE `plan_id`='$second_deduct_plan_id' AND '$second_person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$second_sumamt' $second_addquery");
-
-                    $second_countarraytwo =  count($second_p_planrates);
-                    if($second_countarraytwo > 0)
-
-                    {
-                        if($request->pre_existing[$second_per-1]=='yes')
-                        {
-                            $second_single_person_rate = $second_p_planrates[0]->rate_with_pre_existing;
-                            $second_existingshow = $second_pre_existing_name;
-                        }else{
-                            $second_single_person_rate = $second_p_planrates[0]->rate_with_pre_existing;
-                            $second_existingshow = $second_pre_existing_name;
-                        }
-
-
-
-                        if($second_family_plan == 'yes' && $second_elder_age != $second_person_age){
-                        $second_person_daily = 0;
-                        } else if($second_family_plan == 'yes' && $second_elder_age == $second_person_age){
-                        $second_person_daily = $second_single_person_rate * 2;
-                        } else {
-                        $second_person_daily = $second_single_person_rate;
-                        }
-
-                        if($second_rate_base == '0'){ // if daily rate
-                        $second_person_price = $second_person_daily * $second_num_of_days;
-                        } else if($second_rate_base == '1'){ //if monthly rate
-                        $second_person_price = $second_person_daily * $second_num_months;
-                        } else if($second_rate_base == '2'){ // if yearly rate
-                        $second_person_price = $second_person_daily;
-                        }
-                        else if($second_rate_base == '3'){ // if multi days rate
-                        $second_person_price = $second_person_daily;
-                        }
-
-                        if($second_flatrate_type == 'each'){
-                        $second_p_flat_price = $second_flatrate;
-                        }else if($second_flatrate_type == 'total'){
-                        $second_p_flat_price = $second_flatrate  / $second_number_travelers;
-                        } else {
-                        $second_p_flat_price = 0;
-                        }
-                        //totaldaysprice
-                        $second_ptotaldaysprice = $second_person_price;
-                        //SALES TAX
-                        // if($second_salestax_dest == $second_post_dest){
-                        //$second_salesequal = 'yes';
-                        // $second_p_salestaxes = ($second_salestax_rate * $second_ptotaldaysprice) / 100;
-                        // } else {
-                        // $second_p_salestaxes = 0;
-                        //$second_salesequal = 'no';
-                        // }
-
-                        //SMOKE RATE
-                        if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-                        if($second_smoke == '0'){
-                        $second_p_smoke_price = $second_smoke_rate;
-                        } else if($second_smoke == '1'){
-                        $second_p_smoke_price = ($second_ptotaldaysprice * $second_smoke_rate) / 100;
-                        }
-                        } else {
-                        $second_p_smoke_price = 0;
-                        }
-
-                        // OTHERS
-                        $second_p_salestaxes = 0;
-                        $second_p_others = ($second_p_flat_price + $second_p_salestaxes) + $second_p_smoke_price;
-
-                        //Deductible
-                        $second_p_deduct_discount = ($second_person_price * $second_deduct_rate) / 100;
-                        $second_p_cdiscount = ($second_person_price * $second_cdiscountrate) / 100;
-                        $second_p_discount = $second_p_deduct_discount + $second_p_cdiscount;
-                        $second_person_price = ($second_person_price - $second_p_discount) + $second_p_others;
-                    }
-
-
-
-
-
-
-
-
-
-                    //$second_monthly_price = $second_person_price / $second_num_months;
-
-
-                    //if($second_single_person_rate > 0){
-                                        ?>
-                    <div class="col-md-12 no-padding"><span style="display:block; padding:3px; font-size:15px; text-align:left; border-bottom:1px dashed #333;">Person <?php echo $second_per;?> @if($second_existingshow)({{$second_existingshow}}) @endif</span></div>
-                    <div class="col-md-12 no-padding"><small>Insured: <span style="color: #f5821f;"> (Age: <?php echo $second_person_age; ?>)</span> Premium: <span style="color: #f5821f;">$<?php echo number_format($second_person_price,2);?></span></small></div>
-                    <?php $second_single_person_rate = '';}//} ?>
-                    </div>
+@if(Cmf::checkallrates($second_ages_array , $second_rates_table_name, $second_deduct_plan_id , $second_sumamt) == 1)
+<span id="dv_{{ $second_total_price }}" data-listing-price="{{ $second_total_price }}" class="listing-item coverage-amt coverage-amt-{{ $second_sum_insured }}" style="display: <?php if ($request->sum_insured2 == $second_sum_insured) {
+        echo 'block';
+    } else {
+        echo 'none';
+    } ?>;">
+    <div class="deductable card qoute-price-card mb-3 deductable-<?php echo $second_deductible; ?>"
+        style="display: <?php if ($second_deductible == '1000') {
+            echo 'flex';
+        } elseif ($havethousand == 'no' && $second_deductible == '0') {
+            echo 'flex';
+        } else {
+            echo 'none';
+        } ?>;">
+        <div class="card-body">
+            <div class="row" style=" position: absolute; top: -12px; margin: auto; width: 100%; left: 0;"> <div class="col-md-12"> <p style=" background-color: red; width: 180px; text-align: center; color: white; border-radius: 10px; ">This is Pre Eisting Plan</p> </div> </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
+                        Deductible Option ($second_<?php echo $second_deductible; ?> <span style="color:#2b3481;">(Included in
+                            premium)</span>)
+                        <br>
+                        Days: <?php echo $second_num_of_days; ?> (<?php echo $second_startdate; ?> - <?php echo $second_enddate; ?>)
+                    </p>
+                    <h2 class="qoute-policy display-none-on-mobile">Policy Details</h2>
+                    <ul class="plan-highlights text-dark ml-3 display-none-on-mobile">
+                        <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers; ?> Traveller(s)</span></span>
+                        </li>
+                        <li><span>Quote Details : <span class="plan-cat"><?php echo $second_product_name; ?></span></span></li>
+                    </ul>
+                    <h3 class="person-additional-traveler-h3" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
                 </div>
-                <h3 id="changeshowtoless<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="person-additional-traveler-h3" onclick="slideadditionaltravelers(<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345)"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
-          </div>
-          <div class="col-md-3 price-limit display-none-on-mobile">
-              <div class="plan-coverage-limit">
-                  <div class="limit-lable mb-3">
-                      <span>Coverage Limit</span>
-                  </div>
-                  <div class="qoute-price-select">
-                    <h2>$<?php
-                        if($second_sum_insured >= 1000000){
-                        $second_millions = $second_sum_insured/1000000;
-                        $second_txt = ' Million';
-                        } else {
-                        $second_millions = $second_sum_insured;
-                        $second_txt = '';
-                        }
-                        echo number_format($second_millions).$second_txt;
-                        $second_dob = $second_years[0].'-'.$request->month.''.$request->dob_day;
-                        $second_agent = $request->agent;
-                        $second_broker = $request->broker;?>
-                    </h2>
-                  </div>
-              </div>
-              <div class="plan-coverage-limits">
-                  <div class="limit-lable mb-3">
-                      <span>Deductible</span>
-                  </div>
-                  <div class="qoute-price-select">
-                    <h2>$<?php echo $second_deductible;?> </h2>
-                    </div>
-              </div>
-          </div>
-          <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
-
-
-
-          
-            <div class="qoute-logo display-none-on-mobile">
-                <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
-            </div>
-
-
-            <div class="display-show-on-mobile" style="display:none;">
-                <div class="qoute-logo">
-                    <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
-                </div>
-                
-            </div>
-
-
-
-
-              <div class="total-price-traveller">
-                  <h2 id="traveler-price">$<?php echo number_format($second_total_price,2);?><span>CAD</span></h2>
-                  <?php if($second_monthly_two == '1'){?>
-                    <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">$<?php echo number_format($second_monthly_price,2);?>/Month <small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months;?></small></h2>
-                    <?php } ?>
-              </div>
-              <div class="buy_now">
-                <span data-toggle="modal" data-target="#myModal<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="btn btn-block text-white">Buy</span>
-              </div>
-              <div>
-                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"  style="    background: #5ea047;
-                    color: white !important;
-                    border-radius: 33px;cursor: pointer" class="mt-1 p-2 col-md-12 col-xs-5 text-center" id="compare"><i class="fa fa-database"></i> Compare</label>
-              </div>
-              <div id="myModal<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" class="modal zoom-in ahByNowbtn" role="dialog" aria-labelledby="myModalLabel" aria-modal="false">
-                  <div class="modal-dialog modal-dialog-centered modal-sm" style="max-width: 700px !important;">
-                    <!-- Modal content-->
-                    <div class="modal-content" style="border: 5px solid #2b3481;">
-                     <form method="POST" action="{{ url('apply') }}">
-                    @csrf
-                      <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-md-5">
-                                <p>BY CALLING</p>
-                                <p><a href="tel:+18555005041" style="font-size:24px; font-weight:bold; color:#44bc9b;">+1-855-500-5041</a></p>
-                                <p style="font-size:13px; font-weight:bold;border-top: 1px solid #eee;padding-top: 10px;">CALL CENTRE HOURS</p>
-                                <p style="font-size:11px;line-height: normal;">Monday to Thursday 8:00 am to 9:00 pm EST | Friday 8:00 am to 8:00 pm EST | Saturday 8:30 am to 4:00 pm EST | Closed on holidays.</p>
-                            </div>
-                            <div class="col-md-1">
-                                <div style="position: relative;border-left: 1px solid #2b3481;height: 100%;">
-                                    <div style="position: absolute; top: 40%; left: -20px; background-color: #2b3481; padding: 10px; font-size: 14px; color: white; border-radius: 50%;">OR</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div style="display: flex;position: relative;">
-                                    <input required type="checkbox" id="applycheckbox<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345" name="agree" style="height: auto;margin: 0;top: 6px;position: absolute;">
-                                    <label style="margin-left: 18px;" for="applycheckbox<?php echo $second_newdeductibleforshow.$second_plan_id;?>12345"> I give permission to LifeAdvice.ca to transfer my quote information and contact details to <?php echo $second_comp_name;?> in order to complete the purchase of travel insurance. LifeAdvice values your privacy. For details, see our <a target="_blank" href="{{ url('privacypolicy') }}">Privacy Policy</a> </label>
-                                </div>
-
-                            </div>
+                <div class="col-md-3 price-limit display-none-on-mobile">
+                    <div class="plan-coverage-limit">
+                        <div class="limit-lable mb-3">
+                            <span>Coverage Limit</span>
                         </div>
-                            <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                            <input type="hidden" value="{{ $request->fname }}" name="fname">
-                            <input type="hidden" value="{{ $request->lname }}" name="lname">
-                            <input type="hidden" value="{{ $second_sum_insured }}" name="coverage">
-                            <input type="hidden" value="{{ $second_number_travelers }}" name="traveller">
-                            <input type="hidden" value="{{ $second_deductible }}" name="deductibles">
-                            <input type="hidden" value="{{ $second_deduct_rate }}" name="deductible_rate">
-                            <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                            @foreach($request->years as $year)
-                            @if($year)
-                            <input type="hidden" name="years[]" value="{{ $year }}">
-                            @endif
-                            @endforeach
-                            @foreach($request->pre_existing as $preexisting)
-                            <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
-                            @endforeach
-                            <input type="hidden" value="{{ $second_num_of_days }}" name="days">
-                            <input type="hidden" value="{{ $second_comp_name }}" name="companyName">
-                            <input type="hidden" value="{{ $second_comp_id }}" name="comp_id">
-                            <input type="hidden" value="{{ $second_plan_name }}" name="planname">
-                            <input type="hidden" value="{{ $second_plan_id }}" name="plan_id">
-                            <input type="hidden" value="{{ $second_startdate }}" name="tripdate">
-                            <input type="hidden" value="{{ $second_enddate }}" name="tripend">
-                            <input type="hidden" value="{{ $second_total_price }}" name="premium">
-                            <input type="hidden" value="{{ $request->primarydestination }}" name="destination">
-                            <input type="hidden" value="" name="cdestination">
-                            <input type="hidden" value="{{ $second_product_name }}" name="product_name">
-                            <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                            <input type="hidden" value="{{ $request->primary_destination }}" name="country">
-                            <input type="hidden" value="{{ $second_product_name }}" name="visitor_visa_type">
-                            <input type="hidden" value="{{ $second_num_of_days }}" name="tripduration">
-                            <input type="hidden" value="{{ $second_ages_array[0] }}" name="age">
-                            <input type="hidden" value="{{ $second_dob }}" name="dob">
-                            <input type="hidden" value="{{ $second_agent }}" name="agent">
-                            <input type="hidden" value="{{ $second_broker }}" name="broker">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-lg login-btn" style="padding: 20px !important;border-radius: 16px !important;"data-dismiss="modal">Cancel</button>
-                        <button type="submit" style="color: white; border-radius: 16px; padding: 20px;" class="button button-primary">Purchase Policy</button>
-                      </div>
-                      </form>
+                        <div class="qoute-price-select">
+                            <h2>${{number_format($second_sum_insured)}}</h2>
+                        </div>
                     </div>
-
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+                    <div class="plan-coverage-limits">
+                        <div class="limit-lable mb-3">
+                            <span>Deductible</span>
+                        </div>
+                        <div class="qoute-price-select">
+                            <h2>$<?php echo $second_deductible; ?> </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
+                    <div class="qoute-logo display-none-on-mobile">
+                        <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
+                    </div>
+                    <div class="display-show-on-mobile" style="display:none;">
+                        <div class="qoute-logo">
+                            <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
+                        </div>
+                    </div>
+                    <div class="total-price-traveller">
+                        <h2 id="traveler-price">${{ number_format($second_total_price, 2) }}<span>CAD</span></h2>
+                        <?php if($second_monthly_two == '1'){?>
+                        <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">
+                            $<?php echo number_format($second_monthly_price, 2); ?>/Month <small
+                                style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $second_num_months; ?></small>
+                        </h2>
+                        <?php } ?>
+                    </div>
+                    <div class="buy_now">
+                        <span onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="btn btn-block text-white">Buy</span>
+                    </div>
+                    <div>
+                        <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"
+                        style="background: #5ea047;
+                        color: white !important;
+                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i
+                            class="fa fa-database"></i> Compare</label>
+                    </div>
+                </div>
+            </div>
+            @include('frontend.travelinsurance.includes.nopolicydetails')
+            @include('frontend.travelinsurance.includes.nobuynowform')
+        </div>
+    </div>
 </span>
+@endif
 <?php
 
 $second_daily_rate = 0;

@@ -229,7 +229,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8" id="listprices">
         @if (in_array('yes', $request->pre_existing))
             @include('frontend.travelinsurance.includes.nine.yes')
         @else
