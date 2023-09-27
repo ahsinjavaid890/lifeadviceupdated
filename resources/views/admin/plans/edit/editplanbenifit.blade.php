@@ -63,7 +63,7 @@
                                 </div>
                                 <div style="margin-top:20px;" class="row">
                                     <div class="col-md-12">
-                                       <textarea  placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]">{{ $r->benefits_desc }}</textarea>
+                                       <textarea  placeholder="Enter benefit Description" class="summernote"  spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]">{{ $r->benefits_desc }}</textarea>
                                     </div>
                                 </div>
                              </div>

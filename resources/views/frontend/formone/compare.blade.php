@@ -108,11 +108,56 @@
       font-size: 22px;
       margin-bottom: 20px;
    }
+   .panel-content__table-row{
+      display: flex;
+   }
+   .panel-content-subheading
+   {
+      padding: 32px 30px 32px 24px;
+      width: 20%;
+       text-align: center;
+       border: 1px solid #ddd;
+       color: #2b3481;
+       padding-left: 2rem;
+       border-left: 0;
+       border-left-width: 0px;
+       border-left-style: initial;
+       border-left-color: initial;
+       font-weight: 700;
+       font-size: 16px;
+       line-height: 24px;
+   }
+   .panel-content__table-cell{
+      @if(DB::table('compare_plans')->where('comparenumber'  ,$id)->count() == 3)
+         width: 26%;
+      @else
+         width: 40%;
+      @endif
+       padding: 10px 10px 10px 20px;
+       border-left: 1px solid #cfd9e8;
+       border-top: 1px solid #cfd9e8;
+       border-bottom: 1px solid #cfd9e8;
+       color: #67778f;
+       font-weight: 600;
+       font-size: 16px;
+       line-height: 24px;
+       transition: .15s ease-in-out;
+   }
+   ul li{
+          list-style: circle;
+    margin-left: 10px;
+   }
+   @media only screen and (max-width:600px){
+      .comparerow{
+         overflow: auto;
+      }
+      .comparebox{
+         width: 100%;
+      }
+   }
 </style>
 <section class="card-slide ah-slider-setting">
    <div class="container">
-      <!-- Контент -->
-
       <div class="comparerow">
          @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $r)
          @php
@@ -125,8 +170,7 @@
                <div class="card">
                   <div class="card-body">
                         <div class="plantittle">
-                              <h2>{{ $plan->plan_name }}</h2>
-                              <h2>{{ $plan->id }}</h2>
+                           <h2>{{ $plan->plan_name }}</h2>
                         </div>
                         <div class="compareimagelogo">
                            <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
@@ -170,11 +214,11 @@
                               </span>
                           </h5>
                       </div>
-                      <div id="collapse{{ $r->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                          <div class="card-body">
+                      <div id="collapse{{ $r->id }}" class="collapse @if ($loop->first) show @endif" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body" style="padding:0px">
                               @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $r->id)->get() as $b)
                               <div class="panel-content__table-row">
-                                 <div  class="panel-content__table-cell panel-content-subheading">
+                                 <div  class="panel-content-subheading">
                                     <span  class="panel-content--heading--container">
                                        <div class="panel-content--heading">{{ $b->benefits_head }}</div>
                                     </span>
@@ -185,7 +229,7 @@
                                     $planname = $plan->plan_name;
                                  ?>
                                  <div class="panel-content__table-cell">
-                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()){{ DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()->benefits_desc }} @else N/A @endif</div>
+                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
                                  </div>
                                  @endforeach
                               </div>
