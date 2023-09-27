@@ -329,15 +329,47 @@ if($second_show == '1' && $second_total_price > 0){
     <div class="coverage-amt pricearray coverage-amt-{{$second_sum_insured}} pricearray{{ $second_comp_id }}{{ $second_total_price }}" style="line-height:1.0; display: <?php if($request->sum_insured2 == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
         <div class="row plan-details mb-0 ml-1 deductable-<?php echo $second_deductible; ?>"
             style="display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; margin-top:0; margin-left:1px; margin-right:0; margin-bottom 0px !important;border-bottom: 1px solid #0084c1;">
-            <div class="col-md-3 col-xs-6 text-center" style="padding-top: 20px;padding-left: 0;padding-right: 0;">
+            <div class="col-md-3 col-xs-6 text-center mobile-deisply-none" style="padding-top: 20px;padding-left: 0;padding-right: 0;">
                 <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive img-thumbnail" width="200" />
             </div>
-            <div class="col-md-2 col-xs-6 text-center benefit_padding"
+            <div class="col-md-3 col-xs-6 text-center mobile-deisply-show" style="display: none;padding-left: 0;padding-right: 0;">
+                <img src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" width="200" />
+            </div>
+            <div class="col-md-2 col-xs-6 mobile-deisply-none text-center benefit_padding"
                 style="font-size: 14px;color: #333;">${{number_format($second_sum_insured)}} Coverage
                 <br><br>
                 ${{ $second_deductible }} Deductible
             </div>
-            <div class="col-md-4 col-xs-12 text-center" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
+            <div class="col-md-6 mobile-deisply-show" style="display:none;">
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <h1 style="padding: 0;text-align: center; margin: 0;line-height: normal; font-size:28px;">${{str_replace(',','', number_format($second_total_price,2))}}
+                        </h1>
+                        @if($second_monthly_two == '1')
+                        <h2 class="text-center" style=" font-size: 11px; font-weight: bold; color: #333;">$
+                            {{ number_format($second_monthly_price,2) }}/M <small
+                                style="color: #f5821f;font-weight: bold;margin-left: 1px;">
+                               {{ $second_num_months }}
+                            </small>
+                        </h2>
+                        @endif
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <br>
+                        ${{number_format($second_sum_insured)}} Coverage
+                        <br><br>
+                        ${{ $second_deductible }} Deductible<br><br>
+                        <span class="badge badge-danger">This is Pre Existing Plan</span>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
+                        <ul style="margin:0;">
+                            <li style="list-style: none;" class="text-center" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 text-center mobile-deisply-none" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
                 <div class="row">
                     <div class="col-md-12">
                          <span style=" font-size: 13px; color: red; position: absolute; top: -29px; left: 150px; ">This is Pre Existing Plan</span>
@@ -368,7 +400,7 @@ if($second_show == '1' && $second_total_price > 0){
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                 <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
-                <small>
+                <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 
                         <i class="fa fa-child"></i> Family

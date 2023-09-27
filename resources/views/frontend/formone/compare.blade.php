@@ -14,13 +14,46 @@
                   <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
                </div>
                 <div style="width: 50%;">
-                  <!-- <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}" class="btn btn-success"> Email Comparison </a> -->
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="javascript:void(0)" data-toggle="modal" data-target="#emailmodal" class="btn btn-success"> Email Comparison </a>
                </div>
              </div>
           </div>
        </div>
     </div>
 </section>
+<div id="emailmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+         <div class="card card-popup-modal">
+               <div class="subscribe-wrapper active">
+                  <img src="https://assets.visitorscoverage.com/production/app/img/quote-results/subscribe.svg" alt="email icon" class="popup-modal__icon">
+                  <div class="popup-modal__title">Email this comparison to yourself or a fellow traveler.</div>
+                  <div>
+                     <div class="popup-modal__content">
+                        <p class="text-secondary-color"> We’ll send a link to come back and view these plans. </p>
+                     </div>
+                     <div class="popup-modal__input-field">
+                        <!----><label class="form-input input-email"><input type="text" placeholder="Enter an email address" required="required" class="input-field"><span class="label-text">Email</span></label>
+                     </div>
+                     <button disabled="disabled" class="button button-rounded button-primary"> Send </button>
+                  </div>
+               </div>
+               <div class="subscribe-success-wrapper">
+                  <img src="https://assets.visitorscoverage.com/production/app/img/quote-results/done.svg" alt="success icon" class="popup-modal__icon">
+                  <div class="popup-modal__title">Your plan comparison have been sent!</div>
+                  <div class="popup-modal__content">
+                     <p class="text-secondary-color"> plan comparison mailed to <span class="popup-modal__user-email">.</span></p>
+                     <p class="text-secondary-color"> If you have not received an email in your inbox, please check your spam or junk folder. </p>
+                  </div>
+                  <button class="button button-primary button-rounded"> Done </button>
+               </div>
+            </div>
+    </div>
+
+  </div>
+</div>
 <style>
    .comparerow{
       display: flex;

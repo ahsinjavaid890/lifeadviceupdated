@@ -544,3 +544,18 @@ padding: 45px 0;
     color: #454545;
     border-radius: 11px;
 } */
+
+@media only screen and (max-width:600px){
+    .mobile-deisply-none{
+        display:none!important
+    }
+    .mobile-deisply-show{
+        display: block !important;
+    }
+    .mobile-displayflex{
+        display: flex;
+    }
+    .mobilewidth{
+        width: 50%;
+    }
+}

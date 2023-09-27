@@ -213,7 +213,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                     style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
                 </div>
             </div>
-            <div class="col-md-3 quote_reference" style="font-size:15px;">
+            <div class="col-md-3 quote_reference mobile-deisply-none" style="font-size:15px;">
                 <h3 style="font-weight:bold; margin:0; padding:0;">Quote Reference</h3>
                 <span style="color:#C00;">
                     <?php echo $quoteNumber; ?>
