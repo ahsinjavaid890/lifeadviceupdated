@@ -14,7 +14,7 @@
                   <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
                </div>
                 <div style="width: 50%;">
-                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}" class="btn btn-success"> Email Comparison </a>
+                  <!-- <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="{{ url('sendcompareemail') }}" class="btn btn-success"> Email Comparison </a> -->
                </div>
              </div>
           </div>
@@ -143,7 +143,7 @@
        line-height: 24px;
        transition: .15s ease-in-out;
    }
-   ul li{
+   #accordion ul li{
           list-style: circle;
     margin-left: 10px;
    }
@@ -187,11 +187,11 @@
                            <div  class="plan-price subheading-2">
                               <span class="price-value">${{ number_format($r->price,2) }}</span>
                            </div>
-                           <div class="plan-card-cta-container">
+                           <!-- <div class="plan-card-cta-container">
                               <a href="" class="button button-secondary">
-                                 <span >Buy</span><!---->
+                                 <span >Buy</span>
                               </a>
-                           </div>
+                           </div> -->
                         </div>
                   </div>
                </div>
