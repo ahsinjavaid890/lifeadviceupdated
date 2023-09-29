@@ -20,8 +20,9 @@
 }
 .visa-insurance{
 	background-color: white;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 30px 10px 30px 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgb(87 106 134 / 20%);
 }
 #quoteform{
 	background-color: white;

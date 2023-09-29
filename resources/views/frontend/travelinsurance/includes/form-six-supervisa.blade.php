@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutsix.css')}}"> 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div style="background-color: #f4f7fa;">
-   <div class="container" style="padding-top: 30px;"> 
+   <div class="container padding-top-zero-on-mobile paddingleftrightzeroonmobile" style="padding-top: 30px;"> 
 
 <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf

@@ -369,13 +369,14 @@ if($second_show == '1' && $second_total_price > 0){
                $<?php echo $second_deductible; ?> Deductible
             </p>
          </div>
-         <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <button onclick="$('.buynow_<?php echo $second_deductible . $second_plan_id; ?>').fadeIn();" class="buynowbtn" data-value="<?php echo $second_plan_id; ?>" class="btn btn-lg btn-danger" name="buynow">Buy Now
-            </button>
-            <span class="badge badge-danger">This is Pre Existing Plan</span>
-         </div>
-         <div class="col-md-2 col-sm-6 hidden-xs comparemobile" style="padding-top: 20px;padding-left: 0;">
-            <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer;font-size:14px"><i class="fa fa-database"></i> Compare</label>
+         <div class="col-md-4 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <div class="text-right">
+                <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
+                 <input onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
+            </div>
+            <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="buynowbtn"
+               class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
+               <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
       </div>
       @include('frontend.travelinsurance.includes.nopolicydetails')

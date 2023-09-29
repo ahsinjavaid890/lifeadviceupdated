@@ -348,7 +348,7 @@ if($second_show == '1' && $second_total_price > 0){
             <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
+            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();">Buy Now</button>
             <button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
                font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();">Buy Now</button>
             <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>

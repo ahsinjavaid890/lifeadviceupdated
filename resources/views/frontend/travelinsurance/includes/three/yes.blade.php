@@ -237,12 +237,11 @@ if($show == '1' && $total_price > 0){
 
 @if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
-<div class="coverage-amt pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+<div class="coverage-amt mt-2 pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4 padding-botom-zero-on-mobile" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
    <img style="width:auto; max-height: 110px;" src="{{ url('public/images') }}/{{ $comp_logo }}" class="img-responsive" />
    <div onclick="showdetails({{ 1+$deductible.$plan_id }})"><a href="javascript:void(0)" style="display:block; padding:5px;color: #337ab7;"><i class="fa fa-info-circle"></i> Policy Details</a></div>
-   <span style="display:block; padding:7px;">$<?php echo $sum_insured; ?> Benefits Maximum</span>
 </div>
 
 <div class="col-md-5 hidden-xs padding-top-zero-on-mobile mobile-deisply-none" style="font-size:11px;padding-top: 20px;">

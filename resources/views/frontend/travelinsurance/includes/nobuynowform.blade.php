@@ -1,4 +1,4 @@
-<div class="buynowrow row buynow_{{ $second_deductible.$second_plan_id }}">
+<div class="buynowrow row buynow_{{ $second_deductible.$second_plan_id+13 }}">
     <form method="POST" action="{{ url('apply') }}">
         @csrf
         <input type="hidden" value="{{ $request->savers_email }}" name="email">
@@ -42,7 +42,7 @@
                 <button type="submit" class="submit-btn"><i class="fa fa-shopping-cart"></i> Buy Now</button>
             </div>
             <div class="col-md-6 text-center">
-                <a href="javascript:void(0)" onclick="$second_('.buynow_{{ $second_deductible.$second_plan_id }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
+                <a href="javascript:void(0)" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeOut();" class="pull-right text-danger"><i class="fa fa-close"></i>
                 </a>
                 <p>or</p>
                 <p>BY CALLING</p>

@@ -11,7 +11,8 @@
       height: 43px;
    }
 </style>
-<div class="container mt-5">
+<div style="background-color: #f4f7fa;padding-top: 30px;" class="padding-top-zero-on-mobile">
+      <div class="container paddingleftrightzeroonmobile">
    <div class="row mainpagerow">
       <div class="col-md-4 hidden-xs mobile-deisply-none">
          <img src="{{ asset('public/front/images/woman-4.jpg')}}" style="width: 100%;">
@@ -235,7 +236,7 @@
                               </select>
                            </div>
                         </div>
-
+ 
                         @if(isset($_GET['years']))
                                         @foreach($_GET['years'] as $key=> $year)
                                             @if($year)
@@ -267,7 +268,7 @@
                         @if(isset($fields['dob']) && $fields['dob'] == "on" )
 
                            @php
-                              $ordinal_words = array('oldest', 'oldest', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth');
+                              $ordinal_words = array('Oldest', 'Oldest', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth');
                               $c = 0;
                            @endphp
 
@@ -275,14 +276,14 @@
                            <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                     <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
-                                       <label for="day{{$i}}" class="">Age of the oldest Traveller <span class="text-danger dateDisplay"></span></label>
+                                       <label for="day{{$i}}" class="">{{ $ordinal_words[$i] }} Traveller<span class="text-danger dateDisplay"></span></label>
                                        <div class="custom-form-control">
                                           <input onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}')" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                        </div>
                                     </div>
                               
                                     <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
-                                       <label for="year{{$i}}" class="">Select Pre Existing</label>
+                                       <label for="year{{$i}}" class="">Pre Existing of {{ $ordinal_words[$i] }}</label>
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">
                                              <option value="">Select Pre Existing Condition</option>
@@ -431,6 +432,7 @@
             </div>
       </div>
    </div>
+</div>
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script type="text/javascript">

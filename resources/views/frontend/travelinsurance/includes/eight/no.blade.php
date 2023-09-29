@@ -392,7 +392,7 @@ if($second_show == '1' && $second_total_price > 0){
                         </h3>
                     </div>
                     <div class="visible-xs col-xs-12">
-                        <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="buynow-btn" data-value="{{ $second_plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
+                        <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="buynow-btn" data-value="{{ $second_plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
                     </div>
                 </div>
             </div>

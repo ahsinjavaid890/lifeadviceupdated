@@ -393,7 +393,7 @@ if($second_show == '1' && $second_total_price > 0){
                         <?php } ?>
                     </div>
                     <div class="buy_now">
-                        <span onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="btn btn-block text-white">Buy</span>
+                        <span onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn btn-block text-white">Buy</span>
                     </div>
                     <div>
                         <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"

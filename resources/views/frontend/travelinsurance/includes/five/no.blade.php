@@ -333,7 +333,7 @@ if($second_show == '1' && $second_total_price > 0){
         <div class="row plan-details  deductable-<?php echo $second_deductible; ?>"
             style="border:1px solid #c0c0c0;margin-bottom: 20px; display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding: 5px 0; ">
-                <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }})"style="cursor:pointer;position: absolute;top: 40%;left: 0;" aria-hidden="true"></i>
+                <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" style="cursor:pointer;position: absolute;top: 40%;left: 0;" aria-hidden="true"></i>
                 <img style="min-height:20px; margin-left: 41px;margin-top: 5px;" width="200" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
             </div>
 
@@ -343,7 +343,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <span class="badge badge-danger">This is Pre Existing Plan</span>
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 5px 0;">
+            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($second_monthly_two == '1') padding: 5px 0; @else padding: 20px 0; @endif">
                 <h2 style="color: #223b74; font-size: 30px; font-weight: bold;margin-bottom: 0px;">${{ number_format($second_total_price,2) }}</h2>
                 <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
                     {{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?>
@@ -359,8 +359,8 @@ if($second_show == '1' && $second_total_price > 0){
                 <?php } ?>
 
             </div>
-            <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 5px; padding-left: 4px; ">
-                <button style="background-color: #2b3481 !important;" onclick="$second_('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
+            <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 19px; padding-left: 4px; ">
+                <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
                 <div class="compare">
                     <div class="ui center aligned header">
                         <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>

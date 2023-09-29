@@ -337,8 +337,7 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-2 col-xs-6 mobile-deisply-none text-center benefit_padding"
                 style="font-size: 14px;color: #333;">${{number_format($second_sum_insured)}} Coverage
-                <br><br>
-                ${{ $second_deductible }} Deductible
+                <br>
             </div>
             <div class="col-md-6 mobile-deisply-show" style="display:none;">
                 <div class="row">
@@ -391,6 +390,7 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
+                            <li>${{ $second_deductible }} Deductible</li>
                             <li style="list-style: none;" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
                         </ul>
@@ -398,7 +398,7 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
             </div>
             <div class="compare col-md-3 col-xs-12 text-center">
-                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                 <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                 <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 

@@ -281,12 +281,13 @@ if($show == '1' && $total_price > 0){
                ${{ $deductible }} Deductible
             </p>
          </div>
-         <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
+         <div class="col-md-4 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <div class="text-right">
+                <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
+                 <input onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
+            </div>
             <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();" class="buynowbtn"
-               data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 15px;" name="buynow">Buy Now</button>
-         </div>
-         <div class="col-md-2 col-sm-6 hidden-xs comparemobile" style="padding-top: 20px;padding-left: 0;">
-            <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class=" col-md-12 col-xs-5" id="compare" style="cursor: pointer;font-size:14px"><i class="fa fa-database"></i> Compare</label>
+               data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
          </div>
       </div>
       @include('frontend.travelinsurance.includes.policydetails')

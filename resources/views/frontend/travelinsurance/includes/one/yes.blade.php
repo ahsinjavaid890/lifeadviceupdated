@@ -246,8 +246,7 @@ if($show == '1' && $total_price > 0){
             </div>
             <div class="col-md-2 mobile-deisply-none col-xs-6 text-center benefit_padding"
                 style="font-size: 14px;color: #333;">${{number_format($sum_insured)}} Coverage
-                <br><br>
-                ${{ $deductible }} Deductible
+                <br>
             </div>
             <div class="col-md-6 mobile-deisply-show" style="display:none;">
                 <div class="row">
@@ -294,6 +293,7 @@ if($show == '1' && $total_price > 0){
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
+                            <li><br>${{ $deductible }} Deductible</li>
                             <li style="list-style: none;" onclick="showdetails({{ 1+$deductible.$plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
                         </ul>

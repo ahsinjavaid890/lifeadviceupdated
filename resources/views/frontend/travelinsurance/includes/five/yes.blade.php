@@ -245,20 +245,19 @@ if($show == '1' && $total_price > 0){
                 <img style="min-height:20px; margin-left: 41px;margin-top: 0px;" width="200"src="{{ url('public/images') }}/{{ $comp_logo }}" />
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 5px 0; text-align:center;">
+            <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 20px 0; text-align:center;">
                 <p style="margin-bottom: 0px;">${{number_format($sum_insured)}} Coverage</p>
                 <p style="margin-bottom: 0px;">${{ $deductible }} Deductible</p>
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000; text-align: center; padding: 5px 0;">
+            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($monthly_two == '1') padding: 5px 0; @else padding: 20px 0; @endif">
                 <h2 style="color: #223b74; font-size: 30px; font-weight: bold;margin-bottom: 0px;">${{ number_format($total_price,2) }}</h2>
                 <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
                     <?php echo $number_travelers; ?> Traveller<?php if($number_travelers > 1){echo "'s";} ?>
                 </small>
                 <?php if($monthly_two == '1'){?>
                 <h2 style="margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;line-height: normal;width: auto;">
-                    $
-                    <?php echo number_format($monthly_price,2);?>/Month<small
+                    $<?php echo number_format($monthly_price,2);?>/Month<small
                         style="color: #f5821f;font-weight: bold;margin-left: 1px;">
                         <?php echo $num_months;?>
                     </small>

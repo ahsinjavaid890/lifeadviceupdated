@@ -79,7 +79,7 @@
 
     });
 </script>
-<div class="dh-listings container" id="dh-get-quote">
+<div class="dh-listings container paddingzeroonmobile" id="dh-get-quote">
     <?php
     //  error_reporting(E_ERROR);
     $startdate = $request->departure_date;
