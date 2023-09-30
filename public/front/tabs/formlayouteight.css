@@ -16,3 +16,23 @@
     transition-delay: .06s;
     cursor: pointer;
 }
+
+@media only screen and (max-width:600px){
+    .paddingleftrightzeroonmobile{
+        padding-right: 2px;
+        padding-left: 12px;
+    }
+    .paddingleftrightmodaltwonmobile{
+        padding-right: 5px;
+        padding-left: 17px;
+    }
+    .marginbottomonmobile{
+        margin-bottom: 10px;
+    }
+    .margintopmobile{
+        margin-top: 10px;
+    }
+    .selectlabel{
+        left: 18px !important;
+    }
+}

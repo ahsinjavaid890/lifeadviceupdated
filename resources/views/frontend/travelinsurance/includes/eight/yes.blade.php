@@ -1,4 +1,4 @@
-<div class="col-md-9 col-xs-12" id="listprices">
+<div class="col-md-8 col-xs-12" id="listprices">
                 <?php
         $addinquery = '';
         $lessquery = '';

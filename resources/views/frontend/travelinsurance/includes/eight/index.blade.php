@@ -96,7 +96,7 @@ $(function () {
 
 });
 </script>
-<div class="dh-listings container" id="dh-get-quote">
+<div class="dh-listings container paddingleftrightzeroonmobile" id="dh-get-quote">
     <?php
 //  error_reporting(E_ERROR);
 $startdate = $request->departure_date;
@@ -178,32 +178,28 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 }
 ?>
 
-    <div class="container">
+    <div class="container paddingleftrightzeroonmobile">
         <div class="row">
+            <div class="col-md-4 col-xs-12 paddingleftrightzeroonmobile" style="margin:10px 0;">
+                <div class="side-bar filterdiv hidden-xs" style="border:1px solid #c0c0c0;padding: 10px;">
+                <h3 style="margin:0;font-weight:bold;">Reference Number : {{ rand() }}</h3>
+                <h4 class="coverage"style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;"> Coverage: <input type="text" id="coverage_amount2" name="coverage_amount"
+                        value="$<?php echo $request->sum_insured2;?>"
+                        style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
+                </h4>
+                <div id="sum_slider2"
+                    style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                </div>
+                <h4 class="deductible"
+                    style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
+                    Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
+                        value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>"
+                        style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;">
+                </h4>
 
-            <div class="col-md-3 col-xs-12 side-bar filterdiv hidden-xs" style="margin:10px 0;">
-                <div class="col-md-12">
-                    <h3 style="margin:0;font-weight:bold;">Reference Number</h3>
-                    <h3><span>{{ rand() }}<span></h3>
-                    <h4 class="coverage"
-                        style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
-                        Coverage: <input type="text" id="coverage_amount2" name="coverage_amount"
-                            value="$<?php echo $request->sum_insured2;?>"
-                            style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
-                    </h4>
-                    <div id="sum_slider2"
-                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
-                    </div>
-                    <h4 class="deductible"
-                        style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
-                        Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
-                            value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>"
-                            style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;">
-                    </h4>
-
-                    <div id="slider2"
-                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
-                    </div>
+                <div id="slider2"
+                    style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                </div>
                 </div>
             </div>
             @if (in_array('yes', $request->pre_existing))
@@ -224,6 +220,10 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
     })
 </script>
 <script>
+    function showdetails(id)
+    {
+        $('.dh-toggle-show-hide-'+id).slideToggle();
+    }
     var buynow_selected = "";
     var info_box = "";
     jQuery(".buynow-btn").click(function () {

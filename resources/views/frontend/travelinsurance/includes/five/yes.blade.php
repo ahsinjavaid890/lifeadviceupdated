@@ -245,12 +245,12 @@ if($show == '1' && $total_price > 0){
                 <img style="min-height:20px; margin-left: 41px;margin-top: 0px;" width="200"src="{{ url('public/images') }}/{{ $comp_logo }}" />
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding: 20px 0; text-align:center;">
+            <div class="col-md-3" style="border:0px solid #000;font-size: 16px;padding-top: 20px; text-align:center;">
                 <p style="margin-bottom: 0px;">${{number_format($sum_insured)}} Coverage</p>
                 <p style="margin-bottom: 0px;">${{ $deductible }} Deductible</p>
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($monthly_two == '1') padding: 5px 0; @else padding: 20px 0; @endif">
+            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($monthly_two == '1') padding: 5px 0; @else padding-top: 20px; @endif">
                 <h2 style="color: #223b74; font-size: 30px; font-weight: bold;margin-bottom: 0px;">${{ number_format($total_price,2) }}</h2>
                 <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
                     <?php echo $number_travelers; ?> Traveller<?php if($number_travelers > 1){echo "'s";} ?>
@@ -267,11 +267,7 @@ if($show == '1' && $total_price > 0){
             </div>
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 5px; padding-left: 4px; ">
                 <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();" class="btn submit-btn" data-value="{{ $plan_id }}" name="buynow">Buy this plan</button>
-                <div class="compare">
-                    <div class="ui center aligned header">
-                        <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>
-                    </div>
-                </div>
+                <label style="margin-bottom:0px;" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
 
 

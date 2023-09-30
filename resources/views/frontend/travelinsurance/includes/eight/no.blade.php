@@ -333,9 +333,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <div class="row" style="margin-left: 0px">
                     <div class="col-md-12 col-xs-12 text-center" style="border-bottom:2px solid #c0c0c0;">
                         <h3 style="margin-bottom:5px;font-size: 22px;font-weight: bold;">
-                            <?php //echo $second_plan_name;?>
-                            <button class="btn submitbutton btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"
-                                data-value='{{ $second_plan_id }}' aria-hidden="true">
+                            <button class="btn submitbutton btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})">
                                 Summary & Info
                                 <i class="fa fa-angle-down" data-value='{{ $second_plan_id }}'
                                     aria-hidden="true">    
@@ -346,28 +344,24 @@ if($second_show == '1' && $second_total_price > 0){
                         <div style="position: absolute;top: -8px;right: 10px;">
                             <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                         </div>
+                        
                     </div>
                     <div class="col-md-3 hidden-xs col-xs-12 text-center mobilepaddingtop" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;"src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>"
                             class="img-responsive" />
-                        <button onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
-                            class="buynow-btn mobile-deisply-none" data-value="<?php echo $second_plan_id; ?>"
-                            name="buynow"
-                            style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy
-                            Now
-                        </button>
+                        <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();"
+                            class="buynow-btn mobile-deisply-none" data-value="<?php echo $second_plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now </button>
                     </div>
                     <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: 10px;background: #FFF;" src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" />
                     </div>
-                    <div class="col-md-3 col-xs-6 hidden-xs text-center" style="padding-top: 15px;">
-                        <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">${{ $second_deductible }}<br /><small
-                                style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Deductible</small>
-                        </h3><br>
-                        <span style="font-size: 13px; color: red;">This is Pre Existing Plan</span>
+                    <div class="col-md-3 col-xs-6 hidden-xs text-center mobile-deisply-none" style="padding-top: 15px;">
+                        <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">${{ $second_deductible }}<br /><small style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Deductible</small>
+                        </h3>
+                        <span class="badge badge-danger">This is Pre Existing Plan</span>
                     </div>
 
-                    <div class="col-md-3 col-xs-12 text-center"
+                    <div class="col-md-3 col-xs-12 text-center mobile-deisply-none"
                         style="padding-top: 15px; padding-bottom: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;border-right: 1px solid #CCC;border-left: 1px solid #CCC;">
                             <span style="font-size: 30px;font-weight: bold;color:#222;">
@@ -378,31 +372,43 @@ if($second_show == '1' && $second_total_price > 0){
                         </h3>
                         @if($second_monthly_two == '1')
                         <h2 style="margin:0; font-size:14px; font-weight:bold;color: #333;line-height: normal;width: auto;padding-top: 5px;">
-                            $second_{{ number_format($second_monthly_price,2) }}/Month
+                            ${{ number_format($second_monthly_price,2) }}/Month
                             <small style="color: #f5821f;font-weight: bold;margin-left: 1px;">
                                 {{ $second_num_months }}
                             </small>
                         </h2>
                         @endif
                     </div>
-                    <div class="col-md-3 col-xs-6 hidden-xs text-center" style="padding-top: 15px;">
+                    <div class="col-md-3 col-xs-6 hidden-xs text-center mobile-deisply-none" style="padding-top: 15px;">
                         <h3 style="margin:0;color: #555;font-weight: bold;font-size: 22px;">$
                             <?php echo $second_sum_insured; ?><br />
                             <small style="font-size: 13px;font-weight: normal;display: block;margin-top: 5px;">Coverage Amount</small>
                         </h3>
                     </div>
                     <div class="visible-xs col-xs-12">
-                        <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="buynow-btn" data-value="{{ $second_plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
+                        <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id }}').fadeIn();" class="buynow-btn" data-value="{{ $second_plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
                     </div>
                 </div>
             </div>
+            <div class="col-md-12 mobile-deisply-show" style="display: none;">
+                <h3 style="margin:0;color: #555;font-weight: bold;text-align: center;">
+                    <span style="font-size: 30px;font-weight: bold;color:#222;">
+                        ${{ number_format($second_total_price,2) }}
+                    </span>
+                </h3>
+                @if($second_monthly_two == '1')
+                <h2 style="margin:0; font-size:14px; font-weight:bold;color: #333;line-height: normal;width: auto;padding-top: 5px;text-align: center;">
+                    ${{ number_format($second_monthly_price,2) }}/Month
+                    <small style="color: #f5821f;font-weight: bold;margin-left: 1px;">
+                        {{ $second_num_months }}
+                    </small>
+                </h2>
+                @endif
+            </div>
             <button onclick="$('.buynow_<?php echo $second_deductible.$second_plan_id;?>').fadeIn();"
-                class="buynow-btn mobile-deisply-show" data-value="<?php echo $second_plan_id; ?>"
-                name="buynow"
-                style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy
-                Now
-            </button>
+            class="buynow-btn mobile-deisply-show" data-value="<?php echo $second_plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy Now </button>
             <div style="clear:both;"></div>
+            <span class="badge badge-danger mobile-deisply-show" style="display:none;margin: auto;margin-bottom: 10px;">This is Pre Existing Plan</span>
             @include('frontend.travelinsurance.includes.nobuynowform')
 
         </div>

@@ -9,7 +9,7 @@
              <ul></ul>
          </div>       
          <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 paddingleftrightzeroonmobile">
                   <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                   <div class="row">
@@ -367,7 +367,7 @@
          @endif
          @endif
          <div class="row">
-            <div class="col-md-12 mb-3 text-right">
+            <div class="col-md-12 paddingleftrightzeroonmobile mb-3 text-right">
                   <button id="getqoutesubmitbutton" class=" mt-3 btn btn-quote">GET A QUOTE</button>
                   <span id="family_error"
                                 style="display: none; text-align: right;padding: 20px; font-weight:700; color:#1BBC9B;"><i

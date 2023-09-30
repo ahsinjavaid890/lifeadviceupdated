@@ -293,7 +293,7 @@ if($show == '1' && $total_price > 0){
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
-                            <li class="mb-3">${{ $deductible }} Deductible</li>
+                            <li style="color: black;font-weight: 600;margin-bottom: 0.5rem;">${{ $deductible }} Deductible</li>
                             <li style="list-style: none;" onclick="showdetails({{ 1+$deductible.$plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
                         </ul>
@@ -303,14 +303,14 @@ if($show == '1' && $total_price > 0){
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                 <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
-                <small class="mobile-deisply-none">
+                <!-- <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 
                         <i class="fa fa-child"></i> Family
                     @else 
                         <i class="fa fa-user"></i> Individual
                     @endif
-                </small>
+                </small> -->
             </div>
             @include('frontend.travelinsurance.includes.policydetails')
             @include('frontend.travelinsurance.includes.buynowform')

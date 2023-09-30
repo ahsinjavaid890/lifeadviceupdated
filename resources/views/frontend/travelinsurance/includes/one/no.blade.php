@@ -370,11 +370,6 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-4 col-xs-12 text-center mobile-deisply-none">
                 <div class="row" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;max-width: 360px;">
-                    <div class="col-md-12">
-                         <span style=" font-size: 13px; color: red; position: absolute; top: -29px; left: 150px; ">This is Pre Existing Plan</span>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-6 col-xs-6">
                         <h1 style="padding: 0;margin: 0;line-height: normal; font-size:28px;">${{str_replace(',','', number_format($second_total_price,2))}}
                         </h1>
@@ -390,9 +385,10 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
-                            <li class="mb-3">${{ $second_deductible }} Deductible</li>
+                            <li  style="color: black;font-weight: 600;margin-bottom: 0.5rem;">${{ $second_deductible }} Deductible</li>
                             <li style="list-style: none;" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
+                            <span class="badge badge-danger">This is Pre Existing Plan</span>
                         </ul>
                     </div>
                 </div>
@@ -400,14 +396,14 @@ if($second_show == '1' && $second_total_price > 0){
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                 <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
-                <small class="mobile-deisply-none">
+                <!-- <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 
                         <i class="fa fa-child"></i> Family
                     @else 
                         <i class="fa fa-user"></i> Individual
                     @endif
-                </small>
+                </small> -->
             </div>
             @include('frontend.travelinsurance.includes.nopolicydetails')
             @include('frontend.travelinsurance.includes.nobuynowform')

@@ -343,7 +343,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <span class="badge badge-danger">This is Pre Existing Plan</span>
             </div>
 
-            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($second_monthly_two == '1') padding: 5px 0; @else padding: 20px 0; @endif">
+            <div class="col-md-3" style="border:0px solid #000; text-align: center; @if($second_monthly_two == '1') padding: 5px 0; @else padding-top: 20px; @endif">
                 <h2 style="color: #223b74; font-size: 30px; font-weight: bold;margin-bottom: 0px;">${{ number_format($second_total_price,2) }}</h2>
                 <small style="font-size: 15px;margin-left: -10px;color: #777;!important">
                     {{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?>
@@ -361,11 +361,7 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 19px; padding-left: 4px; ">
                 <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
-                <div class="compare">
-                    <div class="ui center aligned header">
-                        <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>
-                    </div>
-                </div>
+                <label style="margin-bottom:0px" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
             @include('frontend.travelinsurance.includes.nopolicydetails')
             <div style="clear:both;height:10px;"></div>

@@ -91,7 +91,7 @@
                     aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                         <div class="modal-content rounded-3">
-                            <div class="modal-body">
+                            <div class="modal-body paddingleftrightzeroonmobile">
                                 <div class="close-btn">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
@@ -158,16 +158,12 @@
                     aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-body">
+                            <div class="modal-body paddingleftrightmodaltwonmobile">
                                 <div class="close-btn">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
                                     <h2 class="heading-3 card-heading">How many travelers?</h2>
-                                    <!---->
-                                    <!---->
-                                    <!---->
-                                    <!---->
                                     <div class="card-content d-flex">
                                         <p class="card-info"> Enter the age for each person that will be traveling.</p>
                                         <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;"
@@ -184,9 +180,7 @@
                                                             <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                                                 <div class="row alignitembaseline">
                                                                     <div class="col-md-6">
-                                                                        <span
-                                                                            class="travelerheading primarytravelheading">Primary
-                                                                            Traveler</span>
+                                                                        <span class="marginbottomonmobile travelerheading primarytravelheading">Primary Traveler</span>
                                                                     </div>
                                                                     <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
                                                                         <div class="input-wrapper positionrelative">
@@ -243,10 +237,8 @@
                                                 <div class="row mt-3 showrowstraveler">
                                                     <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                                         <div class="row alignitembaseline">
-                                                            <div class="col-md-6">
-                                                                <span
-                                                                    class="travelerheading primarytravelheading">Primary
-                                                                    Traveler</span>
+                                                            <div class="col-md-6 marginbottomonmobile">
+                                                                <span class="travelerheading primarytravelheading">Primary Traveler</span>
                                                             </div>
                                                             <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
                                                                 <div class="input-wrapper positionrelative">
@@ -260,8 +252,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
+                                                    <div class="col-md-3 positionrelative margintopmobile p-l-z-o-m p-r-z-o-m">
                                                         <label class="selectlabel">Pre Existing Condition</label>
                                                         <select name="pre_existing[]"
                                                             class="pre_existing_values_check1 pre_existing_condition1 form-control">
@@ -294,9 +285,9 @@
                                                         class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m">
                                                         <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
                                                             <div class="row alignitembaseline">
-                                                                <div class="col-md-6"> <span
-                                                                        class="travelerheading primarytravelheading">Traveler
-                                                                        {{ $i }}</span> </div>
+                                                                <div class="col-md-6"> 
+                                                                    <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> 
+                                                                </div>
                                                                 <div
                                                                     class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
                                                                     <div class="input-wrapper positionrelative"> <label
@@ -306,7 +297,7 @@
                                                                             inputmode="numeric" 
                                                                             onchange="dateofbirth(this.value , {{ $i }})"
                                                                             class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}"
-                                                                            type="text" placeholder="MM/DD/YYYY"
+                                                                            type="text" id="dateofbirthfull{{ $i }}" placeholder="MM/DD/YYYY"
                                                                             name="years[]"
                                                                             data-placeholder="MM/DD/YYYY"></div>
                                                                 </div>
