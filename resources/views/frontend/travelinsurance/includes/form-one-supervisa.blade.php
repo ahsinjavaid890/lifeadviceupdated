@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/front/tabs/formlayoutone.css') }}">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="container">
+<div style="background-color: #f4f7fa;">
+    <div class="container" style="padding-top: 30px;">
     <div class="row mainsection birthdate">
         <div class="col-md-12">
             <div class="text-center">
@@ -572,6 +573,7 @@
 </div>
 </div>
 
+</div>
 </div>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script>

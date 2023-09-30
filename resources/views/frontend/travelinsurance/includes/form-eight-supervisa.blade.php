@@ -2,6 +2,7 @@
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayouteight.css')}}">
 @if ($firstsection->form == 1)
     @php
         $prosupervisa = $data->pro_supervisa;
@@ -32,11 +33,8 @@
                             <div class="grid-container">
                                 <div class="grid-row grid-row--bar">
                                     <div class="d-grid generator-bar-row-wrap">
-                                        <label data-toggle="modal" data-target="#myModal1"
-                                            class="form-input input-destination has-arrow">
-                                            <input type="text"
-                                                placeholder="@if (isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif"
-                                                required="required" id="coverageprice" class="input-field" disabled>
+                                        <div data-toggle="modal" data-target="#myModal1" class="newstyleforinputdiv form-input input-destination has-arrow">
+                                            @if (isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif
                                             <span class="label-text">
                                                 @if (isset($_GET['sum_insured2']))
                                                     {{ $_GET['sum_insured2'] }}
@@ -44,13 +42,12 @@
                                                     Coverage Amount @endif
                                             </span>
                                             <div class="dest-value"></div>
-                                        </label>
-                                        <label data-toggle="modal" data-target="#myModal2"
-                                            class="form-input input-traveler-info has-arrow">
-                                            <input id="ageshow" type="text" placeholder="Traveler Information"
-                                                required="required" id="age" class="input-field" disabled>
+                                        </div>
+                                        <div id="ageshow" data-toggle="modal" data-target="#myModal2"
+                                            class="newstyleforinputdiv form-input input-traveler-info has-arrow">
+                                            Traveler Information
                                             <span class="label-text">Traveler Information</span>
-                                        </label>
+                                        </div>
                                         <div data-toggle="modal" data-target="#myModal3"
                                             class="form-input date-range form-input__date-range">
                                             <div class="input-field">

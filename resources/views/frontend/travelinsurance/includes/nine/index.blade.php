@@ -185,7 +185,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                     <div class="col-md-12 display-none-on-mobile display-none-on-tablet">
                         <h4 class="d-flex">Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                     </div>
-                    <div class="col-md-12 adjust-quoto mt-4" style="border:none;">
+                    <div class="col-md-12 adjust-quoto" style="border:none;">
                         <h4 class="deductible"
                             style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
                             Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible"
@@ -201,7 +201,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                             style="border: 1px solid #c5c5c5;padding: 0px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
                         </div>
                     </div>
-                    <div class="col-md-12 adjust-quoto coverage-mobile-view mt-3" style="border-top:0px; ">
+                    <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
                         <h4 class="coverage"
                             style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">
                             Coverage: <input type="text" id="coverage_amount" name="coverage_amount"
