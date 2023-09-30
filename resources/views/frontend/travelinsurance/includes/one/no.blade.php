@@ -368,8 +368,8 @@ if($second_show == '1' && $second_total_price > 0){
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12 text-center mobile-deisply-none" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;">
-                <div class="row">
+            <div class="col-md-4 col-xs-12 text-center mobile-deisply-none">
+                <div class="row" style="border:3px solid #f5821f; padding:10px;box-shadow: 0px 0px 5px 0px #999 inset;max-width: 360px;">
                     <div class="col-md-12">
                          <span style=" font-size: 13px; color: red; position: absolute; top: -29px; left: 150px; ">This is Pre Existing Plan</span>
                     </div>
@@ -379,18 +379,18 @@ if($second_show == '1' && $second_total_price > 0){
                         <h1 style="padding: 0;margin: 0;line-height: normal; font-size:28px;">${{str_replace(',','', number_format($second_total_price,2))}}
                         </h1>
                         @if($second_monthly_two == '1')
-                        <h2 style=" font-size: 11px; font-weight: bold; color: #333;">$
+                        <h2 style="margin-bottom: 0px; font-size: 14px; font-weight: bold; color: #333;">$
                             {{ number_format($second_monthly_price,2) }}/M <small
                                 style="color: #f5821f;font-weight: bold;margin-left: 1px;">
                                {{ $second_num_months }}
                             </small>
                         </h2>
                         @endif
-                        <small>{{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?></small>
+                        <small style="font-size:10px;">{{ $second_number_travelers }} Traveller<?php if($second_number_travelers > 1){echo "'s";} ?></small>
                     </div>
                     <div class="col-md-6" style="padding-top: 10px;margin-bottom:10px;">
                         <ul style="margin:0;">
-                            <li>${{ $second_deductible }} Deductible</li>
+                            <li class="mb-3">${{ $second_deductible }} Deductible</li>
                             <li style="list-style: none;" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><a href="javascript:void(0)"class="mb-2">Policy Details</a>
                             </li>
                         </ul>
