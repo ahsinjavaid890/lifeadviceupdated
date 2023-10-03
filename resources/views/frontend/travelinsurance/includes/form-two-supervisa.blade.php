@@ -20,7 +20,7 @@
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                     <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
-                    <div class="row">
+                    <div class="row formlayouttworow">
                         @for ($orderi = 1; $orderi <= 17; $orderi++)
 
                             @if (array_search('id_3', $orderdata) == $orderi)

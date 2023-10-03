@@ -265,7 +265,7 @@ if($show == '1' && $total_price > 0){
                     <div class="col-md-3 hidden-xs col-xs-12 text-center mobilepaddingtop" style="padding-top: 15px;">
                         <img style="width:auto;border: 2px solid #c0c0c0;padding: 15px;max-height: 80px;margin-top: -40px;background: #FFF;"src="{{ url('public/images') }}/<?php echo $comp_logo; ?>"
                             class="img-responsive" />
-                        <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
+                        <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();"
                             class="buynow-btn mobile-deisply-none" data-value="<?php echo $plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now </button>
                     </div>
                     <div class="col-md-3 visible-xs col-xs-12 text-center" style="padding-top: 15px;">
@@ -302,7 +302,7 @@ if($show == '1' && $total_price > 0){
                         </h3>
                     </div>
                     <div class="visible-xs col-xs-12">
-                        <button onclick="$('.buynow_{{ $deductible.$plan_id }}').fadeIn();" class="buynow-btn" data-value="{{ $plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
+                        <button onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();" class="buynow-btn" data-value="{{ $plan_id }}" class="btn btn-lg btn-danger" name="buynow" style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -321,7 +321,7 @@ if($show == '1' && $total_price > 0){
                 </h2>
                 @endif
             </div>
-            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();"
+            <button onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();"
             class="buynow-btn mobile-deisply-show" data-value="<?php echo $plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy Now </button>
             <div style="clear:both;"></div>
             @include('frontend.travelinsurance.includes.buynowform')

@@ -255,9 +255,9 @@ if($show == '1' && $total_price > 0){
             <span style="font-size:12px; font-weight:500;">${{ $deductible , 2 }} Deductible </span>
          </div>
          <div class="col-md-2 col-xs-12 text-center" style="padding:0;">
-            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+            <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();">Buy Now</button>
             <button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
-               font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').fadeIn();">Buy Now</button>
+               font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();">Buy Now</button>
             <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
          </div>
          @include('frontend.travelinsurance.includes.policydetails')

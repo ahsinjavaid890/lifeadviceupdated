@@ -366,7 +366,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <div style="clear:both;"></div>
             </div>
             <div class="col-md-3 col-xs-6 text-center">
-                <button style="background-color: #2b3481;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();"
+                <button style="background-color: #2b3481;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();"
                     class="submit-btn" data-value="<?php echo $second_plan_id; ?>"
                     class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
                     Now

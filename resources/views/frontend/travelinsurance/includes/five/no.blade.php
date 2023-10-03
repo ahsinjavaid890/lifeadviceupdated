@@ -360,7 +360,7 @@ if($second_show == '1' && $second_total_price > 0){
 
             </div>
             <div class="col-md-3" style="border:0px solid #000;  text-align:center;padding-right: 19px; padding-left: 4px; ">
-                <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
+                <button style="background-color: #2b3481 !important;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="btn submit-btn" data-value="{{ $second_plan_id }}" name="buynow">Buy this plan</button>
                 <label style="margin-bottom:0px" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="btn submit-btn mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
             @include('frontend.travelinsurance.includes.nopolicydetails')

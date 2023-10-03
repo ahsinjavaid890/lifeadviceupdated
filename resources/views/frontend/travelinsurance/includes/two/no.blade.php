@@ -373,7 +373,7 @@ echo 'none';
         @endif
     </div>
     <div class="col-md-3 col-xs-6" style="margin: auto;">
-        <a class="submit-btn text-center" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();">
+        <a class="submit-btn text-center" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();">
             <i class="fa fa-shopping-cart"></i> Buy Now
         </a>
     </div>

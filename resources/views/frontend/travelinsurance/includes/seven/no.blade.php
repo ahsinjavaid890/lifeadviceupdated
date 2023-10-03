@@ -374,7 +374,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
                  <input onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
             </div>
-            <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="buynowbtn"
+            <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynowbtn"
                class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
                <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>

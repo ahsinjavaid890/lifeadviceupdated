@@ -394,7 +394,7 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
             </div>
             <div class="compare col-md-3 col-xs-12 text-center">
-                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
                 <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                 <!-- <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 

@@ -286,7 +286,7 @@ if($show == '1' && $total_price > 0){
                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
                  <input onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
             </div>
-            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').fadeIn();" class="buynowbtn"
+            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn"
                data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
          </div>
       </div>
