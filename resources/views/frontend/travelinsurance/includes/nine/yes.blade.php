@@ -353,12 +353,6 @@ if($show == '1' && $total_price > 0){
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
-                        Deductible Option ($<?php echo $deductible; ?> <span style="color:#2b3481;">(Included in
-                            premium)</span>)
-                        <br>
-                        Days: <?php echo $num_of_days; ?> (<?php echo $startdate; ?> - <?php echo $enddate; ?>)
-                    </p>
                     <h2 class="qoute-policy display-none-on-mobile">Policy Details</h2>
                     <ul class="plan-highlights text-dark ml-3 display-none-on-mobile">
                         <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers; ?> Traveller(s)</span></span>
@@ -369,7 +363,7 @@ if($show == '1' && $total_price > 0){
                 </div>
                 <div class="col-md-3 price-limit display-none-on-mobile">
                     <div class="plan-coverage-limit">
-                        <div class="limit-lable mb-3">
+                        <div class="limit-lable">
                             <span>Coverage Limit</span>
                         </div>
                         <div class="qoute-price-select">
@@ -381,15 +375,12 @@ if($show == '1' && $total_price > 0){
                                 $millions = $sum_insured;
                                 $txt = '';
                             }
-                            echo number_format($millions) . $txt;
-                            $dob = $years[0] . '-' . $request->month . '' . $request->dob_day;
-                            $agent = $request->agent;
-                            $broker = $request->broker; ?>
+                            echo number_format($millions) . $txt; ?>
                             </h2>
                         </div>
                     </div>
                     <div class="plan-coverage-limits">
-                        <div class="limit-lable mb-3">
+                        <div class="limit-lable">
                             <span>Deductible</span>
                         </div>
                         <div class="qoute-price-select">
@@ -422,8 +413,7 @@ if($show == '1' && $total_price > 0){
                         <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})"
                         style="background: #5ea047;
                         color: white !important;
-                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i
-                            class="fa fa-database"></i> Compare</label>
+                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i class="text-white fa fa-database"></i> Compare</label>
                     </div>
                 </div>
             </div>

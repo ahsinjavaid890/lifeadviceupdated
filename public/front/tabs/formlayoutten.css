@@ -14,7 +14,6 @@
     box-shadow: 2px 2px 10px #dddddd9e;
 }
 .mydata h1 {
-    font-weight: 500 !important;
     color: transparent;
     background: -webkit-linear-gradient(0deg, #2b3481, #2b3481 95%);
     -webkit-background-clip: text;
@@ -100,8 +99,6 @@
 }
 .input-group[class*=col-] {
     float: none;
-    padding-right: 15px !important;
-    padding-left: 15px !important;
 }
 .quteform label {
     width: 100%;
@@ -119,7 +116,8 @@
     color: #fff;
     display: inline-block;
     vertical-align: middle;
-    padding: 13.5px 29.5px;
+    padding: 0.5px 29.5px;
+    height: 42px;
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 20px 30px -10px rgba(211, 87, 251, 0.50);
@@ -150,7 +148,12 @@
 .input-append.date .add-on i, .input-prepend.date .add-on i {
     width: 100% !important;
     height: 100% !important;
-    padding: 1rem 0.75rem;
+    padding: 12px;
+    border: 2px solid #cfd9e8;
+    background-color: white;
+    border-left: 0px;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }
 
 .subpage-full-details {
@@ -355,7 +358,7 @@ ul.common-btn li {
     flex: initial;
 }
 .fld-mt {
-    margin-top: 2.4rem !important;
+    margin-top: 2.1rem !important;
     text-align: center;
 }
 .fld-mt p {
@@ -389,4 +392,41 @@ ul.common-btn li {
     width: 100%;
     border-radius: 5px;
     height: 42px;
+}
+.inputdate{
+    border: 2px solid #e2e6e7;
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    border-radius: 5px !important;
+    height: 42px;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    background-color: white !important;
+    border-right: 0px;
+}
+
+@media only screen and (max-width:600px){
+    .container-layout-two{
+        padding-left: 0px;
+        padding-right: 0px;
+        border-radius: 0px;
+    }
+    .fld-mt{
+        display: none;
+    }
+    .container-layout-two #quoteform{
+        border-radius: 0px;
+    }
+    .svicmai_resultblk{
+        padding-top: 0px !important;
+    }
+    .input-group{
+        margin-bottom: 5px;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .radiobtn{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
 }

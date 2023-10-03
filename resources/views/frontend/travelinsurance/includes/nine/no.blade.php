@@ -342,12 +342,6 @@ if($second_show == '1' && $second_total_price > 0){
             <div class="row" style=" position: absolute; top: -12px; margin: auto; width: 100%; left: 0;"> <div class="col-md-12"> <p style=" background-color: red; width: 180px; text-align: center; color: white; border-radius: 10px; ">This is Pre Eisting Plan</p> </div> </div>
             <div class="row">
                 <div class="col-md-6">
-                    <p class="plan-subheading display-none-on-mobile display-none-on-tablet">
-                        Deductible Option ($second_<?php echo $second_deductible; ?> <span style="color:#2b3481;">(Included in
-                            premium)</span>)
-                        <br>
-                        Days: <?php echo $second_num_of_days; ?> (<?php echo $second_startdate; ?> - <?php echo $second_enddate; ?>)
-                    </p>
                     <h2 class="qoute-policy display-none-on-mobile">Policy Details</h2>
                     <ul class="plan-highlights text-dark ml-3 display-none-on-mobile">
                         <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers; ?> Traveller(s)</span></span>
@@ -358,7 +352,7 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
                 <div class="col-md-3 price-limit display-none-on-mobile">
                     <div class="plan-coverage-limit">
-                        <div class="limit-lable mb-3">
+                        <div class="limit-lable">
                             <span>Coverage Limit</span>
                         </div>
                         <div class="qoute-price-select">
@@ -366,7 +360,7 @@ if($second_show == '1' && $second_total_price > 0){
                         </div>
                     </div>
                     <div class="plan-coverage-limits">
-                        <div class="limit-lable mb-3">
+                        <div class="limit-lable">
                             <span>Deductible</span>
                         </div>
                         <div class="qoute-price-select">
@@ -399,8 +393,7 @@ if($second_show == '1' && $second_total_price > 0){
                         <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"
                         style="background: #5ea047;
                         color: white !important;
-                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i
-                            class="fa fa-database"></i> Compare</label>
+                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i class="text-white fa fa-database"></i> Compare</label>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ url('public/front/css/mainlayouttwo.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayoutten.css')}}">
 <div class="pt-3 pb-3 subpage-full-details mydata svicmai_resultblk">
    <div class="container container-layout-two">
       <form id="quoteform" class="quteform super-visa-quote" action="{{ url('ajaxquotes') }}" method="POST">
@@ -24,7 +24,7 @@
         <div class="row wow slideInDown animated animated" id="first-dob" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
            <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
               <label>Date of Birth <span id="dateerrorfirst" class="text-danger"></span></label>
-              <input onchange="getage(this.value)" type="text" class="form-control" id="date_of_birth_one" name="years[]" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
+              <input id="dateofbirthfull1" class="form-control inputdate" type="text" inputmode="numeric" onkeyup="calculateAge(this.value , 'dateofbirthfull1')" placeholder="MM/DD/YYYY" name="years[]">
               <span class="input-group-addon add-on"><i class="fa fa-calendar dob" aria-hidden="true"></i></span>
 
            </div>
@@ -38,7 +38,7 @@
         <div class="row" id="second-dob"  style="display: none;">
             <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
                 <label>Date of Birth</label>
-                <input onchange="getagesecondage(this.value)" type="text" class="form-control" id="date_of_birth_two" placeholder="MM-DD-YYYY" name="years[]" autocomplete="off" readonly="true">
+                <input onchange="getagesecondage(this.value)" type="text" class="form-control inputdate" id="date_of_birth_two" placeholder="MM-DD-YYYY" name="years[]" autocomplete="off" readonly="true">
                 <span class="input-group-addon add-on"><i class="fa fa-calendar dobsecond" aria-hidden="true"></i>
                 </span>
             </div>
@@ -50,14 +50,14 @@
         <div class="row wow slideInUp animated animated" id="days-calculate" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInUp;">
            <div class="input-group input-append date col-md-4" id="datePicker_0">
                 <label>Start Date <span class="text-danger" id="departure_date_error"></span></label>
-                <input type="text" @if($data->url != 'visitor-insurance') onchange="supervisayes()" @endif @if($data->url == 'visitor-insurance') onchange="visitorinsuracendate()" @endif class="form-control" id="departure_date" name="departure_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
+                <input type="text" @if($data->url != 'visitor-insurance') onchange="supervisayes()" @endif @if($data->url == 'visitor-insurance') onchange="visitorinsuracendate()" @endif class="form-control inputdate" id="departure_date" name="departure_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
                 <span class="input-group-addon add-on">
                     <i class="fa fa-calendar visStartDate" aria-hidden="true"></i>
                 </span>
            </div>
            <div class="input-group input-append date col-md-4">
                 <label>End Date</label>
-                <input onchange="getnumberofdays()" type="text" class="form-control" name="return_date" id="return_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
+                <input onchange="getnumberofdays()" type="text" class="form-control inputdate" name="return_date" id="return_date" placeholder="MM-DD-YYYY" autocomplete="off" readonly="true">
                 <span class="input-group-addon add-on">
                     <i class="fa fa-calendar visEndDate" aria-hidden="true"></i>
                 </span>
@@ -79,6 +79,13 @@
                     @endforeach
                 </select>
             </div>
+            <div class="input-group input-append date col-md-4">
+               <label>Enter your Email</label>
+               <input type="text" @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif
+                    name="savers_email" placeholder="name@example.com" required id="savers_email" class="card-number">
+            </div>
+
+            
          </div>
 
          <h6>Would you like to cover pre-existing medical conditions? </h6>
@@ -142,7 +149,7 @@ $(function() {
     $('#departure_date').datepicker( {
         changeMonth: true,
         changeYear: true,
-        yearRange: "-100:+0",
+        yearRange: "-100:+6",
         minDate: new Date(),
     });
     $('#date_of_birth_two').datepicker( {

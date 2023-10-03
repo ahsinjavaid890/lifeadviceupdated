@@ -126,7 +126,7 @@
             </div>
         @endif
         @if ($data->stylish_form_layout == 'layout_9')
-            @include('frontend.companypages.includes.mainlayouttwo')
+            @include('frontend.travelinsurance.includes.form-ten-supervisa')
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div style="background-color:#f4f7fa" class="container-homepage">

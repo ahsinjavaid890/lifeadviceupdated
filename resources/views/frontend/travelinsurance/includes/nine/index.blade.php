@@ -183,7 +183,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12 display-none-on-mobile display-none-on-tablet">
-                        <h4 class="d-flex">Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
+                        <h4 style="font-size: 20px;" class="d-flex">Quote Reference : <span style="color: #2b3481;"><?php echo $quoteNumber; ?></span></h4>
                     </div>
                     <div class="col-md-12 adjust-quoto" style="border:none;">
                         <h4 class="deductible"
