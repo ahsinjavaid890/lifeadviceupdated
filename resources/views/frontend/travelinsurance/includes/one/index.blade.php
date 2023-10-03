@@ -187,8 +187,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-    <div class="container">
-        <div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;text-align: center;padding-top: 10px;margin-bottom:0px; background:#FFF;">
+    <div class="container" style="padding-top:20px">
+        <div class="row filterdiv hidden-xs" style="margin-bottom: 10px; border: 1px solid #ddd;text-align: center;padding-top: 10px;margin-bottom:0px; background:#FFF;">
             <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
                 <i class="fa fa-filter"></i> Filter Results
             </div>
