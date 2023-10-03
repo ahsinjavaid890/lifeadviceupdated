@@ -387,7 +387,7 @@
                            @endif
                         @endif
                         @endif
-                        @if(array_search("id_12",$orderdata) == $orderi)
+                        @if(array_search("id_15",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
                            <div class="col-md-6">

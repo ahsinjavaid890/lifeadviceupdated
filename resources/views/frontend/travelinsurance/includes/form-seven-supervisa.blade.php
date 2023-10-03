@@ -12,7 +12,7 @@
         <div class="row">
         @for ($orderi = 1; $orderi <= 17; $orderi++)
             
-                @if (array_search('id_12', $orderdata) == $orderi)
+                @if (array_search('id_15', $orderdata) == $orderi)
                     @if (isset($fields['fplan']))
                         @if ($fields['fplan'] == 'on')
                             <div class="col-md-6 mb-2">
