@@ -2,8 +2,8 @@
 <section class="firstsection">
     <div class="container-homepage">
         <div class="row birthdate">
-            <div class="col-md-3 hidden-xs"></div>
-            <div class="col-md-7 visa-insurance new-visa">
+            <div class="col-md-2 hidden-xs"></div>
+            <div class="col-md-8 visa-insurance new-visa">
                 <div class="col-md-12">
                     <div class="text-center">
                         <h3 class="content-title no-bm">Enter Your Trip Details</h3>
