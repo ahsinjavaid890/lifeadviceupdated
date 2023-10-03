@@ -73,7 +73,7 @@
                          }
                          } ?>];
 
-                        var iValue = SliderValues.indexOf({{$firstsuminsured}});
+                        var iValue = SliderValues.indexOf(@if($data->url == 'visitor-insurance') 50000 @else {{ $firstsuminsured }} @endif);
                         $(function () {
                             $("#sum_slider").slider({
                                 range: "min",
@@ -98,7 +98,7 @@
                           </script>
 
                        <div class="col-md-12">
-                        <h4 class="coverage">Coverage: <span id="coverage_amount">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }} @else ${{$firstsuminsured}} @endif</span></h4>
+                        <h4 class="coverage">Coverage: <span id="coverage_amount">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }} @else @if($data->url == 'visitor-insurance') $50000 @else {{ $firstsuminsured }} @endif @endif</span></h4>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
@@ -305,7 +305,7 @@
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
 
-                      <div class="col-md-12 col-sm-12 col-xs-12 control-input email-main">
+                      <div class="@if($data->url == 'visitor-insurance') col-md-6 @else col-md-12 col-sm-12 col-xs-12 @endif control-input email-main">
                         <label class="input-label">Email Address (Required)</label>
                         <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif id="savers_email" name="savers_email" value="" class="form-control " type="email" placeholder="Email" style="padding-left: 40px !important;" required="">
                         <span class="hidden-xs emailicon" style="color:#01a281;">

@@ -339,7 +339,7 @@
                             @if (array_search('id_4', $orderdata) == $orderi)
                                 @if (isset($fields['email']))
                                     @if ($fields['email'] == 'on')
-                                        <div class="col-md-12  col-sm-12 col-xs-12 control-input email-main">
+                                        <div class="@if($data->url == 'visitor-insurance') col-md-6 @else col-md-12 col-sm-12 col-xs-12 @endif control-input email-main">
                                             <label  for="savers_email"
                                                 class="">Email</label>
                                             <div class="custom-form-control">
