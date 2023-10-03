@@ -231,7 +231,8 @@
                               <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                                  <option value="">Number of Travellers</option>
                                  @for($i=1;$i<=$number_of_travel;$i++)
-                                 <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
+                                 <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                                        </option>
                                  @endfor
                               </select>
                            </div>
@@ -273,7 +274,7 @@
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12">
+                           <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}" class="no_of_travelers col-md-12">
                               <div class="row">
                                     <div class="col-md-6 padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                        <label for="day{{$i}}" class="">{{ $ordinal_words[$i] }} Traveller<span class="text-danger dateDisplay"></span></label>
