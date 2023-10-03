@@ -2,8 +2,8 @@
 <section class="firstsection">
     <div class="container-homepage">
         <div class="row birthdate">
-            <div class="col-md-2 hidden-xs"></div>
-            <div class="col-md-8 visa-insurance new-visa">
+            <div class="col-md-3 hidden-xs"></div>
+            <div class="col-md-7 visa-insurance new-visa">
                 <div class="col-md-12">
                     <div class="text-center">
                         <h3 class="content-title no-bm">Enter Your Trip Details</h3>
@@ -64,7 +64,7 @@
                                                             </div>
                                                         </div>
                                                         <div style="padding-right: 0px;"
-                                                            class="col-md-6 padding-left-zero-on-mobile">
+                                                            class="col-md-6 padding-left-on-desktop padding-left-zero-on-mobile">
                                                             <div class="custom-form-control">
                                                                 <label for="year{{ $i }}" class="">Pre Existing Conditions</label>
                                                                 <select name="pre_existing[]" class="form-control"
@@ -101,7 +101,7 @@
                                                             </div>
                                                         </div>
                                                         <div style="padding-right: 0px;"
-                                                            class="col-md-6 padding-left-zero-on-mobile">
+                                                            class="col-md-6 padding-left-on-desktop padding-left-zero-on-mobile">
                                                             <div class="custom-form-control">
                                                                 <label 
                                                                     for="year{{ $i }}" class="">Pre
