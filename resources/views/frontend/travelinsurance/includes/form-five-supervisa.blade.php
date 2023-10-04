@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayoutfive.css')}}">
 <div style="background-color: #f4f7fa;">
-   <div class="container birthdate new-visa pt-5">
+   <div class="container birthdate new-visa pt-5 form-fivecontainer">
 
 <style type="text/css">
    #quoteform{
@@ -93,8 +93,9 @@
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
                               @foreach($sum_insured as $key=> $r)
-                              <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif @endif value="{{ $r->sum_insured }}" @if($key == 0) selected
-                              @endif>${{ $r->sum_insured }}</option>
+                              <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
+                                selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
+                                $r->sum_insured }}</option>
                               @endforeach
                            </select>
                         </div>
@@ -194,7 +195,8 @@
                            <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                               <option value="">Number of Travellers</option>
                               @for($i=1;$i<=$number_of_travel;$i++)
-                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
+                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                </option>
                               @endfor
                            </select>
                         </div>
@@ -246,18 +248,18 @@
                            @endphp
 
                            @for($i=1;$i<=$number_of_travel;$i++)
-                           <div style="display: none;" id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
+                           <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                               <div class="row">
                                  <div class="col-md-3 text-md-right padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                    <div style=" padding-left: 23px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-9 " >
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-9 " >
                                        <input  id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                     </div>
                                     <div class="col-md-3 text-md-right padding-zero-onmobile-lef-side">
                                        <label for="year{{$i}}" class="input-label">Pre Existing of <?php echo $ordinal_words[$i];?><span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
                                     </div>
-                                    <div style=" padding-left: 23px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-9 ">
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-9 ">
                                        <select name="pre_existing[]" class="form-input">
                                           <option value="">Select Pre Existing of <?php echo $ordinal_words[$i];?></option>
                                           <option value="yes">Yes</option>
@@ -337,11 +339,14 @@
                            <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                         </div>
                         <div class="col-md-9 ">
-                           <select class="form-input" name="gender" id="gender">
-                              <option value="">Select Gender</option>
-                                <option value="male" >Male</option>
-                                <option value="female" >Female</option>
-                           </select>
+                           <div class="d-flex">
+                                 <label for="genderyes" class="oneradioinput">
+                                    <input type="radio" value="male" id="genderyes" name="gender">  Male
+                                 </label>
+                                 <label for="genderno" class="oneradioinput secondradioinput">
+                                    <input type="radio" value="female" id="genderno" name="gender"> Female
+                                 </label>
+                           </div>
                         </div>
                      @endif
                      @endif
@@ -362,16 +367,17 @@
                      @if(array_search("id_15",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                             <div class="col-md-3 text-right">
+                             <div class="col-md-3">
                                 <label for="" class="">Do you require Family Plan ? <span onclick="slidequestion('family')"><i class="fa fa-question-circle"></i></span> </label>
                              </div>
                              <div class="col-md-9 ">
-                                 <div class="custom-form-control">
-                                    <select onchange="changefamilyyes(this.value)" required class="form-input" name="fplan" id="selectfamilyplan">
-                                       <option value="">--- Please Choose ---</option>
-                                         <option value="yes">Yes</option>
-                                         <option value="no">No</option>
-                                    </select>
+                                 <div class="d-flex">
+                                       <label for="familyyes" class="oneradioinput">
+                                          <input onchange="changefamilyyes(this.value)" type="radio" value="yes" id="familyyes" name="fplan">  Yes
+                                       </label>
+                                       <label for="familyno" class="oneradioinput secondradioinput">
+                                          <input checked onchange="changefamilyyes(this.value)" type="radio" value="no" id="familyno" name="fplan"> No
+                                       </label>
                                  </div>
                               </div>
                               <input type="hidden" id="familyplan_temp" name="familyplan_temp" value="no">
@@ -407,17 +413,17 @@
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                              <div class="col-md-3  text-md-right">
-                                 <label for="" class="  text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
+                              <div class="col-md-3 text-md-right">
+                                 <label for="" class="text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
                               </div>
                               <div class="col-md-9 ">
-                                 <label for="" class="d-sm-none">Do you Smoke in last 12 months?</label>
-                                 <div class="custom-form-control">
-                                    <select required class="form-input" name="Smoke12" id="">
-                                       <option value="">--- Please Choose ---</option>
-                                         <option value="yes" >Yes</option>
-                                         <option value="no" >No</option>
-                                    </select>
+                                 <div class="d-flex">
+                                       <label for="smokeyes" class="oneradioinput">
+                                          <input type="radio" value="yes" id="smokeyes" name="Smoke12">  Yes
+                                       </label>
+                                       <label for="smokeno" class="oneradioinput secondradioinput">
+                                          <input checked type="radio" value="no" id="smokeno" name="Smoke12"> No
+                                       </label>
                                  </div>
                               </div>
                               <div class="col-md-12">

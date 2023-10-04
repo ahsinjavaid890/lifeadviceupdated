@@ -2,6 +2,12 @@
 .form-control:disabled, .form-control[readonly]{
 	background-color: white !important;
 }
+@media (min-width: 1400px)
+{
+.form-fivecontainer{
+	max-width: 1100px;
+}
+}
 #quoteform{
 	padding: 20px;
 	border-radius: 10px;
@@ -11,4 +17,22 @@
 	.padding-zero-onmobile-lef-side{
 		padding-left: 0px !important;
 	}
+}
+.secondradioinput{
+	margin-left: 15px;
+}
+.oneradioinput{
+	width: 49%;
+    border: 1px solid #aaa;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.oneradioinput input{
+	width: 18px;
+	height: 18px;
+	margin-right: 10px;
 }
