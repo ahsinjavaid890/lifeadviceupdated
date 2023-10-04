@@ -99,7 +99,14 @@
                 $countarray =  count($plan_rates);
                 if($countarray > 0)
                 {
-                    $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                    $maxs = array_keys($ages_array, max($ages_array));
+                    $preexistingcondition =  $request->pre_existing[$maxs[0]];
+                    if($preexistingcondition == 'yes')
+                    {
+                        $daily_rate = $plan_rates[0]->rate_with_pre_existing  * 2;
+                    }else{
+                        $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                    }                
                     if(!$daily_rate){ $display = '0'; }
                 }
                 else{
@@ -301,8 +308,8 @@ if($show == '1' && $total_price > 0){
                 </div>
             </div>
             <div class="compare col-md-3 col-xs-12 text-center">
-                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
-                <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <a style="height: 40px;padding: 9px 0px;" class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                <label style="height: 40px;padding: 9px 0px;" onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                 <!-- <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 

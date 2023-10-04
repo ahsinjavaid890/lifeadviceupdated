@@ -102,7 +102,7 @@
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
                            <div id="sum_slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
-                           <input type="hidden" id="sum_insured2" name="sum_insured2" @if(isset($_GET['sum_insured2'])) value="{{ $_GET['sum_insured2'] }}" @else value="{{$firstsuminsured}}" @endif />
+                           <input type="hidden" id="sum_insured2" name="sum_insured2" @if(isset($_GET['sum_insured2'])) value="{{ $_GET['sum_insured2'] }}" @else @if($data->url == 'visitor-insurance') value="50000" @else value="{{$firstsuminsured}}" @endif  @endif />
 
                            <input name="sum_insured" value="" type="hidden" id="hidden_sum_insured">
                         
@@ -283,7 +283,7 @@
                                        </div>
                                     </div>
                               
-                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-zero-on-mobile">
+                                    <div style="padding-right: 0px;" class="col-md-6 padding-left-on-desktop padding-left-zero-on-mobile">
                                        <label for="year{{$i}}" class="">Pre Existing of {{ $ordinal_words[$i] }}</label>
                                        <div class="custom-form-control">
                                           <select name="pre_existing[]" class="form-input">

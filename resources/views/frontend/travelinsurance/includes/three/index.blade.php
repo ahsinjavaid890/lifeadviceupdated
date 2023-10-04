@@ -80,14 +80,14 @@ $(function () {
         step: 1,
         value: iValue,
         slide: function (event, ui) {
-            $('#coverage_amount').text(SliderValues[ui.value]);
+            $('#coverage_amount_for_pricelayoutfour').text(SliderValues[ui.value]);
             //alert(SliderValues.length);
             for (i = 0; i < SliderValues.length; i++) {
                 var group = SliderValues[i];
                 $('.coverage-amt-'+group).hide();
             }
             $('.coverage-amt-'+SliderValues[ui.value]).show();
-            $( "#coverage_amount" ).val( "$" + SliderValues[ui.value] );
+            $( "#coverage_amount_for_pricelayoutfour" ).val( "$" + SliderValues[ui.value] );
 
             var uniqueClasses = {};
             $('#listprices .pricearray').each(function () {
@@ -186,7 +186,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 }
 ?>
 <div class="">
-<div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;background: #F9F9F9;text-align: center;padding-top: 10px;border-top: 4px solid #DDD;">   
+<div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;background: #F9F9F9;text-align: center;padding-top: 10px;border-top: 1px solid #DDD;margin-top: 10px;">   
     <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
     <i class="fa fa-filter"></i> Filter Results
     </div>
@@ -196,7 +196,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         <div id="slider" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
     </div>
     <div class="col-md-3 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
-         <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 115px;"></h4>
+         <h4 class="coverage" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage: <input type="text" id="coverage_amount_for_pricelayoutfour" name="coverage_amount" value="$<?php echo $request->sum_insured2;?>" style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 115px;"></h4>
         <div id="sum_slider_for_coverage" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;"></div>
     </div>
     <div class="col-md-3 quote_reference mobile-deisply-none" style="font-size:15px;">

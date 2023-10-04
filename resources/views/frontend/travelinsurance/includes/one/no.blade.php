@@ -194,7 +194,14 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             $second_countarray =  count($second_plan_rates);
             if($second_countarray > 0)
             {
-                $second_daily_rate = $second_plan_rates[0]->rate_without_pre_existing * 2;
+                $second_maxs = array_keys($second_ages_array, max($second_ages_array));
+                $second_preexistingcondition =  $request->pre_existing[$second_maxs[0]];
+                if($second_preexistingcondition == 'yes')
+                {
+                    $second_daily_rate = $second_plan_rates[0]->rate_with_pre_existing  * 2;
+                }else{
+                    $second_daily_rate = $second_plan_rates[0]->rate_without_pre_existing * 2;
+                }
                 if(!$second_daily_rate){ $second_display = '0'; }
             }
             else{
@@ -394,8 +401,8 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
             </div>
             <div class="compare col-md-3 col-xs-12 text-center">
-                <a class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
-                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <a style="height: 40px;padding: 9px 0px;" class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                <label style="height: 40px;padding: 9px 0px;" onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                 <!-- <small class="mobile-deisply-none">
                     <strong>Plan Type: </strong> 
                     @if($family_plan == 'yes') 

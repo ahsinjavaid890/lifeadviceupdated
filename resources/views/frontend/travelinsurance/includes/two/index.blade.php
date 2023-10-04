@@ -77,7 +77,7 @@
     } ?>];
     var iValue = SliderValues.indexOf({{ $request->sum_insured2 }});
     $(function() {
-        $("#sum_slider1").slider({
+        $("#sum_slider_for_price_layout").slider({
             range: "min",
             min: 0,
             max: SliderValues.length - 1,
@@ -235,8 +235,7 @@
                         value="$<?php echo $request->sum_insured2; ?>"
                         style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 115px;">
                 </h4>
-                <div id="sum_slider1"
-                    style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                <div id="sum_slider_for_price_layout" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
                 </div>
             </div>
             <div class="col-md-3 quote_reference mobile-deisply-none" style="font-size:15px;">

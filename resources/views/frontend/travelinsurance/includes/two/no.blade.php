@@ -194,7 +194,14 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
             $second_countarray =  count($second_plan_rates);
             if($second_countarray > 0)
             {
-                $second_daily_rate = $second_plan_rates[0]->rate_without_pre_existing * 2;
+                $second_maxs = array_keys($second_ages_array, max($second_ages_array));
+                $second_preexistingcondition =  $request->pre_existing[$second_maxs[0]];
+                if($second_preexistingcondition == 'yes')
+                {
+                    $second_daily_rate = $second_plan_rates[0]->rate_with_pre_existing  * 2;
+                }else{
+                    $second_daily_rate = $second_plan_rates[0]->rate_without_pre_existing * 2;
+                }
                 if(!$second_daily_rate){ $second_display = '0'; }
             }
             else{

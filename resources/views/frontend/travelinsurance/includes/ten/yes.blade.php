@@ -196,13 +196,15 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
                 if($countarray > 0)
                 {
-                    if($request->pre_existing[0]=='yes')
+                    $maxs = array_keys($ages_array, max($ages_array));
+                    $preexistingcondition =  $request->pre_existing[$maxs[0]];
+                    if($preexistingcondition == 'yes')
                     {
-                        $daily_rate = $planrates[0]->rate_with_pre_existing * 2;   //Multipling by 2 for family elder rate
-
+                        $daily_rate = $plan_rates[0]->rate_with_pre_existing  * 2;
                     }else{
-                        $daily_rate = $planrates[0]->rate_without_pre_existing * 2;   //Multipling by 2 for family elder rate
-                     }
+                        $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                    }                
+                    if(!$daily_rate){ $display = '0'; }
                 }
                 if(!$daily_rate)
                 {

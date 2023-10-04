@@ -13,6 +13,9 @@
                     <span class="summaryheading">Number of Days</span> : <span class="summarydata"> {{$second_num_of_days}} Days</span>
                 </div>
                 <div class="col-md-12">
+                    <span class="summaryheading">Coverage Amount</span> : <span class="summarydata"> ${{$second_sum_insured}}</span>
+                </div>
+                <div class="col-md-12">
                     <span class="summaryheading">Start Date</span> : <span class="summarydata"> {{ Cmf::date_format($second_startdate) }} </span>
                 </div>
                 <div class="col-md-12">

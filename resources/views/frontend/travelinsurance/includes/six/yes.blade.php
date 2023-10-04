@@ -108,7 +108,14 @@
             $countarray =  count($plan_rates);
             if($countarray > 0)
             {
-                $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                $maxs = array_keys($ages_array, max($ages_array));
+                $preexistingcondition =  $request->pre_existing[$maxs[0]];
+                if($preexistingcondition == 'yes')
+                {
+                    $daily_rate = $plan_rates[0]->rate_with_pre_existing  * 2;
+                }else{
+                    $daily_rate = $plan_rates[0]->rate_without_pre_existing * 2;
+                }                
                 if(!$daily_rate){ $display = '0'; }
             }
             else{
