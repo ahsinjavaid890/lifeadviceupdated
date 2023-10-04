@@ -43,7 +43,7 @@ class SiteController extends Controller
             echo $r;
         }
     }
-    public function savecompareplans($rand, $plan_id, $product_id, $coverage_ammount, $deductibles, $price)
+    public function savecompareplans($savetoplan,$rand, $plan_id, $product_id, $coverage_ammount, $deductibles, $price)
     {
         $check = DB::table('compare_plans')->where('comparenumber', $rand)->where('plan_id', $plan_id)->where('product_id', $product_id)->where('coverage_ammount', $coverage_ammount)->where('deductibles', $deductibles)->where('price', $price);
 
@@ -51,6 +51,7 @@ class SiteController extends Controller
             $check->delete();
         } else {
             $compare = new compare_plans();
+            $compare->savetoplan = $savetoplan;
             $compare->comparenumber = $rand;
             $compare->plan_id = $plan_id;
             $compare->product_id = $product_id;

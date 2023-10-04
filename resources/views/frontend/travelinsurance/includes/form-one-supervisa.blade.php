@@ -211,7 +211,8 @@
                         <select onchange="checknumtravellers(this.value)" required class="form-input"
                             name="number_travelers" id="number_travelers">
                             <option value="">Number of Travellers</option>
-                            @for ($i = 1; $i <= $number_of_travel; $i++) <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                            @for ($i = 1; $i <= $number_of_travel; $i++) 
+                            <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
                                 </option>
                                 @endfor
                         </select>

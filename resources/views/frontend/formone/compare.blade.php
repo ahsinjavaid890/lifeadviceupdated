@@ -220,11 +220,43 @@
                            <div  class="plan-price subheading-2">
                               <span class="price-value">${{ number_format($r->price,2) }}</span>
                            </div>
-                           <!-- <div class="plan-card-cta-container">
+                           <form method="POST" action="{{ url('apply') }}">
+                                @csrf
+                                <input type="hidden" value="{{ $request->savers_email }}" name="email">
+                                <input type="hidden" value="{{ $request->fname }}" name="fname">
+                                <input type="hidden" value="{{ $request->lname }}" name="lname">
+                                <input type="hidden" value="{{ $r->coverage_ammount }}" name="coverage">
+                                <input type="hidden" value="{{ $number_travelers }}" name="traveller">
+                                <input type="hidden" value="{{ $r->deductibles }}" name="deductibles">
+                                <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
+                                <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
+                                @foreach($request->years as $year)
+                                <input type="hidden" name="years[]" value="{{ $year }}">
+                                @endforeach
+                                @foreach($request->pre_existing as $preexisting)
+                                <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
+                                @endforeach
+                                <input type="hidden" value="{{ $num_of_days }}" name="days">
+                                <input type="hidden" value="{{ $comp_name }}" name="companyName">
+                                <input type="hidden" value="{{ $comp_id }}" name="comp_id">
+                                <input type="hidden" value="{{ $plan_name }}" name="planname">
+                                <input type="hidden" value="{{ $plan_id }}" name="plan_id">
+                                <input type="hidden" value="{{ $startdate }}" name="tripdate">
+                                <input type="hidden" value="{{ $enddate }}" name="tripend">
+                                <input type="hidden" value="{{ $total_price }}" name="premium">
+                                <input type="hidden" value="" name="cdestination">
+                                <input type="hidden" value="{{ $product_name }}" name="product_name">
+                                <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
+                                <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
+                                <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
+                                <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
+                                <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                            </form>
+                           <div class="plan-card-cta-container">
                               <a href="" class="button button-secondary">
                                  <span >Buy</span>
                               </a>
-                           </div> -->
+                           </div>
                         </div>
                   </div>
                </div>

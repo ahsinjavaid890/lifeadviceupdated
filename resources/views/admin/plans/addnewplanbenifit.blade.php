@@ -50,6 +50,15 @@
                     <div style="margin-top: 20px;" class="row">
                        <div class="col-md-12">
                           <div class="original">
+                            <div style="margin-bottom:20px;" class="row">
+                                <div class="col-md-12">
+                                   <select class="form-control" name="benifitcategory[]">
+                                    @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
+                                       <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                    @endforeach
+                                   </select>
+                                </div>
+                            </div>
                              <div class="row">
                                 <div class="col-md-12">
                                    <input required id="ibenefitHead1" name="ibenefitHead[]" class="form-control" placeholder="Enter Heading of Benefit" type="text">
@@ -58,7 +67,7 @@
                              <br>
                              <div class="row">
                                 <div class="col-md-12">
-                                   <textarea  placeholder="Enter benefit Description" class="form-control" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
+                                   <textarea  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
                                 </div>
                              </div>                 
                           </div>

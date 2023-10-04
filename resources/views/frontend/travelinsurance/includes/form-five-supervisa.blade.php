@@ -25,10 +25,10 @@
                      @if(array_search("id_1",$orderdata) == $orderi)
                         @if(isset($fields['fname']))
                         @if($fields['fname'] == 'on')
-                        <div class="col-md-3 text-md-right" >
+                        <div class="col-md-6 text-md-right" >
                            <label for="input-label"  class="input-label">First name</label>
                         </div>
-                        <div class="col-md-9 ">
+                        <div class="col-md-6 ">
                            <div class="custom-form-control">
                               <input type="text" name="fname" placeholder="First Name" required id="firstname" class="form-input ">
                            </div>
@@ -37,10 +37,10 @@
                         @endif
                         @if(isset($fields['lname']))
                         @if($fields['lname'] == 'on')
-                           <div class="col-md-3 text-md-right">
+                           <div class="col-md-6 text-md-right">
                               <label for="lname" class="input-label">Last name</label>
                            </div>
-                           <div class="col-md-9 ">
+                           <div class="col-md-6 ">
                               <div class="custom-form-control">
                                  <input type="text" name="lname" placeholder="Last Name" required id="lname" class="form-input">
                               </div>
@@ -51,10 +51,10 @@
                      @if(array_search("id_4",$orderdata) == $orderi)
                      @if(isset($fields['email']))
                         @if($fields['email'] == "on" )
-                           <div class="col-md-5 text-md-right" >
+                           <div class="col-md-6 text-md-right" >
                               <label for="savers_email" class="input-label">Email Address</label>
                            </div>
-                           <div class="col-md-7 ">
+                           <div class="col-md-6 ">
                               <div class="custom-form-control">
                                  <input  @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif style="padding-left:40px;" type="text" name="savers_email" placeholder="Email" required id="savers_email" class="form-input">
                                  <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -68,10 +68,10 @@
                      @if(array_search("id_7",$orderdata) == $orderi)
                      @if(isset($fields['phone']))
                      @if($fields['phone'] == 'on')
-                     <div class="col-md-3 text-md-right">
+                     <div class="col-md-6 text-md-right">
                         <label for="phonenumbermask"  class="input-label">Phone Number <b id="phone_error" class="text-danger"></b></label>
                      </div>
-                     <div class="col-md-9 ">
+                     <div class="col-md-6 ">
                         <div class="custom-form-control">
                            <input inputmode="numeric" style="padding-left:40px;" id="phonenumbermask" placeholder="000-000-0000" data-placeholder="000-000-0000" type="text" name="phone" required id="phone" class="form-input">
                            <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -85,10 +85,10 @@
                      @if(array_search("id_17",$orderdata) == $orderi)
                      @if(isset($fields['sum_insured']))
                      @if($fields['sum_insured'] == 'on')
-                     <div class="col-md-5 text-md-right">
+                     <div class="col-md-6 text-md-right">
                         <label for="coverageammount"  class="input-label">Coverage Amount <span onclick="slidequestion('coverage')"><i class="fa fa-question-circle"></i></span></label>
                      </div>
-                     <div class="col-md-7 ">
+                     <div class="col-md-6 ">
                         <div class="custom-form-control">
                            <select required class="form-input" name="sum_insured2" id="coverageammount">
                               <option value="">Coverage Amount</option>
@@ -133,10 +133,10 @@
                                  }
                               }
                            </script>
-                              <div class="col-md-5 text-md-right">
+                              <div class="col-md-6 text-md-right">
                                  <label for="primary_destination" class="input-label">Primary Destination</label>
                               </div>
-                              <div id="country" class="col-md-7">
+                              <div id="country" class="col-md-6">
                                  <div class="custom-form-control">
                                     <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Select Country</option>
@@ -148,10 +148,10 @@
                               </div>
                            <div class="col-md-12 " id="canadastate" style="display:none; padding-right:0px !important; padding-left:16px !important;">
                               <div class="row">
-                                 <div class="col-md-5 text-md-right">
+                                 <div class="col-md-6 text-md-right">
                                     <label for="primary_destination" class="input-label">States In Canda</label>
                                  </div>
-                                 <div class="col-md-7" >
+                                 <div class="col-md-6" >
                                     <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
                                        <option value="">Primary destination in Canada</option>
                                        @foreach(DB::table('primary_destination_in_canada')->get() as $r)
@@ -162,10 +162,10 @@
                               </div>
                            </div>
                            @else
-                           <div class="col-md-5 text-md-right">
+                           <div class="col-md-6 text-md-right">
                               <label for="primary_destination" class="input-label">Primary destination in Canada</label>
                            </div>
-                           <div class="col-md-7" >
+                           <div class="col-md-6" >
                               <div class="custom-form-control">
                                  <select required class="form-input" name="primary_destination" id="primary_destination">
                                     <option value="">Primary destination in Canada</option>
@@ -186,11 +186,11 @@
                         @endphp
                         @if($number_of_travel > 0)
 
-                        <div class="col-md-5 text-md-right">
+                        <div class="col-md-6 text-md-right">
                            <label for="number_travelers" class="input-label">Number of Travellers</label>
                         </div>
                         
-                        <div class="col-md-7 ">
+                        <div class="col-md-6 ">
                         <div class="custom-form-control">
                            <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                               <option value="">Number of Travellers</option>
@@ -211,10 +211,10 @@
                                                 @endphp
                                              <div id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                                              <div class="row">
-                                                <div class="col-md-5 text-md-right">
+                                                <div class="col-md-6 text-md-right">
                                                    <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                                 </div>
-                                                   <div class="custom-form-control col-md-7 " >
+                                                   <div class="custom-form-control col-md-6 " >
                                                       <input value="{{ $year }}" id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                                    </div>
                                                    <div class="col-md-6 text-md-right">
@@ -250,16 +250,16 @@
                            @for($i=1;$i<=$number_of_travel;$i++)
                            <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}" class="no_of_travelers col-md-12" >
                               <div class="row">
-                                 <div class="col-md-5 text-md-right padding-right-zero-on-mobile padding-left-zero-on-mobile">
+                                 <div class="col-md-6 text-md-right padding-right-zero-on-mobile padding-left-zero-on-mobile">
                                     <label for="day{{$i}}" class="input-label" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;  !important">Birth date of the <?php echo $ordinal_words[$i];?> Traveller</label>
                                  </div>
-                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-7 " >
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-6 " >
                                        <input  id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
                                     </div>
-                                    <div class="col-md-5 text-md-right padding-zero-onmobile-lef-side">
+                                    <div class="col-md-6 text-md-right padding-zero-onmobile-lef-side">
                                        <label for="year{{$i}}" class="input-label">Pre Existing of <?php echo $ordinal_words[$i];?><span onclick="slidequestion('preexisting{{ $i }}')"><i class="fa fa-question-circle"></i></span></label>
                                     </div>
-                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-7 ">
+                                    <div style=" padding-left: 20px; padding-right: 0; " class="padding-zero-onmobile-lef-side custom-form-control col-md-6 ">
                                        <select name="pre_existing[]" class="form-input">
                                           <option value="">Select Pre Existing of <?php echo $ordinal_words[$i];?></option>
                                           <option value="yes">Yes</option>
@@ -291,10 +291,10 @@
                      @if(isset($fields['sdate']) && $fields['sdate'] == "on" && isset($fields['edate']) && $fields['edate'] == "on")
                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-                        <div class="col-md-5 text-md-right">
+                        <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">Start Date of Coverage</label>
                         </div>
-                        <div class="col-md-7 ">
+                        <div class="col-md-6 ">
                              <div class="custom-form-control">
                               <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif style="padding-left:40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
                               <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -310,10 +310,10 @@
                         </script>
                            </div>
                         </div>
-                        <div class="col-md-5 text-md-right">
+                        <div class="col-md-6 text-md-right">
                            <label for="departure_date" class="input-label">End Date of Coverage</label>
                         </div>
-                        <div class="col-md-7 ">
+                        <div class="col-md-6 ">
                            <div class="custom-form-control">
                               <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif style="padding-left:40px;" id="return_date" autocomplete="off" name="return_date" value=""  class="form-control"  type="text" placeholder="End Date" required @if($data->pro_supervisa == 1) readonly type="date" @endif >
                               <span class="hidden-xs emailicon" style="color:#1BBC9B;">
@@ -335,10 +335,10 @@
                      @endif
                      @if(array_search("id_14",$orderdata) == $orderi)
                      @if(isset($fields['gender']) && $fields['gender'] == "on" )
-                        <div class="col-md-5 text-md-right">
+                        <div class="col-md-6 text-md-right">
                            <label for="gender"  class="input-label">Primary Applicant`s Gender</label>
                         </div>
-                        <div class="col-md-7 ">
+                        <div class="col-md-6 ">
                            <div class="d-flex">
                                  <label for="genderyes" class="oneradioinput">
                                     <input type="radio" value="male" id="genderyes" name="gender">  Male
@@ -352,10 +352,10 @@
                      @endif
                      @if(array_search("id_12",$orderdata) == $orderi)
                      @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                        <div class="col-md-5 text-md-right">
+                        <div class="col-md-6 text-md-right">
                            <label class="input-label">Gender of the Oldest traveller</label>
                         </div>
-                        <div class="custom-form-control col-md-7 ">
+                        <div class="custom-form-control col-md-6 ">
                            <select class="form-input">
                               <option value="">Select Gender</option>
                                 <option value="male" >Male</option>
@@ -367,10 +367,10 @@
                      @if(array_search("id_15",$orderdata) == $orderi)
                         @if(isset($fields['fplan']))
                            @if($fields['fplan'] == 'on')
-                             <div class="col-md-5 text-md-right">
+                             <div class="col-md-6 text-md-right">
                                 <label for="" class="">Do you require Family Plan ? <span onclick="slidequestion('family')"><i class="fa fa-question-circle"></i></span> </label>
                              </div>
-                             <div class="col-md-7 ">
+                             <div class="col-md-6 ">
                                  <div class="d-flex">
                                        <label for="familyyes" class="oneradioinput">
                                           <input onchange="changefamilyyes(this.value)" type="radio" value="yes" id="familyyes" name="fplan">  Yes
@@ -413,10 +413,10 @@
                         @if(array_search("id_5",$orderdata) == $orderi)
                            @if(isset($fields['Smoke12']))
                            @if($fields['Smoke12'] == 'on')
-                              <div class="col-md-5 text-md-right">
+                              <div class="col-md-6 text-md-right">
                                  <label for="" class="text-md-right" id="">Do you Smoke in last 12 months? <span onclick="slidequestion('smoke')"><i class="fa fa-question-circle"></i></span></label>
                               </div>
-                              <div class="col-md-7 ">
+                              <div class="col-md-6 ">
                                  <div class="d-flex">
                                        <label for="smokeyes" class="oneradioinput">
                                           <input type="radio" value="yes" id="smokeyes" name="Smoke12">  Yes
