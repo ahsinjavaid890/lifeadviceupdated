@@ -289,9 +289,37 @@ if($show == '1' && $total_price > 0){
             </p>
          </div>
          <div class="col-md-4 col-xs-12" style="border:0px solid #000;text-align:center;">
+            @php
+                $createbuynowarray = array(
+                    'plan_id'=>$plan_id,
+                    'pro_id'=>$data->pro_id,
+                    'sum_insured'=>$sum_insured,
+                    'deductible'=>$deductible,
+                    'savers_email'=>$request->savers_email,
+                    'fname'=>$request->fname,
+                    'lname'=>$request->lname,
+                    'number_travelers'=>$number_travelers,
+                    'deduct_rate'=>$deduct_rate,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'years'=>$request->years,
+                    'preexisting'=>$request->pre_existing,
+                    'num_of_days'=>$num_of_days,
+                    'comp_name'=>$comp_name,
+                    'comp_id'=>$comp_id,
+                    'plan_name'=>$plan_name,
+                    'startdate'=>$startdate,
+                    'enddate'=>$enddate,
+                    'total_price'=>$total_price,
+                    'product_name'=>$product_name,
+                    'primary_destination'=>$request->primary_destination,
+                    'ages_array'=>$ages_array[0],
+                    'num_of_days'=>$num_of_days
+                );
+                $savetoplan = serialize($createbuynowarray)
+            @endphp
             <div class="text-right">
                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
-                 <input onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
+                 <input onclick="savecompareplans('{{ $savetoplan }}')" type="checkbox" style=" height: 26px; width: 20px; ">
             </div>
             <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn"
                data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>

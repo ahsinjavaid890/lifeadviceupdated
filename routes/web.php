@@ -95,7 +95,7 @@ Route::get('/compareplans/{id}', [SiteController::class, 'compareplans']);
 Route::get('/removecomarecard/{id}', [SiteController::class, 'removecomarecard']);
 
 
-Route::get('/savecompareplans/{savetoplan}/{rand}/{plan_id}/{product_id}/{coverage_ammount}/{deductibles}/{price}', [SiteController::class, 'savecompareplans']);
+Route::POST('/savecompareplans', [SiteController::class, 'savecompareplans']);
 Route::POST('/apply', [SiteController::class, 'applyplan']);
 Route::POST('/applyqoute', [SiteController::class, 'applyqoute']);
 Route::get('/conferm', [SiteController::class, 'confermquote']);

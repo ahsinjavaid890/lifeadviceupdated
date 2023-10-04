@@ -265,7 +265,35 @@ if($show == '1' && $total_price > 0){
             <button style="background-color: #2b3481; display: none;" class="btn btn-primary" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();">Buy Now</button>
             <button class="btn" style="background-color: #e84533 !important; background-image: linear-gradient(to bottom,#F25E30,#EB4733);  border: 1px solid #B0362B; color: #FFF;
                font-weight: bold;width: 100%; font-size: 16px; height: 42px;margin-top: 10px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();">Buy Now</button>
-            <label onclick="savecompareplans({{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+               @php
+                    $createbuynowarray = array(
+                        'plan_id'=>$plan_id,
+                        'pro_id'=>$data->pro_id,
+                        'sum_insured'=>$sum_insured,
+                        'deductible'=>$deductible,
+                        'savers_email'=>$request->savers_email,
+                        'fname'=>$request->fname,
+                        'lname'=>$request->lname,
+                        'number_travelers'=>$number_travelers,
+                        'deduct_rate'=>$deduct_rate,
+                        'date_of_birth'=>$request->date_of_birth,
+                        'years'=>$request->years,
+                        'preexisting'=>$request->pre_existing,
+                        'num_of_days'=>$num_of_days,
+                        'comp_name'=>$comp_name,
+                        'comp_id'=>$comp_id,
+                        'plan_name'=>$plan_name,
+                        'startdate'=>$startdate,
+                        'enddate'=>$enddate,
+                        'total_price'=>$total_price,
+                        'product_name'=>$product_name,
+                        'primary_destination'=>$request->primary_destination,
+                        'ages_array'=>$ages_array[0],
+                        'num_of_days'=>$num_of_days
+                    );
+                    $savetoplan = serialize($createbuynowarray)
+                @endphp
+            <label onclick="savecompareplans('{{ $savetoplan }}')" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
          </div>
          @include('frontend.travelinsurance.includes.policydetails')
          @include('frontend.travelinsurance.includes.buynowform')

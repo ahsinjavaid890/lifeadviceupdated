@@ -43,24 +43,25 @@ class SiteController extends Controller
             echo $r;
         }
     }
-    public function savecompareplans($savetoplan,$rand, $plan_id, $product_id, $coverage_ammount, $deductibles, $price)
+    public function savecompareplans(Request $request)
     {
-        $check = DB::table('compare_plans')->where('comparenumber', $rand)->where('plan_id', $plan_id)->where('product_id', $product_id)->where('coverage_ammount', $coverage_ammount)->where('deductibles', $deductibles)->where('price', $price);
+        $data = unserialize($request->savetoplan);
+        $check = DB::table('compare_plans')->where('comparenumber', $request->rand)->where('plan_id', $data['plan_id'])->where('product_id', $data['pro_id'])->where('coverage_ammount', $data['sum_insured'])->where('deductibles', $data['deductible'])->where('price', $data['total_price']);
 
         if ($check->count() > 0) {
             $check->delete();
         } else {
             $compare = new compare_plans();
-            $compare->savetoplan = $savetoplan;
-            $compare->comparenumber = $rand;
-            $compare->plan_id = $plan_id;
-            $compare->product_id = $product_id;
-            $compare->coverage_ammount = $coverage_ammount;
-            $compare->deductibles = $deductibles;
-            $compare->price = $price;
+            $compare->savetoplan = $request->savetoplan;
+            $compare->comparenumber = $request->rand;
+            $compare->plan_id = $data['plan_id'];
+            $compare->product_id = $data['pro_id'];
+            $compare->coverage_ammount = $data['sum_insured'];
+            $compare->deductibles = $data['deductible'];
+            $compare->price = $data['total_price'];
             $compare->save();
         }
-        $data = DB::table('compare_plans')->where('comparenumber', $rand)->get();
+        $data = DB::table('compare_plans')->where('comparenumber', $request->rand)->get();
 
         if($data->count()){
             echo '<div class="container">
@@ -69,7 +70,11 @@ class SiteController extends Controller
     border-radius: 50%;" class="icon icon-remove-card"></i>
             <div class="d-flex showcomparediv">';
     foreach ($data as $r) {
-        $plan = DB::table('wp_dh_insurance_plans')->where('id', $r->plan_id)->first();
+
+
+        $unserialize = unserialize($r->savetoplan);
+
+        $plan = DB::table('wp_dh_insurance_plans')->where('id', $unserialize['plan_id'])->first();
 
 
         if ($plan->plan_name) {
@@ -100,7 +105,7 @@ class SiteController extends Controller
     }
     echo '<p class="text-secondary-color compare-bar__count"><span>' . $data->count() . '</span>/3 Selected</p>';
     if ($data->count() > 1) {
-        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $rand . '">Compare</a>';
+        echo '<a target="_blank" class="button button-primary get-quotes-button" style="color:white;" href="' . url('compareplans') . '/' . $request->rand . '">Compare</a>';
     } else {
         echo '<a class="button button-default get-quotes-button" style="color:white;" href="javascript:void(0)" disabled>Compare</a>';
     }

@@ -194,7 +194,8 @@
       <div class="comparerow">
          @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $r)
          @php
-            $plan = DB::table('wp_dh_insurance_plans')->where('id' , $r->plan_id)->first();
+            $data = unserialize($r->savetoplan);
+            $plan = DB::table('wp_dh_insurance_plans')->where('id' , $data['plan_id'])->first();
             $planname = $plan->plan_name;
             $insurance_company = $plan->insurance_company;
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
@@ -210,53 +211,54 @@
                         </div>
                         <div class="coverageanddeductibles mt-3">
                            <div class="coverageammount">
-                              <h2>Coverage : ${{ $r->coverage_ammount }}</h2>
+                              <h2>Coverage : ${{ $data['sum_insured'] }}</h2>
                            </div>
                            <div class="deductibles">
-                              <h2>Deductible : ${{ $r->deductibles }}</h2>
+                              <h2>Deductible : ${{ $data['deductible'] }}</h2>
                            </div>
                         </div>
                         <div  class="card-plan__pricing-row">
                            <div  class="plan-price subheading-2">
-                              <span class="price-value">${{ number_format($r->price,2) }}</span>
+                              <span class="price-value">${{ number_format($data['total_price'],2) }}</span>
                            </div>
                            <form method="POST" action="{{ url('apply') }}">
                                 @csrf
-                                <input type="hidden" value="{{ $request->savers_email }}" name="email">
-                                <input type="hidden" value="{{ $request->fname }}" name="fname">
-                                <input type="hidden" value="{{ $request->lname }}" name="lname">
-                                <input type="hidden" value="{{ $r->coverage_ammount }}" name="coverage">
-                                <input type="hidden" value="{{ $number_travelers }}" name="traveller">
-                                <input type="hidden" value="{{ $r->deductibles }}" name="deductibles">
-                                <input type="hidden" value="{{ $deduct_rate }}" name="deductible_rate">
-                                <input type="hidden" value="{{ $request->date_of_birth }}" name="person1">
-                                @foreach($request->years as $year)
+                                <input type="hidden" value="{{ $data['savers_email'] }}" name="email">
+                                <input type="hidden" value="{{ $data['fname'] }}" name="fname">
+                                <input type="hidden" value="{{ $data['lname'] }}" name="lname">
+                                <input type="hidden" value="{{ $data['sum_insured'] }}" name="coverage">
+                                <input type="hidden" value="{{ $data['number_travelers'] }}" name="traveller">
+                                <input type="hidden" value="{{ $data['deductible'] }}" name="deductibles">
+                                <input type="hidden" value="{{ $data['deduct_rate'] }}" name="deductible_rate">
+                                <input type="hidden" value="{{ $data['date_of_birth'] }}" name="person1">
+                                @foreach($data['years'] as $year)
                                 <input type="hidden" name="years[]" value="{{ $year }}">
                                 @endforeach
-                                @foreach($request->pre_existing as $preexisting)
+                                @foreach($data['preexisting'] as $preexisting)
                                 <input type="hidden" name="preexisting[]" value="{{ $preexisting }}">
                                 @endforeach
-                                <input type="hidden" value="{{ $num_of_days }}" name="days">
-                                <input type="hidden" value="{{ $comp_name }}" name="companyName">
-                                <input type="hidden" value="{{ $comp_id }}" name="comp_id">
-                                <input type="hidden" value="{{ $plan_name }}" name="planname">
-                                <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-                                <input type="hidden" value="{{ $startdate }}" name="tripdate">
-                                <input type="hidden" value="{{ $enddate }}" name="tripend">
-                                <input type="hidden" value="{{ $total_price }}" name="premium">
+                                <input type="hidden" value="{{ $data['num_of_days'] }}" name="days">
+                                <input type="hidden" value="{{ $data['comp_name'] }}" name="companyName">
+                                <input type="hidden" value="{{ $data['comp_id'] }}" name="comp_id">
+                                <input type="hidden" value="{{ $data['plan_name'] }}" name="planname">
+                                <input type="hidden" value="{{ $data['plan_id'] }}" name="plan_id">
+                                <input type="hidden" value="{{ $data['startdate'] }}" name="tripdate">
+                                <input type="hidden" value="{{ $data['enddate'] }}" name="tripend">
+                                <input type="hidden" value="{{ $data['total_price'] }}" name="premium">
                                 <input type="hidden" value="" name="cdestination">
-                                <input type="hidden" value="{{ $product_name }}" name="product_name">
-                                <input type="hidden" value="{{ $data->pro_id }}" name="product_id">
-                                <input type="hidden" value="{{ $request->primary_destination }}" name="destination">
-                                <input type="hidden" value="{{ $product_name }}" name="visitor_visa_type">
-                                <input type="hidden" value="{{ $num_of_days }}" name="tripduration">
-                                <input type="hidden" value="{{ $ages_array[0] }}" name="age">
+                                <input type="hidden" value="{{ $data['product_name'] }}" name="product_name">
+                                <input type="hidden" value="{{ $data['pro_id'] }}" name="product_id">
+                                <input type="hidden" value="{{ $data['primary_destination'] }}" name="destination">
+                                <input type="hidden" value="{{ $data['product_name'] }}" name="visitor_visa_type">
+                                <input type="hidden" value="{{ $data['num_of_days'] }}" name="tripduration">
+                                <input type="hidden" value="{{ $data['ages_array'] }}" name="age">
+                                <div class="plan-card-cta-container">
+                                 <button type="submit" class="button button-secondary">
+                                    <span >Buy</span>
+                                 </button>
+                              </div>
                             </form>
-                           <div class="plan-card-cta-container">
-                              <a href="" class="button button-secondary">
-                                 <span >Buy</span>
-                              </a>
-                           </div>
+                           
                         </div>
                   </div>
                </div>
@@ -288,13 +290,16 @@
                                        <div class="panel-content--heading">{{ $b->benefits_head }}</div>
                                     </span>
                                  </div>
-                                 @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $h)
-                                 <?php
-                                    $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h->plan_id)->first();
+                                 @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $u)
+                                 @php
+                                    $h = unserialize($u->savetoplan);
+
+
+                                    $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h['plan_id'])->first();
                                     $planname = $plan->plan_name;
-                                 ?>
+                                 @endphp
                                  <div class="panel-content__table-cell">
-                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h->plan_id)->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
+                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
                                  </div>
                                  @endforeach
                               </div>

@@ -308,12 +308,36 @@ if($show == '1' && $total_price > 0){
                 </div>
             </div>
             @php
-                $createbuynowarray = array('plan_id'=>$plan_id,'pro_id'=>$data->pro_id);
+                $createbuynowarray = array(
+                    'plan_id'=>$plan_id,
+                    'pro_id'=>$data->pro_id,
+                    'sum_insured'=>$sum_insured,
+                    'deductible'=>$deductible,
+                    'savers_email'=>$request->savers_email,
+                    'fname'=>$request->fname,
+                    'lname'=>$request->lname,
+                    'number_travelers'=>$number_travelers,
+                    'deduct_rate'=>$deduct_rate,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'years'=>$request->years,
+                    'preexisting'=>$request->pre_existing,
+                    'num_of_days'=>$num_of_days,
+                    'comp_name'=>$comp_name,
+                    'comp_id'=>$comp_id,
+                    'plan_name'=>$plan_name,
+                    'startdate'=>$startdate,
+                    'enddate'=>$enddate,
+                    'total_price'=>$total_price,
+                    'product_name'=>$product_name,
+                    'primary_destination'=>$request->primary_destination,
+                    'ages_array'=>$ages_array[0],
+                    'num_of_days'=>$num_of_days
+                );
                 $savetoplan = serialize($createbuynowarray)
             @endphp
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a style="height: 40px;padding: 9px 0px;" class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
-                <label style="height: 40px;padding: 9px 0px;" onclick="savecompareplans('{{ $savetoplan }}',{{ $plan_id }},{{ $data->pro_id }},{{ $sum_insured }},{{ $deductible }},{{ $total_price }})" class="col-md-12 col-xs-5 comparebutton{{ $plan_id }}{{ $data->pro_id }}{{ $sum_insured }}{{ $deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <label style="height: 40px;padding: 9px 0px;" onclick="savecompareplans('{{ $savetoplan }}')" class="col-md-12 col-xs-5" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
             @include('frontend.travelinsurance.includes.policydetails')
             @include('frontend.travelinsurance.includes.buynowform')

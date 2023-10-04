@@ -165,7 +165,7 @@
         }
         $(".hoverdetails_"+id).slideToggle();
     }
-    function savecompareplans(savetoplan,plan_id,product_id,coverage_ammount,deductibles,price) 
+    function savecompareplans(savetoplan) 
     {
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
@@ -196,13 +196,9 @@
         });
         $.ajax({
             type:'POST',
-            url: '{{ url("savecompareplans") }}/'+savetoplan+'/'+{{ $rand }}+'/'+plan_id+'/'+product_id+'/'+coverage_ammount+'/'+deductibles+'/'+price,
-            cache:false,
-            contentType: false,
-            processData: false,
+            url: '{{ url("savecompareplans") }}',
+            data:{savetoplan:savetoplan,rand:{{$rand}}},
             success: function(data){
-                console.log('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles);
-                $('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles).addClass('selectedcomparebutton')
                 if(data){
                     $('.compare_header_top').show();
                     $('.compare_header_top').html(data);
