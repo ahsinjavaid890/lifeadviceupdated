@@ -169,7 +169,7 @@
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
 <script>
-	function savecompareplans(plan_id,product_id,coverage_ammount,deductibles,price) 
+	function savecompareplans(savetoplan) 
     {
         var $checkboxes = jQuery('.compare input[type="checkbox"]');
         $checkboxes.change(function(e){
@@ -193,14 +193,16 @@
                 jQuery('.compare_header_top').hide();
             }
         });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
-            type:'GET',
-            url: '{{ url("savecompareplans") }}/'+{{ $rand }}+'/'+plan_id+'/'+product_id+'/'+coverage_ammount+'/'+deductibles+'/'+price,
-            cache:false,
-            contentType: false,
-            processData: false,
+            type:'POST',
+            url: '{{ url("savecompareplans") }}',
+            data:{savetoplan:savetoplan,rand:{{$rand}}},
             success: function(data){
-                $('.comparebutton'+plan_id+product_id+coverage_ammount+deductibles).addClass('selectedcomparebutton');
                 if(data){
                     $('.compare_header_top').show();
                     $('.compare_header_top').html(data);
