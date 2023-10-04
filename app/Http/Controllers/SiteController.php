@@ -155,6 +155,31 @@ class SiteController extends Controller
     }
     public function sendcompareemail(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
+        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
+        $reviewemailview = 'email.template' . $temp . '.review';
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject($subject);
+        });
+        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject('Tell Us How We Did?');
+        });
+        $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to('admin@lifeadvice.ca');
+            $message->subject($subject);
+        });
+
         Mail::send('email.compare', array('request' => $request), function ($message) use ($request) {
             $message->to($request->email)->subject('Comparisons of Insurance Plans');
             $message->from('compare@lifeadvice.ca', 'LIFEADVICE');

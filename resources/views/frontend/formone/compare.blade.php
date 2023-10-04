@@ -34,12 +34,49 @@
                      <div class="popup-modal__content">
                         <p class="text-secondary-color"> We’ll send a link to come back and view these plans. </p>
                      </div>
+                     
+                     <form id="sendemailform" method="POST" action="{{ url('sendcompareemail') }}">
+                        @csrf
                      <div class="popup-modal__input-field">
-                        <!----><label class="form-input input-email"><input type="text" placeholder="Enter an email address" required="required" class="input-field"><span class="label-text">Email</span></label>
+                        <label class="form-input input-email">
+
+                           <input type="text" name="email" placeholder="Enter an email address" required="required" class="input-field">
+                           <span class="label-text">Email</span>
+                           <div class="print-error-msg-login" style="display:none;background-color: white;">
+                               <ul style="text-align:left;"></ul>
+                           </div>
+                        </label>
                      </div>
-                     <button disabled="disabled" class="button button-rounded button-primary"> Send </button>
+                     <button type="submit" id="sendemailbutton" class="button button-rounded button-primary"> Send </button>
+                     </form>
                   </div>
                </div>
+               <script type="text/javascript">
+                  $('#sendemailform').on('submit', (function(e) {
+                       $('#sendemailbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
+                       e.preventDefault();
+                       var formData = new FormData(this);
+                       $.ajax({
+                           type: 'POST', 
+                           url: $(this).attr('action'),
+                           data: formData,
+                           cache: false,
+                           contentType: false,
+                           processData: false,
+                           success: function(data) {
+                           if($.isEmptyObject(data.error)){
+                               $('#sendemailbutton').html('Send');
+                              console.log('test');
+                               $(".print-error-msg-login").find("ul").html('');
+                               $(".print-error-msg-login").css('display','none');
+                           }else{
+                               $('#sendemailbutton').html('Send');
+                               printErrorMsglogin(data.error);
+                           }   
+                           }
+                       });
+                   }));
+               </script>
                <div class="subscribe-success-wrapper">
                   <img src="https://assets.visitorscoverage.com/production/app/img/quote-results/done.svg" alt="success icon" class="popup-modal__icon">
                   <div class="popup-modal__title">Your plan comparison have been sent!</div>
