@@ -376,15 +376,17 @@ if($second_show == '1' && $second_total_price > 0){
                $<?php echo $second_deductible; ?> Deductible
             </p>
          </div>
-         <div class="col-md-4 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <div class="text-right">
-                <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
-                 <input onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" type="checkbox" style=" height: 26px; width: 20px; ">
-            </div>
+         <div class="col-md-3 col-xs-12" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynowbtn"
-               class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
+               class="btn btn-lg btn-danger" style="margin-top: 12px;background-color: #f56c02;height: 60px;width: 60%;font-size: 18px;font-weight: 700;" name="buynow">Buy Now</button>
                <span class="badge badge-danger">This is Pre Existing Plan</span>
          </div>
+         <div class="col-md-1 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <div class="text-center" style="margin-top: 16px;">
+                 <input onclick="savecompareplans('')" type="checkbox" style=" height: 18px; width: 18px; ">
+                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
+            </div>
+        </div>
       </div>
       @include('frontend.travelinsurance.includes.nopolicydetails')
       @include('frontend.travelinsurance.includes.nobuynowform')

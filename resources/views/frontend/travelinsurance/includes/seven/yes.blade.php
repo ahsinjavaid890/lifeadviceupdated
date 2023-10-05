@@ -317,9 +317,7 @@ if($show == '1' && $total_price > 0){
                 );
                 $savetoplan = serialize($createbuynowarray)
             @endphp
-            
             <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn" class="btn btn-lg btn-danger" style="margin-top: 12px;background-color: #f56c02;height: 60px;width: 60%;font-size: 18px;font-weight: 700;" name="buynow">Buy Now</button>
-
         </div>
         <div class="col-md-1 col-xs-12" style="border:0px solid #000;text-align:center;">
             <div class="text-center" style="margin-top: 16px;">
