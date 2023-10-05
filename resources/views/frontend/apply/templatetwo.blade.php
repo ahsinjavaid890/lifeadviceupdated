@@ -17,12 +17,94 @@
 	<div class="row mt-5">
 	<div class="col-md-7">
 		<div class="purchase-policy-step-1">
-			<form id="myform" method="POST" action="">
+			<form id="myform" method="POST" action="{{ url('apply-steptwo') }}">
+				@csrf
 	            <div  class="grid-container">
 	               <div class="grid-row">
 	                  <h2 class="purchaseheading">Purchase Your Policy</h2>
 	                  <p  class="text-blue-accessible-color step-description"><span >STEP 1: ENTER YOUR TRIP DETAILS</span></p>
 	                  <div  class="card card__no-border step-details">
+	                  	<h3 class="heading-4">Trip Information</h3>
+						<div class="form-group mt-3">
+							<div class="row">
+								<div class="col-md-4">
+									<label class="label">Coverage Start Date</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Coverage Start Date</label>
+					                 	<input value="{{ Cmf::date_format($request->tripdate) }}" type="text" readonly name="tripdate" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Coverage End Date</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Coverage End Date</label>
+					                 	<input value="{{ Cmf::date_format($request->tripend) }}" type="text" readonly name="tripend" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Number of Days</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Number of Days</label>
+					                 	<input value="{{ $request->tripduration }} Days" type="text" readonly name="tripduration" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Coverage Amount</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Coverage Amount</label>
+					                 	<input value="${{ number_format($request->coverage) }}" type="text" readonly name="coverage" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Deductible</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Deductible</label>
+					                 	<input name="deductibles" value="${{ number_format($request->deductibles) }}" type="text" readonly  required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Premium</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Premium</label>
+					                 	<input name="premium" value="$<?php echo number_format($request->premium,2); ?>" type="text" readonly  required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Insurance Company</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Insurance Company</label>
+					                 	<input name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $request->comp_id)->first()->comp_name }}" type="text" readonly  required class="input">
+					              	</div>
+								</div>
+							</div>
+						</div>
+						<hr>
 	         			@for($i=0; $i < $request->traveller; $i++)
 	        			@php
 	        				$year = $request->years[$i];

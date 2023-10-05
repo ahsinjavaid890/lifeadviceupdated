@@ -37,6 +37,11 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function applysteptwo(Request $request)
+    {
+        $data = $request->all();
+        Session::put('firstdata', $data);
+    }
     public function getstates($id)
     {
         $data = DB::table('states')->where('country_id' , $id)->get();
