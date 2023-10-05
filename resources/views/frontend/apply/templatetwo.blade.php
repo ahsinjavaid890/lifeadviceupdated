@@ -12,13 +12,13 @@
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
-<div style="background-color: #f3f6f9;margin-top: 100px;">
+<div class="mainpageapplyform">
 	<div class="row mt-5">
 	<div class="col-md-7">
 		<div class="purchase-policy-step-1">
             <div  class="grid-container">
                <div class="grid-row">
-                  <h2 class="heading-2">Purchase Your Policy</h2>
+                  <h2 class="purchaseheading">Purchase Your Policy</h2>
                   <p  class="text-blue-accessible-color step-description"><span >STEP 1: ENTER YOUR TRIP DETAILS</span></p>
                   <div  class="card card__no-border step-details">
          			@for($i=0; $i < $request->traveller; $i++)
