@@ -253,7 +253,7 @@ if($show == '1' && $total_price > 0){
             } else {
             echo 'none';
             } ?>;">
-         <div class="col-md-4 col-xs-12 logogd">
+         <div class="col-md-5 col-xs-12 logogd">
             <div class="col-md-12 col-xs-12 text-center"
                style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
@@ -288,41 +288,49 @@ if($show == '1' && $total_price > 0){
                ${{ $deductible }} Deductible
             </p>
          </div>
-         <div class="col-md-3 col-xs-12" style="border:0px solid #000;text-align:center;">
-            @php
-                $createbuynowarray = array(
-                    'plan_id'=>$plan_id,
-                    'pro_id'=>$data->pro_id,
-                    'sum_insured'=>$sum_insured,
-                    'deductible'=>$deductible,
-                    'savers_email'=>$request->savers_email,
-                    'fname'=>$request->fname,
-                    'lname'=>$request->lname,
-                    'number_travelers'=>$number_travelers,
-                    'deduct_rate'=>$deduct_rate,
-                    'date_of_birth'=>$request->date_of_birth,
-                    'years'=>$request->years,
-                    'preexisting'=>$request->pre_existing,
-                    'num_of_days'=>$num_of_days,
-                    'comp_name'=>$comp_name,
-                    'comp_id'=>$comp_id,
-                    'plan_name'=>$plan_name,
-                    'startdate'=>$startdate,
-                    'enddate'=>$enddate,
-                    'total_price'=>$total_price,
-                    'product_name'=>$product_name,
-                    'primary_destination'=>$request->primary_destination,
-                    'ages_array'=>$ages_array[0],
-                    'num_of_days'=>$num_of_days
-                );
-                $savetoplan = serialize($createbuynowarray)
-            @endphp
-            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn" class="btn btn-lg btn-danger" style="margin-top: 12px;background-color: #f56c02;height: 60px;width: 60%;font-size: 18px;font-weight: 700;" name="buynow">Buy Now</button>
+        @php
+            $createbuynowarray = array(
+                'plan_id'=>$plan_id,
+                'pro_id'=>$data->pro_id,
+                'sum_insured'=>$sum_insured,
+                'deductible'=>$deductible,
+                'savers_email'=>$request->savers_email,
+                'fname'=>$request->fname,
+                'lname'=>$request->lname,
+                'number_travelers'=>$number_travelers,
+                'deduct_rate'=>$deduct_rate,
+                'date_of_birth'=>$request->date_of_birth,
+                'years'=>$request->years,
+                'preexisting'=>$request->pre_existing,
+                'num_of_days'=>$num_of_days,
+                'comp_name'=>$comp_name,
+                'comp_id'=>$comp_id,
+                'plan_name'=>$plan_name,
+                'startdate'=>$startdate,
+                'enddate'=>$enddate,
+                'total_price'=>$total_price,
+                'product_name'=>$product_name,
+                'primary_destination'=>$request->primary_destination,
+                'ages_array'=>$ages_array[0],
+                'num_of_days'=>$num_of_days
+            );
+            $savetoplan = serialize($createbuynowarray)
+        @endphp
+        <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
+            </button>
         </div>
-        <div class="col-md-1 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <div class="text-center" style="margin-top: 16px;">
-                 <input onclick="savecompareplans('{{ $savetoplan }}')" type="checkbox" style=" height: 18px; width: 18px; ">
-                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
+        <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+            <div class="compare center aligned middle aligned column">
+                <div class="ui center aligned header">
+                    <div class="field">
+                        <div class="text-center">
+                            <input data-productid="23" data-pid="217" price="983.12" style="width: 20px; height:auto !important;" type="checkbox" tabindex="0" class="hidden1" onclick="savecompareplans('{{ $savetoplan }}')">
+                            <label></label>
+                        </div>
+                    </div>
+                    <div class="sub header" style="font-size: 11px;">Compare</div>
+                </div>
             </div>
         </div>
       </div>

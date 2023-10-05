@@ -343,7 +343,7 @@ if($second_show == '1' && $second_total_price > 0){
             } else {
             echo 'none';
             } ?>;">
-         <div class="col-md-4 col-xs-12 logogd">
+         <div class="col-md-5 col-xs-12 logogd">
             <div class="col-md-12 col-xs-12 text-center"
                style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
@@ -376,15 +376,22 @@ if($second_show == '1' && $second_total_price > 0){
                $<?php echo $second_deductible; ?> Deductible
             </p>
          </div>
-         <div class="col-md-3 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynowbtn"
-               class="btn btn-lg btn-danger" style="margin-top: 12px;background-color: #f56c02;height: 60px;width: 60%;font-size: 18px;font-weight: 700;" name="buynow">Buy Now</button>
-               <span class="badge badge-danger">This is Pre Existing Plan</span>
-         </div>
-         <div class="col-md-1 col-xs-12" style="border:0px solid #000;text-align:center;">
-            <div class="text-center" style="margin-top: 16px;">
-                 <input onclick="savecompareplans('')" type="checkbox" style=" height: 18px; width: 18px; ">
-                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
+         <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
+            </button>
+            <span style="min-width: 150px;" class="badge badge-danger">This is Pre Existing Plan</span>
+        </div>
+        <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+            <div class="compare center aligned middle aligned column">
+                <div class="ui center aligned header">
+                    <div class="field">
+                        <div class="text-center">
+                            <input data-productid="23" data-pid="217" price="983.12" style="width: 20px; height:auto !important;" type="checkbox" tabindex="0" class="hidden1" value="983.12" onclick="comparetest()">
+                            <label></label>
+                        </div>
+                    </div>
+                    <div class="sub header" style="font-size: 11px;">Compare</div>
+                </div>
             </div>
         </div>
       </div>
