@@ -52,6 +52,12 @@
   font-weight: 800 !important;
   color: #2b3481!important;
 }
+.selectlabel {
+    left: 18px !important;
+}
+.error{
+  color: red !important;
+}
 .card {
     position: relative;
     display: flex;

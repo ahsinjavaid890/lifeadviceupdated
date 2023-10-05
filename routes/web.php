@@ -37,6 +37,7 @@ Route::POST('sendsecurelink', [CustomLoginController::class, 'sendsecurelink']);
 Route::get('securelogin/{id}', [CustomLoginController::class, 'securelogin']);
 
 
+Route::POST('applystepone', [SiteController::class, 'applystepone']);
 
 // Site Routes
 Route::get('/', [SiteController::class, 'index']);

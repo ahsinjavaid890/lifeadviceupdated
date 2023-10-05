@@ -12,130 +12,132 @@
 <script src="{{ url('public/front/js/select2.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js')}}"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <div class="mainpageapplyform">
 	<div class="row mt-5">
 	<div class="col-md-7">
 		<div class="purchase-policy-step-1">
-            <div  class="grid-container">
-               <div class="grid-row">
-                  <h2 class="purchaseheading">Purchase Your Policy</h2>
-                  <p  class="text-blue-accessible-color step-description"><span >STEP 1: ENTER YOUR TRIP DETAILS</span></p>
-                  <div  class="card card__no-border step-details">
-         			@for($i=0; $i < $request->traveller; $i++)
-        			@php
-        				$year = $request->years[$i];
-        				$preexisting = $request->preexisting[$i];
-        			@endphp
-        			<h3 class="heading-4">Traveler Information @if($request->traveller != 1) {{ $i+1 }} @endif</h3>
-        			<div class="form-group mt-3">
-						<div class="row">
-							<div class="col-md-4">
-								<label class="label">First Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+			<form id="myform" method="POST" action="">
+	            <div  class="grid-container">
+	               <div class="grid-row">
+	                  <h2 class="purchaseheading">Purchase Your Policy</h2>
+	                  <p  class="text-blue-accessible-color step-description"><span >STEP 1: ENTER YOUR TRIP DETAILS</span></p>
+	                  <div  class="card card__no-border step-details">
+	         			@for($i=0; $i < $request->traveller; $i++)
+	        			@php
+	        				$year = $request->years[$i];
+	        				$preexisting = $request->preexisting[$i];
+	        			@endphp
+	        			<h3 class="heading-4">Traveler Information @if($request->traveller != 1) {{ $i+1 }} @endif</h3>
+	        			<div class="form-group mt-3">
+							<div class="row">
+								<div class="col-md-4">
+									<label class="label">First Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">First Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+					                 	<input class="input" type="text" placeholder=" " name="fname[]" data-placeholder="First Name" required>
+					              	</div>
+								</div>
 							</div>
-							<div class="col-md-8 nopad">
-								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">First Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
-				                 	<input class="input" type="text" placeholder=" " name="fname[]" data-placeholder="First Name" required>
-				              	</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Last Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Last Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+					                 	<input class="input" type="text" placeholder=" " name="lname[]" data-placeholder="Last Name" required>
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Date OF Birth @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Date OF Birth Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+					                 	<input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Select Gender of Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+								</div>
+								<div class="col-md-8 nopad">
+				                    <div class=" positionrelative">
+				                    	<label class="selectlabel">Select Gender</label>
+			                            <select name="gender[]" class="gender form-control">
+			                               	<option value="">Select Gender</option>
+											<option value="Male">Male</option>
+											<option value="Female">Female</option>
+			                            </select>
+				                    </div>
+								</div>
 							</div>
 						</div>
+						<input value="{{ $preexisting }}" name="preexisting[]" type="hidden">
+						@endfor
+						<hr>
+						<h3 class="heading-4">Primary Information</h3>
+						<div class="form-group mt-3">
+							<div class="row">
+								<div class="col-md-4">
+									<label class="label">Phone Number</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Phone Number</label>
+					                 	<input value="{{ $request->phone }}" type="text" id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Sponsor Name</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Sponsor Name</label>
+					                 	<input class="input" type="" placeholder=" " id="" name="sponsersname">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Sponsor Relationship</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
+					                 	<input id="" class="input" type="" name="sponsersemail">
+					              	</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<h3 class="heading-4">Where can we email your policy details?</h3>
 						<div class="row mt-3">
 							<div class="col-md-4">
-								<label class="label">Last Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
+								<label class="label">Email Address</label>
 							</div>
 							<div class="col-md-8 nopad">
 								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">Last Name Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
-				                 	<input class="input" type="text" placeholder=" " name="lname[]" data-placeholder="Last Name" required>
+				                  	<label class="selectlabeldateofbirth">Email Address</label>
+				                 	<input class="input" type="email" placeholder="Email Address" value="{{ $request->email }}" name="email" data-placeholder="Email" required>
 				              	</div>
 							</div>
 						</div>
-						<div class="row mt-3">
-							<div class="col-md-4">
-								<label class="label">Date OF Birth @if($request->traveller != 1) {{ $i+1 }} @endif</label>
-							</div>
-							<div class="col-md-8 nopad">
-								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">Date OF Birth Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
-				                 	<input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
-				              	</div>
-							</div>
-						</div>
-						<div class="row mt-3">
-							<div class="col-md-4">
-								<label class="label">Select Gender of Traveler @if($request->traveller != 1) {{ $i+1 }} @endif</label>
-							</div>
-							<div class="col-md-8 nopad">
-			                    <div class=" positionrelative">
-			                    	<label class="selectlabel">Select Gender</label>
-		                            <select name="gender[]" class="gender form-control">
-		                               	<option value="">Select Gender</option>
-										<option value="Male">Male</option>
-										<option value="Female">Female</option>
-		                            </select>
-			                    </div>
-							</div>
-						</div>
-					</div>
-					<input value="{{ $preexisting }}" name="preexisting[]" type="hidden">
-					@endfor
-					<hr>
-					<h3 class="heading-4">Primary Information</h3>
-					<div class="form-group mt-3">
-						<div class="row">
-							<div class="col-md-4">
-								<label class="label">Phone Number</label>
-							</div>
-							<div class="col-md-8 nopad">
-								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">Phone Number</label>
-				                 	<input value="{{ $request->phone }}" type="text" id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
-				              	</div>
-							</div>
-						</div>
-						<div class="row mt-3">
-							<div class="col-md-4">
-								<label class="label">Sponsor Name</label>
-							</div>
-							<div class="col-md-8 nopad">
-								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">Sponsor Name</label>
-				                 	<input class="input" type="" placeholder=" " id="" name="sponsersname">
-				              	</div>
-							</div>
-						</div>
-						<div class="row mt-3">
-							<div class="col-md-4">
-								<label class="label">Sponsor Relationship</label>
-							</div>
-							<div class="col-md-8 nopad">
-								<div class="custom-form-control positionrelative">
-				                  	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
-				                 	<input id="" class="input" type="" name="sponsersemail">
-				              	</div>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<h3 class="heading-4">Where can we email your policy details?</h3>
-					<div class="row mt-3">
-						<div class="col-md-4">
-							<label class="label">Email Address</label>
-						</div>
-						<div class="col-md-8 nopad">
-							<div class="custom-form-control positionrelative">
-			                  	<label class="selectlabeldateofbirth">Email Address</label>
-			                 	<input class="input" type="email" placeholder="Email Address" value="{{ $request->email }}" name="email" data-placeholder="Email" required>
-			              	</div>
-						</div>
-					</div>
-                  </div>
-                  <div class="text-right mb-5">
-                  	<button  class="button button-rounded button-primary"> Continue </button>
-                  </div>
-                  
-               </div>
-            </div>
+	                  </div>
+	                  <div class="text-right mb-5">
+	                  	<button  class="button button-rounded button-primary"> Continue </button>
+	                  </div>
+	               </div>
+	            </div>
+	        </form>
          </div>
 	</div>
 	<div class="col-md-5">
@@ -219,6 +221,21 @@
 @section('script')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
 <script>
+
+	$(document).ready(function () {
+	    $('#myform').validate({ // initialize the plugin
+	        rules: {
+	            fname: {
+	                required: true
+	            },
+	            lname: {
+	                required: true
+	            }
+	        }
+	    });
+	});
+
+
 	function information() {
   var x = document.getElementById("benefiaciary");
   if (x.style.display === "none") {
