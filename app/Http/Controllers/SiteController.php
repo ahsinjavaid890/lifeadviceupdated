@@ -16,6 +16,7 @@ use App\Models\wp_dh_insurance_plans_rates;
 use App\Models\blogs;
 use App\Models\sales;
 use App\Models\sales_cards;
+use App\Models\temproary_sales;
 use App\Models\traveler_sale_informations;
 use App\Models\blogcategories;
 use App\Models\contactus_messages;
@@ -39,8 +40,7 @@ class SiteController extends Controller
     }
     public function applysteptwo(Request $request)
     {
-        $data = $request->all();
-        Session::put('firstdata', $data);
+        $tem = new temproary_sales();
     }
     public function getstates($id)
     {
