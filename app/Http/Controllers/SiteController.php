@@ -375,7 +375,7 @@ class SiteController extends Controller
     }
     public function applyplan(Request $request)
     {
-        return view('frontend.formone.apply')->with(array('request' => $request));
+        return view('frontend.apply.templatetwo')->with(array('request' => $request));
     }
     public function compareplans($id)
     {
