@@ -288,7 +288,7 @@ if($show == '1' && $total_price > 0){
                ${{ $deductible }} Deductible
             </p>
          </div>
-         <div class="col-md-4 col-xs-12" style="border:0px solid #000;text-align:center;">
+         <div class="col-md-3 col-xs-12" style="border:0px solid #000;text-align:center;">
             @php
                 $createbuynowarray = array(
                     'plan_id'=>$plan_id,
@@ -317,13 +317,16 @@ if($show == '1' && $total_price > 0){
                 );
                 $savetoplan = serialize($createbuynowarray)
             @endphp
-            <div class="text-right">
-                <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
-                 <input onclick="savecompareplans('{{ $savetoplan }}')" type="checkbox" style=" height: 26px; width: 20px; ">
+            
+            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn" class="btn btn-lg btn-danger" style="margin-top: 12px;background-color: #f56c02;height: 60px;width: 60%;font-size: 18px;font-weight: 700;" name="buynow">Buy Now</button>
+
+        </div>
+        <div class="col-md-1 col-xs-12" style="border:0px solid #000;text-align:center;">
+            <div class="text-center" style="margin-top: 16px;">
+                 <input onclick="savecompareplans('{{ $savetoplan }}')" type="checkbox" style=" height: 18px; width: 18px; ">
+                 <label class="v-label theme--light" style="left: 0px; right: auto; position: relative;">Compare</label>
             </div>
-            <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynowbtn"
-               data-value="<?php echo $plan_id; ?>" class="btn btn-lg btn-danger" style="margin-top: 0px;" name="buynow">Buy Now</button>
-         </div>
+        </div>
       </div>
       @include('frontend.travelinsurance.includes.policydetails')
       @include('frontend.travelinsurance.includes.buynowform')

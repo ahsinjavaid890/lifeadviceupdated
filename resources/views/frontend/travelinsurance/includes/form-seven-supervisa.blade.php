@@ -38,17 +38,20 @@
                                     }
                                 }
                             </script>
-                            @if (isset($fields['email']))
-                                @if ($fields['email'] == 'on')
-                                    <div class="col-md-6 mb-2">
-                                        <label for="savers_email" class="label-style">Email</label>
-                                        <div class="custom-form-control">
-                                            <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif type="text" name="savers_email" placeholder="Email" required
-                                                id="savers_email" class="w-100 inputs-style">
-                                        </div>
-                                    </div>
-                                @endif
-                            @endif
+
+                        @endif
+                    @endif
+                @endif
+                @if (array_search('id_4', $orderdata) == $orderi)
+                    @if (isset($fields['email']))
+                        @if ($fields['email'] == 'on')
+                        <div class="col-md-6 mb-2">
+                            <label for="savers_email" class="label-style">Email</label>
+                            <div class="custom-form-control">
+                                <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif type="text" name="savers_email" placeholder="Email" required
+                                    id="savers_email" class="w-100 inputs-style">
+                            </div>
+                        </div>
                         @endif
                     @endif
                 @endif
