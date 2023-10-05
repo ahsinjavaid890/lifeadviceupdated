@@ -106,70 +106,30 @@
                 @if (isset($fields['Country']))
                 @if ($fields['Country'] == 'on')
                 @if ($data->pro_travel_destination == 'worldwide')
-                <script>
-                    function CountryState(id) {
-                        if (id == "Canada") {
-                            $('#canadastate').fadeIn();
-                            //   $('#country').removeClass('col-md-12')
-                            //   $('#country').addClass('col-md-6')
-                            //   $('#cnt').css("margin-left","7.8rem");
-                        } else {
-                            $('#canadastate').hide();
-                            $('#country').removeClass('col-md-6')
-                            $('#country').addClass('col-md-12')
-
-                        }
-                    }
-
-                </script>
-                <div id="country" class="col-md-12">
-                    <div class="row">
-
-
-                        <div class="col-sm-5">
-                            <label style="margin-left: -11.5px;" for="primary_destination"
-                                class="form-label lables">Primary Destination</label>
-                        </div>
-                        <div class="col-md-7 " style="margin-right:0 !important">
-                            <label for="primary_destination" class="d-sm-none">Primary
-                                Destination</label>
-                            <div class="custom-form-control form-select" id="cnt">
-                                <select style=" width: 386px;border-radius: 1px;" onchange="CountryState(this.value)"
-                                    required class="form-input" name="primary_destination" id="primary_destination">
-                                    <option value="">Select Country</option>
-                                    @foreach (DB::table('countries')->get() as $r)
-                                    <option value='{{ $r->name }}' data-imagecss="flag {{ $r->data_imagecss }}"
-                                        data-title="{{ $r->name }}">
-                                        {{ $r->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                <div class="col-md-5">
+                    <label for="number_travelers" class="form-label lables" id="">Primary Destination</label>
+                </div>
+                <div class="col-md-7">
+                    <label for="number_travelers" class="d-sm-none">Primary Destination</label>
+                    <div class="custom-form-control">
+                        <select onchange="countryState(this.value)" required class="form-input"
+                            name="primary_destination" id="primary_destination">
+                            <option value="">Select Country</option>
+                            @foreach (DB::table('countries')->get() as $r)
+                            <option value='{{ $r->id }}'>{{ $r->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                <div id="canadastate" class="col-md-12" style="display:none;">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <label style="margin-left: -11.5px;" for="primary_destination" class="form-label lables"
-                                id="">States In
-                                Canda</label>
-                        </div>
-                        <div class="col-md-7">
-                            <label for="primary_destination" class="d-sm-none">States In
-                                Canda</label>
-                            <div class="custom-form-control" id="states">
-                                <select required class="form-control" name="primary_destination"
-                                    id="primary_destination">
-                                    <option value="">Primary destination in Canada
-                                    </option>
-                                    @foreach (DB::table('primary_destination_in_canada')->get() as $r)
-                                    <option @if ($r->name == 'Ontario') selected @endif
-                                        value="{{ $r->name }}">{{ $r->name }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                <div class="col-md-5">
+                    <label for="number_travelers" class="form-label lables" id="">Select State</label>
+                </div>
+                <div class="col-md-7">
+                    <label for="number_travelers" class="d-sm-none">Select State</label>
+                    <div class="custom-form-control">
+                        <select required class="form-input" name="primary_destination" id="statestoshow">
+                            <option value="">Select State</option>
+                        </select>
                     </div>
                 </div>
                 @else
@@ -202,8 +162,7 @@
                 @endphp
                 @if ($number_of_travel > 0)
                 <div class="col-md-5">
-                    <label for="number_travelers" class="form-label lables" id="">Number
-                        of Travellers</label>
+                    <label for="number_travelers" class="form-label lables" id="">Numberof Travellers</label>
                 </div>
                 <div class="col-md-7">
                     <label for="number_travelers" class="d-sm-none">Number of Travellers</label>

@@ -24,7 +24,8 @@
                            <select onchange="checknumtravellers(this.value)" required class="form-input" name="number_travelers" id="number_travelers">
                               <option value="">Number of Travellers</option>
                               @for($i=1;$i<=$number_of_travel;$i++)
-                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
+                              <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                </option>
                               @endfor
                            </select>
                         </div>
@@ -50,7 +51,7 @@
                            <div class="form-group">
                               <label>End Date</label>
                               <div class="custom-form-control">
-                                 <input @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif  id="return_date" autocomplete="off" name="return_date" value="" class="form-input" type="text" placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
+                                 <input onchange="enddatechange()" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif  id="return_date" autocomplete="off" name="return_date" value="" class="form-input" type="text" placeholder="End Date" required @if ($data->pro_supervisa == 1) readonly type="date" @endif>
                               </div>
                               @if ($data->pro_supervisa != 1)
                                <script>
@@ -82,8 +83,8 @@
                                  <option value="">Coverage Amount</option>
                               @foreach($sum_insured as $key => $r)
                                <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
-                                   selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
-                                   $r->sum_insured }}</option>
+                                selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
+                                $r->sum_insured }}</option>
                                @endforeach
                               </select>
                            </div>
@@ -93,41 +94,22 @@
                      @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
-                            <script>
-                              function CountryState(id) {
-                                  if(id=="Canada")
-                                  {
-                                      $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                  }else 
-                                  {
-                                      $('#canadastate').hide();
-                                      $('#country').removeClass('col-md-6')
-                                      $('#country').addClass('col-md-12')
-                                      
-                                 }
-                              }
-                           </script>
-                           <div id="country" class="col-sm-4 col-md-3">
+                           <div class="col-sm-4 col-md-3">
                               <div class="form-group">
-                                 <label>States In Canda</label>
-                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
+                                 <label>Select Country</label>
+                                 <select onchange="countryState(this.value)" required class="form-input"name="primary_destination" id="primary_destination">
+                                     <option value="">Select Country</option>
+                                     @foreach (DB::table('countries')->get() as $r)
+                                     <option value='{{ $r->id }}'>{{ $r->name }}</option>
+                                     @endforeach
                                  </select>
                               </div>
                            </div>
-                           <div id="canadastate" class="col-sm-4 col-md-3" style="display:none;">
+                           <div class="col-sm-4 col-md-3">
                               <div class="form-group">
-                                 <label>States In Canda</label>
-                                 <select required class="form-input" name="primary_destination" id="primary_destination" style="    padding: 5px 12px !important;">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
+                                 <label>Select State</label>
+                                 <select required class="form-input" name="primary_destination" id="statestoshow">
+                                     <option value="">Select State</option>
                                  </select>
                               </div>
                            </div>
@@ -328,14 +310,7 @@
                $c = 0;
             @endphp
             @for($i=1;$i<=$number_of_travel;$i++)
-            <div style="display: none;" id="traveler{{ $i }}" class="row no_of_travelers">
-               <div class="col-sm-12">
-                  {{-- <h5 class="type-of-policy">
-                     <?php 
-                        // echo $ordinal_words[$i];
-                     ?>
-                      Traveler</h5> --}}
-               </div>
+            <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}" class="row no_of_travelers">
                <div class="col-sm-4 col-md-3">
                   <div class="form-group ">
                      <label>Birth date of the {{ $ordinal_words[$i] }} Traveller</label>
@@ -343,7 +318,7 @@
                      <span class="errorshow" id="dateerror{{ $i }}"></span>
                   </div>
                </div>
-               <div class="col-sm-4 col-md-3">
+               <div class="col-sm-4 col-md-3 paddingleftandrightondesktopforage">
                   <div class="form-group">
                      <label>Age</label>
                      <div class="custom-form-control">
@@ -352,7 +327,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-4 col-md-3">
+               <div class="col-sm-4 col-md-3 paddingleftandrightondesktopforpreexisitng">
                   <div class="form-group ">
                      <label>Select Pre Existing Condition</label>
                      <select name="pre_existing[]" class="form-input">
@@ -545,7 +520,7 @@ $('button[type="submit"]').click(function() {
             $('#return_date').val('');
             $('#total_number_of_days').val('');
          }else{
-            $('#total_number_of_days').val(dayssuminsured);
+            $('#total_number_of_days').val(dayssuminsured+' Days');
          }
       }
    }
@@ -626,6 +601,12 @@ $('button[type="submit"]').click(function() {
    calculatedays();
    }
    
+   function enddatechange()
+   {
+      calculatedays();
+   }
+
+
    function checktravellers(){
        //Number OF Traveller
        var number_of_traveller = $("#number_travelers").val();

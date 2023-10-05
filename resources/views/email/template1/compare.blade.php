@@ -1,213 +1,151 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <head>
-      <title>
-      </title>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style type="text/css">
-      </style>
-      <style type="text/css">
-         @media only screen and (max-width:480px) {
-         @-ms-viewport {
-         width: 320px;
-         }
-         @viewport {
-         width: 320px;
-         }
-         }
-         .table-bordered td, .table-bordered th {
-         border: 1px solid #dee2e6;
-         }
-         .table td, .table th {
-         padding: 0.75rem;
-         vertical-align: top;
-         border-top: 1px solid #dee2e6;
-         }
-         .table>tbody>tr>td {
-         font-size: 13px;
-         max-width: 274px;
-         }
-         tr td:first-of-type, tr th:first-of-type {
-         font-weight: 700;
-         color: #F0AD4E;
-         }
-         img.img-responsive {
-         display: inline-block;
-         }
-      </style>
-      <style type="text/css">
-         @media only screen and (min-width:480px) {
-         .mj-column-per-100 {
-         width: 100% !important;
-         }
-         }
-         *, ::after, ::before {
-         box-sizing: border-box;
-         }
-         h1, h2, h3, h4, h5, h6 {
-         margin: 0;
-         color: #000;
-         margin: 0 0 30px 0;
-         line-height: 1.5;
-         -webkit-font-smoothing: antialiased;
-         }
-         .btn-success.disabled, .btn-success:disabled {
-         color: #fff;
-         background-color: #28a745;
-         border-color: #28a745;
-         }
-         .btn.disabled, .btn:disabled {
-         opacity: .65;
-         }
-         .btn, .form-control {
-         height: 40px;
-         }
-         .smallhead {
-         text-transform: uppercase;
-         color: #fff !important;
-         background: #515d63;
-         }
-         .btn>i {
-         padding-right: 6px;
-         }
-         .btn {
-         display: inline-block;
-         font-weight: 400;
-         color: #212529;
-         text-align: center;
-         vertical-align: middle;
-         -webkit-user-select: none;
-         -moz-user-select: none;
-         -ms-user-select: none;
-         user-select: none;
-         background-color: transparent;
-         border: 1px solid transparent;
-         padding: 0.375rem 0.75rem;
-         font-size: 1rem;
-         line-height: 1.5;
-         border-radius: 0.25rem;
-         transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-         }
-         a {
-         -webkit-transition: all .300s;
-         -moz-transition: all .300s;
-         -o-transition: all .300s;
-         transition: all .300s;
-         }
-         a, a:focus, a:hover, a:active {
-         outline: 0;
-         cursor: pointer;
-         }
-         a {
-         color: #007bff;
-         text-decoration: none;
-         background-color: transparent;
-         }
-         .text-danger {
-         color: #b92c28 !important;
-         }
-         .btn{
-         cursor: pointer;
-         }
-      </style>
-   </head>
-   <body>
-    <?php
-        $planid=explode(",", rtrim($_REQUEST['ids']));
-    ?>
-      <div class="container-fluid" style="text-align: center; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
-         <h1 style="font-size: 24px;font-weight: bold;color: #005d9a; margin: 0 0 44px 0;">Compare and Buy Super Visa Insurance Plans</h1>
-         <div style="justify-content: center; text-align: center; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; position: relative; width: 100%; padding-right: 15px; padding-left: 15px"></div>
-         <table class="table" style="border: 1px solid #dee2e6;width: 100%; margin-bottom: 1rem; color: #212529;margin: 0; border-collapse: collapse">
-            <tbody>
-               <tr style="background:#239b7a;">
-                  <td rowspan="2" style="text-align:center;color: #FFF;font-size: 16px;max-width: 274px;font-weight: 700;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;">
-                     <h3 style="background:#45bd9c; padding:3px; font-size:41px; text-align:center;color:#FFF;margin: 0;margin-bottom: 10px;"><?php echo count($planid);?></h3>
-                     Plans Selected for Comparison>
-                  </td>
-                  <?php 
-                    for($i=0;$i<count($planid);$i++){
-                        $plan = DB::table('wp_dh_insurance_plans')->where('id' , $planid[$i])->first();
-                        $planname = $plan->plan_name;
-                    ?>
-                  <th style="color:#FFF; text-align:center; font-weight:bold; font-size:18px;"><?php echo $planname;?></th>
-                  <?php } ?>
-               </tr>
-               <tr>
-                <?php 
-                $planid=explode(",", rtrim($request->ids));
-                $rate=explode(",", rtrim($request->rate));
-                for($i=0;$i<count($planid);$i++){
-                $compy = DB::select("SELECT * FROM `wp_dh_companies` WHERE `comp_id`= (SELECT `insurance_company` FROM `wp_dh_insurance_plans` WHERE `id`='".$planid[$i]."')");
-                ?>
-                  <td align="center"><img src="{{ url('public/images') }}/{{ $compy[0]->comp_logo }}" alt="Travlance Insurance" class="img-responsive" height="70" width="200" style="width:200px"></td>
-                <?php } ?>
-               </tr>
-               <tr style="border: 1px solid #dee2e6;">
-                  <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;">PREMIUM</td>
-                  <?php for($i=0;$i<count($planid);$i++){?>
-                  <td style="text-align: center;font-size: 28px;font-weight: bold;color: #C00;">$ <?php echo number_format($rate[$i],2); ?></td>
-                  <?php } ?>
-               </tr>
-               <tr style="border: 1px solid #dee2e6;">
-                  <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;"></td>
-                  <td>
-                    <a href="#">
-                        <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#">
-                        <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
-                    </a>
-                  </td>
-               </tr>
-               <?php
-                $feat = DB::select("SELECT * FROM `wp_dh_insurance_plans_benefits` WHERE `plan_id` IN (".$_REQUEST['ids'].") GROUP BY `benefits_head`");
-                foreach($feat as $feature){
-                $benefits_head = $feature->benefits_head;
-                
-                ?>
-               <tr style="border: 1px solid #dee2e6;">
-                  <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;"><?php echo $benefits_head; ?></td>
-                  <?php for($i=0;$i<count($planid);$i++){
-            
-                     $feades_q = DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $planid[$i])->where('benefits_head' , $benefits_head)->first();
-                    
-                    ?>
-                  <td>@if($feades_q){{$feades_q->benefits_desc}}@endif</td>
-                  <?php } ?>
-               </tr>
-               <?php } ?>
-               <tr style="border: 1px solid #dee2e6;">
-                  <td style="font-size: 13px; max-width: 274px; background-color: #515d63;    padding: 0.75rem; color: white;"></td>
-                  <td>
-                    <a href="#">
-                        <button style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=989.88&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Essential Plan&amp;tripdate=&amp;tripend=&amp;premium=989.88&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#">
-                        <button   style="opacity: .65; display: block; margin: 14px auto 11px auto; font-weight: bold; color: #fff; background-color: #28a745; border-color: #28a745; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;"  onclick="window.location='tab_buy.php?coverage=1419.12&amp;traveller=1&amp;companyName=Travlance Insurance&amp;comp_id=2&amp;planname=Premier Plan&amp;tripdate=&amp;tripend=&amp;premium=1419.12&amp;cdestination=&amp;product_name=Super Visa Insurance&amp;country=&amp;visitor_visa_type=Super Visa Insurance&amp;tripduration=0'"><i class="fa fa-shopping-cart"></i> Buy Now</button>
-                    </a>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-         <table>
-            <tbody>
-               <tr>
-                  <td>
-                     <div class="disclaimer">
-                        <p style="font-weight: 700; color: #F0AD4E; text-align: justify; line-height: 20px;"><i class="fa fa-lightbulb-o mr-1" style="font-size: 27px;color: #2b3481;"></i>Disclaimer: Please note that the information above is only a summarized representation of certain definitions, conditions as well as insurance benefits covered by selected and displayed medical emergency insurance plans. Some of the insurance benefits require pre-authorization and arrangement by the insurance company before any payments will be made to cover the corresponding expenses. Moreover, some of the insured services are covered only on a reimbursement basis. In order to see a complete and detailed description of each insurance benefit, terms and/or policy's conditions, please read the official Policy Wording issued by each insurance provider. Policy Wordings for the displayed plans can be accessed by clicking on the "Click to View" link at the bottom of each comparison report. If you have any questions about a particular policy, benefit, term and/or condition, please contact one of our Insurance professional at 855-500-5041 or email us at info@lifeadvice.ca</p>
-                     </div>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-   </body>
-</html>
+<center class="m_-2565051330621453805wrapper">
+   <div>
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" class="m_-2565051330621453805wrapper" bgcolor="#F4F7FA">
+         <tbody>
+            <tr>
+               <td valign="top" bgcolor="#F4F7FA" width="100%">
+                  <table width="100%" role="content-container" align="center" cellpadding="0" cellspacing="0" border="0">
+                     <tbody>
+                        <tr>
+                           <td width="100%">
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                 <tbody>
+                                    <tr>
+                                       <td style="padding-bottom:40px">
+                                          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px" align="center">
+                                             <tbody>
+                                                <tr>
+                                                   <td role="modules-container" style="padding:0px 0px 0px 0px;color:#67778f;text-align:left" bgcolor="#FFFFFF" width="100%" align="left">
+                                                      <table class="m_-2565051330621453805preheader" role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="display:none!important;opacity:0;color:transparent;height:0;width:0">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td role="module-content">
+                                                                  <p></p>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table class="m_-2565051330621453805wrapper" role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="font-size:6px;line-height:10px;padding:12px 0px 16px 16px" valign="top" align="left">
+                                                                  <img class="m_-2565051330621453805max-width CToWUd" border="0" style="display:block;color:#000000;text-decoration:none;font-family:Helvetica,arial,sans-serif;font-size:16px" width="200" alt="" src="https://lifeadvice.ca/public/images/118135255.png" height="41" data-bit="iit">
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table class="m_-2565051330621453805wrapper" role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="font-size:6px;line-height:10px;padding:0px 0px 0px 0px;background-color: #2b3481;height: 180px;" valign="top">
+                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">Your Quote is Ready</h1>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td class="m_-2565051330621453805mobile-hide-padding" style="padding:25px 34px 18px 34px;line-height:28px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                                                                  <div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-size:16px;font-weight:600">Dear Traveler,</span></div>
+                                                                     <div style="font-family:inherit;text-align:inherit"><br></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:600;font-size:16px">Thanks for creating a new plan comparison with VisitorsCoverage, where you can find insurance for the way you travel! Click the button below to revisit your plan comparison and purchase your policy in less than 5 minutes.</span></div>
+                                                                     <div></div>
+                                                                  </div>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="padding:0px 0px 10px 0px" role="module-content" bgcolor=""></td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table border="0" cellpadding="0" cellspacing="0" role="module" style="table-layout:fixed" width="100%">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td align="center" bgcolor="" style="padding:0px 0px 0px 0px">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" class="m_-2565051330621453805wrapper-mobile" style="text-align:center">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td align="center" bgcolor="#2B3481" style="border-radius:6px;font-size:14px;text-align:center;background-color:inherit">
+                                                                              <a href="{{ url('compareplans') }}/{{ $compareid }}" style="background-color:#2b3481;border:1px solid #2b3481;border-color:#2b3481;border-radius:50px;border-width:1px;color:#ffffff;display:inline-block;font-size:14px;font-weight:700;letter-spacing:0px;line-height:normal;padding:12px 20px 12px 20px;text-align:center;text-decoration:none;border-style:solid;font-family:'Open Sans',sans-serif!important" target="_blank">View Your Plan Comparison</a></td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="padding:10px 30px 18px 30px;line-height:28px;text-align:inherit;font-size:14px;font-weight:600" height="100%" valign="top" bgcolor="" role="module-content">
+                                                                  <div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:center;font-size:14px;line-height:28px"><span style="font-size:14px;font-weight:600;color:#67778f">Don’t see the button?</span><span style="font-size:14px;font-weight:600"> </span><a href="{{ url('compareplans') }}/{{ $compareid }}"><span style="font-size:14px;color:#1b8fe4;font-weight:700;text-decoration-line:none">Click here</span></a><span style="font-size:18px">.</span></div>
+                                                                     <div></div>
+                                                                  </div>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td class="m_-2565051330621453805mobile-hide-padding" style="padding:18px 30px 18px 30px;line-height:28px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
+                                                                  <div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">We know choosing an insurance plan can be difficult. Our licensed Customer Success Team is here to help you. Call </span><a href="tel:+1-855-500-8999" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>+1-855-500-8999</strong></span></a><span style="font-size:16px;font-weight:600"> or email </span><a href="mailto:info@lifeadvice.ca" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>info@lifeadvice.ca</strong></span></a><span style="font-weight:600;font-size:16px">.</span></div>
+                                                                     <div style="font-family:inherit;text-align:inherit"><br></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Sincerely,</span></div>
+                                                                     <div style="font-family:inherit;text-align:inherit"><br></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Customer Success Team</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Life Advice</span></div>
+                                                                     <div></div>
+                                                                  </div>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="padding:15px 0px 10px 0px" role="module-content" height="100%" valign="top" bgcolor="">
+                                                                  <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" height="1px" style="line-height:1px;font-size:1px">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td style="padding:0px 0px 1px 0px" bgcolor="#DAE5EE"></td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                      <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td style="padding:0px 0px 20px 0px" role="module-content" bgcolor=""></td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</center>

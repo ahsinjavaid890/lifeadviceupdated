@@ -43,7 +43,7 @@ Route::get('/', [SiteController::class, 'index']);
 Route::get('/profile', [HomeController::class, 'dashboard'])->name('userprofile');
 Route::get('/requests', [HomeController::class, 'requests'])->name('requests');
 
-
+Route::get('/getstates/{id}', [SiteController::class, 'getstates']);
 
 Route::get('/security-settings', [SiteController::class, 'securitysettings']);
 Route::get('/policydetail/{id}', [HomeController::class, 'policydetail']);

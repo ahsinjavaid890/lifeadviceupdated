@@ -116,44 +116,25 @@
                         @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
-                            <script>
-                              function CountryState(id) {
-                                  if(id=="Canada")
-                                  {
-                                      $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                  }else 
-                                  {
-                                      $('#canadastate').hide();
-                                      $('#country').removeClass('col-md-6')
-                                      $('#country').addClass('col-md-12')
-                                      
-                                 }
-                              }
-                           </script>
-                           <div id="country" class="col-md-12">
-                              <label for="primary_destination" class="">States In Canda</label>
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </div>
-                           <div id="canadastate" class="col-md-6" style="display:none;">
-                              <label for="primary_destination" class="">States In Canda</label>
-                              <div class="custom-form-control">
-                                 <select required class="form-input" name="primary_destination" id="primary_destination">
-                                    <option value="">Primary destination in Canada</option>
-                                    @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                       <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                    @endforeach
-                                 </select>
-                              </div>
-                           </div>
+                            <div class="col-md-12 mb-2">
+                                 <label  for="number_travelers" class="">Select Country</label>
+                                 <div class="custom-form-control">
+                                     <select onchange="countryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                                         <option value="">Select Country</option>
+                                         @foreach (DB::table('countries')->get() as $r)
+                                         <option value='{{ $r->id }}'>{{ $r->name }}</option>
+                                         @endforeach
+                                     </select>
+                                 </div>
+                             </div>
+                             <div class="col-md-12 mb-2">
+                                 <label  for="number_travelers" class="">Select State</label>
+                                 <div class="custom-form-control">
+                                     <select required class="form-input" name="primary_destination" id="statestoshow">
+                                         <option value="">Select State</option>
+                                     </select>
+                                 </div>
+                             </div>
                            @else
 
                            <div class="col-md-12" >
@@ -352,7 +333,7 @@
                         @endif
                         @if(array_search("id_12",$orderdata) == $orderi)
                         @if(isset($fields['traveller_gender']) && $fields['traveller_gender'] == "on" )
-                        <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding input custom_traveller gender-main">
+                        <div class="col-md-6 col-sm-6 col-xs-12 control-input no-padding custom_traveller gender-main">
                               <label class="input-label">Gender of the oldest traveller</label>
                               <button type="button" id="oldest_gender" class="form-control text-left" onclick="oldergender();" style="padding: 0;font-size: 14px;font-weight: 500;"><i class="fa fa-male genderi"></i>Gender of the oldest traveller</button>
                            <script>

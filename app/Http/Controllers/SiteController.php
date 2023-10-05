@@ -37,6 +37,14 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
+    public function getstates($id)
+    {
+        $data = DB::table('states')->where('country_id' , $id)->get();
+        echo '<option value="">Select State in '.DB::table('countries')->where('id' , $id)->first()->name.'</option>';
+        foreach ($data as $r) {
+            echo '<option value="'.$r->name.'">'.$r->name.'</option>';
+        }
+    }
     public function checkadditionaltravelers(Request $request)
     {
         foreach ($request->ages as $r) {
@@ -161,28 +169,10 @@ class SiteController extends Controller
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()->all()]);
         }
-
-        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
-        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-        $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
-        $reviewemailview = 'email.template' . $temp . '.review';
-        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+        $subject = 'Your Saved Plan Comparison';
+        Mail::send('email.template1.compare', ['compareid' => $request->compareid], function ($message) use ($request, $subject) {
             $message->to($request->email);
             $message->subject($subject);
-        });
-        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-            $message->to($request->email);
-            $message->subject('Tell Us How We Did?');
-        });
-        $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-            $message->to('admin@lifeadvice.ca');
-            $message->subject($subject);
-        });
-
-        Mail::send('email.compare', array('request' => $request), function ($message) use ($request) {
-            $message->to($request->email)->subject('Comparisons of Insurance Plans');
-            $message->from('compare@lifeadvice.ca', 'LIFEADVICE');
         });
         return redirect()->back()->with('message', 'success');
     }

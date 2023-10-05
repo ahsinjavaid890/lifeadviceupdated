@@ -289,7 +289,7 @@ if($show == '1' && $total_price > 0){
                 <div style="clear:both;"></div>
             </div>
             <div class="col-md-3 col-xs-6 text-center">
-                <button style="background-color: #2b3481;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();"
+                <button style="background-color: #2b3481;margin-bottom: 5px;" onclick="$('.buynow_<?php echo $deductible.$plan_id;?>').slideToggle();"
                     class="submit-btn" data-value="<?php echo $plan_id; ?>"
                     class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
                     Now

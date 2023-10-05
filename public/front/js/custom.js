@@ -5,6 +5,15 @@ function printErrorMsglogin (msg) {
         $(".print-error-msg-login").find("ul").append('<li>'+value+'</li>');
     });
 }
+function countryState(id) {
+    $.ajax({
+        type: 'get',
+        url: 'getstates/'+id,
+        success: function(data) {
+            $('#statestoshow').html(data)
+        }
+    });                                  
+}
 function removecomparecard() {
     $('.compare_header_top').hide();
 }

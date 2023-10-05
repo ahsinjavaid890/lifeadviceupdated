@@ -351,7 +351,7 @@ if($second_show == '1' && $second_total_price > 0){
             </div>
             <div class="col-md-12 col-xs-12 text-center">
                <button class="btn btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"  aria-hidden="true"
-                  style="text-transform: none;font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor:pointer;height: 34px;margin-top: -10px; background:#1BBC9B;color:#FFF;">
+                  style="text-transform: none; font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor: pointer; height: 30px; margin-top: -20px; background: #1BBC9B; color: #FFF;padding: 0.175rem 0.75rem;">
                Summary & Info
                <i class="fa fa-angle-down" aria-hidden="true"></i>
                </button>

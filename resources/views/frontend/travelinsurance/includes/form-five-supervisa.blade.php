@@ -117,48 +117,27 @@
                      @if(isset($fields['Country']))
                         @if($fields['Country'] == "on" )
                            @if($data->pro_travel_destination == 'worldwide')
-                            <script>
-                              function CountryState(id) {
-                                  if(id=="Canada")
-                                  {
-                                      $('#canadastate').fadeIn();
-                                      $('#country').removeClass('col-md-12')
-                                      $('#country').addClass('col-md-6')
-                                  }else 
-                                  {
-                                      $('#canadastate').hide();
-                                      $('#country').removeClass('col-md-6')
-                                      $('#country').addClass('col-md-6')
-                                      
-                                 }
-                              }
-                           </script>
-                              <div class="col-md-6 text-md-right">
-                                 <label for="primary_destination" class="input-label">Primary Destination</label>
+                           <div class="col-md-6 text-md-right">
+                              <label for="primary_destination" class="input-label">Select Country</label>
+                           </div>
+                           <div class="col-md-6" >
+                              <div class="custom-form-control">
+                                 <select onchange="countryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
+                                     <option value="">Select Country</option>
+                                     @foreach (DB::table('countries')->get() as $r)
+                                     <option value='{{ $r->id }}'>{{ $r->name }}</option>
+                                     @endforeach
+                                 </select>
                               </div>
-                              <div id="country" class="col-md-6">
-                                 <div class="custom-form-control">
-                                    <select onchange="CountryState(this.value)" required class="form-input" name="primary_destination" id="primary_destination">
-                                       <option value="">Select Country</option>
-                                       @foreach(DB::table('countries')->get() as $r)
-                                          <option value='{{ $r->name }}'  data-imagecss="flag {{ $r->data_imagecss }}" data-title="{{ $r->name }}">{{ $r->name }}</option>
-                                       @endforeach
-                                    </select>
-                                 </div>
-                              </div>
-                           <div class="col-md-12 " id="canadastate" style="display:none; padding-right:0px !important; padding-left:16px !important;">
-                              <div class="row">
-                                 <div class="col-md-6 text-md-right">
-                                    <label for="primary_destination" class="input-label">States In Canda</label>
-                                 </div>
-                                 <div class="col-md-6" >
-                                    <select required class="form-control selecttwo form-input" name="primary_destination" id="primary_destination">
-                                       <option value="">Primary destination in Canada</option>
-                                       @foreach(DB::table('primary_destination_in_canada')->get() as $r)
-                                          <option @if($r->name == 'Ontario') selected @endif value="{{ $r->name }}">{{ $r->name }}</option>
-                                       @endforeach
-                                    </select>
-                                 </div>
+                           </div>
+                           <div class="col-md-6 text-md-right">
+                              <label for="primary_destination" class="input-label">Select State</label>
+                           </div>
+                           <div class="col-md-6" >
+                              <div class="custom-form-control">
+                                 <select required class="form-input" name="primary_destination" id="statestoshow">
+                                     <option value="">Select State</option>
+                                 </select>
                               </div>
                            </div>
                            @else

@@ -38,6 +38,17 @@
                                     }
                                 }
                             </script>
+                            @if (isset($fields['email']))
+                                @if ($fields['email'] == 'on')
+                                    <div class="col-md-6 mb-2">
+                                        <label for="savers_email" class="label-style">Email</label>
+                                        <div class="custom-form-control">
+                                            <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif type="text" name="savers_email" placeholder="Email" required
+                                                id="savers_email" class="w-100 inputs-style">
+                                        </div>
+                                    </div>
+                                @endif
+                            @endif
                         @endif
                     @endif
                 @endif
@@ -55,7 +66,8 @@
                                         class="w-100 inputs-style" name="number_travelers" id="number_travelers">
                                         <option value="">Number of Travellers</option>
                                         @for ($i = 1; $i <= $number_of_travel; $i++)
-                                            <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers'] == $i) selected @endif  @endif value="{{ $i }}">{{ $i }}</option>
+                                            <option @if(isset($_GET['number_travelers'])) @if($_GET['number_travelers']==$i) selected @endif @else  @if($i == 1) selected @endif @endif value="{{ $i }}">{{ $i }}
+                                </option>
                                         @endfor
                                     </select>
                                 </div>
@@ -105,7 +117,7 @@
                                 @endphp
 
                                 @for ($i = 1; $i <= $number_of_travel; $i++)
-                                    <div style="display: none;" id="traveler{{ $i }}"
+                                    <div @if($i == 1) @else style="display: none;" @endif id="traveler{{ $i }}"
                                         class="no_of_travelers col-md-12">
                                         <div class="row" style="align-items: flex-end">
                                             <div class="col-md-6 mb-2 padding-left-zero-on-mbile padding-right-zero-on-mbile">
@@ -120,7 +132,7 @@
                                                 </div>
                                             </div>
 
-                                            <div style="padding-right: 0px;" class="col-md-6 mb-2 padding-left-zero-on-mbile padding-right-zero-on-mbile">
+                                            <div style="padding-right: 0px;" class="col-md-6 mb-2 padding-left-on-desktop  padding-left-zero-on-mbile padding-right-zero-on-mbile">
                                                 <label for="year{{ $i }}" class="label-style">Select Pre
                                                     Existing</label>
                                                 <div class="custom-form-control">
@@ -136,19 +148,6 @@
                                 @endfor
                             @endif
                         @endif
-                        @endif
-                    @endif
-                @endif
-                @if (array_search('id_4', $orderdata) == $orderi)
-                    @if (isset($fields['email']))
-                        @if ($fields['email'] == 'on')
-                            <div class="col-md-12 mb-2">
-                                <label for="savers_email" class="label-style">Email</label>
-                                <div class="custom-form-control">
-                                    <input @if(isset($_GET['savers_email'])) value="{{ $_GET['savers_email'] }}" @endif type="text" name="savers_email" placeholder="Email" required
-                                        id="savers_email" class="w-100 inputs-style">
-                                </div>
-                            </div>
                         @endif
                     @endif
                 @endif
@@ -219,20 +218,6 @@
                         </div>
                     @endif
                 @endif
-                @if (array_search('id_14', $orderdata) == $orderi)
-                    @if (isset($fields['gender']) && $fields['gender'] == 'on')
-                        <div class="col-md-12 mb-2">
-                            <label for="gender" class="label-style">Primary Applicant`s Gender</label>
-                            <div class="custom-form-control">
-                                <select required class="w-100 inputs-style" name="gender" id="gender">
-                                    <option value="">Select Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                    @endif
-                @endif
                 @if (array_search('id_12', $orderdata) == $orderi)
                     @if (isset($fields['traveller_gender']) && $fields['traveller_gender'] == 'on')
                         <div class="col-md-12 mb-2">
@@ -263,6 +248,18 @@
                                     </select>
                                 </div>
                             </div>
+                            @if (isset($fields['gender']) && $fields['gender'] == 'on')
+                                <div class="col-md-6">
+                                    <label for="gender" class="label-style">Primary Applicant`s Gender</label>
+                                    <div class="custom-form-control">
+                                        <select required class="w-100 inputs-style" name="gender" id="gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                     @endif
                 @endif
@@ -270,45 +267,24 @@
                     @if (isset($fields['Country']))
                         @if ($fields['Country'] == 'on')
                             @if ($data->pro_travel_destination == 'worldwide')
-                                <script>
-                                    function CountryState(id) {
-                                        if (id == "Canada") {
-                                            $('#canadastate').fadeIn();
-                                            $('#country').removeClass('col-md-6')
-                                            $('#country').addClass('col-md-6')
-                                        } else {
-                                            $('#canadastate').hide();
-                                            $('#country').removeClass('col-md-6')
-                                            $('#country').addClass('col-md-6')
-
-                                        }
-                                    }
-                                </script>
-                                <div id="country" class="col-md-12 mb-2">
+                                <div id="country" class="col-md-6 mb-2">
                                     <label for="primary_destination" class="label-style">Primary Destination</label>
                                     <div class="custom-form-control ">
-                                        <select onchange="CountryState(this.value)" required
+                                        <select onchange="countryState(this.value)" required
                                             class="w-100 inputs-style" name="primary_destination"
                                             id="primary_destination">
                                             <option value="">Select Country</option>
                                             @foreach (DB::table('countries')->get() as $r)
-                                                <option value='{{ $r->name }}'
-                                                    data-imagecss="flag {{ $r->data_imagecss }}"
-                                                    data-title="{{ $r->name }}">{{ $r->name }}</option>
+                                                <option value='{{ $r->id }}'>{{ $r->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div id="canadastate" class="col-md-12" style="display:none;">
-                                    <label for="primary_destination" class="label-style ">States In Canda</label>
+                                <div class="col-md-6">
+                                    <label for="primary_destination" class="label-style ">Select State</label>
                                     <div class="form-group ">
-                                        <select required class="inputs-style w-100 selecttwo p-2"
-                                            name="primary_destination" id="primary_destination">
-                                            <option value="">Primary destination in Canada</option>
-                                            @foreach (DB::table('primary_destination_in_canada')->get() as $r)
-                                                <option @if ($r->name == 'Ontario') selected @endif
-                                                    value="{{ $r->name }}">{{ $r->name }}</option>
-                                            @endforeach
+                                        <select required class="inputs-style w-100 selecttwo p-2" name="primary_destination" id="statestoshow">
+                                            <option value="">Select State</option>
                                         </select>
                                     </div>
                                 </div>
@@ -365,9 +341,9 @@
                                         id="coverageammount">
                                         <option value="">Coverage Amount</option>
                                         @foreach ($sum_insured as $key => $r)
-                                            <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif @endif value="{{ $r->sum_insured }}"
-                                                @if ($key == 0) selected @endif>
-                                                ${{ $r->sum_insured }}</option>
+                                            <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)
+                                selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{
+                                $r->sum_insured }}</option>
                                         @endforeach
                                     </select>
                                 </div>

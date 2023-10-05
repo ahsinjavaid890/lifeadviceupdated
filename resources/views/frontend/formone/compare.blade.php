@@ -14,7 +14,7 @@
                   <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
                </div>
                 <div style="width: 50%;">
-                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="javascript:void(0)" data-toggle="modal" data-target="#emailmodal" class="btn btn-success"> Email Comparison </a>
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="javascript:void(0)" onclick="showmodal()" class="btn btn-success"> Email Comparison </a>
                </div>
              </div>
           </div>
@@ -34,13 +34,12 @@
                      <div class="popup-modal__content">
                         <p class="text-secondary-color"> We’ll send a link to come back and view these plans. </p>
                      </div>
-                     
                      <form id="sendemailform" method="POST" action="{{ url('sendcompareemail') }}">
                         @csrf
+                     <input type="hidden"  name="compareid" value="{{ $id }}">
                      <div class="popup-modal__input-field">
                         <label class="form-input input-email">
-
-                           <input type="text" name="email" placeholder="Enter an email address" required="required" class="input-field">
+                           <input type="text" name="email" placeholder="Enter an email address" class="input-field">
                            <span class="label-text">Email</span>
                            <div class="print-error-msg-login" style="display:none;background-color: white;">
                                <ul style="text-align:left;"></ul>
@@ -52,6 +51,14 @@
                   </div>
                </div>
                <script type="text/javascript">
+                  function closemodal() {
+                     $('#emailmodal').modal('hide');
+                  }
+                  function showmodal() {
+                     $('.subscribe-wrapper').addClass('active');
+                     $('.subscribe-success-wrapper').removeClass('active');
+                     $('#emailmodal').modal('show');
+                  }
                   $('#sendemailform').on('submit', (function(e) {
                        $('#sendemailbutton').html('<i style="color:white;" class="fa fa-spin fa-spinner"></i>');
                        e.preventDefault();
@@ -65,10 +72,12 @@
                            processData: false,
                            success: function(data) {
                            if($.isEmptyObject(data.error)){
-                               $('#sendemailbutton').html('Send');
-                              console.log('test');
-                               $(".print-error-msg-login").find("ul").html('');
-                               $(".print-error-msg-login").css('display','none');
+                              $('#sendemailbutton').html('Send');
+                              $('.subscribe-wrapper').removeClass('active');
+                              $('.subscribe-success-wrapper').addClass('active');
+                              $(".print-error-msg-login").find("ul").html('');
+                              $(".print-error-msg-login").css('display','none');
+                              $('.input-field').val('');
                            }else{
                                $('#sendemailbutton').html('Send');
                                printErrorMsglogin(data.error);
@@ -84,7 +93,7 @@
                      <p class="text-secondary-color"> plan comparison mailed to <span class="popup-modal__user-email">.</span></p>
                      <p class="text-secondary-color"> If you have not received an email in your inbox, please check your spam or junk folder. </p>
                   </div>
-                  <button class="button button-primary button-rounded"> Done </button>
+                  <button onclick="closemodal()" class="button button-primary button-rounded"> Done </button>
                </div>
             </div>
     </div>

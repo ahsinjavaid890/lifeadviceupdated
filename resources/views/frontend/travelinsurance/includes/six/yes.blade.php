@@ -252,7 +252,7 @@ if($show == '1' && $total_price > 0){
             <img src="{{ url('public/images') }}/{{ $comp_logo }}" style="width: 200px;height: 80px;" class="img-thumbnail"/>
          </div>
          <div class="col-md-3 col-xs-8 text-left mobilepeddindecreasetwo" @if($monthly_two == '1') style="padding: 5px 0px 0px 15px;" @else style="padding: 25px 0px 0px 15px;" @endif>
-            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?> <small style=" font-size: 10px;">({{ $number_travelers }} Traveller @if($number_travelers > 1)'s @endif)</small></h1>
+            <h1 style="color:#223b74;font-size:32px; font-weight:bold;line-height: normal;">$<?php echo number_format($total_price,2); ?> <small class="mobiledisplaynone" style=" font-size: 10px;">({{ $number_travelers }} Traveller @if($number_travelers > 1)'s @endif)</small></h1>
             @if($monthly_two == '1')
             <h2 style="padding:5px; margin:0; font-size:15px; font-weight:bold;color: #333;font-family: arial;padding: 3px;line-height: normal;margin-bottom: 10px;width: auto;">$<?php echo number_format($monthly_price,2);?>/Month<small style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months;?> </small> </h2>
             @endif
