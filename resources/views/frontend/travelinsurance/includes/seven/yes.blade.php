@@ -268,25 +268,18 @@ if($show == '1' && $total_price > 0){
                </button>
             </div>
          </div>
-         <div class="col-md-4 col-xs-12"
-            style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
+         <div class="col-md-4 col-xs-12" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
-               <?php $explode = explode('.', number_format($total_price, 2));
-                  ?><span style="font-size: 25px;font-weight: bold;color:#222;"><sup
-                  class="superior">$</sup><?php echo $explode[0] . '.'; ?><sup
-                  class="superior"><?php echo $explode[1]; ?></sup></span>
-            </h3>
+                <?php $explode = explode('.', number_format($total_price, 2)); ?>
+                <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $explode[0] . '.'; ?><sup class="superior"><?php echo $explode[1]; ?></sup></span></h3>
             <?php if($monthly_two == '1'){?>
-            <h2
-               style="padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;line-height: normal;width: auto;">
+            <h2 style="padding;5px; margin:0; font-size:12px; font-weight:bold;color: #333;line-height: normal;width: auto;">
                $<?php echo number_format($monthly_price, 2); ?>/Month<small
                   style="color: #f5821f;font-weight: bold;margin-left: 1px;"><?php echo $num_months; ?>
                </small> 
             </h2>
             <?php } ?>
-            <p style="font-weight: normal;margin:0;">
-               ${{ $deductible }} Deductible
-            </p>
+            <p style="font-weight: normal;margin:0;">$<?php echo $deductible; ?> Deductible</p>
          </div>
         @php
             $createbuynowarray = array(

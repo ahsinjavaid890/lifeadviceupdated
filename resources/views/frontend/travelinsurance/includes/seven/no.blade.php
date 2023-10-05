@@ -357,14 +357,10 @@ if($second_show == '1' && $second_total_price > 0){
                </button>
             </div>
          </div>
-         <div class="col-md-4 col-xs-12"
-            style="border:0px solid #000; padding: 0px; text-align: center" id="price">
+         <div class="col-md-4 col-xs-12" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
-               <?php $second_explode = explode('.', number_format($second_total_price, 2));
-                  ?><span style="font-size: 25px;font-weight: bold;color:#222;"><sup
-                  class="superior">$</sup><?php echo $second_explode[0] . '.'; ?><sup
-                  class="superior"><?php echo $second_explode[1]; ?></sup></span>
-            </h3>
+                <?php $second_explode = explode('.', number_format($second_total_price, 2)); ?>
+                <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $second_explode[0] . '.'; ?><sup class="superior"><?php echo $second_explode[1]; ?></sup></span></h3>
             <?php if($second_monthly_two == '1'){?>
             <h2 style="padding;5px; margin:0; font-size:12px; font-weight:bold;color: #333;line-height: normal;width: auto;">
                $<?php echo number_format($second_monthly_price, 2); ?>/Month<small
@@ -372,9 +368,7 @@ if($second_show == '1' && $second_total_price > 0){
                </small> 
             </h2>
             <?php } ?>
-            <p style="font-weight: normal;margin:0;">
-               $<?php echo $second_deductible; ?> Deductible
-            </p>
+            <p style="font-weight: normal;margin:0;">$<?php echo $second_deductible; ?> Deductible</p>
          </div>
          <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
