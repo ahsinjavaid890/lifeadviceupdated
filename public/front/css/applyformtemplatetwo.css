@@ -1,4 +1,8 @@
 @media only screen and (max-width:600px){
+  .detailscolumn{
+      max-width: 50% !important;
+      margin-bottom: 15px;
+    }
   .purchase-policy-step-1{
     margin-right: 0px !important;
     margin-top: 0px !important;
@@ -40,11 +44,41 @@
   background-color: #f3f6f9;
   margin-top: 100px;
 }
+.prev-step {
+  position: absolute;
+    margin-top: 100px;
+    transition-duration: 0s;
+    border-radius: 100%;
+    left: 10px;
+    top: 6%;
+    left: -42px;
+    border: 0px;
+    background-color: transparent;
+    background-size: contain;
+    width: 56px;
+    height: 56px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjgiIGN5PSIyOCIgcj0iMjcuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjQ0ZEOUU4Ii8+PHBhdGggZD0iTTQwIDI5LjI1aDEuMjV2LTIuNUg0MHYyLjV6TTE2IDI4bC0uODYyLS45MDVhMS4yNSAxLjI1IDAgMDAwIDEuODFMMTYgMjh6bTkuNjM4IDEwLjkwNWExLjI1IDEuMjUgMCAxMDEuNzI0LTEuODFsLTEuNzI0IDEuODF6bTEuNzI0LTIwYTEuMjUgMS4yNSAwIDAwLTEuNzI0LTEuODFsMS43MjQgMS44MXpNNDAgMjYuNzVIMTZ2Mi41aDI0di0yLjV6bS0yNC44NjIgMi4xNTVsMTAuNSAxMCAxLjcyNC0xLjgxLTEwLjUtMTAtMS43MjQgMS44MXptMS43MjQgMGwxMC41LTEwLTEuNzI0LTEuODEtMTAuNSAxMCAxLjcyNCAxLjgxeiIgZmlsbD0iIzJCMzQ4MSIvPjwvc3ZnPg==);
+}
 .purchase-policy-step-1{
-  max-width: 760px;
+  position: relative;
+  max-width: 850px;
   margin: auto;
   margin-right: 40px;
   margin-top: 50px;
+}
+.creditcard{
+  margin-top: 0px !important;
+}
+.button-secondary {
+    color: #fff;
+    background-color: #5ea047;
+}
+.subheader
+{
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #67778f;
 }
 .purchaseheading{
   font-size: 48px;
@@ -93,6 +127,25 @@
   color: #2b3481!important;
     font-size: 20px;
     line-height: 32px;
+}
+.heading-5{
+  border: none !important;
+  color: #2b3481!important;
+}
+.subheading-4{
+  padding-left: 10px;
+}
+.detailscolumn{
+  width: 100%;
+  max-width: 25%;
+}
+.detailsrow{
+  padding-left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.detailsrow p{
+  margin-bottom: 5px !important;
 }
 .button {
     height: 40px;

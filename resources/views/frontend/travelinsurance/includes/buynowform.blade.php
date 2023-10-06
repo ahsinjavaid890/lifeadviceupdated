@@ -1,6 +1,7 @@
 <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
     <form method="POST" action="{{ url('apply') }}">
         @csrf
+        <input type="hidden" name="temproary_sale" value="{{ rand('10000' , '987654321') }}">
         <input type="hidden" value="{{ $request->savers_email }}" name="email">
         <input type="hidden" value="{{ $request->fname }}" name="fname">
         <input type="hidden" value="{{ $request->lname }}" name="lname">

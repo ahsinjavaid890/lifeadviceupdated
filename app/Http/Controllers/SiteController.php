@@ -38,10 +38,6 @@ class SiteController extends Controller
     {
         return view('frontend.homepage.index');
     }
-    public function applysteptwo(Request $request)
-    {
-        $tem = new temproary_sales();
-    }
     public function getstates($id)
     {
         $data = DB::table('states')->where('country_id' , $id)->get();
@@ -256,6 +252,7 @@ class SiteController extends Controller
     {
         return view('frontend.formone.conferm');
     }
+    
     public function applyqoute(Request $request)
     {
         if ($request->product_id == 1) {
@@ -356,9 +353,6 @@ class SiteController extends Controller
             $newuser->save();
         }
 
-
-
-
         $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
@@ -380,7 +374,217 @@ class SiteController extends Controller
     }
     public function applyplan(Request $request)
     {
-        return view('frontend.apply.templatetwo')->with(array('request' => $request));
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->buynow_form;
+        if($temp == 2)
+        {   
+            if(temproary_sales::where('temp_id' , $request->temproary_sale)->count() == 0)
+            {
+                $sale = new temproary_sales();
+                $sale->formdata = serialize($request->all());
+                $sale->temp_id= $request->temproary_sale;
+                $sale->website= 'lifeadvice';
+                $sale->step= 1;
+                $sale->save();
+                $url = url('step-one').'/'.$request->temproary_sale;
+                return Redirect::to($url);
+            }else
+            {
+                $tempr = temproary_sales::where('temp_id' , $request->temproary_sale)->first();
+                $sale = temproary_sales::find($tempr->id);
+                $sale->formdata = serialize($request->all());
+                $sale->temp_id= $request->temproary_sale;
+                $sale->website= 'lifeadvice';    
+                $sale->step= 1;
+                $sale->save();
+                $url = url('step-one').'/'.$request->temproary_sale;
+                return Redirect::to($url);
+            }
+        }
+        if($temp == 1)
+        {
+            return view('frontend.apply.templateone')->with(array('request' => $request));
+        }
+    }
+    public function completeandpurchase(Request $request)
+    {
+        $temp = temproary_sales::where('temp_id' , $request->temp_id)->first();
+        $quotedata = unserialize($temp->formdata);
+        $stepone = unserialize($temp->steponedata);
+        $steptwo = unserialize($temp->steptwodata);
+        if ($quotedata['product_id'] == 1) {
+            $policytype = 'SVI';
+        } else if ($quotedata['product_id'] == 2) {
+            $policytype = 'VTC';
+        } else if ($quotedata['product_id'] == 3) {
+            $policytype = 'SI';
+        } else if ($quotedata['product_id'] == 4) {
+            $policytype = 'IFC';
+        } else if ($quotedata['product_id'] == 5) {
+            $policytype = 'ST';
+        } else if ($quotedata['product_id'] == 6) {
+            $policytype = 'MT';
+        } else if ($quotedata['product_id'] == 7) {
+            $policytype = 'AI';
+        } else if ($quotedata['product_id'] == 8) {
+            $policytype = 'TII';
+        } else if ($quotedata['product_id'] == 9) {
+            $policytype = 'BC';
+        } else {
+            $policytype = '';
+        }
+        $policy_number_temp = rand(10000, 50000);
+        $reffrence_number = $policytype . $policy_number_temp;
+        $newsale = new sales();
+        $newsale->reffrence_number = $reffrence_number;
+        $newsale->website = 'lifeadvice';
+        $newsale->sponsersname = $stepone['sponsersname'];
+        $newsale->sponsersemail = $stepone['sponsersemail'];
+        $newsale->email = $stepone['email'];
+        $newsale->phonenumber = $stepone['phone'];
+        $newsale->address = $steptwo['streetname'];
+        $newsale->appartment = $steptwo['suit'];
+        $newsale->city = $steptwo['city'];
+        $newsale->province = $steptwo['province'];
+        $newsale->postalcode = $steptwo['postalcode'];
+        $newsale->country = $steptwo['country'];
+        $newsale->product_name = $quotedata['product_name'];
+        $newsale->product_id = $quotedata['product_id'];
+        $newsale->start_date = $quotedata['tripdate'];
+        $newsale->end_date = $quotedata['tripend'];
+        $newsale->primary_destination = $quotedata['destination'];
+        $newsale->duration = $quotedata['tripduration'];
+        $newsale->premium = $quotedata['tripduration'];
+        $newsale->coverage_ammount = $quotedata['coverage'];
+        $newsale->deductibles = $quotedata['deductibles'];
+        $newsale->deductible_rate = $quotedata['deductible_rate'];
+        $newsale->company_name = $quotedata['companyName'];
+        $newsale->comp_id = $quotedata['comp_id'];
+        $newsale->plan_id = $quotedata['plan_id'];
+        $newsale->status = 'Pending';
+        $newsale->newstatus = 'new';
+        $newsale->save();
+
+
+
+        for($i=0; $i < $quotedata['traveller']; $i++) {
+            $year = $quotedata['years'][$i];
+            $preexisting = $quotedata['preexisting'][$i];
+            $traveler = new traveler_sale_informations();
+            $traveler->sale_id = $newsale->id;
+            $traveler->f_name = $stepone['fname'][$i];
+            $traveler->l_name = $stepone['lname'][$i];
+            $traveler->gender = $stepone['gender'][$i];
+            $traveler->pre_existing_condition = $preexisting;
+            $traveler->date_of_birth = Cmf::date_format($year);
+            $traveler->save();
+        }
+
+
+        $card_expiry = explode('/', $request->expirationdate);
+        $card_month = $card_expiry[0];
+        $card_year = $card_expiry[1];
+
+        $salecard = new sales_cards();
+        $salecard->sale_id = $newsale->id;
+        $salecard->card_name = $request->cardholdername;
+        $salecard->card_number = $request->cardholdernumber;
+        $salecard->card_month = $card_month;
+        $salecard->card_year = $card_year;
+        $salecard->card_cvc = $request->cvc;
+        $salecard->save();
+
+
+        $checkuser = User::where('email', $stepone['email'])->count();
+        if ($checkuser == 0) {
+            $password = $reffrence_number;
+            $newuser = new User();
+            $newuser->email = $stepone['email'];
+            $newuser->phone = $stepone['phone'];
+            $newuser->address = $steptwo['streetname'];
+            $newuser->password = Hash::make($password);
+            $newuser->user_type = 'customer';
+            $newuser->status = 'active';
+            $newuser->save();
+        }
+
+        // $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
+        // $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        // $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
+        // $reviewemailview = 'email.template' . $temp . '.review';
+        // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+        //     $message->to($request->email);
+        //     $message->subject($subject);
+        // });
+        // Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+        //     $message->to($request->email);
+        //     $message->subject('Tell Us How We Did?');
+        // });
+        // $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+        // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+        //     $message->to('admin@lifeadvice.ca');
+        //     $message->subject($subject);
+        // });
+        return view('frontend.formone.conferm')->with(array('request' => $request));
+    }
+    public function steponetoshow($id)
+    {
+        $data = temproary_sales::where('temp_id' , $id)->first();
+        $sale = temproary_sales::find($data->id);
+        $sale->step= 1;
+        $sale->save();
+        return view('frontend.apply.templatetwo')->with(array('data' => $data));
+    }
+    public function applystepone(Request $request)
+    {
+        $tempr = temproary_sales::where('temp_id' , $request->temp_id)->first();
+        $sale = temproary_sales::find($tempr->id);
+        $sale->steponedata = serialize($request->all());
+        $sale->step= 2;
+        $sale->save();
+        $url = url('step-two').'/'.$request->temp_id;
+        return Redirect::to($url);
+    }
+    public function steptwotoshow($id)
+    {
+        $data = temproary_sales::where('temp_id' , $id)->first();
+        return view('frontend.apply.templatetwo')->with(array('data' => $data));
+    }
+    public function applysteptwo(Request $request)
+    {
+        $tempr = temproary_sales::where('temp_id' , $request->temp_id)->first();
+        $sale = temproary_sales::find($tempr->id);
+        $sale->steptwodata = serialize($request->all());
+        $sale->step= 3;
+        $sale->save();
+        $url = url('step-three').'/'.$request->temp_id;
+        return Redirect::to($url);
+    }
+    public function stepthreetoshow($id)
+    {
+        $data = temproary_sales::where('temp_id' , $id)->first();
+        return view('frontend.apply.templatetwo')->with(array('data' => $data));
+    }
+    public function backonestep($id)
+    {
+        $tempr = temproary_sales::where('temp_id' , $id)->first();
+        $sale = temproary_sales::find($tempr->id);
+        $sale->step= $tempr->step-1;
+        $sale->save();
+
+        if($sale->step == 1)
+        {
+            $url = url('step-one').'/'.$id;
+        }
+        if($sale->step == 2)
+        {
+            $url = url('step-two').'/'.$id;
+        }
+        if($sale->step == 3)
+        {
+            $url = url('step-three').'/'.$id;
+        }
+        
+        return Redirect::to($url);
     }
     public function compareplans($id)
     {
