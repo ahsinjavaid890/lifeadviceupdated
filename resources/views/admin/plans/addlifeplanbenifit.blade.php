@@ -28,7 +28,7 @@
                                 @php
                                     $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
                                 @endphp
-                                <option value="{{ $r->id }}">{{ $r->id }} - {{ $r->plan_name }} @if($company) ({{$company->comp_name}}) @endif</option>
+                                <option value="{{ $r->id }}">{{ $r->id }} - {{ $r->plan_name }} @if($company) ({{$company->comp_name}}) ({{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first->pro_name }}) @endif</option>
                                 @endforeach
                             </select>
                         </div>
