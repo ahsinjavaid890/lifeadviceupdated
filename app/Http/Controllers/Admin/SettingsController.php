@@ -66,6 +66,7 @@ class SettingsController extends Controller
         $settings = site_settings::where('smallname' , Cmf::getwebsite()->smallname)->first();
         $upadate = Settings::find($settings->id);
         $upadate->userpanel_temp = $request->userpanel_temp;
+        $upadate->buynow_form = $request->buynow_form;
         $upadate->save();
         return redirect()->back()->with('message', 'User Panel Settings Updated Successfully');
     }

@@ -630,7 +630,7 @@
                             <li class="menu-item" aria-haspopup="true">
                                 <a href="{{ url('admin/website/userpanelsettings') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">User
-                                        Panel</span>
+                                        Panel & Buy Now</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">

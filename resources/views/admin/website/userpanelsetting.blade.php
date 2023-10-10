@@ -12,7 +12,7 @@
                         @include('alerts.index')
                         <div class="card mb-3">
                             <div class="card-header">
-                                <h4 class="fw-600 mb-0">User Panel Template</h4>
+                                <h4 class="fw-600 mb-0">User Panel and Buy Now Form Template</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ url('admin/website/userpanelsettingupdate') }}"
@@ -30,9 +30,25 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 col-from-label">Buy Now Form Setting Panel</label>
+                                        <div class="col-md-8">
+                                            <select name="buynow_form" required class="form-control" id="">
+                                                <option value="">Select Template</option>
+                                                <option @if ($settings->buynow_form == 1) selected @endif value="1">Template 1</option>
+                                                <option @if ($settings->buynow_form == 2) selected @endif  value="2">Template 2</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 col-from-label"></label>
+                                        <div class="col-md-8">
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>
