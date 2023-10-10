@@ -373,7 +373,7 @@ if($second_show == '1' && $second_total_price > 0){
          <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
             </button>
-            <span style="min-width: 150px;" class="badge badge-danger">This is Pre Existing Plan</span>
+            <span style="color: #FFF;margin-top: 3px;font-size: 11px;width: 100%;float: right;min-width: 150px;background: #dc3545;border-radius: 5px;font-weight: bold;height: 20px;" class="buynow-btn">This is Pre Existing Plan</span>
         </div>
         <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
             <div class="compare center aligned middle aligned column">
