@@ -684,7 +684,7 @@
 		      <div class="card card-guarantee text-center">
 		            <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
 		            <div class="card-guarantee__heading">Price Guarantee</div>
-		            <div class="card-guarantee__copy"> Insurance rates are regulated by law. You can't find the same insurance plan for a lower price anywhere else. </div>
+		            <div class="card-guarantee__copy">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within the industry</div>
 		         </div>
 		   </div>
 		</div>
