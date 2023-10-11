@@ -437,10 +437,10 @@ class SiteController extends Controller
         $newsale = new sales();
         $newsale->reffrence_number = $reffrence_number;
         $newsale->website = 'lifeadvice';
-        $newsale->sponsersname = $stepone['sponsersname'];
-        $newsale->sponsersemail = $stepone['sponsersemail'];
+        $newsale->sponsersname = $steptwo['sponsersname'];
+        $newsale->sponsersemail = $steptwo['sponsersemail'];
         $newsale->email = $stepone['email'];
-        $newsale->phonenumber = $stepone['phone'];
+        $newsale->phonenumber = $steptwo['phone'];
         $newsale->address = $steptwo['streetname'];
         $newsale->appartment = $steptwo['suit'];
         $newsale->city = $steptwo['city'];
