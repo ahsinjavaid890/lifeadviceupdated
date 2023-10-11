@@ -183,7 +183,6 @@
                 @endif
             @endif
             @if (in_array('No', $a))
-
                 @if ($plan->plan_pdf_without_pre_existing)
                     <a style=" font-size: 15px; margin-bottom: 15px; " href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
                         class="pdf-additional-travelers">

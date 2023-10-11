@@ -35,7 +35,18 @@
 						<div class="form-group mt-3">
 							<div class="row">
 								<div class="col-md-4">
-									<label class="label">Coverage Start Date</label>
+									<label class="label">Destination</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Destination</label>
+					                 	<input value="{{ $quotedata['destination'] }}" type="text" readonly name="tripdate" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Start Date</label>
 								</div>
 								<div class="col-md-8 nopad">
 									<div class="custom-form-control positionrelative">
@@ -46,12 +57,23 @@
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
-									<label class="label">Coverage End Date</label>
+									<label class="label">End Date</label>
 								</div>
 								<div class="col-md-8 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Coverage End Date</label>
 					                 	<input value="{{ Cmf::date_format($quotedata['tripend']) }}" type="text" readonly name="tripend" required class="input">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Arival Date</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Arival Date</label>
+					                 	<input value="{{ Cmf::date_format($quotedata['tripdate']) }}" type="text" readonly name="tripend" required class="input">
 					              	</div>
 								</div>
 							</div>
@@ -68,39 +90,6 @@
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
-									<label class="label">Coverage Amount</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Coverage Amount</label>
-					                 	<input value="${{ number_format($quotedata['coverage']) }}" type="text" readonly name="coverage" required class="input">
-					              	</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-4">
-									<label class="label">Deductible</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Deductible</label>
-					                 	<input name="deductibles" value="${{ number_format($quotedata['deductibles']) }}" type="text" readonly  required class="input">
-					              	</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-4">
-									<label class="label">Premium</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Premium</label>
-					                 	<input name="premium" value="$<?php echo number_format($quotedata['premium'],2); ?>" type="text" readonly  required class="input">
-					              	</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-4">
 									<label class="label">Insurance Company</label>
 								</div>
 								<div class="col-md-8 nopad">
@@ -111,13 +100,13 @@
 								</div>
 							</div>
 						</div>
-						<hr>
+						</div>
+						<div  class="card card__no-border step-details">
 	         			@for($i=0; $i < $quotedata['traveller']; $i++)
 	        			@php
 	        				$year = $quotedata['years'][$i];
 	        				$preexisting = $quotedata['preexisting'][$i];
 	        			@endphp
-
 	        			<h3 class="heading-4">Traveler Information @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</h3>
 	        			<div class="form-group mt-3">
 							<div class="row">
@@ -158,9 +147,9 @@
 									<label class="label">Select Gender of Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 								</div>
 								<div class="col-md-8 nopad">
-				                    <div class=" positionrelative">
+				                    <div class="positionrelative">
 				                    	<label class="selectlabel">Select Gender</label>
-			                            <select name="gender[]" class="gender form-control">
+			                            <select name="gender[]" class="input">
 			                               	<option value="">Select Gender</option>
 											<option @if($stepone) @if($stepone['gender'][$i] == 'Male') selected @endif  @endif value="Male">Male</option>
 											<option @if($stepone) @if($stepone['gender'][$i] == 'Female') selected @endif @endif value="Female">Female</option>
@@ -171,43 +160,6 @@
 						</div>
 						<input value="{{ $preexisting }}" name="preexisting[]" type="hidden">
 						@endfor
-						<hr>
-						<h3 class="heading-4">Primary Information</h3>
-						<div class="form-group mt-3">
-							<div class="row">
-								<div class="col-md-4">
-									<label class="label">Phone Number</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Phone Number</label>
-					                 	<input type="text" @if($stepone) value="{{ $stepone['phone'] }}" @endif id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
-					              	</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-4">
-									<label class="label">Sponsor Name</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Sponsor Name</label>
-					                 	<input @if($stepone) value="{{ $stepone['sponsersname'] }}" @endif class="input" type="" placeholder=" " id="" name="sponsersname">
-					              	</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-4">
-									<label class="label">Sponsor Relationship</label>
-								</div>
-								<div class="col-md-8 nopad">
-									<div class="custom-form-control positionrelative">
-					                  	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
-					                 	<input @if($stepone) value="{{ $stepone['sponsersemail'] }}" @endif id="" class="input" type="text" name="sponsersemail">
-					              	</div>
-								</div>
-							</div>
-						</div>
 						<hr>
 						<h3 class="heading-4">Where can we email your policy details?</h3>
 						<div class="row mt-3">
@@ -311,17 +263,42 @@
 						</div>	         			
 	                  </div>
 	                  <div  class="card card__no-border step-details">
-	                  	<h3 class="heading-4">Acknowledgement</h3>
+						<h3 class="heading-4">Primary Information</h3>
 						<div class="form-group mt-3">
 							<div class="row">
-								<div class="col-md-12">
-									<div class="d-flex">
-										<input id="checkboxforack" style=" width: 45px; margin-right: 10px; margin-bottom: 60px; " type="checkbox"  name="">
-										<label for="checkboxforack" style="cursor: pointer; text-align: justify;">You confirm that you have read and understood the exclusions, Pre-Certification/Pre-Notification clause as defined in the description of coverage for this policy.</label>
-									</div>
+								<div class="col-md-4">
+									<label class="label">Phone Number</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Phone Number</label>
+					                 	<input type="text" @if($steptwo) value="{{ $steptwo['phone'] }}" @endif id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
+					              	</div>
 								</div>
 							</div>
-						</div>	         			
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Sponsor Name</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Sponsor Name</label>
+					                 	<input @if($steptwo) value="{{ $steptwo['sponsersname'] }}" @endif class="input" type="" placeholder=" " id="" name="sponsersname">
+					              	</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label class="label">Sponsor Relationship</label>
+								</div>
+								<div class="col-md-8 nopad">
+									<div class="custom-form-control positionrelative">
+					                  	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
+					                 	<input @if($steptwo) value="{{ $steptwo['sponsersemail'] }}" @endif id="" class="input" type="text" name="sponsersemail">
+					              	</div>
+								</div>
+							</div>
+						</div>         			
 	                  </div>
 	                  <div class="text-right mb-5">
 	                  	<button  class="button button-rounded button-primary"> Continue </button>
@@ -356,10 +333,6 @@
 								<p>Number of Days</p>
 								<div>{{ $quotedata['tripduration'] }} days</div>
 							</div>
-							<div class="detailscolumn">
-								<p>Total Premium</p>
-								<div>$<?php echo number_format($quotedata['premium'],2); ?></div>
-							</div>
 						</div>
 						<div class="detailsrow mt-3">
 							<div class="d-flex">
@@ -371,12 +344,20 @@
 
 						<div class="detailsrow">
 							<div class="detailscolumn">
+								<p>Insurance Company</p>
+								<div>{{ DB::table('wp_dh_companies')->where('comp_id' , $quotedata['comp_id'])->first()->comp_name }}</div>
+							</div>
+							<div class="detailscolumn">
+								<p>Total Premium</p>
+								<div>${{ number_format($quotedata['premium'],2) }}</div>
+							</div>
+							<div class="detailscolumn">
 								<p>Deductible Amount</p>
-								<div>{{ Cmf::date_format($quotedata['deductibles']) }}</div>
+								<div>${{ number_format($quotedata['deductibles']) }}</div>
 							</div>
 							<div class="detailscolumn">
 								<p>Policy Maximum</p>
-								<div>{{ Cmf::date_format($quotedata['coverage']) }}</div>
+								<div>${{ number_format($quotedata['coverage']) }}</div>
 							</div>
 						</div>
 						<hr>
@@ -388,7 +369,7 @@
 	        				$year = $quotedata['years'][$i];
 	        				$preexisting = $quotedata['preexisting'][$i];
 	        			@endphp
-						<h3 style="font-size: 14px!important;color: #2b3481 !important;margin-bottom: 0px;margin-top: 0px;" class="heading-5"> Traveler @if($quotedata['traveller'] > 1){{ $i+1 }} @endif</h3>
+						<h3 style="font-size: 14px!important;color: #2b3481 !important;margin-bottom: 0px;margin-top: 0px;" class="heading-5"> Traveller @if($quotedata['traveller'] > 1){{ $i+1 }} @endif</h3>
 						<div class="detailsrow">
 
 							<div class="detailscolumn">
@@ -569,22 +550,21 @@
 	                  </div>
 	                  <div  class="card card__no-border step-details">
 	                  	<h3 class="heading-4">Complete your purchase</h3>
-						<p data-v-30b65789="" class="text-secondary-color subheader">By clicking the "Complete Purchase" button below, I authorize the insurance company to debit my applicable Credit Card for the applicable Policy premium amount specified above. Coverage purchased by credit card is subject to validation, verification for the correctness of Applicable premium amount, and acceptance by the credit card company. If requesting cancellation, I understand that I must notify the insurance company, IN WRITING, PRIOR to the effective date for a full refund and that the cancellation terms for the particular policy will apply. Express mail delivery charges, if applicable are not refundable.<br><br>
-						Please note that the personal information you are submitting in this section will result in automated decisions. For further information on how the insurance company processes your personal information please see their <a class="link-text-default-color" href="{{ url('privacypolicy') }}" target="_blank">Privacy Policy</a>. When the insurance company makes an automated decision about you, you have the right to contest the decision, to express your point of view, and to require a human review of the decision.  Please <a class="link-text-default-color" href="https://www.worldtrips.com/contact-us" target="_blank">contact</a> the insurance company for additional information.</p>
+						<p data-v-30b65789="" class="text-secondary-color subheader">When I click the "Complete Purchase" button below, I hereby give my consent for the insurance company to charge my relevant credit card for the specified policy premium amount. The purchase of coverage through credit card payment is contingent upon the verification and validation of the correct premium amount, as well as approval by the credit card company. If I decide to cancel the policy, I am aware that I must notify the insurance company in writing before the policy's effective date to be eligible for a full refund. Please note that specific cancellation terms for this policy will be applied.</p>
 						<hr>
+
+						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="d-flex">
-									<input id="checkboxforack" style="width: 20px;height: 20px;margin-right: 10px;margin-bottom: 60px;" type="checkbox"  name="">
-									<label for="checkboxforack" style="cursor: pointer; text-align: justify;"><p  style="font-size: 14px; line-height: 24px; color: #67778f;"  class="text-secondary-color">By checking this box, I declare that I have read and I agree to the <a class="popup-with-zoom-anim a1 link-text-default-color" href="{{ url('terms-and-condition') }}">Terms and Conditions</a> set forth by  WorldTrips.</p></label>
+									<input id="checkboxforackasd" style="width: 24px;height: 17px;margin-right: 10px;margin-bottom: 30px;" type="checkbox"  name="">
+									<label for="checkboxforackasd" style="cursor: pointer; text-align: justify;"><p style="font-size: 14px; line-height: 24px; color: #67778f;" class="text-secondary-color">By checking this box, I declare that I have read and I agree to the <a rel="nofollow" href="{{ url('terms-and-condition') }}" class="show-vc-plan-terms link-text-default-color">Terms and Conditions</a> and <a rel="nofollow" href="{{ url('privacypolicy') }}" target="_blank" class="show-vc-plan-privacy link-text-default-color">Privacy Policy</a> of VisitorCoverage Inc.</p></label>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-12">
 								<div class="d-flex">
-									<input id="checkboxforackasd" style="width: 24px;height: 23px;margin-right: 10px;margin-bottom: 60px;" type="checkbox"  name="">
-									<label for="checkboxforackasd" style="cursor: pointer; text-align: justify;"><p style="font-size: 14px; line-height: 24px; color: #67778f;" class="text-secondary-color">By checking this box, I declare that I have read and I agree to the <a rel="nofollow" href="{{ url('terms-and-condition') }}" class="show-vc-plan-terms link-text-default-color">Terms and Conditions</a> and <a rel="nofollow" href="{{ url('privacypolicy') }}" target="_blank" class="show-vc-plan-privacy link-text-default-color">Privacy Policy</a> of VisitorCoverage Inc.</p></label>
+									<input id="asdasdasdsad" style="width: 28px;height: 17px;margin-right: 10px;margin-bottom: 30px;" type="checkbox"  name="">
+									<label for="asdasdasdsad" style="cursor: pointer; text-align: justify;"><p style="font-size: 14px; line-height: 24px; color: #67778f;" class="text-secondary-color">You confirm that you have read and understood the exclusions, Pre-Certification/Pre-Notification clause as defined in the description of coverage for this policy.</p></label>
 								</div>
 							</div>
 						</div>
@@ -598,7 +578,7 @@
 	        @endif
          </div>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4 padding-rightzero-on-desktop">
 		<div class="policy-portal__sidebar">
 		   <div class="sidebar-wrapper">
 		      <div class="sticky">
@@ -658,18 +638,54 @@
 		                     </div>
 		                     <!---->
 		                  </div>
-		                  <!-- <div  class="docs"><a  href="https://www.visitorscoverage.com/brochure/visitorsecure-insurance-brochure.pdf" target="_blank" class="link-text-5 link-text-default-color icon-pdf">Plan Brochure</a><a  href="https://www.visitorscoverage.com/policydoc/visitorsecure-insurance-policy-document.pdf" target="_blank" class="link-text-5 link-text-default-color icon-pdf">Description of Coverage</a><a  href="https://www.visitorscoverage.com/pdf/ipid_VisitorSecureWT5.pdf" target="_blank" class="link-text-5 link-text-default-color icon-pdf">Insurance Product Info Document</a></div> -->
+		                  <h4 style=" color: #2b3481 !important; padding-left: 0px; border-top: 1px solid #cfd9e8 !important; " class="heading-5">Limited Coverage Plan</h4>
+		                  <p style=" margin-top: 13px; font-size: 12px;padding-bottom: 30px; line-height: 20px; border-bottom: 1px solid #cfd9e8 !important; " class="text-secondary-color comprehensive">The limited plan provides basic and fixed pre-defined dollar amounts for covered services, as defined in the policy documents.<br><br>Review the policy documents for complete policy details including benefits and exclusions.</p>
+		                  <div  class="docs">
+		                  	@php
+		                  		$a = $quotedata['preexisting'];
+		                  		$plan = DB::table('wp_dh_insurance_plans')->where('id' , $quotedata['plan_id'])->first();
+		                  	@endphp
+		                  	@if (in_array('no', $a))
+			                  	@if ($plan->plan_pdf_without_pre_existing)
+				                    <a style="font-size: 12px; margin-bottom: 1rem;  font-weight: 700; " download="" class="link-text-5 link-text-default-color icon-pdf" href="{{ url('public/images') }}/{{ $plan->plan_pdf_without_pre_existing }}"
+				                        class="pdf-additional-travelers">
+				                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Without Pre Existing Person
+				                    </a>
+				                @endif
+				                <br>
+				                @if ($plan->benifit_summary_without_pre_existing)
+				                    <a style="font-size: 12px; margin-bottom: 1rem; font-weight: 700; " download="" class="link-text-5 link-text-default-color icon-pdf" href="{{ url('public/images') }}/{{ $plan->benifit_summary_without_pre_existing }}"
+				                        class="pdf-additional-travelers">
+				                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Without Pre Existing Person
+				                    </a>
+				                @endif
+		                  	@endif
+		                  	@if (in_array('yes', $a))
+				                @if ($plan->plan_pdf_pre_existing)
+				                    <a style="font-size: 12px; margin-bottom: 1rem; font-weight: 700; " download="" class="link-text-5 link-text-default-color icon-pdf" href="{{ url('public/images') }}/{{ $plan->plan_pdf_pre_existing }}"
+				                        class="pdf-additional-travelers">
+				                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Plan PDF for Pre Existing Person
+				                    </a>
+				                @endif
+				                <br>
+				                @if ($plan->benifit_summary_pre_existing)
+				                    <a style="font-size: 12px; margin-bottom: 1rem;  font-weight: 700; " download="" class="link-text-5 link-text-default-color icon-pdf" href="{{ url('public/images') }}/{{ $plan->benifit_summary_pre_existing }}"
+				                        class="pdf-additional-travelers">
+				                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Benifits Summary of Pre Existing Person 
+				                    </a>
+				                @endif
+				            @endif
 		               </div>
-		               <!----><!---->
 		            </div>
 		         <!---->
-		         <div class="card card-guarantee text-center">
+		         
+		         <!---->
+		      </div>
+		      <div class="card card-guarantee text-center">
 		            <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
 		            <div class="card-guarantee__heading">Price Guarantee</div>
 		            <div class="card-guarantee__copy"> Insurance rates are regulated by law. You can't find the same insurance plan for a lower price anywhere else. </div>
 		         </div>
-		         <!---->
-		      </div>
 		   </div>
 		</div>
 	</div>

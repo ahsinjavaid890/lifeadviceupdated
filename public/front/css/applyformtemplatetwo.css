@@ -1,3 +1,6 @@
+.padding-rightzero-on-desktop{
+  padding-right: 0px;
+}
 @media only screen and (max-width:600px){
   .detailscolumn{
       max-width: 50% !important;
@@ -114,7 +117,7 @@
     color: #1b8fe4;
 }
 .input{
-  width: 100% !important;
+  width: 85% !important;
 }
 .label{
     margin-top: 13px;
