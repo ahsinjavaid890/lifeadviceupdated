@@ -368,7 +368,7 @@ if($second_show == '1' && $second_total_price > 0){
 </div>
 <div class="col-md-3 text-center" style="padding-top: 5px; padding-bottom: 5px;">
    <h1 class="planprice ">${{ number_format($second_total_price,2) }}</h1>
-   <p class="text-center" style="padding-bottom:0px;">This rate is for ${{ $second_deductible }} deductible options</p>
+   <p class="text-center" style="padding-bottom:0px;font-size:12px;">This rate is for ${{ $second_deductible }} deductible options</p>
    <span class="badge badge-danger">This is Pre Existing Plan</span>
    <div class="col-md-12 col-xs-12" >
       <a class="submit-btn" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();">

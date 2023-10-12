@@ -280,7 +280,7 @@ if($show == '1' && $total_price > 0){
 </div>
 <div class="col-md-3 text-center" style="padding-top: 5px; padding-bottom: 5px;">
    <h1 class="planprice ">${{ number_format($total_price,2) }}</h1>
-   <p class="text-center">This rate is for ${{ $deductible }} deductible options</p>
+   <p class="text-center" style="font-size:12px;">This rate is for ${{ $deductible }} deductible options</p>
    <div class="col-md-12 col-xs-12" >
       <a class="submit-btn" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();">
       <i class="fa fa-shopping-cart"></i> Buy Now

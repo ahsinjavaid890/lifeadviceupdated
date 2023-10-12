@@ -103,7 +103,7 @@ $(function () {
 
 });
 </script>
-<div class="dh-listings " id="dh-get-quote">
+<div class="dh-listings container" id="dh-get-quote">
     <?php
 //  error_reporting(E_ERROR);
 $startdate = $request->departure_date;
@@ -185,7 +185,6 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
  //echo "<script>window.location='?action=not_eligible';</script>";
 }
 ?>
-<div class="">
 <div class="row filterdiv hidden-xs" style="border: 1px solid #ddd;background: #F9F9F9;text-align: center;padding-top: 10px;border-top: 1px solid #DDD;margin-top: 10px;">   
     <div class="col-md-2 hidden-xs" style="padding:10px; font-size:21px; font-weight:bold; color:#444;padding-top: 25px;">
     <i class="fa fa-filter"></i> Filter Results

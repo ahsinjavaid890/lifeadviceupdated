@@ -3,6 +3,7 @@
 <script type="text/javascript" src="{{url('public/front/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/daterangepicker.min.js') }}"></script>
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public\front\tabs\formlayouteight.css')}}">
 @php
 $url = request()->segment(count(request()->segments()));
 $firstsection = DB::table('travelpages')->where('url' , $url)->first();
@@ -44,15 +45,20 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                      <div  class="grid-container">
                         <div  class="grid-row grid-row--bar">
                            <div  class="d-grid generator-bar-row-wrap">
-                              <label data-toggle="modal" data-target="#myModal1"  class="form-input input-destination has-arrow">
-                                 <input  type="text" placeholder="@if(isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif" required="required" id="coverageprice" class="input-field" disabled>
-                                 <span  class="label-text">@if(isset($_GET['sum_insured2'])) {{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif</span>
-                                 <div  class="dest-value"></div>
-                              </label>
-                              <label  data-toggle="modal" data-target="#myModal2"  class="form-input input-traveler-info has-arrow">
-                              <input  id="ageshow" type="text" placeholder="Traveler Information" required="required" class="input-field" disabled>
-                              <span  class="label-text">Traveler Information</span>
-                              </label>
+                              <div data-toggle="modal" data-target="#myModal1" class="newstyleforinputdiv form-input input-destination has-arrow">
+                                   @if (isset($_GET['sum_insured2'])) ${{ $_GET['sum_insured2'] }}  @else Coverage Amount @endif
+                                   <span class="label-text">
+                                       @if (isset($_GET['sum_insured2']))
+                                           {{ $_GET['sum_insured2'] }}
+                                       @else
+                                           Coverage Amount @endif
+                                   </span>
+                                   <div class="dest-value"></div>
+                               </div>
+                              <div id="ageshow" data-toggle="modal" data-target="#myModal2" class="newstyleforinputdiv form-input input-traveler-info has-arrow">
+                                    Traveler Information
+                                    <span class="label-text">Traveler Information</span>
+                              </div>
                               <div  data-toggle="modal" data-target="#myModal3"   class="form-input date-range form-input__date-range">
                                  <div  class="input-field">
                                     <div  class="from">
@@ -93,7 +99,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                                      <select onchange="sum_insured(this.value)" name="sum_insured2" id="sum_insured2" class="sum_insured2 form-control">
                                        <option value="">Select Coverage Amount</option>
                                        @foreach($sum_insured as $r)
-                                          <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2'] == $r->sum_insured) selected @endif  @endif  value="{{ $r->sum_insured }}">${{ number_format($r->sum_insured) }}</option>
+                                          <option @if(isset($_GET['sum_insured2'])) @if($_GET['sum_insured2']==$r->sum_insured)selected @endif @endif value="{{ $r->sum_insured }}" @if($data->url == 'visitor-insurance')  @if($r->sum_insured == 50000) selected @endif  @else @if ($key == 0) selected @endif @endif >${{$r->sum_insured }}</option>
                                        @endforeach
                                      </select>
                                      <div class="text-danger mt-2 mb-3" id="covergaeerror"></div>
@@ -126,199 +132,287 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
                   </div>
                </div>
             </div>
-            <div class="modal zoom-in ahModelStyle" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-               <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
+            <div class="modal zoom-in ahModelStyle" id="myModal2" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+              <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
                   <div class="modal-content">
-                     <div class="modal-body">
-                        <div class="close-btn">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
-                           <h2 class="heading-3 card-heading">How many travelers?</h2>
-                           <!----><!----><!----><!---->
-                           <div class="card-content d-flex">
-                              <p  class="card-info"> Enter the age for each person that will be traveling.</p>
-                              <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;" id="errortravelr" class="alert alert-danger">
+                      <div class="modal-body paddingleftrightmodaltwonmobile">
+                          <div class="close-btn">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                          <div class="card card-for-mobile-device modal-card lg-wizard-card border-0">
+                              <h2 class="heading-3 card-heading">How many travelers?</h2>
+                              <div class="card-content d-flex">
+                                  <p class="card-info"> Enter the age for each person that will be traveling.</p>
+                                  <div style="width:50%;display:none;padding: 4px;margin-bottom: 0px;"
+                                      id="errortravelr" class="alert alert-danger">
 
+                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
-                                 @if(isset($_GET['years']))
-                                 @foreach($_GET['years'] as $key=> $year)
-                                 @if($year)
-                                 <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
-                                       <div class="row alignitembaseline">
-                                          <div class="col-md-6">
-                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                              <div class="row">
+                                  <div class="col-md-12 mt-3 p-l-z-o-m p-r-z-o-m">
+                                      @if (isset($_GET['years']))
+                                          @foreach ($_GET['years'] as $key => $year)
+                                              @if ($year)
+                                                  <div class="row mt-3 showrowstraveler">
+                                                      <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                                          <div class="row alignitembaseline">
+                                                              <div class="col-md-6">
+                                                                  <span class="marginbottomonmobile travelerheading primarytravelheading">Primary Traveler</span>
+                                                              </div>
+                                                              <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
+                                                                  <div class="input-wrapper positionrelative">
+                                                                      <label class="selectlabeldateofbirth">Date
+                                                                          Of Birth</label>
+                                                                      <input value="{{ $year }}"
+                                                                          inputmode="numeric"
+                                                                          id="dateofbirthfull"
+                                                                          class="input dateofbirthclass1"
+                                                                          type="text"
+                                                                          placeholder="MM/DD/YYYY"
+                                                                          name="years[]"
+                                                                          data-placeholder="MM/DD/YYYY">
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div
+                                                          class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
+                                                          <label class="selectlabel">Pre Existing
+                                                              Condition</label>
+                                                          <select name="pre_existing[]"
+                                                              class="pre_existing_values_check1 pre_existing_condition1 form-control">
+                                                              <option
+                                                                  @if ($_GET['pre_existing'][$key] == 'no') selected @endif
+                                                                  value="no">No</option>
+                                                              <option
+                                                                  @if ($_GET['pre_existing'][$key] == 'yes') selected @endif
+                                                                  value="yes">Yes</option>
+
+                                                          </select>
+                                                      </div>
+                                                      <div class="col-md-3 alert1 text-danger display-none-on-mobile"
+                                                          style="position:relative;">
+                                                          <span class="button button-help show-tooltip"></span>
+                                                          <div
+                                                              class="tooltip-container tooltip--auto-height activehelpful">
+                                                              <button
+                                                                  class="button button-close-simplified close-tooltip"></button>
+                                                              <h4 class="heading heading-5">Helpful Info</h4>
+                                                              <div class="content">
+                                                                  <p>A pre-existing condition is a health
+                                                                      condition that existed prior to applying for
+                                                                      health or life insurance. Conditions include
+                                                                      illnesses such as diabetes, cancer, and
+                                                                      heart disease</p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              @endif
+                                          @endforeach
+                                      @else
+                                          <div class="row mt-3 showrowstraveler">
+                                              <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                                  <div class="row alignitembaseline">
+                                                      <div class="col-md-6 marginbottomonmobile">
+                                                          <span class="travelerheading primarytravelheading">Primary Traveler</span>
+                                                      </div>
+                                                      <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
+                                                          <div class="input-wrapper positionrelative">
+                                                              <label class="selectlabeldateofbirth">Date Of
+                                                                  Birth</label>
+                                                              <input onkeyup="calculateAge(this.value , 'dateofbirthfull1')" inputmode="numeric" id="dateofbirthfull1"
+                                                                  class="input dateofbirthclass1" type="text"
+                                                                  placeholder="MM/DD/YYYY" name="years[]"
+                                                                  data-placeholder="MM/DD/YYYY">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-3 positionrelative margintopmobile p-l-z-o-m p-r-z-o-m">
+                                                  <label class="selectlabel">Pre Existing Condition</label>
+                                                  <select name="pre_existing[]"
+                                                      class="pre_existing_values_check1 pre_existing_condition1 form-control">
+                                                      <option value="no">No</option>
+                                                      <option value="yes">Yes</option>
+
+                                                  </select>
+                                              </div>
+                                              <div class="col-md-3 alert1 text-danger display-none-on-mobile"
+                                                  style="position:relative;">
+                                                  <span class="button button-help show-tooltip"></span>
+                                                  <div
+                                                      class="tooltip-container tooltip--auto-height activehelpful">
+                                                      <button
+                                                          class="button button-close-simplified close-tooltip"></button>
+                                                      <h4 class="heading heading-5">Helpful Info</h4>
+                                                      <div class="content">
+                                                          <p>A pre-existing condition is a health condition that
+                                                              existed prior to applying for health or life
+                                                              insurance. Conditions include illnesses such as
+                                                              diabetes, cancer, and heart disease</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
                                           </div>
-                                          <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
-                                             <div class="input-wrapper positionrelative">
-                                                <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input value="{{ $year }}" inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
-                                          <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-                                              <option @if($_GET['pre_existing'][$key] == 'no') selected @endif value="no">No</option>
-                                              <option @if($_GET['pre_existing'][$key] == 'yes') selected @endif value="yes">Yes</option>
-                                           </select>
-                                    </div>
-                                    <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
-                                       <span class="button button-help show-tooltip"></span>
-                                       <div class="tooltip-container tooltip--auto-height activehelpful">
-                                          <button class="button button-close-simplified close-tooltip"></button>
-                                          <h4 class="heading heading-5">Helpful Info</h4>
-                                          <div class="content">
-                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 @endforeach
-                                 @else
-                                 <div class="row mt-3 showrowstraveler">
-                                    <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
-                                       <div class="row alignitembaseline">
-                                          <div class="col-md-6">
-                                             <span class="travelerheading primarytravelheading">Primary Traveler</span>
-                                          </div>
-                                          <div class="col-md-6 nopad p-l-z-o-m p-r-z-o-m">
-                                             <div class="input-wrapper positionrelative">
-                                                <label class="selectlabeldateofbirth">Date Of Birth</label>
-                                                <input inputmode="numeric" id="dateofbirthfull" class="input dateofbirthclass1" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY">
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
-                                          <label class="selectlabel">Pre Existing Condition</label>
-                                          <select name="pre_existing[]" class="pre_existing_values_check1 pre_existing_condition1 form-control">
-                                              <option value="no">No</option>
-                                              <option value="yes">Yes</option>
-                                           </select>
-                                    </div>
-                                    <div class="col-md-3 alert1 text-danger display-none-on-mobile" style="position:relative;">
-                                       <span class="button button-help show-tooltip"></span>
-                                       <div class="tooltip-container tooltip--auto-height activehelpful">
-                                          <button class="button button-close-simplified close-tooltip"></button>
-                                          <h4 class="heading heading-5">Helpful Info</h4>
-                                          <div class="content">
-                                             <p>A pre-existing condition is a health condition that existed prior to applying for health or life insurance. Conditions include illnesses such as diabetes, cancer, and heart disease</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 @endif
-                                 <div class="additionaltraveler">
-                                    @for ($i=2; $i < 7; $i++)
-                                    <div id="removebutton{{ $i }}" class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m"> <div class="col-md-6 p-l-z-o-m p-r-z-o-m"> <div class="row alignitembaseline"> <div class="col-md-6"> <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> </div> <div class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m"> <div class="input-wrapper positionrelative"> <label class="selectlabeldateofbirth">Date Of Birth Traveler {{ $i }}</label><input onkeyup="dateofbirthtraverler(this.value)" class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}" inputmode="numeric" type="text" placeholder="MM/DD/YYYY" name="years[]" data-placeholder="MM/DD/YYYY"></div> </div> </div> </div> <div class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m"><label class="selectlabel">Pre Existing Condition</label> <select name="pre_existing[]" class="pre_existing_condition{{ $i }} form-control pre_existing_values_check{{ $i }}">  <option value="no">No</option><option value="yes">Yes</option>  </select> </div> <div class="col-md-3 ahAdditionalTravel"> <div class="crossbutton"> <span onclick="removeappendvalue({{ $i }})" class="button remove-line remove-icon md-hide sm-hide"></span> </div> </div> <div class="alert'+a+' text-danger"></div> </div>
-                                    @endfor
-                                 </div>
+                                      @endif
+                                      <div class="additionaltraveler">
+                                          @for ($i = 2; $i < 7; $i++)
+                                              <div id="removebutton{{ $i }}"
+                                                  class="row mt-3 hiderowstraveler p-l-z-o-m p-r-z-o-m">
+                                                  <div class="col-md-6 p-l-z-o-m p-r-z-o-m">
+                                                      <div class="row alignitembaseline">
+                                                          <div class="col-md-6"> 
+                                                              <span class="travelerheading primarytravelheading">Traveler {{ $i }}</span> 
+                                                          </div>
+                                                          <div
+                                                              class="col-md-6 margin-top-ten-on-mobile p-l-z-o-m p-r-z-o-m">
+                                                              <div class="input-wrapper positionrelative"> <label
+                                                                      class="selectlabeldateofbirth">Date Of
+                                                                      Birth Traveler
+                                                                      {{ $i }}</label><input
+                                                                      inputmode="numeric" 
+                                                                      onchange="dateofbirth(this.value , {{ $i }})"
+                                                                      class="dateofbirthclass{{ $i }} input dateofbirthfull{{ $i }}"
+                                                                      type="text" id="dateofbirthfull{{ $i }}" placeholder="MM/DD/YYYY"
+                                                                      name="years[]"
+                                                                      data-placeholder="MM/DD/YYYY"></div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div
+                                                      class="col-md-3 positionrelative margin-top-twenty-on-mobile p-l-z-o-m p-r-z-o-m">
+                                                      <label class="selectlabel">Pre Existing Condition</label>
+                                                      <select onchange="changepreexisting(this.value)"
+                                                          name="pre_existing[]"
+                                                          class="pre_existing_condition{{ $i }} form-control pre_existing_values_check{{ $i }}">
+                                                          <option value="no">No</option>
+                                                          <option value="yes">Yes</option>
+                                                      </select> </div>
+                                                  <div class="col-md-3 ahAdditionalTravel">
+                                                      <div class="crossbutton"> <span
+                                                              onclick="removeappendvalue({{ $i }})"
+                                                              class="button remove-line remove-icon md-hide sm-hide"></span>
+                                                      </div>
+                                                  </div>
+                                                  <div class="alert'+a+' text-danger"></div>
+                                              </div>
+                                          @endfor
+                                      </div>
+                                  </div>
+                                  <div class="col-md-12 mt-3">
+                                      <div class="travelerinfo">
+                                          <span onclick="addtravellers()"
+                                              class="button button-add-another button-trav-add"> Add Additional
+                                              Traveler </span>
+                                      </div>
+                                  </div>
+                                  <input type="hidden" value="1" id="number_travelers"
+                                      name="number_travelers">
                               </div>
-                              <div class="col-md-12 mt-3">
-                                 <div class="travelerinfo">
-                                    <span onclick="addtravellers()" class="button button-add-another button-trav-add"> Add Additional Traveler </span>
-                                 </div>
+                          </div>
+                      </div>
+
+
+                      <style type="text/css">
+                          .switch {
+                              position: relative;
+                              display: inline-block;
+                              width: 53px;
+                              height: 27px;
+                          }
+
+                          /* Hide default HTML checkbox */
+                          .switch input {
+                              opacity: 0;
+                              width: 0;
+                              height: 0;
+                          }
+
+                          /* The slider */
+                          .tooglecheckbox {
+                              position: absolute;
+                              cursor: pointer;
+                              top: 0;
+                              left: 0;
+                              right: 0;
+                              bottom: 0;
+                              background-color: #919192;
+                              -webkit-transition: .4s;
+                              transition: .4s;
+                          }
+
+                          .tooglecheckbox:before {
+                              position: absolute;
+                              content: "";
+                              height: 20px;
+                              width: 20px;
+                              left: 4px;
+                              bottom: 4px;
+                              background-color: white;
+                              -webkit-transition: .4s;
+                              transition: .4s;
+                          }
+
+                          input:checked+.tooglecheckbox {
+                              background-color: #2b3481;
+                          }
+
+                          input:focus+.tooglecheckbox {
+                              box-shadow: 0 0 1px #2196F3;
+                          }
+
+                          input:checked+.tooglecheckbox:before {
+                              -webkit-transform: translateX(26px);
+                              -ms-transform: translateX(26px);
+                              transform: translateX(26px);
+                          }
+
+                          /* Rounded sliders */
+                          .tooglecheckbox.round {
+                              border-radius: 34px;
+                          }
+
+                          .tooglecheckbox.round:before {
+                              border-radius: 50%;
+                          }
+
+                          .nextbtns {
+                              display: flex;
+                          }
+
+                          .toogleswithchdiv label {
+                              margin-bottom: 0px;
+                          }
+                      </style>
+
+                      <div class="modal-footer">
+                          <div class="nextbtns">
+                              <div class="toogleswithchdiv">
+                                  <input type="hidden" value="no" id="familyplan_temp"
+                                      name="familyplan_temp">
+                                  <label
+                                      style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do
+                                      You Require Family Plan?</label>
+                                  <label style="margin-right:10px;">No</label>
+                                  <label style="margin-right:10px;" class="switch">
+                                      <input id="familyplanyes" onclick="checkfamilyplan(this.value)"
+                                          value="yes" type="checkbox">
+                                      <p class="tooglecheckbox round"></p>
+                                  </label>
+                                  <label style="margin-right:20px;">Yes</label>
                               </div>
-                              <input type="hidden" value="1" id="number_travelers" name="number_travelers">
-                           </div>
-                        </div>
-                     </div>
-                     <style type="text/css">
-                        .switch {
-                         position: relative;
-                         display: inline-block;
-                         width: 53px;
-                         height: 27px;
-                        }
-
-                        /* Hide default HTML checkbox */
-                        .switch input {
-                          opacity: 0;
-                          width: 0;
-                          height: 0;
-                        }
-
-                        /* The slider */
-                        .tooglecheckbox {
-                          position: absolute;
-                          cursor: pointer;
-                          top: 0;
-                          left: 0;
-                          right: 0;
-                          bottom: 0;
-                          background-color: #919192;
-                          -webkit-transition: .4s;
-                          transition: .4s;
-                        }
-
-                        .tooglecheckbox:before {
-                          position: absolute;
-                          content: "";
-                          height: 20px;
-                          width: 20px;
-                          left: 4px;
-                          bottom: 4px;
-                          background-color: white;
-                          -webkit-transition: .4s;
-                          transition: .4s;
-                        }
-
-                        input:checked + .tooglecheckbox {
-                          background-color: #2b3481;
-                        }
-
-                        input:focus + .tooglecheckbox {
-                          box-shadow: 0 0 1px #2196F3;
-                        }
-
-                        input:checked + .tooglecheckbox:before {
-                          -webkit-transform: translateX(26px);
-                          -ms-transform: translateX(26px);
-                          transform: translateX(26px);
-                        }
-
-                        /* Rounded sliders */
-                        .tooglecheckbox.round {
-                          border-radius: 34px;
-                        }
-
-                        .tooglecheckbox.round:before {
-                          border-radius: 50%;
-                        }
-                        .nextbtns{
-                           display: flex;
-                        }
-                        .toogleswithchdiv label{
-                           margin-bottom: 0px;
-                        }
-                     </style>
-                     <div class="modal-footer">
-                        <div class="nextbtns">
-                           <div class="toogleswithchdiv">
-                              <input type="hidden" value="no" id="familyplan_temp" name="familyplan_temp">
-                              <label style="margin-right:20px;color: #2b3481;font-size: 15px;font-weight: 600;">Do You Require Family Plan?</label>
-                              <label style="margin-right:10px;">No</label>
-                              <label style="margin-right:10px;" class="switch">
-                                <input id="familyplanyes" onclick="checkfamilyplan(this.value)" value="yes" type="checkbox">
-                                <p class="tooglecheckbox round"></p>
-                              </label>
-                              <label style="margin-right:20px;">Yes</label>
-                           </div>
-                          <span class="btn btn-default btn-prev">Prev</span>
-                          <span id="secondnextfake"  class="btn btn-default" onclick="secondnext()">Next</span>
-                          <span id="secondnextorignal" style="display: none;"   class="btn btn-default btn-next">Next</span>
-                        </div>
-                     </div>
+                              <span class="btn btn-default btn-prev">Prev</span>
+                              <span id="secondnextfake" class="btn btn-default"
+                                  onclick="secondnext()">Next</span>
+                              <span id="secondnextorignal" style="display: none;"
+                                  class="btn btn-default btn-next">Next</span>
+                          </div>
+                      </div>
                   </div>
-               </div>
-            </div>
+              </div>
+          </div>
             <style type="text/css">
                .calendar-section {
                     margin-bottom: 20px;
