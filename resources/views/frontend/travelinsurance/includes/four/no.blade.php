@@ -337,18 +337,31 @@ if($second_show == '1' && $second_total_price > 0){
         style="display: <?php if($_REQUEST['sum_insured2'] == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
         <div class="row plan-details align-items-center  deductable-<?php echo $second_deductible; ?>"
             style=" display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
-            <div class="col-md-1 col-sm-6">
+            <div class="col-md-1 col-sm-6 mobile-deisply-none">
                 <div class=" center aligned middle aligned column">
                     <div class="compare col-md-12 text-center">
-                        <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 1+$second_deductible.$second_plan_id }}{{number_format($second_total_price, 0)}})"aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-xs-6 logogd" style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
-                <img style="width: 200px;height: 80px;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
-
+            <div class="mobile-deisply-show" style="display: none;width: 100%;">
+                <div class="d-flex col-md-12">
+                    <div class="asdsadsad">
+                        <i class="fa fa-exclamation-circle dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" aria-hidden="true"></i>
+                    </div>
+                    <div class="logo"style="margin-left: 20%;">
+                        <img style="width: 200px;height: 80px;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
+                    </div>
+                </div>
             </div>
+
+
+            <div class="col-md-4 col-xs-6 logogd mobile-deisply-none" style="border:0px solid #000;  text-align:center; padding: 5px 0; text-align: center ">
+                <img style="width: 200px;height: 80px;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $second_comp_logo }}" />
+            </div>
+
+
             <div class="col-md-4 col-xs-6 text-center" id="price">
                 <h3 style="display:inline;color: #000;font-weight: bold;    font-size: 30px;">
                     $<?php $second_explode = explode('.',number_format($second_total_price,2));
@@ -373,12 +386,10 @@ if($second_show == '1' && $second_total_price > 0){
                 <div style="clear:both;"></div>
             </div>
             <div class="col-md-3 col-xs-6 text-center">
-                <button style="background-color: #2b3481;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();"
-                    class="submit-btn" data-value="<?php echo $second_plan_id; ?>"
-                    class="btn btn-lg btn-danger" name="buynow"><i class="fa fa-shopping-cart"></i> Buy
-                    Now
+                <button style="background-color: #2b3481;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="submit-btn">
+                    <i class="fa fa-shopping-cart text-white"></i> Buy Now
                 </button>
-                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="comparebutton col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="submit-btn mt-1" style="background-color: #12b48b;" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
 
             

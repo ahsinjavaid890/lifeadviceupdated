@@ -1057,10 +1057,16 @@ class AdminController extends Controller
     }
     public function updatecompanyinfo(Request $request)
     {
-        if ($request->claimform) {
-            $claimform = Cmf::sendimagetodirectory($request->claimform);
-            $update = array('claimform' => $claimform, 'comp_name' => $request->name);
-        } else {
+        if($request->logo)
+        {
+            $comp_logo = Cmf::sendimagetodirectory($request->logo);
+            if ($request->claimform) {
+                $claimform = Cmf::sendimagetodirectory($request->claimform);
+                $update = array('claimform' => $claimform, 'comp_name' => $request->name, 'comp_logo' => $comp_logo);
+            } else {
+                $update = array('comp_name' => $request->name, 'comp_logo' => $comp_logo);
+            }
+        }else{
             $update = array('comp_name' => $request->name);
         }
         DB::table('wp_dh_companies')->where('comp_id', $request->id)->update($update);

@@ -125,13 +125,13 @@
 
                         if($request->pre_existing[$perone-1]=='yes')
                         {
-                            echo $dailyrate = $plan_rates[0]->rate_with_pre_existing;
+                            $dailyrate = $plan_rates[0]->rate_with_pre_existing;
                             $daily_rate += $dailyrate;
                             if($dailyrate == ''){ $dailyrate = 0; }
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }else{
-                            echo $dailyrate = $plan_rates[0]->rate_without_pre_existing;
+                            $dailyrate = $plan_rates[0]->rate_without_pre_existing;
                             $daily_rate += $dailyrate;
                             if($dailyrate == ''){ $dailyrate = 0; }
                             $display[] =  $dailyrate;
