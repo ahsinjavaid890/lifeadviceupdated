@@ -583,8 +583,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 mt-3 side-bar filterdiv hidden-xs" style="margin:10px 0;">
-                <div class="col-md-12 adjust-quoto coverage-mobile-view" style="border-top:0px; ">
+            <div class="col-md-3" style="margin:10px 0;">
+                <div class="adjust-quoto coverage-mobile-view" style=" background-color: white; border: 1px solid #c0c0c0; padding: 10px; border-radius: 4px; ">
                     <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
                     <h4 class="coverage mt-3"
                         style="padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Coverage:
@@ -606,15 +606,24 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                     </div>
                 </div>
 
-                <!-- <div class="col-md-12">
-                    <div class="card card-guarantee text-center">
-                        <figure class="card-guarantee__badge">
-                            <img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid">
-                        </figure>
-                        <div class="card-guarantee__heading">Price Guarantee</div>
-                        <div class="card-guarantee__copy">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within the industry</div>
-                     </div>
-                </div> -->
+                <div class="adjust-quoto coverage-mobile-view" style="background-color: white; border: 1px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
+                   <div class="card-guarantee text-center">
+                      <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
+                      <div class="card-guarantee__heading" style="
+                         margin: 16px 0 8px;
+                         font-weight: 800;
+                         font-size: 16px;
+                         line-height: 18px;
+                         ">Price Guarantee</div>
+                      <div class="card-guarantee__copy" style="
+                         margin-bottom: 0;
+                         font-weight: 600;
+                         font-size: 12px;
+                         line-height: 18px;
+                         color: #67778f;
+                         ">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within&nbsp;the&nbsp;industry</div>
+                   </div>
+                </div>
                 
             </div>
 
