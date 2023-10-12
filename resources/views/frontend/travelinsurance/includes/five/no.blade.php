@@ -315,9 +315,7 @@ $second_total_price = ($second_total_price - $second_discount) + ($second_others
 //Discount on plan calculation
 $second_discountonplan = 0;
 if($second_plan_discount == '1'){
-if($second_number_travelers > 1 && $second_family_plan == 'no'){
 $second_discountonplan = ($second_plan_discount_rate * $second_total_price) / 100;
-}
 }
 $second_total_price = $second_total_price - $second_discountonplan;
 $second_monthly_price = $second_total_price / $second_num_months;
