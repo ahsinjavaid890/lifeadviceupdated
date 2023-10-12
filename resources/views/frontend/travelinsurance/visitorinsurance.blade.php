@@ -128,7 +128,7 @@
  
 
     @if($data->stylish_form_layout == 'layout_8')
-    @include('frontend.travelinsurance.includes.form-eight-supervisa')
+    @include('frontend.companypages.includes.mainvisitor')
 	<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/pricelayoutthree.css') }}">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
