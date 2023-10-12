@@ -37,71 +37,120 @@
 								<div class="col-md-4">
 									<label class="label">Destination</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Destination</label>
 					                 	<input value="{{ $quotedata['destination'] }}" type="text" readonly name="tripdate" required class="input">
 					              	</div>
 								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
+								</div>
 							</div>
+							<script>
+							$(document).ready(function(){
+							  $('[data-toggle="tooltip"]').tooltip();   
+							});
+							</script>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label class="label">Start Date</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Coverage Start Date</label>
 					                 	<input value="{{ Cmf::date_format($quotedata['tripdate']) }}" type="text" readonly name="tripdate" required class="input">
 					              	</div>
+								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label class="label">End Date</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Coverage End Date</label>
 					                 	<input value="{{ Cmf::date_format($quotedata['tripend']) }}" type="text" readonly name="tripend" required class="input">
 					              	</div>
+								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label class="label">Arival Date</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Arival Date</label>
 					                 	<input value="{{ Cmf::date_format($quotedata['tripdate']) }}" type="text" readonly name="tripend" required class="input">
 					              	</div>
+								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label class="label">Number of Days</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Number of Days</label>
 					                 	<input value="{{ $quotedata['tripduration'] }} Days" type="text" readonly name="tripduration" required class="input">
 					              	</div>
+								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label class="label">Insurance Company</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Insurance Company</label>
 					                 	<input name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $quotedata['comp_id'])->first()->comp_name }}" type="text" readonly  required class="input">
 					              	</div>
 								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									</div>
+								</div>
 							</div>
 						</div>
 						</div>
 						<div  class="card card__no-border step-details">
+						<div data-v-30b65789="" data-fid="field-kaui4psjnc" data-vfid="51"><div data-v-240607c2="" class="more-than-one short-policy-details text-secondary-color purchase-alert" nomargintop="true" style="
+    padding: 16px;
+    background-color: #edf5fc;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+"><div data-v-240607c2=""><div style="
+    /* padding: 16px; */
+    background-color: #edf5fc;
+    font-size: 12px;
+    line-height: 20px;
+">Please use the date of birth that appears in your travel documents, for e.g passport. A request to correct date of birth after the policy is purchased may result in changes to policy premium and benefits.<br>More than one traveler?
+        Enter the oldest person as Traveler 1 (Primary Applicant).</div><br><div class="text-primary-color mb-1">
+            <strong style="
+    font-weight: 700;
+    color: #2b3481;
+">Who can I add as an additional traveler on the same application?</strong>
+            </div>
+            <div>You can add your Spouse or Children. If you and your spouse are in different age groups, you may need separate policies. Children can be on your policy if 17 or under. Children over 17 will need their own policy.</div></div></div><!----></div>
 	         			@for($i=0; $i < $quotedata['traveller']; $i++)
 	        			@php
 	        				$year = $quotedata['years'][$i];
@@ -113,7 +162,7 @@
 								<div class="col-md-4">
 									<label class="label">First Name Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">First Name Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 					                 	<input class="input" type="text" placeholder=" " name="fname[]" data-placeholder="First Name" value="@if($stepone) {{ $stepone['fname'][$i] }} @endif" required>
@@ -124,7 +173,7 @@
 								<div class="col-md-4">
 									<label class="label">Last Name Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Last Name Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 					                 	<input class="input" type="text" placeholder=" " name="lname[]" data-placeholder="Last Name" value="@if($stepone) {{ $stepone['lname'][$i] }} @endif" required>
@@ -135,7 +184,7 @@
 								<div class="col-md-4">
 									<label class="label">Date OF Birth @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Date OF Birth Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 					                 	<input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
@@ -146,7 +195,7 @@
 								<div class="col-md-4">
 									<label class="label">Select Gender of Traveler @if($quotedata['traveller'] != 1) {{ $i+1 }} @endif</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 				                    <div class="positionrelative">
 				                    	<label class="selectlabel">Select Gender</label>
 			                            <select name="gender[]" class="input">
@@ -166,7 +215,7 @@
 							<div class="col-md-4">
 								<label class="label">Email Address</label>
 							</div>
-							<div class="col-md-8 nopad">
+							<div class="col-md-6 nopad">
 								<div class="custom-form-control positionrelative">
 				                  	<label class="selectlabeldateofbirth">Email Address</label>
 				                 	<input class="input" type="email" placeholder="Email Address" value="{{ $quotedata['email'] }}" name="email" data-placeholder="Email" required>
@@ -197,7 +246,7 @@
 								<div class="col-md-4">
 									<label class="label">Street Number and Name</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Street Number and Name</label>
 				                        <input @if($steptwo) value="{{ $steptwo['streetname'] }}" @endif class="input pac-target-input" type="text" placeholder=" " id="pac-input" name="streetname" data-placeholder="Enter a location" autocomplete="off" required>
@@ -209,7 +258,7 @@
 								<div class="col-md-4">
 									<label class="label">Suit/Apt# (optional)</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Suit/Apt# (optional)</label>
 				                        <input @if($steptwo) value="{{ $steptwo['suit'] }}" @endif class="input" type="" placeholder=" " id="" name="suit" data-placeholder="Suit/Apt">
@@ -220,7 +269,7 @@
 								<div class="col-md-4">
 									<label class="label">City</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">City</label>
 				                        <input @if($steptwo) value="{{ $steptwo['city'] }}" @endif class="input" type="text" placeholder=" " id="city" name="city" data-placeholder="City">
@@ -231,7 +280,7 @@
 								<div class="col-md-4">
 									<label class="label">Province</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Province</label>
 				                        <input @if($steptwo) value="{{ $steptwo['province'] }}" @endif class="input" type="text" placeholder=" " id="province" name="province" data-placeholder="Province">
@@ -242,7 +291,7 @@
 								<div class="col-md-4">
 									<label class="label">Postal Code</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Postal Code</label>
 				                        <input @if($steptwo) value="{{ $steptwo['postalcode'] }}" @endif class="input" type="text" placeholder=" " id="postalcode" name="postalcode" data-placeholder="Postal Code">
@@ -253,7 +302,7 @@
 								<div class="col-md-4">
 									<label class="label">Country</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Country</label>
 				                        <input @if($steptwo) value="{{ $steptwo['country'] }}" @endif class="input" type="text" placeholder=" " id="country" name="country" data-placeholder="Country">
@@ -269,7 +318,7 @@
 								<div class="col-md-4">
 									<label class="label">Phone Number</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Phone Number</label>
 					                 	<input type="text" @if($steptwo) value="{{ $steptwo['phone'] }}" @endif id="phonenumbermask" name="phone" placeholder="000-000-0000" data-placeholder="000-000-0000" inputmode="numeric" required class="input">
@@ -280,7 +329,7 @@
 								<div class="col-md-4">
 									<label class="label">Sponsor Name</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Sponsor Name</label>
 					                 	<input @if($steptwo) value="{{ $steptwo['sponsersname'] }}" @endif class="input" type="" placeholder=" " id="" name="sponsersname">
@@ -291,7 +340,7 @@
 								<div class="col-md-4">
 									<label class="label">Sponsor Relationship</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 					                  	<label class="selectlabeldateofbirth">Sponsor Relationship</label>
 					                 	<input @if($steptwo) value="{{ $steptwo['sponsersemail'] }}" @endif id="" class="input" type="text" name="sponsersemail">
@@ -398,7 +447,7 @@
 								<div class="col-md-4">
 									<label class="label">Name</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative mb-3">
 				                    	<label class="selectlabeldateofbirth">Name</label>
 				                        <input required name="cardholdername" id="name" maxlength="20" type="text" class="input" >
@@ -409,7 +458,7 @@
 								<div class="col-md-4">
 									<label class="label">Card Number</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative mb-3">
 				                    	<label class="selectlabeldateofbirth" id="generatecard">Card Number</label>
 				                        <input required class="input"  name="cardholdernumber" id="cardnumber"  type="text" inputmode="numeric" >
@@ -423,7 +472,7 @@
 								<div class="col-md-4">
 									<label class="label">Expiration (mm/yy)</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth">Expiration (mm/yy)</label>
 				                        <input required class="input"  name="expirationdate" id="expirationdate" type="text"  inputmode="numeric" >
@@ -434,7 +483,7 @@
 								<div class="col-md-4">
 									<label class="label">Security Code</label>
 								</div>
-								<div class="col-md-8 nopad">
+								<div class="col-md-6 nopad">
 									<div class="custom-form-control positionrelative">
 				                    	<label class="selectlabeldateofbirth" >Security Code</label>
 				                        <input required class="input" name="cvc" id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" >
@@ -582,6 +631,11 @@
 		<div class="policy-portal__sidebar">
 		   <div class="sidebar-wrapper">
 		      <div class="sticky">
+		      	<div class="card card-guarantee text-center">
+		            <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
+		            <div class="card-guarantee__heading">Price Guarantee</div>
+		            <div class="card-guarantee__copy">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within the industry</div>
+		         </div>
 		            <p  class="text-secondary-color selected-price-policy"> SELECTED POLICY </p>
 		            <div  class="card plan-tile total-price" style="--data-color: #816c62;">
 		               <div  class="plan-tile__title">{{ DB::table('wp_dh_companies')->where('comp_id' , $quotedata['comp_id'])->first()->comp_name }}</div>
@@ -681,11 +735,7 @@
 		         
 		         <!---->
 		      </div>
-		      <div class="card card-guarantee text-center">
-		            <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
-		            <div class="card-guarantee__heading">Price Guarantee</div>
-		            <div class="card-guarantee__copy">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within the industry</div>
-		         </div>
+		      
 		   </div>
 		</div>
 	</div>
