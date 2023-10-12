@@ -421,7 +421,7 @@ h2.chng_amt.baaababa{
     width: 100%;
     padding: 10px 15px;
     height: 40px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .submit-btn:hover{
     background:#262566
