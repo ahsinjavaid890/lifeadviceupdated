@@ -605,6 +605,17 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                         style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
                     </div>
                 </div>
+
+                <!-- <div class="col-md-12">
+                    <div class="card card-guarantee text-center">
+                        <figure class="card-guarantee__badge">
+                            <img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid">
+                        </figure>
+                        <div class="card-guarantee__heading">Price Guarantee</div>
+                        <div class="card-guarantee__copy">A price guarantee is your assurance that you won't find the same insurance plan for a lower price elsewhere. Legal regulations are in place to protect consumers and maintain transparency within the industry</div>
+                     </div>
+                </div> -->
+                
             </div>
 
             @if (in_array('yes', $request->pre_existing))
@@ -616,8 +627,6 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
 
         </div>
     </div>
-    <!--    row end-->
-
 <script>
 jQuery(function($) {
     var divList = $(".listing-item");

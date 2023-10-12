@@ -34,6 +34,7 @@ $firstsection = DB::table('travelpages')->where('url' , $url)->first();
 
             <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                @csrf
+               <input value="same@gmail.com" type="hidden" name="savers_email">
                <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
                <input type="hidden" @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif id="departure_date" name="departure_date">
                <input type="hidden" @if(isset($_GET['return_date'])) value="{{ $_GET['return_date'] }}" @endif id="return_date" name="return_date">
