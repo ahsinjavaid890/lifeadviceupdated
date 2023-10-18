@@ -44,7 +44,7 @@
 					              	</div>
 								</div>
 								<div class="col-md-2">
-									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The Destination country is the nation that represents the final stop of a journey or the ultimate endpoint.">
 									</div>
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 					              	</div>
 								</div>
 								<div class="col-md-2">
-									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Start date for your coverage should be a future date. Please note that the plan will commence at 12 midnight Eastern Standard Time (EST) on the selected start date">
 									</div>
 								</div>
 							</div>
@@ -79,7 +79,7 @@
 					              	</div>
 								</div>
 								<div class="col-md-2">
-									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="End date for your coverage should be a date that falls after the selected start date. Please be aware that the coverage will cease at 12 midnight Eastern Standard Time (EST) on the chosen end date.">
 									</div>
 								</div>
 							</div>
@@ -109,7 +109,7 @@
 					              	</div>
 								</div>
 								<div class="col-md-2">
-									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Total number of travel day's refers to the overall count of days you will be away from your point of origin during your journey. It includes both the departure and return dates,">
 									</div>
 								</div>
 							</div>
@@ -143,14 +143,13 @@
     background-color: #edf5fc;
     font-size: 12px;
     line-height: 20px;
-">Please use the date of birth that appears in your travel documents, for e.g passport. A request to correct date of birth after the policy is purchased may result in changes to policy premium and benefits.<br>More than one traveler?
-        Enter the oldest person as Traveler 1 (Primary Applicant).</div><br><div class="text-primary-color mb-1">
+">It is important to provide the date of birth that matches the information in your travel documents, such as your passport. Making corrections to your date of birth after purchasing the policy may lead to adjustments in the policy premium and benefits. If you are traveling with multiple individuals, please designate the oldest person as "Traveler 1" or the primary applicant.</div><br><div class="text-primary-color mb-1">
             <strong style="
     font-weight: 700;
     color: #2b3481;
 ">Who can I add as an additional traveler on the same application?</strong>
             </div>
-            <div>You can add your Spouse or Children. If you and your spouse are in different age groups, you may need separate policies. Children can be on your policy if 17 or under. Children over 17 will need their own policy.</div></div></div><!----></div>
+            <div>You can include your spouse or children as additional travelers on the same application. If you and your spouse belong to different age groups, you might need separate policies. Children who are 17 years old or younger can be included on your policy. However, children over the age of 17 will require their own separate policies.</div></div></div><!----></div>
 	         			@for($i=0; $i < $quotedata['traveller']; $i++)
 	        			@php
 	        				$year = $quotedata['years'][$i];
@@ -190,6 +189,10 @@
 					                 	<input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
 					              	</div>
 								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The date of birth for the primary traveler or applicant,">
+									</div>
+								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
@@ -204,6 +207,10 @@
 											<option @if($stepone) @if($stepone['gender'][$i] == 'Female') selected @endif @endif value="Female">Female</option>
 			                            </select>
 				                    </div>
+								</div>
+								<div class="col-md-2">
+									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Please specify the gender of the primary traveler, which is typically designated as either 'Male' or 'Female'">
+									</div>
 								</div>
 							</div>
 						</div>
