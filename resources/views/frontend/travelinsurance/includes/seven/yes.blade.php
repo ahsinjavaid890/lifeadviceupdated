@@ -237,8 +237,6 @@ if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
 if($show == '1' && $total_price > 0){
 ?>
-
-
 @if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price)); ?>">
    <div class="coverage-amt col-md-12 coverage-amt-<?php echo $sum_insured; ?>"
@@ -251,14 +249,14 @@ if($show == '1' && $total_price > 0){
             } else {
             echo 'none';
             } ?>;">
-         <div class="col-md-5 col-xs-12 logogd">
+         <div class="col-md-5 col-xs-12 logogd mobile-deisply-none">
             <div class="col-md-12 col-xs-12 text-center"
                style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
                   src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
             </div>
             <div class="col-md-12 col-xs-12 text-center">
-               <button class="btn btn-default dh-toggle"
+               <button class="btn btn-default dh-toggle" 
                   onclick="slidetooglesummary(<?php echo $deductible . $plan_id; ?>)" aria-hidden="true"
                   style="text-transform: none; font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor: pointer; height: 30px; margin-top: -20px; background: #1BBC9B; color: #FFF;padding: 0.175rem 0.75rem;">
                Summary & Info
@@ -266,7 +264,7 @@ if($show == '1' && $total_price > 0){
                </button>
             </div>
          </div>
-         <div class="col-md-4 col-xs-12" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
+         <div class="col-md-4 col-xs-12 mobile-deisply-none" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
                 <?php $explode = explode('.', number_format($total_price, 2)); ?>
                 <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $explode[0] . '.'; ?><sup class="superior"><?php echo $explode[1]; ?></sup></span></h3>
@@ -307,11 +305,11 @@ if($show == '1' && $total_price > 0){
             );
             $savetoplan = serialize($createbuynowarray)
         @endphp
-        <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
+        <div class="col-md-2 col-xs-12 mobile-deisply-none" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
             </button>
         </div>
-        <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+        <div class="col-md-1 col-sm-6 hidden-xs mobile-deisply-none" style="padding-top: 20px;padding-left: 0;">
             <div class="compare center aligned middle aligned column">
                 <div class="ui center aligned header">
                     <div class="field">
@@ -322,6 +320,22 @@ if($show == '1' && $total_price > 0){
                     </div>
                     <div class="sub header" style="font-size: 11px;">Compare</div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-12 mobile-deisply-show mt-1" style="display: none;background-color: white;">
+            <div class="logoandpricerow mt-2" style="display: flex;">
+                <div class="logoforseven" style="width: 50%;">
+                    <img style="max-height:60px; width:auto;" src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
+                </div>
+                <div class="priceforseven" style="width: 50%;text-align: right;">
+                    <h3 style="margin-bottom:0;line-height: normal;">
+                    <?php $explode = explode('.', number_format($total_price, 2)); ?>
+                    <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $explode[0] . '.'; ?><sup class="superior"><?php echo $explode[1]; ?></sup></span></h3>
+                </div>
+            </div>
+            <div class="mt-2 mb-2" style="display:flex;">
+                <button onclick="slidetooglesummary(<?php echo $deductible . $plan_id; ?>)" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-right: 10px;">Summary & Info</button>
+                <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-left: 10px;background-color: #1ebca2;color: white;">Buy Now</button>
             </div>
         </div>
       </div>

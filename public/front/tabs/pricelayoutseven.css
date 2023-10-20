@@ -17,15 +17,26 @@
     margin-top: 5px;
 }
 @media only screen and (max-width:600px){
-	.comparemobile{
-		position: absolute;
-    	top: 53%;
-	}
-	.buynow-btn{
-		margin-top: 0px !important;
-	}
-	.paddingzeroonmobile{
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-	}
+    .plan-details{
+        background-color: #c1dbb8 !important;
+        border-radius: 5px !important;
+        padding: 15px !important;
+    }
+    .comparemobile{
+        position: absolute;
+        top: 53%;
+    }
+    .buynow-btn{
+        margin-top: 0px !important;
+    }
+    .paddingzeroonmobile{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .mobile-deisply-none{
+        display:none!important
+    }
+    .mobile-deisply-show{
+        display: block !important;
+    }
 }

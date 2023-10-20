@@ -328,7 +328,6 @@ if (in_array("0", $second_display)){ $second_show = '0'; } else {$second_show = 
 if($second_show == '1' && $second_total_price > 0){
 
   ?>
-
 @if(Cmf::checkallrates($second_ages_array , $second_rates_table_name, $second_deduct_plan_id , $second_sumamt) == 1)
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($second_total_price)); ?>">
    <div class="coverage-amt col-md-12 coverage-amt-<?php echo $second_sum_insured; ?>"
@@ -341,21 +340,21 @@ if($second_show == '1' && $second_total_price > 0){
             } else {
             echo 'none';
             } ?>;">
-         <div class="col-md-5 col-xs-12 logogd">
+         <div class="col-md-5 col-xs-12 logogd mobile-deisply-none">
             <div class="col-md-12 col-xs-12 text-center"
                style="border: 0px solid #000;padding: 12px 0px 10px 5px;text-align: center;background: #EEE;border-radius: 10px;">
                <img style="max-height:60px; width:auto;"
-                  src="{{ url('public/images') }}/{{ $second_comp_logo }}" class="img-responsive" />
+                  src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>" class="img-responsive" />
             </div>
             <div class="col-md-12 col-xs-12 text-center">
-               <button class="btn btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"  aria-hidden="true"
+               <button class="btn btn-default dh-toggle" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" aria-hidden="true"
                   style="text-transform: none; font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor: pointer; height: 30px; margin-top: -20px; background: #1BBC9B; color: #FFF;padding: 0.175rem 0.75rem;">
                Summary & Info
                <i class="fa fa-angle-down" aria-hidden="true"></i>
                </button>
             </div>
          </div>
-         <div class="col-md-4 col-xs-12" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
+         <div class="col-md-4 col-xs-12 mobile-deisply-none" style="border:0px solid #000; padding: 5px 0; text-align: center" id="price">
             <h3 style="margin-bottom:0;line-height: normal;">
                 <?php $second_explode = explode('.', number_format($second_total_price, 2)); ?>
                 <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $second_explode[0] . '.'; ?><sup class="superior"><?php echo $second_explode[1]; ?></sup></span></h3>
@@ -368,17 +367,45 @@ if($second_show == '1' && $second_total_price > 0){
             <?php } ?>
             <p style="font-weight: normal;margin:0;">$<?php echo $second_deductible; ?> Deductible</p>
          </div>
-         <div class="col-md-2 col-xs-12" style="border:0px solid #000;text-align:center;">
+        @php
+            $second_createbuynowarray = array(
+                'plan_id'=>$second_plan_id,
+                'pro_id'=>$data->pro_id,
+                'sum_insured'=>$second_sum_insured,
+                'deductible'=>$second_deductible,
+                'savers_email'=>$request->savers_email,
+                'fname'=>$request->fname,
+                'lname'=>$request->lname,
+                'number_travelers'=>$second_number_travelers,
+                'deduct_rate'=>$second_deduct_rate,
+                'date_of_birth'=>$request->date_of_birth,
+                'years'=>$request->years,
+                'preexisting'=>$request->pre_existing,
+                'num_of_days'=>$second_num_of_days,
+                'comp_name'=>$second_comp_name,
+                'comp_id'=>$second_comp_id,
+                'plan_name'=>$second_plan_name,
+                'startdate'=>$second_startdate,
+                'enddate'=>$second_enddate,
+                'total_price'=>$second_total_price,
+                'product_name'=>$second_product_name,
+                'primary_destination'=>$request->primary_destination,
+                'ages_array'=>$second_ages_array[0],
+                'num_of_days'=>$second_num_of_days
+            );
+            $second_savetoplan = serialize($second_createbuynowarray)
+        @endphp
+        <div class="col-md-2 col-xs-12 mobile-deisply-none" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
             </button>
             <span style="color: #FFF;margin-top: 3px;font-size: 11px;width: 100%;float: right;min-width: 150px;background: #dc3545;border-radius: 5px;font-weight: bold;height: 20px;" class="buynow-btn">This is Pre Existing Plan</span>
         </div>
-        <div class="col-md-1 col-sm-6 hidden-xs" style="padding-top: 20px;padding-left: 0;">
+        <div class="col-md-1 col-sm-6 hidden-xs mobile-deisply-none" style="padding-top: 20px;padding-left: 0;">
             <div class="compare center aligned middle aligned column">
                 <div class="ui center aligned header">
                     <div class="field">
                         <div class="text-center">
-                            <input data-productid="23" data-pid="217" price="983.12" style="width: 20px; height:auto !important;" type="checkbox" tabindex="0" class="hidden1" value="983.12" onclick="comparetest()">
+                            <input data-productid="23" data-pid="217" price="983.12" style="width: 20px; height:auto !important;" type="checkbox" tabindex="0" class="hidden1" onclick="savecompareplans('{{ $second_savetoplan }}')">
                             <label></label>
                         </div>
                     </div>
@@ -386,13 +413,30 @@ if($second_show == '1' && $second_total_price > 0){
                 </div>
             </div>
         </div>
+        <div class="col-md-12 mobile-deisply-show mt-1" style="display: none;background-color: white;">
+            <div class="logoandpricerow mt-2" style="display: flex;">
+                <div class="logoforseven" style="width: 50%;">
+                    <img style="max-height:60px; width:auto;" src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>" class="img-responsive" />
+                </div>
+                <div class="priceforseven" style="width: 50%;text-align: right;">
+                    <h3 style="margin-bottom:0;line-height: normal;">
+                    <?php $second_explode = explode('.', number_format($second_total_price, 2)); ?>
+                    <span style="font-size: 32px;font-weight: bold;color:#222;"><sup class="superior">$</sup><?php echo $second_explode[0] . '.'; ?><sup class="superior"><?php echo $second_explode[1]; ?></sup></span></h3>
+                </div>
+            </div>
+            <div class="mt-2 mb-2" style="display:flex;">
+                <button onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-right: 10px;">Summary & Info</button>
+                <button onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-left: 10px;background-color: #1ebca2;color: white;">Buy Now</button>
+            </div>
+            <div class="mt-1 mb-2">
+                <span style="color: #FFF;margin-top: 3px;font-size: 11px;width: 100%;float: right;min-width: 150px;background: #dc3545;border-radius: 5px;font-weight: bold;height: 20px;text-align: center;margin-bottom: 10px;" class="buynow-btn">This is Pre Existing Plan</span>
+            </div>
+        </div>
       </div>
       @include('frontend.travelinsurance.includes.nopolicydetails')
       @include('frontend.travelinsurance.includes.nobuynowform')
    </div>
 </div>
-
-
 @endif
 <?php
 
