@@ -992,7 +992,7 @@ class AdminController extends Controller
     public function allblogs()
     {
         $data = DB::table('blogs')->get();
-        $categories = blogcategories::all();
+        $categories = blogcategories::where('website', 'lifeadvice')->get();
         return view('admin.blogs.addblog')->with(array('data' => $data, 'categories' => $categories));
     }
     public function addnewblogcategory(Request $request)

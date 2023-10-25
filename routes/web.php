@@ -186,7 +186,7 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/updatblogcategory','AdminController@updatblogcategory');
         Route::get('/deleteblogcategory/{id}','AdminController@deleteblogcategory');
         Route::get('/allblogs','AdminController@allblogs');
-        Route::post('/addnewfaq','AdminController@addnewfaq');
+        Route::post('/addnewblog','AdminController@createblog');
         Route::post('/updateblog','AdminController@updateblog');
         Route::get('/deleteblog/{id}','AdminController@deleteblog');
     });
@@ -323,6 +323,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::post('/addnewfaq','CmsController@addnewfaq');
         Route::post('/updatfaq','CmsController@updatfaq');
         Route::get('/deletefaq/{id}','CmsController@deletefaq');
+
+        Route::get('/saveorder','CmsController@saveorder');
     });
 
 

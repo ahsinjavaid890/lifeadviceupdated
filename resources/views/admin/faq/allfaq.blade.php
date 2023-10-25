@@ -1,7 +1,11 @@
 @extends('admin.layouts.main-layout')
 @section('title','All FAQ')
 @section('content')
-
+<style type="text/css">
+    .btnsuccess{
+        background-color: green !important;
+    }
+</style>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
@@ -52,8 +56,15 @@
                                 <td>
                                     {{ DB::table('frequesntlyaskquest_categories')->where('id' , $r->category_id)->first()->name }}
                                 </td>
-                                <td>
-                                    {{ $r->order }}
+                                <td style="width:200px;">
+                                    <div class="input-group">
+                                    <input type="text" id="ordervalue{{ $r->id }}" value="{{ $r->order }}" class="form-control" placeholder="Search">
+                                    <div class="input-group-btn">
+                                      <button id="buttoncolor{{ $r->id }}" onclick="saveorder({{ $r->id }})" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;" class="btn btn-primary" type="submit">
+                                        <i class="fa fa-save"></i>
+                                      </button>
+                                    </div>
+                                  </div>
                                 </td>
                                 <td nowrap="">
                                     <a data-toggle="modal" data-target="#categoryedit{{ $r->id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>
@@ -113,7 +124,16 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="lable-control">Enter Question</label>
-                                                            <input value="{{ $r->question }}" name="question" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                                            <input value="{{ $r->question }}" name="question" required type="text" id="emailfield" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="lable-control">FAQ Order</label>
+                                                            <input value="{{ $r->order }}" name="order" type="text" id="emailfield" class="form-control">
+                                                            <div class="text-danger" id="ordererror{{ $r->id }}"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,14 +145,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="lable-control">FAQ Order</label>
-                                                            <input value="{{ $r->order }}" name="order" type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -210,4 +223,20 @@
         </div>
     </div>
 </div>
+
+@section('script')
+<script type="text/javascript">
+    function saveorder(id) {
+        var value = $('#ordervalue'+id).val();
+        $.ajax({
+            type: 'get',
+            url: '{{ url("admin/faq/saveorder") }}/?id='+id+'&value='+value,
+            success: function(response) {
+                $('#buttoncolor'+id).removeClass('btn-primary');
+                $('#buttoncolor'+id).addClass('btnsuccess');
+            }
+        });
+    }
+</script>
+@endsection
 @endsection

@@ -185,6 +185,7 @@ class CmsController extends Controller
     public function addnewfaq(Request $request)
     {
         $add = new frequesntlyaskquestions();
+        $add->website = 'lifeadvice';
         $add->category_id = $request->category_id;
         $add->question = $request->question;
         $add->answer = $request->answer;
@@ -205,5 +206,11 @@ class CmsController extends Controller
     {
         frequesntlyaskquestions::where('id' , $id)->delete();
         return redirect()->back()->with('warning', 'FAQ Deleted Successfully');
+    }
+    public function saveorder(Request $request)
+    {
+        $add = frequesntlyaskquestions::find($request->id);
+        $add->order = $request->value;
+        $add->save();
     }
 }

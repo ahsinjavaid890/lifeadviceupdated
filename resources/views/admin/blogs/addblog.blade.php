@@ -128,7 +128,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="lable-control">Blog Image</label>
-                                                            <input name="image" type="file" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                                            <input name="image" type="file" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,14 +136,14 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="lable-control">Blog tittle</label>
-                                                            <input value="{{ $r->title }}" name="title" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                                            <input value="{{ $r->title }}" name="title" required type="text"  class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="lable-control">Enter Answer</label>
+                                                            <label class="lable-control">Blog Content</label>
                                                             <textarea rows="10" class="summernote" name="content">{{ $r->content }}</textarea>
                                                         </div>
                                                     </div>
@@ -174,24 +174,24 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New FAQ</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Blog</h5>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/faq/addnewfaq') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ url('admin/blogs/addnewblog') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Select Category</label>
-                                <select required class="form-control" name="category_id">
+                                <select class="form-control" name="category_id">
                                     <option value="">Select Category</option>
-                                    @foreach($categories as $r)
-                                    <option value="{{ $r->id }}">{{ $r->name }}</option>
+                                    @foreach($categories as $c)
+                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -200,16 +200,24 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Question</label>
-                                <input name="question" required type="text" id="emailfield" class="form-control  form-control-solid font-size-lg pl-5 min-h-50px">
+                                <label class="lable-control">Blog Image</label>
+                                <input name="image" type="file" id="emailfield" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="lable-control">Enter Answer</label>
-                                <textarea rows="10" class="summernote" name="answer"></textarea>
+                                <label class="lable-control">Blog tittle</label>
+                                <input name="title" required type="text" id="emailfield" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Blog Content</label>
+                                <textarea rows="10" class="summernote" name="content"></textarea>
                             </div>
                         </div>
                     </div>
