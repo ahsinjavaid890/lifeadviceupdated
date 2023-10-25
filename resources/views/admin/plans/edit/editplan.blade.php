@@ -365,11 +365,12 @@
                                     <label class="wrapup"><strong>Benefit Amount</strong></label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><strong>Rate ($) With Pre Existing</strong></label>
-                                </div>
-                                <div class="col-md-2">
                                     <label><strong>Rate ($) Without Pre Existing</strong></label>
                                 </div>
+                                <div class="col-md-2">
+                                    <label><strong>Rate ($) With Pre Existing</strong></label>
+                                </div>
+                                
                             </div>
 
 
@@ -415,17 +416,18 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="input">
-                                            <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]"
-                                                class="form-control" value="{{ $r->rate_with_pre_existing }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="input">
                                             <input type="text" id="iratesRatewithout'+countRates+'"
                                                 name="iratesRatewithout[]" class="form-control"
                                                 value="{{ $r->rate_without_pre_existing }}">
                                         </div>
                                     </div>
+                                    <div class="col-md-2">
+                                        <div class="input">
+                                            <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]"
+                                                class="form-control" value="{{ $r->rate_with_pre_existing }}">
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div id="appendRates">
@@ -1053,13 +1055,14 @@
                 new Date() + ' form-control">' +
                 '</div>' +
                 '<div class="col-md-2">' +
-                '<input type="text" id="iratesRate' + countRates +
-                '" name="iratesRate[]" class="form-control">' +
-                '</div>' +
-                '<div class="col-md-2">' +
                 '<input type="text" id="iratesRatewithout' + countRates +
                 '" name="iratesRatewithout[]" class="form-control">' +
                 '</div>' +
+                '<div class="col-md-2">' +
+                '<input type="text" id="iratesRate' + countRates +
+                '" name="iratesRate[]" class="form-control">' +
+                '</div>' +
+                
                 '</div>');
             // alert(range);
         })

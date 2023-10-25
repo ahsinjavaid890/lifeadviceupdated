@@ -15,4 +15,5 @@
 <meta property="og:url" content="{{ URL::current() }}">
 <link rel="canonical" href="{{ URL::current() }}">
 <meta property="og:locale" content="it_IT">
+<meta name="keywords" content="{{ $page->meta_tag }}">
 @endsection
