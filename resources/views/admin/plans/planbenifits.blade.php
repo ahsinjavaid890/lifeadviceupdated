@@ -62,7 +62,7 @@
                                     <td>{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</td>
                                     <td>{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->comp_name }}</td>
                                     <td>
-                                        {{ $r->plan_name }}
+                                       @if($r->plan_name) {{ $r->plan_name }} @else <div class="badge badge-danger">No Plan Name Found</div> <br><a target="_blank" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}">Click To Add Plan Name</a> @endif
                                     </td>
                                     <td>
                                         {{$r->pre_existing}}
