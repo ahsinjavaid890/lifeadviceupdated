@@ -310,6 +310,9 @@ if($show == '1' && $total_price > 0){
             </button>
         </div>
         <div class="col-md-1 col-sm-6 hidden-xs mobile-deisply-none" style="padding-top: 20px;padding-left: 0;">
+            @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+            @else
             <div class="compare center aligned middle aligned column">
                 <div class="ui center aligned header">
                     <div class="field">
@@ -321,6 +324,7 @@ if($show == '1' && $total_price > 0){
                     <div class="sub header" style="font-size: 11px;">Compare</div>
                 </div>
             </div>
+            @endif
         </div>
         <div class="col-md-12 mobile-deisply-show mt-1" style="display: none;background-color: white;">
             <div class="logoandpricerow mt-2" style="display: flex;">

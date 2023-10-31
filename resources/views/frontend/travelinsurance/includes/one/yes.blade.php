@@ -335,7 +335,11 @@ if($show == '1' && $total_price > 0){
             @endphp
             <div class="compare col-md-3 col-xs-12 text-center">
                 <a style="height: 40px;padding: 9px 0px;" class="submit-btn col-md-12 col-xs-5" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();"> <i class="fa fa-shopping-cart"></i> Buy Now</a>
+                @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+                @else
                 <label style="height: 40px;padding: 9px 0px;" onclick="savecompareplans('{{ $savetoplan }}')" class="col-md-12 col-xs-5" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
+                @endif
             </div>
             @include('frontend.travelinsurance.includes.policydetails')
             @include('frontend.travelinsurance.includes.buynowform')

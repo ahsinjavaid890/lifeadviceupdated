@@ -291,7 +291,11 @@ if($show == '1' && $total_price > 0){
                     );
                     $savetoplan = serialize($createbuynowarray)
                 @endphp
+            @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+            @else
             <label onclick="savecompareplans('{{ $savetoplan }}')" class="mt-2 col-md-12 col-xs-5" id="compare" style="cursor: pointer"><i class="fa fa-database"></i> Compare</label>
+            @endif
          </div>
          @include('frontend.travelinsurance.includes.policydetails')
          @include('frontend.travelinsurance.includes.buynowform')

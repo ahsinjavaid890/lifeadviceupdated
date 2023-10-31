@@ -438,10 +438,14 @@ if($show == '1' && $total_price > 0){
                         $savetoplan = serialize($createbuynowarray)
                     @endphp
                     <div>
+                        @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+                        @else
                         <label onclick="savecompareplans('{{ $savetoplan }}')"
                         style="background: #5ea047;
                         color: white !important;
                         border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i class="text-white fa fa-database"></i> Compare</label>
+                        @endif
                     </div>
                 </div>
             </div>

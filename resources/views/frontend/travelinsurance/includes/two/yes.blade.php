@@ -285,9 +285,13 @@ echo 'none';
             );
             $savetoplan = serialize($createbuynowarray)
         @endphp
+        @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+        @else
         <label class="mobilewidth" onclick="savecompareplans('{{ $savetoplan }}')" class="col-md-12 col-xs-5" style="cursor: pointer" id="compare">
             <i class="fa fa-database"></i> Compare  
         </label>
+        @endif
         <img style="display: none;width: 50%;" width="100" class="mobile-deisply-show" src="{{ url('public/images') }}/{{ $comp_logo }}" />
         <div class="row mt-3 mobile-deisply-none" style="padding-bottom: 10px;">
             <div class="col-md-12 col-xs-6" id="fold">
