@@ -6,6 +6,20 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container-fluid ">
+            <div class="subheader py-2 py-lg-6  subheader-solid " id="kt_subheader">
+                <div class=" container-fluid  d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <div class="d-flex align-items-baseline flex-wrap mr-5">
+                            <h5 class="text-dark font-weight-bold my-1 mr-5">Plans Benifits</h5>
+                                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ url('admin/plans/planbenifits') }}" class="text-muted">All Plan Benifits</a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--begin::Card-->
             @include('alerts.index')
             <form method="POST" action="{{ url('admin/plans/createnewplanbenifit') }}">
@@ -20,69 +34,48 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12">
-                            <label>Select Plan</label>
-                            <select required name="plan_id" id="plan_id" class="form-control">
-                                <option value="">None</option>
-                                @foreach(DB::table('wp_dh_insurance_plans')->orderby('id' , 'ASC')->get() as $r)
-                                @php
-                                    $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
-                                @endphp
-                                <option value="{{ $r->id }}">{{ $r->id }} - {{ $r->plan_name }} @if($company) ({{$company->comp_name}}) @endif</option>
+                        <div class="col-md-6">
+                            <label>Select Product</label>
+                            <select required onchange="selectproduct(this.value)" name="product_id" class="form-control">
+                                <option value="">Select Product</option>
+                                @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
+                                <option value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-                    <style type="text/css">
-                        .appendBenefits{
-                            padding: 10px;
-                            border: 1px solid #ddd;
-                            border-radius: 10px;
-                            margin-top: 10px;
-                        }
-                        .original{
-                            padding: 10px;
-                            border: 1px solid #ddd;
-                            border-radius: 10px;
-                            margin-top: 10px;
-                        }
-                    </style>
-                    <div style="margin-top: 20px;" class="row">
-                       <div class="col-md-12">
-                          <div class="original">
-                            <div style="margin-bottom:20px;" class="row">
-                                <div class="col-md-12">
-                                   <select class="form-control" name="benifitcategory[]">
-                                    @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
-                                       <option value="{{ $c->id }}">{{ $c->name }}</option>
-                                    @endforeach
-                                   </select>
-                                </div>
-                            </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <input required id="ibenefitHead1" name="ibenefitHead[]" class="form-control" placeholder="Enter Heading of Benefit" type="text">
-                                </div>
-                             </div>
-                             <br>
-                             <div class="row">
-                                <div class="col-md-12">
-                                   <textarea  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="ibenefitDesc[]"></textarea>
-                                </div>
-                             </div>                 
-                          </div>
-                          <div id="appendBenefits"></div>
-                          <div class="clear" style="height:20px;"></div>
-                          <div class="row">
-                             <div class="col-md-12">
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm addBenefits  addnewItem"><i class="fa fa-plus"></i> Add Item</a>
-                                <a href="javascript:void(0)" class="btn btn-danger btn-sm removeBenefits addnewItem"><i class="fa fa-trash"></i> Remove Item</a>
-                                <div class="clear">&nbsp;</div>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                    
+                        <div class="col-md-6 mt-2">
+                            <label>Select Plan</label>
+                            <select required name="plan_id" id="plan_id" class="form-control">
+                                <option value="">Select Plan</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label>Select Pre Exisitng Condition</label>
+                            <select required name="pre_existing" id="pre_existing" class="form-control">
+                                <option value="">Select Pre Exisitng Condition</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label>Select Benifit Category</label>
+                            <select required class="form-control" name="benifitcategory">
+                            <option value="">Select Benifit Category</option>
+                            @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
+                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                            @endforeach
+                           </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label>Enter Heading of Benefit</label>
+                            <input required name="benefits_head" class="form-control" placeholder="Enter Heading of Benefit" type="text">
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label>Enter Benefit Description</label>
+                            <textarea  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="benefits_desc"></textarea>
+                        </div>
+                    </div>                    
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary" type="submit">Save Benifit</button>
@@ -95,48 +88,15 @@
     </div>
     <!--end::Entry-->
 </div>
-@endsection
-@section('script')
-<script src="{{ asset('public/admin/assets/js/admin.js') }}"></script>
 <script type="text/javascript">
-    jQuery('.addBenefits').click(function(event) {
-
-    var countBenefits = jQuery('#appendBenefits .appendBenefits').size() + 2;
-
-    jQuery('#appendBenefits').append(
-
-        '<div class="appendBenefits">' +
-
-        '<div class="row" style="margin-top:10px;">' +
-
-        '<div class="col-md-12">' +
-
-        '<input type="text" id="ibenefitHead' + countBenefits + '" name="ibenefitHead[]" placeholder="Enter Heading of Benefit" class="form-control">' +
-
-        '</div>' +
-
-        '</div>' +
-        '<br>' +
-        '<div class="row">' +
-
-        '<div class="col-md-12">' +
-
-        '<textarea placeholder="Enter benefit Description #' + countBenefits + '" spellcheck="false" name="ibenefitDesc[]" id="ibenefitDesc" class="form-control"></textarea>' +
-
-        '</div>' +
-
-        '</div>' +
-
-        '</div>');
-
-})
-
-jQuery('.removeBenefits').click(function(event) {
-
-    /* Remove the last child for deductible */
-
-    jQuery('#appendBenefits .appendBenefits:last-of-type').remove();
-
-});
+    function selectproduct(id) {
+        $.ajax({
+            type: 'get',
+            url: '{{ url("admin/plans/getcompaniesagainstplan") }}/?id='+id,
+            success: function(res) {
+                $('#plan_id').html(res);                                
+            }
+        });
+    }
 </script>
 @endsection

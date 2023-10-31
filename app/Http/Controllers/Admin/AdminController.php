@@ -478,42 +478,45 @@ class AdminController extends Controller
     {
         $data = wp_dh_insurance_plans_benefits::select(
             'wp_dh_insurance_plans_benefits.id as benifit_id',
+            'wp_dh_insurance_plans_benefits.pre_existing',
             'wp_dh_insurance_plans.plan_name',
             'wp_dh_insurance_plans.id as plan_id',
             'wp_dh_insurance_plans.product',
+            'wp_dh_insurance_plans.insurance_company',
+
             'wp_dh_products.pro_name'
         )
             ->leftJoin('wp_dh_insurance_plans', 'wp_dh_insurance_plans_benefits.plan_id', '=', 'wp_dh_insurance_plans.id')
             ->leftJoin('wp_dh_products', 'wp_dh_insurance_plans.product', '=', 'wp_dh_products.pro_id')
             ->groupby('wp_dh_insurance_plans_benefits.plan_id')
-            ->wherenotnull('wp_dh_insurance_plans.plan_name')
             ->get();
         return view('admin.plans.planbenifits')->with(array('data' => $data));
     }
     public function createnewplanbenifit(Request $request)
     {
-        $planId = $request->plan_id;
-        for ($i = 0; $i < count($request->ibenefitHead); $i++) {
-            $bene_head = $request->ibenefitHead[$i];
-            $bene_desc = $request->ibenefitDesc[$i];
-            $bene_time = date('Y-M-d');
-            $current_user = Auth::user()->id;
-            DB::statement("INSERT INTO wp_dh_insurance_plans_benefits(plan_id, benefits_head, benefits_desc,created_on , created_by ) VALUES('$planId','$bene_head', '$bene_desc', '$bene_time' , '$current_user' )");
-        }
+        $data = new wp_dh_insurance_plans_benefits();
+        $data->plan_id = $request->plan_id;
+        $data->benifitcategory = $request->benifitcategory;
+        $data->benefits_head = $request->benefits_head;
+        $data->benefits_desc = $request->benefits_desc;
+        $data->pre_existing = $request->pre_existing;
+        $data->save();
         return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
+    }
+    public function editplanbenifit($id)
+    {
+        $data = wp_dh_insurance_plans_benefits::where('id' , $id)->first();
+        return view('admin.plans.edit.editplanbenifit')->with(array('data' => $data));
     }
     public function updateplanbenifit(Request $request)
     {
-        wp_dh_insurance_plans_benefits::where('plan_id', $request->plan_id)->delete();
-        $planId = $request->plan_id;
-        for ($i = 0; $i < count($request->ibenefitHead); $i++) {
-            $benifitcategory = $request->benifitcategory[$i];
-            $bene_head = $request->ibenefitHead[$i];
-            $bene_desc = $request->ibenefitDesc[$i];
-            $bene_time = date('Y-M-d');
-            $current_user = Auth::user()->id;
-            DB::statement("INSERT INTO wp_dh_insurance_plans_benefits(plan_id,benifitcategory, benefits_head, benefits_desc,created_on , created_by ) VALUES('$planId','$benifitcategory','$bene_head', '$bene_desc', '$bene_time' , '$current_user' )");
-        }
+        $data = wp_dh_insurance_plans_benefits::find($request->id);
+        $data->plan_id = $request->plan_id;
+        $data->benifitcategory = $request->benifitcategory;
+        $data->benefits_head = $request->benefits_head;
+        $data->benefits_desc = $request->benefits_desc;
+        $data->pre_existing = $request->pre_existing;
+        $data->save();
         return redirect()->back()->with('message', 'Plan Benifit Updated Successfully');
     }
     public function updatelifeplanbenifit(Request $request)
@@ -529,10 +532,7 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('message', 'Life Plan Benifit Updated Successfully');
     }
-    public function editplanbenifit($id)
-    {
-        return view('admin.plans.edit.editplanbenifit')->with(array('plan_id' => $id));
-    }
+    
     public function editlifeplanbenifit($id)
     {
         return view('admin.plans.edit.editlifeplanbenifit')->with(array('plan_id' => $id));
@@ -544,12 +544,20 @@ class AdminController extends Controller
     }
     public function deleteplanbenifit($id)
     {
-        wp_dh_insurance_plans_benefits::where('plan_id', $id)->delete();
-        return redirect()->back()->with('message', 'Life Plan Benifit Deleted Successfully');
+        wp_dh_insurance_plans_benefits::where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Plan Benifit Deleted Successfully');
     }
     public function saveplanfeature(Request $request)
     {
         DB::table('wp_dh_insurance_plans_features')->where('id', $request->id)->update(array('features' =>$request->value));
+    }
+    public function getcompaniesagainstplan(Request $request)
+    {
+        $data  = wp_dh_insurance_plans::where('product' , $request->id)->get();
+        foreach ($data as $r) {
+            $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
+            echo '<option value="'.$r->id.'">'.$r->plan_name.' (';if($company){ echo $company->comp_name; } echo ') </option>';
+        }
     }
     public function addFeatures(Request $request)
     {

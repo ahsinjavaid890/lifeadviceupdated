@@ -8,6 +8,15 @@
         <!--begin::Container-->
         <div class=" container-fluid ">
             <!--begin::Card-->
+            <div class="subheader py-2 py-lg-6  subheader-solid " id="kt_subheader">
+                <div class=" container-fluid  d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <div class="d-flex align-items-baseline flex-wrap mr-5">
+                            <h5 class="text-dark font-weight-bold my-1 mr-5">Plans Benifits</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @include('alerts.index')
             <div class="card card-custom mt-5">
                 <div class="card-header flex-wrap py-5">
@@ -37,9 +46,10 @@
                     <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Plan Name</th>
                                 <th>Product Name</th>
+                                <th>Company Name</th>
+                                <th>Plan Name</th>
+                                <th>Pre Exisitng</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -48,25 +58,21 @@
                                 $srno = 0;
                             @endphp
                             @foreach($data as $r)
-
-                            @php
-                                $srno++;
-                            @endphp
                                 <tr>
-                                    <td>{{ $srno }}</td>
-                                    
+                                    <td>{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</td>
+                                    <td>{{ DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first()->comp_name }}</td>
                                     <td>
                                         {{ $r->plan_name }}
                                     </td>
                                     <td>
-                                        {{$r->pro_name}}
+                                        {{$r->pre_existing}}
                                     </td>
                                    <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal{{ $r->plan_id }}" href="javascript:;"><i class="fa fa-trash"></i>Delete</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}"><i class="fa fa-edit"></i>Edit</a>
+                                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal{{ $r->benifit_id }}" href="javascript:;"><i class="fa fa-trash"></i>Delete</a>
                                    </td>
                                 </tr>
-                                <div class="modal fade" id="deleteModal{{ $r->plan_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal{{ $r->benifit_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -80,7 +86,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                                <a  href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->plan_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                                <a  href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                             </div>
                                         </div>
                                     </div>

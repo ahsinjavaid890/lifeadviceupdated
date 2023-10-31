@@ -329,7 +329,7 @@
                       </div>
                       <div id="collapse{{ $r->id }}" class="collapse @if ($loop->first) show @endif" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body" style="padding:0px">
-                              @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $r->id)->get() as $b)
+                              @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->where('benifitcategory' , $r->id)->get() as $b)
                               <div class="panel-content__table-row">
                                  <div  class="panel-content-subheading">
                                     <span  class="panel-content--heading--container">
