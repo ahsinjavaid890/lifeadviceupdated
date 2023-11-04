@@ -215,7 +215,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                 </div>
             </div>
         </div>
-        <div class="card  qoute-price-card mb-3 pricegurrantecard display-none-on-tablet display-none-on-mobile">
+        <div class="card pricegurrantee  qoute-price-card mb-3 pricegurrantecard display-none-on-tablet display-none-on-mobile">
             <div class="card-widget card-widget-price-match">
                 <div class="card-header">
                     <div class="icon icon-price-match"></div>

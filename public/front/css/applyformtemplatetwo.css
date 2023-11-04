@@ -71,13 +71,23 @@
     padding-right: 0px !important;
   }
   .card__no-border .mt-3{
-    margin-top: 0px !important;
+    margin-top: 10px !important;
   }
   .input{
     margin-bottom: 5px !important;
   }
   .button{
     width: 100% !important;
+  }
+  .label{
+    display: none;
+  }
+  .step-details .col-md-6{
+    padding-left: 0px !important;
+  }
+  .toooltipcolumn{
+    position: absolute;
+    right: -310px;
   }
 }
 .mainpageapplyform{

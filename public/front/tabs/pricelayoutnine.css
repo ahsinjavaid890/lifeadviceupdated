@@ -1,3 +1,20 @@
+#traveler-price{
+	color: #2b3481;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+#traveler-price span {
+    color: #67778f;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 3px;
+}
+.plan-highlights li{
+	margin-top: 0px !important;
+}
 .padding-right-on-price-layout-nine{
 	padding-right: 23px;
 }

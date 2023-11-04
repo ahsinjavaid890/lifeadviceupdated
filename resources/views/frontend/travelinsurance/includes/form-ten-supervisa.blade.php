@@ -24,7 +24,7 @@
         <div class="row wow slideInDown animated animated" id="first-dob" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
            <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
               <label>Date of Birth <span id="dateerrorfirst" class="text-danger"></span></label>
-              <input id="dateofbirthfull1" class="form-control inputdate" type="text" inputmode="numeric" onkeyup="calculateAge(this.value , 'dateofbirthfull1')" placeholder="MM/DD/YYYY" name="years[]">
+              <input id="dateofbirthfull1" class="form-control inputdate" type="text" inputmode="numeric" onkeyup="calculateagefirst(this.value , 'dateofbirthfull1')" placeholder="MM/DD/YYYY" name="years[]">
               <span class="input-group-addon add-on"><i class="fa fa-calendar dob" aria-hidden="true"></i></span>
 
            </div>
@@ -38,7 +38,7 @@
         <div class="row" id="second-dob"  style="display: none;">
             <div class="input-group input-append date col-md-4 col-sm-12 col-xs-12">
                 <label>Date of Birth</label>
-                <input onchange="getagesecondage(this.value)" type="text" class="form-control inputdate" id="date_of_birth_two" placeholder="MM-DD-YYYY" name="years[]" autocomplete="off" readonly="true">
+                <input id="dateofbirthfull2" class="form-control inputdate" type="text" inputmode="numeric" onkeyup="calculateagesecond(this.value , 'dateofbirthfull2')" placeholder="MM/DD/YYYY" name="years[]">
                 <span class="input-group-addon add-on"><i class="fa fa-calendar dobsecond" aria-hidden="true"></i>
                 </span>
             </div>
@@ -108,6 +108,7 @@
         </div>
       </form>
       <div class="results_search" id="results_search">
+            
       </div>
    </div>
 </div>
@@ -122,6 +123,60 @@ function getage(id) {
     var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
     $('#age').val(age);
 }
+function calculateagesecond(dateofbirth , classname) {
+   var dob = dateofbirth;        
+   var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
+   if (!dobRegex.test(dob)) {
+       $('#'+classname).css('border-color', 'red');
+       return;
+   }
+   var parts = dob.split('/');
+   var month = parseInt(parts[0], 10);
+   var day = parseInt(parts[1], 10);
+   var year = parseInt(parts[2], 10);
+   var d = new Date();
+   var output = d.getFullYear()
+   var hundredyearsback = output-100;
+   var dobDate = new Date(year, month - 1, day); // Month is 0-indexed
+   var currentDate = new Date();
+   if (isNaN(dobDate.getTime()) || dobDate >= currentDate || year <= hundredyearsback) {
+       $('#'+classname).css('border-color', 'red');
+       $('#getqoutesubmitbutton').prop('disabled' , true);
+       return;
+   }else{
+       getagesecondage(dobDate)
+       $('#'+classname).css('border-color', 'green');
+       $('#getqoutesubmitbutton').prop('disabled' , false);
+   }
+}
+function calculateagefirst(dateofbirth , classname) {
+   var dob = dateofbirth;        
+   var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
+   if (!dobRegex.test(dob)) {
+       $('#'+classname).css('border-color', 'red');
+       return;
+   }
+   var parts = dob.split('/');
+   var month = parseInt(parts[0], 10);
+   var day = parseInt(parts[1], 10);
+   var year = parseInt(parts[2], 10);
+   var d = new Date();
+   var output = d.getFullYear()
+   var hundredyearsback = output-100;
+   var dobDate = new Date(year, month - 1, day); // Month is 0-indexed
+   var currentDate = new Date();
+   if (isNaN(dobDate.getTime()) || dobDate >= currentDate || year <= hundredyearsback) {
+       $('#'+classname).css('border-color', 'red');
+       $('#getqoutesubmitbutton').prop('disabled' , true);
+       return;
+   }else{
+       getage(dobDate)
+       $('#'+classname).css('border-color', 'green');
+       $('#getqoutesubmitbutton').prop('disabled' , false);
+   }
+}
+
+
 function getagesecondage(id) {
     dob = new Date(id);
     var today = new Date();

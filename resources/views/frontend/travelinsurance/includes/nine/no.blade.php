@@ -352,6 +352,7 @@ if($second_show == '1' && $second_total_price > 0){
                         <li><span>Travellers: <span class="plan-cat"><?php echo $second_number_travelers; ?> Traveller(s)</span></span>
                         </li>
                         <li><span>Quote Details : <span class="plan-cat"><?php echo $second_product_name; ?></span></span></li>
+                        <li><span>Deductible : <span class="plan-cat">${{ $second_deductible }}</span></span></li>
                     </ul>
                     <h3 class="person-additional-traveler-h3" onclick="showdetails({{ 11+$second_deductible.$second_plan_id }})"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
                 </div>
@@ -361,20 +362,29 @@ if($second_show == '1' && $second_total_price > 0){
                             <span>Coverage Limit</span>
                         </div>
                         <div class="qoute-price-select">
-                            <h2>${{number_format($second_sum_insured)}}</h2>
+                            <h2>$<?php
+                            if ($second_sum_insured >= 1000000) {
+                                $second_millions = $second_sum_insured / 1000000;
+                                $second_txt = ' Million';
+                            } else {
+                                $second_millions = $second_sum_insured;
+                                $second_txt = '';
+                            }
+                            echo number_format($second_millions) . $second_txt; ?>
+                            </h2>
                         </div>
                     </div>
                     <div class="plan-coverage-limits">
                         <div class="limit-lable">
-                            <span>Deductible</span>
+                            <span>Premium</span>
                         </div>
                         <div class="qoute-price-select">
-                            <h2>$<?php echo $second_deductible; ?> </h2>
+                            <h2 id="traveler-price">${{ number_format($second_total_price, 2) }}<span>CAD</span></h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
-                    <div class="qoute-logo display-none-on-mobile">
+                    <div class="qoute-logo display-none-on-mobile mt-3">
                         <img src="{{ url('public/images') }}/<?php echo $second_comp_logo; ?>">
                     </div>
                     <div class="display-show-on-mobile" style="display:none;">
@@ -383,7 +393,6 @@ if($second_show == '1' && $second_total_price > 0){
                         </div>
                     </div>
                     <div class="total-price-traveller">
-                        <h2 id="traveler-price">${{ number_format($second_total_price, 2) }}<span>CAD</span></h2>
                         <?php if($second_monthly_two == '1'){?>
                         <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">
                             $<?php echo number_format($second_monthly_price, 2); ?>/Month <small
@@ -394,11 +403,40 @@ if($second_show == '1' && $second_total_price > 0){
                     <div class="buy_now">
                         <span onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn btn-block text-white">Buy</span>
                     </div>
-                    <div>
-                        <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})"
-                        style="background: #5ea047;
-                        color: white !important;
-                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i class="text-white fa fa-database"></i> Compare</label>
+                    @php
+                        $second_createbuynowarray = array(
+                            'plan_id'=>$second_plan_id,
+                            'pro_id'=>$data->pro_id,
+                            'sum_insured'=>$second_sum_insured,
+                            'deductible'=>$second_deductible,
+                            'savers_email'=>$request->savers_email,
+                            'fname'=>$request->fname,
+                            'lname'=>$request->lname,
+                            'number_travelers'=>$second_number_travelers,
+                            'deduct_rate'=>$second_deduct_rate,
+                            'date_of_birth'=>$request->date_of_birth,
+                            'years'=>$request->years,
+                            'preexisting'=>$request->pre_existing,
+                            'num_of_days'=>$second_num_of_days,
+                            'comp_name'=>$second_comp_name,
+                            'comp_id'=>$second_comp_id,
+                            'plan_name'=>$second_plan_name,
+                            'startdate'=>$second_startdate,
+                            'enddate'=>$second_enddate,
+                            'total_price'=>$second_total_price,
+                            'product_name'=>$second_product_name,
+                            'primary_destination'=>$request->primary_destination,
+                            'ages_array'=>$second_ages_array[0],
+                            'num_of_days'=>$second_num_of_days
+                        );
+                        $second_savetoplan = serialize($second_createbuynowarray)
+                    @endphp
+                    <div style=" position: absolute; top: 0; right: 0; ">
+                        @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
+
+                        @else
+                        <label onclick="savecompareplans('{{ $second_savetoplan }}')"> Compare <input type="checkbox" name=""></label>
+                        @endif
                     </div>
                 </div>
             </div>

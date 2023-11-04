@@ -350,15 +350,11 @@ if($show == '1' && $total_price > 0){
      <div class="grid-list col-md-2" data-toggle="tooltip" data-placement="left" title="1. In- transit period is not covered in the policy."><span class="price-list"><span>$<?php echo number_format($total_price,2);?><span> CAD</span></span></span> </div>
      <div class="grid-list col-md-3">
         <ul class="common-btn">
-           <li>
-               <button type="button" class="btn-wrap color-one-btn" data-toggle="modal" data-target="#visitorModalAll">Buy</button>
-            </li>
-           <li><a href="" class="btn-wrap color-three-btn">Plan Details</a></li>
+           <li><button onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();" class="btn-wrap color-one-btn">Buy</button></li>
+           <li><button onclick="showdetails({{ 1+$deductible.$plan_id }})" class="btn-wrap color-three-btn">Plan Details</button></li>
         </ul>
      </div>
      <div class="grid-list col-md-3 custom_comparebtn">
-        <div class="checkboxbtn col-md-12">
-           <div class="compare col-md-3 col-xs-12 text-center">
             @php
                 $createbuynowarray = array(
                     'plan_id'=>$plan_id,
@@ -389,9 +385,9 @@ if($show == '1' && $total_price > 0){
             @endphp
                 <label onclick="savecompareplans('{{ $savetoplan }}')" style="cursor: pointer" class="col-md-12 col-xs-5" id="compare"><i
                         class="fa fa-database"></i> Compare</label>
-            </div>
-        </div>
      </div>
+     @include('frontend.travelinsurance.includes.policydetails')
+    @include('frontend.travelinsurance.includes.buynowform')
   </div>
 </li>
 <?php

@@ -26,9 +26,11 @@ use App\Models\temproaryquote;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Redirect;
 use Session;
 use Validator;
+use Storage;
 use Input;
 use Illuminate\Support\Facades\Auth;
 
@@ -507,10 +509,14 @@ class SiteController extends Controller
             $newuser->save();
         }
 
-        // $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
-        // $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-        // $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
-        // $reviewemailview = 'email.template' . $temp . '.review';
+        $subject = 'Your Life Advice Policy Confirmation | ' . $reffrence_number;
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
+        $reviewemailview = 'email.template' . $temp . '.review';
+
+        $pdf = PDF::loadView('invoice.index', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number]);
+        $content = $pdf->download()->getOriginalContent();
+        Storage::put('public/invoices/invoice-'.$reffrence_number.'.pdf',$content);
         // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
         //     $message->to($request->email);
         //     $message->subject($subject);

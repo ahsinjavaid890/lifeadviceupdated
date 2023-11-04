@@ -358,6 +358,7 @@ if($show == '1' && $total_price > 0){
                         <li><span>Travellers: <span class="plan-cat"><?php echo $number_travelers; ?> Traveller(s)</span></span>
                         </li>
                         <li><span>Quote Details : <span class="plan-cat"><?php echo $product_name; ?></span></span></li>
+                        <li><span>Deductible : <span class="plan-cat">${{ $deductible }}</span></span></li>
                     </ul>
                     <h3 class="person-additional-traveler-h3" onclick="showdetails({{ 1+$deductible.$plan_id }})"><i class="fa fa-plus-circle colorblue"></i> Show Details</h3>
                 </div>
@@ -381,15 +382,15 @@ if($show == '1' && $total_price > 0){
                     </div>
                     <div class="plan-coverage-limits">
                         <div class="limit-lable">
-                            <span>Deductible</span>
+                            <span>Premium</span>
                         </div>
                         <div class="qoute-price-select">
-                            <h2>$<?php echo $deductible; ?> </h2>
+                            <h2 id="traveler-price">${{ number_format($total_price, 2) }}<span>CAD</span></h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 p-l-z-o-m p-r-z-o-m">
-                    <div class="qoute-logo display-none-on-mobile">
+                    <div class="qoute-logo display-none-on-mobile mt-3">
                         <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
                     </div>
                     <div class="display-show-on-mobile" style="display:none;">
@@ -398,7 +399,6 @@ if($show == '1' && $total_price > 0){
                         </div>
                     </div>
                     <div class="total-price-traveller">
-                        <h2 id="traveler-price">${{ number_format($total_price, 2) }}<span>CAD</span></h2>
                         <?php if($monthly_two == '1'){?>
                         <h2 style=" padding;5px; margin:0; font-size:14px; font-weight:bold;color: #333;font-family: arial;padding: 0;line-height: normal;margin-bottom: 10px;">
                             $<?php echo number_format($monthly_price, 2); ?>/Month <small
@@ -437,14 +437,11 @@ if($show == '1' && $total_price > 0){
                         );
                         $savetoplan = serialize($createbuynowarray)
                     @endphp
-                    <div>
+                    <div style=" position: absolute; top: 0; right: 0; ">
                         @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
 
                         @else
-                        <label onclick="savecompareplans('{{ $savetoplan }}')"
-                        style="background: #5ea047;
-                        color: white !important;
-                        border-radius: 33px;cursor: pointer" class="mt-1 p-2  text-center col-md-12 col-xs-5" id="compare"><i class="text-white fa fa-database"></i> Compare</label>
+                        <label onclick="savecompareplans('{{ $savetoplan }}')"> Compare <input type="checkbox" name=""></label>
                         @endif
                     </div>
                 </div>

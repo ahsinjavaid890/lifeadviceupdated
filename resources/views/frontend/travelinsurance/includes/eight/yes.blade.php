@@ -261,7 +261,7 @@ if($show == '1' && $total_price > 0){
                                 </i>
                             </button>
                         </h3>
-                        @include('frontend.travelinsurance.includes.policydetails')
+                        
                         @php
                             $createbuynowarray = array(
                                 'plan_id'=>$plan_id,
@@ -362,7 +362,9 @@ if($show == '1' && $total_price > 0){
             class="buynow-btn mobile-deisply-show" data-value="<?php echo $plan_id; ?>" name="buynow"style="color:#FFF;margin-top: 10px;width: 100%;border-radius: 5px;font-weight: bold;display: none;">Buy Now </button>
             <div style="clear:both;"></div>
             @include('frontend.travelinsurance.includes.buynowform')
-
+            <div style="padding-left:10px;padding-right: 10px;">
+                @include('frontend.travelinsurance.includes.policydetails')
+            </div>
         </div>
     </div>
 

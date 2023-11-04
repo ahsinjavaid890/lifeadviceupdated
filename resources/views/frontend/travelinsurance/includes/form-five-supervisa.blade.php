@@ -275,7 +275,7 @@
                         </div>
                         <div class="col-md-6 ">
                              <div class="custom-form-control">
-                              <input @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif style="padding-left:40px;" id="departure_date" autocomplete="off" name="departure_date" value=""  class="form-control"  type="text" placeholder="Start Date" required <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()" <?php } ?>>
+                              <input style="padding-left: 40px;" required @if(isset($_GET['departure_date'])) value="{{ $_GET['departure_date'] }}" @endif readonly inputmode="numeric" id="departure_date" autocomplete="off" name="departure_date" value="" class="form-control dateinput" type="text" placeholder="Start Date" <?php if($data->pro_supervisa == 1){?> onchange="supervisayes()"<?php } ?>>
                               <span class="hidden-xs emailicon" style="color:#1BBC9B;">
                                  <i class="fa fa-calendar" aria-hidden="true"></i>
                               </span>

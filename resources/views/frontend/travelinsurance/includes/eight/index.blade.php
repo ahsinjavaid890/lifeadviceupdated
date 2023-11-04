@@ -181,21 +181,20 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
     <div class="container paddingleftrightzeroonmobile">
         <div class="row">
             <div class="col-md-4" style="border-top:0px; ">
-                <div class="adjust-quoto coverage-mobile-view" style=" background-color: white; border: 2px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
+                <div class="adjust-quoto coverage-mobile-view " style=" background-color: white; border: 2px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
                     <h2 style="margin: 0;font-size: 26px;font-weight: bold;">Adjust your quotes</h2>
                     <h4 class="coverage"style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;"> Coverage: <input type="text" id="coverage_amount2" name="coverage_amount"
                             value="$<?php echo $request->sum_insured2;?>"
                             style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 150px;">
-                    <div id="sum_slider2"
-                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;">
+                    </h4>
+                    <div id="sum_slider2" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;">
                     </div>
                     <h4 class="deductible" style="margin: 0;padding: 0;font-weight: bold;margin-bottom: 0;border: none;text-align: left;">Deductible: <input type="text" id="coverage_deductible" name="coverage_deductible" value="$<?php if($havethousand == 'no'){ echo '0'; } else {echo '1000'; } ?>"
                             style="border:0; font-size:24px; color:#444; font-weight:bold;background: no-repeat;margin: 0;padding: 0;text-align: center;width: 100px;"></h4>
-                    <div id="slider2" class="mt-0"
-                        style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;">
+                    <div id="slider2" class="mt-0" style="border: 1px solid #c5c5c5;padding: 5px;box-shadow: 0px 0px 5px 0px inset #CCC;border-radius: 10px;margin: 26px 0px;">
                     </div>
                 </div>
-                <div class="adjust-quoto coverage-mobile-view" style=" background-color: white; border: 2px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
+                <div class="adjust-quoto coverage-mobile-view pricegurrantee" style=" background-color: white; border: 2px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
                    <div class="card-guarantee text-center">
                       <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
                       <div class="card-guarantee__heading" style="

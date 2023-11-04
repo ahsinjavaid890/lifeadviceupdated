@@ -43,7 +43,7 @@
 					                 	<input value="{{ $quotedata['destination'] }}" type="text" readonly name="tripdate" required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The Destination country is the nation that represents the final stop of a journey or the ultimate endpoint.">
 									</div>
 								</div>
@@ -63,7 +63,7 @@
 					                 	<input value="{{ Cmf::date_format($quotedata['tripdate']) }}" type="text" readonly name="tripdate" required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Start date for your coverage should be a future date. Please note that the plan will commence at 12 midnight Eastern Standard Time (EST) on the selected start date">
 									</div>
 								</div>
@@ -78,7 +78,7 @@
 					                 	<input value="{{ Cmf::date_format($quotedata['tripend']) }}" type="text" readonly name="tripend" required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="End date for your coverage should be a date that falls after the selected start date. Please be aware that the coverage will cease at 12 midnight Eastern Standard Time (EST) on the chosen end date.">
 									</div>
 								</div>
@@ -93,7 +93,7 @@
 					                 	<input value="{{ Cmf::date_format($quotedata['tripdate']) }}" type="text" readonly name="tripend" required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
 									</div>
 								</div>
@@ -108,7 +108,7 @@
 					                 	<input value="{{ $quotedata['tripduration'] }} Days" type="text" readonly name="tripduration" required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Total number of travel day's refers to the overall count of days you will be away from your point of origin during your journey. It includes both the departure and return dates,">
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 					                 	<input name="comp_name" value="{{ DB::table('wp_dh_companies')->where('comp_id' , $quotedata['comp_id'])->first()->comp_name }}" type="text" readonly  required class="input">
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The country to which you are traveling. If any part of your trip includes the USA, please select the USA as your destination country. All other countries except your home country and restricted countries under the policy will be covered during the policy period.">
 									</div>
 								</div>
@@ -189,7 +189,7 @@
 					                 	<input readonly="" class="input" value="{{ Cmf::date_format($year) }}" type="text" placeholder=" " name="dob[]" data-placeholder="Date OF Birth" required>
 					              	</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="The date of birth for the primary traveler or applicant,">
 									</div>
 								</div>
@@ -208,7 +208,7 @@
 			                            </select>
 				                    </div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 toooltipcolumn">
 									<div class="asdsad icon icon-info tablet desktop" data-placement="right" data-toggle="tooltip" title="Please specify the gender of the primary traveler, which is typically designated as either 'Male' or 'Female'">
 									</div>
 								</div>

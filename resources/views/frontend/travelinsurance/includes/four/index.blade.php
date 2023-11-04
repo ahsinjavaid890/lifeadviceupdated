@@ -606,7 +606,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                     </div>
                 </div>
 
-                <div class="adjust-quoto coverage-mobile-view" style="background-color: white; border: 1px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
+                <div class="adjust-quoto coverage-mobile-view pricegurrantee" style="background-color: white; border: 1px solid #c0c0c0; padding: 10px; margin-top: 10px; border-radius: 4px; ">
                    <div class="card-guarantee text-center">
                       <figure class="card-guarantee__badge"><img src="https://assets.visitorscoverage.com/production/app/img/policy-portal/guarantee-badge.svg" alt="" class="img-fluid"></figure>
                       <div class="card-guarantee__heading" style="

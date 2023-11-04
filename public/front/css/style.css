@@ -18,3 +18,9 @@
 .print-error-msg-login ul{
 	text-transform:capitalize;
 }
+
+@media only screen and (max-width:600px){
+    .pricegurrantee{
+    	display: none;
+    }
+}

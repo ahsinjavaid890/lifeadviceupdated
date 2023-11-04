@@ -17,6 +17,10 @@
 	.padding-zero-onmobile-lef-side{
 		padding-left: 0px !important;
 	}
+	.form-fivecontainer{
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
 }
 .secondradioinput{
 	margin-left: 15px;

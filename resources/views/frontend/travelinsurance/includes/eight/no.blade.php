@@ -345,7 +345,7 @@ if($second_show == '1' && $second_total_price > 0){
                                 </i>
                             </button>
                         </h3>
-                        @include('frontend.travelinsurance.includes.nopolicydetails')
+                        
                         <div style="position: absolute;top: -8px;right: 10px;">
                             <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="mt-2 col-md-12 col-xs-5 comparebutton{{ $second_plan_id }}{{ $data->pro_id }}{{ $second_sum_insured }}{{ $second_deductible }}" style="cursor: pointer" id="compare"><i class="fa fa-database"></i> Compare</label>
                         </div>
@@ -415,7 +415,9 @@ if($second_show == '1' && $second_total_price > 0){
             <div style="clear:both;"></div>
             <span class="badge badge-danger mobile-deisply-show" style="display:none;margin: auto;margin-bottom: 10px;">This is Pre Existing Plan</span>
             @include('frontend.travelinsurance.includes.nobuynowform')
-
+            <div style="padding-left:10px;padding-right: 10px;">
+                @include('frontend.travelinsurance.includes.nopolicydetails')
+            </div>
         </div>
     </div>
 

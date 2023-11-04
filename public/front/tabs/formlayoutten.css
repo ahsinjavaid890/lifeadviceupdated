@@ -12,6 +12,8 @@
     padding: 25px;
     background-color: white !important;
     box-shadow: 2px 2px 10px #dddddd9e;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 .mydata h1 {
     color: transparent;
@@ -157,7 +159,7 @@
 }
 
 .subpage-full-details {
-    padding: 50px 0;
+    padding: 10px 0;
 /*    background: #fff !important;*/
     background-repeat: no-repeat;
     background-size: cover !important;
@@ -209,9 +211,16 @@
     background: linear-gradient(90deg, #dddddd70, #dddddd70 51%, #c5c4c4) var(--x, 0)/200%;
 }
 .list-head {
-    background: -webkit-linear-gradient(0deg, #2b3481, #ff2600 95%) !important;
+    background: #2b3481 !important;
     padding: 6px 0;
     color: #fff;
+}
+.listing-item-new{
+    display: block;
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+    transition: all 2500ms ease;
+    background: linear-gradient(90deg, #dddddd70, #dddddd70 51%, #c5c4c4) var(--x, 0)/200%;
 }
 .list-head {
     padding: 10px 0 !important;
@@ -224,7 +233,12 @@
         padding-left: 0 !important;
     }
 }
-
+.subpage-full-details .row {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 0 15px;
+}
 .result-blk .tab-list-wrap li .grid-list:first-child {
     padding: 10px;
 }
@@ -253,6 +267,16 @@
     display: flex;
     color: #000;
     font-size: 14px;
+    padding: 20px;
+}
+.list-head .col-md-2{
+    text-align: center;
+    display: inline-table;
+    padding: 0;
+    margin: auto;
+    padding: 0;
+    flex: initial;
+    font-size: 17px;
 }
 .result-blk .tab-list-wrap .grid-list .common-btn {
     display: flex;
