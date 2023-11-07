@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Twilio\Rest\Client;
 use Redirect;
 use Session;
 use Validator;
@@ -38,6 +39,48 @@ class SiteController extends Controller
 {
     public function index()
     {
+
+        $sid    = "AC468c7c8a66a338e2eb3310074175769c";
+        $token  = "154c5477c61af52d3444075dba9aed1c";
+        $twilio = new Client($sid, $token);
+        $message = $twilio->messages
+          ->create("whatsapp:+18555005041", // to
+            array(
+              "from" => "whatsapp:+14243296503",
+              "body" => 'Your appointment is coming up on July 21 at 3PM'
+            )
+          );
+        print($message->sid);
+
+        exit;
+        $twilioSid = env('TWILIO_ACCOUNT_SID');
+        $twilioToken = env('TWILIO_AUTH_TOKEN');
+        $twilioWhatsAppNumber = env('TWILIO_SANDBOX_NUMBER');
+        $recipientNumber = '+15194045041';
+        $message = "Hello from Twilio WhatsApp API in Laravel! 🚀";
+        $twilio = new Client($twilioSid, $twilioToken);
+        $message = $twilio->messages
+                  ->create("whatsapp:+15194045041", // to
+                           [
+                               "mediaUrl" => ["https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"],
+                               "from" => "whatsapp:".$twilioWhatsAppNumber.""
+                           ]
+                  );
+        print($message->sid);
+        exit;
+        try {
+            $twilio->messages->create(
+                $recipientNumber,
+                [
+                    "from" => $twilioWhatsAppNumber,
+                    "body" => $message,
+                ]
+            );
+            return response()->json(['message' => 'WhatsApp message sent successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+        exit;
         return view('frontend.homepage.index');
     }
     public function getstates($id)
@@ -517,6 +560,18 @@ class SiteController extends Controller
         $pdf = PDF::loadView('invoice.index', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number]);
         $content = $pdf->download()->getOriginalContent();
         Storage::put('public/invoices/invoice-'.$reffrence_number.'.pdf',$content);
+
+
+
+        $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+        $message = $twilio->messages->create("whatsapp:+923041602002", // to
+       [
+           "from" => "whatsapp:+14155238886",
+           "body" => "Hello there!"
+       ]
+        );
+
+
         // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
         //     $message->to($request->email);
         //     $message->subject($subject);
