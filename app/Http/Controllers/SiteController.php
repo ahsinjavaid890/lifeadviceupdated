@@ -39,15 +39,15 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
-        $test = $twilio->messages->create(
-            "whatsapp:+923491162005", [
-                "from" => "whatsapp:+18555005041",
-                "body" => "Here's your invoice!",
-                "mediaUrl" => "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-            ]
-        );
-        print_r($test);exit;
+        // $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+        // $test = $twilio->messages->create(
+        //     "whatsapp:+923491162005", [
+        //         "from" => "whatsapp:+18555005041",
+        //         "body" => "Here's your invoice!",
+        //         "mediaUrl" => "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        //     ]
+        // );
+        // print_r($test);exit;
         return view('frontend.homepage.index');
     }
     public function getstates($id)
