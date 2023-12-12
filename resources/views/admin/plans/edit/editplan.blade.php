@@ -466,17 +466,18 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="input">
-                                                <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]"
-                                                    class="form-control" value="{{ $r->rate_with_pre_existing }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="input">
                                                 <input type="text" id="iratesRatewithout'+countRates+'"
                                                     name="iratesRatewithout[]" class="form-control"
                                                     value="{{ $r->rate_without_pre_existing }}">
                                             </div>
                                         </div>
+                                        <div class="col-md-2">
+                                            <div class="input">
+                                                <input type="text" id="iratesRate'+countRates+'" name="iratesRate[]"
+                                                    class="form-control" value="{{ $r->rate_with_pre_existing }}">
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <?php } if($rats_num == $counter){ ?>

@@ -222,20 +222,26 @@ $adddeductible = $deduct_discount;
 
 $total_price = ($total_price - $discount) + ($others + $adddeductible);
 //Discount on plan calculation
-$discountonplan = 0;
-if($plan_discount == '1'){
-    $discountonplan = ($plan_discount_rate * $total_price) / 100;
+if($number_travelers > 1)
+{
+    $discountonplan = 0;
+    if($plan_discount == '1'){
+        $discountonplan = ($plan_discount_rate * $total_price) / 100;
+    }
+    $total_price = $total_price - $discountonplan;
 }
-$total_price = $total_price - $discountonplan;
+
+
 $monthly_price = $total_price / $num_months;
 if($monthly_two == '1'){
-$total_price = $total_price - $flat_price;
+    $total_price = $total_price - $flat_price;
 }
 
 if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
 
 if($show == '1' && $total_price > 0){             
+
 ?>
 
 @if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
