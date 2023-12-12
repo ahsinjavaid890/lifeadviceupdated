@@ -524,34 +524,34 @@ class SiteController extends Controller
         $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
         $reviewemailview = 'email.template' . $temp . '.review';
 
-        $pdf = PDF::loadView('invoice.index', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number]);
-        $content = $pdf->download()->getOriginalContent();
-        Storage::put('public/invoices/invoice-'.$reffrence_number.'.pdf',$content);
+       //  $pdf = PDF::loadView('invoice.index', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number]);
+       //  $content = $pdf->download()->getOriginalContent();
+       //  Storage::put('public/invoices/invoice-'.$reffrence_number.'.pdf',$content);
 
 
 
-        $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
-        $message = $twilio->messages->create("whatsapp:+923041602002", // to
-       [
-           "from" => "whatsapp:+14155238886",
-           "body" => "Hello there!"
-       ]
-        );
+       //  $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
+       //  $message = $twilio->messages->create("whatsapp:+923041602002", // to
+       // [
+       //     "from" => "whatsapp:+14155238886",
+       //     "body" => "Hello there!"
+       // ]
+       //  );
 
 
-        // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-        //     $message->to($request->email);
-        //     $message->subject($subject);
-        // });
-        // Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-        //     $message->to($request->email);
-        //     $message->subject('Tell Us How We Did?');
-        // });
-        // $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
-        // Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-        //     $message->to('admin@lifeadvice.ca');
-        //     $message->subject($subject);
-        // });
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject($subject);
+        });
+        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
+            $message->to($request->email);
+            $message->subject('Tell Us How We Did?');
+        });
+        $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
+            $message->to('admin@lifeadvice.ca');
+            $message->subject($subject);
+        });
         return view('frontend.formone.conferm')->with(array('request' => $request));
     }
     public function steponetoshow($id)
