@@ -78,7 +78,7 @@
       <div class="modal-body">
         <div class="form-group">
             <label>Vector</label>
-            <input required type="file"  class="form-control" name="vector">
+            <input  type="file"  class="form-control" name="vector">
         </div>
         <div class="form-group">
             <label>Heading</label>

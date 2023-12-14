@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Do You Want to show this section?</label>
-                <select required name="showsection_seven" id="" class="form-control">
+                <select  name="showsection_seven" id="" class="form-control">
                     <option value="">---Select option---</option>
                     <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                     <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -44,7 +44,7 @@
                
                     <div class="form-group">
                         <label>Do You Want to show this section?</label>
-                        <select required name="showsection_seven" id="" class="form-control">
+                        <select  name="showsection_seven" id="" class="form-control">
                             <option value="">---Select option---</option>
                             <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                             <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -82,7 +82,7 @@
   
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_seven" id="" class="form-control">
+                    <select  name="showsection_seven" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -106,7 +106,7 @@
 
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_seven" id="" class="form-control">
+                    <select  name="showsection_seven" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -126,7 +126,7 @@
             
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_seven" id="" class="form-control">
+                    <select  name="showsection_seven" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -145,7 +145,7 @@
             @if($data->url == 'mortgage')
             <div class="form-group">
                 <label>Do You Want to show this section?</label>
-                <select required name="showsection_seven" id="" class="form-control">
+                <select  name="showsection_seven" id="" class="form-control">
                     <option value="">---Select option---</option>
                     <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                     <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -164,7 +164,7 @@
             
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_seven" id="" class="form-control">
+                    <select  name="showsection_seven" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -183,7 +183,7 @@
             @if($data->url == 'terms-and-condition')
             <div class="form-group">
                 <label>Do You Want to show this section?</label>
-                <select required name="showsection_seven" id="" class="form-control">
+                <select  name="showsection_seven" id="" class="form-control">
                     <option value="">---Select option---</option>
                     <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                     <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -201,7 +201,7 @@
             @if($data->url == 'term-life-insurance')
             <div class="form-group">
                 <label>Do You Want to show this section?</label>
-                <select required name="showsection_seven" id="" class="form-control">
+                <select  name="showsection_seven" id="" class="form-control">
                     <option value="">---Select option---</option>
                     <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                     <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -219,7 +219,7 @@
             @if($data->url == 'rrsp')
             <div class="form-group">
                 <label>Do You Want to show this section?</label>
-                <select required name="showsection_seven" id="" class="form-control">
+                <select  name="showsection_seven" id="" class="form-control">
                     <option value="">---Select option---</option>
                     <option {{ ( $data->showsection_seven == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                     <option {{ ( $data->showsection_seven == 'no') ? 'selected' : '' }} value="no">No</option>

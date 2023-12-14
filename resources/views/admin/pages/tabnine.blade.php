@@ -4,7 +4,7 @@
             @if ($data->url == 'term-life-insurance')
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_nine" id="" class="form-control">
+                    <select name="showsection_nine" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_nine == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_nine == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -22,7 +22,7 @@
             @if ($data->url == 'terms-and-condition')
                 <div class="form-group">
                     <label>Do You Want to show this section?</label>
-                    <select required name="showsection_nine" id="" class="form-control">
+                    <select name="showsection_nine" id="" class="form-control">
                         <option value="">---Select option---</option>
                         <option {{ ( $data->showsection_nine == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                         <option {{ ( $data->showsection_nine == 'no') ? 'selected' : '' }} value="no">No</option>
@@ -42,7 +42,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Do You Want to show this section?</label>
-                            <select required name="showsection_nine" id="" class="form-control">
+                            <select  name="showsection_nine" id="" class="form-control">
                                 <option value="">---Select option---</option>
                                 <option {{ ( $data->showsection_nine == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
                                 <option {{ ( $data->showsection_nine == 'no') ? 'selected' : '' }} value="no">No</option>
