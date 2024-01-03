@@ -317,7 +317,7 @@ class AdminController extends Controller
                 $features = $request->ifeaturelist[$i];
                 $userID = Auth::user()->id;
                 $time = time();
-                $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_on, created_by ) VALUES( '$updateplan->id','$features','$time','$userID')";
+                $insertRates = "INSERT INTO wp_dh_insurance_plans_features(plan_id, features,created_at) VALUES( '$updateplan->id','$features','$time')";
                 DB::statement($insertRates);
             }
         }
