@@ -71,6 +71,36 @@
         		<div class="col-md-2 mb-4">
             		<div class="cards">
                 		<div class="card-svg">
+                            <a href="{{ url('admin/sales/allsale') }}">
+                                <span class="material-symbols-outlined point_of_sale">point_of_sale</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>Pending Sales</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('sales')->where('status' , 'Pending')->count() }}</h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
+                            <a href="{{ url('admin/sales/allsale') }}">
+                                <span class="material-symbols-outlined point_of_sale">point_of_sale</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>Approve Sale</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('sales')->where('status' , 'Approved')->count() }}</h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
                             <a href="">
                                 <span class="material-symbols-outlined format_quote">format_quote</span>
                             </a>
@@ -95,6 +125,66 @@
                 		</div>
                 		<div class="card-number">
                     		<h3>{{ DB::Table('contactus_messages')->count() }} <small style="font-size: 8px;">Contact Requests</small></h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
+                            <a href="">
+                                <span class="material-symbols-outlined business_messages">support_agent</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>Agents</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('users')->where('type' , '!=' ,'admin')->count() }}</h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
+                            <a href="">
+                                <span class="material-symbols-outlined business_messages">unsubscribe</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>News Letters</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('news_letters')->count() }}</h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
+                            <a href="">
+                                <span class="material-symbols-outlined business_messages">help</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>FAQ</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('frequesntlyaskquestions')->where('website' , 'lifeadvice')->count() }}</h3>
+                		</div>
+            		</div>
+        		</div>
+        		<div class="col-md-2 mb-4">
+            		<div class="cards">
+                		<div class="card-svg">
+                            <a href="">
+                                <span class="material-symbols-outlined business_messages">rss_feed</span>
+                            </a>
+                        </div>
+                		<div class="card-tittle">
+                    		<h4>Blogs</h4>
+                		</div>
+                		<div class="card-number">
+                    		<h3>{{ DB::Table('blogs')->where('website' , 'lifeadvice')->count() }}</h3>
                 		</div>
             		</div>
         		</div>
