@@ -114,7 +114,6 @@
 		background: var(--white, #FFF);
 		box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
 		border: transparent !important;
-		padding-left: 35px;
 	}
 	.img {
 		vertical-align: middle;
