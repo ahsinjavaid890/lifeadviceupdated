@@ -46,22 +46,24 @@
                         <tbody>
                             @foreach($data as $r)
                             <tr>
-                                <td>
+                                <td class="text-center">
                                     <img class="img-thumbnail" src="{{ url('public/images') }}/{{ $r->comp_logo }}" width="100" height="100">
                                 </td>
                                 <td>
                                     {{ $r->comp_name }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     @if($r->claimform)
                                     <a download="" href="{{ url('public/images') }}/{{ $r->claimform }}" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Claim Form</a>
                                     @else
                                     <a href="javascript:void(0)" class="btn btn-default btn-xs">No Claim Form</a>
                                     @endif
                                 </td>
-                                <td nowrap="">
-                                    <a data-toggle="modal" data-target="#categoryedit{{ $r->comp_id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details"> <i class="la la-edit"></i> </a>
-                                    <a data-toggle="modal" data-target="#deleteModal{{ $r->comp_id }}" href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete"> <i class="la la-trash"></i> </a>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a data-toggle="modal" data-target="#categoryedit{{ $r->comp_id }}" href="javascript:;" class="btn btn-sm btn-primary" title="Edit details"><span class="material-symbols-outlined">edit</span></a>
+                                        <a data-toggle="modal" data-target="#deleteModal{{ $r->comp_id }}" href="javascript:;" class="btn btn-sm btn-danger" title="Delete"><span class="material-symbols-outlined">delete</span></a>
+                                    </div>
                                 </td>
                             </tr>
                             <div class="modal fade" id="deleteModal{{ $r->comp_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

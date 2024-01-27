@@ -61,9 +61,11 @@
                                     <td>
                                         {{$r->comp_name}}
                                     </td>
-                                   <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a  onClick="return confirm('Are you sure you want to delete ?');" class="btn btn-primary btn-sm" href="{{ url('admin/plans/deleteplan') }}/{{ $r->plan_id }}"><i class="fa fa-trash"></i>Delete</a>
+                                   <td class="text-center">
+                                        <div class="btn-group">
+                                           <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}"><span class="material-symbols-outlined">edit</span></a>
+                                           <a  onClick="return confirm('Are you sure you want to delete ?');" class="btn btn-danger btn-sm" href="{{ url('admin/plans/deleteplan') }}/{{ $r->plan_id }}"><span class="material-symbols-outlined">delete</span></a>
+                                       </div>
                                    </td>
                                 </tr>
 
