@@ -79,7 +79,7 @@
                     		<h4>Quotations</h4>
                 		</div>
                 		<div class="card-number">
-                    		<h3>0</h3>
+                    		<h3>{{ DB::table('quotes')->count() }}</h3>
                 		</div>
             		</div>
         		</div>
@@ -94,7 +94,7 @@
                     		<h4>Requests</h4>
                 		</div>
                 		<div class="card-number">
-                    		<h3>0 <small style="font-size: 10px;">Contact Requests</small></h3>
+                    		<h3>{{ DB::Table('contactus_messages')->count() }} <small style="font-size: 8px;">Contact Requests</small></h3>
                 		</div>
             		</div>
         		</div>
