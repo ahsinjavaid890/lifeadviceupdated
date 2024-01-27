@@ -523,28 +523,12 @@ class SiteController extends Controller
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $purchasepolicyemailview = 'email.template' . $temp . '.purchasepolicy';
         $reviewemailview = 'email.template' . $temp . '.review';
-
-       //  $pdf = PDF::loadView('invoice.index', ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number]);
-       //  $content = $pdf->download()->getOriginalContent();
-       //  Storage::put('public/invoices/invoice-'.$reffrence_number.'.pdf',$content);
-
-
-
-       //  $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
-       //  $message = $twilio->messages->create("whatsapp:+923041602002", // to
-       // [
-       //     "from" => "whatsapp:+14155238886",
-       //     "body" => "Hello there!"
-       // ]
-       //  );
-
-
-        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($request, $subject) {
-            $message->to($request->email);
+        Mail::send($purchasepolicyemailview, ['request' => $request, 'sale' => $newsale, 'policy_number' => $reffrence_number], function ($message) use ($newsale, $subject) {
+            $message->to($newsale->email);
             $message->subject($subject);
         });
-        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($request, $subject) {
-            $message->to($request->email);
+        Mail::send($reviewemailview, ['request' => $request, 'sale' => $newsale], function ($message) use ($newsale, $subject) {
+            $message->to($newsale->email);
             $message->subject('Tell Us How We Did?');
         });
         $subject = 'New Sale | Reffrence Number =  ' . $reffrence_number;
