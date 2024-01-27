@@ -766,7 +766,7 @@ class SiteController extends Controller
     }
     public function blogs()
     {
-        $data = DB::table('blogs')->where('website', 'lifeadvice')->paginate(9);
+        $data = DB::table('blogs')->where('website', 'lifeadvice')->orderby('id' , 'desc')->paginate(9);
         return view('frontend.companypages.blogs')->with(array('data' => $data));
     }
     public function contactus()

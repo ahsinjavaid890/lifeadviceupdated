@@ -1024,6 +1024,7 @@ class AdminController extends Controller
     public function createblog(Request $request)
     {
         $add = new blogs();
+        $add->website = 'lifeadvice';
         $add->category_id = $request->category_id;
         $add->title = $request->title;
         $add->url = Cmf::shorten_url($request->title);
