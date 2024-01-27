@@ -1647,3 +1647,201 @@ label.inner-label.edit-covers p {
 {
     max-width: 100% !important;
 }
+.card-svg .material-symbols-outlined{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    padding: 10px;
+}
+.design_services{
+    color: #8a50fc;
+    background-color: #eee5ff;
+}
+.pending{
+    color: #56d6cf;
+    background-color: #c9f7f5;
+}
+.check_box{
+    color: #f65868;
+    background-color: #ffe2e6;
+}
+.point_of_sale{
+    color: #ffbf42;
+    background-color: #fff4de;
+}
+.format_quote{
+    color: #49a3ff;
+    background-color: #e1f0ff;
+}
+.business_messages{
+    color: #5cad6d;
+    background-color: #e1ffeb;    
+} 
+.menu-item .material-symbols-outlined{
+    font-size: 25px;
+    color: white;
+    margin-right: 10px;
+}
+
+.breadcrums h5::before {
+    content: "\A";
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    border: 3px solid #212529;
+    background-color: transparent;
+    display: inline-flex;
+    margin: 3px 2px 0px 0px;
+}
+.page-sub-titles a::before {
+    content: "\A";
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    border: 2px solid #212529;
+    background-color: transparent;
+    display: inline-flex;
+    margin: 3px 8px 0px 0px;
+}
+.page-sub-titles p::before {
+    content: "\A";
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    border: 2px solid #212529;
+    background-color: transparent;
+    display: inline-flex;
+    margin: 3px 8px 0px 0px;
+}
+.page-sub-titles a {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #717171;
+}
+.page-sub-titles p {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #717171;
+    margin-bottom: 0px !important;
+}
+.breadcrums h5 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+    margin-bottom: 2px !important;
+    margin-top: 10px !important;
+}
+.btn-theme{
+    background-color: #212529 !important;
+    border: 1px solid #212529 !important;
+    color: white !important;
+}
+.btn-theme:hover{
+    background-color: white !important;
+    color: #212529 !important;
+}
+
+.business-card {
+    border-radius: 12px;
+    background: var(--White, #FFF);
+    box-shadow: 0px 8px 36px 0px rgba(0, 0, 0, 0.06);
+    min-height: 220px;
+}
+.business-card .card-body{
+    padding: 20px;
+}
+.dropdown-toggle.nav-link:after, .dropdown-toggle.btn:after{
+    display: none;
+}
+.business-card h3 a {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    color: black;
+    text-decoration: none;
+    /* 138.889% */
+    overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+
+.business-card .content-section {
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--Border, #d3d3d38a);
+    margin-bottom: 5px;
+    margin-top: 5px !important;
+}
+
+.leader-section span {
+    font-size: 13px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.leader-section
+{
+    margin-top: 10px;
+}
+
+.leader-section img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 100px;
+}
+.btn-circle.btn-tolbar {
+    width: 38px;
+    height: 38px;
+    padding: 4px 9px !important;
+    border-radius: 35px;
+    font-size: 15px;
+    line-height: 1.33;
+}
+
+.btn-circle.btn-tolbar:hover {
+    background: #f3f3f3 !important;
+}
+
+.btn-circle .btn-tolbar img {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+.nav-action .nav-icon:focus,
+.nav-action .nav-icon:active {
+    box-shadow: none !important;
+    border: none !important;
+}
+.btn-circle.btn-tolbar {
+    width: 38px;
+    height: 38px;
+    padding: 4px 9px !important;
+    border-radius: 35px;
+    font-size: 15px;
+    line-height: 1.33;
+}
+.dropdown-menu > li > a, .dropdown-menu > .dropdown-item{
+    cursor: pointer;
+}

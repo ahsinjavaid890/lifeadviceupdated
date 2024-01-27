@@ -25,7 +25,10 @@
   <input type="hidden" value="{{ url('') }}" id="app_url">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ url('public/images') }}/{{ Cmf::get_store_value('favicon') }}" rel="shortcut icon" />
-  <script type="text/javascript" src=""></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/font/MaterialIcons-Regular.ttf">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
   
 </head>
   <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">    
