@@ -1,17 +1,45 @@
 @extends('frontend.layouts.main')
 
 @section('content')
+<script language="javascript" type="text/javascript">
+   function printDiv() {
+         $('#removeconta').removeClass('container');
+         $('#removecontainer').removeClass('container');
+         $('#removecontainer').css('margin-top' , '50px');
+         $('#removecontainer').css('margin-bottom' , '50px');
+         $('#removediv').hide();
+        //Get the HTML of div
+         
+        var printdivone = document.getElementById("printdivone").innerHTML;
+        var divElement1 = document.getElementById("PrintInvoice1").innerHTML;
+        var divElement2 = document.getElementById("PrintInvoice2").innerHTML;
+        //Get the HTML of whole page
+        var oldPage = document.body.innerHTML;
+
+      document.body.innerHTML = " <div class='page-breakInline'></div>"+printdivone+" " +divElement1+" <div class='page-breakInline'></div>" + divElement2;
+      window.print();
+      document.body.innerHTML = oldPage;
+      $('#removeconta').addClass('container');
+      $('#removecontainer').addClass('container');
+      $('#removecontainer').css('margin-bottom' , '0px');
+      $('#removecontainer').css('margin-top' , '0px');
+      $('#removediv').show();
+    }
+</script>
 <link rel="stylesheet" type="text/css" href="{{ url('public/front/css/comparecsstwo.css') }}">
-<section class="copareheading ah-compare-heading">
-    <div class="container">
+<section style="height: 150px;
+    background-color: #2b3481;
+    margin-top: 88px;padding-bottom: 10px;
+    padding-top: 40px;" class="copareheading ah-compare-heading" id="printdivone">
+    <div class="container" id="removecontainer">
        <div class="row">
          <div class="col-md-6">
             <h1>Compare Plans</h1>
          </div>
-          <div class="col-md-6 text-right">
+          <div class="col-md-6 text-right" id="removediv">
              <div class="d-flex">
                <div style="width: 80%;">
-                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:window.print()" class="btn btn-success">Print</a>
+                  <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 50%;" href="javascript:void(0)" onclick="javascript:printDiv()" class="btn btn-success">Print</a>
                </div>
                 <div style="width: 50%;">
                   <a style="background: #5ea047;color: white !important;border-radius: 33px;width: 90%;" href="javascript:void(0)" onclick="showmodal()" class="btn btn-success"> Email Comparison </a>
@@ -235,9 +263,9 @@
       }
    }
 </style>
-<section class="card-slide ah-slider-setting">
-   <div class="container">
-      <div class="comparerow">
+<section id="PrintInvoice1" class="card-slide ah-slider-setting">
+   <div class="container" id="removeconta">
+      <div class="comparerow" style="display: flex">
          @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $r)
          @php
             $data = unserialize($r->savetoplan);
@@ -246,26 +274,37 @@
             $insurance_company = $plan->insurance_company;
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
          @endphp
-            <div class="comparebox">
+            <div class="comparebox" style="    width: 33%;
+    margin: 5px;
+    border-top: 5px solid #2b3481;
+    border-radius: 10px;">
                <div class="card">
                   <div class="card-body">
                         <div class="plantittle">
-                           <h2>{{ $plan->plan_name }}</h2>
+                           <h2 style="    color: #2b3481;
+    font-size: 22px;
+    margin-bottom: 20px;">{{ $plan->plan_name }}</h2>
                         </div>
-                        <div class="compareimagelogo">
+                        <div style="text-align: center" class="compareimagelogo">
                            <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
                         </div>
-                        <div class="coverageanddeductibles mt-3">
-                           <div class="coverageammount">
-                              <h2>Coverage : ${{ $data['sum_insured'] }}</h2>
+                        <div style="display: flex;" class="coverageanddeductibles mt-3">
+                           <div style="width: 50%;" class="coverageammount">
+                              <h2 style="font-size: 18px;">Coverage : ${{ $data['sum_insured'] }}</h2>
                            </div>
-                           <div class="deductibles">
-                              <h2>Deductible : ${{ $data['deductible'] }}</h2>
+                           <div style="width: 50%;" class="deductibles">
+                              <h2 style="font-size: 18px;">Deductible : ${{ $data['deductible'] }}</h2>
                            </div>
                         </div>
-                        <div  class="card-plan__pricing-row">
+                        <div  style="    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;" class="card-plan__pricing-row">
                            <div  class="plan-price subheading-2">
-                              <span class="price-value">${{ number_format($data['total_price'],2) }}</span>
+                              <span style="font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #2b3481;" class="price-value">${{ number_format($data['total_price'],2) }}</span>
                            </div>
                            <form method="POST" action="{{ url('apply') }}">
                                 @csrf
@@ -299,7 +338,21 @@
                                 <input type="hidden" value="{{ $data['num_of_days'] }}" name="tripduration">
                                 <input type="hidden" value="{{ $data['ages_array'] }}" name="age">
                                 <div class="plan-card-cta-container">
-                                 <button type="submit" class="button button-secondary">
+                                 <button style="border-radius: 20px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    color: #2b3481;
+    border: 0;
+    transition: .3s ease-in-out;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px;
+    color: #fff;
+    background-color: #5ea047;" type="submit" class="button button-secondary">
                                     <span >Buy</span>
                                  </button>
                               </div>
@@ -312,7 +365,7 @@
          @endforeach
       </div>
 </section>
-<div class="quote-compare__template container">
+<div id="PrintInvoice2" class="quote-compare__template container">
    <section class="quote-compare__spec-content" >
       <div class="grid-container">
           <div class="ah-accordain-wrapper">
@@ -321,8 +374,18 @@
                   <div class="card">
                       <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
-                              <span class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
-                                  <img  src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
+                              <span style="    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 3px;
+    color: #2b3481!important;
+    width: 100%;
+    text-align: left;
+    outline: 0!important;
+    display: flex;
+    align-items: center;
+    font-weight: 800;" class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
+                                  <img style="    width: 40px;
+    margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
                                   {{ $r->name }}
                               </span>
                           </h5>
@@ -330,8 +393,20 @@
                       <div id="collapse{{ $r->id }}" class="collapse @if ($loop->first) show @endif" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body" style="padding:0px">
                               @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->where('benifitcategory' , $r->id)->get() as $b)
-                              <div class="panel-content__table-row">
-                                 <div  class="panel-content-subheading">
+                              <div class="panel-content__table-row" style="display: flex;">
+                                 <div  class="panel-content-subheading" style="padding: 32px 30px 32px 24px;
+    width: 20%;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #2b3481;
+    padding-left: 2rem;
+    border-left: 0;
+    border-left-width: 0px;
+    border-left-style: initial;
+    border-left-color: initial;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;">
                                     <span  class="panel-content--heading--container">
                                        <div class="panel-content--heading">{{ $b->benefits_head }}</div>
                                     </span>
@@ -344,7 +419,16 @@
                                     $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h['plan_id'])->first();
                                     $planname = $plan->plan_name;
                                  @endphp
-                                 <div class="panel-content__table-cell">
+                                 <div class="panel-content__table-cell" style="    width: 26%;
+    padding: 10px 10px 10px 20px;
+    border-left: 1px solid #cfd9e8;
+    border-top: 1px solid #cfd9e8;
+    border-bottom: 1px solid #cfd9e8;
+    color: #67778f;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    transition: .15s ease-in-out;">
                                     <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
                                  </div>
                                  @endforeach
