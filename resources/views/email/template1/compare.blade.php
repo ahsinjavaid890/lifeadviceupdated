@@ -36,9 +36,16 @@
                                                       </table>
                                                       <table class="m_-2565051330621453805wrapper" role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
                                                          <tbody>
+                                                            @php
+                                                               $product = DB::table('compare_plans')->where('comparenumber'  ,$compareid)->first();
+                                                               if($product->product_id)
+                                                               {
+                                                                  $productname = DB::Table('wp_dh_products')->where('pro_id' , $product->product_id)->first();
+                                                               }
+                                                            @endphp
                                                             <tr>
                                                                <td style="font-size:6px;line-height:10px;padding:0px 0px 0px 0px;background-color: #2b3481;height: 180px;" valign="top">
-                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">Your Comparison Plan</h1>
+                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">@if($productname) {{ $productname->pro_name }}  @endif Comparison Plan</h1>
                                                                </td>
                                                             </tr>
                                                          </tbody>
