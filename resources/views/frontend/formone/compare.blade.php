@@ -8,6 +8,8 @@
          $('#removecontainer').css('margin-top' , '50px');
          $('#removecontainer').css('margin-bottom' , '50px');
          $('#removediv').hide();
+         $('.collapse').addClass('show');
+
         //Get the HTML of div
          
         var printdivone = document.getElementById("printdivone").innerHTML;
@@ -20,6 +22,7 @@
       window.print();
       document.body.innerHTML = oldPage;
       $('#removeconta').addClass('container');
+      $('.collapse').removeClass('show');
       $('#removecontainer').addClass('container');
       $('#removecontainer').css('margin-bottom' , '0px');
       $('#removecontainer').css('margin-top' , '0px');
@@ -371,7 +374,7 @@
           <div class="ah-accordain-wrapper">
               <div id="accordion">
                   @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
-                  <div class="card">
+                  <div class="card" style="margin-bottom: 20px;">
                       <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
                               <span style="    font-size: 20px;
