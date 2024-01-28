@@ -38,7 +38,7 @@
                                                          <tbody>
                                                             <tr>
                                                                <td style="font-size:6px;line-height:10px;padding:0px 0px 0px 0px;background-color: #2b3481;height: 180px;" valign="top">
-                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">Your Quote is Ready</h1>
+                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">Your Comparison Plan</h1>
                                                                </td>
                                                             </tr>
                                                          </tbody>
@@ -50,7 +50,7 @@
                                                                   <div>
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-size:16px;font-weight:600">Dear Traveler,</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:600;font-size:16px">Thanks for creating a new plan comparison with VisitorsCoverage, where you can find insurance for the way you travel! Click the button below to revisit your plan comparison and purchase your policy in less than 5 minutes.</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;line-height:28px"><span style="color:#67778f;font-weight:600;font-size:16px">Thank you for taking the first step towards safeguarding your journeys with Life Advice Insurance Inc. We're delighted you've chosen us to explore insurance options tailored to your unique travel style! With just a click, you can revisit your plan comparison and secure your policy in under 5 minutes.</span></div>
                                                                      <div></div>
                                                                   </div>
                                                                </td>
@@ -97,12 +97,13 @@
                                                             <tr>
                                                                <td class="m_-2565051330621453805mobile-hide-padding" style="padding:18px 30px 18px 30px;line-height:28px;text-align:inherit" height="100%" valign="top" bgcolor="" role="module-content">
                                                                   <div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">We know choosing an insurance plan can be difficult. Our licensed Customer Success Team is here to help you. Call </span><a href="tel:+1-855-500-8999" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>+1-855-500-8999</strong></span></a><span style="font-size:16px;font-weight:600"> or email </span><a href="mailto:info@lifeadvice.ca" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>info@lifeadvice.ca</strong></span></a><span style="font-weight:600;font-size:16px">.</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Understanding the intricacies of insurance selection can be daunting. Fear not! Our team of seasoned experts is readily available to guide you through every step of the process. Reach out to us at</span><a href="tel:+1-855-500-8999" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>+1-855-500-8999</strong></span></a><span style="font-size:16px;font-weight:600">or drop us a line at </span><a href="mailto:info@lifeadvice.ca" target="_blank"><span style="font-size:16px;font-weight:600;color:#1b8fe4"><strong>info@lifeadvice.ca</strong></span></a><span style="font-weight:600;font-size:16px"> for personalized assistance.</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
                                                                      <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Sincerely,</span></div>
                                                                      <div style="font-family:inherit;text-align:inherit"><br></div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Customer Success Team</span></div>
-                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Life Advice</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Your safety and peace of mind are our top priorities.</span></div>
+                                                                     <div style="font-family:&quot;Open Sans&quot;,sans-serif;text-align:inherit;font-size:16px;line-height:28px"><span style="font-size:16px;font-weight:600">Warm regards,<br>
+                                                                        The Customer Success Team<br>Life Advice</span></div>
                                                                      <div></div>
                                                                   </div>
                                                                </td>
