@@ -82,13 +82,16 @@
                                 }
                         </style>
                         <div class="card-list-heading p-3">
-                            <h3 style="color: #2b3481;">Browse by topic</h3>
+                            <h3 style="color: #2b3481;">Browse by Topics</h3>
                             <hr>
                         </div>
-                        <ul class="parent-list nav  nav-tabs d-block" role="tablist">
+                        <ul class="parent-list nav nav-tabs d-block" role="tablist">
+                             <li class="nav-item ">
+                                <a href="{{ url('blogs') }}" class="nav-link active"  role="tab" >All Topics</a>
+                            </li>
                             @foreach(DB::table('blogcategories')->where('website' , 'lifeadvice')->get() as $r)
                                 <li class="nav-item">
-                                    <a href="{{ url('category') }}/{{ $r->url }}" class="nav-link @if($loop->first) active @endif" data-toggle="tab-{{$r->id}}"  role="tab" >{{ $r->name }}</a>
+                                    <a href="{{ url('category') }}/{{ $r->url }}" class="nav-link" data-toggle="tab-{{$r->id}}"  role="tab" >{{ $r->name }}</a>
                                 </li>
                             @endforeach
                         </ul>

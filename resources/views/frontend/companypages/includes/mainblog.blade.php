@@ -256,7 +256,7 @@
     @if($url == 'blogs')
     <div class="hero-content">
        <h1  class="heading-2 hero-heading">Expert Tips</h1>
-       <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel safety tips and trip inspiration. </p>
+       <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel <br> safety  tips and trip inspiration. </p>
        <div  class="hero-subscribe">
           <form novalidate="novalidate" action="{{route('news_letter')}}" class="v-form footer-subscribe-form" method="POST">
             @csrf
