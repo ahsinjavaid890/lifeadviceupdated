@@ -1,4 +1,22 @@
 @extends('frontend.layouts.main')
+@php
+    $category  = DB::table('blogcategories')->where('url' , $category->url)->where('website' , 'lifeadvice')->first()
+@endphp
+@section('tittle')
+<title>Tips of {{ $category->name }}</title>
+<meta name="DC.Title" content="Tips of {{ $category->name }}">
+<meta name="rating" content="general">
+<meta name="description" content="Tips of {{ $category->name }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="">
+<meta property="og:title" content="Tips of {{ $category->name }}">
+<meta property="og:description" content="Tips of {{ $category->name }}">
+<meta property="og:site_name" content="{{ Cmf::get_store_value('site_name') }}">
+<meta property="og:url" content="{{ URL::current() }}">
+<link rel="canonical" href="{{ URL::current() }}">
+<meta property="og:locale" content="it_IT">
+<meta name="keywords" content="Tips of {{ $category->name }}">
+@endsection
 @section('content')
 @php
     $firstsection = DB::table('travelpages')->where('url' , 'blogs')->first();
@@ -31,6 +49,34 @@
 }
 </style>
 <div class="blog_section">
+    <div class="hero-content">
+       <h1  class="heading-2 hero-heading">Tips of {{ $category->name }}</h1>
+       <p  class="hero-heading-info"> Subscribe to our exclusive newsletter for the latest blog posts, travel <br> safety  tips and trip inspiration. </p>
+       <div  class="hero-subscribe">
+          <form novalidate="novalidate" action="{{route('news_letter')}}" class="v-form footer-subscribe-form" method="POST">
+            @csrf
+            <div class="subscribe-input">
+                 <input type="text" name="email" >
+                 @if(Session::Has('message'))
+                 <div class="text-success" id="success-message">
+                     {{  Session::get('message')}}
+                 </div>
+              @endif
+              @if(Session::Has('error'))
+                 <div class="text-danger">
+                     {{  Session::get('error')}}
+                 </div>
+              @endif
+              @error('email')
+              <div class="text-danger">{{ $message }}</div>
+          @enderror
+             </div>
+             <button class="button button-rounded button-white button-subscribe">
+                <span>Subscribe</span>
+             </button>
+          </form>
+       </div>
+    </div>
     <div class="blo-img">
         <img src="{{ url('public/images/1950687292.png') }}" class="blog_img">
     </div>
@@ -56,6 +102,9 @@
                             <hr>
                         </div>
                         <ul class="parent-list nav  nav-tabs d-block" role="tablist">
+                            <li class="nav-item ">
+                                <a href="{{ url('blogs') }}" class="nav-link"  role="tab" >All Topics</a>
+                            </li>
                             @foreach(DB::table('blogcategories')->where('website' , 'lifeadvice')->get() as $r)
                                 <li class="nav-item">
                                     <a class="nav-link @if($category->url == $r->url) active @endif" data-toggle="tab-{{$r->id}}" role="tab"href="{{ url('category') }}/{{ $r->url }}">{{ $r->name }}</a>
@@ -69,7 +118,7 @@
         <div class="col-md-9">
             <div class="row">
                @foreach($data as $r)
-                <div class="col-md-4 mb-3tab-content @if($loop->first) active @endif">
+                <div class="col-md-4 mb-3">
                     <div class="card blank-card">
                          <div class="card-body">
                             <div class="blog-image-card">
@@ -89,6 +138,9 @@
                       </div>
                 </div>
                 @endforeach 
+            </div>
+            <div style="margin-top:10px;" class="row">
+                {!! $data->links('frontend.pagination') !!}
             </div>
         </div>
     </div>

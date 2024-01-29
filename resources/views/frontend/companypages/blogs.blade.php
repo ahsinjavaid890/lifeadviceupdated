@@ -102,7 +102,7 @@
         <div class="col-md-9">
             <div class="row">
                @foreach($data as $r)
-                <div class="col-md-4 mb-3 @if($loop->first) active @endif">
+                <div class="col-md-4 mb-3">
                  <div class="card blank-card card-responsive">
                       <div class="card-body">
                          <div class="blog-image-card">
