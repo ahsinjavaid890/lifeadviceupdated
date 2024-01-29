@@ -119,7 +119,7 @@
          @foreach($sales as $r)
          <div class="card mb-3">
             <div class="d-flex justify-content">
-               <h3>{{ DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->f_name }} {{  DB::Table('traveler_sale_informations')->where('id'  ,$r->id)->first()->l_name }}</h3>
+               <h3></h3>
                @if($r->status == 'Pending')
                <span class="badge badge-warning">{{ $r->status }}</span>
                @endif
