@@ -511,7 +511,7 @@ class SiteController extends Controller
             $password = $reffrence_number;
             $newuser = new User();
             $newuser->email = $stepone['email'];
-            $newuser->phone = $stepone['phone'];
+            $newuser->phone = $steptwo['phone'];
             $newuser->address = $steptwo['streetname'];
             $newuser->password = Hash::make($password);
             $newuser->user_type = 'customer';
