@@ -45,7 +45,7 @@
                                                             @endphp
                                                             <tr>
                                                                <td style="font-size:6px;line-height:10px;padding:0px 0px 0px 0px;background-color: #2b3481;height: 180px;" valign="top">
-                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">@if($productname) {{ $productname->pro_name }}  @endif <br> Comparison Plan</h1>
+                                                                  <h1 style="color:white;font-size:36px;margin-top: 12%;margin-left: 3%;">@if($productname) {{ $productname->pro_name }}  @endif <br><br><br><br><br> Comparison Plan</h1>
                                                                </td>
                                                             </tr>
                                                          </tbody>
