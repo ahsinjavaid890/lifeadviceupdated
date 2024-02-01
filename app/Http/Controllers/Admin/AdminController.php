@@ -488,7 +488,6 @@ class AdminController extends Controller
         )
             ->leftJoin('wp_dh_insurance_plans', 'wp_dh_insurance_plans_benefits.plan_id', '=', 'wp_dh_insurance_plans.id')
             ->leftJoin('wp_dh_products', 'wp_dh_insurance_plans.product', '=', 'wp_dh_products.pro_id')
-            ->groupby('wp_dh_insurance_plans_benefits.plan_id')
             ->get();
         return view('admin.plans.planbenifits')->with(array('data' => $data));
     }
