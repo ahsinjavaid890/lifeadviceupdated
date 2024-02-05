@@ -22,85 +22,228 @@
             </div>
             <!--begin::Card-->
             @include('alerts.index')
-            <form method="POST" action="{{ url('admin/plans/updateplanbenifit') }}">
-            @csrf
-            <input type="hidden" value="{{ $data->id }}" name="id">
-            <div class="card card-custom mt-5">
-                <div class="card-header flex-wrap py-5">
-                    <div class="card-title">
-                        <h3 class="card-label">
-                            Edit Plan Benifit
-                        </h3>
+
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <div class="card card-custom mt-5">
+                        <div class="card-body">
+                            <div class="row">
+                               <div class="col-md-12">
+                                    <label>Select Product</label>
+                                    <select required onchange="selectproduct(this.value)" name="product_id" class="form-control">
+                                        <option value="">Select Product</option>
+                                        @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
+                                        <option @if(DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first()->product == $r->product) selected @endif value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label>Select Plan</label>
+                                    <select onchange="getplanattributes()" required name="plan_id" id="plan_id" class="form-control">
+                                        <option value="">Select Plan</option>
+                                        @foreach(DB::table('wp_dh_insurance_plans')->get() as $r)
+                                        @php
+                                            $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
+                                        @endphp
+                                        <option @if($data->plan_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->plan_name }} @if($company)({{ $company->comp_name }}) @endif</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label>Select Pre Exisitng Condition</label>
+                                    <select onchange="getplanattributes()" required name="pre_existing" id="pre_existing" class="form-control">
+                                        <option value="">Select Pre Exisitng Condition</option>
+                                        <option @if($data->pre_existing == 'yes') selected @endif value="yes">Yes</option>
+                                        <option @if($data->pre_existing == 'no') selected @endif value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label>Select Benifit Category</label>
+                                    <select onchange="getplanattributes()" id="benifitcategory" required class="form-control" name="benifitcategory">
+                                    <option value="">Select Benifit Category</option>
+                                    @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
+                                    <option @if($data->benifitcategory == $c->id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
+                                    @endforeach
+                                   </select>
+                                </div> 
+                            </div>                   
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Select Product</label>
-                            <select required onchange="selectproduct(this.value)" name="product_id" class="form-control">
-                                <option value="">Select Product</option>
-                                @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
-                                <option @if(DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first()->product == $r->product) selected @endif value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
-                                @endforeach
-                            </select>
+                <div class="col-md-8 secondportion">
+                    <div class="accordion custom-accordion mt-5" id="custom-accordion-one">
+                        <div class="card card-custom mt-5">
+                            <div class="card-body cardbody" id="headingFour">
+                                <h5 class="m-0">
+                                    <a class="custom-accordion-title d-block py-1 collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                <button class="btn btn-primary btn-sm">Add New Benifit</button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#custom-accordion-one" style="">
+                                <div class="card-body">
+                                    <form method="POST" class="needs-validation createbenifitform" action="{{ url('admin/plans/createnewplanbenifit') }}">
+                                        @csrf
+                                        <input type="hidden" value="{{ $data->plan_id }}" name="plan_id">
+                                        <input type="hidden" value="{{ $data->pre_existing }}" name="pre_existing">
+                                        <input type="hidden" value="{{ $data->benifitcategory }}" name="benifitcategory">
+                                        <div class="col-md-12 mt-2">
+                                            <label>Enter Heading of Benefit <small id="changetoexistingheading" style="color: blue;display: none;cursor: pointer;" onclick="changetoexistingheading()">(Change to Existing Headings)</small> </label>
+                                            <select required id="headingslectoption" onchange="selectheadingofbenifit(this.value)" class="form-control" name="benefits_head">
+                                                <option value="">Select Heading of Benefit</option>
+                                                @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->get() as $r)
+                                                <option value="{{ $r->benefits_head }}">{{ $r->benefits_head }}</option>
+                                                @endforeach
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <input type="text" id="headinginputoption" class="form-control" style="display:none;" name="">
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <label>Enter Benefit Description</label>
+                                            <textarea required  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="benefits_desc"></textarea>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <button id="createbenifitbutton" class="btn btn-primary" type="submit">Save Benifit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <label>Select Plan</label>
-                            <select required name="plan_id" id="plan_id" class="form-control">
-                                <option value="">Select Plan</option>
-                                @foreach(DB::table('wp_dh_insurance_plans')->get() as $r)
-                                @php
-                                    $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
-                                @endphp
-                                <option @if($data->plan_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->plan_name }} @if($company)({{ $company->comp_name }}) @endif</option>
-                                @endforeach
-                            </select>
+                    </div>
+                    @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $data->benifitcategory)->where('plan_id' , $data->plan_id)->where('pre_existing' , $data->pre_existing)->orderby('id' , 'desc')->get() as $r)
+                    <div class="card card-custom mt-5">
+                        <div class="card-body cardbody">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h3>{{ $r->benefits_head }}</h3>
+                                    <p>{!! $r->benefits_desc !!}</p>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <div class="btn-group">
+                                        <a onclick="editbenifit({{$r->id}})" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="javascript:void(0)" class="btn btn-sm btn-primary">
+                                           <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
+                                        </a>
+                                        <button class="btn btn-sm btn-danger">
+                                           <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>  
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <label>Select Pre Exisitng Condition</label>
-                            <select required name="pre_existing" id="pre_existing" class="form-control">
-                                <option value="">Select Pre Exisitng Condition</option>
-                                <option @if($data->pre_existing == 'yes') selected @endif value="yes">Yes</option>
-                                <option @if($data->pre_existing == 'no') selected @endif value="no">No</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <label>Select Benifit Category</label>
-                            <select required class="form-control" name="benifitcategory">
-                            <option value="">Select Benifit Category</option>
-                            @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
-                            <option @if($data->benifitcategory == $c->id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
-                            @endforeach
-                           </select>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <label>Enter Heading of Benefit</label>
-                            <input required value="{{ $data->benefits_head }}" name="benefits_head" class="form-control" placeholder="Enter Heading of Benefit" type="text">
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <label>Enter Benefit Description</label>
-                            <textarea  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="benefits_desc">{{ $data->benefits_desc }}</textarea>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary" type="submit">Save Benifit</button>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-            </form>
             <!--end::Card-->
         </div>
         <!--end::Container-->
     </div>
     <!--end::Entry-->
 </div>
+<script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript">
+    function editbenifit(id) {
+        $.ajax({
+            type: "POST",
+            url: "{{ url('admin/plans/editbenifit') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id:id
+            },
+            success: function(res) {
+                $('.secondportion').html(res);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            },
+            error: function(error) {
+                
+            }
+        });
+    }
+    function selectheadingofbenifit(id) {
+        if(id == 'other')
+        {
+            $('#headinginputoption').attr('name', 'benefits_head');
+            $('#headingslectoption').attr('name', '');
+            $('#headinginputoption').attr('required', true);
+            $('#headingslectoption').attr('required', false);
+            $('#headingslectoption').hide();
+            $('#headinginputoption').show();
+            $('#changetoexistingheading').show();
+        }else{
+            $('#headinginputoption').attr('required', false);
+            $('#headingslectoption').attr('required', true);
+            $('#headinginputoption').attr('name', '');
+            $('#headingslectoption').attr('name', 'benefits_head');
+            $('#headinginputoption').hide();
+            $('#headingslectoption').show();
+            $('#changetoexistingheading').hide();
+        }
+    }
+    function changetoexistingheading() {
+        $('#headinginputoption').attr('required', false);
+        $('#headingslectoption').attr('required', true);
+        $('#headinginputoption').attr('name', '');
+        $('#headingslectoption').attr('name', 'benefits_head');
+        $('#headinginputoption').hide();
+        $('#headingslectoption').show();
+        $('#changetoexistingheading').hide();
+    }
     function selectproduct(id) {
         $.ajax({
             type: 'get',
             url: '{{ url("admin/plans/getcompaniesagainstplan") }}/?id='+id,
             success: function(res) {
-                $('#plan_id').html(res);                                
+                $('#plan_id').html(res);   
+                getplanattributes();                             
+            }
+        });
+    }
+    $('.createbenifitform').on('submit',(function(e) {
+        $('#createbenifitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success: function(res){
+                $('#createbenifitbutton').html('Save Benifit');
+                getplanattributes()
+            }
+        });
+    }));
+    function getplanattributes() {
+        var plan_id = $('#plan_id').val();
+        var pre_existing = $('#pre_existing').val();
+        var benifitcategory = $('#benifitcategory').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ url('admin/plans/getplanattributes') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                plan_id:plan_id,
+                pre_existing:pre_existing,
+                benifitcategory:benifitcategory
+            },
+            success: function(res) {
+                $('.secondportion').html(res);
+            },
+            error: function(error) {
+                
             }
         });
     }

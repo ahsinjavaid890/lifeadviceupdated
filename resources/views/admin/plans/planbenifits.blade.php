@@ -43,14 +43,13 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Product Name</th>
                                 <th>Company Name</th>
                                 <th>Plan Name</th>
-                                <th>Pre Exisitng</th>
-                                <th>Action</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,13 +63,19 @@
                                     <td>
                                        @if($r->plan_name) {{ $r->plan_name }} @else <div class="badge badge-danger">No Plan Name Found</div> <br><a target="_blank" href="{{ url('admin/plans/editplan') }}/{{ $r->plan_id }}">Click To Add Plan Name</a> @endif
                                     </td>
-                                    <td>
-                                        {{$r->pre_existing}}
-                                    </td>
-                                   <td>
-                                       <a class="btn btn-primary btn-sm" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}"><i class="fa fa-edit"></i>Edit</a>
-                                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal{{ $r->benifit_id }}" href="javascript:;"><i class="fa fa-trash"></i>Delete</a>
-                                   </td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <a data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-sm btn-primary">
+                                               <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
+                                            </a>
+                                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $r->benifit_id }}">
+                                               <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
+                                            </button>
+                                            <a href="" data-toggle="tooltip" data-placement="top" data-original-title="Clone" class="btn btn-sm btn-primary">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;"> cyclone </span>
+                                            </a>
+                                        </div>
+                                     </td>
                                 </tr>
                                 <div class="modal fade" id="deleteModal{{ $r->benifit_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

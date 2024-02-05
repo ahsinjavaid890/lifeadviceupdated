@@ -488,6 +488,7 @@ class AdminController extends Controller
         )
             ->leftJoin('wp_dh_insurance_plans', 'wp_dh_insurance_plans_benefits.plan_id', '=', 'wp_dh_insurance_plans.id')
             ->leftJoin('wp_dh_products', 'wp_dh_insurance_plans.product', '=', 'wp_dh_products.pro_id')
+            ->groupby('plan_id')
             ->get();
         return view('admin.plans.planbenifits')->with(array('data' => $data));
     }
@@ -501,6 +502,37 @@ class AdminController extends Controller
         $data->pre_existing = $request->pre_existing;
         $data->save();
         return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
+    }
+    public function getplanattributes(Request $request)
+    {
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('benifitcategory' , $request->benifitcategory)->where('pre_existing' , $request->pre_existing)->first();
+        $plan_id = $request->plan_id;
+        $benifitcategory = $request->benifitcategory;
+        $pre_existing = $request->pre_existing;
+        if($data)
+        {
+            $rows = 1;
+        }else{
+            $rows = 2;
+        }
+        $html = view('admin.plans.planbenifitsappend', compact('data','plan_id','benifitcategory','pre_existing','rows'))->render();
+        return $html;
+    }
+    public function editbenifit(Request $request)
+    {
+        $data = wp_dh_insurance_plans_benefits::find($request->id);
+        $plan_id = $data->plan_id;
+        $benifitcategory = $data->benifitcategory;
+        $pre_existing = $data->pre_existing;
+        if($data)
+        {
+            $rows = 1;
+        }else{
+            $rows = 2;
+        }
+        $edit = 'yes';
+        $html = view('admin.plans.planbenifitsappend', compact('data','plan_id','benifitcategory','pre_existing','rows','edit'))->render();
+        return $html;
     }
     public function editplanbenifit($id)
     {
