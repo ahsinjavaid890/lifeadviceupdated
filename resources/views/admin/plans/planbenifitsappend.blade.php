@@ -1,11 +1,9 @@
 @if(isset($edit))
 <div class="card card-custom mt-5">
     <div class="card-body">
-        <form method="POST" class="needs-validation createbenifitform" action="{{ url('admin/plans/createnewplanbenifit') }}">
+        <form method="POST" class="needs-validation createbenifitform" action="{{ url('admin/plans/updatebenifit') }}">
             @csrf
-            <input type="hidden" value="{{ $plan_id }}" name="plan_id">
-            <input type="hidden" value="{{ $pre_existing }}" name="pre_existing">
-            <input type="hidden" value="{{ $benifitcategory }}" name="benifitcategory">
+            <input type="hidden" value="{{ $data->id }}" name="id">
             <div class="col-md-12 mt-2">
                 <label>Update Heading of Benefit <small id="changetoexistingheading" style="color: blue;display: none;cursor: pointer;" onclick="changetoexistingheading()">(Change to Existing Headings)</small> </label>
                 <select required id="headingslectoption" onchange="selectheadingofbenifit(this.value)" class="form-control" name="benefits_head">

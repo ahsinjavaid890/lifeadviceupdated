@@ -503,6 +503,13 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
     }
+    public function updatebenifit(Request $request)
+    {
+        $data = wp_dh_insurance_plans_benefits::find($request->id);
+        $data->benefits_head = $request->benefits_head;
+        $data->benefits_desc = $request->benefits_desc;
+        $data->save();
+    }
     public function getplanattributes(Request $request)
     {
         $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('benifitcategory' , $request->benifitcategory)->where('pre_existing' , $request->pre_existing)->first();

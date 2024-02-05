@@ -243,6 +243,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         Route::POST('/createplanbenifit','AdminController@createplanbenifit');
         Route::POST('/getplanattributes','AdminController@getplanattributes');
         Route::POST('/editbenifit','AdminController@editbenifit');
+        Route::POST('/updatebenifit','AdminController@updatebenifit');
+        
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/lifeplans','AdminController@lifeplans');
         Route::get('/planbenifitscategories','AdminController@planbenifitscategories');
