@@ -130,7 +130,7 @@
                                         <a onclick="editbenifit({{$r->id}})" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="javascript:void(0)" class="btn btn-sm btn-primary">
                                            <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
                                         </a>
-                                        <button class="btn btn-sm btn-danger">
+                                        <button onclick="if(confirm('Are you sure You Want To Delete This Benifit?')) deletebenifit({{ $r->id }});" class="btn btn-sm btn-danger">
                                            <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
                                         </button>
                                     </div>
@@ -149,6 +149,24 @@
 </div>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript">
+    function deletebenifit(id) {
+        $.ajax({
+            type: "POST",
+            url: "{{ url('admin/plans/deletebenifit') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id:id
+            },
+            success: function(res) {
+                getplanattributes()
+            },
+            error: function(error) {
+                
+            }
+        });
+    }
     function editbenifit(id) {
         $.ajax({
             type: "POST",

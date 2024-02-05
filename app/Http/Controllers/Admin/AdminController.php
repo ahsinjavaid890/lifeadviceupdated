@@ -510,6 +510,10 @@ class AdminController extends Controller
         $data->benefits_desc = $request->benefits_desc;
         $data->save();
     }
+    public function deletebenifit(Request $request)
+    {
+        wp_dh_insurance_plans_benefits::where('id' , $request->id)->delete();
+    }
     public function getplanattributes(Request $request)
     {
         $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('benifitcategory' , $request->benifitcategory)->where('pre_existing' , $request->pre_existing)->first();
