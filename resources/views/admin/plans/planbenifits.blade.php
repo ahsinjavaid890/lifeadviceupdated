@@ -71,9 +71,6 @@
                                             <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $r->benifit_id }}">
                                                <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
                                             </button>
-                                            <a href="" data-toggle="tooltip" data-placement="top" data-original-title="Clone" class="btn btn-sm btn-primary">
-                                                <span class="material-symbols-outlined" style="font-size: 18px;"> cyclone </span>
-                                            </a>
                                         </div>
                                      </td>
                                 </tr>

@@ -517,7 +517,9 @@ class AdminController extends Controller
         $data->benefits_desc = $request->benefits_desc;
         $data->pre_existing = $request->pre_existing;
         $data->save();
-        return redirect()->back()->with('message', 'Plan Benifit Added Successfully');
+        $benifitid = wp_dh_insurance_plans_benefits::orderby('id' , 'desc')->limit(1)->get()->first();
+        $url = url('admin/plans/editplanbenifit').'/'.$data->id;
+        return Redirect::to($url);
     }
     public function updatebenifit(Request $request)
     {
