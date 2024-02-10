@@ -256,8 +256,7 @@ if($show == '1' && $total_price > 0){
                   src="{{ url('public/images') }}/<?php echo $comp_logo; ?>" class="img-responsive" />
             </div>
             <div class="col-md-12 col-xs-12 text-center">
-               <button class="btn btn-default dh-toggle" 
-                  onclick="slidetooglesummary(<?php echo $deductible . $plan_id; ?>)" aria-hidden="true"
+               <button class="btn btn-default dh-toggle" onclick="showdetails({{ 1+$deductible.$plan_id }})" aria-hidden="true"
                   style="text-transform: none; font-weight: normal; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); cursor: pointer; height: 30px; margin-top: -20px; background: #1BBC9B; color: #FFF;padding: 0.175rem 0.75rem;">
                Summary & Info
                <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -338,7 +337,7 @@ if($show == '1' && $total_price > 0){
                 </div>
             </div>
             <div class="mt-2 mb-2" style="display:flex;">
-                <button onclick="slidetooglesummary(<?php echo $deductible . $plan_id; ?>)" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-right: 10px;">Summary & Info</button>
+                <button onclick="showdetails({{ 1+$deductible.$plan_id }})" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-right: 10px;">Summary & Info</button>
                 <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" style="width: 48%;padding: 10px;border: 1px solid #b8afaf;border-radius: 5px;font-size: 16px;margin-left: 10px;background-color: #1ebca2;color: white;">Buy Now</button>
             </div>
         </div>
