@@ -474,6 +474,22 @@ class AdminController extends Controller
     {
         return view('admin.plans.addnewplanbenifit');
     }
+    public function clonebenifit(Request $request)
+    {
+        foreach (explode(',', $request->ids) as $r) {
+            $getbenifit = wp_dh_insurance_plans_benefits::find($r);
+            $data = new wp_dh_insurance_plans_benefits();
+            $data->plan_id = $request->plan_id;
+            $data->benifitcategory = $request->benifitcategory;
+            $data->benefits_head = $getbenifit->benefits_head;
+            $data->benefits_desc = $getbenifit->benefits_desc;
+            $data->pre_existing = $request->pre_existing;
+            $data->save();
+        }
+        $benifitid = wp_dh_insurance_plans_benefits::orderby('id' , 'desc')->limit(1)->get()->first();
+        $url = url('admin/plans/editplanbenifit').'/'.$benifitid->id;
+        return Redirect::to($url);
+    }
     public function planbenifits()
     {
         $data = wp_dh_insurance_plans_benefits::select(

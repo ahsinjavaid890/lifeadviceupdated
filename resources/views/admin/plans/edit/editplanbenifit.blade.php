@@ -75,17 +75,85 @@
                         <div class="card card-custom mt-5">
                             <div class="card-body cardbody" id="headingFour">
                                 <h5 class="m-0">
-                                    <a class="custom-accordion-title d-block py-1 collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <a class="custom-accordion-title d-block py-1 collapsed">
                                         <div class="row">
-                                            <div class="col-md-8">
-                                                
+                                            <div class="col-md-6">
+                                                <div class="d-flex">
+                                                    <input class="mr-3" style=" height: 30px; width: 22px; " id="checkedAll" type="checkbox" name="">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 text-right">
-                                                <button class="btn btn-primary btn-sm">Add New Benifit</button>
+                                            <div class="col-md-3 text-right">
+                                                <button data-toggle="modal" id="merge_button" data-target="#myModal" class="btn btn-success form-control btn-sm">Clone Benifit</button>
+                                            </div>
+                                            <div class="col-md-3 text-right">
+                                                <button data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="btn form-control btn-primary btn-sm">Add New Benifit</button>
                                             </div>
                                         </div>
                                     </a>
                                 </h5>
+                            </div>
+                            <div class="modal fade" id="myModal">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Clone Benifit</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+
+                                  <form method="POST" action="{{ url('admin/plans/clonebenifit') }}">
+                                      <!-- Modal body -->
+                                      @csrf
+                                      <input type="hidden" id="checkboxvalues" name="ids">
+                                      <div class="modal-body">
+                                        <p style="color: red;font-weight: 600;" id="GFG_DOWN"></p> 
+                                          <div class="row">
+                                           <div class="col-md-12">
+                                                <label>Select Product</label>
+                                                <select required onchange="selectproductmodal(this.value)" name="product_id" class="form-control">
+                                                    <option value="">Select Product</option>
+                                                    @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
+                                                    <option value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12 mt-2">
+                                                <label>Select Plan</label>
+                                                <select id="plan_id_modal" required name="plan_id" class="form-control">
+                                                    <option value="">Select Plan</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12 mt-2">
+                                                <label>Select Pre Exisitng Condition</label>
+                                                <select  required name="pre_existing" class="form-control">
+                                                    <option value="">Select Pre Exisitng Condition</option>
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12 mt-2">
+                                                <label>Select Benifit Category</label>
+                                                <select required class="form-control" name="benifitcategory">
+                                                <option value="">Select Benifit Category</option>
+                                                @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
+                                                <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                                @endforeach
+                                               </select>
+                                            </div> 
+                                        </div> 
+                                      </div>
+
+                                      <!-- Modal footer -->
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" id="clonebenifitbutton" class="btn btn-primary">Clone Benifit</button>
+                                        
+                                      </div>
+                                  </form>
+
+                                </div>
+                              </div>
                             </div>
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#custom-accordion-one" style="">
                                 <div class="card-body">
@@ -122,7 +190,10 @@
                         <div class="card-body cardbody">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h3>{{ $r->benefits_head }}</h3>
+                                    <div class="d-flex"> 
+                                        <input class="mr-3 clonecheckbox" value="{{ $r->id }}" id="selectall" type="checkbox" name="type">
+                                         <h3>{{ $r->benefits_head }}</h3>
+                                     </div>
                                     <p>{!! $r->benefits_desc !!}</p>
                                 </div>
                                 <div class="col-md-2 text-right">
@@ -225,6 +296,16 @@
             }
         });
     }
+    function selectproductmodal(id) {
+        $.ajax({
+            type: 'get',
+            url: '{{ url("admin/plans/getcompaniesagainstplan") }}/?id='+id,
+            success: function(res) {
+                $('#plan_id_modal').html(res);   
+            }
+        });
+    }
+
     $('.createbenifitform').on('submit',(function(e) {
         $('#createbenifitbutton').html('<i class="fa fa-spin fa-spinner"></i>');
         e.preventDefault();
@@ -265,5 +346,35 @@
             }
         });
     }
+    $('#merge_button').on('click', function(e) { 
+        e.preventDefault();
+        let array = []; 
+        $("input:checkbox[name=type]:checked").each(function() { 
+            array.push($(this).val()); 
+        });            
+        if(array.length){
+            $('#clonebenifitbutton').prop('disabled' , false);
+            $('#GFG_DOWN').text(`Clone Benifit IDs are: ${array}`);
+            $('#GFG_DOWN').css(`color` , 'green');
+            $('#checkboxvalues').val(array);
+        }
+        else{
+            $('#GFG_DOWN').css(`color` , 'red');
+            $('#clonebenifitbutton').prop('disabled' , true);
+            $('#GFG_DOWN').text("Please Select atleast one Benifit For Clone"); 
+        }
+    });
+
+    $("#checkedAll").change(function() {
+        if (this.checked) {
+            $(".clonecheckbox").each(function() {
+                this.checked=true;
+            });
+        } else {
+            $(".clonecheckbox").each(function() {
+                this.checked=false;
+            });
+        }
+    });
 </script>
 @endsection
