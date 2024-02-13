@@ -65,7 +65,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a class="btn btn-warning btn-sm" href="javascript::void(0)"><span class="material-symbols-outlined">cyclone</span></a>
+                                            <a onclick="clonebenifit({{$r->plan_id}})" class="btn btn-warning btn-sm" href="javascript::void(0)"><span class="material-symbols-outlined">cyclone</span></a>
                                             <a data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-sm btn-primary">
                                                <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
                                             </a>
@@ -105,4 +105,67 @@
     </div>
     <!--end::Entry-->
 </div>
+<div class="modal fade" id="clonebenifit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Clone Benifit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form method="POST" action="{{ url('admin/plans/clonebenifitmain') }}">
+              @csrf
+              <input type="hidden" id="benifitid" name="benifitid">
+              <div class="modal-body">
+                  <div class="row">
+                   <div class="col-md-12">
+                        <label>Select Product</label>
+                        <select required onchange="selectproductmodal(this.value)" name="product_id" class="form-control">
+                            <option value="">Select Product</option>
+                            @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
+                            <option value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label>Select Plan</label>
+                        <select id="plan_id_modal" required name="plan_id" class="form-control">
+                            <option value="">Select Plan</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label>Select Pre Exisitng Condition</label>
+                        <select  required name="pre_existing" class="form-control">
+                            <option value="">Select Pre Exisitng Condition</option>
+                            <option value="both">Both Yes and No</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="submit" id="clonebenifitbutton" class="btn btn-primary">Clone Benifit</button>
+              </div>
+          </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function clonebenifit(id) {
+        $('#benifitid').val(id);
+        $('#clonebenifit').modal('show');
+    }
+    function selectproductmodal(id) {
+        $.ajax({
+            type: 'get',
+            url: '{{ url("admin/plans/getcompaniesagainstplan") }}/?id='+id,
+            success: function(res) {
+                $('#plan_id_modal').html(res);   
+            }
+        });
+    }
+</script>
 @endsection

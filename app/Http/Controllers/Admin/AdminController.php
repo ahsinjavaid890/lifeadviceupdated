@@ -46,6 +46,26 @@ class AdminController extends Controller
         DB::table('select_websites')->where('id', 1)->update(array('name' => $id));
         return redirect()->back()->with('message', 'Website Change Successfully');
     }
+    public function clonebenifitmain(Request $request)
+    {
+        if($request->pre_existing == 'both')
+        {
+            $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->get();
+        }else{
+            $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
+        }
+        foreach ($data as $r) {
+            $update = wp_dh_insurance_plans_benefits::find($r->id);
+            $data = new wp_dh_insurance_plans_benefits();
+            $data->plan_id = $request->plan_id;
+            $data->benifitcategory = $update->benifitcategory;
+            $data->benefits_head = $update->benefits_head;
+            $data->benefits_desc = $update->benefits_desc;
+            $data->pre_existing = $update->pre_existing;
+            $data->save();
+        }
+        return redirect()->back()->with('message', 'Clone Added Successfully');
+    }
     public function editproduct($id)
     {
         $data = wp_dh_products::where('pro_id', $id)->first();
