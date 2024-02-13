@@ -65,6 +65,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
+                                            <a class="btn btn-warning btn-sm" href="javascript::void(0)"><span class="material-symbols-outlined">cyclone</span></a>
                                             <a data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-sm btn-primary">
                                                <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
                                             </a>
