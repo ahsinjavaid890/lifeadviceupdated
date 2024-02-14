@@ -374,21 +374,12 @@
           <div class="ah-accordain-wrapper">
               <div id="accordion">
                   @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
+                  @if(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $r->id)->count() > 0)
                   <div class="card" style="margin-bottom: 20px;">
                       <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
-                              <span style="    font-size: 20px;
-    line-height: 28px;
-    margin-bottom: 3px;
-    color: #2b3481!important;
-    width: 100%;
-    text-align: left;
-    outline: 0!important;
-    display: flex;
-    align-items: center;
-    font-weight: 800;" class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
-                                  <img style="    width: 40px;
-    margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
+                              <span style="font-size: 20px; line-height: 28px; margin-bottom: 3px; color: #2b3481!important; width: 100%; text-align: left; outline: 0!important; display: flex; align-items: center; font-weight: 800;" class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
+                                  <img style="width: 40px;margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
                                   {{ $r->name }}
                               </span>
                           </h5>
@@ -397,19 +388,7 @@
                           <div class="card-body" style="padding:0px">
                               @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->where('benifitcategory' , $r->id)->get() as $b)
                               <div class="panel-content__table-row" style="display: flex;">
-                                 <div  class="panel-content-subheading" style="padding: 32px 30px 32px 24px;
-    width: 20%;
-    text-align: center;
-    border: 1px solid #ddd;
-    color: #2b3481;
-    padding-left: 2rem;
-    border-left: 0;
-    border-left-width: 0px;
-    border-left-style: initial;
-    border-left-color: initial;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;">
+                                 <div  class="panel-content-subheading" style="padding: 32px 30px 32px 24px; width: 20%; text-align: center; border: 1px solid #ddd; color: #2b3481; padding-left: 2rem; border-left: 0; border-left-width: 0px; border-left-style: initial; border-left-color: initial; font-weight: 700; font-size: 16px; line-height: 24px;">
                                     <span  class="panel-content--heading--container">
                                        <div class="panel-content--heading">{{ $b->benefits_head }}</div>
                                     </span>
@@ -417,21 +396,10 @@
                                  @foreach(DB::table('compare_plans')->where('comparenumber'  ,$id)->get() as $u)
                                  @php
                                     $h = unserialize($u->savetoplan);
-
-
                                     $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h['plan_id'])->first();
                                     $planname = $plan->plan_name;
                                  @endphp
-                                 <div class="panel-content__table-cell" style="    width: 26%;
-    padding: 10px 10px 10px 20px;
-    border-left: 1px solid #cfd9e8;
-    border-top: 1px solid #cfd9e8;
-    border-bottom: 1px solid #cfd9e8;
-    color: #67778f;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    transition: .15s ease-in-out;">
+                                 <div class="panel-content__table-cell" style="    width: 26%; padding: 10px 10px 10px 20px; border-left: 1px solid #cfd9e8; border-top: 1px solid #cfd9e8; border-bottom: 1px solid #cfd9e8; color: #67778f; font-weight: 600; font-size: 16px; line-height: 24px; transition: .15s ease-in-out;">
                                     <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
                                  </div>
                                  @endforeach
@@ -440,6 +408,7 @@
                           </div>
                       </div>
                   </div>
+                  @endif
                   @endforeach
               </div>
           </div>
