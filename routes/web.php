@@ -271,7 +271,8 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
         
     });
     Route::name('quotation.')->prefix('quotation')->group(function(){
-        Route::get('/allquotations','AdminController@allquotations');    
+        Route::get('/allquotations','AdminController@allquotations');
+        Route::get('/deletequotations/{id}','AdminController@deletequotations');    
     });
     Route::name('contact.')->prefix('contact')->group(function(){
         Route::get('/messages','AdminController@messages');

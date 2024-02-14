@@ -36,6 +36,7 @@
                                    <td>{{ Cmf::date_format($r->created_at) }}</td>
                                    <td>
                                        <a target="_blank" class="btn btn-primary btn-sm" href="{{ url('getquote') }}/{{ $r->quote_id }}"><i class="fa fa-eye"></i> View Quote</a>
+                                       <a class="btn btn-primary btn-sm" href="{{ url('deletequotations') }}/{{ $r->quote_id }}"><i class="fa fa-trash"></i> Delete Quote</a>
                                    </td>
                                 </tr>
 

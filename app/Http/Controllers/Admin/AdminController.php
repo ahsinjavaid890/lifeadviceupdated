@@ -242,6 +242,11 @@ class AdminController extends Controller
         $data = DB::table('temproaryquotes')->orderby('id', 'desc')->paginate(10);
         return view('admin/quotations/index')->with(array('data' => $data));
     }
+    public function deletequotations($id)
+    {
+        DB::table('temproaryquotes')->where('quote_id', $id)->delete();
+        return redirect()->back()->with('message', 'Quote Deleted Successfully');
+    }
     public function messages()
     {
         $data = DB::table('contactus_messages')->orderby('created_at', 'desc')->paginate(10);
