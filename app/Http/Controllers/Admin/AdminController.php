@@ -54,17 +54,33 @@ class AdminController extends Controller
         }else{
             $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
         }
-        foreach ($data as $r) {
-            $update = wp_dh_insurance_plans_benefits::find($r->id);
+        return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'plan_id' => $request->plan_id));
+        // foreach ($data as $r) {
+        //     $update = wp_dh_insurance_plans_benefits::find($r->id);
+        //     $data = new wp_dh_insurance_plans_benefits();
+        //     $data->plan_id = $request->plan_id;
+        //     $data->benifitcategory = $update->benifitcategory;
+        //     $data->benefits_head = $update->benefits_head;
+        //     $data->benefits_desc = $update->benefits_desc;
+        //     $data->pre_existing = $update->pre_existing;
+        //     $data->save();
+        // }
+        // return redirect()->back()->with('message', 'Clone Added Successfully');
+    }
+    public function submitmainclonebenifit(Request $request)
+    {
+        $input = $request->all();
+        foreach ($request->benifitcategory as $key => $value) {
             $data = new wp_dh_insurance_plans_benefits();
             $data->plan_id = $request->plan_id;
-            $data->benifitcategory = $update->benifitcategory;
-            $data->benefits_head = $update->benefits_head;
-            $data->benefits_desc = $update->benefits_desc;
-            $data->pre_existing = $update->pre_existing;
+            $data->benifitcategory = $input['benifitcategory'][$key];
+            $data->benefits_head = $input['benefits_head'][$key];
+            $data->benefits_desc = $input['benefits_desc'][$key];
+            $data->pre_existing = $input['pre_existing'][$key];
             $data->save();
         }
-        return redirect()->back()->with('message', 'Clone Added Successfully');
+        $url  =  url('admin/plans/planbenifits');
+        return Redirect::to($url);
     }
     public function editproduct($id)
     {

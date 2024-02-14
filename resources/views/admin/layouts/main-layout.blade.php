@@ -165,6 +165,11 @@ $('.summernote').summernote({
 tabsize: 4,
 height: 250
 });
+
+$('.summernotebenifit').summernote({
+tabsize: 4,
+height: 100
+});
 </script>
 
 <script>
