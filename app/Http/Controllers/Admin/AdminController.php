@@ -54,7 +54,13 @@ class AdminController extends Controller
         }else{
             $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
         }
-        return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'plan_id' => $request->plan_id));
+        if($data->count() > 0)
+        {
+            return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'plan_id' => $request->plan_id));    
+        }else{
+            return redirect()->back()->with('warning', 'No Plan Benifits For Selected Options Change Pre Existing Condition');   
+        }
+        
         // foreach ($data as $r) {
         //     $update = wp_dh_insurance_plans_benefits::find($r->id);
         //     $data = new wp_dh_insurance_plans_benefits();
