@@ -267,11 +267,14 @@
       .price-value{
          margin-right: 50px !important;
       }
-      .panel-content-subheading{
-         width: 100% !important;
-      }
       #accordion{
          margin: 0px !important;
+      }
+      #PrintInvoice2{
+         overflow: auto;
+      }
+      .quote-compare__spec-content{
+         width: 1000px !important;
       }
    }
 </style>
