@@ -267,6 +267,9 @@
       .price-value{
          margin-right: 50px !important;
       }
+      .panel-content-subheading{
+         width: 100% !important;
+      }
    }
 </style>
 <section id="PrintInvoice1" class="card-slide ah-slider-setting">
