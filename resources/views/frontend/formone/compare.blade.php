@@ -262,7 +262,10 @@
          overflow: auto;
       }
       .comparebox{
-         width: 100%;
+         width: 100% !important;
+      }
+      .price-value{
+         margin-right: 50px !important;
       }
    }
 </style>
