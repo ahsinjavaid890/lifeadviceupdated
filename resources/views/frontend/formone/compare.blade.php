@@ -270,6 +270,9 @@
       .panel-content-subheading{
          width: 100% !important;
       }
+      #accordion{
+         margin: 0px !important;
+      }
    }
 </style>
 <section id="PrintInvoice1" class="card-slide ah-slider-setting">
