@@ -54,7 +54,7 @@ class AdminController extends Controller
     }
     public function clonebenifitmain(Request $request)
     {
-        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->get();
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
         if($data->count() > 0)
         {
             return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'planid' => $request->plan_id));    
@@ -72,7 +72,7 @@ class AdminController extends Controller
             $data->benefits_head = $input['benefits_head'][$key];
             $data->order = $input['order'][$key];
             $data->benefits_desc = $input['benefits_desc'][$key];
-            $data->pre_existing = $input['pre_existing'][$key];
+            $data->pre_existing = $request->pre_existing;
             $data->save();
         }
         $url  =  url('admin/plans/planbenifits');
@@ -89,7 +89,7 @@ class AdminController extends Controller
             $data->benefits_head = $input['benefits_head'][$key];
             $data->order = $order;
             $data->benefits_desc = $input['benefits_desc'][$key];
-            $data->pre_existing = $input['pre_existing'][$key];
+            $data->pre_existing = $request->pre_existing;
             $data->save();
             $order++;
         }
@@ -100,7 +100,7 @@ class AdminController extends Controller
     {
         if($request->benifitcategory)
         {
-            wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->delete();
+            wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('pre_existing' , $request->pre_existing)->delete();
             $input = $request->all();
             foreach ($request->benifitcategory as $key => $value) {
                 $data = new wp_dh_insurance_plans_benefits();
@@ -109,7 +109,7 @@ class AdminController extends Controller
                 $data->benefits_head = $input['benefits_head'][$key];
                 $data->order = $input['order'][$key];
                 $data->benefits_desc = $input['benefits_desc'][$key];
-                $data->pre_existing = $input['pre_existing'][$key];
+                $data->pre_existing = $request->pre_existing;
                 $data->save();
             }
         }else{
@@ -600,17 +600,8 @@ class AdminController extends Controller
     }
     public function getplanattributes(Request $request)
     {
-        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('benifitcategory' , $request->benifitcategory)->where('pre_existing' , $request->pre_existing)->first();
-        $plan_id = $request->plan_id;
-        $benifitcategory = $request->benifitcategory;
-        $pre_existing = $request->pre_existing;
-        if($data)
-        {
-            $rows = 1;
-        }else{
-            $rows = 2;
-        }
-        $html = view('admin.plans.planbenifitsappend', compact('data','plan_id','benifitcategory','pre_existing','rows'))->render();
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->where('pre_existing' , $request->pre_existing)->orderby('order' , 'ASC')->get();
+        $html = view('admin.plans.planbenifitsappend', compact('data'))->render();
         return $html;
     }
     public function editbenifit(Request $request)
@@ -631,7 +622,7 @@ class AdminController extends Controller
     }
     public function editplanbenifit($id)
     {
-        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $id)->orderby('order' , 'ASC')->get();
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $id)->where('pre_existing' , 'yes')->orderby('order' , 'ASC')->get();
         return view('admin.plans.edit.editplanbenifit')->with(array('data' => $data,'planid' => $id));
     }
     

@@ -134,6 +134,13 @@
                             <option value="">Select Plan</option>
                         </select>
                     </div>
+                    <div class="col-md-12 mt-2">
+                        <label>Select Pre Exisitng Condition</label>
+                        <select required name="pre_existing" id="pre_existing" class="form-control">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                 </div> 
               </div>
               <div class="modal-footer">

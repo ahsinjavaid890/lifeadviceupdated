@@ -29,7 +29,7 @@
                     <div class="card card-custom mt-5">
                         <div class="card-body">
                             <div class="row">
-                               <div class="col-md-6">
+                               <div class="col-md-4">
                                     <label>Select Product</label>
                                     <select required onchange="selectproduct(this.value)" name="product_id" class="form-control">
                                         <option value="">Select Product</option>
@@ -38,7 +38,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label>Select Plan</label>
                                     <select required name="plan_id" id="plan_id" class="form-control">
                                         <option value="">Select Plan</option>
@@ -50,13 +50,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-4">
+                                    <label>Select Pre Exisitng Condition</label>
+                                    <select required onchange="selectpreexisting(this.value)" name="pre_existing" id="pre_existing" class="form-control">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
                             </div>                   
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 secondportion">
+                <div class="col-md-12">
                     <div class="card card-custom mt-5">
-                        <div class="card-body" id="rightDiv">
+                        <div class="card-body secondportion" id="rightDiv">
                             @foreach($data as $r)
                             <div class="card mb-3 appenddiv{{ $r->id }}" id="BigButton">
                                 <div class="card-header"> 
@@ -66,19 +73,11 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-4 mt-2">
-                                            <label>Select Pre Exisitng Condition</label>
-                                            <select required name="pre_existing[]" id="pre_existing" class="form-control">
-                                                <option value="">Select Pre Exisitng Condition</option>
-                                                <option @if($r->pre_existing == 'yes') selected @endif value="yes">Yes</option>
-                                                <option @if($r->pre_existing == 'no') selected @endif value="no">No</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mt-2">
+                                        <div class="col-md-6 mt-2">
                                             <label>Benifit Order</label>
                                             <input class="form-control" type="text" value="{{ $r->order }}" name="order[]">
                                         </div>
-                                        <div class="col-md-4 mt-2">
+                                        <div class="col-md-6 mt-2">
                                             <label>Select Benifit Category</label>
                                             <select id="benifitcategory" required class="form-control" name="benifitcategory[]">
                                             <option value="">Select Benifit Category</option>
@@ -124,7 +123,7 @@
 <script type="text/javascript">
     var id = 1;
     function addmore() {
-        $('#rightDiv').append('<div class="card mb-3 appenddiv'+id+'" id="BigButton"> <div class="card-header"> <div class="col-md-12 text-right"> <span onclick="removediv('+id+')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></span> </div> </div> <div class="card-body"> <div class="row"> <div class="col-md-4 mt-2"> <label>Select Pre Exisitng Condition</label> <select required name="pre_existing[]" id="pre_existing" class="form-control"> <option value="">Select Pre Exisitng Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-4 mt-2"> <label>Benifit Order</label> <input class="form-control" type="text" required name="order[]"> </div><div class="col-md-4 mt-2"> <label>Select Benifit Category</label> <select id="benifitcategory" required class="form-control" name="benifitcategory[]"> <option value="">Select Benifit Category</option> @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'asc')->get() as $c) <option value="{{ $c->id }}">{{ $c->name }}</option> @endforeach </select> </div> <div class="col-md-12 mt-2"> <label>Enter Heading of Benefit</label> <input type="text" class="form-control"  name="benefits_head[]"> </div> <div class="col-md-12 mt-2"> <label>Enter Benefit Description</label> <textarea required  placeholder="Enter benefit Description" class="summernotebenifit'+id+'" spellcheck="false" id="ibenefitDesc1" name="benefits_desc[]"></textarea> </div> </div> </div> </div>');
+        $('#rightDiv').append('<div class="card mb-3 appenddiv'+id+'" id="BigButton"> <div class="card-header"> <div class="col-md-12 text-right"> <span onclick="removediv('+id+')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></span> </div> </div> <div class="card-body"> <div class="row"><div class="col-md-6 mt-2"> <label>Benifit Order</label> <input class="form-control" type="text" required name="order[]"> </div><div class="col-md-6 mt-2"> <label>Select Benifit Category</label> <select id="benifitcategory" required class="form-control" name="benifitcategory[]"> <option value="">Select Benifit Category</option> @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'asc')->get() as $c) <option value="{{ $c->id }}">{{ $c->name }}</option> @endforeach </select> </div> <div class="col-md-12 mt-2"> <label>Enter Heading of Benefit</label> <input type="text" class="form-control"  name="benefits_head[]"> </div> <div class="col-md-12 mt-2"> <label>Enter Benefit Description</label> <textarea required  placeholder="Enter benefit Description" class="summernotebenifit'+id+'" spellcheck="false" id="ibenefitDesc1" name="benefits_desc[]"></textarea> </div> </div> </div> </div>');
         $('.summernotebenifit'+id+'').summernote({
 tabsize: 4,
 height: 100
@@ -237,10 +236,9 @@ height: 100
             }
         });
     }));
-    function getplanattributes() {
+    function selectpreexisting(id) {
         var plan_id = $('#plan_id').val();
-        var pre_existing = $('#pre_existing').val();
-        var benifitcategory = $('#benifitcategory').val();
+        var pre_existing = id;
         $.ajax({
             type: "POST",
             url: "{{ url('admin/plans/getplanattributes') }}",
@@ -250,7 +248,6 @@ height: 100
             data: {
                 plan_id:plan_id,
                 pre_existing:pre_existing,
-                benifitcategory:benifitcategory
             },
             success: function(res) {
                 $('.secondportion').html(res);
