@@ -46,32 +46,21 @@ class AdminController extends Controller
         DB::table('select_websites')->where('id', 1)->update(array('name' => $id));
         return redirect()->back()->with('message', 'Website Change Successfully');
     }
+    public function deleteplanbenifitscategories($id)
+    {
+        wp_dh_insurance_plans_benefits::where('benifitcategory' , $id)->delete();
+        plan_benifits_categories::where('id' , $id)->delete();
+        return redirect()->back()->with('message', 'Category Deleted Successfully');
+    }
     public function clonebenifitmain(Request $request)
     {
-        if($request->pre_existing == 'both')
-        {
-            $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->get();
-        }else{
-            $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
-        }
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->get();
         if($data->count() > 0)
         {
-            return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'plan_id' => $request->plan_id));    
+            return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'planid' => $request->plan_id));    
         }else{
             return redirect()->back()->with('warning', 'No Plan Benifits For Selected Options Change Pre Existing Condition');   
         }
-        
-        // foreach ($data as $r) {
-        //     $update = wp_dh_insurance_plans_benefits::find($r->id);
-        //     $data = new wp_dh_insurance_plans_benefits();
-        //     $data->plan_id = $request->plan_id;
-        //     $data->benifitcategory = $update->benifitcategory;
-        //     $data->benefits_head = $update->benefits_head;
-        //     $data->benefits_desc = $update->benefits_desc;
-        //     $data->pre_existing = $update->pre_existing;
-        //     $data->save();
-        // }
-        // return redirect()->back()->with('message', 'Clone Added Successfully');
     }
     public function submitmainclonebenifit(Request $request)
     {
@@ -81,11 +70,53 @@ class AdminController extends Controller
             $data->plan_id = $request->plan_id;
             $data->benifitcategory = $input['benifitcategory'][$key];
             $data->benefits_head = $input['benefits_head'][$key];
+            $data->order = $input['order'][$key];
             $data->benefits_desc = $input['benefits_desc'][$key];
             $data->pre_existing = $input['pre_existing'][$key];
             $data->save();
         }
         $url  =  url('admin/plans/planbenifits');
+        return Redirect::to($url);
+    }
+    public function createnewplanbenifit(Request $request)
+    {
+        $order = 1;
+        $input = $request->all();
+        foreach ($request->benifitcategory as $key => $value) {
+            $data = new wp_dh_insurance_plans_benefits();
+            $data->plan_id = $request->plan_id;
+            $data->benifitcategory = $input['benifitcategory'][$key];
+            $data->benefits_head = $input['benefits_head'][$key];
+            $data->order = $order;
+            $data->benefits_desc = $input['benefits_desc'][$key];
+            $data->pre_existing = $input['pre_existing'][$key];
+            $data->save();
+            $order++;
+        }
+        $url = url('admin/plans/editplanbenifit').'/'.$request->plan_id;
+        return Redirect::to($url);
+    }
+    public function updateplanbenifit(Request $request)
+    {
+        if($request->benifitcategory)
+        {
+            wp_dh_insurance_plans_benefits::where('plan_id' , $request->plan_id)->delete();
+            $input = $request->all();
+            foreach ($request->benifitcategory as $key => $value) {
+                $data = new wp_dh_insurance_plans_benefits();
+                $data->plan_id = $request->plan_id;
+                $data->benifitcategory = $input['benifitcategory'][$key];
+                $data->benefits_head = $input['benefits_head'][$key];
+                $data->order = $input['order'][$key];
+                $data->benefits_desc = $input['benefits_desc'][$key];
+                $data->pre_existing = $input['pre_existing'][$key];
+                $data->save();
+            }
+        }else{
+            return redirect()->back()->with('warning', 'Do Not Remove All Benifit if you want to Remove All then Go To of All Plan Benifits'); 
+        }
+        
+        $url = url('admin/plans/editplanbenifit').'/'.$request->plan_id;
         return Redirect::to($url);
     }
     public function editproduct($id)
@@ -555,19 +586,7 @@ class AdminController extends Controller
             ->get();
         return view('admin.plans.planbenifits')->with(array('data' => $data));
     }
-    public function createnewplanbenifit(Request $request)
-    {
-        $data = new wp_dh_insurance_plans_benefits();
-        $data->plan_id = $request->plan_id;
-        $data->benifitcategory = $request->benifitcategory;
-        $data->benefits_head = $request->benefits_head;
-        $data->benefits_desc = $request->benefits_desc;
-        $data->pre_existing = $request->pre_existing;
-        $data->save();
-        $benifitid = wp_dh_insurance_plans_benefits::orderby('id' , 'desc')->limit(1)->get()->first();
-        $url = url('admin/plans/editplanbenifit').'/'.$data->id;
-        return Redirect::to($url);
-    }
+    
     public function updatebenifit(Request $request)
     {
         $data = wp_dh_insurance_plans_benefits::find($request->id);
@@ -612,20 +631,10 @@ class AdminController extends Controller
     }
     public function editplanbenifit($id)
     {
-        $data = wp_dh_insurance_plans_benefits::where('id' , $id)->first();
-        return view('admin.plans.edit.editplanbenifit')->with(array('data' => $data));
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $id)->orderby('order' , 'ASC')->get();
+        return view('admin.plans.edit.editplanbenifit')->with(array('data' => $data,'planid' => $id));
     }
-    public function updateplanbenifit(Request $request)
-    {
-        $data = wp_dh_insurance_plans_benefits::find($request->id);
-        $data->plan_id = $request->plan_id;
-        $data->benifitcategory = $request->benifitcategory;
-        $data->benefits_head = $request->benefits_head;
-        $data->benefits_desc = $request->benefits_desc;
-        $data->pre_existing = $request->pre_existing;
-        $data->save();
-        return redirect()->back()->with('message', 'Plan Benifit Updated Successfully');
-    }
+    
     public function updatelifeplanbenifit(Request $request)
     {
         wp_dh_life_plans_benefits::where('plan_id', $request->plan_id)->delete();
@@ -651,7 +660,7 @@ class AdminController extends Controller
     }
     public function deleteplanbenifit($id)
     {
-        wp_dh_insurance_plans_benefits::where('id', $id)->delete();
+        wp_dh_insurance_plans_benefits::where('plan_id', $id)->delete();
         return redirect()->back()->with('message', 'Plan Benifit Deleted Successfully');
     }
     public function saveplanfeature(Request $request)
@@ -717,15 +726,20 @@ class AdminController extends Controller
     }
     public function planbenifitscategories()
     {
-        $data = plan_benifits_categories::orderby('id', 'desc')->get();
+        $data = plan_benifits_categories::orderby('order', 'asc')->get();
         return view('admin.plans.planbenifitscategories')->with(array('data' => $data));
     }
     public function addnewbenifitcategory(Request $request)
     {
+        $order = plan_benifits_categories::orderby('id' , 'desc')->limit(1)->first();
         $add = new plan_benifits_categories();
         $add->name = $request->name;
         $add->description = $request->description;
-        $add->icon = Cmf::sendimagetodirectory($request->icon);
+        $add->order = $order->order+1;
+        if($request->icon)
+        {
+            $add->icon = Cmf::sendimagetodirectory($request->icon);    
+        }
         $add->save();
         return redirect()->back()->with('message', 'Category Added Successfully');
     }

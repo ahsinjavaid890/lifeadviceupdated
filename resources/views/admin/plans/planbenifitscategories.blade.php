@@ -7,6 +7,15 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class=" container ">
+            <div class="subheader py-2 py-lg-6  subheader-solid " id="kt_subheader">
+                <div class=" container-fluid  d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <div class="d-flex align-items-baseline flex-wrap mr-5">
+                            <h5 class="text-dark font-weight-bold my-1 mr-5">Plans Benifits Categories</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--begin::Card-->
             @include('alerts.index')
             <div class="card card-custom mt-5">
@@ -34,7 +43,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-head-custom table-checkable" style="width:100%">
+                    <table class="table table-bordered table-head-custom table-checkable" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Category Icon</th>
@@ -47,7 +56,11 @@
                             @foreach($data as $r)
                             <tr>
                                 <td>
+                                    @if($r->icon)
                                     <img style="width:100px;" src="{{ url('public/images') }}/{{ $r->icon }}">
+                                    @else
+                                        No Icon
+                                    @endif
                                 </td>
                                 <td>
                                     {{ $r->name }}
@@ -70,11 +83,11 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p style="color:red;">Are you Sure You want to delete this. If you Delete this Category then All FAQ will be deleted Automaticaly against this Category</p>
+                                            <p style="color:red;">Are you Sure You want to delete this. If you Delete this Category then All Benifits will be deleted Automaticaly against this Category</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                            <a href="{{ url('admin/faq/deletefaqcategory') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                            <a href="{{ url('admin/plans/deleteplanbenifitscategories') }}/{{ $r->id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +181,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="lable-control">Category Icon</label>
-                                <input name="icon" required type="file" id="emailfield" style="height:45px;" class="form-control">
+                                <input name="icon" type="file" id="emailfield" style="height:45px;" class="form-control">
                             </div>
                         </div>
                     </div>

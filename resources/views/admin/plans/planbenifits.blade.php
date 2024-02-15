@@ -66,16 +66,16 @@
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a onclick="clonebenifit({{$r->plan_id}})" class="btn btn-warning btn-sm" href="javascript::void(0)"><span class="material-symbols-outlined">cyclone</span></a>
-                                            <a data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-sm btn-primary">
+                                            <a data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="{{ url('admin/plans/editplanbenifit') }}/{{ $r->plan_id }}" class="btn btn-sm btn-primary">
                                                <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
                                             </a>
-                                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $r->benifit_id }}">
+                                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $r->plan_id }}">
                                                <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
                                             </button>
                                         </div>
                                      </td>
                                 </tr>
-                                <div class="modal fade" id="deleteModal{{ $r->benifit_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal{{ $r->plan_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                                <a  href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->benifit_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
+                                                <a  href="{{ url('admin/plans/deleteplanbenifit') }}/{{ $r->plan_id }}" class="btn btn-danger font-weight-bold">Yes, Delete it</a>
                                             </div>
                                         </div>
                                     </div>
@@ -132,15 +132,6 @@
                         <label>Select Plan</label>
                         <select id="plan_id_modal" required name="plan_id" class="form-control">
                             <option value="">Select Plan</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                        <label>Select Pre Exisitng Condition</label>
-                        <select  required name="pre_existing" class="form-control">
-                            <option value="">Select Pre Exisitng Condition</option>
-                            <option value="both">Both Yes and No</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
                         </select>
                     </div>
                 </div> 

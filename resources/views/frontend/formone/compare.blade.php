@@ -385,20 +385,22 @@
       <div class="grid-container">
           <div class="ah-accordain-wrapper">
               <div id="accordion">
-                  @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $r)
+                  @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'ASC')->get() as $r)
                   @if(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $r->id)->count() > 0)
                   <div class="card" style="margin-bottom: 20px;">
                       <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
                               <span style="font-size: 20px; line-height: 28px; margin-bottom: 3px; color: #2b3481!important; width: 100%; text-align: left; outline: 0!important; display: flex; align-items: center; font-weight: 800;" class="btn headingcard" data-toggle="collapse" data-target="#collapse{{ $r->id }}" aria-expanded="true" aria-controls="collapse{{ $r->id }}">
-                                  <img style="width: 40px;margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="Overview">
+                                 @if($r->icon)
+                                 <img style="width: 40px;margin-right: 15px;" src="{{ url('public/images') }}/{{ $r->icon }}" alt="{{ $r->name }}">
+                                 @endif
                                   {{ $r->name }}
                               </span>
                           </h5>
                       </div>
                       <div id="collapse{{ $r->id }}" class="collapse @if ($loop->first) show @endif" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body" style="padding:0px">
-                              @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->where('benifitcategory' , $r->id)->get() as $b)
+                              @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->orderby('order' , 'ASC')->where('benifitcategory' , $r->id)->get() as $b)
                               <div class="panel-content__table-row" style="display: flex;">
                                  <div  class="panel-content-subheading" style="padding: 32px 30px 32px 24px; width: 20%; text-align: center; border: 1px solid #ddd; color: #2b3481; padding-left: 2rem; border-left: 0; border-left-width: 0px; border-left-style: initial; border-left-color: initial; font-weight: 700; font-size: 16px; line-height: 24px;">
                                     <span  class="panel-content--heading--container">

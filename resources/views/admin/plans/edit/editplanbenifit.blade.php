@@ -22,196 +22,98 @@
             </div>
             <!--begin::Card-->
             @include('alerts.index')
-
+            <form method="POST" class="needs-validation" action="{{ url('admin/plans/updateplanbenifit') }}">
+            @csrf
             <div class="row mb-5">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="card card-custom mt-5">
                         <div class="card-body">
                             <div class="row">
-                               <div class="col-md-12">
+                               <div class="col-md-6">
                                     <label>Select Product</label>
                                     <select required onchange="selectproduct(this.value)" name="product_id" class="form-control">
                                         <option value="">Select Product</option>
                                         @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
-                                        <option @if(DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first()->product == $r->product) selected @endif value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
+                                        <option @if(DB::table('wp_dh_insurance_plans')->where('id' , $planid)->first()->product == $r->product) selected @endif value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-12 mt-2">
+                                <div class="col-md-6">
                                     <label>Select Plan</label>
-                                    <select onchange="getplanattributes()" required name="plan_id" id="plan_id" class="form-control">
+                                    <select required name="plan_id" id="plan_id" class="form-control">
                                         <option value="">Select Plan</option>
                                         @foreach(DB::table('wp_dh_insurance_plans')->get() as $r)
                                         @php
                                             $company = DB::table('wp_dh_companies')->where('comp_id' , $r->insurance_company)->first();
                                         @endphp
-                                        <option @if($data->plan_id == $r->id) selected @endif value="{{ $r->id }}">{{ $r->plan_name }} @if($company)({{ $company->comp_name }}) @endif</option>
+                                        <option @if($planid == $r->id) selected @endif value="{{ $r->id }}">{{ $r->plan_name }} @if($company)({{ $company->comp_name }}) @endif</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-12 mt-2">
-                                    <label>Select Pre Exisitng Condition</label>
-                                    <select onchange="getplanattributes()" required name="pre_existing" id="pre_existing" class="form-control">
-                                        <option value="">Select Pre Exisitng Condition</option>
-                                        <option @if($data->pre_existing == 'yes') selected @endif value="yes">Yes</option>
-                                        <option @if($data->pre_existing == 'no') selected @endif value="no">No</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-12 mt-2">
-                                    <label>Select Benifit Category</label>
-                                    <select onchange="getplanattributes()" id="benifitcategory" required class="form-control" name="benifitcategory">
-                                    <option value="">Select Benifit Category</option>
-                                    @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
-                                    <option @if($data->benifitcategory == $c->id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
-                                    @endforeach
-                                   </select>
-                                </div> 
                             </div>                   
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 secondportion">
-                    <div class="accordion custom-accordion mt-5" id="custom-accordion-one">
-                        <div class="card card-custom mt-5">
-                            <div class="card-body cardbody" id="headingFour">
-                                <h5 class="m-0">
-                                    <a class="custom-accordion-title d-block py-1 collapsed">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="d-flex">
-                                                    <input class="mr-3" style=" height: 30px; width: 22px; " id="checkedAll" type="checkbox" name="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 text-right">
-                                                <button data-toggle="modal" id="merge_button" data-target="#myModal" class="btn btn-success form-control btn-sm">Clone Benifit</button>
-                                            </div>
-                                            <div class="col-md-3 text-right">
-                                                <button data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="btn form-control btn-primary btn-sm">Add New Benifit</button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </h5>
-                            </div>
-                            <div class="modal fade" id="myModal">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                  <!-- Modal Header -->
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Clone Benifit</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  </div>
-
-                                  <form method="POST" action="{{ url('admin/plans/clonebenifit') }}">
-                                      <!-- Modal body -->
-                                      @csrf
-                                      <input type="hidden" id="checkboxvalues" name="ids">
-                                      <div class="modal-body">
-                                        <p style="color: red;font-weight: 600;" id="GFG_DOWN"></p> 
-                                          <div class="row">
-                                           <div class="col-md-12">
-                                                <label>Select Product</label>
-                                                <select required onchange="selectproductmodal(this.value)" name="product_id" class="form-control">
-                                                    <option value="">Select Product</option>
-                                                    @foreach(DB::table('wp_dh_insurance_plans')->wherenotnull('product')->groupby('product')->get() as $r)
-                                                    <option value="{{ $r->product }}">{{ DB::table('wp_dh_products')->where('pro_id' , $r->product)->first()->pro_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12 mt-2">
-                                                <label>Select Plan</label>
-                                                <select id="plan_id_modal" required name="plan_id" class="form-control">
-                                                    <option value="">Select Plan</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12 mt-2">
-                                                <label>Select Pre Exisitng Condition</label>
-                                                <select  required name="pre_existing" class="form-control">
-                                                    <option value="">Select Pre Exisitng Condition</option>
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12 mt-2">
-                                                <label>Select Benifit Category</label>
-                                                <select required class="form-control" name="benifitcategory">
-                                                <option value="">Select Benifit Category</option>
-                                                @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'desc')->get() as $c)
-                                                <option value="{{ $c->id }}">{{ $c->name }}</option>
-                                                @endforeach
-                                               </select>
-                                            </div> 
-                                        </div> 
-                                      </div>
-
-                                      <!-- Modal footer -->
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" id="clonebenifitbutton" class="btn btn-primary">Clone Benifit</button>
-                                        
-                                      </div>
-                                  </form>
-
-                                </div>
-                              </div>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#custom-accordion-one" style="">
-                                <div class="card-body">
-                                    <form method="POST" class="needs-validation createbenifitform" action="{{ url('admin/plans/createnewplanbenifit') }}">
-                                        @csrf
-                                        <input type="hidden" value="{{ $data->plan_id }}" name="plan_id">
-                                        <input type="hidden" value="{{ $data->pre_existing }}" name="pre_existing">
-                                        <input type="hidden" value="{{ $data->benifitcategory }}" name="benifitcategory">
-                                        <div class="col-md-12 mt-2">
-                                            <label>Enter Heading of Benefit <small id="changetoexistingheading" style="color: blue;display: none;cursor: pointer;" onclick="changetoexistingheading()">(Change to Existing Headings)</small> </label>
-                                            <select required id="headingslectoption" onchange="selectheadingofbenifit(this.value)" class="form-control" name="benefits_head">
-                                                <option value="">Select Heading of Benefit</option>
-                                                @foreach(DB::table('wp_dh_insurance_plans_benefits')->groupby('benefits_head')->get() as $r)
-                                                <option value="{{ $r->benefits_head }}">{{ $r->benefits_head }}</option>
-                                                @endforeach
-                                                <option value="other">Other</option>
-                                            </select>
-                                            <input type="text" id="headinginputoption" class="form-control" style="display:none;" name="">
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <label>Enter Benefit Description</label>
-                                            <textarea required  placeholder="Enter benefit Description" class="summernote" spellcheck="false" id="ibenefitDesc1" name="benefits_desc"></textarea>
-                                        </div>
-                                        <div class="col-md-12 mt-3">
-                                            <button id="createbenifitbutton" class="btn btn-primary" type="submit">Save Benifit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @foreach(DB::table('wp_dh_insurance_plans_benefits')->where('benifitcategory' , $data->benifitcategory)->where('plan_id' , $data->plan_id)->where('pre_existing' , $data->pre_existing)->orderby('id' , 'desc')->get() as $r)
+                <div class="col-md-12 secondportion">
                     <div class="card card-custom mt-5">
-                        <div class="card-body cardbody">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <div class="d-flex"> 
-                                        <input class="mr-3 clonecheckbox" value="{{ $r->id }}" id="selectall" type="checkbox" name="type">
-                                         <h3>{{ $r->benefits_head }}</h3>
-                                     </div>
-                                    <p>{!! $r->benefits_desc !!}</p>
-                                </div>
-                                <div class="col-md-2 text-right">
-                                    <div class="btn-group">
-                                        <a onclick="editbenifit({{$r->id}})" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="javascript:void(0)" class="btn btn-sm btn-primary">
-                                           <span class="material-symbols-outlined"  style="font-size: 18px;"> edit </span>
-                                        </a>
-                                        <button onclick="if(confirm('Are you sure You Want To Delete This Benifit?')) deletebenifit({{ $r->id }});" class="btn btn-sm btn-danger">
-                                           <span class="material-symbols-outlined"  style="font-size: 18px;"> delete </span>
-                                        </button>
+                        <div class="card-body" id="rightDiv">
+                            @foreach($data as $r)
+                            <div class="card mb-3 appenddiv{{ $r->id }}" id="BigButton">
+                                <div class="card-header"> 
+                                    <div class="col-md-12 text-right"> 
+                                        <span onclick="removediv({{ $r->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></span> 
                                     </div>
                                 </div>
-                            </div>  
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mt-2">
+                                            <label>Select Pre Exisitng Condition</label>
+                                            <select required name="pre_existing[]" id="pre_existing" class="form-control">
+                                                <option value="">Select Pre Exisitng Condition</option>
+                                                <option @if($r->pre_existing == 'yes') selected @endif value="yes">Yes</option>
+                                                <option @if($r->pre_existing == 'no') selected @endif value="no">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label>Benifit Order</label>
+                                            <input class="form-control" type="text" value="{{ $r->order }}" name="order[]">
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label>Select Benifit Category</label>
+                                            <select id="benifitcategory" required class="form-control" name="benifitcategory[]">
+                                            <option value="">Select Benifit Category</option>
+                                            @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'asc')->get() as $c)
+                                            <option @if($r->benifitcategory == $c->id) selected @endif value="{{ $c->id }}">{{ $c->name }}</option>
+                                            @endforeach
+                                           </select>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <label>Enter Heading of Benefit</label>
+                                            <input value="{{ $r->benefits_head }}" type="text" class="form-control"  name="benefits_head[]">
+                                        </div> 
+                                        <div class="col-md-12 mt-2">
+                                            <label>Enter Benefit Description</label>
+                                            <textarea required  placeholder="Enter benefit Description" class="summernotebenifit" spellcheck="false" id="ibenefitDesc1" name="benefits_desc[]">{{ $r->benefits_desc }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-6 mt-3">
+                                    <button id="createbenifitbutton" class="btn btn-primary" type="submit">Save Benifit</button>
+                                </div>
+                                <div class="col-md-6 mt-3 text-right">
+                                    <span onclick="addmore()" class="btn btn-primary" type="submit">Add More</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
+            </form>
             <!--end::Card-->
         </div>
         <!--end::Container-->
@@ -220,6 +122,18 @@
 </div>
 <script type="text/javascript" src="{{ url('public/front/daterangepicker/jquery.min.js') }}"></script>
 <script type="text/javascript">
+    var id = 1;
+    function addmore() {
+        $('#rightDiv').append('<div class="card mb-3 appenddiv'+id+'" id="BigButton"> <div class="card-header"> <div class="col-md-12 text-right"> <span onclick="removediv('+id+')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></span> </div> </div> <div class="card-body"> <div class="row"> <div class="col-md-4 mt-2"> <label>Select Pre Exisitng Condition</label> <select required name="pre_existing[]" id="pre_existing" class="form-control"> <option value="">Select Pre Exisitng Condition</option> <option value="yes">Yes</option> <option value="no">No</option> </select> </div> <div class="col-md-4 mt-2"> <label>Benifit Order</label> <input class="form-control" type="text" required name="order[]"> </div><div class="col-md-4 mt-2"> <label>Select Benifit Category</label> <select id="benifitcategory" required class="form-control" name="benifitcategory[]"> <option value="">Select Benifit Category</option> @foreach(DB::table('plan_benifits_categories')->orderby('order' , 'asc')->get() as $c) <option value="{{ $c->id }}">{{ $c->name }}</option> @endforeach </select> </div> <div class="col-md-12 mt-2"> <label>Enter Heading of Benefit</label> <input type="text" class="form-control"  name="benefits_head[]"> </div> <div class="col-md-12 mt-2"> <label>Enter Benefit Description</label> <textarea required  placeholder="Enter benefit Description" class="summernotebenifit'+id+'" spellcheck="false" id="ibenefitDesc1" name="benefits_desc[]"></textarea> </div> </div> </div> </div>');
+        $('.summernotebenifit'+id+'').summernote({
+tabsize: 4,
+height: 100
+});
+        id++
+    }
+    function removediv(id) {
+        $('.appenddiv'+id).remove();
+    }
     function deletebenifit(id) {
         $.ajax({
             type: "POST",
