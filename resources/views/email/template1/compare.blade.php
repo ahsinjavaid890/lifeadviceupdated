@@ -45,8 +45,7 @@
                                                             @endphp
                                                             <div style="color:white;padding:30px;background-color: #2b3481;height: 100%;">
                                                                       <h1 style="margin: 0;font-size: 25px;">@if($productname) {{ $productname->pro_name }}  @endif  Comparison Plan</h1>
-                                                                  </div>
-                                                            </tr>
+                                                               </div>
                                                          </tbody>
                                                       </table>
                                                       <table role="module" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed">
