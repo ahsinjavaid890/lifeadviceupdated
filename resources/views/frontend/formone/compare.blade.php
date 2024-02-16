@@ -137,9 +137,9 @@
    }
    .comparebox{
       @if(DB::table('compare_plans')->where('comparenumber'  ,$id)->count() == 3)
-         width: 33%;
+         width: 33.33%;
       @else
-         width: 48%;
+         width: 50%;
       @endif
       margin: 5px;
       border-top: 5px solid #2b3481;
