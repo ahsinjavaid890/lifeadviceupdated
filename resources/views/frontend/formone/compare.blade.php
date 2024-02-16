@@ -289,16 +289,15 @@
             $insurance_company = $plan->insurance_company;
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
          @endphp
-            <div class="comparebox" style="    width: 33%;
-    margin: 5px;
-    border-top: 5px solid #2b3481;
-    border-radius: 10px;">
+            <div class="comparebox" style="@if(DB::table('compare_plans')->where('comparenumber'  ,$id)->count() == 3)
+         width: 26%;
+      @else
+         width: 48%;
+      @endif margin: 5px; border-top: 5px solid #2b3481; border-radius: 10px;">
                <div class="card">
                   <div class="card-body">
                         <div class="plantittle">
-                           <h2 style="    color: #2b3481;
-    font-size: 22px;
-    margin-bottom: 20px;">{{ $plan->plan_name }}</h2>
+                           <h2 style="    color: #2b3481; font-size: 22px; margin-bottom: 20px;">{{ $plan->plan_name }}</h2>
                         </div>
                         <div style="text-align: center" class="compareimagelogo">
                            <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
@@ -311,18 +310,13 @@
                               <h2 style="font-size: 18px;">Deductible : ${{ $data['deductible'] }}</h2>
                            </div>
                         </div>
-                        <div  style="    padding-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;" class="card-plan__pricing-row">
+                        <div  style="    padding-top: 20px; width: 100%; display: flex; justify-content: space-between;" class="card-plan__pricing-row">
                            <div  class="plan-price subheading-2">
-                              <span style="font-size: 32px;
-    line-height: 40px;
-    font-weight: 700;
-    color: #2b3481;" class="price-value">${{ number_format($data['total_price'],2) }}</span>
+                              <span style="font-size: 32px; line-height: 40px; font-weight: 700; color: #2b3481;" class="price-value">${{ number_format($data['total_price'],2) }}</span>
                            </div>
                            <form method="POST" action="{{ url('apply') }}">
                                 @csrf
+                                <input type="hidden" name="temproary_sale" value="{{ rand('10000' , '987654321') }}">
                                 <input type="hidden" value="{{ $data['savers_email'] }}" name="email">
                                 <input type="hidden" value="{{ $data['fname'] }}" name="fname">
                                 <input type="hidden" value="{{ $data['lname'] }}" name="lname">

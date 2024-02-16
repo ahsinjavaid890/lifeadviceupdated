@@ -68,7 +68,7 @@
                 <div class="col-md-12 secondportion">
                     <div class="card card-custom mt-5">
                         <div class="card-body" id="rightDiv">
-                            @foreach($data as $r)
+                            @foreach($data as $key=> $r)
                             <div class="card mb-3 appenddiv{{ $r->id }}" id="BigButton">
                                 <div class="card-header"> 
                                     <div class="col-md-12 text-right"> 
@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mt-2">
                                             <label>Benifit Order</label>
-                                            <input class="form-control" type="text" value="{{ $r->order }}" name="order[]">
+                                            <input class="form-control" value="{{ $key+1 }}" type="text" value="{{ $r->order }}" name="order[]">
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <label>Select Benifit Category</label>
