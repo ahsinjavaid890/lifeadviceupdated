@@ -227,7 +227,7 @@ function object_to_array($object)
                                                                               </tr>
                                                                               <tr>
                                                                                  <td>
-                                                                                    <a href="" style="color:#1b8fe4;font-weight:700;font-size:16px;text-decoration:none;font-family:'Open Sans',sans-serif!important;line-height:24px" target="_blank" data-saferedirecturl="">
+                                                                                    <a href="{{ url('contactus') }}" style="color:#1b8fe4;font-weight:700;font-size:16px;text-decoration:none;font-family:'Open Sans',sans-serif!important;line-height:24px" target="_blank" data-saferedirecturl="">
                                                                                     Contact US<span style="margin-left:10px"><img width="17" style="width:17px" src="https://lifeadvice.ca/public/email/arrow.png" class="CToWUd" data-bit="iit"></span>
                                                                                     </a>
                                                                                  </td>
