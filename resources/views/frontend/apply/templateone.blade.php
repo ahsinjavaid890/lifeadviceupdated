@@ -150,7 +150,6 @@
 						                    <div class=" positionrelative">
 						                    	<label class="selectlabel">Select Gender</label>
 					                            <select required name="gender[]" class="gender form-control">
-					                               	<option value="">Select Gender</option>
 													<option value="Male">Male</option>
 													<option value="Female">Female</option>
 					                            </select>
