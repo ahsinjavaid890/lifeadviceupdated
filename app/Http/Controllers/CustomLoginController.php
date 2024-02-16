@@ -64,7 +64,7 @@ class CustomLoginController extends Controller
         $newsecure->open = 1;
         $newsecure->save();
         $link = url('securelogin').'/'.$hash;
-        Mail::send('email.securelink', array('link'=>$link), function($message) use ($request) {
+        Mail::send('template1.email.securelink', array('link'=>$link), function($message) use ($request) {
             $message->to($request->email)->subject('Secure link sign in');
             $message->from('compare@lifeadvice.ca','LIFEADVICE');
         });
