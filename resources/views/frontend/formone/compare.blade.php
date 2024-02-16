@@ -290,9 +290,9 @@
             $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
          @endphp
             <div class="comparebox" style="@if(DB::table('compare_plans')->where('comparenumber'  ,$id)->count() == 3)
-         width: 26%;
+         width: 33.33%;
       @else
-         width: 48%;
+         width: 50%;
       @endif margin: 5px; border-top: 5px solid #2b3481; border-radius: 10px;">
                <div class="card">
                   <div class="card-body">
