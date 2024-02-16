@@ -10,7 +10,7 @@
                     </div>
                     <div class="blog-content-wrap">
                         <div class="blog-entry-header">
-                            <h2 class="entry-title">{{ $data->title }}</h2>
+                            <h2 class="entry-title" style="color: #2b3481;">{{ $data->title }}</h2>
                             <div class="row align-items-center">
                                 <div class="col-lg-8">
                                     <ul class="entry-meta">
@@ -33,13 +33,13 @@
                                <input name="se" id="se12" type="text" class="search form-control" placeholder="Search..." value="">
                            </form>
                        </div>
-                      <div style="background-color: #2b3481;"  class="single-widget p-3 mt-3 rounded">
-                            <h3 class="text-white">Useful Products<br><hr class="hr-footer"></h3>
+                      <div style="background-color: #fff;"  class="single-widget p-3 mt-3 rounded">
+                            <h3 style="color:#2b3481;">Useful Products<br><hr class="hr-footer"></h3>
 
                             <ul>
                                 @foreach(DB::table('blogcategories')->get() as $r)
                                 <li>
-                                    <a href="{{ url('category') }}/{{ $r->url }}">
+                                    <a style="color: #2b3481" href="{{ url('category') }}/{{ $r->url }}">
                                             {{ $r->name }}
                                         </a>
                                 </li>
