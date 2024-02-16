@@ -407,7 +407,11 @@
                                     $plan = DB::table('wp_dh_insurance_plans')->where('id' , $h['plan_id'])->first();
                                     $planname = $plan->plan_name;
                                  @endphp
-                                 <div class="panel-content__table-cell" style="    width: 26%; padding: 10px 10px 10px 20px; border-left: 1px solid #cfd9e8; border-top: 1px solid #cfd9e8; border-bottom: 1px solid #cfd9e8; color: #67778f; font-weight: 600; font-size: 16px; line-height: 24px; transition: .15s ease-in-out;">
+                                 <div class="panel-content__table-cell" style="@if(DB::table('compare_plans')->where('comparenumber'  ,$id)->count() == 3)
+         width: 26%;
+      @else
+         width: 40%;
+      @endif padding: 10px 10px 10px 20px; border-left: 1px solid #cfd9e8; border-top: 1px solid #cfd9e8; border-bottom: 1px solid #cfd9e8; color: #67778f; font-weight: 600; font-size: 16px; line-height: 24px; transition: .15s ease-in-out;">
                                     <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
                                  </div>
                                  @endforeach
