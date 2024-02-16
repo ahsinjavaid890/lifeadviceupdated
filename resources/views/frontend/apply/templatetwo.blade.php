@@ -201,7 +201,7 @@
 								<div class="col-md-6 nopad">
 				                    <div class="positionrelative">
 				                    	<label class="selectlabel">Select Gender</label>
-			                            <select name="gender[]" class="input">
+			                            <select required name="gender[]" class="input">
 			                               	<option value="">Select Gender</option>
 											<option @if($stepone) @if($stepone['gender'][$i] == 'Male') selected @endif  @endif value="Male">Male</option>
 											<option @if($stepone) @if($stepone['gender'][$i] == 'Female') selected @endif @endif value="Female">Female</option>
