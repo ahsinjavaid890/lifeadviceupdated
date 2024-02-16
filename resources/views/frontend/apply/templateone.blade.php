@@ -149,7 +149,7 @@
 										<div class="col-md-6 nopad" style=" margin-top: 5px; ">
 						                    <div class=" positionrelative">
 						                    	<label class="selectlabel">Select Gender</label>
-					                            <select name="gender[]" class="gender form-control">
+					                            <select required name="gender[]" class="gender form-control">
 					                               	<option value="">Select Gender</option>
 													<option value="Male">Male</option>
 													<option value="Female">Female</option>
