@@ -78,7 +78,7 @@ class CustomLoginController extends Controller
         $securelinkgtempalte = 'email.template' . $temp . '.securelink';
         Mail::send($securelinkgtempalte, array('link'=>$link), function($message) use ($request) {
             $message->to($request->email)->subject('Secure link sign in');
-            $message->from('compare@lifeadvice.ca','VISITOR INSURE');
+            $message->from('compare@lifeadvice.ca','LIFEADVICE');
         });
         return redirect()->back()->with('message', 'We have sent a Secure Link to your email. Click on the link provided to sign in.');
     }
