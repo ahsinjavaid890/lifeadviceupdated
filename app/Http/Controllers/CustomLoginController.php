@@ -74,9 +74,11 @@ class CustomLoginController extends Controller
         $newsecure->open = 1;
         $newsecure->save();
         $link = url('securelogin').'/'.$hash;
-        Mail::send('email.template1.securelink', array('link'=>$link), function($message) use ($request) {
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $securelinkgtempalte = 'email.template' . $temp . '.securelink';
+        Mail::send($securelinkgtempalte, array('link'=>$link), function($message) use ($request) {
             $message->to($request->email)->subject('Secure link sign in');
-            $message->from('compare@lifeadvice.ca','LIFEADVICE');
+            $message->from('compare@lifeadvice.ca','VISITOR INSURE');
         });
         return redirect()->back()->with('message', 'We have sent a Secure Link to your email. Click on the link provided to sign in.');
     }
