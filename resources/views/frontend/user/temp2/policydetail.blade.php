@@ -307,6 +307,15 @@
                      <h3 style="color: #2b3481!important">Claim form</h3>                      
                      <p>Our dedicated claims team is always available to provide guidance and assistance throughout the process, ensuring that your claim is handled swiftly and sympathetically.</p>
                      <p>At Life Advice Insurance Inc, we're more than just an insurance provider; we're here to support you every step of the way.</p>
+                     @php
+                        $getplan = DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first();
+                        $getcompany = DB::table('wp_dh_companies')->where('comp_id' , $getplan->insurance_company)->first();
+                     @endphp
+                     @if($getcompany->claimlink)
+                     <a target="_blank" href="{{ $getcompany->claimlink }}">Claim Link of {{ $getcompany->comp_name }}</a>
+                     @else
+                     <a  download="Claim Form of {{ $getcompany->comp_name }} | Reffrence ID : {{ $data->reffrence_number }}" href="{{ url('public/images') }}/{{ $getcompany->claimform }}"> <i class="fa fa-download"></i> Claim Form of {{ $getcompany->comp_name }}</a>
+                     @endif
                   </div>
                </div>
       </div>

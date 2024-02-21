@@ -130,6 +130,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="lable-control">Claim Link</label>
+                                                            <input name="claimlink" value="{{ $r->claimlink }}" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -190,6 +198,14 @@
                             <div class="form-group">
                                 <label class="lable-control">Claim Form</label>
                                 <input required name="claimform" accept = "application/pdf,.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Claim Link</label>
+                                <input name="claimlink" type="text" class="form-control">
                             </div>
                         </div>
                     </div>
