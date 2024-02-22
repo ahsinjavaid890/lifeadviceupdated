@@ -54,7 +54,7 @@ class AdminController extends Controller
     }
     public function clonebenifitmain(Request $request)
     {
-        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->where('pre_existing' , $request->pre_existing)->get();
+        $data = wp_dh_insurance_plans_benefits::where('plan_id' , $request->benifitid)->orderby('order' , 'ASC')->where('pre_existing' , $request->pre_existing)->get();
         if($data->count() > 0)
         {
             return view('admin.plans.clonebenifitmain')->with(array('data' => $data, 'planid' => $request->plan_id));    
