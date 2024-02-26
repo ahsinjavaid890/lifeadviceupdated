@@ -242,7 +242,7 @@
 @section('script')
     <link href="{{ url('public/front/css/select2.min.css') }}" rel="stylesheet" />
     <script src="{{ url('public/front/js/select2.min.js') }}"></script>
-    <script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="{{ url('public/front/js/jquery.mask.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#dateofbirthfull').mask('00/00/0000');

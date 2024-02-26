@@ -1037,7 +1037,7 @@ function displayLocation(latitude,longitude){
     );
 }
 </script>
-<script type="text/javascript" src="https://d3a39i8rhcsf8w.cloudfront.net/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="{{ url('public/front/js/jquery.mask.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {               
         $('#phonenumbermask').mask('000-000-0000');
