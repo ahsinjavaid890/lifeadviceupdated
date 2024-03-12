@@ -22,15 +22,20 @@
                     <table class="table table-bordered table-head-custom" style="width:100%">
                         <thead>
                             <tr>
+                                <th><input type="checkbox" class="selectall"></th>
                                 <th>Quote ID</th>
                                 <th>Time Ago</th>                            
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        <form method="POST" action="{{ url('admin/quotation/deleteall') }}">
+                            @csrf
+                            <button class="btn btn-danger deletebutton" style="display: none;"type="submit">Delete All</button>
                         <tbody>
                             @foreach($data as $r)
                                 <tr>
+                                    <td><input value="{{$r->quote_id}}" name="delete[]" type="checkbox"></td>
                                     <td>{{ $r->quote_id }}</td>
                                    <td>{{ Cmf::create_time_ago($r->created_at) }}</td>
                                    <td>{{ Cmf::date_format($r->created_at) }}</td>
@@ -42,6 +47,7 @@
 
                             @endforeach
                         </tbody>
+                        </form>
                     </table>
                     <div style="margin-top:10px;" class="row">
                         {!! $data->links('frontend.pagination') !!}
@@ -54,4 +60,17 @@
     </div>
     <!--end::Entry-->
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    $('.selectall').click(function() {
+        if ($(this).is(':checked')) {
+            $('input').attr('checked', true);
+            $('.deletebutton').show();
+        } else {
+            $('input').attr('checked', false);
+            $('.deletebutton').hide();
+        }
+    });
+</script>
 @endsection

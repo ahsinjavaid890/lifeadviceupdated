@@ -284,6 +284,13 @@ class AdminController extends Controller
         DB::table('temproaryquotes')->where('quote_id', $id)->delete();
         return redirect()->back()->with('message', 'Quote Deleted Successfully');
     }
+    public function deleteall(Request $request)
+    {
+        foreach ($request->delete as $r) {
+            DB::table('temproaryquotes')->where('quote_id', $r)->delete();
+        }
+        return redirect()->back()->with('message', 'Quote Deleted Successfully');
+    }
     public function messages()
     {
         $data = DB::table('contactus_messages')->orderby('created_at', 'desc')->paginate(10);
