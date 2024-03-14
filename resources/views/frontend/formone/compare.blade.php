@@ -297,7 +297,9 @@
                <div class="card">
                   <div class="card-body">
                         <div class="plantittle">
-                           <h2 style="    color: #2b3481; font-size: 22px; margin-bottom: 20px;">{{ $plan->plan_name }}</h2>
+                           <h2 style="    color: #2b3481; font-size: 22px; margin-bottom: 20px;">{{ $plan->plan_name }} @if($data['compare_pre_existing'] == 'yes')
+                           <span class="badge badge-danger">This is Pre Existing Plan</span>
+                           @endif</h2>
                         </div>
                         <div style="text-align: center" class="compareimagelogo">
                            <img  style="width:180px !important;height:80px;" src="{{ url('public/images') }}/{{ $company->comp_logo }}">
@@ -412,7 +414,14 @@
       @else
          width: 40%;
       @endif padding: 10px 10px 10px 20px; border-left: 1px solid #cfd9e8; border-top: 1px solid #cfd9e8; border-bottom: 1px solid #cfd9e8; color: #67778f; font-weight: 600; font-size: 16px; line-height: 24px; transition: .15s ease-in-out;">
-                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()){!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first()->benefits_desc !!} @else N/A @endif</div>
+                                    <div id="fw-500" class="text-content">@if(DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->first())
+                                       @if($h['compare_pre_existing'] == 'no')
+                                       {!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->where('pre_existing' , 'yes')->first()->benefits_desc !!}
+                                       @endif
+                                       @if($h['compare_pre_existing'] == 'yes')
+                                       {!! DB::table('wp_dh_insurance_plans_benefits')->where('plan_id' , $h['plan_id'])->where('benefits_head' , $b->benefits_head)->where('pre_existing' , 'no')->first()->benefits_desc !!}
+                                       @endif
+                                       @endif</div>
                                  </div>
                                  @endforeach
                               </div>
