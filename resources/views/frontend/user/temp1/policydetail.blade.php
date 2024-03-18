@@ -186,7 +186,15 @@
                         </p>
                      </div>
                      <div class="row mt-5">
+                        <div class="col-md-12">
+                           <div class="user_data">
+                              <label>Insurance Company</label>
+                              <h5>{{ $data->company_name }}</h5>
+                           </div>
+                        </div>
                         <div class="col-md-6">
+                           
+                           
                            <div class="user_data">
                               <label>Policy Name</label>
                               <h5>{{ DB::table('wp_dh_insurance_plans')->where('id' , $data->plan_id)->first()->plan_name }}</h5>
@@ -223,13 +231,22 @@
                            <div class="col-md-6">
                               <div class="effiate_date">
                                  <label>Effective Date</label>
+                                 @if(DB::table('sale_change_requests')->where('reffrence_number'  ,$data->reffrence_number)->orderby('id' , 'desc')->where('request_status' , 'Approved')->first())
+                                 <h6 style="color:white;">{{ Cmf::date_format(DB::table('sale_change_requests')->where('reffrence_number'  ,$data->reffrence_number)->orderby('id' , 'desc')->where('request_status' , 'Approved')->first()->new_effective_date) }}</h6>
+                                 @else
                                  <h6 style="color:white;">{{ Cmf::date_format($data->start_date) }}</h6>
+                                 @endif
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="expire_date">
                                  <label>Expire On</label>
+                                 
+                                 @if(DB::table('sale_change_requests')->where('reffrence_number'  ,$data->reffrence_number)->orderby('id' , 'desc')->where('request_status' , 'Approved')->first())
+                                 <h6 class="text-danger">{{ Cmf::date_format(DB::table('sale_change_requests')->where('reffrence_number'  ,$data->reffrence_number)->orderby('id' , 'desc')->where('request_status' , 'Approved')->first()->new_return_date) }}</h6>
+                                 @else
                                  <h6 class="text-danger">{{ Cmf::date_format($data->end_date) }}</h6>
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -361,11 +378,16 @@
                </div>
                <script>
                   function getdate(id) {
-                    var someDate = new Date(id);
-                    var numberOfDaysToAdd = {{ $numberofdays }};
-                    someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-                    var date = someDate.getMonth() + '/' + someDate.getDate() + '/' + someDate.getFullYear();
-                    $('#newreturndate').val(date);
+                     var numberOfDaysToAdd = {{ $numberofdays }};
+                      var currentDate = new Date(id);
+                      var newDate = new Date(currentDate);
+                      newDate.setDate(newDate.getDate() + numberOfDaysToAdd);
+                      var formattedNewDate = newDate.toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit'
+                      });
+                      $("#newreturndate").val(formattedNewDate);
                   }
                </script>
                <div class="col-md-6">
