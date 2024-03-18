@@ -193,7 +193,10 @@
                            </div>
                         </div>
                         <div class="col-md-6">
-                           
+                           <div class="user_data">
+                              <label>Policy Number</label>
+                              <h5>@if($data->policy_number) {{ $data->policy_number }} @else Not Asigned @endif</h5>
+                           </div>
                            
                            <div class="user_data">
                               <label>Policy Name</label>
