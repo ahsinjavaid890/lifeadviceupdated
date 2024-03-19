@@ -278,7 +278,7 @@
                      <hr>
                      @endif
                      <h3 style="color: #2b3481!important">Claims Information</h3>
-                     <p>Life Advice Insurance Inc believes that submitting life insurance claims should be a seamless, hassle-free process. We have got you covered. We are devoted to ensuring the peace of mind of our policyholders because we too understand the value of life's security.</p>
+                     <p>Life Advice Insurance Inc believes that submitting {{ $data->product_name }} claims should be a seamless, hassle-free process. We have got you covered. We are devoted to ensuring the peace of mind of our policyholders because we too understand the value of life's security.</p>
                      <h3 style="color: #2b3481!important">How to File Claims</h3>
                      <p>All claims must be sent in writing to Life Advice Insurance Inc, along with necessary supporting documentation and receipts. These supporting documents should include the insured’s ID, copies of all relevant bills, detailed descriptions of services used, and a completed claim form</p>
                      <h3 style="color: #2b3481!important">Claim form</h3>                      
