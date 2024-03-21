@@ -4,19 +4,19 @@
 @endsection
 
 @section('content')
-    <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
-    <script src="js/mobiscroll.jquery.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly">
-    </script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css') }}">
-    <link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css') }}">
-    <script src="{{ url('public/front/js/select2.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-    <script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js') }}"></script>
+<link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
+<script src="js/mobiscroll.jquery.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfzOqR9u2eyXv6OaiuExD3jzoBGGIVKY&libraries=geometry,places&v=weekly">
+</script>
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/select2.min.css') }}">
+<link href="https://demo.mobiscroll.com/css/mobiscroll.jquery.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/front/css/mainform.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('public/front/tabs/applyform.css') }}">
+<script src="{{ url('public/front/js/select2.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="{{ url('public/front/tabs/js/selecttwo.js') }}"></script>
     <style type="text/css">
         .customized-login-card {
             margin: auto;

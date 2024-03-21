@@ -153,6 +153,14 @@
    .purchaseconfermationdownload i{
       margin-right: 10px;
    }
+    @media only screen and (max-width:600px){
+      .claim_inforamtionmobile{
+         display: flex !important;
+      }
+      .claim_inforamtion{
+         display: none;
+      }
+   }
 </style>
 <div class="container mb-5" style="margin-top: 8rem;">
    <div class="row mt-5">
@@ -262,6 +270,11 @@
                               <button class="claim_button" data-toggle="modal" data-target="#changepolicy">Change Request</button>
                               <button class="claim_button" data-toggle="modal" data-target="#cancelpolicy">Refund Request</button>
                               <button style=" margin-right: -12px; " class="claim_button extend" data-toggle="modal" data-target="#extendpolicy"><i class="fa fa-refresh mr-2"></i>Extend</button>
+                           </div>
+                           <div class="claim_inforamtionmobile text-right" style="display:none;">
+                              <button class="claim_button" data-toggle="modal" data-target="#changepolicy">Change</button>
+                              <button class="claim_button" data-toggle="modal" data-target="#cancelpolicy">Refund</button>
+                              <button style=" margin-right: -12px; " class="claim_button extend" data-toggle="modal" data-target="#extendpolicy">Extend</button>
                            </div>
                         </div>
                      </div>
