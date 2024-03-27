@@ -242,6 +242,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
         })
     </script>
     <script>
+        @include('frontend.travelinsurance.includes.sendquoteemailscript')
     function showdetails(id)
     {
         $('.dh-toggle-show-hide-'+id).slideToggle();

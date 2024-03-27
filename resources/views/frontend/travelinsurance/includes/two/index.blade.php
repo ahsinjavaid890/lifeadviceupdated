@@ -272,6 +272,7 @@ jQuery(function($) {
 })
 </script>
 <script>
+@include('frontend.travelinsurance.includes.sendquoteemailscript')
 var buynow_selected = "";
 var info_box = "";
 jQuery(".dh-toggle").click(function() {

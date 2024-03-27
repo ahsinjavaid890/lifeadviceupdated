@@ -390,19 +390,6 @@ if($show == '1' && $total_price > 0){
     @include('frontend.travelinsurance.includes.buynowform')
   </div>
 </li>
-<?php
-    $mailitem[] = array(
-        "deductible"  => $deductible,
-        "sum_insured" => $sum_insured,
-        "planproduct" => $product_name,
-        "price"       => $total_price,
-        "quote"       => $quoteNumber,
-        "logo"        => $comp_logo,
-        "url"         => 'test',
-        "buynow"      => 'test'
-    );
-    $price[] = $total_price;
-?>
 
 
         <?php

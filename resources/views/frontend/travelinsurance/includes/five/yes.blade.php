@@ -323,36 +323,6 @@ if($show == '1' && $total_price > 0){
     </div>
 </div>
 @endif
-            <?php
 
-$mailitem[] = [
-    'deductible' => $deductible,
-    'sum_insured' => $sum_insured,
-    'planproduct' => $product_name,
-    'price' => $total_price,
-    'quote' => $quoteNumber,
-    'logo' => $comp_logo,
-    'url' => 'test',
-    'buynow' => 'test',
-];
-$price[] = $total_price;
-
-?>
-
-            <?php $display = ''; }}}} ?>
-            <?php
-if ($request->sendemail == 'yes') {
-    $counter = 0;
-    if (isset($request->savers_email)) {
-        array_multisort($price, SORT_ASC, $mailitem);
-        $subject = "Your Quote - $product_name";
-        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-        $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
-    }
-}
-?>
+            <?php  }}}} ?>
         </div>

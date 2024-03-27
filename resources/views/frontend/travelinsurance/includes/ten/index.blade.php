@@ -642,6 +642,7 @@ ul.common-btn li {
     </div>
 </div>
 <script type="text/javascript">
+    @include('frontend.travelinsurance.includes.sendquoteemailscript')
     function showdetails(id)
     {
         $('.dh-toggle-show-hide-'+id).slideToggle();

@@ -221,6 +221,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
     <!--    row end-->
 
 <script>
+@include('frontend.travelinsurance.includes.sendquoteemailscript')
 jQuery(function($) {
     var divList = $(".listing-item");
     divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});

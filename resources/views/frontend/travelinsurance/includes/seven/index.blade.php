@@ -230,6 +230,7 @@ $(function () {
 </script>
 
 <script>
+    @include('frontend.travelinsurance.includes.sendquoteemailscript')
     function slidetooglesummary(id) {
         $('.summar_info_' + id).slideToggle();
         $('.buynow_' + id).hide();

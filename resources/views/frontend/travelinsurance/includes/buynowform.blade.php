@@ -1,3 +1,9 @@
+<div style="display:none;" class="deductible_email">{{ $deductible }}</div>
+<div style="display:none;" class="sum_insured_email">{{ $sum_insured }}</div>
+<div style="display:none;" class="planproduct_email">{{ $product_name }}</div>
+<div style="display:none;" class="price_email">{{ $total_price }}</div>
+<div style="display:none;" class="quote_email">{{ $quoteNumber }}</div>
+<div style="display:none;" class="logo_email">{{ url('public/images') }}/{{ $comp_logo }}</div>
 <div class="buynowrow row buynow_{{ $deductible.$plan_id }}">
     <form method="POST" action="{{ url('apply') }}">
         @csrf

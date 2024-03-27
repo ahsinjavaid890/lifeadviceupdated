@@ -473,18 +473,3 @@ $price[] = $total_price;
         $display = '';
         }}}} ?>
 
-
-<?php
-if (isset($_GET['departure_date'])) {
-} else {
-    $counter = 0;
-    // if (isset($request->savers_email)) {
-    //     array_multisort($price, SORT_ASC, $mailitem);
-    //     $subject = "Your Quote - $product_name";
-    //     Mail::send('email.quoteemail', array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-    //                $message->to($request->savers_email)->subject($subject);
-    //                $message->from('quote@lifeadvice.ca','LIFEADVICE');
-    //             });
-    // }
-}
-?>
