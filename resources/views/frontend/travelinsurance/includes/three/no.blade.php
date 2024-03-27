@@ -341,8 +341,6 @@ if($second_show == '1' && $second_total_price > 0){
 <div style="display:none;" class="price_email">{{ $second_total_price }}</div>
 <div style="display:none;" class="quote_email">{{ $quoteNumber }}</div>
 <div style="display:none;" class="logo_email">{{ url('public/images') }}/{{ $second_comp_logo }}</div>
-
-
 <div class="coverage-amt mt-2 pricearray pricearray{{ $second_comp_id }}{{ $second_total_price }} coverage-amt-<?php echo $second_sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $second_sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $second_deductible; ?>" style="display: <?php if($second_deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $second_deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4 padding-botom-zero-on-mobile" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
@@ -399,3 +397,15 @@ if($second_show == '1' && $second_total_price > 0){
 </div>
 </div>
 @endif
+
+
+<?php
+
+$second_daily_rate = 0;
+
+
+?>
+
+        <?php
+        $second_display = '';
+        }}}} ?>
