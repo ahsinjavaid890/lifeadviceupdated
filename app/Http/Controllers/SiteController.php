@@ -39,16 +39,17 @@ class SiteController extends Controller
 {
     public function index()
     {
-        // $twilio = new Client(env('TWILIO_ACCOUNT_SID'), env('TWILIO_AUTH_TOKEN'));
-        // $test = $twilio->messages->create(
-        //     "whatsapp:+923491162005", [
-        //         "from" => "whatsapp:+18555005041",
-        //         "body" => "Here's your invoice!",
-        //         "mediaUrl" => "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-        //     ]
-        // );
-        // print_r($test);exit;
         return view('frontend.homepage.index');
+    }
+    public function sendquoteemail(Request $request)
+    {
+        $subject = "Your Quote ".$request->product_name;
+        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
+        $emailview = 'email.template'.$temp.'.quoteemail';
+        Mail::send($emailview, array('quoteNumber'=>$request->quoteNumber,'deductibleArray0'=>$request->deductibleArray0,'deductibleArray250'=>$request->deductibleArray250,'deductibleArray500'=>$request->deductibleArray500,'deductibleArray1000'=>$request->deductibleArray1000), function($message) use ($request,$subject) {
+           $message->to($request->email)->subject($subject);
+           $message->from('quote@lifeadvice.ca','LIFEADVICE');
+        });
     }
     public function getstates($id)
     {

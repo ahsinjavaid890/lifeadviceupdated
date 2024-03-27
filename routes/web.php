@@ -46,6 +46,7 @@ Route::get('step-three/{id}', [SiteController::class, 'stepthreetoshow']);
 Route::get('backonestep/{id}', [SiteController::class, 'backonestep']);
 Route::POST('completeandpurchase', [SiteController::class, 'completeandpurchase']);
 
+Route::POST('send-quote-email', [SiteController::class, 'sendquoteemail']);
 
 
 // Site Routes

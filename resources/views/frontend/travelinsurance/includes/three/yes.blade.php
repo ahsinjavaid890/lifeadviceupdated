@@ -241,7 +241,17 @@ if($show == '1' && $total_price > 0){
 ?>
 
 @if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
+
+
+
+
 <div class="desktop-compare listing-item" data-listing-price="<?php echo str_replace(',', '', number_format($total_price));?>">
+<div style="display:none;" class="deductible_email">{{ $deductible }}</div>
+<div style="display:none;" class="sum_insured_email">{{ $sum_insured }}</div>
+<div style="display:none;" class="planproduct_email">{{ $product_name }}</div>
+<div style="display:none;" class="price_email">{{ $total_price }}</div>
+<div style="display:none;" class="quote_email">{{ $quoteNumber }}</div>
+<div style="display:none;" class="logo_email">{{ url('public/images') }}/{{ $comp_logo }}</div>
 <div class="coverage-amt mt-2 pricearray pricearray{{ $comp_id }}{{ $total_price }} coverage-amt-<?php echo $sum_insured; ?>" style=" display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
 <div class="row plan-details   deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>; padding: 0;">
 <div class="col-md-4 padding-botom-zero-on-mobile" style="padding-bottom: 10px; text-align:center;padding-left: 0;">
@@ -330,36 +340,6 @@ if($show == '1' && $total_price > 0){
 </div>
 </div>
 @endif
-
-<?php
-    $mailitem[] = [
-        'deductible' => $deductible,
-        'sum_insured' => $sum_insured,
-        'planproduct' => $product_name,
-        'price' => $total_price,
-        'quote' => $quoteNumber,
-        'logo' => $comp_logo,
-        'url' => 'test',
-        'buynow' => 'test',
-    ];
-    $price[] = $total_price;
-    $display = ''; }}}} ?>
-
-<?php
-if ($request->sendemail == 'yes') {
-    $counter = 0;
-    if (isset($request->savers_email)) {
-        array_multisort($price, SORT_ASC, $mailitem);
-        $subject = "Your Quote - $product_name";
-        $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-        $emailview = 'email.template'.$temp.'.quoteemail';
-        Mail::send($emailview, array('quoteNumber'=>$quoteNumber,'request'=>$request,'mailitem'=>$mailitem), function($message) use ($request,$subject) {
-                   $message->to($request->savers_email)->subject($subject);
-                   $message->from('quote@lifeadvice.ca','LIFEADVICE');
-                });
-    }
-}
-?>
     </div>
 </div>
     <!--    row end-->
