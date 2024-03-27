@@ -220,10 +220,12 @@ $(document).ready(function() {
   var deductibleArray500 = [];
   var deductibleArray1000 = [];
 
-  var lowestPrice0 = Number.POSITIVE_INFINITY;
-  var lowestPrice250 = Number.POSITIVE_INFINITY;
-  var lowestPrice500 = Number.POSITIVE_INFINITY;
-  var lowestPrice1000 = Number.POSITIVE_INFINITY;
+  var lowestPrices = {
+    '0': [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    '250': [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    '500': [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    '1000': [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY]
+  };
 
   $('.listing-item').each(function() {
     var deductibleValue = $(this).find('.deductible_email').text().trim();
@@ -231,42 +233,31 @@ $(document).ready(function() {
     var priceValue = parseFloat($(this).find('.price_email').text().trim());
 
     if (sumInsuredValue === '100000' && (deductibleValue === '0' || deductibleValue === '250' || deductibleValue === '500' || deductibleValue === '1000')) {
-      if (priceValue < lowestPrice0 && deductibleValue === '0') {
-        lowestPrice0 = priceValue;
-        deductibleArray0 = [];
-        var boxValues = {};
-        $(this).find('.deductible_email, .sum_insured_email, .planproduct_email, .price_email, .quote_email, .logo_email').each(function() {
-          var className = $(this).attr('class');
-          boxValues[className] = $(this).text();
-        });
-        deductibleArray0.push(boxValues);
-      } else if (priceValue < lowestPrice250 && deductibleValue === '250') {
-        lowestPrice250 = priceValue;
-        deductibleArray250 = [];
-        var boxValues = {};
-        $(this).find('.deductible_email, .sum_insured_email, .planproduct_email, .price_email, .quote_email, .logo_email').each(function() {
-          var className = $(this).attr('class');
-          boxValues[className] = $(this).text();
-        });
-        deductibleArray250.push(boxValues);
-      } else if (priceValue < lowestPrice500 && deductibleValue === '500') {
-        lowestPrice500 = priceValue;
-        deductibleArray500 = [];
-        var boxValues = {};
-        $(this).find('.deductible_email, .sum_insured_email, .planproduct_email, .price_email, .quote_email, .logo_email').each(function() {
-          var className = $(this).attr('class');
-          boxValues[className] = $(this).text();
-        });
-        deductibleArray500.push(boxValues);
-      } else if (priceValue < lowestPrice1000 && deductibleValue === '1000') {
-        lowestPrice1000 = priceValue;
-        deductibleArray1000 = [];
-        var boxValues = {};
-        $(this).find('.deductible_email, .sum_insured_email, .planproduct_email, .price_email, .quote_email, .logo_email').each(function() {
-          var className = $(this).attr('class');
-          boxValues[className] = $(this).text();
-        });
-        deductibleArray1000.push(boxValues);
+      var boxValues = {};
+      $(this).find('.deductible_email, .sum_insured_email, .planproduct_email, .price_email, .quote_email, .logo_email').each(function() {
+        var className = $(this).attr('class');
+        boxValues[className] = $(this).text();
+      });
+
+      if (priceValue < lowestPrices[deductibleValue][0]) {
+        lowestPrices[deductibleValue][0] = priceValue;
+      } else if (priceValue > lowestPrices[deductibleValue][1]) {
+        lowestPrices[deductibleValue][1] = priceValue;
+      }
+
+      var deductibleArray;
+      if (deductibleValue === '0') {
+        deductibleArray = deductibleArray0;
+      } else if (deductibleValue === '250') {
+        deductibleArray = deductibleArray250;
+      } else if (deductibleValue === '500') {
+        deductibleArray = deductibleArray500;
+      } else if (deductibleValue === '1000') {
+        deductibleArray = deductibleArray1000;
+      }
+
+      if (deductibleArray.length < 3) {
+        deductibleArray.push(boxValues);
       }
     }
   });
