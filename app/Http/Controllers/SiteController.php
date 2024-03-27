@@ -43,7 +43,7 @@ class SiteController extends Controller
     }
     public function sendquoteemail(Request $request)
     {
-        $subject = "Your Quote ".$request->product_name;
+        $subject = "Your Quote of ".$request->product_name. ' | Quote Number '.$request->quoteNumber;
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
         $emailview = 'email.template'.$temp.'.quoteemail';
         Mail::send($emailview, array('quoteNumber'=>$request->quoteNumber,'deductibleArray0'=>$request->deductibleArray0,'deductibleArray250'=>$request->deductibleArray250,'deductibleArray500'=>$request->deductibleArray500,'deductibleArray1000'=>$request->deductibleArray1000), function($message) use ($request,$subject) {
