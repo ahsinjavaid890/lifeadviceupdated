@@ -113,6 +113,9 @@
                     } else {
                         $p_smoke_price = 0;
                     }
+                    if($monthly_two == '1'){
+                        $p_flat_price = 0;
+                    }
                     $p_others = ($p_flat_price + $p_salestaxes) + $p_smoke_price;
                     $p_deduct_discount = ($person_price * $deduct_rate) / 100;
                     $p_cdiscount = ($person_price * $cdiscountrate) / 100;

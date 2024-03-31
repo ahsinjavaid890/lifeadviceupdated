@@ -113,6 +113,10 @@
                     } else {
                         $second_p_smoke_price = 0;
                     }
+
+                    if($second_monthly_two == '1'){
+                        $second_p_flat_price = 0;
+                    }
                     $second_p_others = ($second_p_flat_price + $second_p_salestaxes) + $second_p_smoke_price;
                     $second_p_deduct_discount = ($second_person_price * $second_deduct_rate) / 100;
                     $second_p_cdiscount = ($second_person_price * $second_cdiscountrate) / 100;
