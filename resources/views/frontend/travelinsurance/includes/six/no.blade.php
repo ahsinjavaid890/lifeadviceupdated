@@ -313,11 +313,14 @@ $second_adddeductible = $second_deduct_discount;
 
 $second_total_price = ($second_total_price - $second_discount) + ($second_others + $second_adddeductible);
 //Discount on plan calculation
-$second_discountonplan = 0;
-if($second_plan_discount == '1'){
-$second_discountonplan = ($second_plan_discount_rate * $second_total_price) / 100;
+if($second_number_travelers > 1)
+{
+    $second_discountonplan = 0;
+    if($second_plan_discount == '1'){
+        $second_discountonplan = ($second_plan_discount_rate * $second_total_price) / 100;
+    }
+    $second_total_price = $second_total_price - $second_discountonplan;
 }
-$second_total_price = $second_total_price - $second_discountonplan;
 $second_monthly_price = $second_total_price / $second_num_months;
 if($second_monthly_two == '1'){
     $second_total_price = $second_total_price - $second_flat_price;
