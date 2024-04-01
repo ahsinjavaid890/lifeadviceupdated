@@ -55,18 +55,10 @@
                     $second_per++;
                     $second_p_planrates =  DB::table($second_rates_table_name)->where('plan_id' , $second_deduct_plan_id)->where('maxage', '>=', $second_person_age)->where('minage', '<=', $second_person_age)->where('sum_insured' , $second_sumamt)->first();
                     $second_document_pre_existing = '';
-                    if($request->pre_existing[$second_per-1]=='yes')
-                    {
-                        $second_single_person_rate = $p_planrates->rate_with_pre_existing;
-                        $second_econd_existingshow = 'Yes';
+                    $second_single_person_rate = $second_p_planrates->rate_with_pre_existing;
+                        $second_existingshow = 'Yes';
                         array_push($second_a,"yes");
                         $second_planname = $second_pre_existing_name;
-                    }else{
-                        $second_single_person_rate = $second_p_planrates->rate_without_pre_existing;
-                        $second_existingshow = 'No';
-                        $second_planname = $second_without_pre_existing_name;
-                        array_push($second_a,"No");
-                    }
                     if($second_family_plan == 'yes' && $second_elder_age != $second_person_age){
                         $second_person_daily = 0;
                     } else if($second_family_plan == 'yes' && $second_elder_age == $second_person_age){
