@@ -384,8 +384,37 @@ if($second_show == '1' && $second_total_price > 0){
       <a class="submit-btn" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();">
       <i class="fa fa-shopping-cart"></i> Buy Now
       </a>
+      @php
+            $second_createbuynowarray = array(
+                'plan_id'=>$second_plan_id,
+                'pro_id'=>$data->pro_id,
+                'sum_insured'=>$second_sum_insured,
+                'deductible'=>$second_deductible,
+                'savers_email'=>$request->savers_email,
+                'fname'=>$request->fname,
+                'lname'=>$request->lname,
+                'number_travelers'=>$second_number_travelers,
+                'deduct_rate'=>$second_deduct_rate,
+                'date_of_birth'=>$request->date_of_birth,
+                'years'=>$request->years,
+                'preexisting'=>$request->pre_existing,
+                'num_of_days'=>$second_num_of_days,
+                'comp_name'=>$second_comp_name,
+                'comp_id'=>$second_comp_id,
+                'plan_name'=>$second_plan_name,
+                'startdate'=>$second_startdate,
+                'enddate'=>$second_enddate,
+                'total_price'=>$second_total_price,
+                'product_name'=>$second_product_name,
+                'primary_destination'=>$request->primary_destination,
+                'ages_array'=>$second_ages_array[0],
+                'num_of_days'=>$second_num_of_days,
+                'compare_pre_existing'=>'yes'
+            );
+            $second_savetoplan = serialize($second_createbuynowarray)
+        @endphp
       <div class="compare hidden-xs">
-         <label onclick="savecompareplans({{ $second_plan_id }},{{ $data->pro_id }},{{ $second_sum_insured }},{{ $second_deductible }},{{ $second_total_price }})" class="col-md-12 col-xs-5 text-center text-white comparebutton" id="compare">
+         <label onclick="savecompareplans('{{ $second_savetoplan }}')" class="col-md-12 col-xs-5 text-center text-white comparebutton" id="compare">
          <i class="fa fa-database"></i> Compare
          </label>
       </div>
