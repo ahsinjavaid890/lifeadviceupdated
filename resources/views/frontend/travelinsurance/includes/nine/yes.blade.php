@@ -447,6 +447,9 @@ if($show == '1' && $total_price > 0){
                         <label onclick="savecompareplans('{{ $savetoplan }}')"> Compare <input type="checkbox" name=""></label>
                         @endif
                     </div>
+                    <div class="display-show-on-mobile" style=" position: absolute; top: 20px; right: 0;display: none;">
+                        <h2 id="traveler-price">${{ number_format($total_price, 2) }}</h2>
+                    </div>
                 </div>
             </div>
             @include('frontend.travelinsurance.includes.policydetails')
