@@ -156,81 +156,89 @@
 
 //NUM OF MONTHS
 $num_months = $num_of_days / 30;
-$num_months = ceil($num_months ); // converting is 1.2,1.3 etc.. then it will be 2
-if($num_months > 12){ $num_months = 12; }
-
-if($rate_base == '0'){ // if daily rate
-$total_price = $daily_rate * $num_of_days;
-} else if($rate_base == '1'){ //if monthly rate
-$total_price = $daily_rate * $num_months;
-$monthly_price = $total_price / $num_months;
-} else if($rate_base == '2'){ // if yearly rate
-$total_price = $daily_rate;
-}
-else if($rate_base == '3'){ // if multi days rate
-$total_price = $daily_rate;
+$num_months = ceil($num_months);
+if ($num_months > 12) {
+    $num_months = 12;
 }
 
-if($flatrate_type == 'each'){
-$flat_price = $flatrate * $number_travelers;
-}else if($flatrate_type == 'total'){
-$flat_price = $flatrate;
-} else {
-$flat_price = 0;
+if ($rate_base == '0') {
+    // if daily rate
+    $total_price = $daily_rate * $num_of_days;
+} else if ($rate_base == '1') {
+    // if monthly rate
+    $total_price = $daily_rate * $num_months;
+    $monthly_price = $total_price / $num_months;
+} else if ($rate_base == '2') {
+    // if yearly rate
+    $total_price = $daily_rate;
+} else if ($rate_base == '3') {
+    // if multi days rate
+    $total_price = $daily_rate;
 }
-//totaldaysprice
+
+// Total days price
 $totaldaysprice = $total_price;
-//SALES TAX
-if($sales_tax != 0)
-{
-    if($salestax_dest == $post_dest){
-    //$salesequal = 'yes';
-    $salestaxes = ($salestax_rate * $totaldaysprice) / 100;
+
+// Sales Tax
+$post_dest = str_replace(' ', '', strtolower($request->primary_destination));
+if ($sales_tax != 0) {
+    if ($salestax_dest == $post_dest) {
+        $salestaxes = ($salestax_rate * $totaldaysprice) / 100;
     } else {
-    $salestaxes = 0;
-    //$salesequal = 'no';
+        $salestaxes = 0;
     }
-}else{
+} else {
     $salestaxes = 0;
 }
 
-//SMOKE RATE
-if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-if($smoke == '0'){
-$smoke_price = $smoke_rate;
-} else if($smoke == '1'){
-$smoke_price = ($totaldaysprice * $smoke_rate) / 100;
-}
+// Smoke Rate
+if ($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes') {
+    if ($smoke == '0') {
+        $smoke_price = ($smoke_rate == 0) ? 0 : $smoke_rate;
+    } else if ($smoke == '1') {
+        $smoke_price = ($totaldaysprice * $smoke_rate) / 100;
+    }
 } else {
-$smoke_price = 0;
+    $smoke_price = 0;
 }
 
-// OTHERS
-$others = ($flat_price + $salestaxes) + $smoke_price;
+// Others
+$others = $salestaxes + $smoke_price;
 
-//Deductible
+// Deductible
 $deduct_discount = ($total_price * $deduct_rate) / 100;
 $cdiscount = ($total_price * $cdiscountrate) / 100;
 if (strpos($deductsq->deductible2, '-') !== false) {
-//if deductible is in minus
-$discount = $deduct_discount + $cdiscount;
-$adddeductible = 0;
+    // if deductible is negative
+    $discount = $deduct_discount + $cdiscount;
+    $adddeductible = 0;
 } else {
-//if deductible is in plus
-$discount = $cdiscount;
-$adddeductible = $deduct_discount;
+    // if deductible is positive
+    $discount = $cdiscount;
+    $adddeductible = $deduct_discount;
+}
+$total_price = ($total_price - $discount) + ($others + $adddeductible);
+
+if ($flatrate_type == 'each') {
+    $flat_price = $flatrate * $number_travelers;
+} else if ($flatrate_type == 'total') {
+    $flat_price = $flatrate;
+} else {
+    $flat_price = 0;
 }
 
-$total_price = ($total_price - $discount) + ($others + $adddeductible);
-//Discount on plan calculation
-$discountonplan = 0;
-if($plan_discount == '1'){
-$discountonplan = ($plan_discount_rate * $total_price) / 100;
+if ($monthly_two == '1') {
+    $monthly_price = ($total_price + $flat_price) / $num_months;
 }
-$total_price = $total_price - $discountonplan;
-$monthly_price = $total_price / $num_months;
-if($monthly_two == '1'){
-$total_price = $total_price - $flat_price;
+
+
+// Discount on plan calculation
+if ($number_travelers > 1) {
+    $discountonplan = 0;
+    if ($plan_discount == '1') {
+        $discountonplan = ($plan_discount_rate * $total_price) / 100;
+    }
+    $total_price = $total_price - $discountonplan;
 }
 
 if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }

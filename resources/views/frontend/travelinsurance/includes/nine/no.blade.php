@@ -321,6 +321,9 @@ if($second_number_travelers > 1)
     }
     $second_total_price = $second_total_price - $second_discountonplan;
 }
+
+
+
 $second_monthly_price = $second_total_price / $second_num_months;
 if($second_monthly_two == '1'){
     $second_total_price = $second_total_price - $second_flat_price;
