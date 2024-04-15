@@ -238,96 +238,83 @@ if($request->familyplan_temp == 'yes' && $second_family_plan == 'no'){
                 }
             }
 
-
 //NUM OF MONTHS
 $second_num_months = $second_num_of_days / 30;
-$second_num_months = ceil($second_num_months ); // converting is 1.2,1.3 etc.. then it will be 2
-if($second_num_months > 12){ $second_num_months = 12; }
-
-if($second_rate_base == '0'){ // if daily rate
-$second_total_price = $second_daily_rate * $second_num_of_days;
-} else if($second_rate_base == '1'){ //if monthly rate
-$second_total_price = $second_daily_rate * $second_num_months;
-$second_monthly_price = $second_total_price / $second_num_months;
-} else if($second_rate_base == '2'){ // if yearly rate
-$second_total_price = $second_daily_rate;
+$second_num_months = ceil($second_num_months);
+if ($second_num_months > 12) {
+    $second_num_months = 12;
 }
-else if($second_rate_base == '3'){ // if multi days rate
-$second_total_price = $second_daily_rate;
+if ($second_rate_base == '0') {
+    // if daily rate
+    $second_total_price = $second_daily_rate * $second_num_of_days;
+} else if ($second_rate_base == '1') {
+    // if monthly rate
+    $second_total_price = $second_daily_rate * $second_num_months;
+    $second_monthly_price = $second_total_price / $second_num_months;
+} else if ($second_rate_base == '2') {
+    // if yearly rate
+    $second_total_price = $second_daily_rate;
+} else if ($second_rate_base == '3') {
+    // if multi days rate
+    $second_total_price = $second_daily_rate;
 }
-
-if($second_flatrate_type == 'each'){
-$second_flat_price = $second_flatrate * $second_number_travelers;
-}else if($second_flatrate_type == 'total'){
-$second_flat_price = $second_flatrate;
-} else {
-$second_flat_price = 0;
-}
-//totaldaysprice
+// Total days price
 $second_totaldaysprice = $second_total_price;
-//SALES TAX
-// if($second_salestax_dest == $second_post_dest){
-//$second_salesequal = 'yes';
-// $second_salestaxes = ($second_salestax_rate * $second_totaldaysprice) / 100;
-// } else {
-// $second_salestaxes = 0;
-//$second_salesequal = 'no';
-// }
-
-//SMOKE RATE
-if($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes'){
-if($second_smoke == '0'){
-    if($second_smoke_rate == 0)
-    {
-        $second_smoke_price = 0;
-    }else{
-        $second_smoke_price = $second_smoke_rate;
+// Sales Tax
+$second_post_dest = str_replace(' ', '', strtolower($request->primary_destination));
+if ($second_sales_tax != 0) {
+    if ($second_salestax_dest == $second_post_dest) {
+        $second_salestaxes = ($second_salestax_rate * $second_totaldaysprice) / 100;
+    } else {
+        $second_salestaxes = 0;
     }
-
-} else if($second_smoke == '1'){
-$second_smoke_price = ($second_totaldaysprice * $second_smoke_rate) / 100;
-}
 } else {
-$second_smoke_price = 0;
+    $second_salestaxes = 0;
 }
-
-$second_salestaxes = 0;
-// OTHERS
-$second_others = ($second_flat_price + $second_salestaxes) + $second_smoke_price;
-
-
-
-
-//Deductible
+// Smoke Rate
+if ($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes') {
+    if ($second_smoke == '0') {
+        $second_smoke_price = ($second_smoke_rate == 0) ? 0 : $second_smoke_rate;
+    } else if ($second_smoke == '1') {
+        $second_smoke_price = ($second_totaldaysprice * $second_smoke_rate) / 100;
+    }
+} else {
+    $second_smoke_price = 0;
+}
+// Others
+$second_others = $second_salestaxes + $second_smoke_price;
+// Deductible
 $second_deduct_discount = ($second_total_price * $second_deduct_rate) / 100;
 $second_cdiscount = ($second_total_price * $second_cdiscountrate) / 100;
 if (strpos($second_deductsq->deductible2, '-') !== false) {
-//if deductible is in minus
-$second_discount = $second_deduct_discount + $second_cdiscount;
-$second_adddeductible = 0;
+    // if deductible is negative
+    $second_discount = $second_deduct_discount + $second_cdiscount;
+    $second_adddeductible = 0;
 } else {
-//if deductible is in plus
-$second_discount = $second_cdiscount;
-$second_adddeductible = $second_deduct_discount;
+    // if deductible is positive
+    $second_discount = $second_cdiscount;
+    $second_adddeductible = $second_deduct_discount;
 }
-
 $second_total_price = ($second_total_price - $second_discount) + ($second_others + $second_adddeductible);
-//Discount on plan calculation
-if($second_number_travelers > 1)
-{
+// Discount on plan calculation
+if ($second_number_travelers > 1) {
     $second_discountonplan = 0;
-    if($second_plan_discount == '1'){
+    if ($second_plan_discount == '1') {
         $second_discountonplan = ($second_plan_discount_rate * $second_total_price) / 100;
     }
     $second_total_price = $second_total_price - $second_discountonplan;
 }
-
-
-
-$second_monthly_price = $second_total_price / $second_num_months;
-if($second_monthly_two == '1'){
-    $second_total_price = $second_total_price - $second_flat_price;
+if ($second_flatrate_type == 'each') {
+    $second_flat_price = $second_flatrate * $second_number_travelers;
+} else if ($second_flatrate_type == 'total') {
+    $second_flat_price = $second_flatrate;
+} else {
+    $second_flat_price = 0;
 }
+if ($second_monthly_two == '1') {
+    $second_monthly_price = ($second_total_price + $second_flat_price) / $second_num_months;
+}
+
 if (in_array("0", $second_display)){ $second_show = '0'; } else {$second_show = '1'; }
 
 

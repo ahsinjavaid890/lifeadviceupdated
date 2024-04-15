@@ -151,7 +151,6 @@ $num_months = ceil($num_months);
 if ($num_months > 12) {
     $num_months = 12;
 }
-
 if ($rate_base == '0') {
     // if daily rate
     $total_price = $daily_rate * $num_of_days;
@@ -166,10 +165,8 @@ if ($rate_base == '0') {
     // if multi days rate
     $total_price = $daily_rate;
 }
-
 // Total days price
 $totaldaysprice = $total_price;
-
 // Sales Tax
 $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
 if ($sales_tax != 0) {
@@ -181,7 +178,6 @@ if ($sales_tax != 0) {
 } else {
     $salestaxes = 0;
 }
-
 // Smoke Rate
 if ($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes') {
     if ($smoke == '0') {
@@ -192,10 +188,8 @@ if ($request->Smoke12 == 'yes' || $request->traveller_Smoke == 'yes') {
 } else {
     $smoke_price = 0;
 }
-
 // Others
 $others = $salestaxes + $smoke_price;
-
 // Deductible
 $deduct_discount = ($total_price * $deduct_rate) / 100;
 $cdiscount = ($total_price * $cdiscountrate) / 100;
@@ -209,20 +203,6 @@ if (strpos($deductsq->deductible2, '-') !== false) {
     $adddeductible = $deduct_discount;
 }
 $total_price = ($total_price - $discount) + ($others + $adddeductible);
-
-if ($flatrate_type == 'each') {
-    $flat_price = $flatrate * $number_travelers;
-} else if ($flatrate_type == 'total') {
-    $flat_price = $flatrate;
-} else {
-    $flat_price = 0;
-}
-
-if ($monthly_two == '1') {
-    $monthly_price = ($total_price + $flat_price) / $num_months;
-}
-
-
 // Discount on plan calculation
 if ($number_travelers > 1) {
     $discountonplan = 0;
@@ -231,8 +211,16 @@ if ($number_travelers > 1) {
     }
     $total_price = $total_price - $discountonplan;
 }
-
-
+if ($flatrate_type == 'each') {
+    $flat_price = $flatrate * $number_travelers;
+} else if ($flatrate_type == 'total') {
+    $flat_price = $flatrate;
+} else {
+    $flat_price = 0;
+}
+if ($monthly_two == '1') {
+    $monthly_price = ($total_price + $flat_price) / $num_months;
+}
 
 if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
