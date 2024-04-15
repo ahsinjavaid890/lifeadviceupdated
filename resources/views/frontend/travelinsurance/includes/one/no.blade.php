@@ -305,9 +305,25 @@ if ($second_number_travelers > 1) {
     $second_total_price = $second_total_price - $second_discountonplan;
 }
 if ($second_flatrate_type == 'each') {
-    $second_flat_price = $second_flatrate * $second_number_travelers;
+    if($second_plan->flat_rate_type == 'fix')
+    {
+       $second_flat_price = $second_flatrate * $second_number_travelers; 
+    }else{
+        $second_number = $second_total_price;
+        $second_percentageValue = $second_flatrate;
+        $second_flatratepercentage = $second_number * ($second_percentageValue / 100);
+        $second_flat_price = $second_flatratepercentage;
+    }
 } else if ($second_flatrate_type == 'total') {
-    $second_flat_price = $second_flatrate;
+    if($second_plan->flat_rate_type == 'fix')
+    {
+       $second_flat_price = $second_flatrate;
+    }else{
+        $second_number = $second_total_price;
+        $second_percentageValue = $second_flatrate;
+        $second_flatratepercentage = $second_number * ($second_percentageValue / 100);
+        $second_flat_price = $second_flatratepercentage;
+    }
 } else {
     $second_flat_price = 0;
 }

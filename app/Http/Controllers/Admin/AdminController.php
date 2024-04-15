@@ -467,6 +467,7 @@ class AdminController extends Controller
         $updateplan->premedical = $request->imedical;
         $updateplan->family_plan = $request->ifamily;
         $updateplan->flatrate_type = $flatrate_type;
+        $updateplan->flat_rate_type = $request->flat_rate_type;
         $updateplan->flatrate = $iflatrateprice;
         $updateplan->rate_base = $request->irateCalculation;
         $updateplan->monthly_two = $request->monthlytwo;

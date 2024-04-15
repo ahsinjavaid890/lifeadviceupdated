@@ -269,8 +269,17 @@
                             </label>
                             <div class="col-md-12" style="clear:both; padding:0;">
                                 <label><strong>Flat Rate</strong></label>
-                                <input id="iflatrateprice" name="iflatrateprice" placeholder="Flat Rate"
+                                <div class="input-group my-group"> 
+                                    <select name="flat_rate_type" class="form-control">
+                                        <option value="">Select Flat Rate Type</option>
+                                        <option value="percentage" @if($data->flat_rate_type == 'percentage') selected @endif>Percentage on Total Premium</option>
+                                        <option value="fix" @if($data->flat_rate_type == 'fix') selected @endif>Fix on Total Premium</option>
+                                    </select> 
+                                    <input id="iflatrateprice" name="iflatrateprice" placeholder="Flat Rate"
                                     value="<?php echo $data->flatrate; ?>" class="form-control" type="text">
+                                </div>
+                                
+
                             </div>
                         </div>
                         <script>

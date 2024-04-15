@@ -220,9 +220,25 @@ if ($number_travelers > 1) {
     $total_price = $total_price - $discountonplan;
 }
 if ($flatrate_type == 'each') {
-    $flat_price = $flatrate * $number_travelers;
+    if($plan->flat_rate_type == 'fix')
+    {
+       $flat_price = $flatrate * $number_travelers; 
+    }else{
+        $number = $total_price;
+        $percentageValue = $flatrate;
+        $flatratepercentage = $number * ($percentageValue / 100);
+        $flat_price = $flatratepercentage;
+    }
 } else if ($flatrate_type == 'total') {
-    $flat_price = $flatrate;
+    if($plan->flat_rate_type == 'fix')
+    {
+       $flat_price = $flatrate;
+    }else{
+        $number = $total_price;
+        $percentageValue = $flatrate;
+        $flatratepercentage = $number * ($percentageValue / 100);
+        $flat_price = $flatratepercentage;
+    }
 } else {
     $flat_price = 0;
 }
