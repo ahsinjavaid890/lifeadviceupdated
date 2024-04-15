@@ -312,9 +312,7 @@ if ($flatrate_type == 'each') {
     $flat_price = 0;
 }
 
-if ($monthly_two == '1') {
-    $monthly_price = ($total_price + $flat_price) / $num_months;
-}
+
 
 
 // Discount on plan calculation
@@ -325,6 +323,21 @@ if ($number_travelers > 1) {
     }
     $total_price = $total_price - $discountonplan;
 }
+
+if ($monthly_two == '1') {
+    if ($number_travelers > 1) {
+        $discountonplan = 0;
+        if ($plan_discount == '1') {
+            $discountonplan = ($plan_discount_rate * $total_price) / 100;
+        }
+        $monthlytotalprice =  500;
+    }else{
+        $monthlytotalprice = 500;
+    }
+    $monthly_price = ($monthlytotalprice + $flat_price) / $num_months;
+}
+
+
 // if (in_array("0", $display))
 // {
 //     $show = '0';
