@@ -291,33 +291,34 @@ if($show == '1' && $total_price > 0){
             <p style="font-weight: normal;margin:0;">$<?php echo $deductible; ?> Deductible</p>
          </div>
         @php
-            $createbuynowarray = array(
-                'plan_id'=>$plan_id,
-                'pro_id'=>$data->pro_id,
-                'sum_insured'=>$sum_insured,
-                'deductible'=>$deductible,
-                'savers_email'=>$request->savers_email,
-                'fname'=>$request->fname,
-                'lname'=>$request->lname,
-                'number_travelers'=>$number_travelers,
-                'deduct_rate'=>$deduct_rate,
-                'date_of_birth'=>$request->date_of_birth,
-                'years'=>$request->years,
-                'preexisting'=>$request->pre_existing,
-                'num_of_days'=>$num_of_days,
-                'comp_name'=>$comp_name,
-                'comp_id'=>$comp_id,
-                'plan_name'=>$plan_name,
-                'startdate'=>$startdate,
-                'enddate'=>$enddate,
-                'total_price'=>$total_price,
-                'product_name'=>$product_name,
-                'primary_destination'=>$request->primary_destination,
-                'ages_array'=>$ages_array[0],
-                'num_of_days'=>$num_of_days
-            );
-            $savetoplan = serialize($createbuynowarray)
-        @endphp
+                $createbuynowarray = array(
+                    'plan_id'=>$plan_id,
+                    'pro_id'=>$data->pro_id,
+                    'sum_insured'=>$sum_insured,
+                    'deductible'=>$deductible,
+                    'savers_email'=>$request->savers_email,
+                    'fname'=>$request->fname,
+                    'lname'=>$request->lname,
+                    'number_travelers'=>$number_travelers,
+                    'deduct_rate'=>$deduct_rate,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'years'=>$request->years,
+                    'preexisting'=>$request->pre_existing,
+                    'num_of_days'=>$num_of_days,
+                    'comp_name'=>$comp_name,
+                    'comp_id'=>$comp_id,
+                    'plan_name'=>$plan_name,
+                    'startdate'=>$startdate,
+                    'enddate'=>$enddate,
+                    'total_price'=>$total_price,
+                    'product_name'=>$product_name,
+                    'primary_destination'=>$request->primary_destination,
+                    'ages_array'=>$ages_array[0],
+                    'num_of_days'=>$num_of_days,
+                    'compare_pre_existing'=>'no'
+                );
+                $savetoplan = serialize($createbuynowarray)
+            @endphp
         <div class="col-md-2 col-xs-12 mobile-deisply-none" style="border:0px solid #000;text-align:center;">
             <button onclick="$('.buynow_<?php echo $deductible . $plan_id; ?>').slideToggle();" class="buynow-btn" data-value="217" name="buynow" style="    color: #FFF;margin-top: 10px;width: 100%;  float: right; min-width: 150px; background: #F46D00;border-radius: 5px;font-weight: bold;">Buy Now
             </button>
