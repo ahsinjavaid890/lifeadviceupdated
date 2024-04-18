@@ -21,7 +21,8 @@
          <form id="quoteform" action="{{ url('ajaxquotes') }}" method="POST">
                 @csrf
             <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
-            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">               
+            <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+<input type="hidden" name="pagetype" value="{{ $pagetype }}">               
                
             <div class="row" style="margin-bottom:0px;">
                @for($orderi=1;$orderi<=17;$orderi++)

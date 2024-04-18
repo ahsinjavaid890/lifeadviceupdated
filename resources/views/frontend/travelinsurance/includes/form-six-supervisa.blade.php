@@ -12,6 +12,7 @@
             <div class="col-md-12 paddingleftrightzeroonmobile">
                   <input type="hidden"  name="sendemail" @if(isset($_GET['primary_destination'])) value="no" @else value="yes" @endif>
                   <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+<input type="hidden" name="pagetype" value="{{ $pagetype }}">
                   <div class="row">
                      @if(isset($fields['traveller']) && $fields['traveller'] == "on" )
                      @php

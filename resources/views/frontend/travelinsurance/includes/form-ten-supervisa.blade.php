@@ -4,6 +4,7 @@
       <form id="quoteform" class="quteform super-visa-quote" action="{{ url('ajaxquotes') }}" method="POST">
         @csrf
         <input type="hidden" name="product_id" value="{{ $data->pro_id }}">
+<input type="hidden" name="pagetype" value="{{ $pagetype }}">
          <h1 class="h2title">{{ $data->pro_name }} Quote Form</h1>
          <h6>What type of policy do you want?</h6>
          <div class="row wow slideInDown animated animated" data-wow-delay="100ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: slideInDown;">
