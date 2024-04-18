@@ -346,7 +346,7 @@ if($show == '1' && $total_price > 0){
                 @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
 
                 @else
-                <label onclick="savecompareplans('{{ $savetoplan }}')" class="submit-btn mt-1" style="background-color: #12b48b;" id="compare"><i class="fa fa-database text-white"></i> Compare</label>
+                <label onclick="savecompareplans('{{ $savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #12b48b;" id="compare"><i class="fa fa-database text-white"></i> Compare</label>
                 @endif
             </div>
 

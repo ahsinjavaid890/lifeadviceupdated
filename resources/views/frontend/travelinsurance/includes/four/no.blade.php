@@ -425,7 +425,7 @@ if($second_show == '1' && $second_total_price > 0){
                 );
                 $second_savetoplan = serialize($second_createbuynowarray)
             @endphp
-                <label onclick="savecompareplans('{{ $second_savetoplan }}')" class="submit-btn mt-1" style="background-color: #12b48b;" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <label onclick="savecompareplans('{{ $second_savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #12b48b;" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
 
             
