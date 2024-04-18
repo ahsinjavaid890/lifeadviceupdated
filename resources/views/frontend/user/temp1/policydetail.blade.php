@@ -185,6 +185,13 @@
       <div class="col-md-9">
          <div class="card shadow profile_cards">
             <div class="card-body">
+               @if($data->status == 'Pending')
+               <div class="row">
+                  <div class="col-md-12">
+                     <p class="text-danger">This Policy is Not Approved Yet By lifeadvice</p>   
+                  </div>
+               </div>
+               @endif
                <div class="row">
                   <div class="col-md-6">
                      <div class="policy d-flex">
@@ -264,6 +271,7 @@
                      </div>
                      </div>
                      </div><hr>
+                     @if($data->policy_number)
                      <div class="row">
                         <div class="col-md-12">
                            <div class="claim_inforamtion text-right">
@@ -279,6 +287,7 @@
                         </div>
                      </div>
                      <hr>
+                     @endif
                      @if($data->policydocument)
                      <div class="d-flex justify-content">
                         <div class="purchasedocument">

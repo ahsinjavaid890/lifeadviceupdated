@@ -39,6 +39,7 @@
                             <tr>
                                 <th>Company Logo</th>
                                 <th>Company Name</th>
+                                <th>Company Email</th>
                                 <th>Claim Form</th>                                
                                 <th>Action</th>
                             </tr>
@@ -52,6 +53,7 @@
                                 <td>
                                     {{ $r->comp_name }}
                                 </td>
+                                <td>{{ $r->comp_email }}</td>
                                 <td class="text-center">
                                     @if($r->claimform)
                                     <a download="" href="{{ url('public/images') }}/{{ $r->claimform }}" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o text-danger"></i> Claim Form</a>
@@ -125,6 +127,14 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
+                                                            <label class="lable-control">Company Email</label>
+                                                            <input value="{{ $r->comp_email }}" name="comp_email" required type="text" id="comp_email" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
                                                             <label class="lable-control">Claim Form</label>
                                                             <input name="claimform" type="file" class="form-control">
                                                         </div>
@@ -182,6 +192,14 @@
                             <div class="form-group">
                                 <label class="lable-control">Company Name</label>
                                 <input name="name" required type="text" id="emailfield" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="lable-control">Company Email</label>
+                                <input name="comp_email" required type="text" id="comp_email" class="form-control">
                             </div>
                         </div>
                     </div>

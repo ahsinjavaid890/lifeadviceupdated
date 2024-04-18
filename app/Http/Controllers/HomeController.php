@@ -172,17 +172,16 @@ class HomeController extends Controller
         $change_request->request_status = "Pending";
         if($request->refund_form)
         {
-            $change_request->refund_form = Cmf::sendimagetodirectory($request->refund_form);
+            $refund_form = Cmf::sendimagetodirectory($request->refund_form);
+            $change_request->refund_form = $refund_form;
         }
         if($request->proof_of_return)
         {
-            $change_request->proof_of_return = Cmf::sendimagetodirectory($request->proof_of_return);
+            $proof_of_return = Cmf::sendimagetodirectory($request->proof_of_return);
+            $change_request->proof_of_return = $proof_of_return;
         }
         $change_request->save();
-
-
         $temp = DB::table('site_settings')->where('smallname', 'lifeadvice')->first()->email_template;
-
         if ( $temp == "1") {
         
             $subject = 'Policy Refund Request | '.$request->reffrence_number;
@@ -226,8 +225,24 @@ class HomeController extends Controller
         }
 
 
-
-      
+        $sale = DB::table('sales')->where('reffrence_number', $request->reffrence_number)->first();
+        $company  = DB::table('wp_dh_companies')->where('comp_id' , $sale->comp_id)->first();
+        if($company->comp_email)
+        {
+            $subject = 'Refund Request of | ' . $sale->policy_number;
+            $files = [
+                public_path('images/' . $refund_form . ''),
+                public_path('images/' . $proof_of_return . ''),
+            ];
+            $policystatus = 'email.template1.refundrequest';
+            Mail::send($policystatus, ['data' => $change_request,'requesttype' => 'tocompany'], function($message) use($request , $subject, $files , $company){
+                      $message->to($company->comp_email);
+                      $message->subject($subject);
+                foreach ($files as $file) {
+                    $message->attach($file);
+                }
+            });
+        }
         return redirect()->back()->with('message', 'Your Request Submited Successfully.');
     }
     public function extendpolicy(Request $request)

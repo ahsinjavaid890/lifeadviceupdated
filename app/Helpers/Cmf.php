@@ -28,8 +28,6 @@ class Cmf
                 $decimalNumbers = $decimalNumbers.'0';
             }
         }
-
-
         $number = (int) $number;
         $number = strrev($number);  // reverse
 

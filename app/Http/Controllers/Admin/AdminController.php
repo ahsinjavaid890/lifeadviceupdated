@@ -1179,6 +1179,7 @@ class AdminController extends Controller
     {
         $company = new wp_dh_companies();
         $company->comp_name = $request->name;
+        $company->comp_email = $request->comp_email;
         $company->comp_logo = Cmf::sendimagetodirectory($request->logo);
         $company->claimform = Cmf::sendimagetodirectory($request->claimform);
         $company->save();
@@ -1191,12 +1192,12 @@ class AdminController extends Controller
             $comp_logo = Cmf::sendimagetodirectory($request->logo);
             if ($request->claimform) {
                 $claimform = Cmf::sendimagetodirectory($request->claimform);
-                $update = array('claimlink' => $request->claimlink,'claimform' => $claimform, 'comp_name' => $request->name, 'comp_logo' => $comp_logo);
+                $update = array('comp_email' => $request->comp_email,'claimlink' => $request->claimlink,'claimform' => $claimform, 'comp_name' => $request->name, 'comp_logo' => $comp_logo);
             } else {
-                $update = array('claimlink' => $request->claimlink,'comp_name' => $request->name, 'comp_logo' => $comp_logo);
+                $update = array('comp_email' => $request->comp_email,'claimlink' => $request->claimlink,'comp_name' => $request->name, 'comp_logo' => $comp_logo);
             }
         }else{
-            $update = array('claimlink' => $request->claimlink,'comp_name' => $request->name);
+            $update = array('comp_email' => $request->comp_email,'claimlink' => $request->claimlink,'comp_name' => $request->name);
         }
         DB::table('wp_dh_companies')->where('comp_id', $request->id)->update($update);
         return redirect()->back()->with('message', 'Company Updated Successfully');

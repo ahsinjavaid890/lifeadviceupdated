@@ -146,7 +146,7 @@
                                 @else
 
                                  value="{{ old('date_of_birth') }}" @endif
-                                                id="dateofbirthfull" class="input" type="text" placeholder="DD/MM/YYYY"
+                                                id="dateofbirthfull" class="input" type="text" placeholder="MM/DD/YYYY"
                                                 name="date_of_birth">
                                             @error('date_of_birth')
                                                 <span class="invalid-feedback" role="alert">
