@@ -413,33 +413,34 @@ if($second_show == '1' && $second_total_price > 0){
                         <span onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').fadeIn();" class="btn btn-block text-white">Buy</span>
                     </div>
                     @php
-                        $second_createbuynowarray = array(
-                            'plan_id'=>$second_plan_id,
-                            'pro_id'=>$data->pro_id,
-                            'sum_insured'=>$second_sum_insured,
-                            'deductible'=>$second_deductible,
-                            'savers_email'=>$request->savers_email,
-                            'fname'=>$request->fname,
-                            'lname'=>$request->lname,
-                            'number_travelers'=>$second_number_travelers,
-                            'deduct_rate'=>$second_deduct_rate,
-                            'date_of_birth'=>$request->date_of_birth,
-                            'years'=>$request->years,
-                            'preexisting'=>$request->pre_existing,
-                            'num_of_days'=>$second_num_of_days,
-                            'comp_name'=>$second_comp_name,
-                            'comp_id'=>$second_comp_id,
-                            'plan_name'=>$second_plan_name,
-                            'startdate'=>$second_startdate,
-                            'enddate'=>$second_enddate,
-                            'total_price'=>$second_total_price,
-                            'product_name'=>$second_product_name,
-                            'primary_destination'=>$request->primary_destination,
-                            'ages_array'=>$second_ages_array[0],
-                            'num_of_days'=>$second_num_of_days
-                        );
-                        $second_savetoplan = serialize($second_createbuynowarray)
-                    @endphp
+                $second_createbuynowarray = array(
+                    'plan_id'=>$second_plan_id,
+                    'pro_id'=>$data->pro_id,
+                    'sum_insured'=>$second_sum_insured,
+                    'deductible'=>$second_deductible,
+                    'savers_email'=>$request->savers_email,
+                    'fname'=>$request->fname,
+                    'lname'=>$request->lname,
+                    'number_travelers'=>$second_number_travelers,
+                    'deduct_rate'=>$second_deduct_rate,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'years'=>$request->years,
+                    'preexisting'=>$request->pre_existing,
+                    'num_of_days'=>$second_num_of_days,
+                    'comp_name'=>$second_comp_name,
+                    'comp_id'=>$second_comp_id,
+                    'plan_name'=>$second_plan_name,
+                    'startdate'=>$second_startdate,
+                    'enddate'=>$second_enddate,
+                    'total_price'=>$second_total_price,
+                    'product_name'=>$second_product_name,
+                    'primary_destination'=>$request->primary_destination,
+                    'ages_array'=>$second_ages_array[0],
+                    'num_of_days'=>$second_num_of_days,
+                    'compare_pre_existing'=>'yes'
+                );
+                $second_savetoplan = serialize($second_createbuynowarray)
+            @endphp
                     <div style=" position: absolute; top: 0; right: 0; ">
                         @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
 

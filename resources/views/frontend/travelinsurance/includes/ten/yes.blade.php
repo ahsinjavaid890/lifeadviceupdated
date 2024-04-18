@@ -388,7 +388,8 @@ if($show == '1' && $total_price > 0){
                     'product_name'=>$product_name,
                     'primary_destination'=>$request->primary_destination,
                     'ages_array'=>$ages_array[0],
-                    'num_of_days'=>$num_of_days
+                    'num_of_days'=>$num_of_days,
+                    'compare_pre_existing'=>'no'
                 );
                 $savetoplan = serialize($createbuynowarray)
             @endphp
