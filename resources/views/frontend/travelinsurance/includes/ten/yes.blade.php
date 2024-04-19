@@ -1,143 +1,42 @@
 <?php
-    //  error_reporting(E_ERROR);
-    $startdate = $request->departure_date;
-    $enddate = $request->return_date;
-
-    $dStart = new DateTime($request->departure_date);
-    $dEnd  = new DateTime($request->return_date);
-    $dDiff = $dStart->diff($dEnd);
-    $dDiff->format('%R'); // use for point out relation: smaller/greater
-    $num_of_days = $dDiff->days + 1;
-    if($num_of_days > 365 || $num_of_days == 364){ $num_of_days = 365; }
-
-    //$num_of_days = 365;
-    $prosupervisa = $data->pro_supervisa;
-    $product_name = $data->pro_name;
-
-    if($prosupervisa == '1'){
-    $supervisa = 'yes';
-    $num_of_days = 365;
-    } else {
-    $supervisa = 'no';
-    }
-
-    $enable_family_plan = (!empty($request->familyplan)) ? true : false;
-    $enable_pre_existing = (!empty($request->pre_existing)) ? true : false;
-
-    if($request->familyplan_temp == 'yes'){
-    $enable_family_plan = true;
-    } else {
-    $enable_family_plan = false;
-    }
-    if($request->pre_existing == 'Yes'){
-    $enable_pre_existing = true;
-    } else {
-    $enable_pre_existing = false;
-    }
-
-    $oldest_traveller = 0;
-    $family_plan      = false;
-
-    $years = array();
-
-
-foreach ($request->years as $r) {
-    if($r)
-    {
-        $bday = new DateTime($r); // Your date of birth
-        $today = new Datetime(date('m.d.y'));
-        $diff = $today->diff($bday);
-        $years[] =  $diff->y;
-    }
-}
-
-if (is_array($years)){
-    $ages_array = array_filter($years);
-    $younger_age = min($ages_array);
-    $elder_age = max($ages_array);
-    $number_travelers = count($ages_array);
-}
-else {
-    $younger_age = 0;
-    $elder_age = 0;
-    $number_travelers = 1;
-}
-if($request->familyplan_temp == 'yes'){
-    if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
-        $family_plan = 'yes';
-    }
-    else {
-        $family_plan = 'no';
-    }
-} else {
-    $family_plan = 'no';
-}
-
-if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
- //echo "<script>window.location='?action=not_eligible';</script>";
-}
-?>
-<script type="text/javascript">
-    var numberoftravelers = '{{ $number_travelers }}';
-    var elderage = '{{ $elder_age }}';
-    if(numberoftravelers > 1)
-    {
-        $('#ageshow').val(numberoftravelers+', Ages '+ elderage+ ' and ....');
-    }else{
-        $('#ageshow').val(numberoftravelers+', '+ elderage+ ' Years');
-    }
-
-
-</script>
-<?php
-        $addinquery = '';
-        $lessquery = '';
-        // if($request->pre_existing == 'yes' || $request->pre_existing == '1'){
-        //     $addinquery .= "AND `premedical`='1'";
-        // }
-        if($family_plan == 'yes'){
-            $addinquery .= "AND `family_plan`='1'";
-        }
-        if($num_of_days < '365'){
-            $lessquery = " AND `rate_base`<>'2'";
-        }
-        $plans_q = DB::select("SELECT * FROM wp_dh_insurance_plans WHERE `product`='$data->pro_id' AND `status`='1' $lessquery $addinquery ORDER BY `id`");
-
+        $plans_q = DB::table('wp_dh_insurance_plans')->where('product' , $data->pro_id)->where('status' , 1)->orderby('id' , 'desc')->get();
         foreach($plans_q as $plan){
+            $plan_id = $plan->id;
+            $plan_name = $plan->plan_name;
+            $insurance_company = $plan->insurance_company;
+            $premedical = $plan->premedical;
+            $pre_existing_name = $plan->pre_existing_name;
+            $without_pre_existing_name = $plan->without_pre_existing_name;
+            $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
+            $monthly_two = $plan->monthly_two;
+            $flatrate = $plan->flatrate;
+            $flatrate_type = $plan->flatrate_type;
+            $sales_tax = $plan->sales_tax;
+            $smoke_rate = $plan->smoke_rate;
+            $smoke = $plan->smoke;
+            $directlink = $plan->directlink;
+            $status = $plan->status;
+            $cdiscountrate = $plan->cdiscountrate;
+            $plan_discount = $plan->discount;
+            $plan_discount_rate = $plan->discount_rate;
 
-        $plan_id = $plan->id;
-        $plan_name = $plan->plan_name;
-        $pre_existing_name = $plan->pre_existing_name;
-        $without_pre_existing_name = $plan->without_pre_existing_name;
-        $insurance_company = $plan->insurance_company;
-        $plan_name_for_result = $plan->plan_name_for_result;
-        $premedical = $plan->premedical;
-        $rate_base = $plan->rate_base;  //0=Daily 1=Monthly 2=Yearly 3=Multi
-        $monthly_two = $plan->monthly_two;
-        $flatrate = $plan->flatrate;
-        $flatrate_type = $plan->flatrate_type;
-        $sales_tax = $plan->sales_tax;
-        $smoke_rate = $plan->smoke_rate;
-        $smoke = $plan->smoke;
-        $directlink = $plan->directlink;
-        $status = $plan->status;
-        $cdiscountrate = $plan->cdiscountrate;
-        $plan_discount = $plan->discount;
-        $plan_discount_rate = $plan->discount_rate;
-
-        $post_dest = str_replace(' ', '', strtolower($request->primary_destination));
-        if($sales_tax)
-        {
-            $salestaxeplode = explode('%', $sales_tax);
-            $salestax_rate = $salestaxeplode[0];
-            $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
-        }
-
+            
+            if($sales_tax != 0)
+            {
+                $salestaxeplode = explode('%', $sales_tax);
+                $salestax_rate = $salestaxeplode[0];
+                $salestax_dest = str_replace(' ', '', $salestaxeplode[1]);
+            }
+        
 
 
         //COMPANY Details
         $company = DB::table('wp_dh_companies')->where('comp_id' , $insurance_company)->first();
+        
         $comp_id = $company->comp_id;
+        
+
+
         $comp_name = $company->comp_name;
         $comp_logo = $company->comp_logo;
 
@@ -148,7 +47,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             {
                 $deductible = $deductsloop_f->deductible1;
             }
-
+            
             $deduct = '';
             $deduct_rate = '';
             $deduct_plan_id = '';
@@ -158,18 +57,22 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             {
                 $deduct = $deductsq->deductible1;
                   $deduct_rate = str_replace('-', '', $deductsq->deductible2);
-                $deduct_plan_id = $deductsq->plan_id;
+            $deduct_plan_id = $deductsq->plan_id;
             }
+            
+          
             if($supervisa == 'yes'){
                 $addinbenefit = "AND CAST(`sum_insured` AS DECIMAL)>='100000'";
             }else{
-                $addinbenefit = '';
+                $addinbenefit = "";
             }
-            $sum_insured= '';
+            $sum_insured= '';        
             $sumin = DB::select("SELECT `sum_insured` FROM `wp_dh_insurance_plans_rates` WHERE `plan_id`='$deduct_plan_id' $addinbenefit GROUP BY `sum_insured` ORDER BY CAST(`sum_insured` AS DECIMAL)");
+
         foreach($sumin as $suminsu){
         $sum_insured = $suminsu->sum_insured;
         $sumamt = '';
+
         $sumqry = DB::table('wp_dh_insurance_plans_rates')->where('plan_id' , $plan_id)->where('sum_insured' , $sum_insured)->first();
         $sumamt = $sumqry->sum_insured;
 
@@ -190,10 +93,8 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
             //$single_person_rate = array();
             $display = array();
             if($family_plan == 'yes'){
-                $planrates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
-                $countarray =  count($planrates);
-
-
+                $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$elder_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                $countarray =  count($plan_rates);
                 if($countarray > 0)
                 {
                     $maxs = array_keys($ages_array, max($ages_array));
@@ -206,18 +107,16 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                     }                
                     if(!$daily_rate){ $display = '0'; }
                 }
-                if(!$daily_rate)
-                {
-                    $display = '0';
-                }else{
-                    $display[] =  $daily_rate;
+                else{
+                    $daily_rate = 500;
+                    if(!$daily_rate){ $display = '0'; }
                 }
-
             } else {
                 $perone = 0;
                 foreach($ages_array as $person_age){
-                $perone++;
+                    $perone++;
                    $plan_rates = DB::select("SELECT * FROM $rates_table_name WHERE `plan_id`='$deduct_plan_id' AND '$person_age' BETWEEN `minage` AND `maxage` AND `sum_insured`='$sumamt' $addquery");
+                   
                    $countarray =  count($plan_rates);
                    if($countarray > 0)
                    {
@@ -226,10 +125,7 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                         {
                             $dailyrate = $plan_rates[0]->rate_with_pre_existing;
                             $daily_rate += $dailyrate;
-                            if($dailyrate == '')
-                            {
-                                $dailyrate = 0;
-                            }
+                            if($dailyrate == ''){ $dailyrate = 0; }
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }else{
@@ -239,10 +135,13 @@ if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
                             $display[] =  $dailyrate;
                             $dailyrate = 0;
                         }
-                   }
 
+ 
+                   }
+                    
                 }
             }
+
 
 //NUM OF MONTHS
 $num_months = $num_of_days / 30;
@@ -336,21 +235,15 @@ if ($flatrate_type == 'each') {
 if ($monthly_two == '1') {
     $monthly_price = ($total_price + $flat_price) / $num_months;
 }
-// if (in_array("0", $display))
-// {
-//     $show = '0';
-// }
-// else
-// {
-//     $show = '1';
-// }
 
-$show = 1;
+if (in_array("0", $display)){ $show = '0'; } else {$show = '1'; }
 
-if($show == '1' && $total_price > 0){
 
-  ?>
-<li id="dv_{{$total_price}}" data-listing-price="{{$total_price}}" class="listing-item-new coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
+if($show == '1' && $total_price > 0){             
+
+?>
+@if(Cmf::checkallrates($ages_array , $rates_table_name, $deduct_plan_id , $sumamt) == 1)
+<li id="dv_{{$total_price}}" data-listing-price="{{$total_price}}" class="listing-item coverage-amt coverage-amt-<?php echo $sum_insured; ?>" style="display: <?php if($request->sum_insured2 == $sum_insured ){ echo 'block'; } else { echo 'none'; } ?>;">
   <div class="row deductable-<?php echo $deductible; ?>" style="display: <?php if($deductible == '1000'){ echo 'flex'; } else if($havethousand == 'no' && $deductible == '0'){ echo 'flex'; } else { echo 'none'; } ?>;">
      <div class="grid-list col-md-2 tab-img fold"  data-placement="left">
          <img src="{{ url('public/images') }}/<?php echo $comp_logo; ?>">
@@ -400,7 +293,7 @@ if($show == '1' && $total_price > 0){
     @include('frontend.travelinsurance.includes.buynowform')
   </div>
 </li>
-
+@endif
 
         <?php
         $display = '';

@@ -557,7 +557,90 @@ ul.common-btn li {
 
 
 
+ <?php
+//  error_reporting(E_ERROR);
+$startdate = $request->departure_date;
+$enddate = $request->return_date;
 
+$dStart = new DateTime($request->departure_date);
+$dEnd  = new DateTime($request->return_date);
+$dDiff = $dStart->diff($dEnd);
+$dDiff->format('%R'); // use for point out relation: smaller/greater
+$num_of_days = $dDiff->days + 1;
+if($num_of_days > 365 || $num_of_days == 364){ $num_of_days = 365; }
+
+//$num_of_days = 365;
+$prosupervisa = $data->pro_supervisa;
+$product_name = $data->pro_name;
+
+if($prosupervisa == '1'){
+$supervisa = 'yes';
+$num_of_days = 365;
+} else {
+$supervisa = 'no';
+}
+
+    $enable_family_plan = (!empty($request->familyplan)) ? true : false;
+    $enable_pre_existing = (!empty($request->pre_existing)) ? true : false;
+
+    if($request->familyplan_temp == 'yes'){
+    $enable_family_plan = true;
+    } else {
+    $enable_family_plan = false;
+    }
+    if($request->pre_existing == 'Yes'){
+    $enable_pre_existing = true;
+    } else {
+    $enable_pre_existing = false;
+    }
+
+    $oldest_traveller = 0;
+    $family_plan      = false;
+ 
+    $years = array();
+
+   
+
+foreach ($request->years as $r) {
+    if($r)
+    {
+        $bday = new DateTime($r); // Your date of birth
+        $today = new Datetime(date('m.d.y'));
+        $diff = $today->diff($bday);
+        $years[] =  $diff->y;
+    }
+}
+
+
+if (is_array($years)){
+    $ages_array = array_filter($years);
+    $younger_age = min($ages_array);
+    $elder_age = max($ages_array);
+    $number_travelers = count($ages_array);
+}
+else {
+    $younger_age = 0;
+    $elder_age = 0;
+    $number_travelers = 1;
+}
+
+ 
+
+if($request->familyplan_temp == 'yes'){
+    if($number_travelers >= 2 && ($elder_age >= 21 && $elder_age <=58) && ($younger_age <=21)){
+        $family_plan = 'yes';
+    }
+    else {
+        $family_plan = 'no';
+    }
+} else {
+    $family_plan = 'no';
+}
+
+if($request->familyplan_temp == 'yes' && $family_plan == 'no'){
+ //echo "<script>window.location='?action=not_eligible';</script>";
+}
+?>
 
 
 
@@ -626,10 +709,14 @@ ul.common-btn li {
                                             <div class="col-md-2">Add to Compare</div>
                                         </li>
                                         @if (in_array('yes', $request->pre_existing))
+                                            <div id="listprices">
                                             @include('frontend.travelinsurance.includes.ten.yes')
+                                            </div>
                                         @else
+                                        <div id="listprices">
                                             @include('frontend.travelinsurance.includes.ten.yes')
                                             @include('frontend.travelinsurance.includes.ten.no')
+                                        </div>
                                         @endif
                                     </ul>
                                 </div>
@@ -641,17 +728,63 @@ ul.common-btn li {
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    @include('frontend.travelinsurance.includes.sendquoteemailscript')
-    function showdetails(id)
-    {
-        $('.dh-toggle-show-hide-'+id).slideToggle();
+<script>
+@include('frontend.travelinsurance.includes.sendquoteemailscript')
+function showdetails(id)
+{
+    $('.dh-toggle-show-hide-'+id).slideToggle();
+}
+jQuery(function($) {
+    var divList = $(".listing-item");
+    divList.sort(function(a, b){ return $(a).data("listing-price")-$(b).data("listing-price")});
+    $("#listprices").html(divList);
+})
+var buynow_selected = "";
+var info_box = "";
+jQuery(".dh-toggle").click(function () {
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
     }
-    $( document ).ready(function() {
-         var divList = $(".listing-item-new");
-         divList.sort(function(a, b){
-             return $(a).data("listing-price")-$(b).data("listing-price")
-         });
-         // $("#results_search").html(divList);
-     });
+    if (jQuery(this).data('value') == info_box) {
+        info_box = "";
+        return false;
+    }
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+        buynow_selected = "";
+    }
+    var id = jQuery(this).data('value');
+    info_box = id;
+    jQuery(".dh-toggle-show-hide-" + id).slideToggle();
+    console.log(".dh-toggle-show-hide-" + id);
+});
+
+
+jQuery(".buynow-btn").click(function () {
+    if (buynow_selected != "") {
+        jQuery(".buynow-btn-" + buynow_selected).slideToggle();
+    }
+    if (jQuery(this).data('value') == buynow_selected) {
+        buynow_selected = "";
+        return false;
+    }
+    if (info_box != "") {
+        jQuery(".dh-toggle-show-hide-" + info_box).slideToggle();
+        info_box = "";
+    }
+    var id = jQuery(this).data('value');
+    buynow_selected = id;
+    jQuery(".buynow-btn-" + id).slideToggle();
+});
+$(document).ready(function () {
+    var uniqueClasses = {};
+    $('#listprices .pricearray').each(function () {
+        var currentClass = $(this).attr('class');
+        if (!uniqueClasses.hasOwnProperty(currentClass)) {
+            uniqueClasses[currentClass] = true;
+        } else {
+            $(this).hide();
+        }
+    });
+});
 </script>
