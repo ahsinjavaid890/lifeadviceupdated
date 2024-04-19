@@ -282,7 +282,7 @@
                   <div class="form-group">
                      <label>Age</label>
                      <div class="custom-form-control">
-                        <input  id="age{{ $i }}" value=""  class="form-input"  type="text" placeholder="Age" readonly>
+                        <input  id="age{{ $i }}" value=""  class="form-input agetoshow{{ $i }}"  type="text" placeholder="Age" readonly>
                         <span class="errorshow" id="ageerror{{ $i }}"></span>
                      </div>
                   </div>
@@ -315,7 +315,7 @@
                <div class="col-sm-4 col-md-3">
                   <div class="form-group ">
                      <label>Birth date of the {{ $ordinal_words[$i] }} Traveller</label>
-                     <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" onkeyup="calculateAge(this.value , 'dateofbirthfull{{ $i }}' , {{$i}})" placeholder="MM/DD/YYYY" name="years[]">
+                     <input id="dateofbirthfull{{ $i }}" class="form-input" type="text" inputmode="numeric" onkeyup="travelerdateofbirth(this.value , 'dateofbirthfull{{ $i }}' , {{$i}})" placeholder="MM/DD/YYYY" name="years[]">
                      <span class="errorshow" id="dateerror{{ $i }}"></span>
                   </div>
                </div>
@@ -357,7 +357,8 @@
 
 <script type="text/javascript">
 
-   function calculateAge(dateofbirth , classname , travelerid) {
+   function travelerdateofbirth(dateofbirth , classname , travelerid) {
+      console.log('alert')
        var dob = dateofbirth;        
        var dobRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2[0-9]|3[01])\/\d{4}$/;
        if (!dobRegex.test(dob)) {
@@ -381,28 +382,12 @@
             dob = new Date($('#dateofbirthfull'+travelerid).val());
             var today = new Date();
             var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            console.log('asdok');
             $('#age'+travelerid).val(age+' Years Old');
            $('#'+classname).css('border-color', 'green');
            changefamilyyes($('#selectfamilyplan').val());
            $('#getqoutesubmitbutton').prop('disabled' , false);
        }
-   }
-   function travelerdateofbirth(id , travelerid) {
-      var GivenDate = $('#dateofbirthfull'+travelerid).val();
-      console.log(id)
-      var CurrentDate = new Date();
-      GivenDate = new Date(GivenDate);
-
-      if(GivenDate > CurrentDate){
-         $('#dateerror'+travelerid).html('You Can Not Add Future Date');
-      }else{
-         $('#dateerror'+travelerid).html('');
-         var startdate = document.getElementById('departure_date').value;
-         dob = new Date(id);
-         var today = new Date();
-         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-         $('#age'+travelerid).val(age+' Years Old');
-      }      
    }
 </script>
 <script type="text/javascript" src="{{ url('public/front/js/jquery.mask.min.js') }}"></script>
@@ -581,7 +566,7 @@ $('button[type="submit"]').click(function() {
        var tt = document.getElementById('departure_date').value;
        var date = new Date(tt);
        var newdate = new Date(date);
-       newdate.setDate(newdate.getDate() + 364);
+       newdate.setDate(newdate.getDate() + 365);
        var dd = newdate.getDate();
        var mm = newdate.getMonth() + 1;
        var y = newdate.getFullYear();

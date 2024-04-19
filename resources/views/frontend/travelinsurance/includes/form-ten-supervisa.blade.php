@@ -255,7 +255,7 @@ function getnumberofdays() {
        var tt = document.getElementById('departure_date').value;
        var date = new Date(tt);
        var newdate = new Date(date);
-       newdate.setDate(newdate.getDate() + 364);
+       newdate.setDate(newdate.getDate() + 365);
        var dd = newdate.getDate();
        var mm = newdate.getMonth() + 1;
        var y = newdate.getFullYear();
