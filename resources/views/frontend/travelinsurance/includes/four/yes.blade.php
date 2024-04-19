@@ -311,7 +311,7 @@ if($show == '1' && $total_price > 0){
                 <div style="clear:both;"></div>
             </div>
             <div class="col-md-3 col-xs-6 text-center">
-                <button onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();" class="submit-btn">
+                <button style="background-color: #12b48b;margin-bottom: 10px;" onclick="$('.buynow_{{ $deductible.$plan_id }}').slideToggle();" class="submit-btn">
                     <i class="fa fa-shopping-cart text-white"></i> Buy Now
                 </button>
                 @php
@@ -346,7 +346,7 @@ if($show == '1' && $total_price > 0){
                 @if(in_array('yes',$request->pre_existing) && in_array('no',$request->pre_existing))
 
                 @else
-                <label onclick="savecompareplans('{{ $savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #12b48b;" id="compare"><i class="fa fa-database text-white"></i> Compare</label>
+                <label onclick="savecompareplans('{{ $savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #2b3481;" id="compare"><i class="fa fa-database text-white"></i> Compare</label>
                 @endif
             </div>
 

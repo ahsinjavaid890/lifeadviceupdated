@@ -393,7 +393,7 @@ if($second_show == '1' && $second_total_price > 0){
                 <div style="clear:both;"></div>
             </div>
             <div class="col-md-3 col-xs-6 text-center">
-                <button style="background-color: #2b3481;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="submit-btn">
+                <button style="background-color: #12b48b;margin-bottom: 10px;" onclick="$('.buynow_{{ $second_deductible.$second_plan_id+13 }}').slideToggle();" class="submit-btn">
                     <i class="fa fa-shopping-cart text-white"></i> Buy Now
                 </button>
                 @php
@@ -425,7 +425,7 @@ if($second_show == '1' && $second_total_price > 0){
                 );
                 $second_savetoplan = serialize($second_createbuynowarray)
             @endphp
-                <label onclick="savecompareplans('{{ $second_savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #12b48b;" id="compare"><i class="fa fa-database"></i> Compare</label>
+                <label onclick="savecompareplans('{{ $second_savetoplan }}')" class="submit-btn mt-1 mobile-deisply-none" style="background-color: #2b3481;" id="compare"><i class="fa fa-database"></i> Compare</label>
             </div>
 
             
