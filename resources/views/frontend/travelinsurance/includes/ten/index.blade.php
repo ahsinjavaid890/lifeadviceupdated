@@ -787,4 +787,11 @@ $(document).ready(function () {
         }
     });
 });
+$(document).ready(function() {
+    // Check if the parent div has class 'listing-item' and child div has style 'display: none;'
+    if ($('.row').parent().hasClass('listing-item') && $('.row').css('display') === 'none') {
+        // Set parent div's display property to 'none'
+        $('.row').parent('.listing-item').css('display', 'none');
+    }
+});
 </script>
